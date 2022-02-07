@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/presenter/pages/contact/contact_page.dart';
 import 'package:my_portfolio/presenter/pages/home/home_page.dart';
+import 'package:my_portfolio/presenter/pages/portfollio/portfolio_page.dart';
 
 import 'fade_move_rout.dart';
 import 'host_routes.dart';
@@ -11,21 +12,7 @@ abstract class HomeNavigator {
   static Map<String, Widget> searchRoutes = {
     HomeRoutes.root: const HomePage(),
     HomeRoutes.contact: ContactPage(),
-    HomeRoutes.filled: Container(
-      color: Colors.red,
-    ),
-    HomeRoutes.categories: Container(
-      color: Colors.red,
-    ),
-    HomeRoutes.occasions: Container(
-      color: Colors.red,
-    ),
-    HomeRoutes.productsByOccasion: Container(
-      color: Colors.red,
-    ),
-    HomeRoutes.trending: Container(
-      color: Colors.red,
-    )
+    HomeRoutes.portfolio: PortfolioPage(),
   };
 
   static Route<BuildContext>? getProfileRoutes(RouteSettings settings) {
@@ -57,7 +44,7 @@ abstract class HomeNavigator {
           //     ],
           //   );
           // } else {
-            return child;
+          return child;
           //}
         },
       );

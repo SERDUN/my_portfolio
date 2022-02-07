@@ -38,6 +38,10 @@ class _HomePageState extends State<HostPage> {
             HomeNavigator.navKey.currentState
                 ?.pushReplacementNamed(HomeRoutes.contact);
           },
+          onPortfolio: () {
+            HomeNavigator.navKey.currentState
+                ?.pushReplacementNamed(HomeRoutes.portfolio);
+          },
         ),
       ]),
     );

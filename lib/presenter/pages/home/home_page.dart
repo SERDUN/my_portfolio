@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/colors.dart';
+import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/presenter/pages/home/services/services.dart';
 import 'package:my_portfolio/presenter/ui/menu/general_menu_bar.dart';
 
@@ -23,14 +24,13 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          IntroPage(),
-           AboutMe(),
-          Text("Services",
-              style: GoogleFonts.montserrat(
-                  color: textPrimary,
-                  fontSize: 30,
-                  letterSpacing: 3,
-                  fontWeight: FontWeight.w500)),
+          const IntroPage(),
+          AboutMe(),
+          Container(
+            margin: EdgeInsets.only(top: 32, left: 32,bottom: 24),
+            child: Text("Services",
+                style: titleBlackBold),
+          ),
           const Services()
         ],
       ),

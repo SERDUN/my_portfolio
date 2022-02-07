@@ -9,9 +9,13 @@ import '../../../routes.dart';
 class GeneralMenuBar extends StatefulWidget {
   final Function onHome;
   final Function onContact;
+  final Function onPortfolio;
 
   const GeneralMenuBar(
-      {Key? key, required this.onHome, required this.onContact})
+      {Key? key,
+      required this.onHome,
+      required this.onContact,
+      required this.onPortfolio})
       : super(key: key);
 
   @override
@@ -87,7 +91,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                           highlightColor: Colors.transparent,
                         ),
                         FlatButton(
-                          onPressed: () {},
+                          onPressed: () => widget.onPortfolio.call(),
                           child: Text(
                             "PORTFOLIO",
                             style: buttonTextStyle,

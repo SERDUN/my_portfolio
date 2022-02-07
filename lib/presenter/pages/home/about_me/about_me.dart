@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/colors.dart';
 import 'package:my_portfolio/config/typography.dart';
+import 'package:my_portfolio/presenter/ui/widgets/tree/tree_view.dart';
 
 import '../../../../routes.dart';
 
@@ -16,6 +17,67 @@ class AboutMe extends StatefulWidget {
 class _AboutMeState extends State<AboutMe> {
   List<String> _items = ["Java", "Kotlin", "Data"];
   int currentHover = -1;
+  final List<Map<String, dynamic>> treeData = [
+    {
+      "title": "Mobile",
+      "expaned": false,
+      "children": [
+        {
+          "title": "Android",
+          "expaned": false,
+          "children": [
+            {
+              "title": "Java core",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Kotlin",
+              "expaned": false,
+              "children": [],
+            },
+          ],
+        },
+        {
+          "title": "Flutter",
+          "expaned": false,
+          "children": [],
+        },
+      ],
+    },
+    {
+      "title": "Backend",
+      "expaned": false,
+      "children": [
+        {
+          "title": "NodeJS",
+          "expaned": false,
+          "children": [],
+        },
+        {
+          "title": "Firebase cloud functions",
+          "expaned": false,
+          "children": [],
+        },
+      ],
+    },
+    {
+      "title": "Databases",
+      "expaned": false,
+      "children": [
+        {
+          "title": "SQL",
+          "expaned": false,
+          "children": [],
+        },
+        {
+          "title": "Firebase cloud functions",
+          "expaned": false,
+          "children": [],
+        },
+      ],
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +98,10 @@ class _AboutMeState extends State<AboutMe> {
                   children: [
                     Text(
                       "About me",
-                      style: buttonTextStyle16.copyWith(
-                          fontWeight: FontWeight.bold),
+                      style: titleBlackBold,
                     ),
                     SizedBox(
-                      height: 4,
+                      height: 32,
                     ),
                     Text(
                       "Web design ",
@@ -57,13 +118,28 @@ class _AboutMeState extends State<AboutMe> {
                     //   direction: Axis.horizontal,
                     //   children: _items.map((i) => skiils(i)).toList(),
                     // )
-
-                    ListView.builder(
-                      shrinkWrap: true,
-                        itemCount: _items.length,
-                        itemBuilder: (c, i) {
-                          return Text(_items[i]);
-                        })
+                    SizedBox(
+                      height: 32,
+                    ),
+                    Text(
+                      "My skills",
+                      style: titleBlackBold,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TreeView(
+                      data: treeData,
+                      titleOnTap: () {
+                        print('title');
+                      },
+                      leadingOnTap: () {
+                        print('leading');
+                      },
+                      trailingOnTap: () {
+                        print('trailing');
+                      },
+                    )
                   ],
                 ),
               )
@@ -74,34 +150,4 @@ class _AboutMeState extends State<AboutMe> {
     );
   }
 
-  Widget skiils(int i) {
-    return MouseRegion(
-        onEnter: (PointerEnterEvent event) {
-          currentHover = i;
-          setState(() {});
-        },
-        onExit: (PointerExitEvent event) {
-          currentHover = -1;
-          setState(() {});
-        },
-        child: Container(
-            margin: EdgeInsets.only(left: 30, top: 8, bottom: 8, right: 30),
-            padding: EdgeInsets.all(8),
-            height: 80,
-            width: 80,
-            child: Image.asset("assets/image/icons/java.png"),
-            decoration: BoxDecoration(
-              color: currentHover != i ? Colors.white : Color(0xffFF4289),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xffFF4289)
-                      .withOpacity(currentHover == i ? 0.4 : 0.1),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-            )));
-  }
 }
