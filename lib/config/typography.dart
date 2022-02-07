@@ -4,48 +4,48 @@ import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
 // Simple
-TextStyle headlineTextStyle = GoogleFonts.montserrat(
+TextStyle headlineTextStyle = GoogleFonts.ubuntu(
     textStyle: TextStyle(
         fontSize: 26,
         color: textPrimary,
         letterSpacing: 1.5,
         fontWeight: FontWeight.w300));
 
-TextStyle headlineSecondaryTextStyle = GoogleFonts.montserrat(
+TextStyle headlineSecondaryTextStyle = GoogleFonts.ubuntu(
     textStyle: TextStyle(
         fontSize: 20, color: textPrimary, fontWeight: FontWeight.w300));
 
-TextStyle subtitleTextStyle = GoogleFonts.openSans(
+TextStyle subtitleTextStyle = GoogleFonts.ubuntu(
     textStyle: TextStyle(fontSize: 14, color: textSecondary, letterSpacing: 1));
 
-TextStyle subtitleBoldTextStyle = GoogleFonts.openSans(
+TextStyle subtitleBoldTextStyle = GoogleFonts.ubuntu(
     textStyle: TextStyle(fontSize: 14, color: textSecondary, letterSpacing: 2,fontWeight: FontWeight.bold));
 
-TextStyle bodyTextStyle = GoogleFonts.openSans(
+TextStyle bodyTextStyle = GoogleFonts.ubuntu(
     textStyle: TextStyle(fontSize: 14, color: textPrimary));
 
-TextStyle buttonTextStyle = GoogleFonts.montserrat(
+TextStyle buttonTextStyle = GoogleFonts.ubuntu(
     textStyle: TextStyle(fontSize: 14, color: textPrimary, letterSpacing: 1));
 
-TextStyle buttonTextStyle16 = GoogleFonts.montserrat(
+TextStyle buttonTextStyle16 = GoogleFonts.ubuntu(
     textStyle: TextStyle(fontSize: 16, color: textPrimary, letterSpacing: 1));
 
-TextStyle buttonTextStyle32White = GoogleFonts.montserrat(
+TextStyle buttonTextStyle32White = GoogleFonts.ubuntu(
     textStyle: TextStyle(fontSize: 32, color: textPrimary, letterSpacing: 1));
 
-TextStyle buttonTextStyle24White = GoogleFonts.montserrat(
+TextStyle buttonTextStyle24White = GoogleFonts.ubuntu(
     textStyle: TextStyle(fontSize: 24, color: textPrimary, letterSpacing: 1));
 
 
 
 
-TextStyle titleBlackBold = GoogleFonts.montserrat(
+TextStyle titleBlackBold = GoogleFonts.ubuntu(
     color: textPrimary,
     fontSize: 24,
     letterSpacing: 0,
     fontWeight: FontWeight.w500);
 
-TextStyle sybTitleBlackBold = GoogleFonts.montserrat(
+TextStyle sybTitleBlackBold = GoogleFonts.ubuntu(
     color: textPrimary,
     fontSize: 18,
     letterSpacing: 3,

@@ -6,6 +6,7 @@ import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/presenter/pages/home/services/services.dart';
 import 'package:my_portfolio/presenter/ui/menu/general_menu_bar.dart';
 
+import '../../ui/footer/footer.dart';
 import 'about_me/about_me.dart';
 import 'intro/intro_page.dart';
 
@@ -27,11 +28,11 @@ class _HomePageState extends State<HomePage> {
           const IntroPage(),
           AboutMe(),
           Container(
-            margin: EdgeInsets.only(top: 32, left: 32,bottom: 24),
-            child: Text("Services",
-                style: titleBlackBold),
+            margin: EdgeInsets.only(top: 32, left: 32, bottom: 24),
+            child: Text("Services", style: titleBlackBold),
           ),
-          const Services()
+          Container(margin: EdgeInsets.only(bottom: 24), child: Services()),
+          const AppFooter()
         ],
       ),
     );

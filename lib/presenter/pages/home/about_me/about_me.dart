@@ -104,20 +104,11 @@ class _AboutMeState extends State<AboutMe> {
                       height: 32,
                     ),
                     Text(
-                      "Web design ",
-                      style: buttonTextStyle,
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
                       "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                      style: buttonTextStyle,
+                      style: GoogleFonts.ubuntu(
+                          textStyle: TextStyle(fontSize: 14, color: textSecondary,letterSpacing: 0.5,fontWeight: FontWeight.w300)),
                     ),
-                    // Wrap(
-                    //   direction: Axis.horizontal,
-                    //   children: _items.map((i) => skiils(i)).toList(),
-                    // )
+
                     SizedBox(
                       height: 32,
                     ),

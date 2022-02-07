@@ -83,22 +83,10 @@ class _TreeNodeState extends State<TreeNode>
                 child: widget.leading ??
                     IconButton(
                       alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(left: 0),
+                      padding: const EdgeInsets.only(left: 0),
                       icon: children.length > 1
-                          ? Container(
-                              margin: const EdgeInsets.all(16),
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.green,
-                              ),
-                            )
-                          : Center(
-                              child: Container(
-                                height: 1,
-                                width: 8,
-                                color: Colors.blue,
-                              ),
-                            ),
+                          ? Image.asset("assets/image/icons/category.png",width: 24,height: 24)
+                          : Image.asset("assets/image/icons/sub_category.png",width: 24,height: 24),
                       iconSize: 16,
                       onPressed: null,
                     ),

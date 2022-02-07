@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:my_portfolio/config/typography.dart';
 
 class TreeRoot extends StatefulWidget {
@@ -96,12 +97,7 @@ class _TreeNodeState extends State<TreeRoot>
                           _handleTap();
                         },
                         child: RotationTransition(
-                          child: widget.trailing ??
-                              const IconButton(
-                                icon: Icon(Icons.expand_more,size: 40,color: Colors.green,),
-                                iconSize: 40,
-                                onPressed: null,
-                              ),
+                          child:  Lottie.asset('assets/animation/arrow_vertical.json',width: 32,height: 32),
                           turns: _turnsTween.animate(_rotationController),
                         ),
                       ),

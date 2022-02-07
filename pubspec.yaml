@@ -32,6 +32,8 @@ dependencies:
   responsive_framework: ^0.1.5
   google_fonts: ^2.2.0
   animated_text_kit: ^4.2.1
+  lottie: ^1.2.1
+  matrix4_transform: ^2.0.1
 
 
 
@@ -69,6 +71,11 @@ flutter:
     - assets/image/language/ua.png
     - assets/image/language/en.png
     - assets/image/icons/java.png
+    - assets/image/icons/category.png
+    - assets/image/icons/android.png
+    - assets/image/icons/sub_category.png
+    - assets/animation/arrow_vertical.json
+    - assets/animation/circle_animation.json
 
 
 
