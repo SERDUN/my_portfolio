@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
 import 'package:my_portfolio/config/colors.dart';
 import 'package:my_portfolio/config/typography.dart';
@@ -11,7 +10,7 @@ import 'package:my_portfolio/domain/entity/model/service_model.dart';
 import '../../../../routes.dart';
 
 class Services extends StatefulWidget {
-  Services({Key? key}) : super(key: key);
+  const Services({Key? key}) : super(key: key);
 
   @override
   State<Services> createState() => _ServicesState();
@@ -43,7 +42,12 @@ class _ServicesState extends State<Services> {
       margin: const EdgeInsets.symmetric(horizontal: 32),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(top: 32, bottom: 24),
+            child: Text("Services", style: titleBlackBold),
+          ),
           Wrap(
               direction: Axis.horizontal,
               children: (services.map((i) => buildCard(i)).toList()))
@@ -57,10 +61,10 @@ class _ServicesState extends State<Services> {
     );
   }
 
-  Card buildCard(ServiceModel servic) {
+  Card buildCard(ServiceModel service) {
     return Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         child: Stack(alignment: Alignment.bottomLeft, children: [
           Container(
             width: 208,
@@ -70,10 +74,10 @@ class _ServicesState extends State<Services> {
                 .translate(x: -200, y: 104)
                 .matrix4,
             decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Color(0xffF8548B)),
+                const BoxDecoration(shape: BoxShape.circle, color: Color(0xffF8548B)),
           ),
           Container(
-            margin: EdgeInsets.only(left: 8,bottom: 8),
+            margin: const EdgeInsets.only(left: 8, bottom: 8),
             child: Image.asset(
               "assets/image/icons/android.png",
               width: 24,
@@ -82,23 +86,27 @@ class _ServicesState extends State<Services> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             width: 208,
             height: 176,
             child: Column(
               children: [
                 Text(
-                  servic.title,
+                  service.title,
                   style: subtitleBoldTextStyle,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Text(
-                  servic.description,
+                  service.description,
                   textAlign: TextAlign.center,
-                  style:  GoogleFonts.ubuntu(
-                      textStyle: TextStyle(fontSize: 14, color: textSecondary,letterSpacing: 0.5,fontWeight: FontWeight.w300)),
+                  style: GoogleFonts.ubuntu(
+                      textStyle: TextStyle(
+                          fontSize: 14,
+                          color: textSecondary,
+                          letterSpacing: 0.5,
+                          fontWeight: FontWeight.w300)),
                 ),
               ],
             ),

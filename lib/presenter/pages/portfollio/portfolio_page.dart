@@ -16,57 +16,49 @@ class PortfolioPage extends StatefulWidget {
 class _HomePageState extends State<PortfolioPage> {
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
-        child: Container(
+    return SingleChildScrollView(
+      child: Container(
           width: double.infinity,
           margin: const EdgeInsets.only(top: 48),
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    opacity: 0.04,
-                    filterQuality: FilterQuality.low,
-                    image: ExactAssetImage('assets/image/patterns/bike.png'),
-                    repeat: ImageRepeat.repeat)),
-            child: Column(
-
-              crossAxisAlignment: CrossAxisAlignment.start,
-
-              children: [
-                buildCard(),
-                buildCard(),
-                buildCard(),
-                buildCard(),
-                buildCard(),
-                buildCard(),
-                buildCard(),
-              ],
-            )),
-
+          decoration: const BoxDecoration(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildCard(),
+              buildCard(),
+              buildCard(),
+              buildCard(),
+              buildCard(),
+              buildCard(),
+              buildCard(),
+            ],
+          )),
     );
   }
 
   Card buildCard() {
     return Card(
-                margin: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-                child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(16),
-                  height: 176,
-                  child: Column(
-                    children: [
-                      Text(
-                        "Web design ",
-                        style: buttonTextStyle,
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                        style: buttonTextStyle,
-                      ),
-                    ],
-                  ),
-                ),
-              );
+      margin: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(16),
+        height: 176,
+        child: Column(
+          children: [
+            Text(
+              "Web design ",
+              style: buttonTextStyle,
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+              style: buttonTextStyle,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

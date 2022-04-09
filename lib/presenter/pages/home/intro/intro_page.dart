@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -17,13 +19,14 @@ class _IntroPageState extends State<IntroPage>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<Offset> offset;
+  Timer? t;
 
   @override
   void initState() {
     controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
 
-    offset = Tween<Offset>(end: Offset.zero, begin: Offset(0.0, 1.0))
+    offset = Tween<Offset>(end: Offset.zero, begin: const Offset(0.0, 1.0))
         .animate(controller);
 
     _showDelayPhoto();
@@ -34,8 +37,15 @@ class _IntroPageState extends State<IntroPage>
     super.initState();
   }
 
+  @override
+  void dispose() {
+    t?.cancel();
+    controller.dispose();
+    super.dispose();
+  }
+
   void _showDelayPhoto() async {
-    Future.delayed(const Duration(seconds: 2), () {
+    t = Timer(const Duration(seconds: 2), () {
       _showPhoto();
     });
   }
@@ -78,7 +88,6 @@ class _IntroPageState extends State<IntroPage>
                     repeat: ImageRepeat.repeat)),
             child: Stack(children: [
               buildPhoto(context),
-
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -183,13 +192,13 @@ class _IntroPageState extends State<IntroPage>
 
   Widget buildPoint(String path) {
     return Container(
-        margin: const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.all(10.0),
-        width: 40,
-        height: 40,
-        decoration:
-            const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-        child: Image.asset(path),
-      );
+      margin: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10.0),
+      width: 40,
+      height: 40,
+      decoration:
+          const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
+      child: Image.asset(path),
+    );
   }
 }

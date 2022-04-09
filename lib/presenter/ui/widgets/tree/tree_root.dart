@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:my_portfolio/config/typography.dart';
 
 class TreeRoot extends StatefulWidget {
   final int level;
@@ -80,11 +79,11 @@ class _TreeNodeState extends State<TreeRoot>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     widget.title ?? Container(),
-                    SizedBox(width: 8,),
+                    const SizedBox(width: 8,),
                     Text(
                       "(Основний напрям)",
                       style: GoogleFonts.montserrat(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.black26,
                               letterSpacing: 1)),
