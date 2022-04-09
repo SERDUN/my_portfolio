@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class TreeNode extends StatefulWidget {
   final int level;
@@ -85,18 +86,21 @@ class _TreeNodeState extends State<TreeNode>
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 0),
                       icon: children.length > 1
-                          ? Image.asset("assets/image/icons/category.png",width: 24,height: 24)
-                          : Image.asset("assets/image/icons/sub_category.png",width: 24,height: 24),
+                          ? Image.asset("assets/image/icons/category.png",
+                              width: 24, height: 24)
+                          : Image.asset("assets/image/icons/sub_category.png",
+                              width: 24, height: 24),
                       iconSize: 16,
                       onPressed: null,
                     ),
               ),
               GestureDetector(
                 onTap: () {
-                  if (widget.titleOnTap != null &&
-                      widget.titleOnTap is Function) {
-                    widget.titleOnTap!();
-                  }
+                  // if (widget.titleOnTap != null &&
+                  //     widget.titleOnTap is Function) {
+                  //   widget.titleOnTap!();
+                  // }
+                  _turnsTween.animate(_rotationController);
                 },
                 child: widget.title ?? Container(),
               ),
@@ -117,15 +121,14 @@ class _TreeNodeState extends State<TreeNode>
                             widget.trailingOnTap is Function) {
                           widget.trailingOnTap!();
                         }
-                      });
+                      }
+                      );
                     },
                     child: RotationTransition(
-                      child: widget.trailing ??
-                          const IconButton(
-                            icon: Icon(Icons.expand_more),
-                            iconSize: 16,
-                            onPressed: null,
-                          ),
+                      child: Lottie.asset(
+                          'assets/animation/arrow_vertical.json',
+                          width: 24,
+                          height: 24),
                       turns: _turnsTween.animate(_rotationController),
                     ),
                   ),
@@ -135,7 +138,7 @@ class _TreeNodeState extends State<TreeNode>
           ),
         ),
         Visibility(
-          visible: children.length > 0 && _isExpanded,
+          visible: children.isNotEmpty && _isExpanded,
           child: Padding(
             padding: EdgeInsets.only(
                 left: level + 1 * offsetLeft, right: level + 1 * offsetLeft),

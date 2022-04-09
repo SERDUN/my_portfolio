@@ -27,11 +27,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           const IntroPage(),
           AboutMe(),
-          Container(
-            margin: EdgeInsets.only(top: 32, left: 32, bottom: 24),
-            child: Text("Services", style: titleBlackBold),
-          ),
-          Container(margin: EdgeInsets.only(bottom: 24), child: Services()),
+          Container(margin: const EdgeInsets.only(bottom: 24), child: Services()),
           const AppFooter()
         ],
       ),
