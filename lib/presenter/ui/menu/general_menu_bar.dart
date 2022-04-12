@@ -3,8 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/colors.dart';
 import 'package:my_portfolio/config/typography.dart';
+import 'package:my_portfolio/presenter/common/extension/naming_extension.dart';
 
 import '../../../routes.dart';
+import '../widgets/menu/main_menu.dart';
 
 class GeneralMenuBar extends StatefulWidget {
   final Function onHome;
@@ -38,25 +40,16 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () => widget.onHome(),
-                  child: Text("Dmitro Serdun",
+                  child: Text(
+                      MediaQuery.of(context).size.width < 350
+                          ? "DS"
+                          : "Dmitro Serdun",
                       style: GoogleFonts.montserrat(
                           color: textPrimary,
                           fontSize: 24,
                           letterSpacing: 3,
                           fontWeight: FontWeight.w400)),
                 ),
-
-                // Align(
-                //   alignment: Alignment.bottomLeft,
-                //   child: Container(
-                //       width: 128,
-                //       height: 64,
-                //       margin: EdgeInsets.only(bottom: 8, left: 24),
-                //       child: Card(
-                //         child: Container(
-                //           margin: EdgeInsets.all(8),
-                //           child: Column(
-                //             children: [
                 GestureDetector(
                   child: isUa
                       ? buildLanguage("assets/image/language/ua.png")
@@ -67,53 +60,11 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                     });
                   },
                 ),
-                //               buildLanguage("assets/image/language/en.png")
-                //             ],
-                //           ),
-                //         ),
-                //       )),
-                // ),
                 Flexible(
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    child: Wrap(
-                      alignment: WrapAlignment.center,
-                      children: <Widget>[
-                        FlatButton(
-                          onPressed: () => widget.onHome(),
-                          child: Text(
-                            "HOME",
-                            style: buttonTextStyle,
-                            textAlign: TextAlign.center,
-                          ),
-                          splashColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                        ),
-                        FlatButton(
-                          onPressed: () => widget.onPortfolio.call(),
-                          child: Text(
-                            "PORTFOLIO",
-                            style: buttonTextStyle,
-                            textAlign: TextAlign.center,
-                          ),
-                          splashColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                        ),
-                        FlatButton(
-                          onPressed: () => widget.onContact(),
-                          child: Text(
-                            "CONTACT",
-                            style: buttonTextStyle,
-                            textAlign: TextAlign.center,
-                          ),
-                          splashColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                        ),
-                      ],
-                    ),
+                  child: MainMenu(
+                    onHome: widget.onHome,
+                    onContact: widget.onContact,
+                    onPortfolio: widget.onPortfolio,
                   ),
                 ),
               ],

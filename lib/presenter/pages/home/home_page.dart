@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:my_portfolio/config/colors.dart';
-import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/presenter/pages/home/services/services.dart';
-import 'package:my_portfolio/presenter/ui/menu/general_menu_bar.dart';
-
 import '../../ui/footer/footer.dart';
 import 'about_me/about_me.dart';
 import 'intro/intro_page.dart';

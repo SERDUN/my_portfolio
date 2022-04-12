@@ -5,6 +5,8 @@ class Routes {
   static const String contact = "contact";
   static const String style = "style";
 
+
+
   static Route<T> fadeThrough<T>(RouteSettings settings, WidgetBuilder page,
       {int duration = 300}) {
     return PageRouteBuilder<T>(
@@ -12,19 +14,14 @@ class Routes {
       transitionDuration: Duration(milliseconds: duration),
       pageBuilder: (context, animation, secondaryAnimation) => page(context),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-
-        final tween = Tween(begin: begin, end: end);
-        final curvedAnimation = CurvedAnimation(
-          parent: animation,
-          curve: curve,
-        );
-        return SlideTransition(
-          position: tween.animate(curvedAnimation),
+        return new SlideTransition(
+          position: new Tween<Offset>(
+            begin: const Offset(-1.0, 0.0),
+            end: Offset.zero,
+          ).animate(animation),
           child: child,
         );
+
       },
     );
   }
