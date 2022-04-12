@@ -1,12 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
-import 'package:responsive_framework/responsive_wrapper.dart';
-
-import '../../../config/colors.dart';
-import '../../../config/typography.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';
 
 class PortfolioItem extends StatelessWidget {
@@ -37,12 +30,12 @@ class PortfolioItem extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.width * .01,
                     ),
-                    _buildTitleProject(),
+                    _buildTitleProject(context),
                     SizedBox(
                       height: MediaQuery.of(context).size.width * .01,
                     ),
                     Container(
-                      child: _buildProjectDescription(),
+                      child: _buildProjectDescription(context),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.width * .025,
@@ -72,11 +65,11 @@ class PortfolioItem extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.width * .01,
             ),
-            _buildTitleProject(),
+            _buildTitleProject(context),
             SizedBox(
               height: MediaQuery.of(context).size.width * .01,
             ),
-            _buildProjectDescription(),
+            _buildProjectDescription(context),
             SizedBox(
               height: MediaQuery.of(context).size.width * .025,
             ),
@@ -122,19 +115,20 @@ class PortfolioItem extends StatelessWidget {
     );
   }
 
-  Widget _buildProjectDescription() {
+  Widget _buildProjectDescription(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8),
-      child: Text(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      child: SelectableText(
         "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+          style: Theme.of(context).textTheme.bodyText1,
       ),
     );
   }
 
-  Widget _buildTitleProject() {
+  Widget _buildTitleProject(BuildContext context) {
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 8),
-        child: Text("MY PROJECTS"));
+        margin: const EdgeInsets.symmetric(horizontal: 8),
+        child: SelectableText("MY PROJECTS",style: Theme.of(context).textTheme.headline1,));
   }
 
   Widget _buildPreview() {

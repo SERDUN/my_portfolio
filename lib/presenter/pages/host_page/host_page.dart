@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/presenter/common/widgets/bars/common_app_bar.dart';
 import 'package:my_portfolio/presenter/ui/menu/general_menu_bar.dart';
 
 import 'navigation/host_navigator.dart';
@@ -15,32 +16,25 @@ class _HomePageState extends State<HostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CommonAppBar(
+        onHome: () {
+          HomeNavigator.navKey.currentState
+              ?.pushReplacementNamed(HomeRoutes.root);
+        },
+        onContact: () {
+          HomeNavigator.navKey.currentState
+              ?.pushReplacementNamed(HomeRoutes.contact);
+        },
+        onPortfolio: () {
+          HomeNavigator.navKey.currentState
+              ?.pushReplacementNamed(HomeRoutes.portfolio);
+        },
+      ),
       backgroundColor: Colors.white54,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          GeneralMenuBar(
-            onHome: () {
-              HomeNavigator.navKey.currentState
-                  ?.pushReplacementNamed(HomeRoutes.root);
-            },
-            onContact: () {
-              HomeNavigator.navKey.currentState
-                  ?.pushReplacementNamed(HomeRoutes.contact);
-            },
-            onPortfolio: () {
-              HomeNavigator.navKey.currentState
-                  ?.pushReplacementNamed(HomeRoutes.portfolio);
-            },
-          ),
-          Expanded(
-              child: Navigator(
-            key: HomeNavigator.navKey,
-            initialRoute: HomeRoutes.root,
-            onGenerateRoute: HomeNavigator.getProfileRoutes,
-          ))
-        ],
+      body: Navigator(
+        key: HomeNavigator.navKey,
+        initialRoute: HomeRoutes.root,
+        onGenerateRoute: HomeNavigator.getProfileRoutes,
       ),
     );
   }

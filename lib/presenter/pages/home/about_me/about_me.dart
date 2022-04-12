@@ -1,7 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:my_portfolio/config/colors.dart';
 import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/presenter/ui/widgets/tree/tree_view.dart';
 
@@ -98,22 +95,23 @@ class _AboutMeState extends State<AboutMe> {
                   children: [
                     Text(
                       "About me",
-                      style: titleBlackBold,
+                      style: Theme.of(context).textTheme.headline1,
                     ),
-                    SizedBox(
-                      height: 32,
+                    const SizedBox(
+                      height: 8,
                     ),
                     Text(
                       "eeee e43434 Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
-
-                    SizedBox(
+                    const SizedBox(
                       height: 32,
                     ),
-                    Text(
+                     Text(
                       "My skills",
-                      style: titleBlackBold,
+                      style: Theme.of(context).textTheme.headline1,
+
+                      // style: titleBlackBold,
                     ),
                     const SizedBox(
                       height: 8,

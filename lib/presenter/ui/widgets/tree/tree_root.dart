@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class TreeRoot extends StatefulWidget {
@@ -67,6 +66,7 @@ class _TreeNodeState extends State<TreeRoot>
 
     return GestureDetector(
       child: Card(
+        color: Theme.of(context).cardTheme.color,
         margin: const EdgeInsets.symmetric(vertical: 8),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -89,11 +89,11 @@ class _TreeNodeState extends State<TreeRoot>
                     const SizedBox(width: 8,),
                     Text(
                       "(Основний напрям)",
-                      style: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.black26,
-                              letterSpacing: 1)),
+                      // style: GoogleFonts.montserrat(
+                      //     textStyle: const TextStyle(
+                      //         fontSize: 14,
+                      //         color: Colors.black26,
+                      //         letterSpacing: 1)),
                     ),
                     const Spacer(),
 

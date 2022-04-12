@@ -18,39 +18,37 @@ class MainMenu extends StatelessWidget {
     return Container(
         alignment: Alignment.centerRight,
         child: MediaQuery.of(context).size.width < 400
-            ? _buildIconMenu()
-            : _buildTextMenu());
+            ? _buildIconMenu(context)
+            : _buildTextMenu(context));
   }
 
-  Widget _buildIconMenu() {
+  Widget _buildIconMenu(BuildContext context) {
 
     return Wrap(
       alignment: WrapAlignment.center,
       children: <Widget>[
         TextButton(
           onPressed: () => onHome(),
-          child: Icon(Icons.home),
+          child: Icon(Icons.home,color: Theme.of(context).colorScheme.background,),
         ),
         TextButton(
           onPressed: () => onPortfolio.call(),
-          child: Icon(Icons.article_outlined),
+          child: Icon(Icons.article_outlined,color: Theme.of(context).colorScheme.background),
         ),
         TextButton(
           onPressed: () => onContact(),
-          child: Icon(Icons.perm_contact_cal),
+          child: Icon(Icons.perm_contact_cal,color: Theme.of(context).colorScheme.background),
         ),
       ],
     );
   }
 
-  Widget _buildTextMenu() {
+  Widget _buildTextMenu(BuildContext context) {
     final ButtonStyle flatButtonStyle = TextButton.styleFrom(
       backgroundColor: Colors.transparent,
-      primary:Colors.black ,
+      primary:Theme.of(context).bannerTheme.backgroundColor ,
       padding: const EdgeInsets.all(8),
-      textStyle: TextStyle(color: Colors.black),
-
-
+      textStyle: const TextStyle(color: Colors.black),
     );
 
     return Wrap(

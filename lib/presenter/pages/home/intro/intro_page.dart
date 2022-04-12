@@ -8,6 +8,9 @@ import 'package:matrix4_transform/matrix4_transform.dart';
 import 'package:my_portfolio/config/typography.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../common/widgets/button/button_outline.dart';
+import '../../../common/widgets/decoration/decoration_view.dart';
+
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
 
@@ -20,7 +23,6 @@ class _IntroPageState extends State<IntroPage>
   late AnimationController controller;
   late Animation<Offset> offset;
 
-  // Timer? t;
 
   @override
   void initState() {
@@ -29,50 +31,28 @@ class _IntroPageState extends State<IntroPage>
 
     offset = Tween<Offset>(end: Offset.zero, begin: const Offset(0.0, 1.0))
         .animate(controller);
-
-    // _showDelayPhoto();
-
-    // WidgetsBinding.instance?.addPostFrameCallback((_) {
-
-    // });
     super.initState();
   }
 
   @override
   void dispose() {
-    // t?.cancel();
     controller.dispose();
     super.dispose();
   }
 
-  // void _showDelayPhoto() async {
-  //   t = Timer(const Duration(seconds: 2), () {
-  //   });
-  // }
 
   void _showPhoto() {
-    switch (controller.status) {
-      case AnimationStatus.completed:
-        controller.reverse();
-        break;
-      case AnimationStatus.dismissed:
+    // switch (controller.status) {
+    //   case AnimationStatus.completed:
         controller.forward();
-        break;
-      default:
-    }
+    //     break;
+    //   case AnimationStatus.dismissed:
+    //     controller.forward();
+    //     break;
+    //   default:
+    // }
   }
 
-  void _hidePhoto() {
-    switch (controller.status) {
-      case AnimationStatus.completed:
-        controller.reverse();
-        break;
-      case AnimationStatus.dismissed:
-        controller.forward();
-        break;
-      default:
-    }
-  }
 
   Future<bool> fetchData() => Future.delayed(const Duration(seconds: 2), () {
         return true;
@@ -82,7 +62,7 @@ class _IntroPageState extends State<IntroPage>
   Widget build(BuildContext context) {
     return GestureDetector(
       child: SizedBox(
-        height: 240,
+        height: 200,
         child: Stack(children: [
           Image(
             width: double.infinity,
@@ -92,7 +72,7 @@ class _IntroPageState extends State<IntroPage>
               size: Size(92, 80),
             ),
             repeat: ImageRepeat.repeat,
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.red.withOpacity(0.03),
           ),
           buildPhoto(context),
           Center(
@@ -100,7 +80,7 @@ class _IntroPageState extends State<IntroPage>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 24,
                 ),
                 DefaultTextStyle(
                     style: buttonTextStyle24White.copyWith(
@@ -141,7 +121,10 @@ class _IntroPageState extends State<IntroPage>
                 const SizedBox(
                   height: 24,
                 ),
-                buildSocial()
+                ButtonOutline(text: 'Завантажити резюме', onTap: (){},),
+                // DecorationViewLines(),
+
+               // buildSocial()
               ],
             ),
           ),

@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/colors.dart';
-import 'package:my_portfolio/config/typography.dart';
-import 'package:my_portfolio/presenter/common/extension/naming_extension.dart';
-
-import '../../../routes.dart';
 import '../widgets/menu/main_menu.dart';
 
 class GeneralMenuBar extends StatefulWidget {
@@ -44,11 +38,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                       MediaQuery.of(context).size.width < 350
                           ? "DS"
                           : "Dmitro Serdun",
-                      style: GoogleFonts.montserrat(
-                          color: textPrimary,
-                          fontSize: 24,
-                          letterSpacing: 3,
-                          fontWeight: FontWeight.w400)),
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
                 ),
                 MouseRegion(
                     cursor: SystemMouseCursors.click,

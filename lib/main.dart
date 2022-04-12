@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:my_portfolio/presenter/pages/home/services/services.dart';
-
 import 'package:my_portfolio/presenter/pages/host_page/host_page.dart';
 import 'package:my_portfolio/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-
-import 'config/custom_theme.dart';
+import 'presenter/common/style/custom_theme.dart';
 
 void main() {
   runApp(MyApp());

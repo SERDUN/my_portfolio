@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
 import 'package:my_portfolio/config/colors.dart';
 import 'package:my_portfolio/config/typography.dart';
@@ -46,7 +45,8 @@ class _ServicesState extends State<Services> {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.only(top: 32, bottom: 24),
-            child: Text("Services", style: titleBlackBold),
+            child: Text("Services",                      style: Theme.of(context).textTheme.headline1,
+            ),
           ),
           Wrap(
               direction: Axis.horizontal,
@@ -101,12 +101,12 @@ class _ServicesState extends State<Services> {
                 Text(
                   service.description,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.ubuntu(
-                      textStyle: TextStyle(
-                          fontSize: 14,
-                          color: textSecondary,
-                          letterSpacing: 0.5,
-                          fontWeight: FontWeight.w300)),
+                  // style: GoogleFonts.ubuntu(
+                  //     textStyle: TextStyle(
+                  //         fontSize: 14,
+                  //         color: textSecondary,
+                  //         letterSpacing: 0.5,
+                  //         fontWeight: FontWeight.w300)),
                 ),
               ],
             ),
