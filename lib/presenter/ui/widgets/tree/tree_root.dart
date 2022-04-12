@@ -73,6 +73,13 @@ class _TreeNodeState extends State<TreeRoot>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+
+              //A RenderFlex overflowed by 58 pixels on the right.
+              //
+              // The relevant error-causing widget was:
+              //   Row Row:file:///C:/Users/Dmitro/StudioProjects/my_portfolio/lib/presenter/ui/widgets/tree/tree_root.dart:78:24
+              // The overflowing RenderFlex has an orientation of Axis.horizontal.
+              // The edge of the RenderFlex that is overflowing has been marked in the rendering with a yellow and black striped pattern. This is usually caused by the contents being too big for the RenderFlex.
               Padding(
                 padding: const EdgeInsets.only(left: 0.0, right: 12.0),
                 child: Row(

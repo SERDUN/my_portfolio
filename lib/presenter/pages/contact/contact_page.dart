@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/colors.dart';
 import 'package:my_portfolio/presenter/pages/home/services/services.dart';
@@ -23,15 +24,19 @@ class _HomePageState extends State<ContactPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              height: 360,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      opacity: 0.1,
-                      filterQuality: FilterQuality.low,
-                      image:
-                          ExactAssetImage('assets/image/patterns/bike.png'),
-                      repeat: ImageRepeat.repeat)),
+            SizedBox(
+              height: 240,
+              child: Container(
+                  decoration:  BoxDecoration(
+                      image: DecorationImage(
+                          opacity: 0.1,
+                          filterQuality: FilterQuality.low,
+                          image: Svg("assets/image/patterns/bike.svg",
+                              size: Size(92, 80)),
+                          repeat: ImageRepeat.repeat)),
+                  child: Stack(children: [
+
+                  ])),
             ),
 
           ],

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:my_portfolio/config/colors.dart';
 import 'package:my_portfolio/config/typography.dart';
-import 'package:my_portfolio/presenter/pages/home/services/services.dart';
-import 'package:my_portfolio/presenter/ui/menu/general_menu_bar.dart';
+import 'package:my_portfolio/presenter/pages/portfollio/portfolio_item.dart';
 
 class PortfolioPage extends StatefulWidget {
   const PortfolioPage({Key? key}) : super(key: key);
@@ -19,18 +15,14 @@ class _HomePageState extends State<PortfolioPage> {
     return SingleChildScrollView(
       child: Container(
           width: double.infinity,
-          margin: const EdgeInsets.only(top: 48),
+          margin: const EdgeInsets.only(top: 16),
           decoration: const BoxDecoration(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              buildCard(),
-              buildCard(),
-              buildCard(),
-              buildCard(),
-              buildCard(),
-              buildCard(),
-              buildCard(),
+              const PortfolioItem(),
+              const PortfolioItem(),
+
             ],
           )),
     );

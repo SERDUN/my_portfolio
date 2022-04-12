@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/presenter/pages/home/services/services.dart';
 
 import 'package:my_portfolio/presenter/pages/host_page/host_page.dart';
 import 'package:my_portfolio/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+
+import 'config/custom_theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: CustomTheme.lightTheme,
       builder: (context, widget) => ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
@@ -20,8 +24,9 @@ class MyApp extends StatelessWidget {
           defaultScale: true,
           debugLog: true,
           breakpoints: [
-            const ResponsiveBreakpoint.resize(450, name: MOBILE),
-            const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            const ResponsiveBreakpoint.autoScale(320, name: MOBILE),
+            const ResponsiveBreakpoint.autoScale(450, name: MOBILE),
+            const ResponsiveBreakpoint.autoScaleDown(800, name: TABLET),
             const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
             const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
             const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
@@ -35,4 +40,5 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
     );
   }
+
 }

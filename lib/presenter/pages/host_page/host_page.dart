@@ -16,34 +16,32 @@ class _HomePageState extends State<HostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white54,
-      body: Stack(children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-                child: Navigator(
-              key: HomeNavigator.navKey,
-              initialRoute: HomeRoutes.root,
-              onGenerateRoute: HomeNavigator.getProfileRoutes,
-            ))
-          ],
-        ),
-        GeneralMenuBar(
-          onHome: () {
-            HomeNavigator.navKey.currentState
-                ?.pushReplacementNamed(HomeRoutes.root);
-          },
-          onContact: () {
-            HomeNavigator.navKey.currentState
-                ?.pushReplacementNamed(HomeRoutes.contact);
-          },
-          onPortfolio: () {
-            HomeNavigator.navKey.currentState
-                ?.pushReplacementNamed(HomeRoutes.portfolio);
-          },
-        ),
-      ]),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          GeneralMenuBar(
+            onHome: () {
+              HomeNavigator.navKey.currentState
+                  ?.pushReplacementNamed(HomeRoutes.root);
+            },
+            onContact: () {
+              HomeNavigator.navKey.currentState
+                  ?.pushReplacementNamed(HomeRoutes.contact);
+            },
+            onPortfolio: () {
+              HomeNavigator.navKey.currentState
+                  ?.pushReplacementNamed(HomeRoutes.portfolio);
+            },
+          ),
+          Expanded(
+              child: Navigator(
+            key: HomeNavigator.navKey,
+            initialRoute: HomeRoutes.root,
+            onGenerateRoute: HomeNavigator.getProfileRoutes,
+          ))
+        ],
+      ),
     );
   }
 }

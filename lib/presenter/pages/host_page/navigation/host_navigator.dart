@@ -15,6 +15,26 @@ abstract class HomeNavigator {
     HomeRoutes.portfolio: PortfolioPage(),
   };
 
+
+  static Route<T> slideThrough<T>(RouteSettings settings, WidgetBuilder page,
+      {int duration = 300}) {
+    return PageRouteBuilder<T>(
+      settings: settings,
+      transitionDuration: Duration(milliseconds: duration),
+      pageBuilder: (context, animation, secondaryAnimation) => page(context),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return new SlideTransition(
+          position: new Tween<Offset>(
+            begin: const Offset(-1.0, 0.0),
+            end: Offset.zero,
+          ).animate(animation),
+          child: child,
+        );
+
+      },
+    );
+  }
+
   static Route<BuildContext>? getProfileRoutes(RouteSettings settings) {
     final Widget? child = searchRoutes[settings.name];
     if (child != null) {

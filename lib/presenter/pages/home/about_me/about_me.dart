@@ -104,9 +104,8 @@ class _AboutMeState extends State<AboutMe> {
                       height: 32,
                     ),
                     Text(
-                      "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                      style: GoogleFonts.ubuntu(
-                          textStyle: TextStyle(fontSize: 14, color: textSecondary,letterSpacing: 0.5,fontWeight: FontWeight.w300)),
+                      "eeee e43434 Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
 
                     SizedBox(
@@ -119,18 +118,18 @@ class _AboutMeState extends State<AboutMe> {
                     const SizedBox(
                       height: 8,
                     ),
-                    TreeView(
-                      data: treeData,
-                      titleOnTap: () {
-                        print('title');
-                      },
-                      leadingOnTap: () {
-                        print('leading');
-                      },
-                      trailingOnTap: () {
-                        print('trailing');
-                      },
-                    )
+                      TreeView(
+                        data: treeData,
+                        titleOnTap: () {
+                          print('title');
+                        },
+                        leadingOnTap: () {
+                          print('leading');
+                        },
+                        trailingOnTap: () {
+                          print('trailing');
+                        },
+                      )
                   ],
                 ),
               )
