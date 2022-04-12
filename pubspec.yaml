@@ -36,6 +36,7 @@ dependencies:
   matrix4_transform: ^2.0.1
   flutter_svg_provider: ^1.0.3
   octo_image: ^1.0.1
+  url_launcher: ^6.0.20
 
 
 

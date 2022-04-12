@@ -50,16 +50,18 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                           letterSpacing: 3,
                           fontWeight: FontWeight.w400)),
                 ),
-                GestureDetector(
-                  child: isUa
-                      ? buildLanguage("assets/image/language/ua.png")
-                      : buildLanguage("assets/image/language/en.png"),
-                  onTap: () {
-                    setState(() {
-                      isUa = !isUa;
-                    });
-                  },
-                ),
+                MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      child: isUa
+                          ? buildLanguage("assets/image/language/ua.png")
+                          : buildLanguage("assets/image/language/en.png"),
+                      onTap: () {
+                        setState(() {
+                          isUa = !isUa;
+                        });
+                      },
+                    )),
                 Flexible(
                   child: MainMenu(
                     onHome: widget.onHome,
