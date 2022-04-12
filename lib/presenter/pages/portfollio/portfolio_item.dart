@@ -14,7 +14,9 @@ class PortfolioItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveWidget(
+    return MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child:ResponsiveWidget(
       desktopScreen: SizedBox(
         child: Column(
           children: [
@@ -109,7 +111,7 @@ class PortfolioItem extends StatelessWidget {
             ),
           ),
         ),
-      ),
+      )),
     );
   }
 

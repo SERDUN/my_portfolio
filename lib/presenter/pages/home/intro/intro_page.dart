@@ -6,6 +6,7 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:lottie/lottie.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
 import 'package:my_portfolio/config/typography.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -84,7 +85,8 @@ class _IntroPageState extends State<IntroPage>
         height: 240,
         child: Stack(children: [
           Image(
-            width: double.infinity,height: double.infinity,
+            width: double.infinity,
+            height: double.infinity,
             image: const Svg(
               "assets/image/patterns/bike.svg",
               size: Size(92, 80),
@@ -157,10 +159,18 @@ class _IntroPageState extends State<IntroPage>
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        buildPoint("assets/image/social/facebook.png"),
-        buildPoint("assets/image/social/gmail.png"),
-        buildPoint("assets/image/social/instagram.png"),
-        buildPoint("assets/image/social/linkedin.png"),
+        buildPoint("assets/image/social/facebook.png", () {
+          _launchURL();
+        }),
+        buildPoint("assets/image/social/gmail.png", () {
+          _launchURL();
+        }),
+        buildPoint("assets/image/social/instagram.png", () {
+          _launchURL();
+        }),
+        buildPoint("assets/image/social/linkedin.png", () {
+          _launchURL();
+        }),
       ],
     );
   }
@@ -209,15 +219,25 @@ class _IntroPageState extends State<IntroPage>
         });
   }
 
-  Widget buildPoint(String path) {
-    return Container(
-      margin: const EdgeInsets.all(8.0),
-      padding: const EdgeInsets.all(10.0),
-      width: 40,
-      height: 40,
-      decoration:
-          const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-      child: Image.asset(path),
-    );
+  Widget buildPoint(String path, Function onTap) {
+    return MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          child: Container(
+            margin: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
+            width: 40,
+            height: 40,
+            decoration: const BoxDecoration(
+                color: Colors.black, shape: BoxShape.circle),
+            child: Image.asset(path),
+          ),
+          onTap: () => onTap(),
+        ));
+  }
+
+  void _launchURL() async {
+    if (!await launch("https://www.facebook.com/100014314170900"))
+      throw 'Could not launch https://www.facebook.com/100014314170900"';
   }
 }
