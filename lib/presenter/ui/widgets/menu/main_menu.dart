@@ -23,27 +23,21 @@ class MainMenu extends StatelessWidget {
   }
 
   Widget _buildIconMenu() {
-    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-      backgroundColor: Colors.transparent,
-      padding: const EdgeInsets.all(0),
-    );
+
     return Wrap(
       alignment: WrapAlignment.center,
       children: <Widget>[
         TextButton(
           onPressed: () => onHome(),
           child: Icon(Icons.home),
-          style: flatButtonStyle,
         ),
         TextButton(
           onPressed: () => onPortfolio.call(),
           child: Icon(Icons.article_outlined),
-          style: flatButtonStyle,
         ),
         TextButton(
           onPressed: () => onContact(),
           child: Icon(Icons.perm_contact_cal),
-          style: flatButtonStyle,
         ),
       ],
     );
@@ -52,9 +46,13 @@ class MainMenu extends StatelessWidget {
   Widget _buildTextMenu() {
     final ButtonStyle flatButtonStyle = TextButton.styleFrom(
       backgroundColor: Colors.transparent,
+      primary:Colors.black ,
       padding: const EdgeInsets.all(8),
+      textStyle: TextStyle(color: Colors.black),
+
 
     );
+
     return Wrap(
       alignment: WrapAlignment.center,
 
