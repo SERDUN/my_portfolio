@@ -74,7 +74,7 @@ class _ServicesState extends State<Services> {
                 .translate(x: -200, y: 104)
                 .matrix4,
             decoration:
-                const BoxDecoration(shape: BoxShape.circle, color: Color(0xffF8548B)),
+                 BoxDecoration(shape: BoxShape.circle, color:Theme.of(context).buttonTheme.colorScheme!.secondary),
           ),
           Container(
             margin: const EdgeInsets.only(left: 8, bottom: 8),

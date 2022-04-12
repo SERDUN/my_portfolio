@@ -9,6 +9,7 @@ import 'package:my_portfolio/config/typography.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../common/widgets/button/button_outline.dart';
+import '../../../common/widgets/dash/dash_vertical.dart';
 import '../../../common/widgets/decoration/decoration_view.dart';
 
 class IntroPage extends StatefulWidget {
@@ -22,7 +23,6 @@ class _IntroPageState extends State<IntroPage>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<Offset> offset;
-
 
   @override
   void initState() {
@@ -40,11 +40,10 @@ class _IntroPageState extends State<IntroPage>
     super.dispose();
   }
 
-
   void _showPhoto() {
     // switch (controller.status) {
     //   case AnimationStatus.completed:
-        controller.forward();
+    controller.forward();
     //     break;
     //   case AnimationStatus.dismissed:
     //     controller.forward();
@@ -52,7 +51,6 @@ class _IntroPageState extends State<IntroPage>
     //   default:
     // }
   }
-
 
   Future<bool> fetchData() => Future.delayed(const Duration(seconds: 2), () {
         return true;
@@ -62,7 +60,7 @@ class _IntroPageState extends State<IntroPage>
   Widget build(BuildContext context) {
     return GestureDetector(
       child: SizedBox(
-        height: 200,
+        height: 320,
         child: Stack(children: [
           Image(
             width: double.infinity,
@@ -80,51 +78,53 @@ class _IntroPageState extends State<IntroPage>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 24,
+                  height: 88,
                 ),
-                DefaultTextStyle(
-                    style: buttonTextStyle24White.copyWith(
-                        fontWeight: FontWeight.w900),
-                    child: AnimatedTextKit(
-                      repeatForever: true,
-                      pause: const Duration(seconds: 1),
-                      animatedTexts: [
-                        TypewriterAnimatedText('Привіт',
-                            speed: const Duration(milliseconds: 500)),
-                        TypewriterAnimatedText('Hello',
-                            speed: const Duration(milliseconds: 500)),
-                        TypewriterAnimatedText('Ola',
-                            speed: const Duration(milliseconds: 500)),
-                        TypewriterAnimatedText('Fuck russia',
-                            speed: const Duration(milliseconds: 50)),
-                      ],
-                      onTap: () {
-                        print("Tap Event");
-                      },
-                    )),
-                const SizedBox(
-                  height: 16,
+                SelectableText(
+                  "Mobile developer",
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
+                // SelectableText("Dmitro Serdun",style: Theme.of(context).textTheme.headline3,),
+
                 RichText(
                     text: TextSpan(children: [
                   TextSpan(
-                    text: 'I am ',
-                    style: buttonTextStyle24White.copyWith(
-                        fontWeight: FontWeight.normal),
-                  ),
+                      text: 'D',
+                      style: Theme.of(context).textTheme.headline4?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context)
+                              .buttonTheme
+                              .colorScheme
+                              ?.surface)),
                   TextSpan(
-                    text: 'Mobile Developer',
-                    style: buttonTextStyle24White.copyWith(
-                        fontWeight: FontWeight.w700),
-                  ),
+                      text: 'mitro',
+                      style: Theme.of(context).textTheme.headline4),
+                  TextSpan(
+                      text: ' S',
+                      style: Theme.of(context).textTheme.headline4?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context)
+                              .buttonTheme
+                              .colorScheme
+                              ?.surface)),
+                  TextSpan(
+                      text: 'erdun',
+                      style: Theme.of(context).textTheme.headline4),
                 ])),
+                const DashVertical(height: 32,),
                 const SizedBox(
-                  height: 24,
+                  height: 8,
                 ),
-                ButtonOutline(text: 'Завантажити резюме', onTap: (){},),
-                // DecorationViewLines(),
+                ButtonOutline(
+                  text: 'Завантажити резюме',
+                  onTap: () {},
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                const DashVertical(height: 72,),
 
-               // buildSocial()
+                // buildSocial()
               ],
             ),
           ),

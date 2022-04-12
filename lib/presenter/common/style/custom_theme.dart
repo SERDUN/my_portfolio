@@ -9,7 +9,7 @@ class CustomTheme {
       cardTheme: CardTheme(color:AppColors.white100 ),
       colorScheme: ColorScheme(
           onSurface: AppColors.yellow,
-          secondary:  AppColors.yellow,
+          secondary:  AppColors.orange,
           surface:  AppColors.yellow,
           onBackground:  AppColors.white,
           brightness:  Brightness.dark,
@@ -21,10 +21,11 @@ class CustomTheme {
           onSecondary:  AppColors.yellow),
       textTheme: TextTheme(
           headline1: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: AppColors.black),
-          headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          headline2: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold,color: AppColors.black),
+          headline3: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold,color: AppColors.black),
+          headline4: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold,color: AppColors.black),
           bodyText2: TextStyle(fontSize: 16.0, color: AppColors.white),
-          bodyText1: TextStyle(
-              fontSize: 16, letterSpacing: 0.5, color: AppColors.black)),
+          bodyText1: TextStyle(fontSize: 16, letterSpacing: 0.5, color: AppColors.black)),
       buttonTheme: const ButtonThemeData(
         buttonColor: Colors.deepPurple,
         colorScheme: ColorScheme( onSurface: AppColors.yellow,

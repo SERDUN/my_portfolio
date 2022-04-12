@@ -103,7 +103,7 @@ class _TreeNodeState extends State<TreeRoot>
                           _handleTap();
                         },
                         child: RotationTransition(
-                          child:  Lottie.asset('assets/animation/arrow_vertical.json',width: 32,height: 32),
+                          child:  Lottie.asset('assets/animation/arrow_vertical.json',width: 32,height: 32,),
                           turns: _turnsTween.animate(_rotationController),
                         ),
                       ),

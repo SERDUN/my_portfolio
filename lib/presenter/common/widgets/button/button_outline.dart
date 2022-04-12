@@ -10,14 +10,14 @@ class ButtonOutline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.6),
+      // backgroundColor: Theme.of(context).primaryColor.withOpacity(0.6),
       elevation: 0,
       primary: Theme.of(context).buttonTheme.colorScheme?.secondary,
-      padding: const EdgeInsets.all(8),
-      textStyle: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.w800),
+      padding: const EdgeInsets.all(16),
+      textStyle: Theme.of(context).textTheme.bodyText1,
       shape:  RoundedRectangleBorder(
 
-          borderRadius: BorderRadius.circular(4.0),
+          borderRadius: BorderRadius.circular(16.0),
           side: BorderSide(color: Theme.of(context).primaryColor)
       ),
     );
