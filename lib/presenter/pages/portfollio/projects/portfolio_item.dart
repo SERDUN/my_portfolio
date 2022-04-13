@@ -87,7 +87,8 @@ class PortfolioItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.width * .30,
+              height: MediaQuery.of(context).size.width * .40,
+              width: MediaQuery.of(context).size.width * .25,
               child: _buildPreview(context),
             ),
             Align(
@@ -107,13 +108,16 @@ class PortfolioItem extends StatelessWidget {
             ),
             _buildProjectDescription(context),
             SizedBox(
-              height: MediaQuery.of(context).size.width * .025,
+              height: 24,
             ),
             ButtonOutline(
               text: 'Open details',
               onTap: () {
                 _openDetails(context);
               },
+            ),
+            SizedBox(
+              height: 24,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.width * .025,
