@@ -10,6 +10,8 @@ class TmpStaticData {
 
     _addAlias(projects);
     _addMpet(projects);
+    _addColumbus(projects);
+    _addLune(projects);
     return projects;
   }
 
@@ -82,6 +84,85 @@ class TmpStaticData {
         tags: modelProjectTags,
         description: modelProjectDescription,
         name: 'mPet');
+    projects.add(modelProject);
+  }
+
+  static void _addColumbus(List<ModelProject> projects) {
+    ModelProjectMedia modelProjectMedia = ModelProjectMedia(
+        screenshots: [
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr1.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr2.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr3.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr4.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr5.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr6.png",
+        ],
+        mainCover:
+            'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr7.png',
+        typeCover: "fitWidth");
+
+    ModelProjectTags modelProjectTags = ModelProjectTags(projectTags: [
+      "Restaurants menu",
+      "Asia and Pacific",
+      "Retail and food tech",
+      "Loyalty app"
+    ], developmentTags: [
+      "Android",
+      "Navigator",
+      "Google Map"
+    ]);
+
+    ModelProjectDescription modelProjectDescription = ModelProjectDescription(
+        fullDescription:
+            "The story of Columbus Coffee began in 1994 when four coffee aficionados including David Burton got an idea for a cafe that would share the best coffee traditions from around the world. After much planning, they opened their first coffee spot in Auckland CBD. Today, Columbus Coffee is a premium fast-casual franchise that has over 60 cafes across the North and South Islands of New Zealand. ",
+        intro:
+            'A loyalty app that allows Columbus Coffee customers to earn points and find nearby locations',
+        shortDescription:
+            "The story of Columbus Coffee began in 1994 when four coffee aficionados including David Burton got an idea for a cafe that would share the best coffee traditions from around the world. After much planning, they opened their first coffee spot in Auckland CBD. Today, Columbus Coffee is a premium fast-casual franchise that has over 60 cafes across the North and South Islands of New Zealand. ");
+
+    ModelProject modelProject = ModelProject(
+        media: modelProjectMedia,
+        tags: modelProjectTags,
+        description: modelProjectDescription,
+        name: 'Columbus Coffee Rewards');
+    projects.add(modelProject);
+  }
+
+  static void _addLune(List<ModelProject> projects) {
+    ModelProjectMedia modelProjectMedia = ModelProjectMedia(
+        screenshots: [
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr1.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr2.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr3.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr4.png",
+        ],
+        mainCover:
+            'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr3.png',
+        typeCover: "fitWidth");
+
+    ModelProjectTags modelProjectTags = ModelProjectTags(projectTags: [
+      "Restaurants menu",
+      "Asia and Pacific",
+      "Retail and food tech",
+      "Loyalty app"
+    ], developmentTags: [
+      "Android",
+      "Navigator",
+      "Google Map"
+    ]);
+
+    ModelProjectDescription modelProjectDescription = ModelProjectDescription(
+        shortDescription:
+            "We used the BLoC clean architecture design concept for the user interface (UI). This enabled us to separate layers and not tie components together too much. It also allows us to change the app’s logic with minimal changes to UI components. Modularity offers the benefit of being able to change components without influencing other components and to add dependencies when required.",
+        intro:
+            'A mobile application that allows users to save money, share money, and take control of their finance',
+        fullDescription:
+            "We created a cross-platform app written in Flutter. However, Dapi doesn’t operate with cross-platform apps, so we had to write plugins for each operating system. We used Swift to create a plugin for iOS and Kotlin to create a plugin for Android.To speed up the processing of operations such as financial transactions, Lune supports partial data caching.We used the BLoC clean architecture design concept for the user interface (UI). This enabled us to separate layers and not tie components together too much. It also allows us to change the app’s logic with minimal changes to UI components. Modularity offers the benefit of being able to change components without influencing other components and to add dependencies when required.We worked on the basis of Modular Library, which provides the following features: Automatic memory managementDependency injectionDynamic routingCode modularizationPayment service integrationsTo implement a payment gateway, we used official plugins by the flutter.dev team. However, these official plugins don’t support changing subscription plans. So, we needed to use additional plugins supporting this functionality created by an independent team.The official iOS plugin can’t change subscriptions, so we had to change the UI so users understand they need to cancel their previous subscription before upgrading or downgrading.");
+    ModelProject modelProject = ModelProject(
+        media: modelProjectMedia,
+        tags: modelProjectTags,
+        description: modelProjectDescription,
+        name: 'Lune');
     projects.add(modelProject);
   }
 }

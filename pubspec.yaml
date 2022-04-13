@@ -85,12 +85,12 @@ flutter:
   fonts:
     - family: Cormorant
       fonts:
-        - asset: assets/fonts/Cormorant-Regular.ttf
-        - asset: assets/fonts/Cormorant-Italic.ttf
-        - asset: assets/fonts/Cormorant-Bold.ttf
-        - asset: assets/fonts/Cormorant-BoldItalic.ttf
-        - asset: assets/fonts/Cormorant-SemiBoldItalic.ttf
-        - asset: assets/fonts/Cormorant-SemiBold.ttf
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-Italic.ttf
+        - asset: assets/fonts/OpenSans-Bold.ttf
+        - asset: assets/fonts/OpenSans-BoldItalic.ttf
+        - asset: assets/fonts/OpenSans-SemiBoldItalic.ttf
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
 
 
 

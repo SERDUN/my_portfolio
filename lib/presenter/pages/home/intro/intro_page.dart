@@ -67,7 +67,7 @@ class _IntroPageState extends State<IntroPage>
           ),
           repeat: ImageRepeat.repeat,
         )),
-        height: 320,
+        height: 328,
         child: Stack(children: [
           buildPhoto(context),
           Center(

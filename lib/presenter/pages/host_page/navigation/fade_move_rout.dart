@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FadeMovePageRout<T> extends MaterialPageRoute<T> {
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 100);
+
   FadeMovePageRout(
       {required WidgetBuilder builder, required RouteSettings settings})
       : super(builder: builder, settings: settings);
@@ -13,6 +16,5 @@ class FadeMovePageRout<T> extends MaterialPageRoute<T> {
       child: child,
     );
 
-    // return FadeTransition(opacity: secondaryAnimation, child: child);
   }
 }

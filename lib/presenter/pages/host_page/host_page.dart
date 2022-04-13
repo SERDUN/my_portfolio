@@ -24,7 +24,6 @@ class _HomePageState extends State<HostPage> {
     return Scaffold(
       appBar: CommonAppBar(
         onHome: () {
-
           HomeNavigator.navKey.currentState
               ?.pushReplacementNamed(HomeRoutes.root);
         },
