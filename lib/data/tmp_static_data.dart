@@ -16,14 +16,19 @@ class TmpStaticData {
   static void _addAlias(List<ModelProject> projects) {
     ModelProjectMedia modelProjectMedia = ModelProjectMedia(
         screenshots: [
-          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-27.jpg",
-          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-26%20(6).jpg",
-          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-26.jpg"
-              "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-26%20(5).jpg"
-              "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-25%20(2).jpg"
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr1.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr2.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr3.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr4.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr5.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr6.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr7.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr8.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr9.jpg",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr10.jpg",
         ],
         mainCover:
-            'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-26%20(5).jpg',
+            'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr10.jpg',
         typeCover: 'fitHeight');
 
     ModelProjectTags modelProjectTags = ModelProjectTags(

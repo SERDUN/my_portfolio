@@ -58,19 +58,17 @@ class _IntroPageState extends State<IntroPage>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: SizedBox(
+      child: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+          image: Svg(
+            "assets/image/patterns/bike.svg",
+            size: Size(92, 80),
+          ),
+          repeat: ImageRepeat.repeat,
+        )),
         height: 320,
         child: Stack(children: [
-          Image(
-            width: double.infinity,
-            height: double.infinity,
-            image: const Svg(
-              "assets/image/patterns/bike.svg",
-              size: Size(92, 80),
-            ),
-            repeat: ImageRepeat.repeat,
-            color: Colors.red.withOpacity(0.03),
-          ),
           buildPhoto(context),
           Center(
             child: Column(
@@ -110,7 +108,9 @@ class _IntroPageState extends State<IntroPage>
                       text: 'erdun',
                       style: Theme.of(context).textTheme.headline4),
                 ])),
-                const DashVertical(height: 32,),
+                const DashVertical(
+                  height: 32,
+                ),
                 const SizedBox(
                   height: 8,
                 ),
@@ -121,7 +121,9 @@ class _IntroPageState extends State<IntroPage>
                 const SizedBox(
                   height: 8,
                 ),
-                const DashVertical(height: 72,),
+                const DashVertical(
+                  height: 72,
+                ),
 
                 // buildSocial()
               ],
