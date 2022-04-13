@@ -49,7 +49,7 @@ class PortfolioItem extends StatelessWidget {
                             ),
 
                             Container(
-                              margin: EdgeInsets.only(top: 16),
+                              margin: const EdgeInsets.only(top: 16),
                               width: MediaQuery.of(context).size.width * .25,
                               child: buildTechnology(context),
                             ),
@@ -61,9 +61,7 @@ class PortfolioItem extends StatelessWidget {
                               alignment: Alignment.bottomLeft,
                               child: ButtonOutline(
                                 text: 'Open details',
-                                onTap: () {
-                                  Navigator.of(context, rootNavigator: true).pushNamed(Routes.projectDetails, arguments: project);
-                                },
+                                onTap: () => _openDetails(context),
                               ),
                             )),
 
@@ -114,8 +112,7 @@ class PortfolioItem extends StatelessWidget {
             ButtonOutline(
               text: 'Open details',
               onTap: () {
-                Navigator.of(context, rootNavigator: true)
-                    .pushNamed(Routes.projectDetails, arguments: project);
+                _openDetails(context);
               },
             ),
             SizedBox(
@@ -131,6 +128,11 @@ class PortfolioItem extends StatelessWidget {
     );
   }
 
+  void _openDetails(BuildContext context) {
+    Navigator.of(context, rootNavigator: true)
+        .pushNamed(Routes.projectDetails, arguments: project);
+  }
+
   Widget _buildProjectDescription(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -142,12 +144,17 @@ class PortfolioItem extends StatelessWidget {
   }
 
   Widget _buildTitleProject(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        child: SelectableText(
-          "MY PROJECTS",
-          style: Theme.of(context).textTheme.headline1,
-        ));
+    return InkWell(
+      onTap: () => _openDetails(context),
+      child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                project.name,
+                style: Theme.of(context).textTheme.headline1,
+              ))),
+    );
   }
 
   Widget _buildPreview(BuildContext context) {
@@ -155,20 +162,32 @@ class PortfolioItem extends StatelessWidget {
       elevation: 3,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
-        child: Container(
-            margin: const EdgeInsets.all(4),
-            width: double.infinity,
-            height: double.infinity,
-            child: OctoImage(
-              image: Image.network(project.media.mainCover).image,
-              placeholderBuilder: OctoPlaceholder.blurHash(
-                'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-              ),
-              errorBuilder: OctoError.icon(color: Colors.red),
-              fit: BoxFit.fitHeight,
-            )),
+        child: InkWell(
+            onTap: () => _openDetails(context),
+            child: Container(
+                margin: const EdgeInsets.all(4),
+                width: double.infinity,
+                height: double.infinity,
+                child: OctoImage(
+                  image: Image.network(project.media.mainCover).image,
+                  placeholderBuilder: OctoPlaceholder.blurHash(
+                    'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                  ),
+                  errorBuilder: OctoError.icon(color: Colors.red),
+                  fit: _getBoxFit(),
+                ))),
       ),
     );
+  }
+
+  BoxFit _getBoxFit() {
+    if (project.media.typeCover == "cover") {
+      return BoxFit.cover;
+    }
+    if (project.media.typeCover == "fitWidth") {
+      return BoxFit.fitWidth;
+    }
+    return BoxFit.fitHeight;
   }
 
   Wrap buildTechnology(BuildContext context) {
@@ -179,7 +198,10 @@ class PortfolioItem extends StatelessWidget {
                 child: Text(
                   s,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14,fontWeight: FontWeight.w100),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      ?.copyWith(fontSize: 14, fontWeight: FontWeight.w100),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 margin: EdgeInsets.symmetric(vertical: 4),

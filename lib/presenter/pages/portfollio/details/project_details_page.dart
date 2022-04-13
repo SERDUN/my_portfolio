@@ -214,7 +214,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
               ],
             ),
           ),
-          SizedBox(height: 40,),
+          const SizedBox(height: 40,),
 
           GestureDetector(
             child: Text(

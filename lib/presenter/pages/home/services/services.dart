@@ -58,6 +58,7 @@ class _ServicesState extends State<Services> {
               style: Theme.of(context).textTheme.headline1,
             ),
           ),
+
           Wrap(
               direction: Axis.horizontal,
               children: (services.map((i) => buildCard(i)).toList()))
@@ -89,13 +90,10 @@ class _ServicesState extends State<Services> {
           ),
           Container(
             margin: const EdgeInsets.only(left: 8, bottom: 8),
-            child: Icon(service.iconData,size: 24,),
-            // child: Image.asset(
-            //   "assets/image/icons/android.png",
-            //   width: 24,
-            //   height: 24,
-            //   color: Colors.white,
-            // ),
+            child: Icon(
+              service.iconData,
+              size: 24,
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(16),
@@ -105,7 +103,10 @@ class _ServicesState extends State<Services> {
               children: [
                 Text(
                   service.title,
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 8,
@@ -113,14 +114,10 @@ class _ServicesState extends State<Services> {
                 Text(
                   service.description,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.w100),
-
-                  // style: GoogleFonts.ubuntu(
-                  //     textStyle: TextStyle(
-                  //         fontSize: 14,
-                  //         color: textSecondary,
-                  //         letterSpacing: 0.5,
-                  //         fontWeight: FontWeight.w300)),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      ?.copyWith(fontWeight: FontWeight.w100),
                 ),
               ],
             ),

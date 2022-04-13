@@ -8,6 +8,12 @@ class TmpStaticData {
   static List<ModelProject> getProjects() {
     List<ModelProject> projects = [];
 
+    _addAlias(projects);
+    _addMpet(projects);
+    return projects;
+  }
+
+  static void _addAlias(List<ModelProject> projects) {
     ModelProjectMedia modelProjectMedia = ModelProjectMedia(
         screenshots: [
           "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-27.jpg",
@@ -17,7 +23,8 @@ class TmpStaticData {
               "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-25%20(2).jpg"
         ],
         mainCover:
-            'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-26%20(5).jpg');
+            'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/photo_2022-04-13_19-32-26%20(5).jpg',
+        typeCover: 'fitHeight');
 
     ModelProjectTags modelProjectTags = ModelProjectTags(
         projectTags: ["Game", "Cards", "Party"],
@@ -36,8 +43,40 @@ class TmpStaticData {
         tags: modelProjectTags,
         description: modelProjectDescription,
         name: 'Alias');
-
     projects.add(modelProject);
-    return projects;
+  }
+
+  static void _addMpet(List<ModelProject> projects) {
+    ModelProjectMedia modelProjectMedia = ModelProjectMedia(
+        screenshots: [
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr1.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr6.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr2.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr3.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr4.png",
+          "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.png",
+        ],
+        mainCover:
+            'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr1.png',
+        typeCover: "fitWidth");
+
+    ModelProjectTags modelProjectTags = ModelProjectTags(
+        projectTags: ["Heath", "Pets", "Dog"],
+        developmentTags: ["Flutter", "BLoC", "Google Map"]);
+
+    ModelProjectDescription modelProjectDescription = ModelProjectDescription(
+        fullDescription:
+            "Manage, store and transfer pet medical records and health information. Communicate with veterinarians and pet service providers through video, text and send pictures. Locate pet service providers using Google locator.",
+        intro:
+            'A mobile app to store and share pets medical and health data and find useful information about pet',
+        shortDescription:
+            "Manage, store and transfer pet medical records and health information. Communicate with veterinarians and pet service providers through video, text and send pictures. Locate pet service providers using Google locator.");
+
+    ModelProject modelProject = ModelProject(
+        media: modelProjectMedia,
+        tags: modelProjectTags,
+        description: modelProjectDescription,
+        name: 'mPet');
+    projects.add(modelProject);
   }
 }
