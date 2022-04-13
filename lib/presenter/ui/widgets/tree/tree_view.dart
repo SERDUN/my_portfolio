@@ -67,7 +67,6 @@ class TreeView extends StatelessWidget {
             ? null
             : Text(
                 item[titleKey],
-                style: subtitleBoldTextStyle,
               );
         final leading =
             item[leadingKey] == null ? null : Text(item[leadingKey]);

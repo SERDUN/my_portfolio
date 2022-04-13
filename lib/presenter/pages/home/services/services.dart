@@ -105,7 +105,6 @@ class _ServicesState extends State<Services> {
               children: [
                 Text(
                   service.title,
-                  style: subtitleBoldTextStyle,
                 ),
                 const SizedBox(
                   height: 8,
