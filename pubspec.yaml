@@ -30,13 +30,12 @@ dependencies:
   flutter:
     sdk: flutter
   responsive_framework: ^0.1.7
-  animated_text_kit: ^4.2.1
   lottie: ^1.2.1
   matrix4_transform: ^2.0.1
   flutter_svg_provider: ^1.0.3
   octo_image: ^1.0.1
   url_launcher: ^6.0.20
-  mailto: ^2.0.0
+  carousel_slider: ^4.0.0
 
 
 

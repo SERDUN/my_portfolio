@@ -24,6 +24,8 @@ class CustomTheme {
           headline2: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold,color: AppColors.black),
           headline3: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold,color: AppColors.black),
           headline4: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold,color: AppColors.black),
+          headline6: TextStyle(fontSize: 14.0, color: AppColors.black),
+          headline5: TextStyle(fontSize: 16.0, color: AppColors.orange,fontWeight: FontWeight.bold),
           bodyText2: TextStyle(fontSize: 16.0, color: AppColors.white),
           bodyText1: TextStyle(fontSize: 16, letterSpacing: 0.5, color: AppColors.black)),
       buttonTheme: const ButtonThemeData(

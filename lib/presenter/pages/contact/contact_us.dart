@@ -1,7 +1,5 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:mailto/mailto.dart';
 
 import '../../../config/constants.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';

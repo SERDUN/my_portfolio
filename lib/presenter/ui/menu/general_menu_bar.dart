@@ -23,15 +23,20 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white.withOpacity(0.90),
-      child: Column(
+    return  Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
             margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 32),
             child: Row(
               children: <Widget>[
+                Flexible(
+                  child: MainMenu(
+                    onHome: widget.onHome,
+                    onContact: widget.onContact,
+                    onPortfolio: widget.onPortfolio,
+                  ),
+                ),
                 GestureDetector(
                   onTap: () => widget.onHome(),
                   child: Text(
@@ -53,13 +58,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                         });
                       },
                     )),
-                Flexible(
-                  child: MainMenu(
-                    onHome: widget.onHome,
-                    onContact: widget.onContact,
-                    onPortfolio: widget.onPortfolio,
-                  ),
-                ),
+
               ],
             ),
           ),
@@ -68,7 +67,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               margin: const EdgeInsets.only(bottom: 0),
               color: const Color(0xFFEEEEEE)),
         ],
-      ),
+
     );
   }
 

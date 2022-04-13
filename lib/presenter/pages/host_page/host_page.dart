@@ -14,10 +14,17 @@ class HostPage extends StatefulWidget {
 
 class _HomePageState extends State<HostPage> {
   @override
+  void initState() {
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: CommonAppBar(
         onHome: () {
+
           HomeNavigator.navKey.currentState
               ?.pushReplacementNamed(HomeRoutes.root);
         },
@@ -35,6 +42,7 @@ class _HomePageState extends State<HostPage> {
         key: HomeNavigator.navKey,
         initialRoute: HomeRoutes.root,
         onGenerateRoute: HomeNavigator.getProfileRoutes,
+
       ),
     );
   }
