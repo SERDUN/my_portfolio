@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/config/typography.dart';
+import 'package:my_portfolio/data/tmp_static_data.dart';
+import 'package:my_portfolio/domain/entity/model/model_project.dart';
 import 'package:my_portfolio/presenter/pages/portfollio/projects/portfolio_item.dart';
 
 import '../../../common/widgets/decoration/decoration_view.dart';
@@ -12,6 +14,14 @@ class PortfolioPage extends StatefulWidget {
 }
 
 class _HomePageState extends State<PortfolioPage> {
+  final List<ModelProject> projects = [];
+
+  @override
+  void initState() {
+    projects.addAll(TmpStaticData.getProjects());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -27,18 +37,25 @@ class _HomePageState extends State<PortfolioPage> {
               Center(
                 child: Text(
                   'Last projects'.toUpperCase(),
-                    style: Theme.of(context).textTheme.headline1,
+                  style: Theme.of(context).textTheme.headline1,
                 ),
               ),
               const DecorationViewLines(),
               const SizedBox(
                 height: 40,
               ),
-              const PortfolioItem(),
-              const PortfolioItem(),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: projects.length,
+                itemBuilder: (context, i) {
+                  return PortfolioItem(
+                    project: projects[i],
+                  );
+                },
+              ),
             ],
           )),
     );
   }
-
 }

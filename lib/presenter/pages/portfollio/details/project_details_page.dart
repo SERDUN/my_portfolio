@@ -62,7 +62,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 72),
                   child: SelectableText(
-                    "Alias or Charades - guess word board game is a new free version of the world-famous activity Alias board game. The objective of Alias is to explain words to team members.",
+                    "",
                     style: Theme.of(context).textTheme.headline6,
                     textAlign: TextAlign.center,
                   ),

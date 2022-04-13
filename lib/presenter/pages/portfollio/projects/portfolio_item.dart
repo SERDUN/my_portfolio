@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:octo_image/octo_image.dart';
+import '../../../../domain/entity/model/model_project.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 import '../../../common/widgets/button/button_fill.dart';
 import '../../../common/widgets/dash/dash_horizontall.dart';
 import '../../host_page/navigation/host_navigator.dart';
 
 class PortfolioItem extends StatelessWidget {
-  const PortfolioItem({Key? key}) : super(key: key);
+  final ModelProject project;
+
+  const PortfolioItem({Key? key, required this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,7 @@ class PortfolioItem extends StatelessWidget {
         ),
       ),
       mobileScreen: Container(
-        margin: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,34 +112,8 @@ class PortfolioItem extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.zero,
             )
-
-            // OutlineButton(
-            //   onPressed: () {
-            //     //    launch(project.url!);
-            //   },
-            //   borderSide: BorderSide(
-            //     width: 5,
-            //   ),
-            //   padding: const EdgeInsets.symmetric(
-            //     horizontal: 50,
-            //     vertical: 20,
-            //   ),
-            //   shape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.circular(20),
-            //   ),
-            //   child: Text('Visit'),
-            // ),
           ],
         ),
-        // decoration: BoxDecoration(
-        //   border: Border(
-        //     bottom: BorderSide(
-        //       //                    <--- top side
-        //       color: Colors.grey.withOpacity(0.5),
-        //       width: 0.5,
-        //     ),
-        //   ),
-        // ),
       ),
     );
   }
@@ -169,7 +146,7 @@ class PortfolioItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       child: SelectableText(
-        "Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+        project.description.shortDescription,
         style: Theme.of(context).textTheme.bodyText1,
       ),
     );
@@ -194,8 +171,7 @@ class PortfolioItem extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             child: OctoImage(
-              image: Image.network('https://blurha.sh/assets/images/img1.jpg')
-                  .image,
+              image: Image.network(project.media.screenshots.first).image,
               placeholderBuilder: OctoPlaceholder.blurHash(
                 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
               ),
@@ -209,7 +185,7 @@ class PortfolioItem extends StatelessWidget {
   Wrap buildTechnology(BuildContext context) {
     return Wrap(
       spacing: 8,
-      children: ["Android", "Flutter", "444", "444", "444", "444", "weqwe444"]
+      children: project.tags.developmentTags
           .map((s) => Container(
                 child: Text(
                   s,
