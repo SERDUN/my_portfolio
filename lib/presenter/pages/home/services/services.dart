@@ -22,16 +22,24 @@ class _ServicesState extends State<Services> {
   void initState() {
     services.add(ServiceModel(
         title: 'Android app',
+        iconData: Icons.android_outlined,
         description:
-            'Створення нативного мобільного додатку використовуючи Android sdk and kotlin'));
+            'Create a native mobile application using Android sdk and kotlin and publication in store'));
     services.add(ServiceModel(
         title: 'iOS app',
+        iconData: Icons.apple,
         description:
-            'Створення нативного мобільного додатку використовуючи Android sdk and kotlinAndroid sdk and kotlin'));
+            'Creating an ios application using Flutter framework and publication in store'));
     services.add(ServiceModel(
-        title: 'NodeJs Server',
+        title: 'Simple backend',
+        iconData: Icons.settings,
         description:
-            'Створення нативного мобільного додатку використовуючи Android sdk and kotlin'));
+            'Creating a server part based on Firebase, using cloud functions'));
+    services.add(ServiceModel(
+        title: 'Web page',
+        iconData: Icons.web,
+        description:
+            'Creating a web application using Flutter framework and publishing in release'));
     super.initState();
   }
 
@@ -45,7 +53,9 @@ class _ServicesState extends State<Services> {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.only(top: 32, bottom: 24),
-            child: Text("Services",                      style: Theme.of(context).textTheme.headline1,
+            child: Text(
+              "Services",
+              style: Theme.of(context).textTheme.headline1,
             ),
           ),
           Wrap(
@@ -73,17 +83,19 @@ class _ServicesState extends State<Services> {
                 .scale(1.5)
                 .translate(x: -200, y: 104)
                 .matrix4,
-            decoration:
-                 BoxDecoration(shape: BoxShape.circle, color:Theme.of(context).buttonTheme.colorScheme!.secondary),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).buttonTheme.colorScheme!.secondary),
           ),
           Container(
             margin: const EdgeInsets.only(left: 8, bottom: 8),
-            child: Image.asset(
-              "assets/image/icons/android.png",
-              width: 24,
-              height: 24,
-              color: Colors.white,
-            ),
+            child: Icon(service.iconData,size: 24,),
+            // child: Image.asset(
+            //   "assets/image/icons/android.png",
+            //   width: 24,
+            //   height: 24,
+            //   color: Colors.white,
+            // ),
           ),
           Container(
             padding: const EdgeInsets.all(16),

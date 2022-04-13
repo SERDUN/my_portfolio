@@ -32,67 +32,45 @@ class _ContactUsState extends State<ContactUs> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 32,),
+            const SizedBox(
+              height: 40,
+            ),
             Text(
-              'GET IN TOUCH',style: Theme.of(context).textTheme.headline1,
+              'GET IN TOUCH',
+              style: Theme.of(context).textTheme.headline1,
             ),
             const DecorationViewLines(),
-            const SizedBox(height: 40,),
-
+            const SizedBox(
+              height: 80,
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child:  Container(
-                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.width/5),
-                    child:Column(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          buildBuildContactInfo(context),
+                          const SizedBox(height: 20),
+                          buildBuildPhoneInfo(context),
+                          const SizedBox(height: 20),
+                          _buildLocationInfo(context),
+                        ],
+                      ),
+                    )),
+                SizedBox(width: MediaQuery.of(context).size.width/4,),
+                Expanded(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildContactInfo(
-                        'image/icons/email.png',
-                        'Mail Us:',
-                        AppConstants.mail,
-                      ),
+                      buildBuildFacebookInfo(context),
                       const SizedBox(height: 20),
-                      _buildContactInfo(
-                        'image/icons/call.png',
-                        'Call Us:',
-                        AppConstants.phone,
-                      ),
+                      buildBuildLinkedinInfo(context),
                       const SizedBox(height: 20),
-                      _buildContactInfo(
-                        'image/icons/pin.png',
-                        'Visit Us:',
-                        AppConstants.location,
-                      ),
+                      buildBuildInstagramInfo(context),
                     ],
-                  ),
-                )),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.width/5),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _buildContactInfo(
-                          'image/icons/email.png',
-                          'Mail Us:',
-                          AppConstants.mail,
-                        ),
-                        const SizedBox(height: 20),
-                        _buildContactInfo(
-                          'image/icons/call.png',
-                          'Call Us:',
-                          AppConstants.phone,
-                        ),
-                        const SizedBox(height: 20),
-                        _buildContactInfo(
-                          'image/icons/pin.png',
-                          'Visit Us:',
-                          AppConstants.location,
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ],
@@ -102,74 +80,42 @@ class _ContactUsState extends State<ContactUs> {
       ),
       mobileScreen: Container(
         color: Colors.white,
-        padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * .15,
-          vertical: 100,
-        ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'GET IN TOUCH',
-              textAlign: TextAlign.center,
+            const SizedBox(
+              height: 40,
             ),
-            Container(
-              width: 75,
-              height: 2,
+            Center(
+              child: Text(
+                'GET IN TOUCH',
+                style: Theme.of(context).textTheme.headline1,
+              ),
             ),
-            const SizedBox(height: 3),
-            Container(
-              width: 50,
-              height: 2,
+            const DecorationViewLines(),
+            const SizedBox(
+              height: 40,
             ),
-            const SizedBox(height: 50),
-            Column(
+            Wrap(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    _buildContactInfo(
-                      'icons/email.png',
-                      'Mail Us:',
-                      AppConstants.mail,
-                    ),
+                    buildBuildContactInfo(context),
                     const SizedBox(height: 20),
-                    _buildContactInfo(
-                      'icons/call.png',
-                      'Call Us:',
-                      AppConstants.phone,
-                    ),
+                    buildBuildPhoneInfo(context),
                     const SizedBox(height: 20),
-                    _buildContactInfo(
-                      'icons/pin.png',
-                      'Visit Us:',
-                      AppConstants.location,
-                    ),
+                    _buildLocationInfo(context),
+                    const SizedBox(height: 20),
+                    buildBuildFacebookInfo(context),
+                    const SizedBox(height: 20),
+                    buildBuildLinkedinInfo(context),
+                    const SizedBox(height: 20),
+                    buildBuildInstagramInfo(context),
                   ],
-                ),
-                const SizedBox(height: 50),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildContactInfo(
-                        'image/icons/email.png',
-                        'Mail Us:',
-                        AppConstants.mail,
-                      ),
-                      const SizedBox(height: 20),
-                      _buildContactInfo(
-                        'image/icons/call.png',
-                        'Call Us:',
-                        AppConstants.phone,
-                      ),
-                      const SizedBox(height: 20),
-                      _buildContactInfo(
-                        'image/icons/pin.png',
-                        'Visit Us:',
-                        AppConstants.location,
-                      ),
-                    ],
-                  ),
                 ),
               ],
             )
@@ -179,7 +125,38 @@ class _ContactUsState extends State<ContactUs> {
     );
   }
 
-  Widget _buildContactInfo(String imagePath, String title, String content) {
+  Widget _buildLocationInfo(BuildContext context) {
+    return _buildContactInfo('image/icons/pin.png', 'Location:',
+        AppConstants.location, Theme.of(context).textTheme.bodyText1!);
+  }
+
+  Widget buildBuildPhoneInfo(BuildContext context) {
+    return _buildContactInfo('image/icons/call.png', 'Call Us:',
+        AppConstants.phone, Theme.of(context).textTheme.bodyText1!);
+  }
+
+  Widget buildBuildContactInfo(BuildContext context) {
+    return _buildContactInfo('image/icons/email.png', 'Mail Us:',
+        AppConstants.mail, Theme.of(context).textTheme.bodyText1!);
+  }
+
+  Widget buildBuildFacebookInfo(BuildContext context) {
+    return _buildContactInfo('image/social/facebook.png', 'Facebook',
+        AppConstants.facebook, Theme.of(context).textTheme.bodyText1!);
+  }
+
+  Widget buildBuildLinkedinInfo(BuildContext context) {
+    return _buildContactInfo('image/social/linkedin.png', 'Facebook',
+        AppConstants.linkedin, Theme.of(context).textTheme.bodyText1!);
+  }
+
+  Widget buildBuildInstagramInfo(BuildContext context) {
+    return _buildContactInfo('image/social/instagram.png', 'Instagram',
+        AppConstants.instagram, Theme.of(context).textTheme.bodyText1!);
+  }
+
+  Widget _buildContactInfo(
+      String imagePath, String title, String content, TextStyle textStyle) {
     return FittedBox(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,15 +166,12 @@ class _ContactUsState extends State<ContactUs> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              SelectableText(
                 title,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: textStyle,
               ),
               const SizedBox(height: 5),
-              Text(
+              SelectableText(
                 content,
                 style: TextStyle(color: Colors.black.withOpacity(.7)),
               ),

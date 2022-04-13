@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/presenter/pages/portfollio/portfolio_item.dart';
 
+import '../../common/widgets/decoration/decoration_view.dart';
+
 class PortfolioPage extends StatefulWidget {
   const PortfolioPage({Key? key}) : super(key: key);
 
@@ -18,11 +20,23 @@ class _HomePageState extends State<PortfolioPage> {
           margin: const EdgeInsets.only(top: 16),
           decoration: const BoxDecoration(),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(
+                height: 40,
+              ),
+              Center(
+                child: Text(
+                  'Last projects',
+                  style: Theme.of(context).textTheme.headline1,
+                ),
+              ),
+              const DecorationViewLines(),
+              const SizedBox(
+                height: 40,
+              ),
               const PortfolioItem(),
               const PortfolioItem(),
-
             ],
           )),
     );

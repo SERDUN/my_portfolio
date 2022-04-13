@@ -17,6 +17,8 @@ class TreeView extends StatelessWidget {
   final Function? leadingOnTap;
   final Function? trailingOnTap;
 
+  final TextStyle textStyle;
+
   const TreeView({
     required this.data,
     this.titleKey = 'title',
@@ -24,6 +26,7 @@ class TreeView extends StatelessWidget {
     this.expanedKey = 'expaned',
     this.childrenKey = 'children',
     this.offsetLeft = 24.0,
+    required this.textStyle,
     this.titleOnTap,
     this.leadingOnTap,
     this.trailingOnTap,
@@ -34,7 +37,7 @@ class TreeView extends StatelessWidget {
 
     for (int i = 0; i < list.length; i++) {
       final Map<String, dynamic> item = list[i];
-      final title = item[titleKey] == null ? null : Text(item[titleKey]);
+      final title = item[titleKey] == null ? null : Text(item[titleKey],style:textStyle ,);
       final leading = item[leadingKey] == null ? null : Text(item[leadingKey]);
       final expaned = item[expanedKey] ?? false;
       final children = item[childrenKey] as List;

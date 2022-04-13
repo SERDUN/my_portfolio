@@ -12,7 +12,6 @@ class AboutMe extends StatefulWidget {
 }
 
 class _AboutMeState extends State<AboutMe> {
-  List<String> _items = ["Java", "Kotlin", "Data"];
   int currentHover = -1;
   final List<Map<String, dynamic>> treeData = [
     {
@@ -33,21 +32,126 @@ class _AboutMeState extends State<AboutMe> {
               "expaned": false,
               "children": [],
             },
+            {
+              "title": "Jetpack",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Koin",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Retrofit",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Many other auxiliary libraries ",
+              "expaned": false,
+              "children": [],
+            },
           ],
         },
         {
           "title": "Flutter",
           "expaned": false,
-          "children": [],
+          "children": [
+            {
+              "title": "Dart",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "BLoC",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Redux",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Localization",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Lottie",
+              "expaned": false,
+              "children": [],
+            },  {
+              "title": "Web",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Creating plugin",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Custom animation",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Navigation",
+              "expaned": false,
+              "children": [],
+            },
+          ],
+        },
+        {
+          "title": "General practice",
+          "expaned": false,
+          "children": [
+            {
+              "title": "Clean architecture",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Dependency injection",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "OOP/SOLID",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Git",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "RESTful",
+              "expaned": false,
+              "children": [],
+            },
+            {
+              "title": "Firebase",
+              "expaned": false,
+              "children": [],
+            }, {
+              "title": "Payments integration",
+              "expaned": false,
+              "children": [],
+            },
+          ],
         },
       ],
     },
     {
-      "title": "Backend",
+      "title": "Back-end",
       "expaned": false,
       "children": [
         {
-          "title": "NodeJS",
+          "title": "NodeJS (Beginner)",
           "expaned": false,
           "children": [],
         },
@@ -59,7 +163,7 @@ class _AboutMeState extends State<AboutMe> {
       ],
     },
     {
-      "title": "Databases",
+      "title": "Database",
       "expaned": false,
       "children": [
         {
@@ -68,7 +172,12 @@ class _AboutMeState extends State<AboutMe> {
           "children": [],
         },
         {
-          "title": "Firebase cloud functions",
+          "title": "Firebase database",
+          "expaned": false,
+          "children": [],
+        },
+        {
+          "title": "Shared preferences",
           "expaned": false,
           "children": [],
         },
@@ -101,13 +210,14 @@ class _AboutMeState extends State<AboutMe> {
                       height: 8,
                     ),
                     Text(
-                      "eeee e43434 Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                      "Hi, let me introduce myself. Me twenty-five years and i Live in Ukraine, Odessa.I am a mobile developer with more than 4 years of experience. My main platform is Android but for the last 2 years  in general i've created or were practicipiting Flutter cross-platform projects. By the way  this webpage also developet by Flutter framework)"
+                      "Glory to Ukraine",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     const SizedBox(
                       height: 32,
                     ),
-                     Text(
+                    Text(
                       "My skills",
                       style: Theme.of(context).textTheme.headline1,
 
@@ -116,18 +226,19 @@ class _AboutMeState extends State<AboutMe> {
                     const SizedBox(
                       height: 8,
                     ),
-                      TreeView(
-                        data: treeData,
-                        titleOnTap: () {
-                          print('title');
-                        },
-                        leadingOnTap: () {
-                          print('leading');
-                        },
-                        trailingOnTap: () {
-                          print('trailing');
-                        },
-                      )
+                    TreeView(
+                      data: treeData,
+                      titleOnTap: () {
+                        print('title');
+                      },
+                      leadingOnTap: () {
+                        print('leading');
+                      },
+                      trailingOnTap: () {
+                        print('trailing');
+                      },
+                      textStyle: Theme.of(context).textTheme.bodyText1!,
+                    )
                   ],
                 ),
               )
@@ -137,5 +248,4 @@ class _AboutMeState extends State<AboutMe> {
       ),
     );
   }
-
 }

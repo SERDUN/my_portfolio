@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:octo_image/octo_image.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';
+import '../../common/widgets/button/button_fill.dart';
+import '../../common/widgets/dash/dash_horizontall.dart';
 
 class PortfolioItem extends StatelessWidget {
   const PortfolioItem({Key? key}) : super(key: key);
@@ -10,17 +12,29 @@ class PortfolioItem extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: ResponsiveWidget(
-          desktopScreen: SizedBox(
+          desktopScreen: Container(
+            margin: EdgeInsets.only(bottom: 16),
             child: Column(
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 24),
-                      height: MediaQuery.of(context).size.width * .3,
-                      width: MediaQuery.of(context).size.width * .3,
-                      child: _buildPreview(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 8),
+                          height: MediaQuery.of(context).size.width * .3,
+                          width: MediaQuery.of(context).size.width * .3,
+                          child: _buildPreview(context),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * .3,
+                          margin: const EdgeInsets.only(left: 32),
+                          child: buildTechnology(context),
+                        )
+                      ],
                     ),
                     Expanded(
                         child: Column(
@@ -44,10 +58,18 @@ class PortfolioItem extends StatelessWidget {
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .025,
                         ),
+                        // ButtonFill(text:"Open", onTap: (){},)
                       ],
                     )),
                   ],
                 ),
+                const SizedBox(
+                  height: 16,
+                ),
+                DashHorizontal(
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.only(left: 32),
+                )
               ],
             ),
           ),
@@ -59,7 +81,14 @@ class PortfolioItem extends StatelessWidget {
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.width * .30,
-                  child: _buildPreview(),
+                  child: _buildPreview(context),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: const EdgeInsets.only(bottom: 8, top: 8),
+                    child: buildTechnology(context),
+                  ),
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * .075),
                 SizedBox(
@@ -77,6 +106,10 @@ class PortfolioItem extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.width * .025,
                 ),
+                DashHorizontal(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.zero,
+                )
 
                 // OutlineButton(
                 //   onPressed: () {
@@ -96,29 +129,36 @@ class PortfolioItem extends StatelessWidget {
                 // ),
               ],
             ),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  //                    <--- top side
-                  color: Colors.grey.withOpacity(0.5),
-                  width: 0.5,
-                ),
-              ),
-            ),
+            // decoration: BoxDecoration(
+            //   border: Border(
+            //     bottom: BorderSide(
+            //       //                    <--- top side
+            //       color: Colors.grey.withOpacity(0.5),
+            //       width: 0.5,
+            //     ),
+            //   ),
+            // ),
           )),
     );
   }
 
   Widget _buildSpecifyItems(BuildContext context) {
-    return Wrap(
-      spacing: 10,
-      children: ["Android", "Flutter", "444"]
-          .map((s) => Chip(
-                label: Text(s,textAlign: TextAlign.center,),
-
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-              ))
-          .toList(),
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      elevation: 0,
+      primary: Theme.of(context).buttonTheme.colorScheme?.secondary,
+      padding: const EdgeInsets.only(right: 24),
+      textStyle: Theme.of(context)
+          .textTheme
+          .headline1!
+          .copyWith(fontWeight: FontWeight.bold),
+    );
+    return TextButton(
+      onPressed: () => () {},
+      child: const Text(
+        "Open details",
+        textAlign: TextAlign.center,
+      ),
+      style: flatButtonStyle,
     );
   }
 
@@ -141,21 +181,48 @@ class PortfolioItem extends StatelessWidget {
         ));
   }
 
-  Widget _buildPreview() {
+  Widget _buildPreview(BuildContext context) {
     return Card(
       elevation: 2,
-      child: Container(
-        child: OctoImage(
-          image:
-              Image.network('https://blurha.sh/assets/images/img1.jpg').image,
-          placeholderBuilder: OctoPlaceholder.blurHash(
-            'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-          ),
-          errorBuilder: OctoError.icon(color: Colors.red),
-          fit: BoxFit.fitHeight,
-        ),
-        margin: EdgeInsets.all(4),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+            margin: const EdgeInsets.all(4),
+            width: double.infinity,
+            height: double.infinity,
+            child: OctoImage(
+              image: Image.network('https://blurha.sh/assets/images/img1.jpg')
+                  .image,
+              placeholderBuilder: OctoPlaceholder.blurHash(
+                'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+              ),
+              errorBuilder: OctoError.icon(color: Colors.red),
+              fit: BoxFit.fitHeight,
+            )),
       ),
+    );
+  }
+
+  Wrap buildTechnology(BuildContext context) {
+    return Wrap(
+      spacing: 8,
+      children: ["Android", "Flutter", "444", "444", "444", "444", "weqwe444"]
+          .map((s) => Container(
+                child: Text(
+                  s,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 4),
+                margin: EdgeInsets.symmetric(vertical: 4),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(24),
+
+                ),
+
+              ))
+          .toList(),
     );
   }
 }

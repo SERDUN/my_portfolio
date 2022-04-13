@@ -87,14 +87,14 @@ class _TreeNodeState extends State<TreeRoot>
                   children: <Widget>[
                     widget.title ?? Container(),
                     const SizedBox(width: 8,),
-                    Text(
-                      "(Основний напрям)",
-                      // style: GoogleFonts.montserrat(
-                      //     textStyle: const TextStyle(
-                      //         fontSize: 14,
-                      //         color: Colors.black26,
-                      //         letterSpacing: 1)),
-                    ),
+                    // Text(
+                    //   "(Основний напрям)",
+                    //   // style: GoogleFonts.montserrat(
+                    //   //     textStyle: const TextStyle(
+                    //   //         fontSize: 14,
+                    //   //         color: Colors.black26,
+                    //   //         letterSpacing: 1)),
+                    // ),
                     const Spacer(),
 
                     Center(
