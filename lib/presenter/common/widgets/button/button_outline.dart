@@ -10,7 +10,6 @@ class ButtonOutline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-      // backgroundColor: Theme.of(context).primaryColor.withOpacity(0.6),
       elevation: 0,
       primary: Theme.of(context).buttonTheme.colorScheme?.secondary,
       padding: const EdgeInsets.all(16),
@@ -23,7 +22,7 @@ class ButtonOutline extends StatelessWidget {
     );
 
     return TextButton(
-      onPressed: () => onTap,
+      onPressed: () => onTap(),
       child:  Text(
         text,
         textAlign: TextAlign.center,

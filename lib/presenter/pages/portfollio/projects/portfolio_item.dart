@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:octo_image/octo_image.dart';
 import '../../../../domain/entity/model/model_project.dart';
+import '../../../../routes.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 import '../../../common/widgets/button/button_fill.dart';
+import '../../../common/widgets/button/button_outline.dart';
 import '../../../common/widgets/dash/dash_horizontall.dart';
 import '../../host_page/navigation/host_navigator.dart';
 
@@ -21,48 +23,53 @@ class PortfolioItem extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 8),
-                      height: MediaQuery.of(context).size.width * .3,
-                      width: MediaQuery.of(context).size.width * .3,
-                      child: _buildPreview(context),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * .3,
-                      margin: const EdgeInsets.only(left: 32),
-                      child: buildTechnology(context),
-                    )
-                  ],
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
+                  height: MediaQuery.of(context).size.width * .3,
+                  width: MediaQuery.of(context).size.width * .25,
+                  child: _buildPreview(context),
                 ),
                 Expanded(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width * .01,
-                    ),
-                    _buildTitleProject(context),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width * .01,
-                    ),
-                    Container(
-                      child: _buildProjectDescription(context),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width * .025,
-                    ),
-                    _buildSpecifyItems(context),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width * .025,
-                    ),
-                    // ButtonFill(text:"Open", onTap: (){},)
-                  ],
-                )),
+                    child: SizedBox(
+                        height: MediaQuery.of(context).size.width * .3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.width * .01,
+                            ),
+                            _buildTitleProject(context),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.width * .01,
+                            ),
+                            Container(
+                              child: _buildProjectDescription(context),
+                            ),
+
+                            Container(
+                              margin: EdgeInsets.only(top: 16),
+                              width: MediaQuery.of(context).size.width * .25,
+                              child: buildTechnology(context),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.width * .025,
+                            ),
+                            Flexible(
+                                child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: ButtonOutline(
+                                text: 'Open details',
+                                onTap: () {
+                                  Navigator.of(context, rootNavigator: true).pushNamed(Routes.projectDetails, arguments: project);
+                                },
+                              ),
+                            )),
+
+                            // ButtonFill(text:"Open", onTap: (){},)
+                          ],
+                        ))),
               ],
             ),
             const SizedBox(
@@ -70,13 +77,13 @@ class PortfolioItem extends StatelessWidget {
             ),
             DashHorizontal(
               width: MediaQuery.of(context).size.width,
-              margin: const EdgeInsets.only(left: 32),
+              margin: const EdgeInsets.only(left: 40),
             )
           ],
         ),
       ),
       mobileScreen: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +111,13 @@ class PortfolioItem extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.width * .025,
             ),
-            _buildSpecifyItems(context),
+            ButtonOutline(
+              text: 'Open details',
+              onTap: () {
+                Navigator.of(context, rootNavigator: true)
+                    .pushNamed(Routes.projectDetails, arguments: project);
+              },
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.width * .025,
             ),
@@ -115,30 +128,6 @@ class PortfolioItem extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildSpecifyItems(BuildContext context) {
-    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-      elevation: 0,
-      primary: Theme.of(context).buttonTheme.colorScheme?.secondary,
-      padding: const EdgeInsets.only(right: 24),
-      textStyle: Theme.of(context)
-          .textTheme
-          .headline1!
-          .copyWith(fontWeight: FontWeight.bold),
-    );
-    return TextButton(
-      onPressed: () {
-        Navigator.of(context, rootNavigator: true)?.pushNamed(
-          "rrr",
-        );
-      },
-      child: const Text(
-        "Open details",
-        textAlign: TextAlign.center,
-      ),
-      style: flatButtonStyle,
     );
   }
 
@@ -163,7 +152,7 @@ class PortfolioItem extends StatelessWidget {
 
   Widget _buildPreview(BuildContext context) {
     return Card(
-      elevation: 2,
+      elevation: 3,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: Container(
@@ -171,7 +160,7 @@ class PortfolioItem extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             child: OctoImage(
-              image: Image.network(project.media.screenshots.first).image,
+              image: Image.network(project.media.mainCover).image,
               placeholderBuilder: OctoPlaceholder.blurHash(
                 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
               ),
@@ -190,7 +179,7 @@ class PortfolioItem extends StatelessWidget {
                 child: Text(
                   s,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14,fontWeight: FontWeight.w100),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 margin: EdgeInsets.symmetric(vertical: 4),

@@ -237,7 +237,8 @@ class _AboutMeState extends State<AboutMe> {
                       trailingOnTap: () {
                         print('trailing');
                       },
-                      textStyle: Theme.of(context).textTheme.bodyText1!,
+                      subCategoryTextStyle: Theme.of(context).textTheme.bodyText1!,
+                      categoryTextStyle: Theme.of(context).textTheme.bodyText1!,
                     )
                   ],
                 ),

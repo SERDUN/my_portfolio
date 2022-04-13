@@ -105,6 +105,7 @@ class _ServicesState extends State<Services> {
               children: [
                 Text(
                   service.title,
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 8,
@@ -112,6 +113,8 @@ class _ServicesState extends State<Services> {
                 Text(
                   service.description,
                   textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.w100),
+
                   // style: GoogleFonts.ubuntu(
                   //     textStyle: TextStyle(
                   //         fontSize: 14,

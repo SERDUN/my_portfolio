@@ -17,7 +17,8 @@ class TreeView extends StatelessWidget {
   final Function? leadingOnTap;
   final Function? trailingOnTap;
 
-  final TextStyle textStyle;
+  final TextStyle subCategoryTextStyle;
+  final TextStyle categoryTextStyle;
 
   const TreeView({
     required this.data,
@@ -26,7 +27,8 @@ class TreeView extends StatelessWidget {
     this.expanedKey = 'expaned',
     this.childrenKey = 'children',
     this.offsetLeft = 24.0,
-    required this.textStyle,
+    required this.subCategoryTextStyle,
+    required this.categoryTextStyle,
     this.titleOnTap,
     this.leadingOnTap,
     this.trailingOnTap,
@@ -37,8 +39,8 @@ class TreeView extends StatelessWidget {
 
     for (int i = 0; i < list.length; i++) {
       final Map<String, dynamic> item = list[i];
-      final title = item[titleKey] == null ? null : Text(item[titleKey],style:textStyle ,);
-      final leading = item[leadingKey] == null ? null : Text(item[leadingKey]);
+      final title = item[titleKey] == null ? null : Text(item[titleKey],style:categoryTextStyle ,);
+      final leading = item[leadingKey] == null ? null : Text(item[leadingKey],style: subCategoryTextStyle,);
       final expaned = item[expanedKey] ?? false;
       final children = item[childrenKey] as List;
 
@@ -67,9 +69,10 @@ class TreeView extends StatelessWidget {
             ? null
             : Text(
                 item[titleKey],
+          style: categoryTextStyle.copyWith(fontWeight: FontWeight.bold),
               );
         final leading =
-            item[leadingKey] == null ? null : Text(item[leadingKey]);
+            item[leadingKey] == null ? null : Text(item[leadingKey],style: categoryTextStyle,);
         final expaned = item[expanedKey] ?? false;
         final children = item[childrenKey] as List;
 

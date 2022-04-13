@@ -51,9 +51,6 @@ abstract class HomeNavigator {
         },
       );
     }
-    return MaterialPageRoute(
-      builder: (context) {
-        return  ProjectDetailsPage();
-      },
-    );  }
+    return null;
+   }
 }

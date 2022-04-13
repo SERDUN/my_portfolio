@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/presenter/pages/host_page/host_page.dart';
+import 'package:my_portfolio/presenter/pages/portfollio/details/project_details_page.dart';
 import 'package:my_portfolio/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'data/tmp_static_data.dart';
+import 'domain/entity/model/model_project.dart';
 import 'presenter/common/style/custom_theme.dart';
 
 void main() {
@@ -29,9 +32,21 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: const Color(0xFFF5F5F5))),
       onGenerateRoute: (RouteSettings settings) {
-        return Routes.fadeThrough(settings, (context) {
-          return const HostPage();
-        });
+        switch (settings.name) {
+          case Routes.home:
+            return Routes.fadeThrough(settings, (context) {
+              return const HostPage();
+            });
+
+          case Routes.projectDetails:
+            return Routes.fadeThrough(settings, (context) {
+              return ProjectDetailsPage(
+                project: settings.arguments == null
+                    ? TmpStaticData.getProjects().first
+                    : settings.arguments as ModelProject,
+              );
+            });
+        }
       },
       debugShowCheckedModeBanner: false,
     );
