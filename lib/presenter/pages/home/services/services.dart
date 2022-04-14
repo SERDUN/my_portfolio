@@ -55,7 +55,7 @@ class _ServicesState extends State<Services> {
             margin: const EdgeInsets.only(top: 32, bottom: 24),
             child: Text(
               "Services",
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.headline4,
             ),
           ),
 
@@ -106,7 +106,7 @@ class _ServicesState extends State<Services> {
                   style: Theme.of(context)
                       .textTheme
                       .bodyText1
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                      ?.copyWith(fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(
                   height: 8,
@@ -116,7 +116,7 @@ class _ServicesState extends State<Services> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText1
+                      .caption
                       ?.copyWith(fontWeight: FontWeight.w100),
                 ),
               ],

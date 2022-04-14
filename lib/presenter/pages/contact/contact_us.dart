@@ -31,7 +31,7 @@ class _ContactUsState extends State<ContactUs> {
           ),
           Text(
             'GET IN TOUCH',
-            style: Theme.of(context).textTheme.headline1,
+            style: Theme.of(context).textTheme.headline2,
           ),
           const DecorationViewLines(),
           const SizedBox(
@@ -176,95 +176,76 @@ class _ContactUsState extends State<ContactUs> {
 
   Widget _buildContactInfo(String imagePath, String title, String content,
       String url, TextStyle textStyle) {
-    return FittedBox(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppIcon(imagePath, color: Colors.black.withOpacity(.7), size: 20),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: textStyle.copyWith(fontWeight: FontWeight.w300),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AppIcon(imagePath, color: Colors.black.withOpacity(.7), size: 20),
+        const SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.headline4?.copyWith(fontWeight: FontWeight.w300),
+            ),
+            const SizedBox(height: 5),
+            SelectableText.rich(
+              TextSpan(
+                text: content,
+                style: Theme.of(context).textTheme.subtitle1?.copyWith(fontStyle: FontStyle.normal),
+                mouseCursor: SystemMouseCursors.click,
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () async {
+                    await canLaunch(url)
+                        ? await launch(url)
+                        : throw 'Could not launch $url';
+                  },
               ),
-              const SizedBox(height: 5),
-              GestureDetector(
-                onTap: () {
-                  launch(url);
-                },
-                child: SelectableText.rich(
-                  TextSpan(
-                    text: '',
-                    style: textStyle,
-                    children: [
-                      TextSpan(
-                        text: content,
-                        style:
-                            Theme.of(context).textTheme.headlineLarge?.copyWith(
-                                  fontWeight: FontWeight.w100,
-                                ),
-                        mouseCursor: SystemMouseCursors.click,
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () async {
-                            await canLaunch(url)
-                                ? await launch(url)
-                                : throw 'Could not launch $url';
-                          },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              // child: SelectableText(
-              //   content,
-              //   style: TextStyle(color: Colors.black.withOpacity(.7)),
-              // ),
-            ],
-          )
-        ],
-      ),
+            ),
+          ],
+        )
+      ],
     );
   }
 
   Widget _buildContactInfoSelectable(String imagePath, String title,
       String content, String url, TextStyle textStyle) {
-    return FittedBox(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppIcon(imagePath, color: Colors.black.withOpacity(.7), size: 20),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: textStyle.copyWith(fontWeight: FontWeight.w300),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppIcon(imagePath, color: Colors.black.withOpacity(.7), size: 20),
+        const SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.headline4?.copyWith(fontWeight: FontWeight.w300),
+            ),
+            const SizedBox(height: 5),
+            GestureDetector(
+              onTap: () {
+                launch(url);
+              },
+              child: SelectableText(
+                content,
+                style: Theme.of(context).textTheme.subtitle1?.copyWith(fontStyle: FontStyle.normal),
               ),
-              const SizedBox(height: 5),
-              GestureDetector(
-                onTap: () {
-                  launch(url);
-                },
-                child: SelectableText(
-                  content,
-                  style: TextStyle(color: Colors.black.withOpacity(.7)),
-                ),
-              ),
+            ),
 
-              // child: SelectableText(
-              //   content,
-              //   style: TextStyle(color: Colors.black.withOpacity(.7)),
-              // ),
-            ],
-          )
-        ],
-      ),
+            // child: SelectableText(
+            //   content,
+            //   style: TextStyle(color: Colors.black.withOpacity(.7)),
+            // ),
+          ],
+        )
+      ],
     );
   }
+
+  // FittedBox(
+  // child:
 
   @override
   void dispose() {

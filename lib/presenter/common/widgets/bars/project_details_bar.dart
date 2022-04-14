@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/config/colors.dart';
-import '../widgets/menu/main_menu.dart';
+import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
+import '../switcher/switcher_language.dart';
 
 class ProjectDetailsBar extends StatefulWidget implements PreferredSizeWidget {
   ProjectDetailsBar({
@@ -9,7 +9,7 @@ class ProjectDetailsBar extends StatefulWidget implements PreferredSizeWidget {
         super(key: key);
 
   @override
-  final Size preferredSize; // default is 56.0
+  final Size preferredSize;
 
   @override
   _CommonAppBarState createState() => _CommonAppBarState();
@@ -53,52 +53,26 @@ class _GeneralMenuBarState extends State<ProjectDetailsBarWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(
-                          Icons.arrow_back_ios,
-                          color: Theme.of(context)
-                              .buttonTheme
-                              .colorScheme!
-                              .secondary,
-                        ),
+                        Icon(Icons.arrow_back_ios,
+                            color: Theme.of(context).colorPlate().orange),
                         Text(
                           "BACK",
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
                               .textTheme
-                              .bodyText1!
+                              .headline5!
                               .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context)
-                                      .buttonTheme
-                                      .colorScheme!
-                                      .secondary),
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context).colorPlate().orange),
                         )
                       ],
                     )),
               )),
-              GestureDetector(
-                onTap: () => () {
+              SwitcherLanguage(
+                onTapOnName: () {
                   Navigator.of(context, rootNavigator: true).pop();
                 },
-                child: Text(
-                  MediaQuery.of(context).size.width < 350
-                      ? "DS"
-                      : "Dmitro Serdun",
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-              ),
-              MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    child: isUa
-                        ? buildLanguage("assets/image/language/ua.png")
-                        : buildLanguage("assets/image/language/en.png"),
-                    onTap: () {
-                      setState(() {
-                        isUa = !isUa;
-                      });
-                    },
-                  )),
+              )
             ],
           ),
         ),
@@ -107,15 +81,6 @@ class _GeneralMenuBarState extends State<ProjectDetailsBarWidget> {
             margin: const EdgeInsets.only(bottom: 0),
             color: const Color(0xFFEEEEEE)),
       ],
-    );
-  }
-
-  Container buildLanguage(String path) {
-    return Container(
-      margin: EdgeInsets.all(8),
-      width: 24,
-      height: 24,
-      child: Image.asset(path),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:my_portfolio/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'data/tmp_static_data.dart';
 import 'domain/entity/model/model_project.dart';
-import 'presenter/common/style/custom_theme.dart';
+import 'presenter/common/style/app_theme.dart';
 
 void main() {
   runApp(MyApp());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/presenter/common/widgets/switcher/switcher_language.dart';
 
 import '../../../ui/menu/general_menu_bar.dart';
 import '../../../ui/widgets/menu/main_menu.dart';
@@ -52,7 +53,6 @@ class GeneralMenuBar extends StatefulWidget {
 }
 
 class _GeneralMenuBarState extends State<GeneralMenuBar> {
-  bool isUa = true;
   int indexMenu = 0;
 
   @override
@@ -72,27 +72,9 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                       desktopScreen: _buildTextMenu(context),
                     )),
               ),
-              GestureDetector(
-                onTap: () => widget.onHome(),
-                child: Text(
-                  MediaQuery.of(context).size.width < 350
-                      ? "DS"
-                      : "Dmitro Serdun",
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-              ),
-              MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    child: isUa
-                        ? buildLanguage("assets/image/language/ua.png")
-                        : buildLanguage("assets/image/language/en.png"),
-                    onTap: () {
-                      setState(() {
-                        isUa = !isUa;
-                      });
-                    },
-                  )),
+              SwitcherLanguage(
+                onTapOnName: widget.onHome,
+              )
             ],
           ),
         ),
@@ -101,15 +83,6 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
             margin: const EdgeInsets.only(bottom: 0),
             color: const Color(0xFFEEEEEE)),
       ],
-    );
-  }
-
-  Container buildLanguage(String path) {
-    return Container(
-      margin: EdgeInsets.all(8),
-      width: 24,
-      height: 24,
-      child: Image.asset(path),
     );
   }
 
@@ -143,8 +116,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
       backgroundColor: Colors.transparent,
       primary: Theme.of(context).buttonTheme.colorScheme!.secondary,
       padding: const EdgeInsets.all(8),
-      textStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-          fontWeight: FontWeight.bold,
+      textStyle: Theme.of(context).textTheme.headline5!.copyWith(
+          fontWeight: FontWeight.w500,
           color: Theme.of(context).buttonTheme.colorScheme!.secondary),
     );
 
@@ -152,8 +125,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
       backgroundColor: Colors.transparent,
       primary: Theme.of(context).buttonTheme.colorScheme!.primary,
       padding: const EdgeInsets.all(8),
-      textStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-          fontWeight: FontWeight.bold,
+      textStyle: Theme.of(context).textTheme.headline5!.copyWith(
+          fontWeight: FontWeight.w500,
           color: Theme.of(context).buttonTheme.colorScheme!.secondary),
     );
 
