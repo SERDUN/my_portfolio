@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:octo_image/octo_image.dart';
 import '../../../../config/constants.dart';
 import '../../../../domain/entity/model/model_project.dart';
@@ -8,7 +9,7 @@ import '../../../common/widgets/dash/dash_horizontall.dart';
 import '../../../common/widgets/dash/dash_vertical.dart';
 import '../../../common/widgets/decoration/decoration_view.dart';
 import '../../../common/widgets/icon.dart';
-import '../../../ui/menu/project_details_bar.dart';
+import '../../../common/widgets/bars/project_details_bar.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
   final ModelProject project;
@@ -35,21 +36,74 @@ class _ContactUsState extends State<ProjectDetailsPage> {
 
   Container buildDesctop(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
             height: 40,
           ),
-          GestureDetector(
-            child: Text(
-              widget.project.name.toUpperCase(),
-              style: Theme.of(context).textTheme.headline1,
-            ),
-            onTap: () {
-              Navigator.of(context).pop();
-            },
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: Row(
+                      children: [
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              widget.project.name.toUpperCase(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline1
+                                  ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                            ),
+                            const DecorationViewLines(
+                              margin: EdgeInsets.only(top: 0, bottom: 4),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 3,
+                        ),
+                        Expanded(
+                          child: Text(
+                            widget.project.description.intro.toUpperCase(),
+                            textAlign: TextAlign.right,
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1
+                                ?.copyWith(
+                                    fontWeight: FontWeight.w100,
+                                    color: Theme.of(context).colorPlate().grey),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
+            ],
           ),
-          const DecorationViewLines(),
+          const SizedBox(
+            height: 88,
+          ),
+          Text(
+            "Description",
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          DashHorizontal(
+            opacity: .5,
+            dashSpace: 16,
+            dashHeight: 16,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(top: 16),
+          ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 72),
             child: SelectableText(
@@ -58,56 +112,48 @@ class _ContactUsState extends State<ProjectDetailsPage> {
               textAlign: TextAlign.center,
             ),
           ),
+          Container(
+            padding: EdgeInsets.only(right: 8),
+            child: Text(
+              widget.project.description.fullDescription,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+          ),
           const SizedBox(
             height: 80,
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+          Text(
+            "Software stack",
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          DashHorizontal(
+            opacity: .5,
+            dashSpace: 16,
+            dashHeight: 16,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(top: 16, bottom: 16),
+          ),
+          Wrap(
             children: [
-              Flexible(
-                  flex: 4,
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Text(
-                      widget.project.description.fullDescription,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    height: 400,
-                  )),
-              const Align(
-                alignment: Alignment.topCenter,
-                child: DashVertical(
-                  height: 224,
-                ),
-              ),
-              Flexible(
-                  child: Container(
-                child: Column(
-                  children: [
-                    _buildTags(context, "Android"),
-                    _buildTags(context, "RX"),
-                    _buildTags(context, "Jetpak"),
-                    _buildTags(context, "Koin"),
-                    _buildTags(context, "Room"),
-                  ],
-                ),
-                height: 400,
-              )),
+              _buildTags(context, "Android"),
+              _buildTags(context, "RX"),
+              _buildTags(context, "Jetpak"),
+              _buildTags(context, "Koin"),
+              _buildTags(context, "Room"),
             ],
           ),
-          GestureDetector(
-            child: Text(
-              'Screenshots'.toUpperCase(),
-              style: Theme.of(context).textTheme.headline1,
-            ),
-            onTap: () {
-              Navigator.of(context).pop();
-            },
+          const SizedBox(
+            height: 80,
           ),
-          const DashHorizontal(
-            width: 80,
-            margin: EdgeInsets.only(top: 8, bottom: 40),
+          Text(
+            "Screenshots",
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          DashHorizontal(
+            width: MediaQuery.of(context).size.width,
+            opacity: .5,
+            dashSpace: 16,
+            dashHeight: 16,            margin: const EdgeInsets.only(top: 16, bottom: 16),
           ),
           SizedBox(
               child: CarouselSlider.builder(
@@ -196,12 +242,15 @@ class _ContactUsState extends State<ProjectDetailsPage> {
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
-          SizedBox(height: 40,),
+          SizedBox(
+            height: 40,
+          ),
           DashHorizontal(
             width: 224,
           ),
-          SizedBox(height: 40,),
-
+          SizedBox(
+            height: 40,
+          ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
@@ -214,8 +263,9 @@ class _ContactUsState extends State<ProjectDetailsPage> {
               ],
             ),
           ),
-          const SizedBox(height: 40,),
-
+          const SizedBox(
+            height: 40,
+          ),
           GestureDetector(
             child: Text(
               'Screenshots'.toUpperCase(),
@@ -283,25 +333,27 @@ class _ContactUsState extends State<ProjectDetailsPage> {
 
   Row _buildTags(BuildContext context, String text) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           child: IconButton(
-            alignment: Alignment.centerLeft,
             padding: const EdgeInsets.only(left: 0),
             icon: Image.asset("assets/image/icons/sub_category.png",
                 width: 24, height: 24),
             iconSize: 16,
             onPressed: null,
           ),
-          margin: const EdgeInsets.only(
-            left: 16,
-            right: 8,
-          ),
         ),
         Text(
           text,
-          style: Theme.of(context).textTheme.headline5,
-        )
+          style: Theme.of(context)
+              .textTheme
+              .headline5
+              ?.copyWith(fontStyle: FontStyle.italic),
+        ),
+        SizedBox(
+          width: 24,
+        ),
       ],
     );
   }

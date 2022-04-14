@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:octo_image/octo_image.dart';
 import '../../../../domain/entity/model/model_project.dart';
 import '../../../../routes.dart';
@@ -202,13 +203,13 @@ class PortfolioItem extends StatelessWidget {
                 child: Text(
                   s,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1
-                      ?.copyWith(fontSize: 14, fontWeight: FontWeight.w100),
+                  style: Theme.of(context).textTheme.headline6?.copyWith(
+                      fontWeight: FontWeight.w100,
+                      fontStyle: FontStyle.italic,
+                      color: Theme.of(context).colorPlate().grey),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                margin: EdgeInsets.symmetric(vertical: 4),
+                margin: const EdgeInsets.symmetric(vertical: 4),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
                   borderRadius: BorderRadius.circular(24),

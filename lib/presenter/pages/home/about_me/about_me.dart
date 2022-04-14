@@ -204,7 +204,7 @@ class _AboutMeState extends State<AboutMe> {
                   children: [
                     Text(
                       "About me",
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                     const SizedBox(
                       height: 8,
@@ -219,7 +219,7 @@ class _AboutMeState extends State<AboutMe> {
                     ),
                     Text(
                       "My skills",
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context).textTheme.headline4,
 
                       // style: titleBlackBold,
                     ),
@@ -237,8 +237,8 @@ class _AboutMeState extends State<AboutMe> {
                       trailingOnTap: () {
                         print('trailing');
                       },
-                      subCategoryTextStyle: Theme.of(context).textTheme.bodyText1!,
-                      categoryTextStyle: Theme.of(context).textTheme.bodyText1!,
+                      subCategoryTextStyle: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.w100),
+                      categoryTextStyle: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.w500),
                     )
                   ],
                 ),

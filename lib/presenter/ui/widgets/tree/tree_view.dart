@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/presenter/ui/widgets/tree/tree_root.dart';
 
 import 'tree_node.dart';
@@ -39,8 +38,18 @@ class TreeView extends StatelessWidget {
 
     for (int i = 0; i < list.length; i++) {
       final Map<String, dynamic> item = list[i];
-      final title = item[titleKey] == null ? null : Text(item[titleKey],style:categoryTextStyle ,);
-      final leading = item[leadingKey] == null ? null : Text(item[leadingKey],style: subCategoryTextStyle,);
+      final title = item[titleKey] == null
+          ? null
+          : Text(
+              item[titleKey],
+              style: subCategoryTextStyle,
+            );
+      final leading = item[leadingKey] == null
+          ? null
+          : Text(
+              item[leadingKey],
+              style: subCategoryTextStyle,
+            );
       final expaned = item[expanedKey] ?? false;
       final children = item[childrenKey] as List;
 
@@ -69,10 +78,14 @@ class TreeView extends StatelessWidget {
             ? null
             : Text(
                 item[titleKey],
-          style: categoryTextStyle.copyWith(fontWeight: FontWeight.bold),
+                style: categoryTextStyle,
               );
-        final leading =
-            item[leadingKey] == null ? null : Text(item[leadingKey],style: categoryTextStyle,);
+        final leading = item[leadingKey] == null
+            ? null
+            : Text(
+                item[leadingKey],
+                style: subCategoryTextStyle,
+              );
         final expaned = item[expanedKey] ?? false;
         final children = item[childrenKey] as List;
 

@@ -79,7 +79,7 @@ class _IntroPageState extends State<IntroPage>
                 ),
                 SelectableText(
                   "Mobile developer",
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
                 // SelectableText("Dmitro Serdun",style: Theme.of(context).textTheme.headline3,),
 
@@ -87,29 +87,29 @@ class _IntroPageState extends State<IntroPage>
                     text: TextSpan(children: [
                   TextSpan(
                       text: 'D',
-                      style: Theme.of(context).textTheme.headline4?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context)
-                              .buttonTheme
-                              .colorScheme
-                              ?.surface)),
+                      style: Theme.of(context).textTheme.headline1?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.primary)),
                   TextSpan(
                       text: 'mitro',
-                      style: Theme.of(context).textTheme.headline4),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          ?.copyWith(fontWeight: FontWeight.w500)),
                   TextSpan(
                       text: ' S',
-                      style: Theme.of(context).textTheme.headline4?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context)
-                              .buttonTheme
-                              .colorScheme
-                              ?.surface)),
+                      style: Theme.of(context).textTheme.headline1?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.primary)),
                   TextSpan(
                       text: 'erdun',
-                      style: Theme.of(context).textTheme.headline4),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          ?.copyWith(fontWeight: FontWeight.w500)),
                 ])),
                 const DashVertical(
-                  height: 32,
+                  height: 24,
                 ),
                 const SizedBox(
                   height: 8,
