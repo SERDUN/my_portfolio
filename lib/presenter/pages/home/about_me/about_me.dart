@@ -212,7 +212,7 @@ class _AboutMeState extends State<AboutMe> {
                     Text(
                       "Hi, let me introduce myself. Me twenty-five years and i Live in Ukraine, Odessa.I am a mobile developer with more than 4 years of experience. My main platform is Android but for the last 2 years  in general i've created or were practicipiting Flutter cross-platform projects. By the way  this webpage also developet by Flutter framework)"
                       "Glory to Ukraine",
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.w100),
                     ),
                     const SizedBox(
                       height: 32,
