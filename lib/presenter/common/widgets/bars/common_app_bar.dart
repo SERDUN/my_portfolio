@@ -151,7 +151,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
     );
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 24),
+      margin: const EdgeInsets.symmetric(horizontal: 24),
       child: Wrap(
         alignment: WrapAlignment.center,
         children: <Widget>[

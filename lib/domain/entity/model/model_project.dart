@@ -7,12 +7,14 @@ class ModelProject {
   final ModelProjectDescription description;
   final ModelProjectMedia media;
   final ModelProjectTags tags;
-  final String? link;
+  final String? appleLink;
+  final String? androidLink;
 
   ModelProject(
       {required this.name,
       required this.description,
       required this.media,
-      this.link,
+      this.appleLink,
+      this.androidLink,
       required this.tags});
 }

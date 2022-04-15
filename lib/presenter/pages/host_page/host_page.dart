@@ -19,8 +19,6 @@ class _HomePageState extends State<HostPage> {
   }
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: CommonAppBar(
         onHome: () {

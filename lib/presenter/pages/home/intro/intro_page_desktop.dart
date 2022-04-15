@@ -35,23 +35,14 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
     super.dispose();
   }
 
-  Future<bool> fetchData() =>
-      Future.delayed(const Duration(seconds: 2), () {
+  Future<bool> fetchData() => Future.delayed(const Duration(seconds: 2), () {
         return true;
       });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: Svg(
-                "assets/image/patterns/bike.svg",
-                size: Size(92, 80),
-              ),
-              repeat: ImageRepeat.repeat,
-            )),
+      child: SizedBox(
         height: 328,
         child: Stack(children: [
           buildPhoto(context),
@@ -64,52 +55,33 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
                 ),
                 SelectableText(
                   "Mobile developer",
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .subtitle1,
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
                 RichText(
                     text: TextSpan(children: [
-                      TextSpan(
-                          text: 'D',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .headline1
-                              ?.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .primary)),
-                      TextSpan(
-                          text: 'mitro',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .headline1
-                              ?.copyWith(fontWeight: FontWeight.w500)),
-                      TextSpan(
-                          text: ' S',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .headline1
-                              ?.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .primary)),
-                      TextSpan(
-                          text: 'erdun',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .headline1
-                              ?.copyWith(fontWeight: FontWeight.w500)),
-                    ])),
+                  TextSpan(
+                      text: 'D',
+                      style: Theme.of(context).textTheme.headline1?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.primary)),
+                  TextSpan(
+                      text: 'mitro',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          ?.copyWith(fontWeight: FontWeight.w500)),
+                  TextSpan(
+                      text: ' S',
+                      style: Theme.of(context).textTheme.headline1?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.primary)),
+                  TextSpan(
+                      text: 'erdun',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          ?.copyWith(fontWeight: FontWeight.w500)),
+                ])),
                 const DashVertical(
                   height: 24,
                 ),
@@ -119,9 +91,9 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
                 ButtonOutline(
                   text: 'Download CV',
                   onTap: () async {
-                    var url = "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
-                    await
-                    canLaunch(url)
+                    var url =
+                        "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
+                    await canLaunch(url)
                         ? await launch(url)
                         : throw 'Could not launch $url';
                   },
@@ -142,14 +114,12 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
             horizontalRepeatCount: 9,
             margin: EdgeInsets.only(left: 40),
           ),
-
           const DashVertical(
             height: 328,
             opacity: .7,
             horizontalRepeatCount: 9,
             margin: EdgeInsets.only(left: 124),
           ),
-
           const DashVertical(
             height: 328,
             opacity: .7,

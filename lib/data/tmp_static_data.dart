@@ -54,6 +54,8 @@ class TmpStaticData {
         media: modelProjectMedia,
         tags: modelProjectTags,
         description: modelProjectDescription,
+        androidLink:
+            "https://play.google.com/store/apps/details?id=com.steelkiwi.alias",
         name: 'Alias');
     projects.add(modelProject);
   }
@@ -96,6 +98,8 @@ class TmpStaticData {
     ModelProject modelProject = ModelProject(
         media: modelProjectMedia,
         tags: modelProjectTags,
+        androidLink:
+            "https://play.google.com/store/apps/details?id=ua.org.foodie.family",
         description: modelProjectDescription,
         name: 'Foodie Family');
     projects.add(modelProject);
@@ -139,6 +143,10 @@ class TmpStaticData {
         media: modelProjectMedia,
         tags: modelProjectTags,
         description: modelProjectDescription,
+        androidLink:
+            "https://play.google.com/store/apps/details?id=com.mpethealthapp",
+        appleLink:
+            "https://apps.apple.com/ua/app/mpet-pet-health-and-wellness/id1488159440",
         name: 'mPet');
     projects.add(modelProject);
   }
@@ -184,6 +192,8 @@ class TmpStaticData {
         media: modelProjectMedia,
         tags: modelProjectTags,
         description: modelProjectDescription,
+        androidLink:
+            "https://apps.apple.com/nz/app/columbus-coffee-rewards/id1551717863",
         name: 'Columbus Coffee Rewards');
     projects.add(modelProject);
   }
@@ -311,6 +321,8 @@ class TmpStaticData {
         media: modelProjectMedia,
         tags: modelProjectTags,
         description: modelProjectDescription,
+        androidLink: "https://play.google.com/store/apps/details?id=com.slaywoke.slaywokemobileclient",
+        appleLink: "https://apps.apple.com/ru/app/slaywoke/id1459371943",
         name: 'Slaywoke');
     projects.add(modelProject);
   }

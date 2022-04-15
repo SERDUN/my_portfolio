@@ -41,6 +41,8 @@ flutter:
     - assets/image/icons/sub_category.png
     - assets/image/icons/call.png
     - assets/image/icons/email.png
+    - assets/image/social/google_play.png
+    - assets/image/social/app_store.png
     - assets/image/icons/pin.png
     - assets/animation/arrow_vertical.json
     - assets/animation/circle_animation.json

@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:octo_image/octo_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../config/constants.dart';
 import '../../../../domain/entity/model/model_project.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
@@ -75,7 +76,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                       ),
                       Expanded(
                         child: Container(
-                            margin: const EdgeInsets.only(right: 16),
+                            margin: const EdgeInsets.only(right: 8),
                             child: Text(
                               widget.project.description.intro.toUpperCase(),
                               textAlign: TextAlign.right,
@@ -94,10 +95,63 @@ class _ContactUsState extends State<ProjectDetailsPage> {
           ],
         ),
         const SizedBox(
+          height: 8,
+        ),
+        SizedBox(
+          height: 56,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Visibility(
+                  visible: widget.project.androidLink != null,
+                  child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                          onTap: () async {
+                            var url = widget.project.androidLink ?? "";
+                            await canLaunch(url)
+                                ? await launch(url)
+                                : throw 'Could not launch $url';
+                          },
+                          child: Image.asset(
+                            "assets/image/social/google_play.png",
+                            width: 56,
+                            height: 56,
+                          )))),
+              Visibility(
+                  visible: widget.project.androidLink != null,
+                  child: const SizedBox(
+                    width: 24,
+                  )),
+              Visibility(
+                  visible: widget.project.appleLink != null,
+                  child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                          onTap: () async {
+                            var url = widget.project.appleLink ?? "";
+                            await canLaunch(url)
+                                ? await launch(url)
+                                : throw 'Could not launch $url';
+                          },
+                          child: Image.asset(
+                            "assets/image/social/app_store.png",
+                            width: 56,
+                            height: 56,
+                          )))),
+              Visibility(
+                  visible: widget.project.appleLink != null,
+                  child: const SizedBox(
+                    width: 24,
+                  )),
+            ],
+          ),
+        ),
+        const SizedBox(
           height: 88,
         ),
         Container(
-            margin: EdgeInsets.symmetric(horizontal: 24),
+            margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Text(
               "Description",
               style: Theme.of(context).textTheme.headline4,
@@ -107,10 +161,10 @@ class _ContactUsState extends State<ProjectDetailsPage> {
           dashSpace: 16,
           dashHeight: 16,
           width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.only(top: 16),
+          margin: const EdgeInsets.only(top: 16),
         ),
         Container(
-            margin: EdgeInsets.symmetric(horizontal: 24),
+            margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 72),
               child: SelectableText(
