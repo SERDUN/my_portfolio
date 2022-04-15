@@ -28,7 +28,7 @@ class _AboutMeState extends State<AboutMe> {
             children: <Widget>[
               Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+                     EdgeInsets.symmetric(horizontal: ResponsiveWrapper.of(context).isDesktop ? 32 : 24, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

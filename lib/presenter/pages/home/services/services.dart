@@ -5,6 +5,7 @@ import 'package:matrix4_transform/matrix4_transform.dart';
 import 'package:my_portfolio/config/colors.dart';
 import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/domain/entity/model/service_model.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 
 import '../../../../routes.dart';
 
@@ -46,13 +47,15 @@ class _ServicesState extends State<Services> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 32),
+      margin: EdgeInsets.symmetric(
+          horizontal: ResponsiveWrapper.of(context).isDesktop ? 32 : 24,
+          vertical: 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 32, bottom: 24),
+            margin: const EdgeInsets.only(top: 32, bottom: 8,left: 8),
             child: Text(
               "Services",
               style: Theme.of(context).textTheme.headline4,

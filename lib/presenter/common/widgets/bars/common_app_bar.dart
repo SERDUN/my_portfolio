@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:my_portfolio/presenter/common/widgets/switcher/switcher_language.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 import '../behaviour/responsive_widget.dart';
 
 class CommonAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -58,23 +59,22 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 32),
-          child: Row(
-            children: <Widget>[
-              Flexible(
-                child: Container(
-                    alignment: Alignment.centerLeft,
-                    child: ResponsiveWidget(
-                      mobileScreen: _buildIconMenu(context),
-                      desktopScreen: _buildTextMenu(context),
-                    )),
-              ),
-              SwitcherLanguage(
-                onTapOnName: widget.onHome,
-              )
-            ],
-          ),
+        Row(
+          children: <Widget>[
+            Flexible(
+              child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: ResponsiveWidget(
+                    mobileScreen: _buildIconMenu(context),
+                    desktopScreen: _buildTextMenu(context),
+                  )),
+            ),
+            SwitcherLanguage(
+              margin: EdgeInsets.only(
+                  right: ResponsiveWrapper.of(context).isDesktop ? 16 : 8),
+              onTapOnName: widget.onHome,
+            )
+          ],
         ),
         Container(
             height: 1,
@@ -150,47 +150,50 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
           color: Theme.of(context).buttonTheme.colorScheme!.secondary),
     );
 
-    return Wrap(
-      alignment: WrapAlignment.center,
-      children: <Widget>[
-        TextButton(
-          onPressed: () {
-            indexMenu = 0;
-            widget.onHome();
-            setState(() {});
-          },
-          child: const Text(
-            "HOME",
-            textAlign: TextAlign.center,
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 24),
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        children: <Widget>[
+          TextButton(
+            onPressed: () {
+              indexMenu = 0;
+              widget.onHome();
+              setState(() {});
+            },
+            child: const Text(
+              "HOME",
+              textAlign: TextAlign.center,
+            ),
+            style: indexMenu == 0 ? flatButtonStyle : activeFlatButtonStyle,
           ),
-          style: indexMenu == 0 ? flatButtonStyle : activeFlatButtonStyle,
-        ),
-        TextButton(
-          onPressed: () {
-            indexMenu = 1;
-            widget.onPortfolio.call();
-            setState(() {});
-          },
-          child: const Text(
-            "PORTFOLIO",
-            textAlign: TextAlign.center,
+          TextButton(
+            onPressed: () {
+              indexMenu = 1;
+              widget.onPortfolio.call();
+              setState(() {});
+            },
+            child: const Text(
+              "PORTFOLIO",
+              textAlign: TextAlign.center,
+            ),
+            style: indexMenu == 1 ? flatButtonStyle : activeFlatButtonStyle,
           ),
-          style: indexMenu == 1 ? flatButtonStyle : activeFlatButtonStyle,
-        ),
-        TextButton(
-          onPressed: () {
-            indexMenu = 2;
-            setState(() {});
+          TextButton(
+            onPressed: () {
+              indexMenu = 2;
+              setState(() {});
 
-            widget.onContact();
-          },
-          child: const Text(
-            "CONTACT",
-            textAlign: TextAlign.center,
+              widget.onContact();
+            },
+            child: const Text(
+              "CONTACT",
+              textAlign: TextAlign.center,
+            ),
+            style: indexMenu == 2 ? flatButtonStyle : activeFlatButtonStyle,
           ),
-          style: indexMenu == 2 ? flatButtonStyle : activeFlatButtonStyle,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

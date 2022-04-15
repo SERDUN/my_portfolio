@@ -19,89 +19,82 @@ class _IntroPageDesktopState extends State<IntroPageMobile> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-
-        height: 400,
-        child: Stack(children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 132,
-                ),
-                SelectableText(
-                  "Mobile developer",
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: 'D',
-                      style: Theme.of(context).textTheme.headline1?.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: Theme.of(context).colorScheme.primary)),
-                  TextSpan(
-                      text: 'mitro',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline1
-                          ?.copyWith(fontWeight: FontWeight.w500)),
-                  TextSpan(
-                      text: ' S',
-                      style: Theme.of(context).textTheme.headline1?.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: Theme.of(context).colorScheme.primary)),
-                  TextSpan(
-                      text: 'erdun',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline1
-                          ?.copyWith(fontWeight: FontWeight.w500)),
-                ])),
-                const DashVertical(
-                  height: 24,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                ButtonOutline(
-                  text: 'Завантажити резюме',
-                  onTap: ()async {
-                    var url = "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
-                    await
-                    canLaunch(url)
-                        ? await launch(url)
-                        : throw 'Could not launch $url';
-                  },
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-              ],
+      height: 308,
+      child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 16,
             ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              margin: const EdgeInsets.only(top: 40),
-              child: OctoImage.fromSet(
-                fit: BoxFit.cover,
-                filterQuality: FilterQuality.medium,
-                width: 128,
-                height: 128,
-                image: Image.asset("assets/image/patterns/my_photo.png").image,
-                octoSet: OctoSet.circleAvatar(
-                  backgroundColor: Theme.of(context).colorPlate().yellow!,
-                  text: Text(
-                    "SD",
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
+            OctoImage.fromSet(
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.medium,
+              width: 128,
+              height: 128,
+              image: Image.asset("assets/image/patterns/my_photo.png").image,
+              octoSet: OctoSet.circleAvatar(
+                backgroundColor: Theme.of(context).colorPlate().yellow!,
+                text: Text(
+                  "SD",
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ),
             ),
-          )
-        ]),
+            Align(
+                alignment: Alignment.center,
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(children: [
+                    TextSpan(
+                        text: 'D',
+                        style: Theme.of(context).textTheme.headline1?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).colorScheme.primary)),
+                    TextSpan(
+                        text: 'mitro',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline1
+                            ?.copyWith(fontWeight: FontWeight.w500)),
+                    TextSpan(
+                        text: ' S',
+                        style: Theme.of(context).textTheme.headline1?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).colorScheme.primary)),
+                    TextSpan(
+                        text: 'erdun',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline1
+                            ?.copyWith(fontWeight: FontWeight.w500)),
+                  ]),
+                )),
+            const SizedBox(
+              height: 8,
+            ),
+            SelectableText(
+              "Mobile developer",
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            ButtonOutline(
+              text: 'Завантажити резюме',
+              onTap: () async {
+                var url =
+                    "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
+                await canLaunch(url)
+                    ? await launch(url)
+                    : throw 'Could not launch $url';
+              },
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+          ]),
     );
   }
-
 }

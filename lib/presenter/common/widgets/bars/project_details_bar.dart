@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 import '../switcher/switcher_language.dart';
 
 class ProjectDetailsBar extends StatefulWidget implements PreferredSizeWidget {
@@ -39,42 +40,39 @@ class _GeneralMenuBarState extends State<ProjectDetailsBarWidget> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 32),
-          child: Row(
-            children: <Widget>[
-              Flexible(
-                  child: InkWell(
-                onTap: () {
-                  Navigator.of(context, rootNavigator: true).pop();
-                },
-                child: Container(
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.arrow_back_ios,
+        Row(
+          children: <Widget>[
+            Flexible(
+                child: InkWell(
+              onTap: () {
+                Navigator.of(context, rootNavigator: true).pop();
+              },
+              child: Container(
+                margin: const EdgeInsets.only(left: 16),
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.arrow_back_ios,
+                          color: Theme.of(context).colorPlate().orange),
+                      Text(
+                        "BACK",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headline5!.copyWith(
+                            fontWeight: FontWeight.w500,
                             color: Theme.of(context).colorPlate().orange),
-                        Text(
-                          "BACK",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline5!
-                              .copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: Theme.of(context).colorPlate().orange),
-                        )
-                      ],
-                    )),
-              )),
-              SwitcherLanguage(
-                onTapOnName: () {
-                  Navigator.of(context, rootNavigator: true).pop();
-                },
-              )
-            ],
-          ),
+                      )
+                    ],
+                  )),
+            )),
+            SwitcherLanguage(
+              margin: EdgeInsets.only(
+                  right: ResponsiveWrapper.of(context).isDesktop ? 16 : 8),
+              onTapOnName: () {
+                Navigator.of(context, rootNavigator: true).pop();
+              },
+            )
+          ],
         ),
         Container(
             height: 1,
