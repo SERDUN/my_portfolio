@@ -50,7 +50,7 @@ class PortfolioItem extends StatelessWidget {
                             ),
 
                             Container(
-                              margin: const EdgeInsets.only(top: 16,right: 40),
+                              margin: const EdgeInsets.only(top: 16, right: 40),
                               child: buildTechnology(context),
                             ),
                             SizedBox(
@@ -95,7 +95,7 @@ class PortfolioItem extends StatelessWidget {
             //   child: buildTechnology(context),
             // ),
             Container(
-              margin: EdgeInsets.only(right: 24,top: 16),
+              margin: const EdgeInsets.only(right: 24, top: 16),
               height: MediaQuery.of(context).size.width,
               width: MediaQuery.of(context).size.width,
               child: _buildPreview(context),
@@ -139,7 +139,7 @@ class PortfolioItem extends StatelessWidget {
 
   Widget _buildProjectDescription(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 8,right: 40),
+      margin: const EdgeInsets.only(left: 8, right: 40),
       child: SelectableText(
         project.description.shortDescription,
         style: Theme.of(context).textTheme.bodyText1,
@@ -172,14 +172,16 @@ class PortfolioItem extends StatelessWidget {
                 margin: const EdgeInsets.all(4),
                 width: double.infinity,
                 height: double.infinity,
-                child: OctoImage(
-                  image: Image.network(project.media.mainCover).image,
-                  placeholderBuilder: OctoPlaceholder.blurHash(
-                    'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-                  ),
-                  errorBuilder: OctoError.icon(color: Colors.red),
-                  fit: _getBoxFit(),
-                ))),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(6.0),
+                    child: OctoImage(
+                      image: Image.network(project.media.mainCover).image,
+                      placeholderBuilder: OctoPlaceholder.blurHash(
+                        'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                      ),
+                      errorBuilder: OctoError.icon(color: Colors.red),
+                      fit: _getBoxFit(),
+                    )))),
       ),
     );
   }
@@ -207,7 +209,8 @@ class PortfolioItem extends StatelessWidget {
                       fontStyle: FontStyle.italic,
                       color: Theme.of(context).colorPlate().grey),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                 margin: const EdgeInsets.symmetric(vertical: 4),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
