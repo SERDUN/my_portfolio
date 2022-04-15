@@ -16,7 +16,7 @@ class ButtonOutline extends StatelessWidget {
       textStyle: Theme.of(context).textTheme.button?.copyWith(fontWeight: FontWeight.w100),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
-          side: BorderSide(color:Theme.of(context).buttonTheme.colorScheme!.primary!)),
+          side: BorderSide(color:Theme.of(context).buttonTheme.colorScheme!.primary)),
     );
 
     return TextButton(

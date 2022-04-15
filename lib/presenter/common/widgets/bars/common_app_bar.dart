@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:my_portfolio/presenter/common/widgets/switcher/switcher_language.dart';
-
-import '../../../ui/menu/general_menu_bar.dart';
-import '../../../ui/widgets/menu/main_menu.dart';
 import '../behaviour/responsive_widget.dart';
 
 class CommonAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -10,7 +8,7 @@ class CommonAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Function onContact;
   final Function onPortfolio;
 
-  CommonAppBar(
+  const CommonAppBar(
       {Key? key,
       required this.onHome,
       required this.onContact,
@@ -91,21 +89,43 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
       alignment: WrapAlignment.center,
       children: <Widget>[
         TextButton(
-          onPressed: () => widget.onHome(),
+          onPressed: () {
+            indexMenu = 0;
+            setState(() {});
+            widget.onHome();
+          },
           child: Icon(
             Icons.home,
-            color: Theme.of(context).colorScheme.background,
+            color: indexMenu == 0
+                ? Theme.of(context).colorPlate().orange
+                : Theme.of(context).colorPlate().yellow,
           ),
         ),
         TextButton(
-          onPressed: () => widget.onPortfolio.call(),
-          child: Icon(Icons.article_outlined,
-              color: Theme.of(context).colorScheme.background),
+          onPressed: () {
+            indexMenu = 1;
+            setState(() {});
+            widget.onPortfolio.call();
+          },
+          child: Icon(
+            Icons.article_outlined,
+            color: indexMenu == 1
+                ? Theme.of(context).colorPlate().orange
+                : Theme.of(context).colorPlate().yellow,
+          ),
         ),
         TextButton(
-          onPressed: () => widget.onContact(),
-          child: Icon(Icons.perm_contact_cal,
-              color: Theme.of(context).colorScheme.background),
+          onPressed: () {
+            indexMenu = 2;
+            setState(() {});
+            widget.onContact();
+          },
+          child: Icon(
+            Icons.perm_contact_cal,
+            color: indexMenu == 2
+                ? Theme.of(context).colorPlate().orange
+                : Theme.of(context).colorPlate().yellow,
+          ),
         ),
       ],
     );
@@ -160,8 +180,9 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
         TextButton(
           onPressed: () {
             indexMenu = 2;
-            widget.onContact();
             setState(() {});
+
+            widget.onContact();
           },
           child: const Text(
             "CONTACT",

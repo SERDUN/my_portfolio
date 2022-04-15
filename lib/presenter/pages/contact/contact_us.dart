@@ -8,6 +8,8 @@ import '../../common/widgets/decoration/decoration_view.dart';
 import '../../common/widgets/icon.dart';
 
 class ContactUs extends StatefulWidget {
+  const ContactUs({Key? key}) : super(key: key);
+
   @override
   _ContactUsState createState() => _ContactUsState();
 }
@@ -74,6 +76,7 @@ class _ContactUsState extends State<ContactUs> {
         ],
       ),
       mobileScreen: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 40),
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -86,6 +89,7 @@ class _ContactUsState extends State<ContactUs> {
             Center(
               child: Text(
                 'GET IN TOUCH',
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),

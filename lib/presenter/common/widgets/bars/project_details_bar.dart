@@ -3,7 +3,7 @@ import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.d
 import '../switcher/switcher_language.dart';
 
 class ProjectDetailsBar extends StatefulWidget implements PreferredSizeWidget {
-  ProjectDetailsBar({
+  const ProjectDetailsBar({
     Key? key,
   })  : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
