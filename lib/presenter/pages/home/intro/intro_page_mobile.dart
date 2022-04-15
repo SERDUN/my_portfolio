@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-import 'package:lottie/lottie.dart';
-import 'package:matrix4_transform/matrix4_transform.dart';
+
 import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,31 +17,9 @@ class IntroPageMobile extends StatefulWidget {
 
 class _IntroPageDesktopState extends State<IntroPageMobile> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  Future<bool> fetchData() => Future.delayed(const Duration(seconds: 2), () {
-        return true;
-      });
-
-  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: Svg(
-            "assets/image/patterns/bike.svg",
-            size: Size(92, 80),
-          ),
-          repeat: ImageRepeat.repeat,
-        )),
+    return SizedBox(
+
         height: 400,
         child: Stack(children: [
           Center(
@@ -109,6 +86,7 @@ class _IntroPageDesktopState extends State<IntroPageMobile> {
               margin: const EdgeInsets.only(top: 40),
               child: OctoImage.fromSet(
                 fit: BoxFit.cover,
+                filterQuality: FilterQuality.medium,
                 width: 128,
                 height: 128,
                 image: Image.asset("assets/image/patterns/my_photo.png").image,
@@ -123,27 +101,7 @@ class _IntroPageDesktopState extends State<IntroPageMobile> {
             ),
           )
         ]),
-      ),
-      onTap: () {
-        //  _showPhoto();
-      },
     );
   }
 
-  Widget buildPoint(String path, Function onTap) {
-    return MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          child: Container(
-            margin: const EdgeInsets.all(8.0),
-            padding: const EdgeInsets.all(10.0),
-            width: 40,
-            height: 40,
-            decoration: const BoxDecoration(
-                color: Colors.black, shape: BoxShape.circle),
-            child: Image.asset(path),
-          ),
-          onTap: () => onTap(),
-        ));
-  }
 }

@@ -39,7 +39,7 @@ class DashedLineVerticalPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     double dashHeight = dashHeightArg, dashSpace = dashSpaceArg, startY = 0;
     final paint = Paint()
-      ..color = Colors.orange[300]!.withOpacity(opacity)!
+      ..color = Colors.orange[300]!.withOpacity(opacity)
       ..strokeWidth = 1;
     while (startY < size.width) {
       canvas.drawLine(Offset(startY, 0), Offset(startY + dashHeight, 0), paint);

@@ -49,6 +49,8 @@ flutter:
   fonts:
     - family: Cormorant
       fonts:
+        - asset: assets/fonts/OpenSans-Medium.ttf
+          weight: 300
         - asset: assets/fonts/OpenSans-Regular.ttf
           weight: 400
           style: normal
@@ -57,9 +59,6 @@ flutter:
         - asset: assets/fonts/OpenSans-Bold.ttf
           weight: 700
           style: normal
-        - asset: assets/fonts/OpenSans-BoldItalic.ttf
-          weight: 700
-          style: italic
         - asset: assets/fonts/OpenSans-SemiBoldItalic.ttf
         - asset: assets/fonts/OpenSans-SemiBold.ttf
           weight: 500

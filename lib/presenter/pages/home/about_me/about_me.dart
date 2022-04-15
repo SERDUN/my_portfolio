@@ -40,7 +40,7 @@ class _AboutMeState extends State<AboutMe> {
                       height: 8,
                     ),
                     SelectableText(
-                      "Hi, let me introduce myself. \nMe twenty-five years and i Live in Ukraine, Odessa. I'm a mobile developer with more than 4 years of experience.\nMy main platform is Android but for the last 2 years  in general i've created or were practiced Flutter cross-platform projects. \nBy the way  this webpage also developet by Flutter framework)"
+                      "Hi, let me introduce myself. \nMe twenty-five years and i Live in Ukraine, Odessa. I'm a mobile developer with more than 4 years of experience.\nMy essential platform is Android but for the last 2 years  in general i've created or were practiced Flutter cross-platform projects. \nBy the way  this webpage also developed by Flutter framework)"
                       "\n\nGlory to Ukraine",
                       style: Theme.of(context)
                           .textTheme

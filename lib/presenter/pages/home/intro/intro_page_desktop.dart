@@ -205,21 +205,4 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
           }
         });
   }
-//
-// Widget buildPoint(String path, Function onTap) {
-//   return MouseRegion(
-//       cursor: SystemMouseCursors.click,
-//       child: GestureDetector(
-//         child: Container(
-//           margin: const EdgeInsets.all(8.0),
-//           padding: const EdgeInsets.all(10.0),
-//           width: 40,
-//           height: 40,
-//           decoration: const BoxDecoration(
-//               color: Colors.black, shape: BoxShape.circle),
-//           child: Image.asset(path),
-//         ),
-//         onTap: () => onTap(),
-//       ));
-// }
 }

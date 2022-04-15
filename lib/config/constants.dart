@@ -3,7 +3,7 @@ mixin AppConstants {
 
   static final String phone = '(+380)979826361';
 
-  static final String location = 'Ukrine, Odessa';
+  static final String location = 'Ukrine, Odesa';
 
   static final String github = 'ISERDUN'; //
   static final String githubUrl = 'https://github.com/ISERDUN'; //

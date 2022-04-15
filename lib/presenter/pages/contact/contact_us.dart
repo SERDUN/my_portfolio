@@ -132,7 +132,7 @@ class _ContactUsState extends State<ContactUs> {
   Widget buildBuildPhoneInfo(BuildContext context) {
     return _buildContactInfoSelectable(
         'image/icons/call.png',
-        'Call Us:',
+        'Call Me:',
         AppConstants.phone,
         AppConstants.phone,
         Theme.of(context).textTheme.bodyText1!);
@@ -141,7 +141,7 @@ class _ContactUsState extends State<ContactUs> {
   Widget buildBuildContactInfo(BuildContext context) {
     return _buildContactInfoSelectable(
         'image/icons/email.png',
-        'Mail Us:',
+        'Mail Me:',
         AppConstants.mail,
         AppConstants.mail,
         Theme.of(context).textTheme.bodyText1!);

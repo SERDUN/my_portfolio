@@ -34,11 +34,6 @@ class TmpStaicSkills {
                 "expaned": false,
                 "children": [],
               },
-              {
-                "title": "JetPack",
-                "expaned": false,
-                "children": [],
-              },
             ],
           },
           {
