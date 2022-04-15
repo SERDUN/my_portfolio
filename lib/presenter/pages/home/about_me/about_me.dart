@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/config/typography.dart';
-import 'package:my_portfolio/presenter/ui/widgets/tree/tree_view.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-import '../../../../routes.dart';
+import '../../../common/widgets/expanded/tree/tree_view.dart';
 
 class AboutMe extends StatefulWidget {
   final List<Map<String, dynamic>> skills;

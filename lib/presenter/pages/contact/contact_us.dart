@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../config/constants.dart';
+import '../../../constants.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';
 import '../../common/widgets/decoration/decoration_view.dart';
 import '../../common/widgets/icon.dart';

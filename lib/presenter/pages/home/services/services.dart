@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
-import 'package:my_portfolio/config/colors.dart';
-import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/domain/entity/model/service_model.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/presenter/common/widgets/bars/common_app_bar.dart';
-import 'package:my_portfolio/presenter/ui/menu/general_menu_bar.dart';
-
 import 'navigation/host_navigator.dart';
 import 'navigation/host_routes.dart';
 

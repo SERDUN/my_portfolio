@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../config/constants.dart';
+import '../../../../constants.dart';
 import '../../../../domain/entity/model/model_project.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 import '../../../common/widgets/dash/dash_horizontall.dart';

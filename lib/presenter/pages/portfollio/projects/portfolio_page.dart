@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/config/typography.dart';
 import 'package:my_portfolio/data/tmp_static_data.dart';
 import 'package:my_portfolio/domain/entity/model/model_project.dart';
 import 'package:my_portfolio/presenter/pages/portfollio/projects/portfolio_item.dart';

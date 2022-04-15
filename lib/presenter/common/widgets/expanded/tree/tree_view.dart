@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/presenter/ui/widgets/tree/tree_root.dart';
-
 import 'tree_node.dart';
+import 'tree_root.dart';
 
 class TreeView extends StatelessWidget {
   final List<Map<String, dynamic>> data;

@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:my_portfolio/presenter/pages/home/services/services.dart';
 import '../../../data/tmp_static_skills.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';
-import '../../ui/footer/footer.dart';
+import '../../common/widgets/footer/footer.dart';
 import 'about_me/about_me.dart';
 import 'intro/intro_page_desktop.dart';
 import 'intro/intro_page_mobile.dart';

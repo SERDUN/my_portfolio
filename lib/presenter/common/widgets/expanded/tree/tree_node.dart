@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../common/widgets/behaviour/responsive_widget.dart';
 
 class TreeNode extends StatefulWidget {
   final int level;
