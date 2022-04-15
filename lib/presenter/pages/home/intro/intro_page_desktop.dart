@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:lottie/lottie.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
+import 'package:my_portfolio/presenter/common/extension/style/own_theme_fields.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../common/widgets/button/button_outline.dart';
 import '../../../common/widgets/dash/dash_vertical.dart';
@@ -41,96 +43,79 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: SizedBox(
-        height: 328,
-        child: Stack(children: [
-          buildPhoto(context),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 88,
-                ),
-                SelectableText(
-                  "Mobile developer",
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: 'D',
-                      style: Theme.of(context).textTheme.headline1?.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: Theme.of(context).colorScheme.primary)),
-                  TextSpan(
-                      text: 'mitro',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline1
-                          ?.copyWith(fontWeight: FontWeight.w500)),
-                  TextSpan(
-                      text: ' S',
-                      style: Theme.of(context).textTheme.headline1?.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: Theme.of(context).colorScheme.primary)),
-                  TextSpan(
-                      text: 'erdun',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline1
-                          ?.copyWith(fontWeight: FontWeight.w500)),
-                ])),
-                const DashVertical(
-                  height: 24,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                ButtonOutline(
-                  text: 'Download CV',
-                  onTap: () async {
-                    var url =
-                        "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
-                    await canLaunch(url)
-                        ? await launch(url)
-                        : throw 'Could not launch $url';
-                  },
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                const DashVertical(
-                  height: 88,
-                ),
-                // buildSocial()
-              ],
-            ),
+    return SizedBox(
+      height: 328,
+      child: Stack(children: [
+        buildPhoto(context),
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 88,
+              ),
+              SelectableText(
+                "Mobile developer",
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+              RichText(
+                  text: TextSpan(children: [
+                TextSpan(
+                    text: 'D',
+                    style: Theme.of(context).textTheme.headline1?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Theme.of(context).colorScheme.primary)),
+                TextSpan(
+                    text: 'mitro',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline1
+                        ?.copyWith(fontWeight: FontWeight.w500)),
+                TextSpan(
+                    text: ' S',
+                    style: Theme.of(context).textTheme.headline1?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Theme.of(context).colorScheme.primary)),
+                TextSpan(
+                    text: 'erdun',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline1
+                        ?.copyWith(fontWeight: FontWeight.w500)),
+              ])),
+              const DashVertical(
+                height: 24,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              ButtonOutline(
+                text: 'Download CV',
+                onTap: () async {
+                  var url =
+                      "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
+                  await canLaunch(url)
+                      ? await launch(url)
+                      : throw 'Could not launch $url';
+                },
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const DashVertical(
+                height: 88,
+              ),
+              // buildSocial()
+            ],
           ),
-          const DashVertical(
-            height: 328,
-            opacity: .7,
-            horizontalRepeatCount: 9,
-            margin: EdgeInsets.only(left: 40),
-          ),
-          const DashVertical(
-            height: 328,
-            opacity: .7,
-            horizontalRepeatCount: 9,
-            margin: EdgeInsets.only(left: 124),
-          ),
-          const DashVertical(
-            height: 328,
-            opacity: .7,
-            horizontalRepeatCount: 9,
-            margin: EdgeInsets.only(left: 208),
-          ),
-        ]),
-      ),
-      onTap: () {
-        //  _showPhoto();
-      },
+        ),
+        const DashVertical(
+          height: 328,
+          opacity: .5,
+          horizontalRepeatCount: 35,
+          margin: EdgeInsets.only(left: 0),
+        ),
+      ]),
     );
   }
 

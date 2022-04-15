@@ -104,8 +104,8 @@ class _TreeNodeState extends State<TreeRoot>
                 visible: children.isNotEmpty && _isExpanded,
                 child: Padding(
                   padding: EdgeInsets.only(
-                      left: level + 1 * offsetLeft,
-                      right: level + 1 * offsetLeft),
+                    left: level + 1 * offsetLeft,
+                  ),
                   child: Column(
                     children: widget.children,
                     crossAxisAlignment: CrossAxisAlignment.start,

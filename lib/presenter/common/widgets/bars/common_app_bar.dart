@@ -90,9 +90,11 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
       children: <Widget>[
         TextButton(
           onPressed: () {
-            indexMenu = 0;
-            setState(() {});
-            widget.onHome();
+            if (indexMenu != 0) {
+              indexMenu = 0;
+              setState(() {});
+              widget.onHome();
+            }
           },
           child: Icon(
             Icons.home,
@@ -103,9 +105,11 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
         ),
         TextButton(
           onPressed: () {
-            indexMenu = 1;
-            setState(() {});
-            widget.onPortfolio.call();
+            if (indexMenu != 1) {
+              indexMenu = 1;
+              setState(() {});
+              widget.onPortfolio.call();
+            }
           },
           child: Icon(
             Icons.article_outlined,
@@ -116,9 +120,11 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
         ),
         TextButton(
           onPressed: () {
-            indexMenu = 2;
-            setState(() {});
-            widget.onContact();
+            if (indexMenu != 2) {
+              indexMenu = 2;
+              setState(() {});
+              widget.onContact();
+            }
           },
           child: Icon(
             Icons.perm_contact_cal,
@@ -143,6 +149,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
 
     final ButtonStyle activeFlatButtonStyle = TextButton.styleFrom(
       backgroundColor: Colors.transparent,
+      shadowColor: Colors.transparent,
       primary: Theme.of(context).buttonTheme.colorScheme!.primary,
       padding: const EdgeInsets.all(8),
       textStyle: Theme.of(context).textTheme.headline5!.copyWith(
