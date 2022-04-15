@@ -50,8 +50,7 @@ class PortfolioItem extends StatelessWidget {
                             ),
 
                             Container(
-                              margin: const EdgeInsets.only(top: 16),
-                              width: MediaQuery.of(context).size.width * .25,
+                              margin: const EdgeInsets.only(top: 16,right: 40),
                               child: buildTechnology(context),
                             ),
                             SizedBox(
@@ -84,26 +83,26 @@ class PortfolioItem extends StatelessWidget {
       mobileScreen: Container(
         margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.width * .40,
-              width: MediaQuery.of(context).size.width * .25,
-              child: _buildPreview(context),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 8, top: 8),
-                child: buildTechnology(context),
-              ),
-            ),
-            SizedBox(width: MediaQuery.of(context).size.width * .075),
             SizedBox(
               height: MediaQuery.of(context).size.width * .01,
             ),
             _buildTitleProject(context),
+            // Container(
+            //   margin: const EdgeInsets.only(bottom: 8, top: 8),
+            //   child: buildTechnology(context),
+            // ),
+            Container(
+              margin: EdgeInsets.only(right: 24,top: 16),
+              height: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width,
+              child: _buildPreview(context),
+            ),
+
+            SizedBox(width: MediaQuery.of(context).size.width * .075),
+
             SizedBox(
               height: MediaQuery.of(context).size.width * .01,
             ),
@@ -140,7 +139,7 @@ class PortfolioItem extends StatelessWidget {
 
   Widget _buildProjectDescription(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8),
+      margin: const EdgeInsets.only(left: 8,right: 40),
       child: SelectableText(
         project.description.shortDescription,
         style: Theme.of(context).textTheme.bodyText1,
@@ -208,7 +207,7 @@ class PortfolioItem extends StatelessWidget {
                       fontStyle: FontStyle.italic,
                       color: Theme.of(context).colorPlate().grey),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                 margin: const EdgeInsets.symmetric(vertical: 4),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.4),

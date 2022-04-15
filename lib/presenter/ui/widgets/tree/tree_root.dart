@@ -52,7 +52,7 @@ class _TreeNodeState extends State<TreeRoot>
   initState() {
     _isExpanded = widget.expanded;
     _rotationController = AnimationController(
-      duration: const Duration(milliseconds: 999),
+      duration: const Duration(milliseconds: 100),
       vsync: this,
     );
     super.initState();
@@ -63,7 +63,6 @@ class _TreeNodeState extends State<TreeRoot>
     final level = widget.level;
     final children = widget.children;
     final offsetLeft = widget.offsetLeft;
-
     return GestureDetector(
       child: Card(
         color: Theme.of(context).cardTheme.color,
@@ -73,37 +72,27 @@ class _TreeNodeState extends State<TreeRoot>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-
-              //A RenderFlex overflowed by 58 pixels on the right.
-              //
-              // The relevant error-causing widget was:
-              //   Row Row:file:///C:/Users/Dmitro/StudioProjects/my_portfolio/lib/presenter/ui/widgets/tree/tree_root.dart:78:24
-              // The overflowing RenderFlex has an orientation of Axis.horizontal.
-              // The edge of the RenderFlex that is overflowing has been marked in the rendering with a yellow and black striped pattern. This is usually caused by the contents being too big for the RenderFlex.
               Padding(
                 padding: const EdgeInsets.only(left: 0.0, right: 12.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     widget.title ?? Container(),
-                    const SizedBox(width: 8,),
-                    // Text(
-                    //   "(Основний напрям)",
-                    //   // style: GoogleFonts.montserrat(
-                    //   //     textStyle: const TextStyle(
-                    //   //         fontSize: 14,
-                    //   //         color: Colors.black26,
-                    //   //         letterSpacing: 1)),
-                    // ),
+                    const SizedBox(
+                      width: 8,
+                    ),
                     const Spacer(),
-
                     Center(
                       child: GestureDetector(
                         onTap: () {
                           _handleTap();
                         },
                         child: RotationTransition(
-                          child:  Lottie.asset('assets/animation/arrow_vertical.json',width: 32,height: 32,),
+                          child: Lottie.asset(
+                            'assets/animation/arrow_vertical.json',
+                            width: 24,
+                            height: 24,
+                          ),
                           turns: _turnsTween.animate(_rotationController),
                         ),
                       ),

@@ -7,10 +7,12 @@ class ModelProject {
   final ModelProjectDescription description;
   final ModelProjectMedia media;
   final ModelProjectTags tags;
+  final String? link;
 
   ModelProject(
       {required this.name,
       required this.description,
       required this.media,
+      this.link,
       required this.tags});
 }

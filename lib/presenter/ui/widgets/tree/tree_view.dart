@@ -43,13 +43,17 @@ class TreeView extends StatelessWidget {
           : Text(
               item[titleKey],
               style: subCategoryTextStyle,
+        softWrap: true,
+
             );
       final leading = item[leadingKey] == null
           ? null
           : Text(
               item[leadingKey],
               style: subCategoryTextStyle,
-            );
+        softWrap: true,
+overflow: TextOverflow.ellipsis,
+      );
       final expaned = item[expanedKey] ?? false;
       final children = item[childrenKey] as List;
 

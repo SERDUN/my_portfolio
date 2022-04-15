@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../common/widgets/behaviour/responsive_widget.dart';
+
 class TreeNode extends StatefulWidget {
   final int level;
   final bool expanded;
@@ -70,72 +72,54 @@ class _TreeNodeState extends State<TreeNode>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(left: 0.0, right: 12.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              GestureDetector(
-                onTap: () {
-                  if (widget.leadingOnTap != null &&
-                      widget.leadingOnTap is Function) {
-                    widget.leadingOnTap!();
+          padding: const EdgeInsets.only(left: 0.0, right: 12.0,top: 8),
+          child: GestureDetector(
+              onTap: () {
+                if (widget.leadingOnTap != null && widget.leadingOnTap is Function) {
+                  widget.leadingOnTap!();
+                }
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                  if (_isExpanded) {
+                    _rotationController.forward();
+                  } else {
+                    _rotationController.reverse();
                   }
-                },
-                child: widget.leading ??
-                    IconButton(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 0),
-                      icon: children.length > 1
-                          ? Image.asset("assets/image/icons/category.png",
-                              width: 24, height: 24)
-                          : Image.asset("assets/image/icons/sub_category.png",
-                              width: 24, height: 24),
-                      iconSize: 16,
-                      onPressed: null,
-                    ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  // if (widget.titleOnTap != null &&
-                  //     widget.titleOnTap is Function) {
-                  //   widget.titleOnTap!();
-                  // }
-                  _turnsTween.animate(_rotationController);
-                },
-                child: widget.title ?? Container(),
-              ),
-              const SizedBox(width: 6.0),
-              Visibility(
-                visible: children.isNotEmpty,
-                child: Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _isExpanded = !_isExpanded;
-                        if (_isExpanded) {
-                          _rotationController.forward();
-                        } else {
-                          _rotationController.reverse();
-                        }
-                        if (widget.trailingOnTap != null &&
-                            widget.trailingOnTap is Function) {
-                          widget.trailingOnTap!();
-                        }
-                      }
-                      );
-                    },
-                    child: RotationTransition(
-                      child: Lottie.asset(
-                          'assets/animation/arrow_vertical.json',
-                          width: 24,
-                          height: 24),
-                      turns: _turnsTween.animate(_rotationController),
+                  if (widget.trailingOnTap != null &&
+                      widget.trailingOnTap is Function) {
+                    widget.trailingOnTap!();
+                  }
+                });
+                _turnsTween.animate(_rotationController);
+              },
+              child:  Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  IconButton(
+                    alignment: Alignment.centerLeft,
+                    padding: const EdgeInsets.only(left: 0),
+                    icon: children.length > 1
+                        ? Image.asset("assets/image/icons/category.png",
+                        width: 24, height: 24)
+                        : Image.asset("assets/image/icons/sub_category.png",
+                        width: 24, height: 24),
+                    iconSize: 16,
+                    onPressed: null,
+                  ),
+                  Expanded(child: widget.title ?? Container()),
+                  const SizedBox(width: 6.0),
+                  Visibility(
+                    visible: children.isNotEmpty,
+                    child: Center(
+                      child: RotationTransition(
+                        child: Lottie.asset('assets/animation/arrow_vertical.json',
+                            width: 24, height: 24),
+                        turns: _turnsTween.animate(_rotationController),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ],
-          ),
+                ],
+              ))
         ),
         Visibility(
           visible: children.isNotEmpty && _isExpanded,
@@ -151,4 +135,6 @@ class _TreeNodeState extends State<TreeNode>
       ],
     );
   }
+
+
 }

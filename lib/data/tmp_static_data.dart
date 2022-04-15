@@ -40,7 +40,7 @@ class TmpStaticData {
 
     ModelProjectTags modelProjectTags = ModelProjectTags(
         projectTags: ["Game", "Cards", "Party"],
-        developmentTags: ["Java", "RX", "Auth"]);
+        developmentTags: ["Java", "RX", "Auth", "Jetpack", "Room"]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
         fullDescription:
@@ -75,22 +75,29 @@ class TmpStaticData {
         typeCover: 'fitHeight');
 
     ModelProjectTags modelProjectTags = ModelProjectTags(
-        projectTags: ["Game", "Cards", "Party"],
-        developmentTags: ["Java", "RX", "Auth"]);
+        projectTags: [],
+        developmentTags: [
+          "Dart",
+          "Flutter",
+          "Redux",
+          "Number authorization",
+          "Notification",
+          "Locator"
+        ]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
         fullDescription:
-            'Alias or Charades - guess word board game is a new free version of the world-famous activity Alias board game. The objective of Alias is to explain words to team members. For each word thats correctly guessed by one of your teammates, your team gets a point. Our app lets you play Alias anywhere without a ton of paper cards and a board. Catch new features! Steelkiwi has released a web version of the Alias or Charades game where you can comfortably add your own word sets and use them on your phone. Now you could add set on any language. Play your own sets with your friends or share it to all word. Cool, isn’t it? Check it out here: https://getalias.co/ The best feature of free Alias is its themed sets of words. We’ve already prepared Space, Party and Food sets. We’re planning to make lots more soon. You can also play the standard Alias to set your difficulty level and play with a random set of words. A separate Alias game mode for kids with pictures alongside words is also available in this version. Alias is an awesome game for both small and large groups. Having a party or a picnic? Don’t know what to do with your family on a rainy day? You could play Alias. It’s great for all ages. All you need is at least four people and the app.",',
+            "Two applications for food delivery were developed, the first role being a customer and the other a driver. The project uses redux and auxiliary libraries that, for example, help with code generation. The main problem with this project was the migration to version 2.0, but after the migration and some refactoring, all the requirements were met.",
         intro:
-            'Alias or Charades - guess word board game is a new free version of the world-famous activity Alias board game. The objective of Alias is to explain words to team members.',
+            "Foodie Family - a convenient service for ordering and delivery of ready meals from restaurants!",
         shortDescription:
-            'Alias or Charades - guess word board game is a new free version of the world-famous activity Alias board game. The objective of Alias is to explain words to team members. For each word thats correctly guessed by one of your teammates, your team gets a point.');
+            "Foodie Family - a convenient service for ordering and delivery of ready meals from restaurants! Fair prices, promotions, good offers and fast delivery! We take care of the quality of each order and do our best to ensure that you receive delicious meals on time!");
 
     ModelProject modelProject = ModelProject(
         media: modelProjectMedia,
         tags: modelProjectTags,
         description: modelProjectDescription,
-        name: 'Foodie(Client)');
+        name: 'Foodie Family');
     projects.add(modelProject);
   }
 
@@ -108,9 +115,17 @@ class TmpStaticData {
             'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr1.png',
         typeCover: "fitWidth");
 
-    ModelProjectTags modelProjectTags = ModelProjectTags(
-        projectTags: ["Heath", "Pets", "Dog"],
-        developmentTags: ["Flutter", "BLoC", "Google Map"]);
+    ModelProjectTags modelProjectTags = ModelProjectTags(projectTags: [
+      "Heath",
+      "Pets",
+      "Dog"
+    ], developmentTags: [
+      "Flutter",
+      "BLoC",
+      "Google Map",
+      "Permission",
+      "Notification"
+    ]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
         fullDescription:
@@ -150,7 +165,11 @@ class TmpStaticData {
     ], developmentTags: [
       "Android",
       "Navigator",
-      "Google Map"
+      "Google Map",
+      "JetPack",
+      "Notification",
+      "QR",
+      "Token system"
     ]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
@@ -187,9 +206,11 @@ class TmpStaticData {
       "Retail and food tech",
       "Loyalty app"
     ], developmentTags: [
-      "Android",
-      "Navigator",
-      "Google Map"
+      "Flutter",
+      "Custom plugin",
+      "Payment",
+      "Bloc",
+      "Modular"
     ]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
@@ -227,7 +248,7 @@ class TmpStaticData {
 
     ModelProjectTags modelProjectTags = ModelProjectTags(
         projectTags: ["Middle East and Africa", "Finance", "Dog"],
-        developmentTags: ["Flutter", "BLoC", "Google Map"]);
+        developmentTags: ["Android", "Dagger", "MVP", "MAP"]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
         fullDescription:
@@ -262,9 +283,22 @@ class TmpStaticData {
             'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr9.jpg',
         typeCover: "fitWidth");
 
-    ModelProjectTags modelProjectTags = ModelProjectTags(
-        projectTags: ["Northern America", "Social", "Live chat"],
-        developmentTags: ["Flutter", "BLoC", "Google Map"]);
+    ModelProjectTags modelProjectTags = ModelProjectTags(projectTags: [
+      "Northern America",
+      "Social",
+      "Live chat"
+    ], developmentTags: [
+      "Flutter",
+      "BLoC",
+      "Google Map",
+      "Redux",
+      "Locator",
+      "Image",
+      "Vide",
+      "Recorder",
+      "Custom plugin",
+      "Optimization"
+    ]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
         fullDescription:
@@ -296,17 +330,28 @@ class TmpStaticData {
             "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr1.jpg",
         typeCover: "cover");
 
-    ModelProjectTags modelProjectTags = ModelProjectTags(
-        projectTags: ["Northern America", "Social", "Live chat"],
-        developmentTags: ["Flutter", "BLoC", "Google Map"]);
+    ModelProjectTags modelProjectTags = ModelProjectTags(projectTags: [
+      "Northern America",
+      "Social",
+      "Live chat"
+    ], developmentTags: [
+      "Android",
+      "MVP",
+      "Google Map",
+      "Google services",
+      "Firebase",
+      "Custom view",
+      "Canvas",
+      "Custom markers"
+    ]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
         fullDescription:
-            "We built the Android app using the MVP design pattern, which allowed us to split the business logic from the UI perfectly. To write the app, we chose Kotlin. Kotlin helped us reduce the amount of code compared to Java, and we were able to get the same result in less time.We used the RxKotlin framework built on the basis of the Paternal Observer pattern. RxKotlin gave us the possibility to subscribe to events and work more conveniently with the background streams that are most actively used when requesting a server with the help of the Retrofit framework. To implement all of our client’s ideas, we chose Google Maps because they allowed us to customize the marker that helps users see how busy a certain place is.As the app features photos of different places, we used the Glide library to cache photos.The Dexter libraries were excellent for permission queries and added more convenience. With Dexter, it's easy to ask users for permission to record data to the phone's memory or access the camera or geolocation features.",
+            "Android app built using the MVP design pattern, which allowed us to split the business logic from the UI perfectly. To write the app, we chose Kotlin. Kotlin helped us reduce the amount of code compared to Java.We used the RxKotlin framework built on the basis of the Paternal Observer pattern. RxKotlin gave us the possibility to subscribe to events and work more conveniently with the background streams that are most actively used when requesting a server with the help of the Retrofit framework. To implement all of our client’s ideas, we chose Google Maps because they allowed us to customize the marker that helps users see how busy a certain place is.As the app features photos of different places, we used the Glide library to cache photos.The Dexter libraries were excellent for permission queries and added more convenience. With Dexter, it's easy to ask users for permission to record data to the phone's memory or access the camera or geolocation features.",
         intro:
             'A heatmap that shows live attendance at bars, nightclubs, restaurants, and karaoke',
         shortDescription:
-            "We built the Android app using the MVP design pattern, which allowed us to split the business logic from the UI perfectly. To write the app, we chose Kotlin. Kotlin helped us reduce the amount of code compared to Java, and we were able to get the same result in less time.");
+            "Android app built app using the MVP design pattern, which allowed us to split the business logic from the UI perfectly. To write the app, we chose Kotlin. Kotlin helped us reduce the amount of code compared to Java.");
     ModelProject modelProject = ModelProject(
         media: modelProjectMedia,
         tags: modelProjectTags,
@@ -335,9 +380,27 @@ class TmpStaticData {
             'https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr1.png',
         typeCover: "fitWidth");
 
-    ModelProjectTags modelProjectTags = ModelProjectTags(
-        projectTags: ["Heath", "Pets", "Dog"],
-        developmentTags: ["Flutter", "BLoC", "Google Map"]);
+    ModelProjectTags modelProjectTags = ModelProjectTags(projectTags: [
+      "Heath",
+      "Pets",
+      "Dog"
+    ], developmentTags: [
+      "Flutter",
+      "BLoC",
+      "Google Map",
+      "Dart",
+      "Localization",
+      "Redux",
+      "Apple pay",
+      "Payment",
+      "Notification",
+      "Nested navigation",
+      "Shared preferences",
+      "get_it",
+      "redux_epics",
+      "crashlytics",
+      "chopper"
+    ]);
 
     ModelProjectDescription modelProjectDescription = ModelProjectDescription(
         fullDescription:
@@ -351,7 +414,7 @@ class TmpStaticData {
         media: modelProjectMedia,
         tags: modelProjectTags,
         description: modelProjectDescription,
-        name: 'mPet');
+        name: 'Daberli');
     projects.add(modelProject);
   }
 }

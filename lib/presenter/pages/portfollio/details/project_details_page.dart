@@ -131,17 +131,12 @@ class _ContactUsState extends State<ProjectDetailsPage> {
             dashSpace: 16,
             dashHeight: 16,
             width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.only(top: 16, bottom: 16),
+            margin: const EdgeInsets.only(top: 16, bottom: 16),
           ),
           Wrap(
-            children: [
-              _buildTags(context, "Android"),
-              _buildTags(context, "RX"),
-              _buildTags(context, "Jetpak"),
-              _buildTags(context, "Koin"),
-              _buildTags(context, "Room"),
-            ],
-          ),
+              children: widget.project.tags.developmentTags
+                  .map((e) => _buildTags(context, e))
+                  .toList()),
           const SizedBox(
             height: 80,
           ),
@@ -153,7 +148,8 @@ class _ContactUsState extends State<ProjectDetailsPage> {
             width: MediaQuery.of(context).size.width,
             opacity: .5,
             dashSpace: 16,
-            dashHeight: 16,            margin: const EdgeInsets.only(top: 16, bottom: 16),
+            dashHeight: 16,
+            margin: const EdgeInsets.only(top: 16, bottom: 16),
           ),
           SizedBox(
               child: CarouselSlider.builder(
@@ -199,9 +195,6 @@ class _ContactUsState extends State<ProjectDetailsPage> {
               );
             },
           )),
-          SizedBox(
-            height: 40,
-          )
         ],
       ),
     );
@@ -209,75 +202,92 @@ class _ContactUsState extends State<ProjectDetailsPage> {
 
   Container buildMobile(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 40),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
             height: 40,
           ),
-          GestureDetector(
+          Align(
+            alignment: Alignment.center,
             child: Text(
               widget.project.name.toUpperCase(),
               style: Theme.of(context).textTheme.headline1,
             ),
-            onTap: () {
-              Navigator.of(context).pop();
-            },
           ),
-          const DecorationViewLines(),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 72),
-            child: SelectableText(
-              "",
-              style: Theme.of(context).textTheme.headline6,
-              textAlign: TextAlign.center,
-            ),
+          const Align(
+              alignment: Alignment.center, child: DecorationViewLines()),
+          const SizedBox(
+            height: 8,
+          ),
+          Text(
+            widget.project.description.intro.toUpperCase(),
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                fontWeight: FontWeight.w100,
+                color: Theme.of(context).colorPlate().grey),
           ),
           const SizedBox(
             height: 80,
           ),
+          Text(
+            "Description",
+            style: Theme.of(context).textTheme.headline4,
+          ),
+          DashHorizontal(
+            opacity: .5,
+            dashSpace: 16,
+            dashHeight: 16,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(top: 8),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 40),
             child: Text(
               widget.project.description.fullDescription,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
+          ),
+          Text(
+            "Software stack",
+            style: Theme.of(context).textTheme.headline4,
           ),
           DashHorizontal(
-            width: 224,
+            opacity: .5,
+            dashSpace: 16,
+            dashHeight: 16,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(top: 8),
           ),
-          SizedBox(
-            height: 40,
+          const SizedBox(
+            height: 16,
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
-              children: [
-                _buildTags(context, "Android"),
-                _buildTags(context, "RX"),
-                _buildTags(context, "Jetpak"),
-                _buildTags(context, "Koin"),
-                _buildTags(context, "Room"),
-              ],
-            ),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: widget.project.tags.developmentTags
+                    .map((e) => _buildTags(context, e))
+                    .toList()),
           ),
           const SizedBox(
             height: 40,
           ),
-          GestureDetector(
-            child: Text(
-              'Screenshots'.toUpperCase(),
-              style: Theme.of(context).textTheme.headline1,
-            ),
-            onTap: () {
-              Navigator.of(context).pop();
-            },
+          Text(
+            "Screenshots",
+            style: Theme.of(context).textTheme.headline4,
           ),
-          const DashHorizontal(
-            width: 80,
-            margin: EdgeInsets.only(top: 8, bottom: 40),
+          DashHorizontal(
+            width: MediaQuery.of(context).size.width,
+            opacity: .5,
+            dashSpace: 16,
+            dashHeight: 16,
+            margin: const EdgeInsets.only(top: 16, bottom: 16),
           ),
           SizedBox(
               child: CarouselSlider.builder(
@@ -335,14 +345,12 @@ class _ContactUsState extends State<ProjectDetailsPage> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          child: IconButton(
-            padding: const EdgeInsets.only(left: 0),
-            icon: Image.asset("assets/image/icons/sub_category.png",
-                width: 24, height: 24),
-            iconSize: 16,
-            onPressed: null,
-          ),
+        IconButton(
+          padding: const EdgeInsets.only(left: 0),
+          icon: Image.asset("assets/image/icons/sub_category.png",
+              width: 24, height: 24),
+          iconSize: 16,
+          onPressed: null,
         ),
         Text(
           text,
@@ -351,67 +359,10 @@ class _ContactUsState extends State<ProjectDetailsPage> {
               .headline5
               ?.copyWith(fontStyle: FontStyle.italic),
         ),
-        SizedBox(
+        const SizedBox(
           width: 24,
         ),
       ],
-    );
-  }
-
-  Widget _buildLocationInfo(BuildContext context) {
-    return _buildContactInfo('image/icons/pin.png', 'Location:',
-        AppConstants.location, Theme.of(context).textTheme.bodyText1!);
-  }
-
-  Widget buildBuildPhoneInfo(BuildContext context) {
-    return _buildContactInfo('image/icons/call.png', 'Call Us:',
-        AppConstants.phone, Theme.of(context).textTheme.bodyText1!);
-  }
-
-  Widget buildBuildContactInfo(BuildContext context) {
-    return _buildContactInfo('image/icons/email.png', 'Mail Us:',
-        AppConstants.mail, Theme.of(context).textTheme.bodyText1!);
-  }
-
-  Widget buildBuildFacebookInfo(BuildContext context) {
-    return _buildContactInfo('image/social/facebook.png', 'Facebook',
-        AppConstants.facebook, Theme.of(context).textTheme.bodyText1!);
-  }
-
-  Widget buildBuildLinkedinInfo(BuildContext context) {
-    return _buildContactInfo('image/social/linkedin.png', 'Facebook',
-        AppConstants.linkedin, Theme.of(context).textTheme.bodyText1!);
-  }
-
-  Widget buildBuildInstagramInfo(BuildContext context) {
-    return _buildContactInfo('image/social/instagram.png', 'Instagram',
-        AppConstants.instagram, Theme.of(context).textTheme.bodyText1!);
-  }
-
-  Widget _buildContactInfo(
-      String imagePath, String title, String content, TextStyle textStyle) {
-    return FittedBox(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppIcon(imagePath, color: Colors.black.withOpacity(.7), size: 20),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SelectableText(
-                title,
-                style: textStyle,
-              ),
-              const SizedBox(height: 5),
-              SelectableText(
-                content,
-                style: TextStyle(color: Colors.black.withOpacity(.7)),
-              ),
-            ],
-          )
-        ],
-      ),
     );
   }
 }
