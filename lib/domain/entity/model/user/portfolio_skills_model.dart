@@ -1,17 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+class PortfolioSkillsModel {
+  final String title;
+  final bool expanded;
+  final List<PortfolioSkillsModel> children;
 
-part 'generation/portfolio_skills_dto.g.dart';
-
-@JsonSerializable()
-class PortfolioSkillsDTO {
-  String? title;
-  bool? expanded;
-  List<PortfolioSkillsDTO>? children;
-
-  PortfolioSkillsDTO();
-
-  factory PortfolioSkillsDTO.fromJson(Map<String, dynamic> json) =>
-      _$PortfolioSkillsDTOFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PortfolioSkillsDTOToJson(this);
+  PortfolioSkillsModel(
+      {required this.title, required this.expanded, required this.children});
 }

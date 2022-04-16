@@ -9,7 +9,6 @@ abstract class Failure {
 
   //This method return all message, server, connections
   String getMessage();
-
   //This method return error message if it message generated from server
   //else we return null
   String? getDataMessage();

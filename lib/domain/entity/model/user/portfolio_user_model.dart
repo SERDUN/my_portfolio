@@ -1,19 +1,14 @@
-import 'package:my_portfolio/domain/entity/dto/portfolio_skills_dto.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:my_portfolio/domain/entity/model/user/portfolio_skills_model.dart';
 
-part 'generation/portfolio_user_dto.g.dart';
+class PortfolioUserModel {
+  final String name;
+  final String position;
+  final String intro;
+  final List<PortfolioSkillsModel> skills;
 
-@JsonSerializable()
-class PortfolioUserDTO {
-  final String? name;
-  final String? position;
-  final String? intro;
-  final List<PortfolioSkillsDTO>? skills;
-
-  PortfolioUserDTO({this.name, this.position, this.intro, this.skills});
-
-  factory PortfolioUserDTO.fromJson(Map<String, dynamic> json) =>
-      _$PortfolioUserDTOFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PortfolioUserDTOToJson(this);
+  PortfolioUserModel(
+      {required this.name,
+      required this.position,
+      required this.intro,
+      required this.skills});
 }

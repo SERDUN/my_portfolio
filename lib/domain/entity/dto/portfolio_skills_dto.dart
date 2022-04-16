@@ -4,11 +4,11 @@ part 'generation/portfolio_skills_dto.g.dart';
 
 @JsonSerializable()
 class PortfolioSkillsDTO {
-  String? title;
+  final String title;
   bool? expanded;
-  List<PortfolioSkillsDTO>? children;
+  List<PortfolioSkillsDTO> children;
 
-  PortfolioSkillsDTO();
+  PortfolioSkillsDTO({required this.title,this.children=const []});
 
   factory PortfolioSkillsDTO.fromJson(Map<String, dynamic> json) =>
       _$PortfolioSkillsDTOFromJson(json);
