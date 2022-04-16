@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/presenter/pages/host_page/host_page.dart';
-import 'package:my_portfolio/presenter/pages/portfollio/details/project_details_page.dart';
 import 'package:my_portfolio/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'data/tmp_static_data.dart';
-import 'domain/entity/model/model_project.dart';
-import 'presenter/common/style/app_theme.dart';
+
+import 'layers/data/tmp_static_data.dart';
+import 'layers/domain/entity/model/model_project.dart';
+import 'layers/presenter/common/style/app_theme.dart';
+import 'layers/presenter/pages/host_page/host_page.dart';
+import 'layers/presenter/pages/portfollio/details/project_details_page.dart';
 
 void main() {
   runApp(MyApp());

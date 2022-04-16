@@ -55,6 +55,7 @@ flutter:
     - assets/image/icons/pin.png
     - assets/animation/arrow_vertical.json
     - assets/animation/circle_animation.json
+    - assets/data/static.json
 
 
   fonts:
