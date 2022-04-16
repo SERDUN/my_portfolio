@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "projects": [
+    {
+      "name": "Alias",
+      "intro": "",
+      "description": "",
+      "linkAndroid": "",
+      "linkIOS": "",
+      "linkSource": "",
+      "tags": {
+        "projects": [
+          "Test"
+        ],
+        "develop": [
+          "Test"
+        ]
+      },
+      "media": {
+        "screenshots": [
+          {
+            "url": "",
+            "fitType": ""
+          }
+        ],
+        "preview": {
+          "url": "",
+          "fitType": ""
+        }
+      }
+    }
+  ],
+  "user": {
+    "name": "Dmitro Serdun",
+    "position": "Mobile Developer",
+    "intro": "Through the thorns to the stars!",
+    "skills":  [
+      {
+        "title": "Mobile",
+        "expanded": true,
+        "children": [
+          {
+            "title": "Android",
+            "expanded": false,
+            "children": [
+              {
+                "title": "Java core",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Kotlin",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Jetpack",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Koin",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Retrofit",
+                "expanded": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "Flutter",
+            "expanded": false,
+            "children": [
+              {
+                "title": "Dart",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Provider",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "BLoC",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Redux",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Localization",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Lottie",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Web",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Creating plugin",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Custom animation",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Navigation",
+                "expanded": false,
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "General practice",
+            "expanded": true,
+            "children": [
+              {
+                "title": "Clean architecture/MVP/MVVM",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "OOP/SOLID",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "KISS",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Git",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "RESTful",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Firebase",
+                "expanded": false,
+                "children": []
+              },
+              {
+                "title": "Payments integration",
+                "expanded": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Back-end",
+        "expanded": true,
+        "children": [
+          {
+            "title": "NodeJS (Beginner)",
+            "expanded": false,
+            "children": []
+          },
+          {
+            "title": "Firebase cloud functions",
+            "expanded": false,
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "Database",
+        "expanded": true,
+        "children": [
+          {
+            "title": "SQL",
+            "expanded": false,
+            "children": []
+          },
+          {
+            "title": "Firebase database",
+            "expanded": false,
+            "children": []
+          },
+          {
+            "title": "Shared preferences",
+            "expanded": false,
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class DashVertical extends StatelessWidget {
   final double height;
+  final double? width;
   final EdgeInsets margin;
   final double opacity;
   final double horizontalRepeatCount;
@@ -10,6 +11,7 @@ class DashVertical extends StatelessWidget {
   const DashVertical(
       {Key? key,
       required this.height,
+      this.width,
       this.margin = EdgeInsets.zero,
       this.opacity = 1.0,
       this.horizontalRepeatCount = 1,
@@ -19,6 +21,7 @@ class DashVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
       margin: margin,
       child: CustomPaint(
           size: Size(1, height),

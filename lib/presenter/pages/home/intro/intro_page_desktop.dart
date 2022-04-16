@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:lottie/lottie.dart';
@@ -8,6 +9,7 @@ import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../common/widgets/button/button_outline.dart';
 import '../../../common/widgets/dash/dash_vertical.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class IntroPageDesktop extends StatefulWidget {
   const IntroPageDesktop({Key? key}) : super(key: key);
@@ -45,119 +47,108 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
   Widget build(BuildContext context) {
     return SizedBox(
       height: 328,
-      child: Stack(children: [
-        buildPhoto(context),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 88,
-              ),
-              SelectableText(
-                "Mobile developer",
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-              RichText(
-                  text: TextSpan(children: [
-                TextSpan(
-                    text: 'D',
-                    style: Theme.of(context).textTheme.headline1?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.primary)),
-                TextSpan(
-                    text: 'mitro',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1
-                        ?.copyWith(fontWeight: FontWeight.w500)),
-                TextSpan(
-                    text: ' S',
-                    style: Theme.of(context).textTheme.headline1?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.primary)),
-                TextSpan(
-                    text: 'erdun',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1
-                        ?.copyWith(fontWeight: FontWeight.w500)),
-              ])),
-              const DashVertical(
-                height: 24,
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              ButtonOutline(
-                text: 'Download CV',
-                onTap: () async {
-                  var url =
-                      "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
-                  await canLaunch(url)
-                      ? await launch(url)
-                      : throw 'Could not launch $url';
-                },
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const DashVertical(
-                height: 88,
-              ),
-              // buildSocial()
-            ],
+      child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Flexible(flex: 1, child: buildDashVertical()),
+            Flexible(
+              child: buildMainContent(),
+              flex: 1,
+            ),
+            Flexible(
+              child: buildPhoto(context),
+              flex: 1,
+            ),
+          ]),
+    );
+  }
+
+  DashVertical buildDashVertical() {
+    return DashVertical(
+      height: 328,
+      width: 224,
+      opacity: .3,
+      horizontalRepeatCount: 35,
+      margin: EdgeInsets.only(left: 0),
+    );
+  }
+
+  Widget buildMainContent() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 88,
           ),
-        ),
-        const DashVertical(
-          height: 328,
-          opacity: .5,
-          horizontalRepeatCount: 35,
-          margin: EdgeInsets.only(left: 0),
-        ),
-      ]),
+          SelectableText(
+            "Mobile developer",
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
+          RichText(
+              text: TextSpan(children: [
+            TextSpan(
+                text: 'D',
+                style: Theme.of(context).textTheme.headline1?.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.primary)),
+            TextSpan(
+                text: 'mitro',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline1
+                    ?.copyWith(fontWeight: FontWeight.w500)),
+            TextSpan(
+                text: ' S',
+                style: Theme.of(context).textTheme.headline1?.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.primary)),
+            TextSpan(
+                text: 'erdun',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline1
+                    ?.copyWith(fontWeight: FontWeight.w500)),
+          ])),
+          const DashVertical(
+            height: 24,
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          ButtonOutline(
+            text: 'Download CV',
+            onTap: () async {
+              var url =
+                  "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
+              await canLaunch(url)
+                  ? await launch(url)
+                  : throw 'Could not launch $url';
+            },
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          const DashVertical(
+            height: 88,
+          ),
+          // buildSocial()
+        ],
+      ),
     );
   }
 
   Widget buildPhoto(BuildContext context) {
-    var animation = Lottie.asset('assets/animation/circle_animation.json',
-        options: LottieOptions(enableMergePaths: true),
-        width: 224,
-        height: 224);
-
-    var photo = Image.asset(
-      "assets/image/patterns/my_photo.png",
-      width: 224,
-      height: 224,
-      fit: BoxFit.cover,
-    );
-
-    return FutureBuilder<bool>(
-        future: fetchData(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            WidgetsBinding.instance!.addPostFrameCallback((_) {
-              controller.forward();
-            });
-            return Align(
-                alignment: Alignment.bottomRight,
-                child: SlideTransition(
-                  position: offset,
-                  child: Container(
-                      margin: const EdgeInsets.only(right: 32),
-                      child: Stack(children: [
-                        Container(
-                            transform: Matrix4Transform()
-                                .scale(2.5)
-                                .translate(x: -160, y: -64)
-                                .matrix4,
-                            child: animation),
-                        photo
-                      ])),
-                ));
-          } else {
-            return const SizedBox();
-          }
-        });
+    return Stack(alignment: Alignment.bottomRight, children: [
+      buildDashVertical(),
+      FadeInImage.memoryNetwork(
+        placeholder: kTransparentImage,
+        width: 324,
+        alignment: Alignment.bottomRight,
+        height: 324,
+        image: 'assets/image/patterns/my_photo.png',
+      ),
+    ]);
   }
 }
