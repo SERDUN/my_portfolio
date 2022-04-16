@@ -19,8 +19,4 @@ class PortfolioDTO {
 
   Map<String, dynamic> toJson() => _$PortfolioDTOToJson(this);
 
-  @override
-  String toString() {
-    return jsonEncode(this);
-  }
 }

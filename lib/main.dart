@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:my_portfolio/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'app_environment_keys.dart';
+import 'di/injection.dart';
 import 'layers/data/tmp_static_data.dart';
 import 'layers/domain/entity/model/model_project.dart';
+import 'layers/domain/usecase/get_user_use_case.dart';
 import 'layers/presenter/common/style/app_theme.dart';
+import 'layers/presenter/pages/home/bloc/bloc.dart';
+import 'layers/presenter/pages/home/bloc/event.dart';
 import 'layers/presenter/pages/host_page/host_page.dart';
 import 'layers/presenter/pages/portfollio/details/project_details_page.dart';
 
-void main() {
+void main() async {
+  await configureDependencies(AppEnvironmentKey.dev);
+
   runApp(MyApp());
 }
 
@@ -36,7 +45,15 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case Routes.home:
             return Routes.fadeThrough(settings, (context) {
-              return const HostPage();
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider<InfoBloc>(
+                    create: (BuildContext context) =>
+                        InfoBloc(di<GetUserUseCase>())..add(InitEvent()),
+                  ),
+                ],
+                child: const HostPage(),
+              );
             });
 
           case Routes.projectDetails:

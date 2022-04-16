@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
+import '../../../../domain/entity/model/user/portfolio_skills_model.dart';
+import '../../../../domain/entity/model/user/portfolio_user_model.dart';
 import '../../../common/widgets/expanded/tree/tree_view.dart';
 
 class AboutMe extends StatefulWidget {
-  final List<Map<String, dynamic>> skills;
+  final String aboutMe;
+ // final List<Map<String, dynamic>> skills;
+  final List<PortfolioSkillsModel> skills;
 
-  AboutMe({Key? key, required this.skills}) : super(key: key);
+  const AboutMe({Key? key, required this.skills, required this.aboutMe})
+      : super(key: key);
 
   @override
   State<AboutMe> createState() => _AboutMeState();
@@ -25,8 +30,10 @@ class _AboutMeState extends State<AboutMe> {
             alignment: WrapAlignment.center,
             children: <Widget>[
               Container(
-                margin:
-                     EdgeInsets.symmetric(horizontal: ResponsiveWrapper.of(context).isDesktop ? 32 : 24, vertical: 32),
+                margin: EdgeInsets.symmetric(
+                    horizontal:
+                        ResponsiveWrapper.of(context).isDesktop ? 32 : 24,
+                    vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -38,8 +45,7 @@ class _AboutMeState extends State<AboutMe> {
                       height: 8,
                     ),
                     SelectableText(
-                      "Hi, let me introduce myself. \nMe twenty-five years and i Live in Ukraine, Odessa. I'm a mobile developer with more than 4 years of experience.\nMy essential platform is Android but for the last 2 years  in general i've created or were practiced Flutter cross-platform projects. \nBy the way  this webpage also developed by Flutter framework)"
-                      "\n\nGlory to Ukraine",
+                      widget.aboutMe,
                       style: Theme.of(context)
                           .textTheme
                           .bodyText1

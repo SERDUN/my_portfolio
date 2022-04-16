@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import '../../../../../domain/entity/model/user/portfolio_skills_model.dart';
 import 'tree_node.dart';
 import 'tree_root.dart';
 
 class TreeView extends StatelessWidget {
-  final List<Map<String, dynamic>> data;
+  final List<PortfolioSkillsModel> data;
 
-  final String titleKey;
-  final String leadingKey;
+  // final String titleKey;
   final String expanedKey;
   final String childrenKey;
   final double offsetLeft;
@@ -19,9 +19,8 @@ class TreeView extends StatelessWidget {
   final TextStyle categoryTextStyle;
 
   const TreeView({
+    Key? key,
     required this.data,
-    this.titleKey = 'title',
-    this.leadingKey = 'leading',
     this.expanedKey = 'expaned',
     this.childrenKey = 'children',
     this.offsetLeft = 24.0,
@@ -30,35 +29,23 @@ class TreeView extends StatelessWidget {
     this.titleOnTap,
     this.leadingOnTap,
     this.trailingOnTap,
-  });
+  }) : super(key: key);
 
   List<TreeNode> _geneTreeNodes(List list) {
     List treeNodes = <TreeNode>[];
 
     for (int i = 0; i < list.length; i++) {
-      final Map<String, dynamic> item = list[i];
-      final title = item[titleKey] == null
-          ? null
-          : Text(
-              item[titleKey],
-              style: subCategoryTextStyle,
+      final PortfolioSkillsModel item = list[i];
+      final title = Text(
+        item.title,
+        style: subCategoryTextStyle,
         softWrap: true,
-
-            );
-      final leading = item[leadingKey] == null
-          ? null
-          : Text(
-              item[leadingKey],
-              style: subCategoryTextStyle,
-        softWrap: true,
-overflow: TextOverflow.ellipsis,
       );
-      final expaned = item[expanedKey] ?? false;
-      final children = item[childrenKey] as List;
+      final expaned = item.expanded ;
+      final children = item.children;
 
       treeNodes.add(TreeNode(
         title: title,
-        leading: leading,
         expanded: expaned,
         offsetLeft: offsetLeft,
         titleOnTap: titleOnTap,
@@ -76,25 +63,17 @@ overflow: TextOverflow.ellipsis,
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(data.length, (int index) {
-        final Map<String, dynamic> item = data[index];
-        final title = item[titleKey] == null
-            ? null
-            : Text(
-                item[titleKey],
-                style: categoryTextStyle,
-              );
-        final leading = item[leadingKey] == null
-            ? null
-            : Text(
-                item[leadingKey],
-                style: subCategoryTextStyle,
-              );
-        final expaned = item[expanedKey] ?? false;
-        final children = item[childrenKey] as List;
+        final PortfolioSkillsModel item = data[index];
+        final title = Text(
+          item.title,
+          style: categoryTextStyle,
+        );
+
+        final expaned = item.expanded;
+        final children = item.children;
 
         return TreeRoot(
           title: title,
-          leading: leading,
           expanded: expaned,
           offsetLeft: offsetLeft,
           titleOnTap: titleOnTap,

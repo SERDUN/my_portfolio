@@ -9,7 +9,6 @@ class TreeNode extends StatefulWidget {
   final List<Widget> children;
 
   final Widget? title;
-  final Widget? leading;
   final Widget? trailing;
 
   final Function? titleOnTap;
@@ -24,11 +23,7 @@ class TreeNode extends StatefulWidget {
     this.offsetLeft = 24.0,
     this.children = const [],
     this.title = const Text('Title'),
-    this.leading = const IconButton(
-      icon: Icon(Icons.star_border),
-      iconSize: 16,
-      onPressed: null,
-    ),
+
     this.trailing = const IconButton(
       icon: Icon(Icons.expand_more),
       iconSize: 16,

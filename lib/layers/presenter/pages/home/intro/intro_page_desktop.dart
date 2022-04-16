@@ -1,12 +1,16 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/layers/domain/entity/model/user/portfolio_user_model.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../common/widgets/button/button_outline.dart';
 import '../../../common/widgets/dash/dash_vertical.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class IntroPageDesktop extends StatefulWidget {
-  const IntroPageDesktop({Key? key}) : super(key: key);
+  final PortfolioUserModel? userModel;
+
+  const IntroPageDesktop({required this.userModel, Key? key}) : super(key: key);
 
   @override
   State<IntroPageDesktop> createState() => _IntroPageDesktopState();
@@ -59,7 +63,7 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
   }
 
   DashVertical buildDashVertical() {
-    return DashVertical(
+    return const DashVertical(
       height: 328,
       width: 224,
       opacity: .3,
@@ -76,10 +80,14 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
           const SizedBox(
             height: 88,
           ),
-          SelectableText(
-            "Mobile developer",
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
+          AnimatedOpacity(
+              opacity: widget.userModel?.position != null ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              // The green box must be a child of the AnimatedOpacity widget.
+              child: SelectableText(
+                widget.userModel?.position ?? "",
+                style: Theme.of(context).textTheme.subtitle1,
+              )),
           RichText(
               text: TextSpan(children: [
             TextSpan(
@@ -114,11 +122,9 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
           ButtonOutline(
             text: 'Download CV',
             onTap: () async {
-              var url =
-                  "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
-              await canLaunch(url)
-                  ? await launch(url)
-                  : throw 'Could not launch $url';
+              await canLaunch(widget.userModel?.cv ?? "")
+                  ? await launch(widget.userModel?.cv ?? "")
+                  : throw 'Could not launch $widget.userModel?.cv??""';
             },
           ),
           const SizedBox(
@@ -136,13 +142,18 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
   Widget buildPhoto(BuildContext context) {
     return Stack(alignment: Alignment.bottomRight, children: [
       buildDashVertical(),
-      FadeInImage.memoryNetwork(
-        placeholder: kTransparentImage,
-        width: 324,
-        alignment: Alignment.bottomRight,
-        height: 324,
-        image: 'assets/image/patterns/my_photo.png',
-      ),
+      widget.userModel?.avatar != null
+          ? FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              width: 324,
+              alignment: Alignment.bottomRight,
+              height: 229,
+              fit: BoxFit.cover,
+              image: widget.userModel!.avatar,
+            )
+          : const SizedBox(
+              width: 324,
+            ),
     ]);
   }
 }

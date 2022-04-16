@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-
 import '../../common/mapper_contract.dart';
 import '../dto/portfolio_skills_dto.dart';
 import '../model/user/portfolio_skills_model.dart';

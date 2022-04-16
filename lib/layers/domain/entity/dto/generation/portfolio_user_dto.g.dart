@@ -10,6 +10,8 @@ PortfolioUserDTO _$PortfolioUserDTOFromJson(Map<String, dynamic> json) =>
     PortfolioUserDTO(
       name: json['name'] as String?,
       position: json['position'] as String?,
+      avatar: json['avatarUrl'] as String?,
+      cv: json['cvUrl'] as String?,
       intro: json['intro'] as String?,
       skills: (json['skills'] as List<dynamic>?)
           ?.map((e) => PortfolioSkillsDTO.fromJson(e as Map<String, dynamic>))

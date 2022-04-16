@@ -1,13 +1,14 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../domain/entity/model/user/portfolio_user_model.dart';
 import '../../../common/widgets/button/button_outline.dart';
-import '../../../common/widgets/dash/dash_vertical.dart';
 
 class IntroPageMobile extends StatefulWidget {
-  const IntroPageMobile({Key? key}) : super(key: key);
+  final PortfolioUserModel? userModel;
+
+  const IntroPageMobile({required this.userModel, Key? key}) : super(key: key);
 
   @override
   State<IntroPageMobile> createState() => _IntroPageDesktopState();
@@ -82,11 +83,9 @@ class _IntroPageDesktopState extends State<IntroPageMobile> {
             ButtonOutline(
               text: 'Завантажити резюме',
               onTap: () async {
-                var url =
-                    "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing";
-                await canLaunch(url)
-                    ? await launch(url)
-                    : throw 'Could not launch $url';
+                await canLaunch(widget.userModel?.cv ?? "")
+                    ? await launch(widget.userModel?.cv ?? "")
+                    : throw 'Could not launch $widget.userModel?.cv??""';
               },
             ),
             const SizedBox(
