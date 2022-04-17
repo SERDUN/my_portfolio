@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import '../../../../domain/usecase/get_user_use_case.dart';
+import '../../../../domain/usecase/user/get_user_use_case.dart';
 import 'event.dart';
 import 'state.dart';
 

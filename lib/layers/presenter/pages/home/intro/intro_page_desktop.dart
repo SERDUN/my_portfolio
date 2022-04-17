@@ -49,7 +49,26 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Flexible(flex: 1, child: buildDashVertical()),
+            Flexible(
+                flex: 1,
+                child: Stack(
+                  children: [
+                    buildDashVertical(),
+                    Align(
+                      child: Container(
+                        margin: EdgeInsets.only(left: 8, bottom: 8),
+                        child: Text(
+                          "v.1.0.0+1 (In develop)",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              ?.copyWith(color: Colors.red),
+                        ),
+                      ),
+                      alignment: Alignment.bottomLeft,
+                    )
+                  ],
+                )),
             Flexible(
               child: buildMainContent(),
               flex: 1,

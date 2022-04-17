@@ -5,7 +5,7 @@ part 'generation/project_dto.g.dart';
 
 @JsonSerializable()
 class ProjectDTO {
-
+  final int? id;
   final String? name;
   final String? intro;
   final String? description;
@@ -15,7 +15,7 @@ class ProjectDTO {
   final ProjectTagsDTO? tags;
   final ProjectMediaDTO? media;
 
-  ProjectDTO({this.name, this.intro, this.description, this.linkAndroid, this.linkIOS, this.linkSource, this.tags, this.media});
+  ProjectDTO({this.id,this.name, this.intro, this.description, this.linkAndroid, this.linkIOS, this.linkSource, this.tags, this.media});
 
 
   factory ProjectDTO.fromJson(Map<String, dynamic> json) => _$ProjectDTOFromJson(json);

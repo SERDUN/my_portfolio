@@ -3,12 +3,13 @@ import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_f
 import 'package:octo_image/octo_image.dart';
 import '../../../../../routes.dart';
 import '../../../../domain/entity/model/model_project.dart';
+import '../../../../domain/entity/model/projects/project_model.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 import '../../../common/widgets/button/button_outline.dart';
 import '../../../common/widgets/dash/dash_horizontal.dart';
 
 class PortfolioItem extends StatelessWidget {
-  final ModelProject project;
+  final ProjectModel project;
 
   const PortfolioItem({Key? key, required this.project}) : super(key: key);
 
@@ -132,15 +133,18 @@ class PortfolioItem extends StatelessWidget {
 
   void _openDetails(BuildContext context) {
     Navigator.of(context, rootNavigator: true)
-        .pushNamed(Routes.projectDetails, arguments: project);
+        .pushNamed(Routes.projectDetails, arguments: project.id);
   }
 
   Widget _buildProjectDescription(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 8, right: 40),
-      child: SelectableText(
-        project.description.shortDescription,
-        style: Theme.of(context).textTheme.bodyText1,
+      child: Text(
+        project.description ?? "",
+        maxLines: 3,
+        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+              overflow: TextOverflow.ellipsis,
+            ),
       ),
     );
   }
@@ -153,7 +157,7 @@ class PortfolioItem extends StatelessWidget {
           child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
-                project.name,
+                project.name ?? "",
                 style: Theme.of(context).textTheme.headline1,
               ))),
     );
@@ -173,7 +177,8 @@ class PortfolioItem extends StatelessWidget {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(6.0),
                     child: OctoImage(
-                      image: Image.network(project.media.mainCover).image,
+                      image: Image.network(project.media?.preview?.url ?? "")
+                          .image,
                       placeholderBuilder: OctoPlaceholder.blurHash(
                         'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                       ),
@@ -185,10 +190,10 @@ class PortfolioItem extends StatelessWidget {
   }
 
   BoxFit _getBoxFit() {
-    if (project.media.typeCover == "cover") {
+    if (project.media?.preview.fitType == "cover") {
       return BoxFit.cover;
     }
-    if (project.media.typeCover == "fitWidth") {
+    if (project.media?.preview.fitType == "fitWidth") {
       return BoxFit.fitWidth;
     }
     return BoxFit.fitHeight;
@@ -197,7 +202,7 @@ class PortfolioItem extends StatelessWidget {
   Wrap buildTechnology(BuildContext context) {
     return Wrap(
       spacing: 8,
-      children: project.tags.developmentTags
+      children: (project.tags?.develop ?? [])
           .map((s) => Container(
                 child: Text(
                   s,

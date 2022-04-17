@@ -1,18 +1,22 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
+import 'package:my_portfolio/layers/presenter/pages/portfollio/details/bloc/state.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../domain/entity/model/model_project.dart';
+import '../../../../domain/entity/model/projects/project_model.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 import '../../../common/widgets/dash/dash_horizontal.dart';
 import '../../../common/widgets/decoration/decoration_view.dart';
 import '../../../common/widgets/bars/project_details_bar.dart';
+import 'bloc/bloc.dart';
+import 'bloc/event.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
-  final ModelProject project;
+  final int id;
 
-  const ProjectDetailsPage({Key? key, required this.project}) : super(key: key);
+  const ProjectDetailsPage({Key? key, required this.id}) : super(key: key);
 
   @override
   _ContactUsState createState() => _ContactUsState();
@@ -20,19 +24,35 @@ class ProjectDetailsPage extends StatefulWidget {
 
 class _ContactUsState extends State<ProjectDetailsPage> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const ProjectDetailsBar(),
-      body: SingleChildScrollView(
-        child: ResponsiveWidget(
-          desktopScreen: buildDesctop(context),
-          mobileScreen: buildMobile(context),
-        ),
-      ),
-    );
+  void initState() {
+    BlocProvider.of<ProjectDetailsBloc>(context)
+        .add(GetProjectEvent(widget.id));
+    super.initState();
   }
 
-  Widget buildDesctop(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
+        builder: (context, state) {
+      if (state.projects == null) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      } else {
+        return Scaffold(
+          appBar: const ProjectDetailsBar(),
+          body: SingleChildScrollView(
+            child: ResponsiveWidget(
+              desktopScreen: buildDesctop(state.projects!),
+              mobileScreen: buildMobile(state.projects!),
+            ),
+          ),
+        );
+      }
+    });
+  }
+
+  Widget buildDesctop(ProjectModel project) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,7 +75,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                widget.project.name.toUpperCase(),
+                                (project.name ?? "").toUpperCase(),
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1
@@ -75,7 +95,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                         child: Container(
                             margin: const EdgeInsets.only(right: 8),
                             child: Text(
-                              widget.project.description.intro.toUpperCase(),
+                              (project.intro ?? "").toUpperCase(),
                               textAlign: TextAlign.right,
                               style: Theme.of(context)
                                   .textTheme
@@ -100,12 +120,33 @@ class _ContactUsState extends State<ProjectDetailsPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Visibility(
-                  visible: widget.project.androidLink != null,
+                  visible: project.linkSource.isNotEmpty,
                   child: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                           onTap: () async {
-                            var url = widget.project.androidLink ?? "";
+                            var url = project.linkSource ?? "";
+                            await canLaunch(url)
+                                ? await launch(url)
+                                : throw 'Could not launch $url';
+                          },
+                          child: Image.asset(
+                            "assets/image/icons/github.png",
+                            width: 56,
+                            height: 56,
+                          )))),
+              Visibility(
+                  visible: project.linkSource.isNotEmpty,
+                  child: const SizedBox(
+                    width: 24,
+                  )),
+              Visibility(
+                  visible: project.linkAndroid.isNotEmpty,
+                  child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                          onTap: () async {
+                            var url = project.linkAndroid ?? "";
                             await canLaunch(url)
                                 ? await launch(url)
                                 : throw 'Could not launch $url';
@@ -116,17 +157,17 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                             height: 56,
                           )))),
               Visibility(
-                  visible: widget.project.androidLink != null,
+                  visible: project.linkAndroid.isNotEmpty,
                   child: const SizedBox(
                     width: 24,
                   )),
               Visibility(
-                  visible: widget.project.appleLink != null,
+                  visible: project.linkIOS.isNotEmpty,
                   child: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                           onTap: () async {
-                            var url = widget.project.appleLink ?? "";
+                            var url = project.linkIOS ?? "";
                             await canLaunch(url)
                                 ? await launch(url)
                                 : throw 'Could not launch $url';
@@ -137,7 +178,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                             height: 56,
                           )))),
               Visibility(
-                  visible: widget.project.appleLink != null,
+                  visible: project.linkIOS.isNotEmpty,
                   child: const SizedBox(
                     width: 24,
                   )),
@@ -173,12 +214,12 @@ class _ContactUsState extends State<ProjectDetailsPage> {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Text(
-            widget.project.description.fullDescription,
+            project.description ?? "",
             style: Theme.of(context).textTheme.bodyText1,
           ),
         ),
         const SizedBox(
-          height: 80,
+          height: 24,
         ),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
@@ -196,7 +237,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Wrap(
-                children: widget.project.tags.developmentTags
+                children: (project.tags?.develop ?? [])
                     .map((e) => _buildTags(context, e))
                     .toList())),
         const SizedBox(
@@ -229,7 +270,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
             enlargeCenterPage: true,
             scrollDirection: Axis.horizontal,
           ),
-          itemCount: widget.project.media.screenshots.length,
+          itemCount: project.media?.screenshots.length ?? 0,
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) {
             return SizedBox(
@@ -245,7 +286,8 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
                         image: Image.network(
-                                widget.project.media.screenshots[itemIndex])
+                                project.media?.screenshots[itemIndex]?.url ??
+                                    "")
                             .image,
                         placeholderBuilder: OctoPlaceholder.blurHash(
                           'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
@@ -263,7 +305,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
     );
   }
 
-  Widget buildMobile(BuildContext context) {
+  Widget buildMobile(ProjectModel project) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -273,7 +315,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
         Align(
           alignment: Alignment.center,
           child: Text(
-            widget.project.name.toUpperCase(),
+            (project.name ?? "").toUpperCase(),
             style: Theme.of(context).textTheme.headline1,
           ),
         ),
@@ -284,7 +326,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
-              widget.project.description.intro.toUpperCase(),
+              (project.intro ?? "").toUpperCase(),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.subtitle1?.copyWith(
                   fontWeight: FontWeight.w100,
@@ -304,7 +346,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
           dashSpace: 16,
           dashHeight: 16,
           width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.only(top: 8),
+          margin: const EdgeInsets.only(top: 8),
         ),
         const SizedBox(
           height: 16,
@@ -313,7 +355,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
             margin: const EdgeInsets.symmetric(horizontal: 8),
             child: Container(
               child: Text(
-                widget.project.description.fullDescription,
+                project.description ?? "",
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             )),
@@ -341,7 +383,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
           child: Container(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: widget.project.tags.developmentTags
+                children: (project.tags?.develop ?? [])
                     .map((e) => _buildTags(context, e))
                     .toList()),
           ),
@@ -378,7 +420,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
             enlargeCenterPage: true,
             scrollDirection: Axis.horizontal,
           ),
-          itemCount: widget.project.media.screenshots.length,
+          itemCount: project.media?.screenshots.length,
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) {
             return SizedBox(
@@ -394,7 +436,8 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
                         image: Image.network(
-                                widget.project.media.screenshots[itemIndex])
+                                project.media?.screenshots[itemIndex]?.url ??
+                                    "")
                             .image,
                         placeholderBuilder: OctoPlaceholder.blurHash(
                           'LEHV6nWB2yk8pyo0adR*.7kCMdnj',

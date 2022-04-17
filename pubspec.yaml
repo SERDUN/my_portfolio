@@ -12,7 +12,6 @@ dependencies:
   responsive_framework: ^0.1.7
   lottie: ^1.2.1
   matrix4_transform: ^2.0.1
-  flutter_svg_provider: ^1.0.3
   octo_image: ^1.0.1
   url_launcher: ^6.0.20
   carousel_slider: ^4.0.0
@@ -48,6 +47,7 @@ flutter:
     - assets/image/icons/category.png
     - assets/image/icons/android.png
     - assets/image/icons/sub_category.png
+    - assets/image/icons/github.png
     - assets/image/icons/call.png
     - assets/image/icons/email.png
     - assets/image/social/google_play.png
