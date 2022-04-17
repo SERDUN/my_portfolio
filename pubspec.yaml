@@ -12,13 +12,21 @@ dependencies:
   responsive_framework: ^0.1.7
   lottie: ^1.2.1
   matrix4_transform: ^2.0.1
-  flutter_svg_provider: ^1.0.3
   octo_image: ^1.0.1
   url_launcher: ^6.0.20
   carousel_slider: ^4.0.0
   cupertino_icons: ^1.0.2
+  transparent_image: ^2.0.0
+  get_it: ^7.2.0
+  injectable: ^1.5.0
+  json_annotation: ^4.4.0
+  flutter_bloc: ^8.0.1
+
 
 dev_dependencies:
+  build_runner: ^2.1.5
+  injectable_generator: ^1.5.2
+  json_serializable: ^6.1.1
   flutter_test:
     sdk: flutter
 
@@ -39,6 +47,7 @@ flutter:
     - assets/image/icons/category.png
     - assets/image/icons/android.png
     - assets/image/icons/sub_category.png
+    - assets/image/icons/github.png
     - assets/image/icons/call.png
     - assets/image/icons/email.png
     - assets/image/social/google_play.png
@@ -46,6 +55,7 @@ flutter:
     - assets/image/icons/pin.png
     - assets/animation/arrow_vertical.json
     - assets/animation/circle_animation.json
+    - assets/data/static.json
 
 
   fonts:
