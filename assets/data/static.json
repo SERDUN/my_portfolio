@@ -131,7 +131,7 @@
       }
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "mPet",
       "intro": "A mobile app to store and share pets medical and health data and find useful information about pet",
       "description": "Manage, store and transfer pet medical records and health information. Communicate with veterinarians and pet service providers through video, text and send pictures. Locate pet service providers using Google locator.\",\n",
@@ -186,7 +186,7 @@
       "name": "Columbus Coffee Rewards",
       "intro": "A loyalty app that allows Columbus Coffee customers to earn points and find nearby locations",
       "description": "The story of Columbus Coffee began in 1994 when four coffee aficionados including David Burton got an idea for a cafe that would share the best coffee traditions from around the world. After much planning, they opened their first coffee spot in Auckland CBD. Today, Columbus Coffee is a premium fast-casual franchise that has over 60 cafes across the North and South Islands of New Zealand. ",
-      "linkAndroid": "https://apps.apple.com/nz/app/columbus-coffee-rewards/id1551717863",
+      "linkAndroid": "https://play.google.com/store/apps/details?id=com.tranxactor.columbuscoffee2021",
       "linkIOS": "",
       "linkSource": "",
       "tags": {
@@ -534,27 +534,27 @@
             "fitType": "fitHeight"
           },
           {
-            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr2.jpg",
+            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr2.png",
             "fitType": "fitHeight"
           },
           {
-            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr3.jpg",
+            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr3.png",
             "fitType": "fitHeight"
           },
           {
-            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr4.jpg",
+            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr4.png",
             "fitType": "fitHeight"
           },
           {
-            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr5.jpg",
+            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr5.png",
             "fitType": "fitHeight"
           },
           {
-            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr6.jpg",
+            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr6.png",
             "fitType": "fitHeight"
           },
           {
-            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr7.jpg",
+            "url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr7.png",
             "fitType": "fitHeight"
           }
         ],
