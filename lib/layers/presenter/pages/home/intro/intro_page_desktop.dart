@@ -18,25 +18,8 @@ class IntroPageDesktop extends StatefulWidget {
 }
 
 class _IntroPageDesktopState extends State<IntroPageDesktop>
-    with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation<Offset> offset;
+    {
 
-  @override
-  void initState() {
-    controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-
-    offset = Tween<Offset>(end: Offset.zero, begin: const Offset(0.0, 1.0))
-        .animate(controller);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
 
   Future<bool> fetchData() => Future.delayed(const Duration(seconds: 2), () {
         return true;
@@ -94,7 +77,6 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
 
   Widget buildMainContent() {
     return Center(
-      child: Expanded(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -159,7 +141,7 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
             // buildSocial()
           ],
         ),
-      ),
+
     );
   }
 

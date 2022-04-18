@@ -35,17 +35,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/image/patterns/bike.svg
-    - assets/image/patterns/my_photo.png
     - assets/image/social/facebook.png
     - assets/image/social/gmail.png
     - assets/image/social/instagram.png
     - assets/image/social/linkedin.png
     - assets/image/language/ua.png
     - assets/image/language/en.png
-    - assets/image/icons/java.png
     - assets/image/icons/category.png
-    - assets/image/icons/android.png
     - assets/image/icons/sub_category.png
     - assets/image/icons/github.png
     - assets/image/icons/call.png

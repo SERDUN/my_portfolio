@@ -6,142 +6,136 @@
   "intro": "Hi, let me introduce myself. \nMe twenty-five years and i Live in Ukraine, Odessa. I'm a mobile developer with more than 4 years of experience.\nMy essential platform is Android but for the last 2 years  in general i've created or were practiced Flutter cross-platform projects. \nBy the way  this webpage also developed by Flutter framework)\n                      \n\nGlory to Ukraine",
   "skills": [
     {
-      "title": "Mobile",
-      "expanded": true,
+      "title": "Android",
+      "expanded": false,
       "children": [
         {
-          "title": "Android",
+          "title": "Java core",
           "expanded": false,
-          "children": [
-            {
-              "title": "Java core",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Kotlin",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Jetpack",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Koin",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Retrofit",
-              "expanded": false,
-              "children": []
-            }
-          ]
+          "children": []
         },
         {
-          "title": "Flutter",
+          "title": "Kotlin",
           "expanded": false,
-          "children": [
-            {
-              "title": "Dart",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Provider",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "BLoC",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Redux",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Localization",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Lottie",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Web",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Creating plugin",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Custom animation",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Navigation",
-              "expanded": false,
-              "children": []
-            }
-          ]
+          "children": []
         },
         {
-          "title": "General practice",
-          "expanded": true,
-          "children": [
-            {
-              "title": "Clean architecture/MVP/MVVM",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "OOP/SOLID",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "KISS",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Git",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "RESTful",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Firebase",
-              "expanded": false,
-              "children": []
-            },
-            {
-              "title": "Payments integration",
-              "expanded": false,
-              "children": []
-            }
-          ]
+          "title": "Jetpack",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Koin",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Retrofit",
+          "expanded": false,
+          "children": []
         }
       ]
     },
     {
-      "title": "Back-end",
+      "title": "Flutter",
       "expanded": true,
+      "children": [
+        {
+          "title": "Dart",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Provider",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "BLoC",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Redux",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Localization",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Lottie",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Web",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Creating plugin",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Custom animation",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Navigation",
+          "expanded": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "General practice",
+      "expanded": true,
+      "children": [
+        {
+          "title": "Clean architecture/MVP/MVVM",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "OOP/SOLID",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "KISS",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Git",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "RESTful",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Firebase",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Payments integration",
+          "expanded": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Side",
+      "expanded": false,
       "children": [
         {
           "title": "NodeJS (Beginner)",
@@ -152,13 +146,7 @@
           "title": "Firebase cloud functions",
           "expanded": false,
           "children": []
-        }
-      ]
-    },
-    {
-      "title": "Database",
-      "expanded": true,
-      "children": [
+        },
         {
           "title": "SQL",
           "expanded": false,
@@ -168,12 +156,8 @@
           "title": "Firebase database",
           "expanded": false,
           "children": []
-        },
-        {
-          "title": "Shared preferences",
-          "expanded": false,
-          "children": []
         }
+
       ]
     }
   ]
