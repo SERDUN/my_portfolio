@@ -146,7 +146,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                           onTap: () async {
-                            var url = project.linkAndroid ?? "";
+                            var url = project.linkAndroid;
                             await canLaunch(url)
                                 ? await launch(url)
                                 : throw 'Could not launch $url';
@@ -167,7 +167,7 @@ class _ContactUsState extends State<ProjectDetailsPage> {
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                           onTap: () async {
-                            var url = project.linkIOS ?? "";
+                            var url = project.linkIOS ;
                             await canLaunch(url)
                                 ? await launch(url)
                                 : throw 'Could not launch $url';

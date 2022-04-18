@@ -23,7 +23,6 @@ class TreeNode extends StatefulWidget {
     this.offsetLeft = 24.0,
     this.children = const [],
     this.title = const Text('Title'),
-
     this.trailing = const IconButton(
       icon: Icon(Icons.expand_more),
       iconSize: 16,
@@ -66,39 +65,38 @@ class _TreeNodeState extends State<TreeNode>
       children: <Widget>[
         Padding(
             padding: const EdgeInsets.only(left: 0.0, right: 12.0, top: 8),
-            child: GestureDetector(
-                onTap: () {
-                  if (widget.leadingOnTap != null &&
-                      widget.leadingOnTap is Function) {
-                    widget.leadingOnTap!();
-                  }
-                  setState(() {
-                    _isExpanded = !_isExpanded;
-                    if (_isExpanded) {
-                      _rotationController.forward();
-                    } else {
-                      _rotationController.reverse();
-                    }
-                    if (widget.trailingOnTap != null &&
-                        widget.trailingOnTap is Function) {
-                      widget.trailingOnTap!();
-                    }
-                  });
-                  _turnsTween.animate(_rotationController);
-                },
+            child: InkWell(
+                onTap: children.isNotEmpty
+                    ? () {
+                        if (widget.leadingOnTap != null &&
+                            widget.leadingOnTap is Function) {
+                          widget.leadingOnTap!();
+                        }
+                        setState(() {
+                          _isExpanded = !_isExpanded;
+                          if (_isExpanded) {
+                            _rotationController.forward();
+                          } else {
+                            _rotationController.reverse();
+                          }
+                          if (widget.trailingOnTap != null &&
+                              widget.trailingOnTap is Function) {
+                            widget.trailingOnTap!();
+                          }
+                        });
+                        _turnsTween.animate(_rotationController);
+                      }
+                    : null,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    IconButton(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 0),
-                      icon: children.length > 1
+                    Container(
+                      child: children.length > 1
                           ? Image.asset("assets/image/icons/category.png",
                               width: 24, height: 24)
                           : Image.asset("assets/image/icons/sub_category.png",
                               width: 24, height: 24),
-                      iconSize: 16,
-                      onPressed: null,
+                      padding: const EdgeInsets.all(8),
                     ),
                     Expanded(child: widget.title ?? Container()),
                     const SizedBox(width: 6.0),
