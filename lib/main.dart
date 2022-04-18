@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
           debugLog: true,
           breakpoints: [
             const ResponsiveBreakpoint.autoScale(320, name: MOBILE),
-            const ResponsiveBreakpoint.autoScale(450, name: MOBILE),
-            const ResponsiveBreakpoint.autoScaleDown(800, name: TABLET),
+            const ResponsiveBreakpoint.autoScale(450, name:MOBILE ),
+            const ResponsiveBreakpoint.resize(800, name: TABLET),
             const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
             const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
             const ResponsiveBreakpoint.autoScale(2460, name: "4K"),

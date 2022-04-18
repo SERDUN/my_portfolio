@@ -17,7 +17,7 @@ class ResponsiveWidget extends StatelessWidget {
     }
 
     if (ResponsiveWrapper.of(context).isTablet) {
-      return tabletScreen ?? mobileScreen ?? desktopScreen!;
+      return tabletScreen ?? desktopScreen  ?? mobileScreen!;
     }
 
     //Mobile

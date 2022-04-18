@@ -3,8 +3,17 @@ import 'package:flutter/material.dart';
 class ButtonOutline extends StatelessWidget {
   final Function onTap;
   final String text;
+  final double? width;
+  final double corner;
+  final EdgeInsets? margin;
 
-  const ButtonOutline({Key? key, required this.onTap, required this.text})
+  const ButtonOutline(
+      {Key? key,
+      required this.onTap,
+      required this.text,
+      this.corner=16,
+      this.width,
+       this.margin})
       : super(key: key);
 
   @override
@@ -13,19 +22,27 @@ class ButtonOutline extends StatelessWidget {
       elevation: 0,
       primary: Theme.of(context).buttonTheme.colorScheme?.primary,
       padding: const EdgeInsets.all(16),
-      textStyle: Theme.of(context).textTheme.button?.copyWith(fontWeight: FontWeight.w100),
+      textStyle: Theme.of(context)
+          .textTheme
+          .button
+          ?.copyWith(fontWeight: FontWeight.w100),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          side: BorderSide(color:Theme.of(context).buttonTheme.colorScheme!.primary)),
+          borderRadius: BorderRadius.circular(corner),
+          side: BorderSide(
+              color: Theme.of(context).buttonTheme.colorScheme!.primary)),
     );
 
-    return TextButton(
-      onPressed: () => onTap(),
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
+    return Container(
+      margin: margin,
+      width: width,
+      child: TextButton(
+        onPressed: () => onTap(),
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+        ),
+        style: flatButtonStyle,
       ),
-      style: flatButtonStyle,
     );
   }
 }

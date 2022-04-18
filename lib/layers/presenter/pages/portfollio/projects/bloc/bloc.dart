@@ -7,7 +7,7 @@ import 'state.dart';
 class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
   final GetProjectsUseCase useCase;
 
-  ProjectsBloc(this.useCase) : super(ProjectsState([]).init()) {
+  ProjectsBloc(this.useCase) : super(ProjectsState().init()) {
     on<InitProjectsEvent>(_init);
   }
 

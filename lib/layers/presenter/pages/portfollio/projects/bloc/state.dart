@@ -3,17 +3,17 @@ import '../../../../../domain/entity/model/projects/project_model.dart';
 class ProjectsState {
   final List<ProjectModel> projects;
 
-  ProjectsState(this.projects);
+  ProjectsState({this.projects=const []});
 
   ProjectsState init() {
-    return ProjectsState([]);
+    return ProjectsState();
   }
 
   ProjectsState clone() {
-    return ProjectsState(projects);
+    return ProjectsState();
   }
 
   ProjectsState fill(List<ProjectModel> projects) {
-    return ProjectsState(projects);
+    return ProjectsState(projects: projects);
   }
 }

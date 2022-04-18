@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/domain/entity/model/user/portfolio_user_model.dart';
 import 'package:octo_image/octo_image.dart';
@@ -93,67 +94,71 @@ class _IntroPageDesktopState extends State<IntroPageDesktop>
 
   Widget buildMainContent() {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(
-            height: 88,
-          ),
-          AnimatedOpacity(
-              opacity: widget.userModel?.position != null ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 500),
-              // The green box must be a child of the AnimatedOpacity widget.
-              child: SelectableText(
-                widget.userModel?.position ?? "",
-                style: Theme.of(context).textTheme.subtitle1,
-              )),
-          RichText(
-              text: TextSpan(children: [
-            TextSpan(
-                text: 'D',
-                style: Theme.of(context).textTheme.headline1?.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: Theme.of(context).colorScheme.primary)),
-            TextSpan(
-                text: 'mitro',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline1
-                    ?.copyWith(fontWeight: FontWeight.w500)),
-            TextSpan(
-                text: ' S',
-                style: Theme.of(context).textTheme.headline1?.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: Theme.of(context).colorScheme.primary)),
-            TextSpan(
-                text: 'erdun',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline1
-                    ?.copyWith(fontWeight: FontWeight.w500)),
-          ])),
-          const DashVertical(
-            height: 24,
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          ButtonOutline(
-            text: 'Download CV',
-            onTap: () async {
-              await canLaunch(widget.userModel?.cv ?? "")
-                  ? await launch(widget.userModel?.cv ?? "")
-                  : throw 'Could not launch $widget.userModel?.cv??""';
-            },
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          const DashVertical(
-            height: 88,
-          ),
-          // buildSocial()
-        ],
+      child: Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 88,
+            ),
+            AnimatedOpacity(
+                opacity: widget.userModel?.position != null ? 1.0 : 0.0,
+                duration: const Duration(milliseconds: 500),
+                // The green box must be a child of the AnimatedOpacity widget.
+                child: SelectableText(
+                  widget.userModel?.position ?? "",
+                  style: Theme.of(context).textTheme.subtitle1,
+                )),
+            RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(children: [
+                  TextSpan(
+                      text: 'D',
+                      style: Theme.of(context).textTheme.headline1?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.primary)),
+                  TextSpan(
+                      text: 'mitro',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          ?.copyWith(fontWeight: FontWeight.w500)),
+                  TextSpan(
+                      text: ' S',
+                      style: Theme.of(context).textTheme.headline1?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.primary)),
+                  TextSpan(
+                      text: 'erdun',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          ?.copyWith(fontWeight: FontWeight.w500)),
+                ])),
+            const DashVertical(
+              height: 24,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            ButtonOutline(
+              text: 'Download CV',
+              onTap: () async {
+                await canLaunch(widget.userModel?.cv ?? "")
+                    ? await launch(widget.userModel?.cv ?? "")
+                    : throw 'Could not launch $widget.userModel?.cv??""';
+              },
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const Expanded(
+                child: DashVertical(
+              height: double.infinity,
+            )),
+            // buildSocial()
+          ],
+        ),
       ),
     );
   }
