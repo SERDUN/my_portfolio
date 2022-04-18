@@ -16,96 +16,80 @@ class DesktopPortfolioItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
+    return SizedBox(
+        height: MediaQuery.of(context).size.width * .35,
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(children: [
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
-                height: MediaQuery.of(context).size.width * .3,
-                width: MediaQuery.of(context).size.width * .25,
-                child: _buildProjectLogo(context),
-              ),
-               ButtonOutline(
-                 corner: 8,
-                 width: MediaQuery.of(context).size.width * .25,
-                  text: 'Open details',
-                  onTap: () => openDetails(),
-
-              )
-            ]),
-            Expanded(
-                child: SizedBox(
-                    child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * .01,
-                ),
-                InkWell(
-                  onTap: () => openDetails(),
-                  child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Text(
-                        project.name ?? "",
-                        style: Theme.of(context).textTheme.headline1,
-                      )),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * .01,
-                ),
-                Container(
-                  margin: const EdgeInsets.only(left: 8, right: 40),
-                  child: Text(
-                    project.description ?? "",
-                    maxLines: 3,
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                          overflow: TextOverflow.ellipsis,
+            Flexible(
+                child: Container(
+              margin: const EdgeInsets.only(left: 32),
+              child: _buildProjectLogo(context),
+            )),
+            Flexible(
+                flex: 3,
+                child: Container(
+                  margin: const EdgeInsets.only(left: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          project.name ?? "",
+                          style: Theme.of(context).textTheme.headline1,
                         ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * .01,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 8, right: 40),
+                        child: Text(
+                          project.description ?? "",
+                          maxLines: 3,
+                          style:
+                              Theme.of(context).textTheme.bodyText1?.copyWith(
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 16, right: 40),
+                        child: buildTechnology(context),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * .025,
+                      ),
+                      const Spacer(),
+                      DashHorizontal(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.only(left: 8, right: 32),
+                      )
+                    ],
                   ),
-                ),
-
-                Container(
-                  margin: const EdgeInsets.only(top: 16, right: 40),
-                  child: buildTechnology(context),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * .025,
-                ),
-              ],
-            ))),
+                ))
           ],
-        ),
-        DashHorizontal(
-          width: MediaQuery.of(context).size.width,
-          margin:  EdgeInsets.only(left:  MediaQuery.of(context).size.width * .32,right: 32),
-        )
-      ],
-    );
+        ));
   }
 
   Widget _buildProjectLogo(BuildContext context) {
     return Card(
       elevation: 3,
-      child: InkWell(
-          onTap: () => openDetails(),
-          child: Container(
-              margin: const EdgeInsets.all(4),
-              width: double.infinity,
-              height: double.infinity,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(6.0),
-                  child: OctoImage(
-                      image:
-                          Image.network(project.media?.preview.url ?? "").image,
-                      placeholderBuilder: OctoPlaceholder.blurHash(
-                        'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-                      ),
-                      errorBuilder: OctoError.icon(color: Colors.red),
-                      fit: BoxFit.fitHeight)))),
+      child: Container(
+          margin: const EdgeInsets.all(4),
+          width: double.infinity,
+          height: double.infinity,
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(6.0),
+              child: OctoImage(
+                  image: Image.network(project.media?.preview.url ?? "").image,
+                  placeholderBuilder: OctoPlaceholder.blurHash(
+                    'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                  ),
+                  errorBuilder: OctoError.icon(color: Colors.red),
+                  fit: BoxFit.cover))),
     );
   }
 

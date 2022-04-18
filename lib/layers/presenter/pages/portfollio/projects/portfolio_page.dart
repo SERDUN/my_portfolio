@@ -44,7 +44,10 @@ class _HomePageState extends State<PortfolioPage> {
                 const SizedBox(
                   height: 40,
                 ),
-                ListView.builder(
+                ListView.separated(
+                  separatorBuilder: (context, index) => const SizedBox(
+                    height: 24,
+                  ),
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: state.projects.length,

@@ -15,87 +15,55 @@ class MobilePortfolioItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          InkWell(
-            onTap: () => openDetails(),
-            child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
-                  project.name ?? "",
-                  style: Theme.of(context).textTheme.headline1,
-                )),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 32),
+          child: Text(
+            project.name ?? "",
+            style: Theme.of(context).textTheme.headline2,
           ),
-          SizedBox(width: MediaQuery.of(context).size.width * .075),
-          SizedBox(
-            height: MediaQuery.of(context).size.width * .01,
-          ),
-          Container(
-            margin: const EdgeInsets.only(left: 8, right: 40),
-            child: Text(
-              project.description ?? "",
-              maxLines: 3,
-              style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                    overflow: TextOverflow.ellipsis,
-                  ),
-            ),
-          ),
-          _buildProjectLogo(context),
-          const SizedBox(
-            height: 24,
-          ),
-          ButtonOutline(
-            width: double.infinity,
-            text: 'Open details',
-            onTap: () => openDetails(),
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.width * .025,
-          ),
-          DashHorizontal(
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.zero,
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildProjectLogo(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Container(
-        margin: const EdgeInsets.only(top: 16),
-        height: 360,
-        width: 200,
-        // constraints: const BoxConstraints(maxWidth: 300,minHeight: 300),
-        child: Card(
+        ),
+        Card(
+            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             elevation: 3,
-            child: InkWell(
-                onTap: () => openDetails(),
-                child: Container(
-                    margin: const EdgeInsets.all(4),
-                    width: double.infinity,
-                    height: double.infinity,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(6.0),
-                        child: OctoImage(
-                            image:
-                                Image.network(project.media?.preview.url ?? "")
-                                    .image,
-                            placeholderBuilder: OctoPlaceholder.blurHash(
-                              'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-                            ),
-                            errorBuilder: OctoError.icon(color: Colors.red),
-                            fit: BoxFit.cover))))),
-      ),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(left: 8, right: 40),
+                    child: Text(
+                      project.description ?? "",
+                      maxLines: 3,
+                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                    ),
+                  ),
+                  DashHorizontal(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(9.0),
+                      child: OctoImage(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.75,
+                          image: Image.network(project.media?.preview.url ?? "")
+                              .image,
+                          placeholderBuilder: OctoPlaceholder.blurHash(
+                            'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                          ),
+                          errorBuilder: OctoError.icon(color: Colors.red),
+                          fit: BoxFit.fitWidth))
+                ],
+              ),
+            ))
+      ],
     );
   }
 }
