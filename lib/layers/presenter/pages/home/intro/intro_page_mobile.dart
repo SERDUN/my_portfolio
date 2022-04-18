@@ -27,20 +27,25 @@ class _IntroPageDesktopState extends State<IntroPageMobile> {
             const SizedBox(
               height: 16,
             ),
-            OctoImage.fromSet(
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.medium,
-              width: 128,
-              height: 128,
-              image: Image.asset("assets/image/patterns/my_photo.png").image,
-              octoSet: OctoSet.circleAvatar(
-                backgroundColor: Theme.of(context).colorPlate().yellow!,
-                text: Text(
-                  "SD",
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-              ),
-            ),
+            widget.userModel?.avatar == null
+                ? const SizedBox(
+                    width: 128,
+                    height: 128,
+                  )
+                : OctoImage.fromSet(
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.medium,
+                    width: 128,
+                    height: 128,
+                    image: Image.network(widget.userModel!.avatar).image,
+                    octoSet: OctoSet.circleAvatar(
+                      backgroundColor: Theme.of(context).colorPlate().yellow!,
+                      text: Text(
+                        "SD",
+                        style: Theme.of(context).textTheme.bodyText2,
+                      ),
+                    ),
+                  ),
             Align(
                 alignment: Alignment.center,
                 child: RichText(

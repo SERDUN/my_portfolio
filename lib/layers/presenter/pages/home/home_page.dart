@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-
                 constraints: BoxConstraints(
                   minHeight: MediaQuery.of(context).size.height / 2,
                   minWidth: double.infinity,

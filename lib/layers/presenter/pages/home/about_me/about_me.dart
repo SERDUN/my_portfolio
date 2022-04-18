@@ -65,9 +65,6 @@ class _AboutMeState extends State<AboutMe> {
                     ),
                     TreeView(
                       data: widget.skills,
-                      titleOnTap: () {},
-                      leadingOnTap: () {},
-                      trailingOnTap: () {},
                       subCategoryTextStyle:
                           ResponsiveWrapper.of(context).isDesktop
                               ? Theme.of(context)

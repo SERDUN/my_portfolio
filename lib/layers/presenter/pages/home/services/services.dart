@@ -5,7 +5,7 @@ import 'package:matrix4_transform/matrix4_transform.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 import '../../../../domain/entity/model/service_model.dart';
-
+import '../../../common/widgets/behaviour/responsive_widget.dart';
 
 class Services extends StatefulWidget {
   const Services({Key? key}) : super(key: key);
@@ -53,21 +53,22 @@ class _ServicesState extends State<Services> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 32, bottom: 8,left: 8),
+            margin: const EdgeInsets.only(top: 32, bottom: 8, left: 8),
             child: Text(
               "Services",
               style: Theme.of(context).textTheme.headline4,
             ),
           ),
-
-          Wrap(
-              direction: Axis.horizontal,
-              children: (services.map((i) => buildCard(i)).toList()))
-
-          // Container(
-          //     height: 1,
-          //     margin: const EdgeInsets.only(bottom: 30),
-          //     color: const Color(0xFFEEEEEE)),
+          ResponsiveWidget(
+            desktopScreen: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: (services.map((i) => buildCard(i)).toList()),
+            ),
+            tabletScreen:
+                Wrap(children: (services.map((i) => buildCard(i)).toList())),
+            mobileScreen:
+                Wrap(children: (services.map((i) => buildCard(i)).toList())),
+          )
         ],
       ),
     );

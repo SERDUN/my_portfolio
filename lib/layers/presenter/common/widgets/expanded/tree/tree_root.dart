@@ -8,12 +8,6 @@ class TreeRoot extends StatefulWidget {
   final List<Widget> children;
 
   final Widget? title;
-  final Widget? leading;
-  final Widget? trailing;
-
-  final Function? titleOnTap;
-  final Function? leadingOnTap;
-  final Function? trailingOnTap;
 
   const TreeRoot({
     Key? key,
@@ -22,19 +16,6 @@ class TreeRoot extends StatefulWidget {
     this.offsetLeft = 24.0,
     this.children = const [],
     this.title = const Text('Title'),
-    this.leading = const IconButton(
-      icon: Icon(Icons.star_border),
-      iconSize: 16,
-      onPressed: null,
-    ),
-    this.trailing = const IconButton(
-      icon: Icon(Icons.expand_more),
-      iconSize: 16,
-      onPressed: null,
-    ),
-    this.titleOnTap,
-    this.leadingOnTap,
-    this.trailingOnTap,
   }) : super(key: key);
 
   @override
@@ -127,9 +108,6 @@ class _TreeNodeState extends State<TreeRoot>
         _rotationController.forward();
       } else {
         _rotationController.reverse();
-      }
-      if (widget.trailingOnTap != null && widget.trailingOnTap is Function) {
-        widget.trailingOnTap!();
       }
     });
   }
