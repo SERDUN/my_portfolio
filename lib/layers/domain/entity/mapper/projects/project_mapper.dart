@@ -26,7 +26,7 @@ class ProjectMapper extends Mapper<ProjectDTO, ProjectModel> {
         name: dto.name,
         id: dto.id,
         intro: dto.intro,
-        description: dto.description,
+        description: dto.description?.trim(),
         linkAndroid: dto.linkAndroid??"",
         linkIOS: dto.linkIOS??"",
         linkSource: dto.linkSource??"",

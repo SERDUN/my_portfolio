@@ -12,6 +12,7 @@ ProjectTagsDTO _$ProjectTagsDTOFromJson(Map<String, dynamic> json) =>
           (json['projects'] as List<dynamic>).map((e) => e as String).toList(),
       develop:
           (json['develop'] as List<dynamic>).map((e) => e as String).toList(),
+      mainTechnology: json['mainTechnology'],
     );
 
 Map<String, dynamic> _$ProjectTagsDTOToJson(ProjectTagsDTO instance) =>

@@ -5,11 +5,12 @@
       "id": 0,
       "name": "Portfolio",
       "intro": "Place where current skills are described and what has been done is demonstrated",
-      "description": "Web application for visualizing current skills. The application uses a clean architecture with 3 layers like data, domain, and presenter.\n\n About data layer: In this section implemented repository and created datasource for getting resource. At now implemented  asset datasource repository which parse json file with static date, and return dto for use case;\nIn future if need or partly i will add remote datasource which will be comunicate with http server (Cloud functions).\n\n About domain layer: In this section i describe common thinks like models, mappers, usecases.  In usecases described basic feature for separated logic, at current moment  we haven't difficult logic and therefore there are only convertng dto to mapper and handling base exceptions.\n\n About domain presenter: Using BLoC for getting data and handle cases. Used base named navigation and base host  container. \n\n... ",
+      "description": "Web application for visualizing current skills. The application uses a clean architecture with 3 layers like data, domain, and presenter.\n About data layer: In this section implemented repository and created datasource for getting resource. At now implemented  asset datasource repository which parse json file with static date, and return dto for use case;\nIn future if need or partly i will add remote datasource which will be comunicate with http server (Cloud functions).\n About domain layer: In this section i describe common thinks like models, mappers, usecases.  In usecases described basic feature for separated logic, at current moment  we haven't difficult logic and therefore there are only convertng dto to mapper and handling base exceptions.\n About domain presenter: Using BLoC for getting data and handle cases. Used base named navigation and base host  container... ",
       "linkAndroid": "",
       "linkIOS": "",
       "linkSource": "https://github.com/SERDUN/my_portfolio",
       "tags": {
+        "mainTechnology": "flutter",
         "projects": [
           "Portfolio",
           "Social"
@@ -68,6 +69,7 @@
       "linkIOS": "",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "android",
         "projects": [
           "Game",
           "Cards",
@@ -139,6 +141,7 @@
       "linkIOS": "https://apps.apple.com/ua/app/mpet-pet-health-and-wellness/id1488159440",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "flutter",
         "projects": [
           "Heath",
           "Pets",
@@ -190,6 +193,7 @@
       "linkIOS": "",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "android",
         "projects": [
           "Restaurants menu",
           "Asia and Pacific",
@@ -248,6 +252,7 @@
       "linkIOS": "",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "flutter",
         "projects": [
           "Heath",
           "Pets",
@@ -312,6 +317,7 @@
       "linkIOS": "",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "flutter",
         "projects": [
           "Restaurants menu",
           "Asia and Pacific",
@@ -360,6 +366,7 @@
       "linkIOS": "",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "android",
         "projects": [
           "Middle East and Africa",
           "Finance",
@@ -426,6 +433,7 @@
       "linkIOS": "",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "flutter",
         "projects": [
           "Heath",
           "Pets",
@@ -511,6 +519,7 @@
       "linkIOS": "",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "android",
         "projects": [
           "Northern America",
           "Social",
@@ -573,6 +582,7 @@
       "linkIOS": "https://apps.apple.com/ru/app/slaywoke/id1459371943",
       "linkSource": "",
       "tags": {
+        "mainTechnology": "flutter",
         "projects": [
           "Northern America",
           "Social",

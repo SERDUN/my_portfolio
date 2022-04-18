@@ -3,8 +3,11 @@ import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_f
 
 class SimpleChip extends StatelessWidget {
   final String text;
+  final Color? color;
+  final TextStyle? textStyle;
 
-  const SimpleChip({Key? key, required this.text}) : super(key: key);
+  const SimpleChip({Key? key, required this.text, this.color,this.textStyle})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class SimpleChip extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.headline6?.copyWith(
+        style: textStyle??Theme.of(context).textTheme.headline6?.copyWith(
             fontWeight: FontWeight.w100,
             fontStyle: FontStyle.italic,
             color: Theme.of(context).colorPlate().grey),
@@ -20,7 +23,7 @@ class SimpleChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       margin: const EdgeInsets.symmetric(vertical: 4),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+        color: color ?? Theme.of(context).colorScheme.primary.withOpacity(0.4),
         borderRadius: BorderRadius.circular(24),
       ),
     );

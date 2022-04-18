@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:octo_image/octo_image.dart';
 
 import '../../../../../domain/entity/model/projects/project_model.dart';
@@ -9,9 +10,17 @@ import '../../../../common/widgets/dash/dash_horizontal.dart';
 class DesktopPortfolioItem extends StatelessWidget {
   final Function openDetails;
   final ProjectModel project;
+  final Color chipColor;
+  final String chipName;
+  final String tags;
 
   const DesktopPortfolioItem(
-      {Key? key, required this.openDetails, required this.project})
+      {Key? key,
+      required this.openDetails,
+      required this.project,
+      required this.chipColor,
+      required this.tags,
+      required this.chipName})
       : super(key: key);
 
   @override
@@ -34,30 +43,46 @@ class DesktopPortfolioItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Text(
-                          project.name ?? "",
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
+                      Text(
+                        project.name ?? "",
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.width * .01,
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 8, right: 40),
-                        child: Text(
-                          project.description ?? "",
-                          maxLines: 3,
-                          style:
-                              Theme.of(context).textTheme.bodyText1?.copyWith(
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                        ),
+                      Text(
+                        project.description ?? "",
+                        maxLines: 3,
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        tags,
+                        maxLines: 3,
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            overflow: TextOverflow.ellipsis,
+                            fontWeight: FontWeight.w100,
+                            fontStyle: FontStyle.italic,
+                            color: Theme.of(context).colorPlate().yellow),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 16, right: 40),
-                        child: buildTechnology(context),
+                        margin: const EdgeInsets.only(top: 8, right: 40),
+                        child: SimpleChip(
+                          text: chipName,
+                          color: chipColor,
+                          textStyle: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.italic,
+                                  color:
+                                      Theme.of(context).colorPlate().white100),
+                        ),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.width * .025,
@@ -65,7 +90,7 @@ class DesktopPortfolioItem extends StatelessWidget {
                       const Spacer(),
                       DashHorizontal(
                         width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(left: 8, right: 32),
+                        margin: const EdgeInsets.only(left: 8, right: 32,bottom: 4),
                       )
                     ],
                   ),
@@ -90,13 +115,6 @@ class DesktopPortfolioItem extends StatelessWidget {
                   ),
                   errorBuilder: OctoError.icon(color: Colors.red),
                   fit: BoxFit.cover))),
-    );
-  }
-
-  Wrap buildTechnology(BuildContext context) {
-    return Wrap(
-      spacing: 8,
-      children: (project.tags.develop).map((s) => SimpleChip(text: s)).toList(),
     );
   }
 }

@@ -20,6 +20,7 @@ class CustomTheme {
         black: AppColorScheme.black,
         orange: AppColorScheme.orange,
         grey: AppColorScheme.grey,
+        white100: AppColorScheme.white100,
         yellow: AppColorScheme.yellow));
   }
 }
