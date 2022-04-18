@@ -34,7 +34,7 @@ class ProjectRepositoryImpl extends ProjectRepository {
   @override
   Future<Either<Failure, List<ProjectDTO>>> getProjects() async {
     try {
-      PortfolioDTO user = await source.getStaticData();
+      PortfolioDTO user = await source.getProjectData();
       return Future.value(Right(user.projects ?? []));
     } on Exception catch (e) {
       //Logic for handle depend from datasource

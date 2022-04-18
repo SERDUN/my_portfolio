@@ -55,7 +55,7 @@ class _AboutMeState extends State<AboutMe> {
                       height: 32,
                     ),
                     Text(
-                      "My skills",
+                      "Skills",
                       style: Theme.of(context).textTheme.headline4,
 
                       // style: titleBlackBold,

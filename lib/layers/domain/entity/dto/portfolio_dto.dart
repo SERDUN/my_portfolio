@@ -10,7 +10,6 @@ part 'generation/portfolio_dto.g.dart';
 class PortfolioDTO {
   int? version;
   List<ProjectDTO>? projects;
-  PortfolioUserDTO? user;
 
   PortfolioDTO();
 
@@ -18,5 +17,4 @@ class PortfolioDTO {
       _$PortfolioDTOFromJson(json);
 
   Map<String, dynamic> toJson() => _$PortfolioDTOToJson(this);
-
 }

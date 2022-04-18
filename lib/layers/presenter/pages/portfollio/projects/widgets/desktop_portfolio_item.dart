@@ -25,6 +25,7 @@ class DesktopPortfolioItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SizedBox(
         height: MediaQuery.of(context).size.width * .35,
         child: Row(
