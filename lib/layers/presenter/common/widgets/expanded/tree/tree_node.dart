@@ -92,9 +92,9 @@ class _TreeNodeState extends State<TreeNode>
                   children: <Widget>[
                     Container(
                       child: children.length > 1
-                          ? Image.asset("assets/image/icons/category.png",
+                          ? Image.asset("assets/image/icons/category.webp",
                               width: 24, height: 24)
-                          : Image.asset("assets/image/icons/sub_category.png",
+                          : Image.asset("assets/image/icons/sub_category.webp",
                               width: 24, height: 24),
                       padding: const EdgeInsets.all(8),
                     ),
