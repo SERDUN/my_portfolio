@@ -45,19 +45,23 @@ class _HomePageState extends State<PortfolioPage> {
                 const SizedBox(
                   height: 40,
                 ),
-                ListView.separated(
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 24,
-                  ),
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: state.projects.length,
-                  itemBuilder: (context, i) {
-                    return PortfolioItem(
-                      project: state.projects[i],
-                    );
-                  },
-                ),
+                state.projects.isEmpty
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : ListView.separated(
+                        separatorBuilder: (context, index) => const SizedBox(
+                          height: 24,
+                        ),
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: state.projects.length,
+                        itemBuilder: (context, i) {
+                          return PortfolioItem(
+                            project: state.projects[i],
+                          );
+                        },
+                      ),
               ],
             )),
       );

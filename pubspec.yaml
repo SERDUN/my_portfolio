@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  flutter_web_plugins:
+    sdk: flutter
+
   responsive_framework: ^0.1.7
   lottie: ^1.2.1
   matrix4_transform: ^2.0.1
