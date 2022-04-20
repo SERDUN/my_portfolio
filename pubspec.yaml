@@ -1,7 +1,7 @@
 name: my_portfolio
-description: A new Flutter project.
+description: Portfolio project.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ">=2.15.1 <3.0.0"
@@ -35,20 +35,20 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/image/social/facebook.png
-    - assets/image/social/gmail.png
-    - assets/image/social/instagram.png
-    - assets/image/social/linkedin.png
-    - assets/image/language/ua.png
-    - assets/image/language/en.png
-    - assets/image/icons/category.png
-    - assets/image/icons/sub_category.png
-    - assets/image/icons/github.png
-    - assets/image/icons/call.png
-    - assets/image/icons/email.png
-    - assets/image/social/google_play.png
-    - assets/image/social/app_store.png
-    - assets/image/icons/pin.png
+    - assets/image/social/facebook.webp
+    - assets/image/social/gmail.webp
+    - assets/image/social/instagram.webp
+    - assets/image/social/linkedin.webp
+    - assets/image/language/ua.webp
+    - assets/image/language/en.webp
+    - assets/image/icons/category.webp
+    - assets/image/icons/sub_category.webp
+    - assets/image/icons/github.webp
+    - assets/image/icons/call.webp
+    - assets/image/icons/email.webp
+    - assets/image/social/google_play.webp
+    - assets/image/social/app_store.webp
+    - assets/image/icons/pin.webp
     - assets/animation/arrow_vertical.json
     - assets/animation/circle_animation.json
     - assets/data/projects.json

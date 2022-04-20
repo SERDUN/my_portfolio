@@ -126,7 +126,7 @@ class _ContactUsState extends State<ContactUs> {
 
   Widget _buildLocationInfo(BuildContext context) {
     return _buildContactInfoSelectable(
-        'image/icons/pin.png',
+        'image/icons/pin.webp',
         'Location:',
         AppConstants.location,
         AppConstants.location,
@@ -135,7 +135,7 @@ class _ContactUsState extends State<ContactUs> {
 
   Widget buildBuildPhoneInfo(BuildContext context) {
     return _buildContactInfoSelectable(
-        'image/icons/call.png',
+        'image/icons/call.webp',
         'Call Me:',
         AppConstants.phone,
         AppConstants.phone,
@@ -144,7 +144,7 @@ class _ContactUsState extends State<ContactUs> {
 
   Widget buildBuildContactInfo(BuildContext context) {
     return _buildContactInfoSelectable(
-        'image/icons/email.png',
+        'image/icons/email.webp',
         'Mail Me:',
         AppConstants.mail,
         AppConstants.mail,
@@ -153,7 +153,7 @@ class _ContactUsState extends State<ContactUs> {
 
   Widget buildBuildFacebookInfo(BuildContext context) {
     return _buildContactInfo(
-        'image/social/facebook.png',
+        'image/social/facebook.webp',
         'Facebook',
         AppConstants.facebook,
         AppConstants.facebookUrl,
@@ -162,7 +162,7 @@ class _ContactUsState extends State<ContactUs> {
 
   Widget buildBuildLinkedinInfo(BuildContext context) {
     return _buildContactInfo(
-        'image/social/linkedin.png',
+        'image/social/linkedin.webp',
         'Linkedin',
         AppConstants.linkedin,
         AppConstants.linkedinUrl,
@@ -171,7 +171,7 @@ class _ContactUsState extends State<ContactUs> {
 
   Widget buildBuildInstagramInfo(BuildContext context) {
     return _buildContactInfo(
-        'image/social/instagram.png',
+        'image/social/instagram.webp',
         'Instagram',
         AppConstants.instagram,
         AppConstants.instagramUrl,
