@@ -3,9 +3,7 @@ import 'package:my_portfolio/layers/domain/entity/dto/portfolio_user_dto.dart';
 import 'package:my_portfolio/layers/domain/entity/model/error/common/default_error.dart';
 import 'package:my_portfolio/layers/domain/entity/model/error/common/either.dart';
 import 'package:my_portfolio/layers/domain/entity/model/error/common/failure.dart';
-import 'package:my_portfolio/layers/domain/entity/model/user/portfolio_user_model.dart';
 
-import '../../domain/entity/dto/portfolio_dto.dart';
 import '../../domain/repository/user_repository.dart';
 import '../datasource/local/assets_data_source.dart';
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:octo_image/octo_image.dart';
 
 import '../../../../../domain/entity/model/projects/project_model.dart';
-import '../../../../common/widgets/button/button_outline.dart';
 import '../../../../common/widgets/dash/dash_horizontal.dart';
 
 class MobilePortfolioItem extends StatelessWidget {

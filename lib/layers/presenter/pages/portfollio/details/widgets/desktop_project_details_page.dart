@@ -1,11 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/domain/entity/model/projects/project_model.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
-import 'package:my_portfolio/layers/presenter/pages/portfollio/details/bloc/state.dart';
+import 'package:my_portfolio/layers/presenter/pages/portfollio/details/widgets/project_links.dart';
 import 'package:octo_image/octo_image.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../common/widgets/dash/dash_horizontal.dart';
 import '../../../../common/widgets/decoration/decoration_view.dart';
@@ -35,7 +33,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                          margin: EdgeInsets.symmetric(horizontal: 24),
+                          margin: const EdgeInsets.symmetric(horizontal: 24),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -81,73 +79,11 @@ class DesktopProjectDetailsPage extends StatelessWidget {
         ),
         SizedBox(
           height: 56,
-          child: Row(
+          child: ProjectLinks(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Visibility(
-                  visible: project.linkSource.isNotEmpty,
-                  child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                          onTap: () async {
-                            var url = project.linkSource ?? "";
-                            await canLaunch(url)
-                                ? await launch(url)
-                                : throw 'Could not launch $url';
-                          },
-                          child: Image.asset(
-                            "assets/image/icons/github.webp",
-                            width: 56,
-                            height: 56,
-                          )))),
-              Visibility(
-                  visible: project.linkSource.isNotEmpty,
-                  child: const SizedBox(
-                    width: 24,
-                  )),
-              Visibility(
-                  visible: project.linkAndroid.isNotEmpty,
-                  child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                          onTap: () async {
-                            var url = project.linkAndroid;
-                            await canLaunch(url)
-                                ? await launch(url)
-                                : throw 'Could not launch $url';
-                          },
-                          child: Image.asset(
-                            "assets/image/social/google_play.webp",
-                            width: 56,
-                            height: 56,
-                          )))),
-              Visibility(
-                  visible: project.linkAndroid.isNotEmpty,
-                  child: const SizedBox(
-                    width: 24,
-                  )),
-              Visibility(
-                  visible: project.linkIOS.isNotEmpty,
-                  child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                          onTap: () async {
-                            var url = project.linkIOS;
-                            await canLaunch(url)
-                                ? await launch(url)
-                                : throw 'Could not launch $url';
-                          },
-                          child: Image.asset(
-                            "assets/image/social/app_store.webp",
-                            width: 56,
-                            height: 56,
-                          )))),
-              Visibility(
-                  visible: project.linkIOS.isNotEmpty,
-                  child: const SizedBox(
-                    width: 24,
-                  )),
-            ],
+            android: project.linkAndroid,
+            ios: project.linkIOS,
+            github: project.linkSource,
           ),
         ),
         const SizedBox(
@@ -202,7 +138,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Wrap(
-                children: (project.tags?.develop ?? [])
+                children: (project.tags.develop)
                     .map((e) => _buildTags(context, e))
                     .toList())),
         const SizedBox(
@@ -270,22 +206,32 @@ class DesktopProjectDetailsPage extends StatelessWidget {
     );
   }
 
-  Row _buildTags(BuildContext context, String text) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(" - "),
-        Text(
-          text,
-          style: Theme.of(context)
-              .textTheme
-              .headline5
-              ?.copyWith(fontStyle: FontStyle.italic),
+  Widget _buildTags(BuildContext context, String text) {
+    return Card(
+      margin: const EdgeInsets.all(8),
+      child: Padding(
+        padding: const EdgeInsets.all(4),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              child: Image.asset("assets/image/icons/category.webp",
+                  width: 24, height: 24),
+              padding: const EdgeInsets.all(8),
+            ),
+            Text(
+              text,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline5
+                  ?.copyWith(fontStyle: FontStyle.italic),
+            ),
+            const SizedBox(
+              width: 24,
+            ),
+          ],
         ),
-        const SizedBox(
-          width: 24,
-        ),
-      ],
+      ),
     );
   }
 }

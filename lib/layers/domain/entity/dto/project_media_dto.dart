@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 import 'project_image_dto.dart';
 
 part 'generation/project_media_dto.g.dart';

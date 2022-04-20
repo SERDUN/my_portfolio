@@ -1,17 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/details/bloc/state.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/details/widgets/desktop_project_details_page.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/details/widgets/mobile_project_details_page.dart';
-import 'package:octo_image/octo_image.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../../../domain/entity/model/projects/project_model.dart';
-import '../../../common/widgets/behaviour/responsive_widget.dart';
-import '../../../common/widgets/dash/dash_horizontal.dart';
-import '../../../common/widgets/decoration/decoration_view.dart';
+
 import '../../../common/widgets/bars/project_details_bar.dart';
+import '../../../common/widgets/behaviour/responsive_widget.dart';
 import 'bloc/bloc.dart';
 import 'bloc/event.dart';
 

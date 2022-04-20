@@ -3,7 +3,6 @@ import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_f
 import 'package:octo_image/octo_image.dart';
 
 import '../../../../../domain/entity/model/projects/project_model.dart';
-import '../../../../common/widgets/button/button_outline.dart';
 import '../../../../common/widgets/chip/simple_chip.dart';
 import '../../../../common/widgets/dash/dash_horizontal.dart';
 
