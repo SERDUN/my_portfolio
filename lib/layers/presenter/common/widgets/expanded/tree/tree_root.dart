@@ -64,7 +64,7 @@ class _TreeNodeState extends State<TreeRoot>
                     ),
                     const Spacer(),
                     Center(
-                      child: GestureDetector(
+                      child: InkWell(
                         onTap: () {
                           _handleTap();
                         },

@@ -29,14 +29,12 @@ class TreeView extends StatelessWidget {
         style: subCategoryTextStyle,
         softWrap: true,
       );
-      final expaned = item.expanded ;
-      final children = item.children;
 
       treeNodes.add(TreeNode(
         title: title,
-        expanded: expaned,
+        expanded: item.expanded,
         offsetLeft: offsetLeft,
-        children: _geneTreeNodes(children),
+        children: _geneTreeNodes(item.children),
       ));
     }
 
@@ -49,19 +47,18 @@ class TreeView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(data.length, (int index) {
         final PortfolioSkillsModel item = data[index];
-        final title = Text(
-          item.title,
-          style: categoryTextStyle,
-        );
-
-        final expaned = item.expanded;
-        final children = item.children;
+        final title = MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: Text(
+              item.title,
+              style: categoryTextStyle,
+            ));
 
         return TreeRoot(
           title: title,
-          expanded: expaned,
+          expanded: item.expanded,
           offsetLeft: offsetLeft,
-          children: _geneTreeNodes(children),
+          children: _geneTreeNodes(item.children),
         );
       }),
     );
