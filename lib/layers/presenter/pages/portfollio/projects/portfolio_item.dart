@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_portfolio/application/navigation/navigation_cubit.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/projects/widgets/desktop_portfolio_item.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/projects/widgets/mobile_portfolio_item.dart';
@@ -34,8 +36,9 @@ class PortfolioItem extends StatelessWidget {
   }
 
   void _openDetails(BuildContext context) {
-    Navigator.of(context, rootNavigator: true)
-        .pushNamed(Routes.projectDetails, arguments: project.id);
+    BlocProvider.of<NavigationCubit>(context).openProjectDetails();
+    // Navigator.of(context, rootNavigator: true)
+    //     .pushNamed(Routes.projectDetails, arguments: project.id);
   }
 
   Color _getChipColorTechnology(String technology, BuildContext context) {
