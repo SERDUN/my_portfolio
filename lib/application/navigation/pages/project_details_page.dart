@@ -7,11 +7,11 @@ class ProjectPage extends BasePage {
   const ProjectPage(Map<String, dynamic> args)
       : super(
             key: const ValueKey('ProjectDetailsPage'),
-            name: "/project",
+            name: "/projects",
             args: args);
 
   @override
-  Widget root() => const ProjectDetailsPage(
-        id: 1,
+  Widget root() => ProjectDetailsPage(
+        id: args["id"],
       );
 }

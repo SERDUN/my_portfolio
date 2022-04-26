@@ -5,7 +5,6 @@ import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_f
 import 'package:my_portfolio/layers/presenter/pages/portfollio/projects/widgets/desktop_portfolio_item.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/projects/widgets/mobile_portfolio_item.dart';
 
-import '../../../../../routes.dart';
 import '../../../../domain/entity/model/projects/project_model.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 
@@ -36,7 +35,7 @@ class PortfolioItem extends StatelessWidget {
   }
 
   void _openDetails(BuildContext context) {
-    BlocProvider.of<NavigationCubit>(context).openProjectDetails();
+    BlocProvider.of<NavigationCubit>(context).openProjectDetails(project.id);
     // Navigator.of(context, rootNavigator: true)
     //     .pushNamed(Routes.projectDetails, arguments: project.id);
   }

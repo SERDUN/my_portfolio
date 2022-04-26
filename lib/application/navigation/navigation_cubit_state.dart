@@ -19,12 +19,31 @@ class NavigationState {
     return NavigationState(currentStack);
   }
 
+  NavigationState replace(AppRouterConfiguration config) {
+    if (canPop()) {
+      currentStack.removeLast();
+      push(config);
+    } else {
+      currentStack.insert(0, config);
+      currentStack.removeLast();
+    }
+    return NavigationState(currentStack);
+  }
+
   bool canPop() {
     return currentStack.length > 1;
   }
 
   NavigationState pop() {
     if (canPop()) currentStack.remove(currentStack.last);
+    return NavigationState(currentStack);
+  }
+
+  NavigationState clearAndPush(AppRouterConfiguration config) {
+    print("Def: " + (config?.name ?? ""));
+
+    currentStack.clear();
+    currentStack.add(config);
     return NavigationState(currentStack);
   }
 }

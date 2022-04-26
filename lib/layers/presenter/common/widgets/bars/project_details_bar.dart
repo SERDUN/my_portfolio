@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
+import '../../../../../application/navigation/navigation_cubit.dart';
 import '../switcher/switcher_language.dart';
 
 class ProjectDetailsBar extends StatefulWidget implements PreferredSizeWidget {
@@ -46,10 +48,12 @@ class _GeneralMenuBarState extends State<ProjectDetailsBarWidget> {
             Flexible(
                 child: InkWell(
               onTap: () {
-                Navigator.of(context, rootNavigator: true).pop();
+                // Navigator.of(context, rootNavigator: true).pop();
+                BlocProvider.of<NavigationCubit>(context).popOrProjects();
+
               },
               child: Container(
-                margin: const EdgeInsets.only(left: 16),
+                  margin: const EdgeInsets.only(left: 16),
                   alignment: Alignment.centerLeft,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -70,7 +74,7 @@ class _GeneralMenuBarState extends State<ProjectDetailsBarWidget> {
               margin: EdgeInsets.only(
                   right: ResponsiveWrapper.of(context).isDesktop ? 16 : 8),
               onTapOnName: () {
-                Navigator.of(context, rootNavigator: true).pop();
+                  Navigator.of(context, rootNavigator: true).pop();
               },
             )
           ],

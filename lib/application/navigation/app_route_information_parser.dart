@@ -6,8 +6,10 @@ class AppRouteInformationParser
   @override
   Future<AppRouterConfiguration> parseRouteInformation(
       RouteInformation routeInformation) async {
+    print("parseRouteInformation");
     final String path = routeInformation.location ?? '';
     AppRouterConfiguration config = AppRouterConfiguration(location: path);
+
     return config;
   }
 
@@ -15,6 +17,5 @@ class AppRouteInformationParser
   RouteInformation? restoreRouteInformation(
       AppRouterConfiguration configuration) {
     return RouteInformation(location: configuration.path.toString());
-
   }
 }

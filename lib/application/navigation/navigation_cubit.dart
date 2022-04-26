@@ -10,22 +10,46 @@ class NavigationCubit extends Cubit<NavigationState> {
           AppRouterConfiguration(location: '/')
         ]));
 
-  void push(String path, [Map<String, dynamic>? args]) {
-    print('push called with $path and $args');
-    AppRouterConfiguration config =
-        AppRouterConfiguration(location: path, args: args);
-    emit(state.push(config));
+  void push(AppRouterConfiguration appRouterConfiguration) {
+    // print('push called with $path and $args');
+    // AppRouterConfiguration config =
+    //     AppRouterConfiguration(location: path, args: args);
+    emit(state.push(appRouterConfiguration));
   }
 
-  void openProjectDetails() => push("/project");
+  void openProjectDetails(int? id) =>
+      push(AppRouterConfiguration(location: "/projects?id=$id"));
 
+  void openContact() => emit(state
+      .replace(AppRouterConfiguration(location: "/contact", name: "contact")));
+
+  void openProjects() => emit(state.replace(
+      AppRouterConfiguration(location: "/projects", name: "projects")));
+
+  void openIntro() =>
+      emit(state.replace(AppRouterConfiguration(location: "/", name: "intro")));
 
   void pop() {
     emit(state.pop());
   }
 
+  void popOrProjects() {
+    if (canPop())
+      emit(state.pop());
+    else
+      openProjects();
+  }
+
   bool canPop() {
     return state.canPop();
+  }
+
+  void clearAndPush(AppRouterConfiguration configuration) {
+    emit(state.clearAndPush(configuration));
+  }
+
+  void replace(AppRouterConfiguration configuration) {
+    emit(state.replace(configuration));
   }
 
 //

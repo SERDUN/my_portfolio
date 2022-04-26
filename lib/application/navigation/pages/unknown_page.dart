@@ -9,13 +9,4 @@ class UnknownPage extends BasePage {
 
   @override
   Widget root() => UnknownScreen();
-
-// @override
-// Route createRoute(BuildContext context) {
-//   return MaterialPageRoute(
-//       settings: this,
-//       builder: (BuildContext context) {
-//         return UnknownScreen();
-//       });
-// }
 }

@@ -1,8 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:my_portfolio/application/navigation/pages/base_page.dart';
+import 'package:my_portfolio/application/navigation/pages/contact_page.dart';
 import 'package:my_portfolio/application/navigation/pages/home_page.dart';
 import 'package:my_portfolio/application/navigation/pages/project_details_page.dart';
+import 'package:my_portfolio/application/navigation/pages/projects_page.dart';
 import 'package:my_portfolio/application/navigation/pages/unknown_page.dart';
+import 'package:my_portfolio/layers/presenter/pages/host_page/navigation/host_routes.dart';
 
 class AppRouterConfiguration {
   ///full path to the page
@@ -29,28 +32,56 @@ class AppRouterConfiguration {
     route = path.toString();
     this.args.addIfNotNull(args);
 
-    ///get the page from defined pages
-    page = getPage(this);
+     getPage(path);
+  }
+
+  void getPage(Uri uri) {
+    switch (uri.path) {
+      case "/":
+        {
+          page = HomePage(args);
+          break;
+        }
+      case "/intro":
+        {
+          page = HomePage(args);
+          break;
+        }
+      case "/projects":
+        {
+          String param = uri.queryParametersAll['id']?.first ?? "";
+          int? id = int.tryParse(param);
+          if (id == null) {
+            page = ProjectsPage(args);
+          } else {
+            page = ProjectPage({"id": id});
+          }
+
+          break;
+        }
+      case "/contact":
+        {
+          page = ContactPage(args);
+          break;
+        }
+
+      default:
+        {
+          page = UnknownPage();
+        }
+    }
   }
 
   @override
   String toString() {
-    return 'PageConfig: path = $path, args = $args';
+    return 'PageConfig: path = $path,route = $route, args = $args';
   }
 
   @override
   List<Object?> get props => [path, args];
 }
 
-Page getPage(AppRouterConfiguration config) {
-  Page p = _routes[config.route]?.call(config.args) ?? const UnknownPage();
-  return p;
-}
 
-Map<String, BasePage Function(Map<String, dynamic>)> _routes = {
-  '/': (args) => HomePage(args),
-  '/project': (args) => ProjectPage(args),
-};
 
 extension AddNullableMap on Map {
   void addIfNotNull(Map? other) {

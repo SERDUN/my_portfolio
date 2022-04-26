@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:my_portfolio/application/navigation/navigation_cubit.dart';
-import 'package:my_portfolio/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-
 import 'app_environment_keys.dart';
 import 'application/navigation/app_route_information_parser.dart';
 import 'application/navigation/app_router_delegate.dart';
@@ -15,14 +13,17 @@ import 'layers/domain/usecase/user/get_user_use_case.dart';
 import 'layers/presenter/common/style/app_theme.dart';
 import 'layers/presenter/pages/home/bloc/bloc.dart';
 import 'layers/presenter/pages/home/bloc/event.dart';
-import 'layers/presenter/pages/host_page/host_page.dart';
 import 'layers/presenter/pages/portfollio/details/bloc/bloc.dart';
-import 'layers/presenter/pages/portfollio/details/project_details_page.dart';
 import 'layers/presenter/pages/portfollio/projects/bloc/bloc.dart';
 import 'layers/presenter/pages/portfollio/projects/bloc/event.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
+
+  Uri result = Uri.parse("http://localhost:54722/1/project");
+  var r=result.hasQuery;
+
+
   await configureDependencies(AppEnvironmentKey.dev);
   runApp(MultiBlocProvider(providers: [
     BlocProvider<NavigationCubit>(
@@ -40,10 +41,12 @@ void main() async {
       create: (BuildContext context) =>
           ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
     ),
-  ], child: MyApp()));
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

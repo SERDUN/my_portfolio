@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/application/navigation/pages/home_page.dart';
+import 'package:my_portfolio/layers/presenter/pages/host_page/navigation/host_routes.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/details/bloc/bloc.dart';
 import 'app_router_configuration.dart';
 import 'navigation_cubit.dart';
@@ -35,22 +36,43 @@ class AppRouterDelegate extends RouterDelegate<AppRouterConfiguration>
   }
 
   bool _onPopPage(Route<dynamic> route, dynamic result) {
+    print("_onPopPage");
+
     final didPop = route.didPop(result);
     if (!didPop) {
+      print("_onPopPage return false;");
+
       return false;
     }
+
     if (_navigationCubit.canPop()) {
       _navigationCubit.pop();
+      print("navigationCubit.canPop()");
+
       return true;
     } else {
+      print("POP false");
+      // if (_navigationCubit.state.last.name == "/projects") {
+      //   _navigationCubit.push(AppRouterConfiguration(location: '/projects'));
+      //   return true;
+      //
+      // }
       return false;
     }
   }
 
   @override
   Future<void> setNewRoutePath(AppRouterConfiguration configuration) async {
-    if (configuration.route != '/') {
-      _navigationCubit.push(configuration.route, configuration.args);
+    print("Def1: " + (configuration.toString() ?? ""));
+    if ((configuration.route ?? "").contains(HomeRoutes.projects.name) ||
+        (configuration.route ?? "").contains(HomeRoutes.contact.name)) {
+      print("clearAndPush");
+      _navigationCubit.clearAndPush(configuration);
+    } else if (configuration.route != '/' &&
+        !((configuration.route).contains(HomeRoutes.intro.name))) {
+      print("push");
+
+      _navigationCubit.push(configuration);
     }
   }
 }
