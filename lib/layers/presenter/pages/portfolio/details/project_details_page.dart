@@ -4,9 +4,7 @@ import 'package:my_portfolio/layers/presenter/pages/home/host/host_routes.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/details/bloc/state.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/details/widgets/desktop_project_details_page.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/details/widgets/mobile_project_details_page.dart';
-
 import '../../../common/widgets/bars/common_app_bar.dart';
-import '../../../common/widgets/bars/project_details_bar.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 import '../../../navigation/state/navigation_cubit.dart';
 import 'bloc/bloc.dart';

@@ -30,6 +30,8 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   void popOrProjects() => canPop() ? emit(state.pop()) : openProjects();
 
+  void replaceToProjects() => clearAndPush(_config("projects"));
+
   void replaceToIntro() => clearAndPush(_config(""));
 
   void replaceToContact() => clearAndPush(_config("contact"));
