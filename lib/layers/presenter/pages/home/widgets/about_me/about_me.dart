@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-import '../../../../domain/entity/model/user/portfolio_skills_model.dart';
-import '../../../common/widgets/expanded/tree/tree_view.dart';
+import '../../../../../domain/entity/model/user/portfolio_skills_model.dart';
+import '../../../../common/widgets/expanded/tree/tree_view.dart';
+
 
 class AboutMe extends StatefulWidget {
   final String aboutMe;

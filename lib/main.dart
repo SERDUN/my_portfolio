@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:my_portfolio/application/navigation/navigation_cubit.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'app_environment_keys.dart';
-import 'application/navigation/app_route_information_parser.dart';
-import 'application/navigation/app_router_delegate.dart';
+
+import 'application/app_environment_keys.dart';
 import 'di/injection.dart';
 import 'layers/domain/usecase/projects/get_project_by_id_use_case.dart';
 import 'layers/domain/usecase/projects/get_projects_use_case.dart';
 import 'layers/domain/usecase/user/get_user_use_case.dart';
 import 'layers/presenter/common/style/app_theme.dart';
+import 'layers/presenter/navigation/app_route_information_parser.dart';
+import 'layers/presenter/navigation/app_router_delegate.dart';
+import 'layers/presenter/navigation/navigation_cubit.dart';
 import 'layers/presenter/pages/home/bloc/bloc.dart';
 import 'layers/presenter/pages/home/bloc/event.dart';
 import 'layers/presenter/pages/portfollio/details/bloc/bloc.dart';
@@ -19,11 +20,6 @@ import 'layers/presenter/pages/portfollio/projects/bloc/event.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
-
-  Uri result = Uri.parse("http://localhost:54722/1/project");
-  var r=result.hasQuery;
-
-
   await configureDependencies(AppEnvironmentKey.dev);
   runApp(MultiBlocProvider(providers: [
     BlocProvider<NavigationCubit>(

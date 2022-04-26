@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'app_router_configuration.dart';
 
 class AppRouteInformationParser

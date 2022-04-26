@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_portfolio/application/navigation/navigation_cubit.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/projects/widgets/desktop_portfolio_item.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfollio/projects/widgets/mobile_portfolio_item.dart';
 
 import '../../../../domain/entity/model/projects/project_model.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
+import '../../../navigation/navigation_cubit.dart';
 
 class PortfolioItem extends StatelessWidget {
   final ProjectModel project;

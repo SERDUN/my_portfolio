@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_portfolio/application/navigation/pages/home_page.dart';
-import 'package:my_portfolio/layers/presenter/pages/host_page/navigation/host_routes.dart';
-import 'package:my_portfolio/layers/presenter/pages/portfollio/details/bloc/bloc.dart';
+import 'package:my_portfolio/layers/presenter/pages/home/host/host_routes.dart';
+
 import 'app_router_configuration.dart';
 import 'navigation_cubit.dart';
 import 'navigation_cubit_state.dart';
-import 'pages/unknown_page.dart';
 
 class AppRouterDelegate extends RouterDelegate<AppRouterConfiguration>
     with

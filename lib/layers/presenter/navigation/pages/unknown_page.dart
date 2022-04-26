@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/application/navigation/pages/base_page.dart';
+import 'package:my_portfolio/layers/presenter/navigation/pages/base_page.dart';
 
-import '../../../unknown_screen.dart';
+import '../../pages/unknown/unknown_screen.dart';
 
 class UnknownPage extends BasePage {
   const UnknownPage()

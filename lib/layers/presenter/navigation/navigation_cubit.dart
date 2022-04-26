@@ -18,7 +18,7 @@ class NavigationCubit extends Cubit<NavigationState> {
   }
 
   void openProjectDetails(int? id) =>
-      push(AppRouterConfiguration(location: "/projects?id=$id"));
+      push(AppRouterConfiguration(location: "/projects/$id"));
 
   void openContact() => emit(state
       .replace(AppRouterConfiguration(location: "/contact", name: "contact")));

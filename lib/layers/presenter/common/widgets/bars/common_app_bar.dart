@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-import '../../../pages/host_page/navigation/host_routes.dart';
+import '../../../pages/home/host/host_routes.dart';
 import '../behaviour/responsive_widget.dart';
 import '../switcher/switcher_language.dart';
 

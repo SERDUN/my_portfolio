@@ -3,8 +3,9 @@ import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_f
 import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../domain/entity/model/user/portfolio_user_model.dart';
-import '../../../common/widgets/button/button_outline.dart';
+import '../../../../../domain/entity/model/user/portfolio_user_model.dart';
+import '../../../../common/widgets/button/button_outline.dart';
+
 
 class IntroPageMobile extends StatefulWidget {
   final PortfolioUserModel? userModel;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/application/navigation/pages/base_page.dart';
 
-import '../../../unknown_screen.dart';
+import 'base_page.dart';
 
 class SplashPage extends BasePage {
   const SplashPage()

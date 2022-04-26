@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-import '../../../../domain/entity/model/service_model.dart';
-import '../../../common/widgets/behaviour/responsive_widget.dart';
+import '../../../../../domain/entity/model/service_model.dart';
+import '../../../../common/widgets/behaviour/responsive_widget.dart';
+
 
 class Services extends StatefulWidget {
   const Services({Key? key}) : super(key: key);

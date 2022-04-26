@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:my_portfolio/application/navigation/pages/base_page.dart';
-import 'package:my_portfolio/application/navigation/pages/home_page.dart';
+import 'package:my_portfolio/layers/presenter/navigation/pages/base_page.dart';
 
 import 'app_router_configuration.dart';
 

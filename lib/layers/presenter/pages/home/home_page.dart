@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/bloc/state.dart';
-import 'package:my_portfolio/layers/presenter/pages/home/services/services.dart';
-
+import 'package:my_portfolio/layers/presenter/pages/home/widgets/about_me/about_me.dart';
+import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_desktop.dart';
+import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_mobile.dart';
+import 'package:my_portfolio/layers/presenter/pages/home/widgets/services/services.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';
 import '../../common/widgets/footer/footer.dart';
-import 'about_me/about_me.dart';
 import 'bloc/bloc.dart';
-import 'intro/intro_page_desktop.dart';
-import 'intro/intro_page_mobile.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
