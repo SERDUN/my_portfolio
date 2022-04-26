@@ -1,23 +1,23 @@
-import 'package:my_portfolio/layers/presenter/navigation/pages/base_page.dart';
+import 'package:my_portfolio/layers/presenter/navigation/common/pages/base_page.dart';
 
-import 'app_router_configuration.dart';
+import '../navigation_router_configuration.dart';
 
 class NavigationState {
-  final List<AppRouterConfiguration> currentStack;
+  final List<NavigationRouterConfiguration> currentStack;
 
-  AppRouterConfiguration get last => currentStack.last;
+  NavigationRouterConfiguration get last => currentStack.last;
 
   NavigationState(this.currentStack);
 
   List<BasePage> get pages =>
       List.unmodifiable(currentStack.map((e) => e.page));
 
-  NavigationState push(AppRouterConfiguration config) {
+  NavigationState push(NavigationRouterConfiguration config) {
     if (currentStack.last != config) currentStack.add(config);
     return NavigationState(currentStack);
   }
 
-  NavigationState replace(AppRouterConfiguration config) {
+  NavigationState replace(NavigationRouterConfiguration config) {
     if (canPop()) {
       currentStack.removeLast();
       push(config);
@@ -37,9 +37,7 @@ class NavigationState {
     return NavigationState(currentStack);
   }
 
-  NavigationState clearAndPush(AppRouterConfiguration config) {
-    print("Def: " + (config?.name ?? ""));
-
+  NavigationState clearAndPush(NavigationRouterConfiguration config) {
     currentStack.clear();
     currentStack.add(config);
     return NavigationState(currentStack);

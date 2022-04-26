@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/layers/presenter/navigation/pages/base_page.dart';
+import 'package:my_portfolio/layers/presenter/navigation/common/pages/base_page.dart';
 
 import '../../pages/unknown/unknown_screen.dart';
 

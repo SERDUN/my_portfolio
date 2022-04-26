@@ -1,12 +1,12 @@
 
 
-import 'package:my_portfolio/layers/presenter/navigation/pages/base_page.dart';
+import 'package:my_portfolio/layers/presenter/navigation/common/pages/base_page.dart';
 import 'package:my_portfolio/layers/presenter/navigation/pages/home_page.dart';
 import 'package:my_portfolio/layers/presenter/navigation/pages/unknown_page.dart';
 
-import 'pages/contact_page.dart';
-import 'pages/project_details_page.dart';
-import 'pages/projects_page.dart';
+import '../pages/contact_page.dart';
+import '../pages/project_details_page.dart';
+import '../pages/projects_page.dart';
 
 class PageFactoryData {
   final BasePage page;

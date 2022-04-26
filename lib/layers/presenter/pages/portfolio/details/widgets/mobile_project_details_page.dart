@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/domain/entity/model/projects/project_model.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
-import 'package:my_portfolio/layers/presenter/pages/portfollio/details/widgets/project_links.dart';
+import 'package:my_portfolio/layers/presenter/pages/portfolio/details/widgets/project_links.dart';
 import 'package:octo_image/octo_image.dart';
 
 import '../../../../common/widgets/dash/dash_horizontal.dart';

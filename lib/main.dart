@@ -9,14 +9,14 @@ import 'layers/domain/usecase/projects/get_project_by_id_use_case.dart';
 import 'layers/domain/usecase/projects/get_projects_use_case.dart';
 import 'layers/domain/usecase/user/get_user_use_case.dart';
 import 'layers/presenter/common/style/app_theme.dart';
-import 'layers/presenter/navigation/app_route_information_parser.dart';
-import 'layers/presenter/navigation/app_router_delegate.dart';
-import 'layers/presenter/navigation/navigation_cubit.dart';
+import 'layers/presenter/navigation/navigation_route_information_parser.dart';
+import 'layers/presenter/navigation/navigation_router_delegate.dart';
+import 'layers/presenter/navigation/state/navigation_cubit.dart';
 import 'layers/presenter/pages/home/bloc/bloc.dart';
 import 'layers/presenter/pages/home/bloc/event.dart';
-import 'layers/presenter/pages/portfollio/details/bloc/bloc.dart';
-import 'layers/presenter/pages/portfollio/projects/bloc/bloc.dart';
-import 'layers/presenter/pages/portfollio/projects/bloc/event.dart';
+import 'layers/presenter/pages/portfolio/details/bloc/bloc.dart';
+import 'layers/presenter/pages/portfolio/projects/bloc/bloc.dart';
+import 'layers/presenter/pages/portfolio/projects/bloc/event.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
@@ -64,8 +64,8 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: const Color(0xFFF5F5F5))),
       debugShowCheckedModeBanner: false,
-      routerDelegate: AppRouterDelegate(BlocProvider.of(context)),
-      routeInformationParser: AppRouteInformationParser(),
+      routerDelegate: NavigationRouterDelegate(BlocProvider.of(context)),
+      routeInformationParser: NavigationRouteInformationParser(),
     );
   }
 }

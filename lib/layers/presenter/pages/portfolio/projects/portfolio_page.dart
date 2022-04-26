@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_portfolio/layers/presenter/pages/portfollio/projects/bloc/state.dart';
-import 'package:my_portfolio/layers/presenter/pages/portfollio/projects/portfolio_item.dart';
+import 'package:my_portfolio/layers/presenter/pages/portfolio/projects/bloc/state.dart';
+import 'package:my_portfolio/layers/presenter/pages/portfolio/projects/portfolio_item.dart';
 
 import '../../../common/widgets/decoration/decoration_view.dart';
 import 'bloc/bloc.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import 'navigation_page_factory.dart';
+import 'common/navigation_page_factory.dart';
 
-class AppRouterConfiguration {
+class NavigationRouterConfiguration {
   ///full path to the page
   late final Uri path;
 
@@ -18,7 +18,7 @@ class AppRouterConfiguration {
   ///Our route description, this is where actual builds happen
   late final Page page;
 
-  AppRouterConfiguration({
+  NavigationRouterConfiguration({
     required String location,
     Map<String, dynamic>? argument,
     this.name,

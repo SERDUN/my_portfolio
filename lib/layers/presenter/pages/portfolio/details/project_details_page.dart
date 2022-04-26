@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_portfolio/layers/presenter/pages/portfollio/details/bloc/state.dart';
-import 'package:my_portfolio/layers/presenter/pages/portfollio/details/widgets/desktop_project_details_page.dart';
-import 'package:my_portfolio/layers/presenter/pages/portfollio/details/widgets/mobile_project_details_page.dart';
+import 'package:my_portfolio/layers/presenter/pages/home/host/host_routes.dart';
+import 'package:my_portfolio/layers/presenter/pages/portfolio/details/bloc/state.dart';
+import 'package:my_portfolio/layers/presenter/pages/portfolio/details/widgets/desktop_project_details_page.dart';
+import 'package:my_portfolio/layers/presenter/pages/portfolio/details/widgets/mobile_project_details_page.dart';
 
+import '../../../common/widgets/bars/common_app_bar.dart';
 import '../../../common/widgets/bars/project_details_bar.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
+import '../../../navigation/state/navigation_cubit.dart';
 import 'bloc/bloc.dart';
 import 'bloc/event.dart';
 
@@ -36,19 +39,27 @@ class _ContactUsState extends State<ProjectDetailsPage> {
         );
       } else {
         return Scaffold(
-          appBar: const ProjectDetailsBar(),
+          appBar: CommonAppBar(
+            defaultPage: HomeRoutes.projects,
+            onHome: () {
+              BlocProvider.of<NavigationCubit>(context).replaceToIntro();
+            },
+            onPortfolio: () {
+              BlocProvider.of<NavigationCubit>(context).popOrProjects();
+            },
+            onContact: () {
+              BlocProvider.of<NavigationCubit>(context).replaceToContact();
+            },
+          ),
           body: SingleChildScrollView(
             child: ResponsiveWidget(
-              desktopScreen: DesktopProjectDetailsPage(project:state.projects!),
-              mobileScreen: MobileProjectDetailsPage(project:state.projects!),
+              desktopScreen:
+                  DesktopProjectDetailsPage(project: state.projects!),
+              mobileScreen: MobileProjectDetailsPage(project: state.projects!),
             ),
           ),
         );
       }
     });
   }
-
-
-
-
 }

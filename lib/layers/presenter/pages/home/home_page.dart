@@ -6,6 +6,7 @@ import 'package:my_portfolio/layers/presenter/pages/home/widgets/about_me/about_
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_desktop.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_mobile.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/services/services.dart';
+
 import '../../common/widgets/behaviour/responsive_widget.dart';
 import '../../common/widgets/footer/footer.dart';
 import 'bloc/bloc.dart';
