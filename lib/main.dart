@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:my_portfolio/layers/presenter/pages/contact/bloc/bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'application/app_environment_keys.dart';
 import 'di/injection.dart';
+import 'layers/domain/usecase/contacts/get_contacts_use_case.dart';
 import 'layers/domain/usecase/projects/get_project_by_id_use_case.dart';
 import 'layers/domain/usecase/projects/get_projects_use_case.dart';
 import 'layers/domain/usecase/user/get_user_use_case.dart';
@@ -12,6 +14,7 @@ import 'layers/presenter/common/style/app_theme.dart';
 import 'layers/presenter/navigation/navigation_route_information_parser.dart';
 import 'layers/presenter/navigation/navigation_router_delegate.dart';
 import 'layers/presenter/navigation/state/navigation_cubit.dart';
+import 'layers/presenter/pages/contact/bloc/event.dart';
 import 'layers/presenter/pages/home/bloc/bloc.dart';
 import 'layers/presenter/pages/home/bloc/event.dart';
 import 'layers/presenter/pages/portfolio/details/bloc/bloc.dart';
@@ -36,6 +39,10 @@ void main() async {
     BlocProvider<ProjectDetailsBloc>(
       create: (BuildContext context) =>
           ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
+    ),
+    BlocProvider<ContactsBloc>(
+      create: (BuildContext context) =>
+          ContactsBloc(di<GetContactsUseCase>())..add(InitContactsEvent()),
     ),
   ], child: const MyApp()));
 }

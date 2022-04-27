@@ -1,26 +1,21 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/layers/domain/entity/model/contact/contacts_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../../constants.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';
 import '../../common/widgets/decoration/decoration_view.dart';
 import '../../common/widgets/icon.dart';
 
 class ContactUs extends StatefulWidget {
-  const ContactUs({Key? key}) : super(key: key);
+  final ContactsModel contactsModel;
+
+  const ContactUs({Key? key, required this.contactsModel}) : super(key: key);
 
   @override
   _ContactUsState createState() => _ContactUsState();
 }
 
 class _ContactUsState extends State<ContactUs> {
-  final _formKey = GlobalKey<FormState>();
-
-  final _nameController = TextEditingController(),
-      _emailController = TextEditingController(),
-      _contentController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -128,8 +123,8 @@ class _ContactUsState extends State<ContactUs> {
     return _buildContactInfoSelectable(
         'image/icons/pin.webp',
         'Location:',
-        AppConstants.location,
-        AppConstants.location,
+        widget.contactsModel.location,
+        widget.contactsModel.location,
         Theme.of(context).textTheme.bodyText1!);
   }
 
@@ -137,8 +132,8 @@ class _ContactUsState extends State<ContactUs> {
     return _buildContactInfoSelectable(
         'image/icons/call.webp',
         'Call Me:',
-        AppConstants.phone,
-        AppConstants.phone,
+        widget.contactsModel.phone,
+        widget.contactsModel.phone,
         Theme.of(context).textTheme.bodyText1!);
   }
 
@@ -146,8 +141,8 @@ class _ContactUsState extends State<ContactUs> {
     return _buildContactInfoSelectable(
         'image/icons/email.webp',
         'Mail Me:',
-        AppConstants.mail,
-        AppConstants.mail,
+        widget.contactsModel.mail,
+        widget.contactsModel.mail,
         Theme.of(context).textTheme.bodyText1!);
   }
 
@@ -155,8 +150,8 @@ class _ContactUsState extends State<ContactUs> {
     return _buildContactInfo(
         'image/social/facebook.webp',
         'Facebook',
-        AppConstants.facebook,
-        AppConstants.facebookUrl,
+        widget.contactsModel.facebookUsername,
+        widget.contactsModel.facebookLink,
         Theme.of(context).textTheme.bodyText1!);
   }
 
@@ -164,8 +159,8 @@ class _ContactUsState extends State<ContactUs> {
     return _buildContactInfo(
         'image/social/linkedin.webp',
         'Linkedin',
-        AppConstants.linkedin,
-        AppConstants.linkedinUrl,
+        widget.contactsModel.linkedinUsername,
+        widget.contactsModel.linkedinLink,
         Theme.of(context).textTheme.bodyText1!);
   }
 
@@ -173,8 +168,8 @@ class _ContactUsState extends State<ContactUs> {
     return _buildContactInfo(
         'image/social/instagram.webp',
         'Instagram',
-        AppConstants.instagram,
-        AppConstants.instagramUrl,
+        widget.contactsModel.instagramUsername,
+        widget.contactsModel.instagramLink,
         Theme.of(context).textTheme.bodyText1!);
   }
 
@@ -191,13 +186,19 @@ class _ContactUsState extends State<ContactUs> {
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.headline4?.copyWith(fontWeight: FontWeight.w300),
+              style: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  ?.copyWith(fontWeight: FontWeight.w300),
             ),
             const SizedBox(height: 5),
             SelectableText.rich(
               TextSpan(
                 text: content,
-                style: Theme.of(context).textTheme.subtitle1?.copyWith(fontStyle: FontStyle.normal),
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    ?.copyWith(fontStyle: FontStyle.normal),
                 mouseCursor: SystemMouseCursors.click,
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
@@ -225,7 +226,10 @@ class _ContactUsState extends State<ContactUs> {
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.headline4?.copyWith(fontWeight: FontWeight.w300),
+              style: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  ?.copyWith(fontWeight: FontWeight.w300),
             ),
             const SizedBox(height: 5),
             GestureDetector(
@@ -234,28 +238,15 @@ class _ContactUsState extends State<ContactUs> {
               },
               child: SelectableText(
                 content,
-                style: Theme.of(context).textTheme.subtitle1?.copyWith(fontStyle: FontStyle.normal),
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    ?.copyWith(fontStyle: FontStyle.normal),
               ),
             ),
-
-            // child: SelectableText(
-            //   content,
-            //   style: TextStyle(color: Colors.black.withOpacity(.7)),
-            // ),
           ],
         )
       ],
     );
-  }
-
-  // FittedBox(
-  // child:
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _contentController.dispose();
-    super.dispose();
   }
 }

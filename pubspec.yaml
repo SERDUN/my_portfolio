@@ -57,6 +57,7 @@ flutter:
     - assets/animation/circle_animation.json
     - assets/data/projects.json
     - assets/data/user.json
+    - assets/data/contact.json
 
 
   fonts:
