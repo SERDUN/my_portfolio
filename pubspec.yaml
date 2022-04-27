@@ -1,5 +1,5 @@
 name: my_portfolio
-description: A new Flutter project.
+description: Serdun Dmitro
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+2
 
@@ -9,50 +9,52 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  flutter_web_plugins:
+    sdk: flutter
+
   responsive_framework: ^0.1.7
-  lottie: ^1.2.1
   matrix4_transform: ^2.0.1
   octo_image: ^1.0.1
-  url_launcher: ^6.0.20
-  carousel_slider: ^4.0.0
-  cupertino_icons: ^1.0.2
+  url_launcher: ^6.1.0
+  carousel_slider: ^4.1.1
   transparent_image: ^2.0.0
   get_it: ^7.2.0
-  injectable: ^1.5.0
-  json_annotation: ^4.4.0
+  injectable: ^1.5.3
+  json_annotation: ^4.5.0
   flutter_bloc: ^8.0.1
 
 
 dev_dependencies:
-  build_runner: ^2.1.5
-  injectable_generator: ^1.5.2
-  json_serializable: ^6.1.1
+  build_runner: ^2.1.10
+  injectable_generator: ^1.5.3
+  flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^1.0.0
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/image/social/facebook.png
-    - assets/image/social/gmail.png
-    - assets/image/social/instagram.png
-    - assets/image/social/linkedin.png
-    - assets/image/language/ua.png
-    - assets/image/language/en.png
-    - assets/image/icons/category.png
-    - assets/image/icons/sub_category.png
-    - assets/image/icons/github.png
-    - assets/image/icons/call.png
-    - assets/image/icons/email.png
-    - assets/image/social/google_play.png
-    - assets/image/social/app_store.png
-    - assets/image/icons/pin.png
+    - assets/image/social/facebook.webp
+    - assets/image/social/gmail.webp
+    - assets/image/social/instagram.webp
+    - assets/image/social/linkedin.webp
+    - assets/image/language/ua.webp
+    - assets/image/language/en.webp
+    - assets/image/icons/category.webp
+    - assets/image/icons/up_arrow.webp
+    - assets/image/icons/sub_category.webp
+    - assets/image/icons/github.webp
+    - assets/image/icons/call.webp
+    - assets/image/icons/email.webp
+    - assets/image/social/google_play.webp
+    - assets/image/social/app_store.webp
+    - assets/image/icons/pin.webp
     - assets/animation/arrow_vertical.json
     - assets/animation/circle_animation.json
     - assets/data/projects.json
     - assets/data/user.json
+    - assets/data/contact.json
 
 
   fonts:

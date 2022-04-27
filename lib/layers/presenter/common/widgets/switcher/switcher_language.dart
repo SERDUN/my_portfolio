@@ -36,8 +36,8 @@ class _SwitcherLanguageState extends State<SwitcherLanguage> {
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 child: isSelectedUa
-                    ? buildLanguage("assets/image/language/ua.png")
-                    : buildLanguage("assets/image/language/en.png"),
+                    ? buildLanguage("assets/image/language/ua.webp")
+                    : buildLanguage("assets/image/language/en.webp"),
                 onTap: () {
                   setState(() {
                     isSelectedUa = !isSelectedUa;

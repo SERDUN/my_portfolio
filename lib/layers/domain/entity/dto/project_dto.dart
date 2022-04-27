@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
+
 import 'project_media_dto.dart';
 import 'project_tags_dto.dart';
+
 part 'generation/project_dto.g.dart';
 
 @JsonSerializable()

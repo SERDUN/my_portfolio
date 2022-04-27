@@ -1,5 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 
 class TreeNode extends StatefulWidget {
   final int level;
@@ -37,20 +39,13 @@ class TreeNode extends StatefulWidget {
   _TreeNodeState createState() => _TreeNodeState();
 }
 
-class _TreeNodeState extends State<TreeNode>
-    with SingleTickerProviderStateMixin {
+class _TreeNodeState extends State<TreeNode> {
   bool _isExpanded = false;
 
-  late AnimationController _rotationController;
-  final Tween<double> _turnsTween = Tween<double>(begin: 0.0, end: -0.5);
 
   @override
   initState() {
     _isExpanded = widget.expanded;
-    _rotationController = AnimationController(
-      duration: const Duration(milliseconds: 100),
-      vsync: this,
-    );
     super.initState();
   }
 
@@ -68,34 +63,28 @@ class _TreeNodeState extends State<TreeNode>
             child: InkWell(
                 onTap: children.isNotEmpty
                     ? () {
-                        if (widget.leadingOnTap != null &&
-                            widget.leadingOnTap is Function) {
-                          widget.leadingOnTap!();
-                        }
-                        setState(() {
-                          _isExpanded = !_isExpanded;
-                          if (_isExpanded) {
-                            _rotationController.forward();
-                          } else {
-                            _rotationController.reverse();
-                          }
-                          if (widget.trailingOnTap != null &&
-                              widget.trailingOnTap is Function) {
-                            widget.trailingOnTap!();
-                          }
-                        });
-                        _turnsTween.animate(_rotationController);
-                      }
+                  if (widget.leadingOnTap != null &&
+                      widget.leadingOnTap is Function) {
+                    widget.leadingOnTap!();
+                  }
+                  setState(() {
+                    _isExpanded = !_isExpanded;
+                    if (widget.trailingOnTap != null &&
+                        widget.trailingOnTap is Function) {
+                      widget.trailingOnTap!();
+                    }
+                  });
+                }
                     : null,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
                       child: children.length > 1
-                          ? Image.asset("assets/image/icons/category.png",
-                              width: 24, height: 24)
-                          : Image.asset("assets/image/icons/sub_category.png",
-                              width: 24, height: 24),
+                          ? Image.asset("assets/image/icons/category.webp",
+                          width: 24, height: 24)
+                          : Image.asset("assets/image/icons/sub_category.webp",
+                          width: 24, height: 24),
                       padding: const EdgeInsets.all(8),
                     ),
                     Expanded(child: widget.title ?? Container()),
@@ -103,13 +92,18 @@ class _TreeNodeState extends State<TreeNode>
                     Visibility(
                       visible: children.isNotEmpty,
                       child: Center(
-                        child: RotationTransition(
-                          child: Lottie.asset(
-                              'assets/animation/arrow_vertical.json',
-                              width: 24,
-                              height: 24),
-                          turns: _turnsTween.animate(_rotationController),
-                        ),
+                          child: Transform.rotate(
+                              angle: -pi / (_isExpanded ? 1 : 360),
+                              child: Image.asset(
+                                "assets/image/icons/up_arrow.webp",
+                                width: 16,
+                                height: 16,
+                                color: Theme
+                                    .of(context)
+                                    .colorPlate
+                                    .call()
+                                    .orange,
+                              )),
                       ),
                     ),
                   ],

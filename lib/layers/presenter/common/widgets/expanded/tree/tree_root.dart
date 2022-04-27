@@ -1,5 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 
 class TreeRoot extends StatefulWidget {
   final int level;
@@ -22,20 +24,12 @@ class TreeRoot extends StatefulWidget {
   _TreeNodeState createState() => _TreeNodeState();
 }
 
-class _TreeNodeState extends State<TreeRoot>
-    with SingleTickerProviderStateMixin {
+class _TreeNodeState extends State<TreeRoot> {
   bool _isExpanded = false;
-
-  late AnimationController _rotationController;
-  final Tween<double> _turnsTween = Tween<double>(begin: 0.0, end: -0.5);
 
   @override
   initState() {
     _isExpanded = widget.expanded;
-    _rotationController = AnimationController(
-      duration: const Duration(milliseconds: 100),
-      vsync: this,
-    );
     super.initState();
   }
 
@@ -68,14 +62,14 @@ class _TreeNodeState extends State<TreeRoot>
                         onTap: () {
                           _handleTap();
                         },
-                        child: RotationTransition(
-                          child: Lottie.asset(
-                            'assets/animation/arrow_vertical.json',
-                            width: 24,
-                            height: 24,
-                          ),
-                          turns: _turnsTween.animate(_rotationController),
-                        ),
+                        child: Transform.rotate(
+                            angle: -pi / (_isExpanded ? 1 : 360),
+                            child: Image.asset(
+                              "assets/image/icons/up_arrow.webp",
+                              width: 16,
+                              height: 16,
+                              color: Theme.of(context).colorPlate.call().orange,
+                            )),
                       ),
                     ),
                   ],
@@ -104,11 +98,6 @@ class _TreeNodeState extends State<TreeRoot>
   void _handleTap() {
     setState(() {
       _isExpanded = !_isExpanded;
-      if (_isExpanded) {
-        _rotationController.forward();
-      } else {
-        _rotationController.reverse();
-      }
     });
   }
 }
