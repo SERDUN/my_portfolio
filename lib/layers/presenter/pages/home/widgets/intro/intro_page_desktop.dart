@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/domain/entity/model/user/portfolio_user_model.dart';
 import 'package:octo_image/octo_image.dart';
@@ -119,7 +117,7 @@ class _IntroPageDesktopState extends State<IntroPageDesktop> {
           width: 264,
           height: 264,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(224)),
+              borderRadius: const BorderRadius.all(Radius.circular(224)),
               color: Colors.orange.withOpacity(0.1)),
         )),
         Center(

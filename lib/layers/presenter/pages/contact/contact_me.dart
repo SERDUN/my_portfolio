@@ -6,16 +6,16 @@ import '../../common/widgets/behaviour/responsive_widget.dart';
 import '../../common/widgets/decoration/decoration_view.dart';
 import '../../common/widgets/icon.dart';
 
-class ContactUs extends StatefulWidget {
+class ContactMe extends StatefulWidget {
   final ContactsModel contactsModel;
 
-  const ContactUs({Key? key, required this.contactsModel}) : super(key: key);
+  const ContactMe({Key? key, required this.contactsModel}) : super(key: key);
 
   @override
-  _ContactUsState createState() => _ContactUsState();
+  _ContactMeState createState() => _ContactMeState();
 }
 
-class _ContactUsState extends State<ContactUs> {
+class _ContactMeState extends State<ContactMe> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -72,7 +72,6 @@ class _ContactUsState extends State<ContactUs> {
       ),
       mobileScreen: Container(
         margin: const EdgeInsets.symmetric(horizontal: 40),
-        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
