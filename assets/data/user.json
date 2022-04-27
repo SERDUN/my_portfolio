@@ -55,7 +55,12 @@
           "children": []
         },
         {
-          "title": "Navigation",
+          "title": "Navigator 1.0 Imperative",
+          "expanded": false,
+          "children": []
+        },
+        {
+          "title": "Navigator 2.0 Declarative",
           "expanded": false,
           "children": []
         },
