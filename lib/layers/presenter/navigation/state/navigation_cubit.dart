@@ -36,6 +36,8 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   void replaceToContact() => clearAndPush(_config("contact"));
 
+  void update() => state.nothing();
+
   NavigationRouterConfiguration _config(String path) =>
       NavigationRouterConfiguration(location: "/$path");
 }

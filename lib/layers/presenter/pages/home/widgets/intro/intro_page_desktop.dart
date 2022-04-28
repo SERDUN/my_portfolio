@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/domain/entity/model/user/portfolio_user_model.dart';
 import 'package:octo_image/octo_image.dart';
@@ -6,7 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../common/widgets/button/button_outline.dart';
 import '../../../../common/widgets/dash/dash_vertical.dart';
-
 
 class IntroPageDesktop extends StatefulWidget {
   final PortfolioUserModel? userModel;
@@ -89,7 +89,7 @@ class _IntroPageDesktopState extends State<IntroPageDesktop> {
             height: 8,
           ),
           ButtonOutline(
-            text: 'Download CV',
+            text: tr("button_download_cv"),
             onTap: () async {
               await canLaunch(widget.userModel?.cv ?? "")
                   ? await launch(widget.userModel?.cv ?? "")

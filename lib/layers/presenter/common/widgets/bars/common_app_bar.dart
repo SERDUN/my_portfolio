@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -181,8 +182,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               widget.onHome();
               setState(() {});
             },
-            child: const Text(
-              "HOME",
+            child: Text(
+              tr("menu_title_home"),
               textAlign: TextAlign.center,
             ),
             style: rout == HomeRoutes.intro
@@ -195,8 +196,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               widget.onPortfolio.call();
               setState(() {});
             },
-            child: const Text(
-              "PORTFOLIO",
+            child: Text(
+              tr("menu_title_portfolio"),
               textAlign: TextAlign.center,
             ),
             style: rout == HomeRoutes.projects
@@ -209,8 +210,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               setState(() {});
               widget.onContact();
             },
-            child: const Text(
-              "CONTACT",
+            child: Text(
+              tr("menu_title_contact"),
               textAlign: TextAlign.center,
             ),
             style: rout == HomeRoutes.contact

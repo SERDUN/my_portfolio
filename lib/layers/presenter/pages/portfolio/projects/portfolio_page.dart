@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/projects/bloc/state.dart';
@@ -37,7 +38,7 @@ class _HomePageState extends State<PortfolioPage> {
                 ),
                 Center(
                   child: Text(
-                    'Last projects'.toUpperCase(),
+                    tr("last_project_title"),
                     style: Theme.of(context).textTheme.headline2,
                   ),
                 ),

@@ -23,12 +23,21 @@ import 'layers/presenter/pages/portfolio/projects/bloc/bloc.dart';
 import 'layers/presenter/pages/portfolio/projects/bloc/event.dart';
 
 void main() async {
-  setUrlStrategy(PathUrlStrategy());
-  await configureDependencies(AppEnvironmentKey.dev);
+  WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  runApp(MultiBlocProvider(
-      providers: [
+  setUrlStrategy(PathUrlStrategy());
+  await configureDependencies(AppEnvironmentKey.dev);
+
+  runApp(EasyLocalization(
+      supportedLocales: const [
+        Locale.fromSubtags(languageCode: "en"),
+        Locale.fromSubtags(languageCode: "uk"),
+      ],
+      startLocale: const Locale.fromSubtags(languageCode: 'uk'),
+      path: 'assets/translations',
+      useOnlyLangCode: true,
+      child: MultiBlocProvider(providers: [
         BlocProvider<NavigationCubit>(
           create: (BuildContext context) => NavigationCubit(),
         ),
@@ -48,12 +57,7 @@ void main() async {
           create: (BuildContext context) =>
               ContactsBloc(di<GetContactsUseCase>())..add(InitContactsEvent()),
         ),
-      ],
-      child: EasyLocalization(
-          supportedLocales: const [Locale('en', 'US'), Locale('ua', '')],
-          path: 'assets/translations',
-          fallbackLocale: const Locale('en', 'US'),
-          child: const MyApp())));
+      ], child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {
@@ -62,6 +66,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
       title: "Dmitro Serdun",
       theme: CustomTheme.lightTheme,
       builder: (context, widget) => ResponsiveWrapper.builder(

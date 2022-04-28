@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
 class SwitcherLanguage extends StatefulWidget {
   final Function onTapOnName;
@@ -13,8 +15,6 @@ class SwitcherLanguage extends StatefulWidget {
 }
 
 class _SwitcherLanguageState extends State<SwitcherLanguage> {
-  bool isSelectedUa = true;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +25,9 @@ class _SwitcherLanguageState extends State<SwitcherLanguage> {
           GestureDetector(
             onTap: () => widget.onTapOnName(),
             child: Text(
-              MediaQuery.of(context).size.width < 350 ? "Serdun" : "Dmitro Serdun",
+              MediaQuery.of(context).size.width < 350
+                  ? "Serdun"
+                  : "Dmitro Serdun",
               style: Theme.of(context)
                   .textTheme
                   .headline4
@@ -35,13 +37,24 @@ class _SwitcherLanguageState extends State<SwitcherLanguage> {
           MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
-                child: isSelectedUa
-                    ? buildLanguage("assets/image/language/ua.webp")
-                    : buildLanguage("assets/image/language/en.webp"),
+                child: Stack(
+                  children: [
+                    Padding(
+                      child: buildLanguage(context.locale.languageCode == "en"
+                          ? "assets/image/language/ua.webp"
+                          : "assets/image/language/en.webp"),
+                      padding: const EdgeInsets.only(left: 8),
+                    ),
+                    buildLanguage(context.locale.languageCode == "en"
+                        ? "assets/image/language/en.webp"
+                        : "assets/image/language/ua.webp")
+                  ],
+                ),
                 onTap: () {
-                  setState(() {
-                    isSelectedUa = !isSelectedUa;
-                  });
+                  String newLocale =
+                      context.locale.languageCode == "en" ? 'uk' : 'en';
+                  context.setLocale(Locale(newLocale));
+                  html.window.location.reload();
                 },
               )),
         ],

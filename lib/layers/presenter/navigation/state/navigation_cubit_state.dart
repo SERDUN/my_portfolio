@@ -37,6 +37,10 @@ class NavigationState {
     return NavigationState(currentStack);
   }
 
+  NavigationState nothing() {
+    return NavigationState(currentStack);
+  }
+
   NavigationState clearAndPush(NavigationRouterConfiguration config) {
     currentStack.clear();
     currentStack.add(config);
