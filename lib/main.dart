@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -24,27 +25,35 @@ import 'layers/presenter/pages/portfolio/projects/bloc/event.dart';
 void main() async {
   setUrlStrategy(PathUrlStrategy());
   await configureDependencies(AppEnvironmentKey.dev);
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider<NavigationCubit>(
-      create: (BuildContext context) => NavigationCubit(),
-    ),
-    BlocProvider<InfoBloc>(
-      create: (BuildContext context) =>
-          InfoBloc(di<GetUserUseCase>())..add(InitEvent()),
-    ),
-    BlocProvider<ProjectsBloc>(
-      create: (BuildContext context) =>
-          ProjectsBloc(di<GetProjectsUseCase>())..add(InitProjectsEvent()),
-    ),
-    BlocProvider<ProjectDetailsBloc>(
-      create: (BuildContext context) =>
-          ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
-    ),
-    BlocProvider<ContactsBloc>(
-      create: (BuildContext context) =>
-          ContactsBloc(di<GetContactsUseCase>())..add(InitContactsEvent()),
-    ),
-  ], child: const MyApp()));
+  await EasyLocalization.ensureInitialized();
+
+  runApp(MultiBlocProvider(
+      providers: [
+        BlocProvider<NavigationCubit>(
+          create: (BuildContext context) => NavigationCubit(),
+        ),
+        BlocProvider<InfoBloc>(
+          create: (BuildContext context) =>
+              InfoBloc(di<GetUserUseCase>())..add(InitEvent()),
+        ),
+        BlocProvider<ProjectsBloc>(
+          create: (BuildContext context) =>
+              ProjectsBloc(di<GetProjectsUseCase>())..add(InitProjectsEvent()),
+        ),
+        BlocProvider<ProjectDetailsBloc>(
+          create: (BuildContext context) =>
+              ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
+        ),
+        BlocProvider<ContactsBloc>(
+          create: (BuildContext context) =>
+              ContactsBloc(di<GetContactsUseCase>())..add(InitContactsEvent()),
+        ),
+      ],
+      child: EasyLocalization(
+          supportedLocales: const [Locale('en', 'US'), Locale('ua', '')],
+          path: 'assets/translations',
+          fallbackLocale: const Locale('en', 'US'),
+          child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {

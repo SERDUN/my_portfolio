@@ -23,6 +23,7 @@ dependencies:
   injectable: ^1.5.3
   json_annotation: ^4.5.0
   flutter_bloc: ^8.0.1
+  easy_localization: ^3.0.0
 
 
 dev_dependencies:
@@ -54,6 +55,8 @@ flutter:
     - assets/data/projects.json
     - assets/data/user.json
     - assets/data/contact.json
+    - assets/translations/
+
 
 
   fonts:

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../common/widgets/bars/common_app_bar.dart';
 import '../../navigation/state/navigation_cubit.dart';
 import '../home/host/host_routes.dart';
@@ -13,15 +12,12 @@ class UnknownScreen extends StatelessWidget {
     return Scaffold(
       appBar: CommonAppBar(
         defaultPage: HomeRoutes.projects,
-        onHome: () {
-          BlocProvider.of<NavigationCubit>(context).replaceToIntro();
-        },
-        onPortfolio: () {
-          BlocProvider.of<NavigationCubit>(context).replaceToProjects();
-        },
-        onContact: () {
-          BlocProvider.of<NavigationCubit>(context).replaceToContact();
-        },
+        onHome: () =>
+            BlocProvider.of<NavigationCubit>(context).replaceToIntro(),
+        onPortfolio: () =>
+            BlocProvider.of<NavigationCubit>(context).replaceToProjects(),
+        onContact: () =>
+            BlocProvider.of<NavigationCubit>(context).replaceToContact(),
       ),
       body: _buildBody(context),
     );

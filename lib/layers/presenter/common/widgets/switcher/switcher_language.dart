@@ -25,7 +25,7 @@ class _SwitcherLanguageState extends State<SwitcherLanguage> {
           GestureDetector(
             onTap: () => widget.onTapOnName(),
             child: Text(
-              MediaQuery.of(context).size.width < 350 ? "DS" : "Dmitro Serdun",
+              MediaQuery.of(context).size.width < 350 ? "Serdun" : "Dmitro Serdun",
               style: Theme.of(context)
                   .textTheme
                   .headline4
