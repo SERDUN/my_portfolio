@@ -15,9 +15,9 @@ class UserRepositoryImpl extends UserRepository {
   UserRepositoryImpl(this.source);
 
   @override
-  Future<Either<Failure, PortfolioUserDTO>> getUser() async {
+  Future<Either<Failure, PortfolioUserDTO>> getUser(String localization) async {
     try {
-      PortfolioUserDTO user = await source.getUserData();
+      PortfolioUserDTO user = await source.getUserData(localization);
       return Future.value(Right(user));
     } on Exception catch (e) {
       //Logic for handle depend from datasource

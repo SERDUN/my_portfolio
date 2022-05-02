@@ -1,13 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'dart:html' as html;
 
 class SwitcherLanguage extends StatefulWidget {
   final Function onTapOnName;
   final EdgeInsets margin;
+  final Function() localizationChanged;
 
   const SwitcherLanguage(
-      {Key? key, required this.onTapOnName, this.margin = EdgeInsets.zero})
+      {Key? key,
+      required this.onTapOnName,
+      this.margin = EdgeInsets.zero,
+      required this.localizationChanged})
       : super(key: key);
 
   @override
@@ -50,12 +53,7 @@ class _SwitcherLanguageState extends State<SwitcherLanguage> {
                         : "assets/image/language/ua.webp")
                   ],
                 ),
-                onTap: () {
-                  String newLocale =
-                      context.locale.languageCode == "en" ? 'uk' : 'en';
-                  context.setLocale(Locale(newLocale));
-                  html.window.location.reload();
-                },
+                onTap: super.widget.localizationChanged,
               )),
         ],
       ),

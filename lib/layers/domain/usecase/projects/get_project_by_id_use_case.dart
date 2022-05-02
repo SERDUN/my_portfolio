@@ -22,7 +22,7 @@ class GetProjectByIdUseCase extends BaseUseCase<int, ProjectModel> {
   @override
   Future<Either<Failure, ProjectModel>> execute({int? argument}) async {
     if (argument != null) {
-      var result = await userRepository.getProjectById(argument);
+      var result = await userRepository.getProjectById(argument,"en");
       if (result.isRight) {
         return Future.value(Right(mapper.mapToModel(result.right)));
       } else {

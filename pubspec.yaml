@@ -24,9 +24,12 @@ dependencies:
   json_annotation: ^4.5.0
   flutter_bloc: ^8.0.1
   easy_localization: ^3.0.0
+  logger: ^1.1.0
+
 
 
 dev_dependencies:
+  json_serializable: ^6.2.0
   build_runner: ^2.1.10
   injectable_generator: ^1.5.3
   flutter_lints: ^1.0.4
@@ -52,8 +55,10 @@ flutter:
     - assets/image/icons/location.webp
     - assets/animation/arrow_vertical.json
     - assets/animation/circle_animation.json
-    - assets/data/projects.json
-    - assets/data/user.json
+    - assets/data/en/projects.json
+    - assets/data/en/user.json
+    - assets/data/ua/projects.json
+    - assets/data/ua/user.json
     - assets/data/contact.json
     - assets/translations/
 

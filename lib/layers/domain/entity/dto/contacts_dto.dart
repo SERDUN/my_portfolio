@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'generation/contacts_dto.g.dart';
+part 'contacts_dto.g.dart';
 
 @JsonSerializable()
 class ContactsDTO {

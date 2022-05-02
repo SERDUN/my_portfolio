@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../project_image_dto.dart';
+part of 'project_image_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

@@ -5,7 +5,7 @@ import '../entity/model/error/common/either.dart';
 import '../entity/model/error/common/failure.dart';
 
 abstract class UserRepository {
-  Future<Either<Failure, PortfolioUserDTO>> getUser();
+  Future<Either<Failure, PortfolioUserDTO>> getUser(String localization);
 
   Future<Either<Failure, ContactsDTO>> getContacts();
 }

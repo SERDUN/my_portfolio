@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'generation/project_tags_dto.g.dart';
+part 'project_tags_dto.g.dart';
 
 @JsonSerializable()
 class ProjectTagsDTO {

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../project_dto.dart';
+part of 'project_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -24,6 +24,7 @@ ProjectDTO _$ProjectDTOFromJson(Map<String, dynamic> json) => ProjectDTO(
 
 Map<String, dynamic> _$ProjectDTOToJson(ProjectDTO instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'intro': instance.intro,
       'description': instance.description,

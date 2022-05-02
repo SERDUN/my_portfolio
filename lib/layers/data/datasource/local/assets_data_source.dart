@@ -10,8 +10,11 @@ import '../../../domain/entity/dto/portfolio_dto.dart';
 @Singleton()
 class AssetsDataSource {
   @Singleton()
-  Future<PortfolioDTO> getProjectData() async {
-    String data = await rootBundle.loadString('assets/data/projects.json');
+  Future<PortfolioDTO> getProjectData(String localization) async {
+    String data = localization == "en"
+        ? await rootBundle.loadString('assets/data/en/projects.json')
+        : await rootBundle.loadString('assets/data/ua/projects.json');
+
     var jsonResult = json.decode(data);
     PortfolioDTO portfolioDTO = PortfolioDTO.fromJson(jsonResult);
     return Future.value(portfolioDTO);
@@ -26,8 +29,10 @@ class AssetsDataSource {
   }
 
   @Singleton()
-  Future<PortfolioUserDTO> getUserData() async {
-    String data = await rootBundle.loadString('assets/data/user.json');
+  Future<PortfolioUserDTO> getUserData(String localization) async {
+    String data = localization == "en"
+        ? await rootBundle.loadString('assets/data/en/user.json')
+        : await rootBundle.loadString('assets/data/ua/user.json');
     var jsonResult = json.decode(data);
     PortfolioUserDTO portfolioDTO = PortfolioUserDTO.fromJson(jsonResult);
     return Future.value(portfolioDTO);

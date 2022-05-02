@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:logger/logger.dart';
 import 'package:my_portfolio/layers/presenter/pages/contact/bloc/bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -22,12 +23,18 @@ import 'layers/presenter/pages/portfolio/details/bloc/bloc.dart';
 import 'layers/presenter/pages/portfolio/projects/bloc/bloc.dart';
 import 'layers/presenter/pages/portfolio/projects/bloc/event.dart';
 
+
+var pLogger = Logger();
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setUrlStrategy(PathUrlStrategy());
+
+  await configureDependencies(AppEnvironmentKey.dev);
+
   await EasyLocalization.ensureInitialized();
 
-  setUrlStrategy(PathUrlStrategy());
-  await configureDependencies(AppEnvironmentKey.dev);
 
   runApp(EasyLocalization(
       supportedLocales: const [

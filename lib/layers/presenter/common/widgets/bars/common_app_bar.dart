@@ -1,24 +1,28 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/layers/domain/entity/model/error/common/either.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 import '../../../pages/home/host/host_routes.dart';
 import '../behaviour/responsive_widget.dart';
 import '../switcher/switcher_language.dart';
+import 'dart:html' as html;
 
 class CommonAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Function onHome;
   final Function onContact;
   final Function onPortfolio;
   final HomeRoutes defaultPage;
+  final Function()? localizationChanged;
 
   const CommonAppBar(
       {Key? key,
       required this.onHome,
       this.defaultPage = HomeRoutes.intro,
       required this.onContact,
-      required this.onPortfolio})
+      required this.onPortfolio,
+      this.localizationChanged})
       : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -37,7 +41,14 @@ class _CommonAppBarState extends State<CommonAppBar> {
       onContact: widget.onContact,
       onPortfolio: widget.onPortfolio,
       onHome: widget.onHome,
+      localizationChanged: _changeLanguage,
     );
+  }
+
+  void _changeLanguage() {
+    String newLocale = context.locale.languageCode == "en" ? 'uk' : 'en';
+    context.setLocale(Locale(newLocale));
+    html.window.location.reload();
   }
 }
 
@@ -46,12 +57,14 @@ class GeneralMenuBar extends StatefulWidget {
   final Function onContact;
   final Function onPortfolio;
   final HomeRoutes defaultPage;
+  final Function() localizationChanged;
 
   const GeneralMenuBar(
       {Key? key,
       required this.onHome,
       required this.onContact,
       required this.onPortfolio,
+      required this.localizationChanged,
       required this.defaultPage})
       : super(key: key);
 
@@ -87,6 +100,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               margin: EdgeInsets.only(
                   right: ResponsiveWrapper.of(context).isDesktop ? 16 : 8),
               onTapOnName: widget.onHome,
+              localizationChanged: super.widget.localizationChanged,
             )
           ],
         ),
@@ -103,13 +117,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
       alignment: WrapAlignment.center,
       children: <Widget>[
         TextButton(
-          onPressed: () {
-            if (rout != HomeRoutes.intro) {
-              rout = HomeRoutes.intro;
-              setState(() {});
-              widget.onHome();
-            }
-          },
+          onPressed: () => _openHome(),
           child: Icon(
             Icons.home,
             color: rout == HomeRoutes.intro
@@ -118,13 +126,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
           ),
         ),
         TextButton(
-          onPressed: () {
-            if (rout != HomeRoutes.projects) {
-              rout = HomeRoutes.projects;
-              setState(() {});
-              widget.onPortfolio.call();
-            }
-          },
+          onPressed: () => _openProjects(),
           child: Icon(
             Icons.article_outlined,
             color: rout == HomeRoutes.projects
@@ -133,13 +135,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
           ),
         ),
         TextButton(
-          onPressed: () {
-            if (rout != HomeRoutes.contact) {
-              rout = HomeRoutes.contact;
-              setState(() {});
-              widget.onContact();
-            }
-          },
+          onPressed: () => _openContacts(),
           child: Icon(
             Icons.perm_contact_cal,
             color: rout == HomeRoutes.contact
@@ -177,11 +173,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
         alignment: WrapAlignment.center,
         children: <Widget>[
           TextButton(
-            onPressed: () {
-              rout = HomeRoutes.intro;
-              widget.onHome();
-              setState(() {});
-            },
+            onPressed: () => _openHome(),
             child: Text(
               tr("menu_title_home"),
               textAlign: TextAlign.center,
@@ -191,11 +183,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                 : activeFlatButtonStyle,
           ),
           TextButton(
-            onPressed: () {
-              rout = HomeRoutes.projects;
-              widget.onPortfolio.call();
-              setState(() {});
-            },
+            onPressed: () => _openProjects(),
             child: Text(
               tr("menu_title_portfolio"),
               textAlign: TextAlign.center,
@@ -205,11 +193,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                 : activeFlatButtonStyle,
           ),
           TextButton(
-            onPressed: () {
-              rout = HomeRoutes.contact;
-              setState(() {});
-              widget.onContact();
-            },
+            onPressed: () => _openContacts(),
             child: Text(
               tr("menu_title_contact"),
               textAlign: TextAlign.center,
@@ -221,5 +205,23 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
         ],
       ),
     );
+  }
+
+  void _openContacts() {
+    rout = HomeRoutes.contact;
+    setState(() {});
+    widget.onContact();
+  }
+
+  void _openProjects() {
+    rout = HomeRoutes.projects;
+    widget.onPortfolio.call();
+    setState(() {});
+  }
+
+  void _openHome() {
+    rout = HomeRoutes.intro;
+    widget.onHome();
+    setState(() {});
   }
 }

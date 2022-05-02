@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 
+import '../../../../../main.dart';
 import '../../../common/widgets/bars/common_app_bar.dart';
 import '../../../navigation/state/navigation_cubit.dart';
 import '../../contact/contact_page.dart';

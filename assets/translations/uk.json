@@ -1,8 +1,9 @@
 {
-  "last_project_title":"Мої проекти",
-  "menu_title_home":"Головна",
-  "menu_title_portfolio":"Мої роботи",
-  "menu_title_contact":"Контакти",
-  "button_download_cv": "Отримати резюме"
-
+  "last_project_title": "Проекти",
+  "menu_title_home": "Резюме",
+  "menu_title_portfolio": "Портфоліо",
+  "menu_title_contact": "Контакти",
+  "button_download_cv": "Отримати резюме",
+  "unknown_page_title": "404",
+  "unknown_page_description": "російський корабль йди на х*й"
 }

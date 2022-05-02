@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'generation/project_image_dto.g.dart';
+part 'project_image_dto.g.dart';
 
 @JsonSerializable()
 class ProjectImageDTO {

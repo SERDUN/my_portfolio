@@ -34,11 +34,8 @@ class PortfolioItem extends StatelessWidget {
         ));
   }
 
-  void _openDetails(BuildContext context) {
-    BlocProvider.of<NavigationCubit>(context).openProjectDetails(project.id);
-    // Navigator.of(context, rootNavigator: true)
-    //     .pushNamed(Routes.projectDetails, arguments: project.id);
-  }
+  void _openDetails(BuildContext context) =>
+      BlocProvider.of<NavigationCubit>(context).openProjectDetails(project.id);
 
   Color _getChipColorTechnology(String technology, BuildContext context) {
     switch (technology) {

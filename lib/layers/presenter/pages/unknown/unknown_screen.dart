@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../common/widgets/bars/common_app_bar.dart';
@@ -35,7 +36,7 @@ class UnknownScreen extends StatelessWidget {
               height: 16,
             ),
             Text(
-              '404',
+              tr("unknown_page_title"),
               style: Theme.of(context).textTheme.headline2,
               textAlign: TextAlign.center,
             ),
@@ -43,7 +44,7 @@ class UnknownScreen extends StatelessWidget {
               height: 16,
             ),
             Text(
-              'Fuck russia!'.toUpperCase(),
+              tr("unknown_page_description").toUpperCase(),
               style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),

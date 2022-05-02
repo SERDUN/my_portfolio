@@ -16,8 +16,8 @@ class ProjectRepositoryImpl extends ProjectRepository {
   ProjectRepositoryImpl(this.source);
 
   @override
-  Future<Either<Failure, ProjectDTO>> getProjectById(int id) async {
-    var projects = await getProjects();
+  Future<Either<Failure, ProjectDTO>> getProjectById(int id,String localization) async {
+    var projects = await getProjects(localization);
     if (projects.isRight) {
       var project =
           projects.right.firstWhereOrNull((element) => element.id == id);
@@ -33,9 +33,9 @@ class ProjectRepositoryImpl extends ProjectRepository {
   }
 
   @override
-  Future<Either<Failure, List<ProjectDTO>>> getProjects() async {
+  Future<Either<Failure, List<ProjectDTO>>> getProjects(String localization) async {
     try {
-      PortfolioDTO user = await source.getProjectData();
+      PortfolioDTO user = await source.getProjectData(localization);
       return Future.value(Right(user.projects ?? []));
     } on Exception catch (e) {
       //Logic for handle depend from datasource

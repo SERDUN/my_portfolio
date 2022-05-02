@@ -20,7 +20,7 @@ class GetProjectsUseCase extends BaseUseCase<void, List<ProjectModel>> {
 
   @override
   Future<Either<Failure, List<ProjectModel>>> execute({void argument}) async {
-    var result = await userRepository.getProjects();
+    var result = await userRepository.getProjects("en");
     if (result.isRight) {
       return Future.value(Right(mapper.mapToModels(result.right)));
     } else {

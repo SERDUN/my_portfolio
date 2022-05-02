@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:my_portfolio/layers/domain/entity/model/user/portfolio_user_model.dart';
+import 'package:my_portfolio/layers/domain/repository/setting_repository.dart';
 import 'package:my_portfolio/layers/domain/repository/user_repository.dart';
 
 import '../../common/base_us_case.dart';
@@ -20,7 +21,8 @@ class GetUserUseCase extends BaseUseCase<void, PortfolioUserModel> {
 
   @override
   Future<Either<Failure, PortfolioUserModel>> execute({void argument}) async {
-    PortfolioUserDTO userDTO = (await userRepository.getUser()).right;
+    // var localization=settingRepository.getSelectedLanguage();
+    PortfolioUserDTO userDTO = (await userRepository.getUser("en")).right;
     return Future.value(Right(mapper.mapToModel(userDTO)));
   }
 }

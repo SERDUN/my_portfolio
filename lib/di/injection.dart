@@ -8,5 +8,5 @@ late GetIt di;
 @injectableInit
 Future configureDependencies(String environment) async {
   di = GetIt.asNewInstance();
-  await $initGetIt(di, environment: environment);
+  $initGetIt(di, environment: environment);
 }

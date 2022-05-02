@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'portfolio_skills_dto.dart';
 
-part 'generation/portfolio_user_dto.g.dart';
+part 'portfolio_user_dto.g.dart';
 
 @JsonSerializable()
 class PortfolioUserDTO {
