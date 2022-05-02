@@ -23,48 +23,55 @@ import 'layers/presenter/pages/portfolio/details/bloc/bloc.dart';
 import 'layers/presenter/pages/portfolio/projects/bloc/bloc.dart';
 import 'layers/presenter/pages/portfolio/projects/bloc/event.dart';
 
-
 var pLogger = Logger();
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setUrlStrategy(PathUrlStrategy());
-
   await configureDependencies(AppEnvironmentKey.dev);
-
   await EasyLocalization.ensureInitialized();
+  runApp(const DataProvider());
+}
 
+class DataProvider extends StatelessWidget {
+  const DataProvider({Key? key}) : super(key: key);
 
-  runApp(EasyLocalization(
-      supportedLocales: const [
-        Locale.fromSubtags(languageCode: "en"),
-        Locale.fromSubtags(languageCode: "uk"),
-      ],
-      startLocale: const Locale.fromSubtags(languageCode: 'uk'),
-      path: 'assets/translations',
-      useOnlyLangCode: true,
-      child: MultiBlocProvider(providers: [
-        BlocProvider<NavigationCubit>(
-          create: (BuildContext context) => NavigationCubit(),
-        ),
-        BlocProvider<InfoBloc>(
-          create: (BuildContext context) =>
-              InfoBloc(di<GetUserUseCase>())..add(InitEvent()),
-        ),
-        BlocProvider<ProjectsBloc>(
-          create: (BuildContext context) =>
-              ProjectsBloc(di<GetProjectsUseCase>())..add(InitProjectsEvent()),
-        ),
-        BlocProvider<ProjectDetailsBloc>(
-          create: (BuildContext context) =>
-              ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
-        ),
-        BlocProvider<ContactsBloc>(
-          create: (BuildContext context) =>
-              ContactsBloc(di<GetContactsUseCase>())..add(InitContactsEvent()),
-        ),
-      ], child: const MyApp())));
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<NavigationCubit>(
+            create: (BuildContext context) => NavigationCubit(),
+          ),
+          BlocProvider<InfoBloc>(
+            create: (BuildContext context) =>
+                InfoBloc(di<GetUserUseCase>())..add(InitEvent()),
+          ),
+          BlocProvider<ProjectsBloc>(
+            create: (BuildContext context) =>
+                ProjectsBloc(di<GetProjectsUseCase>())
+                  ..add(InitProjectsEvent()),
+          ),
+          BlocProvider<ProjectDetailsBloc>(
+            create: (BuildContext context) =>
+                ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
+          ),
+          BlocProvider<ContactsBloc>(
+            create: (BuildContext context) =>
+                ContactsBloc(di<GetContactsUseCase>())
+                  ..add(InitContactsEvent()),
+          ),
+        ],
+        child: EasyLocalization(
+            supportedLocales: const [
+              Locale.fromSubtags(languageCode: "en"),
+              Locale.fromSubtags(languageCode: "uk"),
+            ],
+            startLocale: const Locale.fromSubtags(languageCode: 'uk'),
+            path: 'assets/translations',
+            useOnlyLangCode: true,
+            child: const MyApp()));
+  }
 }
 
 class MyApp extends StatelessWidget {
