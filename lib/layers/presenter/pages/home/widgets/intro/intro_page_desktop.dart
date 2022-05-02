@@ -1,29 +1,31 @@
 import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:my_portfolio/layers/domain/entity/model/user/portfolio_user_model.dart';
+import 'package:my_portfolio/main.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../common/widgets/button/button_outline.dart';
 import '../../../../common/widgets/dash/dash_vertical.dart';
 
-class IntroPageDesktop extends StatefulWidget {
+class IntroPageDesktop extends StatelessWidget {
   final PortfolioUserModel? userModel;
+  final TextTheme textTheme;
+  final ColorScheme colorScheme;
 
-  const IntroPageDesktop({required this.userModel, Key? key}) : super(key: key);
-
-  @override
-  State<IntroPageDesktop> createState() => _IntroPageDesktopState();
-}
-
-class _IntroPageDesktopState extends State<IntroPageDesktop> {
-  Future<bool> fetchData() => Future.delayed(const Duration(seconds: 2), () {
-        return true;
-      });
+  const IntroPageDesktop(
+      {Key? key,
+      required this.userModel,
+      required this.textTheme,
+      required this.colorScheme})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    pLogger.log(Level.debug, "ctx: "+context.locale.languageCode+" test: "+tr("button_download_cv") );
+
     return SizedBox(
       height: 328,
       child: buildMainContent(),
@@ -49,37 +51,33 @@ class _IntroPageDesktopState extends State<IntroPageDesktop> {
             height: 88,
           ),
           AnimatedOpacity(
-              opacity: widget.userModel?.position != null ? 1.0 : 0.0,
+              opacity: userModel?.position != null ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 500),
               // The green box must be a child of the AnimatedOpacity widget.
               child: SelectableText(
-                widget.userModel?.position ?? "",
-                style: Theme.of(context).textTheme.subtitle1,
+                userModel?.position ?? "",
+                style: textTheme.subtitle1,
               )),
           RichText(
               textAlign: TextAlign.center,
               text: TextSpan(children: [
                 TextSpan(
                     text: 'D',
-                    style: Theme.of(context).textTheme.headline1?.copyWith(
+                    style: textTheme.headline1?.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.primary)),
+                        color: colorScheme.primary)),
                 TextSpan(
                     text: 'mitro',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1
+                    style: textTheme.headline1
                         ?.copyWith(fontWeight: FontWeight.w500)),
                 TextSpan(
                     text: ' S',
-                    style: Theme.of(context).textTheme.headline1?.copyWith(
+                    style: textTheme.headline1?.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.primary)),
+                        color: colorScheme.primary)),
                 TextSpan(
                     text: 'erdun',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1
+                    style: textTheme.headline1
                         ?.copyWith(fontWeight: FontWeight.w500)),
               ])),
           const DashVertical(
@@ -91,9 +89,9 @@ class _IntroPageDesktopState extends State<IntroPageDesktop> {
           ButtonOutline(
             text: tr("button_download_cv"),
             onTap: () async {
-              await canLaunch(widget.userModel?.cv ?? "")
-                  ? await launch(widget.userModel?.cv ?? "")
-                  : throw 'Could not launch $widget.userModel?.cv??""';
+              await canLaunch(userModel?.cv ?? "")
+                  ? await launch(userModel?.cv ?? "")
+                  : throw 'Could not launch $userModel?.cv??""';
             },
           ),
           const SizedBox(

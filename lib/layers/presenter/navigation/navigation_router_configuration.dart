@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:my_portfolio/layers/presenter/navigation/common/pages/base_page.dart';
 
 import 'common/navigation_page_factory.dart';
 
@@ -16,7 +17,7 @@ class NavigationRouterConfiguration {
   final Map<String, dynamic> args = {};
 
   ///Our route description, this is where actual builds happen
-  late final Page page;
+  late final BasePage page;
 
   NavigationRouterConfiguration({
     required String location,

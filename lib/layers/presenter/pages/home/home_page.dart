@@ -1,22 +1,28 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/bloc/state.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/about_me/about_me.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_desktop.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_mobile.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/services/services.dart';
 
+import '../../../../main.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';
 import '../../common/widgets/footer/footer.dart';
 import 'bloc/bloc.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageState createState() {
+    pLogger.log(Level.debug, "HomePage: create state");
+
+    return _HomePageState();
+  }
 }
 
 class _HomePageState extends State<HomePage> {
@@ -39,6 +45,8 @@ class _HomePageState extends State<HomePage> {
             ResponsiveWidget(
               desktopScreen: IntroPageDesktop(
                 userModel: state.userModel,
+                colorScheme: Theme.of(context).colorScheme,
+                textTheme: Theme.of(context).textTheme,
               ),
               mobileScreen: IntroPageMobile(
                 userModel: state.userModel,

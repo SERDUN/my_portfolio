@@ -65,9 +65,11 @@ class DataProvider extends StatelessWidget {
         child: EasyLocalization(
             supportedLocales: const [
               Locale.fromSubtags(languageCode: "en"),
-              Locale.fromSubtags(languageCode: "uk"),
+              Locale.fromSubtags(languageCode: "ua"),
             ],
-            startLocale: const Locale.fromSubtags(languageCode: 'uk'),
+            startLocale: const Locale.fromSubtags(languageCode: 'ua'),
+
+
             path: 'assets/translations',
             useOnlyLangCode: true,
             child: const MyApp()));
@@ -79,9 +81,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    pLogger.log(Level.debug, "App rebuild: " + context.locale.toString());
+    //todo update datastore lang
+    //
+
     return MaterialApp.router(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
+      locale: context.locale,
+
       title: "Dmitro Serdun",
       theme: CustomTheme.lightTheme,
       builder: (context, widget) => ResponsiveWrapper.builder(

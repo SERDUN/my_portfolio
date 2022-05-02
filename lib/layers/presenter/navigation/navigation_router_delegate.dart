@@ -1,12 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/host/host_routes.dart';
+import 'package:my_portfolio/main.dart';
 
 import 'navigation_router_configuration.dart';
 import 'state/navigation_cubit.dart';
 import 'state/navigation_cubit_state.dart';
 
-class NavigationRouterDelegate extends RouterDelegate<NavigationRouterConfiguration>
+class NavigationRouterDelegate
+    extends RouterDelegate<NavigationRouterConfiguration>
     with
         ChangeNotifier,
         PopNavigatorRouterDelegateMixin<NavigationRouterConfiguration> {
@@ -24,12 +28,15 @@ class NavigationRouterDelegate extends RouterDelegate<NavigationRouterConfigurat
 
   @override
   Widget build(BuildContext context) {
+
     return BlocConsumer<NavigationCubit, NavigationState>(
       builder: (context, stack) => Navigator(
         pages: stack.pages,
         onPopPage: (route, result) => _onPopPage.call(route, result),
       ),
-      listener: (context, stack) => notifyListeners(),
+      listener: (context, stack) {
+        notifyListeners();
+      },
     );
   }
 
@@ -48,7 +55,8 @@ class NavigationRouterDelegate extends RouterDelegate<NavigationRouterConfigurat
   }
 
   @override
-  Future<void> setNewRoutePath(NavigationRouterConfiguration configuration) async {
+  Future<void> setNewRoutePath(
+      NavigationRouterConfiguration configuration) async {
     if ((configuration.route).contains(HomeRoutes.projects.name) ||
         (configuration.route).contains(HomeRoutes.contact.name)) {
       _navigationCubit.clearAndPush(configuration);

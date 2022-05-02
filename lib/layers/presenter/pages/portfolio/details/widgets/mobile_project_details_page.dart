@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/domain/entity/model/projects/project_model.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
@@ -59,7 +60,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              "Description",
+              tr("portfolio_description"),
               style: Theme.of(context).textTheme.headline4,
             )),
         DashHorizontal(

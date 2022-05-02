@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../navigation_router_configuration.dart';
@@ -36,7 +37,7 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   void replaceToContact() => clearAndPush(_config("contact"));
 
-  void update() => state.nothing();
+  void update(Locale locale) => emit(state.nothing( locale));
 
   NavigationRouterConfiguration _config(String path) =>
       NavigationRouterConfiguration(location: "/$path");

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
@@ -17,10 +18,10 @@ class HostPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HostPageState createState() => _HostPageState();
 }
 
-class _HomePageState extends State<HostPage> {
+class _HostPageState extends State<HostPage> {
   Map<String, Widget> searchRoutes = {
     HomeRoutes.intro.name: const HomePage(),
     HomeRoutes.contact.name: const ContactPage(),
@@ -51,6 +52,19 @@ class _HomePageState extends State<HostPage> {
           },
         ),
         backgroundColor: Colors.white54,
-        body: searchRoutes[defaultPage.name]);
+        //body: getBody(defaultPage));
+     body: searchRoutes[defaultPage.name]);
+  }
+
+  Widget getBody(HomeRoutes key) {
+    switch (key) {
+      case HomeRoutes.contact:
+        return const ContactPage();
+      case HomeRoutes.projects:
+        return const PortfolioPage();
+      default:
+        return const HomePage(
+        );
+    }
   }
 }
