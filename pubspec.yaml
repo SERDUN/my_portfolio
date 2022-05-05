@@ -53,8 +53,6 @@ flutter:
     - assets/image/social/google_play.webp
     - assets/image/social/app_store.webp
     - assets/image/icons/location.webp
-    - assets/animation/arrow_vertical.json
-    - assets/animation/circle_animation.json
     - assets/data/en/projects.json
     - assets/data/en/user.json
     - assets/data/uk/projects.json
