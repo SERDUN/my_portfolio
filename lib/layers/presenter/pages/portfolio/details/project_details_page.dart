@@ -19,7 +19,8 @@ class ProjectDetailsPage extends StatefulWidget {
   _ContactUsState createState() => _ContactUsState();
 }
 
-class _ContactUsState extends State<ProjectDetailsPage> {
+class _ContactUsState extends State<ProjectDetailsPage>
+    with TickerProviderStateMixin {
   @override
   void initState() {
     BlocProvider.of<ProjectDetailsBloc>(context)

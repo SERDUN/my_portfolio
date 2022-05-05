@@ -1,3 +1,7 @@
 abstract class InfoEvent {}
 
-class InitEvent extends InfoEvent {}
+class GetUserEvent extends InfoEvent {
+  final String? locale;
+
+  GetUserEvent(this.locale);
+}

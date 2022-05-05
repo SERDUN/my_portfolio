@@ -24,7 +24,6 @@ class IntroPageDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    pLogger.log(Level.debug, "ctx: "+context.locale.languageCode+" test: "+tr("button_download_cv") );
 
     return SizedBox(
       height: 328,

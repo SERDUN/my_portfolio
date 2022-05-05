@@ -6,7 +6,7 @@ import 'package:my_portfolio/layers/domain/repository/setting_repository.dart';
 import 'package:my_portfolio/layers/domain/repository/user_repository.dart';
 
 import '../../../data/repository/user_repository_impl.dart';
-import '../../common/base_us_case.dart';
+import '../../common/base_use_case.dart';
 import '../../common/mapper_contract.dart';
 import '../../entity/dto/portfolio_user_dto.dart';
 import '../../entity/model/error/common/either.dart';

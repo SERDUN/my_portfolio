@@ -44,13 +44,13 @@ class _SwitcherLanguageState extends State<SwitcherLanguage> {
                   children: [
                     Padding(
                       child: buildLanguage(context.locale.languageCode == "en"
-                          ? "assets/image/language/ua.webp"
+                          ? "assets/image/language/uk.webp"
                           : "assets/image/language/en.webp"),
                       padding: const EdgeInsets.only(left: 8),
                     ),
                     buildLanguage(context.locale.languageCode == "en"
                         ? "assets/image/language/en.webp"
-                        : "assets/image/language/ua.webp")
+                        : "assets/image/language/uk.webp")
                   ],
                 ),
                 onTap: super.widget.localizationChanged,

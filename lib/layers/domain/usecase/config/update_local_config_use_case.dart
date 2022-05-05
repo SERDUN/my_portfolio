@@ -3,6 +3,7 @@ import 'package:my_portfolio/layers/domain/entity/dto/project_dto.dart';
 import 'package:my_portfolio/layers/domain/entity/model/error/common/default_error.dart';
 import 'package:my_portfolio/layers/domain/entity/model/projects/project_model.dart';
 import 'package:my_portfolio/layers/domain/repository/project_repository.dart';
+import 'package:my_portfolio/layers/domain/repository/setting_repository.dart';
 
 import '../../common/base_use_case.dart';
 import '../../common/mapper_contract.dart';
@@ -10,26 +11,20 @@ import '../../entity/model/error/common/either.dart';
 import '../../entity/model/error/common/failure.dart';
 
 @Injectable()
-class GetProjectByIdUseCase extends BaseUseCase<int, ProjectModel> {
-  final ProjectRepository userRepository;
-  final Mapper<ProjectDTO, ProjectModel> mapper;
+class UpdateLocalConfigUseCase extends BaseUseCase<String, void> {
+  final ConfigRepository configRepository;
 
-  GetProjectByIdUseCase(
-    this.userRepository,
-    this.mapper,
+  UpdateLocalConfigUseCase(
+    this.configRepository,
   );
 
   @override
-  Future<Either<Failure, ProjectModel>> execute({int? argument}) async {
+  Future<Either<Failure, void>> execute({String? argument}) async {
     if (argument != null) {
-      var result = await userRepository.getProjectById(argument,"en");
-      if (result.isRight) {
-        return Future.value(Right(mapper.mapToModel(result.right)));
-      } else {
-        return Future.value(Left(result.left));
-      }
+      configRepository.updateSelectedLanguage(argument);
     } else {
       return Future.value(Left(DefaultFailure("Project id cannot be missing")));
     }
+    return Future.value(Right(null));
   }
 }

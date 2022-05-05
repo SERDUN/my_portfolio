@@ -43,7 +43,7 @@ flutter:
     - assets/image/icons/mail.webp
     - assets/image/icons/instagram.webp
     - assets/image/icons/linkedin.webp
-    - assets/image/language/ua.webp
+    - assets/image/language/uk.webp
     - assets/image/language/en.webp
     - assets/image/icons/category.webp
     - assets/image/icons/up_arrow.webp
@@ -57,8 +57,8 @@ flutter:
     - assets/animation/circle_animation.json
     - assets/data/en/projects.json
     - assets/data/en/user.json
-    - assets/data/ua/projects.json
-    - assets/data/ua/user.json
+    - assets/data/uk/projects.json
+    - assets/data/uk/user.json
     - assets/data/contact.json
     - assets/translations/
 

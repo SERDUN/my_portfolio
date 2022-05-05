@@ -8,11 +8,14 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'application/app_environment_keys.dart';
 import 'di/injection.dart';
+import 'layers/domain/usecase/config/update_local_config_use_case.dart';
 import 'layers/domain/usecase/contacts/get_contacts_use_case.dart';
 import 'layers/domain/usecase/projects/get_project_by_id_use_case.dart';
 import 'layers/domain/usecase/projects/get_projects_use_case.dart';
 import 'layers/domain/usecase/user/get_user_use_case.dart';
 import 'layers/presenter/common/style/app_theme.dart';
+import 'layers/presenter/common/widgets/proxy/bloc/datasource_language_notifier_cubit.dart';
+import 'layers/presenter/common/widgets/proxy/datasource_language_notifier.dart';
 import 'layers/presenter/navigation/navigation_route_information_parser.dart';
 import 'layers/presenter/navigation/navigation_router_delegate.dart';
 import 'layers/presenter/navigation/state/navigation_cubit.dart';
@@ -23,7 +26,7 @@ import 'layers/presenter/pages/portfolio/details/bloc/bloc.dart';
 import 'layers/presenter/pages/portfolio/projects/bloc/bloc.dart';
 import 'layers/presenter/pages/portfolio/projects/bloc/event.dart';
 
-var pLogger = Logger();
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,8 +47,7 @@ class DataProvider extends StatelessWidget {
             create: (BuildContext context) => NavigationCubit(),
           ),
           BlocProvider<InfoBloc>(
-            create: (BuildContext context) =>
-                InfoBloc(di<GetUserUseCase>())..add(InitEvent()),
+            create: (BuildContext context) => InfoBloc(di<GetUserUseCase>()),
           ),
           BlocProvider<ProjectsBloc>(
             create: (BuildContext context) =>
@@ -61,18 +63,21 @@ class DataProvider extends StatelessWidget {
                 ContactsBloc(di<GetContactsUseCase>())
                   ..add(InitContactsEvent()),
           ),
+          BlocProvider(
+            create: (BuildContext context) =>
+                DatasourceLanguageNotifierCubit(di<UpdateLocalConfigUseCase>()),
+          )
         ],
         child: EasyLocalization(
-            supportedLocales: const [
-              Locale.fromSubtags(languageCode: "en"),
-              Locale.fromSubtags(languageCode: "ua"),
-            ],
-            startLocale: const Locale.fromSubtags(languageCode: 'ua'),
-
-
-            path: 'assets/translations',
-            useOnlyLangCode: true,
-            child: const MyApp()));
+          supportedLocales: const [
+            Locale.fromSubtags(languageCode: "en"),
+            Locale.fromSubtags(languageCode: "uk"),
+          ],
+          startLocale: const Locale.fromSubtags(languageCode: 'uk'),
+          path: 'assets/translations',
+          useOnlyLangCode: true,
+          child: const MyApp(),
+        ));
   }
 }
 
@@ -81,15 +86,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    pLogger.log(Level.debug, "App rebuild: " + context.locale.toString());
-    //todo update datastore lang
-    //
-
     return MaterialApp.router(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-
       title: "Dmitro Serdun",
       theme: CustomTheme.lightTheme,
       builder: (context, widget) => ResponsiveWrapper.builder(

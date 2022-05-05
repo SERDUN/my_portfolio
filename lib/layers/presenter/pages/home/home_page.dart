@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
+import 'package:my_portfolio/application/logger.dart';
+import 'package:my_portfolio/layers/presenter/pages/home/bloc/event.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/bloc/state.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/about_me/about_me.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_desktop.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_mobile.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/services/services.dart';
 
-import '../../../../main.dart';
 import '../../common/widgets/behaviour/responsive_widget.dart';
 import '../../common/widgets/footer/footer.dart';
 import 'bloc/bloc.dart';
@@ -18,20 +19,28 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() {
-    pLogger.log(Level.debug, "HomePage: create state");
-
-    return _HomePageState();
-  }
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  late InfoBloc bloc;
+  late InfoBloc bloc = BlocProvider.of<InfoBloc>(context);
 
   @override
   void initState() {
-    bloc = BlocProvider.of<InfoBloc>(context);
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    String? locale = EasyLocalization.of(context)?.locale.languageCode;
+    pLogger.i("HomePage-> didChangeDependencies $locale");
+    bloc.add(GetUserEvent(locale));
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant HomePage oldWidget) {
+    super.didUpdateWidget(oldWidget);
   }
 
   @override

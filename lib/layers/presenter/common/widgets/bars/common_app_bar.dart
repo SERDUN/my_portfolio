@@ -46,7 +46,7 @@ class _CommonAppBarState extends State<CommonAppBar> {
   }
 
   void _changeLanguage() {
-    String newLocale = context.locale.languageCode == "en" ? 'ua' : 'en';
+    String newLocale = context.locale.languageCode == "en" ? 'uk' : 'en';
     EasyLocalization.of(context)?.setLocale(Locale(newLocale));
 
  //   html.window.location.reload();

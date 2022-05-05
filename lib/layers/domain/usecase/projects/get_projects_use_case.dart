@@ -3,7 +3,7 @@ import 'package:my_portfolio/layers/domain/entity/dto/project_dto.dart';
 import 'package:my_portfolio/layers/domain/entity/model/projects/project_model.dart';
 import 'package:my_portfolio/layers/domain/repository/project_repository.dart';
 
-import '../../common/base_us_case.dart';
+import '../../common/base_use_case.dart';
 import '../../common/mapper_contract.dart';
 import '../../entity/model/error/common/either.dart';
 import '../../entity/model/error/common/failure.dart';
