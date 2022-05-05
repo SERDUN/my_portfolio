@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../common/widgets/bars/common_app_bar.dart';
 import '../../navigation/state/navigation_cubit.dart';
-import '../home/host/host_routes.dart';
+import '../host/host_routes.dart';
 
 class UnknownScreen extends StatelessWidget {
   const UnknownScreen({Key? key}) : super(key: key);

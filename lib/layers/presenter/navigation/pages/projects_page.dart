@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../pages/home/host/host_page.dart';
-import '../../pages/home/host/host_routes.dart';
+import '../../pages/host/host_page.dart';
+import '../../pages/host/host_routes.dart';
 import '../common/pages/base_page.dart';
 
 class ProjectsPage extends BasePage {

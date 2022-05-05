@@ -34,7 +34,7 @@ class PageFactory {
     switch (rootPath) {
       case "":
         return const HomePage({});
-      case "home":
+      case "host":
         return const HomePage({});
       case "projects":
         return _getProjectPage(segments);

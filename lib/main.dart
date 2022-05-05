@@ -2,9 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:my_portfolio/layers/presenter/pages/contact/bloc/bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-
 import 'application/app_environment_keys.dart';
 import 'di/injection.dart';
 import 'layers/domain/usecase/config/update_local_config_use_case.dart';
@@ -17,11 +15,11 @@ import 'layers/presenter/common/widgets/proxy/bloc/datasource_language_notifier_
 import 'layers/presenter/navigation/navigation_route_information_parser.dart';
 import 'layers/presenter/navigation/navigation_router_delegate.dart';
 import 'layers/presenter/navigation/state/navigation_cubit.dart';
-import 'layers/presenter/pages/contact/bloc/event.dart';
-import 'layers/presenter/pages/home/bloc/bloc.dart';
-import 'layers/presenter/pages/portfolio/details/bloc/bloc.dart';
-import 'layers/presenter/pages/portfolio/projects/bloc/bloc.dart';
-
+import 'layers/presenter/pages/host/pages/contact/bloc/bloc.dart';
+import 'layers/presenter/pages/host/pages/contact/bloc/event.dart';
+import 'layers/presenter/pages/host/pages/home/bloc/bloc.dart';
+import 'layers/presenter/pages/host/pages/portfolio/details/bloc/bloc.dart';
+import 'layers/presenter/pages/host/pages/portfolio/projects/bloc/bloc.dart';
 
 
 void main() async {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_portfolio/layers/presenter/pages/home/host/host_routes.dart';
-
+import '../pages/host/host_routes.dart';
 import 'navigation_router_configuration.dart';
 import 'state/navigation_cubit.dart';
 import 'state/navigation_cubit_state.dart';
@@ -25,7 +24,6 @@ class NavigationRouterDelegate
 
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<NavigationCubit, NavigationState>(
       builder: (context, stack) => Navigator(
         pages: stack.pages,
