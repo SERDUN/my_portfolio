@@ -11,7 +11,7 @@ class IntroPageDesktop extends StatelessWidget {
   final String jobPosition;
   final TextTheme textTheme;
   final ColorScheme colorScheme;
-  final Function()? openCv;
+  final Function() openCv;
 
   const IntroPageDesktop(
       {Key? key,
@@ -84,7 +84,7 @@ class IntroPageDesktop extends StatelessWidget {
           ),
           ButtonOutline(
             text: tr("button_download_cv"),
-            onTap: () => openCv?.call(),
+            onTap: () => openCv.call(),
           ),
           const SizedBox(
             height: 8,

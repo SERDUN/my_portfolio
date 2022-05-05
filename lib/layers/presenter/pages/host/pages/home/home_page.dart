@@ -10,6 +10,7 @@ import 'package:my_portfolio/layers/presenter/pages/host/pages/home/widgets/serv
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../common/widgets/behaviour/responsive_widget.dart';
+import '../../../../common/widgets/decoration/heart_decoration.dart';
 import '../../../../common/widgets/footer/footer.dart';
 import 'bloc/bloc.dart';
 import 'bloc/event.dart';
@@ -32,10 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void didChangeDependencies() {
-    String? locale = EasyLocalization
-        .of(context)
-        ?.locale
-        .languageCode;
+    String? locale = EasyLocalization.of(context)?.locale.languageCode;
     pLogger.i("HomePage-> didChangeDependencies $locale");
     _bloc.add(GetUserEvent(locale));
     super.didChangeDependencies();
@@ -49,59 +47,47 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<InfoBloc, InfoState>(builder: (context, state) {
-      return SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ResponsiveWidget(
-              desktopScreen: IntroPageDesktop(
-                openCv: () => openCVAction(state.userModel?.cv),
-                colorScheme: Theme
-                    .of(context)
-                    .colorScheme,
-                textTheme: Theme
-                    .of(context)
-                    .textTheme,
-                userFullName: state.userModel?.name ?? "##### #####",
-                jobPosition: state.userModel?.position ?? "#####",
-              ),
-              mobileScreen: IntroPageMobile(
-                openCv: () => openCVAction(state.userModel?.cv),
-                colorScheme: Theme
-                    .of(context)
-                    .colorScheme,
-                textTheme: Theme
-                    .of(context)
-                    .textTheme,
-                userFullName: state.userModel?.name ?? "##### #####",
-                jobPosition: state.userModel?.position ?? "#####",
-                avatar: state.userModel?.avatar,
-              ),
-            ),
-            Container(
-                constraints: BoxConstraints(
-                  minHeight: MediaQuery
-                      .of(context)
-                      .size
-                      .height / 2,
-                  minWidth: double.infinity,
+      return AnimatedOpacity(
+          opacity: state.userModel != null ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 500),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ResponsiveWidget(
+                  desktopScreen: IntroPageDesktop(
+                    openCv: () => openCVAction(state.userModel?.cv),
+                    colorScheme: Theme.of(context).colorScheme,
+                    textTheme: Theme.of(context).textTheme,
+                    userFullName: state.userModel?.name ?? "##### #####",
+                    jobPosition: state.userModel?.position ?? "#####",
+                  ),
+                  mobileScreen: IntroPageMobile(
+                    openCv: () => openCVAction(state.userModel?.cv),
+                    colorScheme: Theme.of(context).colorScheme,
+                    textTheme: Theme.of(context).textTheme,
+                    userFullName: state.userModel?.name ?? "##### #####",
+                    jobPosition: state.userModel?.position ?? "#####",
+                    avatar: state.userModel?.avatar,
+                  ),
                 ),
-                child: AnimatedOpacity(
-                    opacity: state.userModel?.skills != null ? 1.0 : 0.0,
-                    duration: const Duration(milliseconds: 500),
-                    // The green box must be a child of the AnimatedOpacity widget.
+                Container(
+                    constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height / 2,
+                      minWidth: double.infinity,
+                    ),
                     child: AboutMe(
                       skills: state.userModel?.skills ?? [],
                       aboutMe: state.userModel?.intro ?? "",
-                    ))),
-            Container(
-                margin: const EdgeInsets.only(bottom: 24),
-                child: const Services()),
-            const AppFooter()
-          ],
-        ),
-      );
+                    )),
+                Container(
+                    margin: const EdgeInsets.only(bottom: 24),
+                    child: const Services()),
+                const AppFooter()
+              ],
+            ),
+          ));
     });
   }
 

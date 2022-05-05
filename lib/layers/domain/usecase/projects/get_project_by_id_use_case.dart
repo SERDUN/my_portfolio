@@ -26,7 +26,7 @@ class GetProjectByIdUseCase
   Future<Either<Failure, ProjectModel>> execute(
       {ProjectDetailsArg? argument}) async {
     if (argument != null) {
-      var language = argument.local ?? defaultLanguage;
+      var language = argument.local ?? BaseUseCase.defaultLanguage;
       dLogger.i("GetUserUseCase[$language]");
       var result = await userRepository.getProjectById(argument.id, language);
       if (result.isRight) {

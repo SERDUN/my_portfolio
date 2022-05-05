@@ -23,7 +23,7 @@ class GetProjectsUseCase
   @override
   Future<Either<Failure, List<ProjectModel>>> execute(
       {BaseUseCaseArg? argument}) async {
-    var language = argument?.local ?? defaultLanguage;
+    var language = argument?.local ?? BaseUseCase.defaultLanguage;
 
     var result = await userRepository.getProjects(language);
     if (result.isRight) {

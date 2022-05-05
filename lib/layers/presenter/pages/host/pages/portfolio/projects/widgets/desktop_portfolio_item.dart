@@ -24,7 +24,6 @@ class DesktopPortfolioItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SizedBox(
         height: MediaQuery.of(context).size.width * .35,
         child: Row(
@@ -38,15 +37,36 @@ class DesktopPortfolioItem extends StatelessWidget {
             Flexible(
                 flex: 3,
                 child: Container(
-                  margin: const EdgeInsets.only(left: 16),
+                  margin: const EdgeInsets.only(left: 16,right: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        project.name ?? "",
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
+                      Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          alignment: WrapAlignment.center,
+                          children: [
+                            Text(
+                              project.name ?? "",
+                              style: Theme.of(context).textTheme.headline1,
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            SimpleChip(
+                              text: chipName,
+                              color: chipColor,
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic,
+                                      color: Theme.of(context)
+                                          .colorPlate()
+                                          .white100),
+                            )
+                          ]),
                       SizedBox(
                         height: MediaQuery.of(context).size.width * .01,
                       ),
@@ -69,28 +89,11 @@ class DesktopPortfolioItem extends StatelessWidget {
                             fontStyle: FontStyle.italic,
                             color: Theme.of(context).colorPlate().yellow),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 8, right: 40),
-                        child: SimpleChip(
-                          text: chipName,
-                          color: chipColor,
-                          textStyle: Theme.of(context)
-                              .textTheme
-                              .headline6
-                              ?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic,
-                                  color:
-                                      Theme.of(context).colorPlate().white100),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * .025,
-                      ),
                       const Spacer(),
                       DashHorizontal(
                         width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(left: 8, right: 32,bottom: 4),
+                        margin: const EdgeInsets.only(
+                            left: 8, right: 32, bottom: 4),
                       )
                     ],
                   ),

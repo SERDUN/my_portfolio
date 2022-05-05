@@ -5,7 +5,6 @@ import 'package:responsive_framework/responsive_wrapper.dart';
 import '../../../../../../../domain/entity/model/service_model.dart';
 import '../../../../../../common/widgets/behaviour/responsive_widget.dart';
 
-
 class Services extends StatefulWidget {
   const Services({Key? key}) : super(key: key);
 
@@ -43,40 +42,35 @@ class _ServicesState extends State<Services> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-          horizontal: ResponsiveWrapper.of(context).isDesktop ? 32 : 24,
-          vertical: 24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            margin: const EdgeInsets.only(top: 32, bottom: 8, left: 8),
-            child: Text(
-              "Services",
-              style: Theme.of(context).textTheme.headline4,
-            ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          margin: const EdgeInsets.only(top: 40, bottom: 8, left: 40),
+          child: Text(
+            "Services",
+            style: Theme.of(context).textTheme.headline4,
           ),
-          ResponsiveWidget(
-            desktopScreen: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: (services.map((i) => buildCard(i)).toList()),
-            ),
-            tabletScreen:
-                Wrap(children: (services.map((i) => buildCard(i)).toList())),
-            mobileScreen:
-                Wrap(children: (services.map((i) => buildCard(i)).toList())),
-          )
-        ],
-      ),
+        ),
+        ResponsiveWidget(
+          desktopScreen: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: (services.map((i) => buildCard(i)).toList()),
+          ),
+          tabletScreen:
+              Wrap(children: (services.map((i) => buildCard(i)).toList())),
+          mobileScreen:
+              Wrap(children: (services.map((i) => buildCard(i)).toList())),
+        )
+      ],
     );
   }
 
   Card buildCard(ServiceModel service) {
     return Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
         child: Stack(alignment: Alignment.bottomLeft, children: [
           Container(
             width: 208,
