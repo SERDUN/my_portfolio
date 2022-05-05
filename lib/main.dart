@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:logger/logger.dart';
 import 'package:my_portfolio/layers/presenter/pages/contact/bloc/bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -15,16 +14,13 @@ import 'layers/domain/usecase/projects/get_projects_use_case.dart';
 import 'layers/domain/usecase/user/get_user_use_case.dart';
 import 'layers/presenter/common/style/app_theme.dart';
 import 'layers/presenter/common/widgets/proxy/bloc/datasource_language_notifier_cubit.dart';
-import 'layers/presenter/common/widgets/proxy/datasource_language_notifier.dart';
 import 'layers/presenter/navigation/navigation_route_information_parser.dart';
 import 'layers/presenter/navigation/navigation_router_delegate.dart';
 import 'layers/presenter/navigation/state/navigation_cubit.dart';
 import 'layers/presenter/pages/contact/bloc/event.dart';
 import 'layers/presenter/pages/home/bloc/bloc.dart';
-import 'layers/presenter/pages/home/bloc/event.dart';
 import 'layers/presenter/pages/portfolio/details/bloc/bloc.dart';
 import 'layers/presenter/pages/portfolio/projects/bloc/bloc.dart';
-import 'layers/presenter/pages/portfolio/projects/bloc/event.dart';
 
 
 
@@ -51,8 +47,7 @@ class DataProvider extends StatelessWidget {
           ),
           BlocProvider<ProjectsBloc>(
             create: (BuildContext context) =>
-                ProjectsBloc(di<GetProjectsUseCase>())
-                  ..add(InitProjectsEvent()),
+                ProjectsBloc(di<GetProjectsUseCase>()),
           ),
           BlocProvider<ProjectDetailsBloc>(
             create: (BuildContext context) =>
@@ -101,7 +96,7 @@ class MyApp extends StatelessWidget {
           breakpoints: [
             const ResponsiveBreakpoint.autoScale(320, name: MOBILE),
             const ResponsiveBreakpoint.autoScale(450, name: MOBILE),
-            const ResponsiveBreakpoint.resize(800, name: TABLET),
+            const ResponsiveBreakpoint.autoScaleDown(800, name: TABLET),
             const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
             const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
             const ResponsiveBreakpoint.autoScale(2460, name: "4K"),

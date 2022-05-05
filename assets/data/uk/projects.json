@@ -3,17 +3,17 @@
   "projects": [
     {
       "id": 0,
-      "name": "Portfolio",
-      "intro": "Place where current skills are described and what has been done is demonstrated",
-      "description": "Web application for visualizing current skills. The application uses a clean architecture with 3 layers like data, domain, and presenter.\n About data layer: In this section implemented repository and created datasource for getting resource. At now implemented  asset datasource repository which parse json file with static date, and return dto for use case;\nIn future if need or partly i will add remote datasource which will be comunicate with http server (Cloud functions).\n About domain layer: In this section i describe common thinks like models, mappers, usecases.  In usecases described basic feature for separated logic, at current moment  we haven't difficult logic and therefore there are only convertng dto to mapper and handling base exceptions.\n About domain presenter: Using BLoC for getting data and handle cases. Used base named navigation and base host  container... ",
+      "name": "Портфоліо",
+      "intro": "Місце, де описано поточні навички та продемонстровано те, що було зроблено",
+      "description": "Веб-додаток для візуалізації поточних навичок. Додаток використовує чисту архітектуру з 3 рівнями, такими як дані, домен і презентатор.\n  Про рівень даних: у цьому розділі реалізовано репозиторій і створено джерело даних для отримання ресурсу. Зараз реалізовано репозиторій джерела даних ресурсів, який аналізує json-файл зі статичною датою та повертає dto для варіанту використання;\nУ майбутньому, якщо буде потрібно або частково, я додам віддалене джерело даних, яке буде зв’язуватися з http-сервером (функції хмари).\n  Про шар домену: у цьому розділі я описую поширені думки, такі як моделі, картографи, варіанти використання. У випадках використання, які описують базову функцію для розділеної логіки, на даний момент у нас немає складної логіки, і тому є лише перетворення dto на картограф і обробка базових винятків.\n  Про презентатор домену: використання BLoC для отримання даних та обробки випадків. Використовується базова іменована навігація та базовий хост-контейнер...",
       "linkAndroid": "",
       "linkIOS": "",
       "linkSource": "https://github.com/SERDUN/my_portfolio",
       "tags": {
         "mainTechnology": "flutter",
         "projects": [
-          "Portfolio",
-          "Social"
+          "Портфоліо",
+          "Соціальний"
         ],
         "develop": [
           "Flutter",

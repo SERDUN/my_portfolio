@@ -1,13 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 import '../../../../../domain/entity/model/user/portfolio_skills_model.dart';
 import '../../../../common/widgets/expanded/tree/tree_view.dart';
 
-
 class AboutMe extends StatefulWidget {
   final String aboutMe;
- // final List<Map<String, dynamic>> skills;
+
+  // final List<Map<String, dynamic>> skills;
   final List<PortfolioSkillsModel> skills;
 
   const AboutMe({Key? key, required this.skills, required this.aboutMe})
@@ -38,7 +39,7 @@ class _AboutMeState extends State<AboutMe> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "About me",
+                      tr("portfolio_about_me"),
                       style: Theme.of(context).textTheme.headline4,
                     ),
                     const SizedBox(
@@ -55,10 +56,8 @@ class _AboutMeState extends State<AboutMe> {
                       height: 32,
                     ),
                     Text(
-                      "Skills",
+                      tr("intro_skills"),
                       style: Theme.of(context).textTheme.headline4,
-
-                      // style: titleBlackBold,
                     ),
                     const SizedBox(
                       height: 8,

@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/projects/bloc/state.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/projects/portfolio_item.dart';
 
+import '../../../../../application/logger.dart';
 import '../../../common/widgets/decoration/decoration_view.dart';
 import 'bloc/bloc.dart';
+import 'bloc/event.dart';
 
 class PortfolioPage extends StatefulWidget {
   const PortfolioPage({Key? key}) : super(key: key);
@@ -15,12 +17,14 @@ class PortfolioPage extends StatefulWidget {
 }
 
 class _HomePageState extends State<PortfolioPage> {
-  late ProjectsBloc bloc;
+  late final ProjectsBloc _bloc = BlocProvider.of<ProjectsBloc>(context);
 
   @override
-  void initState() {
-    bloc = BlocProvider.of<ProjectsBloc>(context);
-    super.initState();
+  void didChangeDependencies() {
+    String? locale = EasyLocalization.of(context)?.locale.languageCode;
+    pLogger.i("PortfolioPage-> didChangeDependencies $locale");
+    _bloc.add(InitProjectsEvent(locale));
+    super.didChangeDependencies();
   }
 
   @override

@@ -1,22 +1,29 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/layers/presenter/common/extension/naming_extension.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:octo_image/octo_image.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../../domain/entity/model/user/portfolio_user_model.dart';
 import '../../../../common/widgets/button/button_outline.dart';
 
+class IntroPageMobile extends StatelessWidget {
+  final String? avatar;
+  final String userFullName;
+  final String jobPosition;
+  final TextTheme textTheme;
+  final ColorScheme colorScheme;
+  final Function()? openCv;
 
-class IntroPageMobile extends StatefulWidget {
-  final PortfolioUserModel? userModel;
+  const IntroPageMobile(
+      {Key? key,
+      required this.userFullName,
+      required this.jobPosition,
+      required this.textTheme,
+      required this.colorScheme,
+      this.openCv,
+      required this.avatar})
+      : super(key: key);
 
-  const IntroPageMobile({required this.userModel, Key? key}) : super(key: key);
-
-  @override
-  State<IntroPageMobile> createState() => _IntroPageDesktopState();
-}
-
-class _IntroPageDesktopState extends State<IntroPageMobile> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -29,7 +36,7 @@ class _IntroPageDesktopState extends State<IntroPageMobile> {
             const SizedBox(
               height: 16,
             ),
-            widget.userModel?.avatar == null
+            avatar == null
                 ? const SizedBox(
                     width: 128,
                     height: 128,
@@ -39,7 +46,7 @@ class _IntroPageDesktopState extends State<IntroPageMobile> {
                     filterQuality: FilterQuality.medium,
                     width: 128,
                     height: 128,
-                    image: Image.network(widget.userModel!.avatar).image,
+                    image: Image.network(avatar!).image,
                     octoSet: OctoSet.circleAvatar(
                       backgroundColor: Theme.of(context).colorPlate().yellow!,
                       text: Text(
@@ -49,51 +56,45 @@ class _IntroPageDesktopState extends State<IntroPageMobile> {
                     ),
                   ),
             Align(
-                alignment: Alignment.center,
-                child: RichText(
+              alignment: Alignment.center,
+              child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(children: [
                     TextSpan(
-                        text: 'D',
-                        style: Theme.of(context).textTheme.headline1?.copyWith(
+                        text: userFullName.getLetter(),
+                        style: textTheme.headline1?.copyWith(
                             fontWeight: FontWeight.w500,
-                            color: Theme.of(context).colorScheme.primary)),
+                            color: colorScheme.primary)),
                     TextSpan(
-                        text: 'mitro',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline1
+                        text: userFullName.getLettersFromPosition(
+                            wordPosition: 0, fromPosition: 1),
+                        style: textTheme.headline1
                             ?.copyWith(fontWeight: FontWeight.w500)),
                     TextSpan(
-                        text: ' S',
-                        style: Theme.of(context).textTheme.headline1?.copyWith(
+                        text: " ${userFullName.getLetter(wordPosition: 1)}",
+                        style: textTheme.headline1?.copyWith(
                             fontWeight: FontWeight.w500,
-                            color: Theme.of(context).colorScheme.primary)),
+                            color: colorScheme.primary)),
                     TextSpan(
-                        text: 'erdun',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline1
+                        text: userFullName.getLettersFromPosition(
+                            wordPosition: 1, fromPosition: 1),
+                        style: textTheme.headline1
                             ?.copyWith(fontWeight: FontWeight.w500)),
-                  ]),
-                )),
+                  ])),
+            ),
             const SizedBox(
               height: 8,
             ),
             SelectableText(
-              "Mobile developer",
-              style: Theme.of(context).textTheme.subtitle1,
+              jobPosition,
+              style: textTheme.subtitle1,
             ),
             const SizedBox(
               height: 8,
             ),
             ButtonOutline(
-              text: 'Завантажити резюме',
-              onTap: () async {
-                await canLaunch(widget.userModel?.cv ?? "")
-                    ? await launch(widget.userModel?.cv ?? "")
-                    : throw 'Could not launch $widget.userModel?.cv??""';
-              },
+              text: tr("button_download_cv"),
+              onTap: () => openCv?.call(),
             ),
             const SizedBox(
               height: 8,

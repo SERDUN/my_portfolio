@@ -4,13 +4,16 @@ import 'package:my_portfolio/layers/domain/entity/model/error/common/default_err
 import 'package:my_portfolio/layers/domain/entity/model/projects/project_model.dart';
 import 'package:my_portfolio/layers/domain/repository/project_repository.dart';
 
+import '../../../../application/logger.dart';
 import '../../common/base_use_case.dart';
 import '../../common/mapper_contract.dart';
+import '../../entity/argument/project_details_arg.dart';
 import '../../entity/model/error/common/either.dart';
 import '../../entity/model/error/common/failure.dart';
 
 @Injectable()
-class GetProjectByIdUseCase extends BaseUseCase<int, ProjectModel> {
+class GetProjectByIdUseCase
+    extends BaseUseCase<ProjectDetailsArg, ProjectModel> {
   final ProjectRepository userRepository;
   final Mapper<ProjectDTO, ProjectModel> mapper;
 
@@ -20,9 +23,12 @@ class GetProjectByIdUseCase extends BaseUseCase<int, ProjectModel> {
   );
 
   @override
-  Future<Either<Failure, ProjectModel>> execute({int? argument}) async {
+  Future<Either<Failure, ProjectModel>> execute(
+      {ProjectDetailsArg? argument}) async {
     if (argument != null) {
-      var result = await userRepository.getProjectById(argument,"en");
+      var language = argument.local ?? defaultLanguage;
+      dLogger.i("GetUserUseCase[$language]");
+      var result = await userRepository.getProjectById(argument.id, language);
       if (result.isRight) {
         return Future.value(Right(mapper.mapToModel(result.right)));
       } else {

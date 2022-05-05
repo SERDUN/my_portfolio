@@ -1,9 +1,7 @@
 import 'dart:ui';
 
-import 'package:logger/logger.dart';
 import 'package:my_portfolio/layers/presenter/navigation/common/pages/base_page.dart';
 
-import '../../../../main.dart';
 import '../navigation_router_configuration.dart';
 
 class NavigationState {

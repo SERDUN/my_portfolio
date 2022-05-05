@@ -6,5 +6,9 @@
   "button_download_cv": "Download CV",
   "unknown_page_title": "404",
   "unknown_page_description": "Fuck russia!",
-  "portfolio_description": "Description"
+  "portfolio_description": "Description",
+  "portfolio_about_me": "About me",
+  "intro_skills": "Skills"
+
+
 }

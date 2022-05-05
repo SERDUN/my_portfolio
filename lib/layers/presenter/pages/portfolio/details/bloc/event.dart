@@ -4,6 +4,7 @@ class InitEvent extends ProjectDetailsEvent {}
 
 class GetProjectEvent extends ProjectDetailsEvent {
   final int projectId;
+  final String? locale;
 
-  GetProjectEvent(this.projectId);
+  GetProjectEvent(this.projectId, this.locale);
 }

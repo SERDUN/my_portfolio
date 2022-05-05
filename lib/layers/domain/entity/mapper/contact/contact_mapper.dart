@@ -1,8 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:my_portfolio/layers/domain/entity/dto/contacts_dto.dart';
-import 'package:my_portfolio/layers/domain/entity/dto/project_image_dto.dart';
 import 'package:my_portfolio/layers/domain/entity/model/contact/contacts_model.dart';
-import 'package:my_portfolio/layers/domain/entity/model/projects/project_image_model.dart';
 
 import '../../../common/mapper_contract.dart';
 

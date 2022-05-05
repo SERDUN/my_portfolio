@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:my_portfolio/layers/domain/usecase/contacts/get_contacts_use_case.dart';
-import 'package:my_portfolio/layers/domain/usecase/projects/get_project_by_id_use_case.dart';
 
 import 'event.dart';
 import 'state.dart';

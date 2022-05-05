@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+
 import '../../domain/repository/setting_repository.dart';
 import '../datasource/local/memory_data_source.dart';
 

@@ -1,13 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/layers/domain/entity/model/error/common/either.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 import '../../../pages/home/host/host_routes.dart';
 import '../behaviour/responsive_widget.dart';
 import '../switcher/switcher_language.dart';
-import 'dart:html' as html;
 
 class CommonAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Function onHome;

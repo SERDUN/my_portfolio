@@ -1,9 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/host/host_routes.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/details/bloc/state.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/details/widgets/desktop_project_details_page.dart';
 import 'package:my_portfolio/layers/presenter/pages/portfolio/details/widgets/mobile_project_details_page.dart';
+
+import '../../../../../application/logger.dart';
 import '../../../common/widgets/bars/common_app_bar.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 import '../../../navigation/state/navigation_cubit.dart';
@@ -21,11 +24,15 @@ class ProjectDetailsPage extends StatefulWidget {
 
 class _ContactUsState extends State<ProjectDetailsPage>
     with TickerProviderStateMixin {
+  late final ProjectDetailsBloc _bloc =
+      BlocProvider.of<ProjectDetailsBloc>(context);
+
   @override
-  void initState() {
-    BlocProvider.of<ProjectDetailsBloc>(context)
-        .add(GetProjectEvent(widget.id));
-    super.initState();
+  void didChangeDependencies() {
+    String? locale = EasyLocalization.of(context)?.locale.languageCode;
+    pLogger.i("HomePage-> didChangeDependencies $locale");
+    _bloc.add(GetProjectEvent(widget.id, locale));
+    super.didChangeDependencies();
   }
 
   @override

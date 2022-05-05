@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 import 'package:my_portfolio/application/logger.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/bloc/event.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/bloc/state.dart';
@@ -10,6 +9,7 @@ import 'package:my_portfolio/layers/presenter/pages/home/widgets/about_me/about_
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_desktop.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/intro/intro_page_mobile.dart';
 import 'package:my_portfolio/layers/presenter/pages/home/widgets/services/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../common/widgets/behaviour/responsive_widget.dart';
 import '../../common/widgets/footer/footer.dart';
@@ -23,7 +23,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late InfoBloc bloc = BlocProvider.of<InfoBloc>(context);
+  late final InfoBloc _bloc = BlocProvider.of<InfoBloc>(context);
 
   @override
   void initState() {
@@ -32,9 +32,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void didChangeDependencies() {
-    String? locale = EasyLocalization.of(context)?.locale.languageCode;
+    String? locale = EasyLocalization
+        .of(context)
+        ?.locale
+        .languageCode;
     pLogger.i("HomePage-> didChangeDependencies $locale");
-    bloc.add(GetUserEvent(locale));
+    _bloc.add(GetUserEvent(locale));
     super.didChangeDependencies();
   }
 
@@ -53,17 +56,35 @@ class _HomePageState extends State<HomePage> {
           children: [
             ResponsiveWidget(
               desktopScreen: IntroPageDesktop(
-                userModel: state.userModel,
-                colorScheme: Theme.of(context).colorScheme,
-                textTheme: Theme.of(context).textTheme,
+                openCv: () => openCVAction(state.userModel?.cv),
+                colorScheme: Theme
+                    .of(context)
+                    .colorScheme,
+                textTheme: Theme
+                    .of(context)
+                    .textTheme,
+                userFullName: state.userModel?.name ?? "##### #####",
+                jobPosition: state.userModel?.position ?? "#####",
               ),
               mobileScreen: IntroPageMobile(
-                userModel: state.userModel,
+                openCv: () => openCVAction(state.userModel?.cv),
+                colorScheme: Theme
+                    .of(context)
+                    .colorScheme,
+                textTheme: Theme
+                    .of(context)
+                    .textTheme,
+                userFullName: state.userModel?.name ?? "##### #####",
+                jobPosition: state.userModel?.position ?? "#####",
+                avatar: state.userModel?.avatar,
               ),
             ),
             Container(
                 constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height / 2,
+                  minHeight: MediaQuery
+                      .of(context)
+                      .size
+                      .height / 2,
                   minWidth: double.infinity,
                 ),
                 child: AnimatedOpacity(
@@ -82,5 +103,14 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     });
+  }
+
+  void openCVAction(String? link) async {
+    Uri? uri = Uri.tryParse(link ?? "");
+    if (uri != null) {
+      await canLaunchUrl(uri)
+          ? await launchUrl(uri)
+          : throw 'Could not launch $link';
+    }
   }
 }

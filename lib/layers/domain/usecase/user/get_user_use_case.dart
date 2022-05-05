@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:my_portfolio/application/logger.dart';
 import 'package:my_portfolio/layers/domain/entity/model/user/portfolio_user_model.dart';
-import 'package:my_portfolio/layers/domain/repository/setting_repository.dart';
 import 'package:my_portfolio/layers/domain/repository/user_repository.dart';
 
 import '../../common/base_use_case.dart';
