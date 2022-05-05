@@ -63,7 +63,7 @@
     {
       "id": 1,
       "name": "Alias",
-      "intro": "",
+      "intro": "Alias or Charades - guess word board game",
       "description": "'Alias or Charades - guess word board game is a new free version of the world-famous activity Alias board game. The objective of Alias is to explain words to team members. For each word thats correctly guessed by one of your teammates, your team gets a point. Our app lets you play Alias anywhere without a ton of paper cards and a board.  Now you could add set on any language. Play your own sets with your friends or share it to all word. Cool, isn’t it? Check it out here: https://getalias.co/ The best feature of free Alias is its themed sets of words. We’ve already prepared Space, Party and Food sets. We’re planning to make lots more soon. You can also play the standard Alias to set your difficulty level and play with a random set of words. A separate Alias game mode for kids with pictures alongside words is also available in this version. Alias is an awesome game for both small and large groups. Having a party or a picnic? Don’t know what to do with your family on a rainy day? You could play Alias. It’s great for all ages. All you need is at least four people and the app.\",',\n",
       "linkAndroid": "https://play.google.com/store/apps/details?id=com.steelkiwi.alias",
       "linkIOS": "",
@@ -427,8 +427,8 @@
     {
       "id": 7,
       "name": "Daberli",
-      "intro": "A mobile app to store and share pets medical and health data and find useful information about pet",
-      "description": "Manage, store and transfer pet medical records and health information. Communicate with veterinarians and pet service providers through video, text and send pictures. Locate pet service providers using Google locator.",
+      "intro": "Service that allows you to sell services.",
+      "description": "Service that allows you to sell services.",
       "linkAndroid": "",
       "linkIOS": "",
       "linkSource": "",

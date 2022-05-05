@@ -101,6 +101,7 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: const Color(0xFFF5F5F5))),
       debugShowCheckedModeBanner: false,
+
       routerDelegate: NavigationRouterDelegate(BlocProvider.of(context)),
       routeInformationParser: NavigationRouteInformationParser(),
     );

@@ -15,6 +15,8 @@ class NavigationRouterDelegate
 
   NavigationRouterDelegate(this._navigationCubit);
 
+
+
   @override
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
