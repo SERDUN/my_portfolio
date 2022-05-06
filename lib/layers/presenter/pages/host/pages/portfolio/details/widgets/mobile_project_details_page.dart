@@ -11,8 +11,10 @@ import '../../../../../../common/widgets/decoration/decoration_view.dart';
 
 class MobileProjectDetailsPage extends StatelessWidget {
   final ProjectModel project;
+  final Function(String) openLink;
 
-  const MobileProjectDetailsPage({Key? key, required this.project})
+  const MobileProjectDetailsPage(
+      {Key? key, required this.project, required this.openLink})
       : super(key: key);
 
   @override
@@ -53,6 +55,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
           android: project.linkAndroid,
           ios: project.linkIOS,
           github: project.linkSource,
+          openLink: openLink,
         ),
         const SizedBox(
           height: 40,

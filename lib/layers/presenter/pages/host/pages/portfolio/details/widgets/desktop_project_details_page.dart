@@ -11,8 +11,10 @@ import '../../../../../../common/widgets/decoration/decoration_view.dart';
 
 class DesktopProjectDetailsPage extends StatelessWidget {
   final ProjectModel project;
+  final Function(String) openLink;
 
-  const DesktopProjectDetailsPage({Key? key, required this.project})
+  const DesktopProjectDetailsPage(
+      {Key? key, required this.project, required this.openLink})
       : super(key: key);
 
   @override
@@ -78,13 +80,15 @@ class DesktopProjectDetailsPage extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        SizedBox(
+        Container(
+          margin: EdgeInsets.only(right: 16),
           height: 56,
           child: ProjectLinks(
             mainAxisAlignment: MainAxisAlignment.end,
             android: project.linkAndroid,
             ios: project.linkIOS,
             github: project.linkSource,
+            openLink: openLink,
           ),
         ),
         const SizedBox(
