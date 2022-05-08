@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ProjectLinks extends StatelessWidget {
   final String android;

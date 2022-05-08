@@ -17,7 +17,6 @@ class ProjectMapper extends Mapper<ProjectDTO, ProjectModel> {
 
   @override
   ProjectDTO mapToDto(ProjectModel model) {
-    // TODO: implement mapToDto
     throw UnimplementedError();
   }
 

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/pages/host/pages/portfolio/details/widgets/desktop_project_details_page.dart';
 import 'package:my_portfolio/layers/presenter/pages/host/pages/portfolio/details/widgets/mobile_project_details_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../../../../../../application/logger.dart';
 import '../../../../../common/widgets/bars/common_app_bar.dart';
 import '../../../../../common/widgets/behaviour/responsive_widget.dart';

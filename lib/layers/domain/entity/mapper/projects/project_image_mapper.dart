@@ -8,7 +8,6 @@ import '../../../common/mapper_contract.dart';
 class ProjectImageMapper extends Mapper<ProjectImageDTO, ProjectImageModel> {
   @override
   ProjectImageDTO mapToDto(ProjectImageModel model) {
-    // TODO: implement mapToDto
     throw UnimplementedError();
   }
 

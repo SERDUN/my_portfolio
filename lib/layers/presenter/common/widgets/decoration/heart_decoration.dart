@@ -4,13 +4,11 @@ import 'package:flutter/widgets.dart';
 class Heart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomPaint(
-        painter: TrianglePainter(),
-        child: SizedBox(
-          height: 120,
-          width: 120,
-        ),
+    return CustomPaint(
+      painter: TrianglePainter(),
+      child: const SizedBox(
+        height: 120,
+        width: 120,
       ),
     );
   }
@@ -19,7 +17,6 @@ class Heart extends StatelessWidget {
 class TrianglePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // TODO: implement paint
     Paint paint = Paint();
     paint
       ..color = Colors.black

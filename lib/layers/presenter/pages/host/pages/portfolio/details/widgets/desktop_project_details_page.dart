@@ -85,7 +85,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
           height: 8,
         ),
         Container(
-          margin: EdgeInsets.only(right: 16),
+          margin: const EdgeInsets.only(right: 16),
           height: 56,
           child: ProjectLinks(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -196,7 +196,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
                         image: Image.network(
-                                project.media?.screenshots[itemIndex]?.url ??
+                                project.media?.screenshots[itemIndex].url ??
                                     "")
                             .image,
                         placeholderBuilder: OctoPlaceholder.blurHash(
@@ -205,7 +205,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                         errorBuilder: OctoError.icon(color: Colors.red),
                         fit: BoxFit.scaleDown,
                       )),
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                 ),
               ),
             );
