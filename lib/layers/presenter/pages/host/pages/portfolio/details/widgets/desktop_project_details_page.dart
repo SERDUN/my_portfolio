@@ -25,57 +25,61 @@ class DesktopProjectDetailsPage extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Flexible(
-                flex: 4,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Row(
-                    children: [
-                      Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                (project.name ?? "").toUpperCase(),
+        Container(
+          color: Colors.green,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: Row(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 24),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  (project.name ?? "").toUpperCase(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline1
+                                      ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle: FontStyle.italic),
+                                ),
+                                const DecorationViewLines(
+                                  margin: EdgeInsets.only(top: 0, bottom: 4),
+                                ),
+                              ],
+                            )),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 3,
+                        ),
+                        Expanded(
+                          child: Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              child: Text(
+                                (project.intro ?? "").toUpperCase(),
+                                textAlign: TextAlign.right,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline1
+                                    .subtitle1
                                     ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.italic),
-                              ),
-                              const DecorationViewLines(
-                                margin: EdgeInsets.only(top: 0, bottom: 4),
-                              ),
-                            ],
-                          )),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 3,
-                      ),
-                      Expanded(
-                        child: Container(
-                            margin: const EdgeInsets.only(right: 8),
-                            child: Text(
-                              (project.intro ?? "").toUpperCase(),
-                              textAlign: TextAlign.right,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle1
-                                  ?.copyWith(
-                                      fontWeight: FontWeight.w100,
-                                      color:
-                                          Theme.of(context).colorPlate().grey),
-                            )),
-                      ),
-                    ],
-                  ),
-                )),
-          ],
+                                        fontWeight: FontWeight.w100,
+                                        color: Theme.of(context)
+                                            .colorPlate()
+                                            .grey),
+                              )),
+                        ),
+                      ],
+                    ),
+                  )),
+            ],
+          ),
         ),
         const SizedBox(
           height: 8,
