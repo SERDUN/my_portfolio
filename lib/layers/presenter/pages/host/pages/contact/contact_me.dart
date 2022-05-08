@@ -186,7 +186,7 @@ class _ContactMeState extends State<ContactMe> {
   Widget buildBuildInstagramInfo(BuildContext context,
       {bool isInvert = true, double? width}) {
     return IconText(
-      imagePath: 'image/icons/instagram.webp',
+      imagePath: 'assets/image/icons/instagram.webp',
       title: 'Instagram',
       content: widget.contactsModel.instagramUsername,
       url: widget.contactsModel.instagramLink,
