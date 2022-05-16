@@ -95,7 +95,7 @@ class IconText extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .headline4
-                      ?.copyWith(fontWeight: FontWeight.w300),
+                      ?.copyWith(fontWeight: FontWeight.w200),
                 ))),
         const SizedBox(height: 5),
         SelectableText.rich(
@@ -104,7 +104,7 @@ class IconText extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                ?.copyWith(fontStyle: FontStyle.normal),
+                ?.copyWith(fontStyle: FontStyle.italic),
             mouseCursor: SystemMouseCursors.click,
             recognizer: TapGestureRecognizer()..onTap = () => call(url),
           ),
@@ -125,7 +125,7 @@ class IconText extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .headline4
-              ?.copyWith(fontWeight: FontWeight.w300),
+              ?.copyWith(fontWeight: FontWeight.w200),
         ),
         const SizedBox(height: 5),
         GestureDetector(
@@ -135,7 +135,7 @@ class IconText extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
-                ?.copyWith(fontStyle: FontStyle.normal),
+                ?.copyWith(fontStyle: FontStyle.italic),
           ),
         ),
       ],

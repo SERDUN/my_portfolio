@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/domain/entity/model/contact/contacts_model.dart';
 import 'package:my_portfolio/layers/presenter/common/widgets/dash/dash_vertical.dart';
@@ -6,7 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../common/widgets/behaviour/responsive_widget.dart';
 import '../../../../common/widgets/decoration/decoration_view.dart';
 import '../../../../common/widgets/text/icon_text.dart';
-
 
 class ContactMe extends StatefulWidget {
   final ContactsModel contactsModel;
@@ -29,7 +29,7 @@ class _ContactMeState extends State<ContactMe> {
             height: 40,
           ),
           Text(
-            'GET IN TOUCH',
+            tr("contact_get_in_touch").toUpperCase(),
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headline2,
           ),
@@ -124,7 +124,7 @@ class _ContactMeState extends State<ContactMe> {
   Widget _buildLocationInfo(BuildContext context, {double? width}) {
     return IconText(
       imagePath: 'image/icons/location.webp',
-      title: 'Location:',
+      title: tr("contact_location"),
       content: widget.contactsModel.location,
       url: widget.contactsModel.location,
       type: IconTextType.selectable,
@@ -136,7 +136,7 @@ class _ContactMeState extends State<ContactMe> {
   Widget buildBuildPhoneInfo(BuildContext context, {double? width}) {
     return IconText(
       imagePath: 'image/icons/phone.webp',
-      title: 'Call Me:',
+      title: tr("contact_phone"),
       content: widget.contactsModel.phone,
       url: widget.contactsModel.phone,
       type: IconTextType.selectable,
@@ -148,7 +148,7 @@ class _ContactMeState extends State<ContactMe> {
   Widget buildBuildContactInfo(BuildContext context, {double? width}) {
     return IconText(
       imagePath: 'image/icons/mail.webp',
-      title: 'Mail Me:',
+      title: tr("contact_email"),
       content: widget.contactsModel.mail,
       url: widget.contactsModel.mail,
       type: IconTextType.selectable,
@@ -161,7 +161,7 @@ class _ContactMeState extends State<ContactMe> {
       {bool isInvert = true, double? width}) {
     return IconText(
       imagePath: 'image/icons/facebook.webp',
-      title: 'Facebook',
+      title: tr("contact_facebook"),
       content: widget.contactsModel.facebookUsername,
       url: widget.contactsModel.facebookLink,
       width: width,
@@ -174,7 +174,7 @@ class _ContactMeState extends State<ContactMe> {
       {bool isInvert = true, double? width}) {
     return IconText(
       imagePath: 'image/icons/linkedin.webp',
-      title: 'Linkedin',
+      title: tr("contact_linkedin"),
       content: widget.contactsModel.linkedinUsername,
       url: widget.contactsModel.linkedinLink,
       width: width,
@@ -187,7 +187,7 @@ class _ContactMeState extends State<ContactMe> {
       {bool isInvert = true, double? width}) {
     return IconText(
       imagePath: 'image/icons/instagram.webp',
-      title: 'Instagram',
+      title: tr("contact_instagram"),
       content: widget.contactsModel.instagramUsername,
       url: widget.contactsModel.instagramLink,
       width: width,
@@ -195,6 +195,13 @@ class _ContactMeState extends State<ContactMe> {
       call: launchUrl,
     );
   }
+
+  // "contact_phone": "Phone",
+  // "contact_email": "Email",
+  // "contact_location": "Location",
+  // "contact_facebook": "Facebook",
+  // "contact_linkedin": "Linkedin",
+  // "contact_instagram": "Instagram"
 
   void launchUrl(String url) async {
     await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';

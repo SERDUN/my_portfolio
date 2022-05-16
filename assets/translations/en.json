@@ -1,5 +1,5 @@
 {
-  "last_project_title": "Last Projects",
+  "last_project_title": "Projects",
   "menu_title_home": "Home",
   "menu_title_portfolio": "Portfolio",
   "menu_title_contact": "Contact",
@@ -8,7 +8,14 @@
   "unknown_page_description": "Fuck russia!",
   "portfolio_description": "Description",
   "portfolio_about_me": "About me",
-  "intro_skills": "Skills"
+  "intro_skills": "Skills",
+  "contact_get_in_touch": "Get in touch",
+  "contact_phone": "Phone",
+  "contact_email": "Email",
+  "contact_location": "Location",
+  "contact_facebook": "Facebook",
+  "contact_linkedin": "Linkedin",
+  "contact_instagram": "Instagram"
 
 
 }
