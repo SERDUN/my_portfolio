@@ -90,7 +90,7 @@ class _ContactMeState extends State<ContactMe> {
             ),
             Center(
               child: Text(
-                'GET IN TOUCH',
+                tr("contact_get_in_touch").toUpperCase(),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline1,
               ),
@@ -123,7 +123,7 @@ class _ContactMeState extends State<ContactMe> {
 
   Widget _buildLocationInfo(BuildContext context, {double? width}) {
     return IconText(
-      imagePath: 'image/icons/location.webp',
+      imagePath: 'assets/image/icons/location.webp',
       title: tr("contact_location"),
       content: widget.contactsModel.location,
       url: widget.contactsModel.location,
@@ -135,7 +135,7 @@ class _ContactMeState extends State<ContactMe> {
 
   Widget buildBuildPhoneInfo(BuildContext context, {double? width}) {
     return IconText(
-      imagePath: 'image/icons/phone.webp',
+      imagePath: 'assets/image/icons/phone.webp',
       title: tr("contact_phone"),
       content: widget.contactsModel.phone,
       url: widget.contactsModel.phone,
@@ -147,7 +147,7 @@ class _ContactMeState extends State<ContactMe> {
 
   Widget buildBuildContactInfo(BuildContext context, {double? width}) {
     return IconText(
-      imagePath: 'image/icons/mail.webp',
+      imagePath: 'assets/image/icons/mail.webp',
       title: tr("contact_email"),
       content: widget.contactsModel.mail,
       url: widget.contactsModel.mail,
@@ -160,7 +160,7 @@ class _ContactMeState extends State<ContactMe> {
   Widget buildBuildFacebookInfo(BuildContext context,
       {bool isInvert = true, double? width}) {
     return IconText(
-      imagePath: 'image/icons/facebook.webp',
+      imagePath: 'assets/image/icons/facebook.webp',
       title: tr("contact_facebook"),
       content: widget.contactsModel.facebookUsername,
       url: widget.contactsModel.facebookLink,
@@ -173,7 +173,7 @@ class _ContactMeState extends State<ContactMe> {
   Widget buildBuildLinkedinInfo(BuildContext context,
       {bool isInvert = true, double? width}) {
     return IconText(
-      imagePath: 'image/icons/linkedin.webp',
+      imagePath: 'assets/image/icons/linkedin.webp',
       title: tr("contact_linkedin"),
       content: widget.contactsModel.linkedinUsername,
       url: widget.contactsModel.linkedinLink,
@@ -186,7 +186,7 @@ class _ContactMeState extends State<ContactMe> {
   Widget buildBuildInstagramInfo(BuildContext context,
       {bool isInvert = true, double? width}) {
     return IconText(
-      imagePath: 'image/icons/instagram.webp',
+      imagePath: 'assets/image/icons/instagram.webp',
       title: tr("contact_instagram"),
       content: widget.contactsModel.instagramUsername,
       url: widget.contactsModel.instagramLink,
