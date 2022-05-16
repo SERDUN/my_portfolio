@@ -5,9 +5,8 @@ import 'package:my_portfolio/layers/presenter/pages/host/pages/portfolio/project
 
 import '../../common/widgets/bars/common_app_bar.dart';
 import '../../navigation/state/navigation_cubit.dart';
-
-import 'pages/home/home_page.dart';
 import 'host_routes.dart';
+import 'pages/home/home_page.dart';
 
 class HostPage extends StatefulWidget {
   final HomeRoutes defaultPage;

@@ -50,8 +50,8 @@ flutter:
     - assets/image/icons/sub_category.webp
     - assets/image/icons/github.webp
     - assets/image/icons/phone.webp
-    - assets/image/social/google_play.webp
-    - assets/image/social/app_store.webp
+    - assets/image/icons/google_play.webp
+    - assets/image/icons/app_store.webp
     - assets/image/icons/location.webp
     - assets/data/en/projects.json
     - assets/data/en/user.json

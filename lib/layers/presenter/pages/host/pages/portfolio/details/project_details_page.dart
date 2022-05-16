@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/pages/host/pages/portfolio/details/widgets/desktop_project_details_page.dart';
 import 'package:my_portfolio/layers/presenter/pages/host/pages/portfolio/details/widgets/mobile_project_details_page.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../../../../../../application/logger.dart';
 import '../../../../../common/widgets/bars/common_app_bar.dart';
 import '../../../../../common/widgets/behaviour/responsive_widget.dart';
@@ -58,13 +60,27 @@ class _ContactUsState extends State<ProjectDetailsPage>
           ),
           body: SingleChildScrollView(
             child: ResponsiveWidget(
-              desktopScreen:
-                  DesktopProjectDetailsPage(project: state.projects!),
-              mobileScreen: MobileProjectDetailsPage(project: state.projects!),
+              desktopScreen: DesktopProjectDetailsPage(
+                project: state.projects!,
+                openLink: _openLinkAction,
+              ),
+              mobileScreen: MobileProjectDetailsPage(
+                project: state.projects!,
+                openLink: _openLinkAction,
+              ),
             ),
           ),
         );
       }
     });
+  }
+
+  void _openLinkAction(String? link) async {
+    Uri? uri = Uri.tryParse(link ?? "");
+    if (uri != null) {
+      await canLaunchUrl(uri)
+          ? await launchUrl(uri)
+          : throw 'Could not launch $link';
+    }
   }
 }

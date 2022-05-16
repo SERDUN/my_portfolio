@@ -10,7 +10,6 @@ import 'package:my_portfolio/layers/presenter/pages/host/pages/home/widgets/serv
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../common/widgets/behaviour/responsive_widget.dart';
-import '../../../../common/widgets/decoration/heart_decoration.dart';
 import '../../../../common/widgets/footer/footer.dart';
 import 'bloc/bloc.dart';
 import 'bloc/event.dart';
