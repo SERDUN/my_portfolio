@@ -310,8 +310,8 @@
     {
       "id": 5,
       "name": "Lune",
-      "intro": "",
-      "description": "We used the BLoC clean architecture design concept for the user interface (UI). This enabled us to separate layers and not tie components together too much. It also allows us to change the app’s logic with minimal changes to UI components. Modularity offers the benefit of being able to change components without influencing other components and to add dependencies when required.",
+      "intro": "Додаток для накопичення заощаджень коштів",
+      "description": "Ми використали концепцію дизайну чистої архітектури BLoC для інтерфейсу користувача (UI). Це дозволило нам розділити шари і не надто пов’язувати компоненти разом. Це також дозволяє нам змінювати логіку програми з мінімальними змінами компонентів інтерфейсу користувача. Модульність пропонує перевагу можливості змінювати компоненти, не впливаючи на інші компоненти, і додавати залежності, коли це потрібно." ,
       "linkAndroid": "",
       "linkIOS": "",
       "linkSource": "",
@@ -359,8 +359,8 @@
     {
       "id": 6,
       "name": "Arrkas",
-      "intro": "A mobile app for buying and selling paperless coupons that caters to Saudi retailers and consumers",
-      "description": "Arrkas is a Saudi startup looking to solve problems in the Saudi coupon market. The idea behind Arrkas is to connect buyers and sellers in one app. Buyers can access dozens of paperless coupons and receive rewards for transactions, whereas sellers can sell coupons to customers. ",
+      "intro": "Мобільний додаток для купівлі та продажу безпаперових купонів, який обслуговує саудівських роздрібних продавців і споживачів",
+      "description": "Arrkas — саудівський стартап, який прагне вирішити проблеми на саудівському купонному ринку. Ідея Arrkas полягає в тому, щоб з’єднати покупців і продавців в одному додатку. Покупці можуть отримати доступ до десятків безпаперових купонів і отримати винагороду за транзакції, тоді як продавці можуть продавати купони клієнтам.",
       "linkAndroid": "https://andriodapk.com/androidapp/1476532534/arrkas-%D8%A7%D8%B1%D8%AE%D8%B5",
       "linkIOS": "",
       "linkSource": "",
@@ -512,8 +512,8 @@
     {
       "id": 8,
       "name": "NightApp",
-      "intro": "A heatmap that shows live attendance at bars, nightclubs, restaurants, and karaoke",
-      "description": "Android app built using the MVP design pattern, which allowed us to split the business logic from the UI perfectly. To write the app, we chose Kotlin. Kotlin helped us reduce the amount of code compared to Java.We used the RxKotlin framework built on the basis of the Paternal Observer pattern. RxKotlin gave us the possibility to subscribe to events and work more conveniently with the background streams that are most actively used when requesting a server with the help of the Retrofit framework. To implement all of our client’s ideas, we chose Google Maps because they allowed us to customize the marker that helps users see how busy a certain place is.As the app features photos of different places, we used the Glide library to cache photos.The Dexter libraries were excellent for permission queries and added more convenience. With Dexter, it's easy to ask users for permission to record data to the phone's memory or access the camera or geolocation features.",
+      "intro": "Теплова карта, яка показує відвідуваність барів, нічних клубів, ресторанів і караоке",
+      "description": "Додаток для Android було створено з використанням шаблону проектування MVP, що дозволило нам ідеально розділити бізнес-логіку з інтерфейсу користувача. Для написання програми ми вибрали Kotlin. Kotlin допоміг нам зменшити обсяг коду в порівнянні з Java. Ми використовували фреймворк RxKotlin, побудований на основі шаблону Paternal Observer. RxKotlin дав нам можливість підписуватися на події та зручніше працювати з фоновими потоками, які найбільш активно використовуються при запиті сервера за допомогою фреймворку Retrofit. Щоб втілити в життя всі ідеї нашого клієнта, ми вибрали Google Maps, оскільки вони дозволили нам налаштувати маркер, який допомагає користувачам бачити, наскільки зайняте певне місце. Оскільки програма містить фотографії різних місць, ми використовували бібліотеку Glide для кешування фотографій. Бібліотеки Dexter були чудовими для запитів на дозвіл і додали більше зручності. Завдяки Dexter можна легко запитати у користувачів дозвіл на запис даних у пам’ять телефону або доступ до камери чи функцій геолокації.",
       "linkAndroid": "",
       "linkIOS": "",
       "linkSource": "",

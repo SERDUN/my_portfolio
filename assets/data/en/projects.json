@@ -311,7 +311,7 @@
     {
       "id": 5,
       "name": "Lune",
-      "intro": "",
+      "intro": "An application for saving money",
       "description": "We used the BLoC clean architecture design concept for the user interface (UI). This enabled us to separate layers and not tie components together too much. It also allows us to change the app’s logic with minimal changes to UI components. Modularity offers the benefit of being able to change components without influencing other components and to add dependencies when required.",
       "linkAndroid": "",
       "linkIOS": "",
@@ -514,8 +514,7 @@
       "id": 8,
       "name": "NightApp",
       "intro": "A heatmap that shows live attendance at bars, nightclubs, restaurants, and karaoke",
-      "description": "Android app built using the MVP design pattern, which allowed us to split the business logic from the UI perfectly. To write the app, we chose Kotlin. Kotlin helped us reduce the amount of code compared to Java.We used the RxKotlin framework built on the basis of the Paternal Observer pattern. RxKotlin gave us the possibility to subscribe to events and work more conveniently with the background streams that are most actively used when requesting a server with the help of the Retrofit framework. To implement all of our client’s ideas, we chose Google Maps because they allowed us to customize the marker that helps users see how busy a certain place is.As the app features photos of different places, we used the Glide library to cache photos.The Dexter libraries were excellent for permission queries and added more convenience. With Dexter, it's easy to ask users for permission to record data to the phone's memory or access the camera or geolocation features.",
-      "linkAndroid": "",
+      "description": "The Android app was built using the MVP design pattern, which allowed us to split the business logic from the UI perfectly. To write the app, we chose Kotlin. Kotlin helped us reduce the amount of code compared to Java. We used the RxKotlin framework built on the basis of the Paternal Observer pattern. RxKotlin gave us the possibility to subscribe to events and work more conveniently with the background streams that are most actively used when requesting a server with the help of the Retrofit framework. To implement all of our client’s ideas, we chose Google Maps because they allowed us to customize the marker that helps users see how busy a certain place is. As the app features photos of different places, we used the Glide library to cache photos. The Dexter libraries were excellent for permission queries and added more convenience. With Dexter, it's easy to ask users for permission to record data to the phone's memory or access the camera or geolocation features.",      "linkAndroid": "",
       "linkIOS": "",
       "linkSource": "",
       "tags": {
