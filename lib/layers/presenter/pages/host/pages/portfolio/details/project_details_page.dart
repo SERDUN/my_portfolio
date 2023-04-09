@@ -8,7 +8,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../../../../application/logger.dart';
 import '../../../../../common/widgets/bars/common_app_bar.dart';
 import '../../../../../common/widgets/behaviour/responsive_widget.dart';
-import '../../../../../navigation/state/navigation_cubit.dart';
 import '../../../host_routes.dart';
 import 'bloc/bloc.dart';
 import 'bloc/event.dart';
@@ -23,10 +22,8 @@ class ProjectDetailsPage extends StatefulWidget {
   _ContactUsState createState() => _ContactUsState();
 }
 
-class _ContactUsState extends State<ProjectDetailsPage>
-    with TickerProviderStateMixin {
-  late final ProjectDetailsBloc _bloc =
-      BlocProvider.of<ProjectDetailsBloc>(context);
+class _ContactUsState extends State<ProjectDetailsPage> with TickerProviderStateMixin {
+  late final ProjectDetailsBloc _bloc = BlocProvider.of<ProjectDetailsBloc>(context);
 
   @override
   void didChangeDependencies() {
@@ -38,26 +35,13 @@ class _ContactUsState extends State<ProjectDetailsPage>
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(
-        builder: (context, state) {
+    return BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(builder: (context, state) {
       if (state.projects == null) {
         return const Center(
           child: CircularProgressIndicator(),
         );
       } else {
         return Scaffold(
-          appBar: CommonAppBar(
-            defaultPage: HomeRoutes.projects,
-            onHome: () {
-              BlocProvider.of<NavigationCubit>(context).replaceToIntro();
-            },
-            onPortfolio: () {
-              BlocProvider.of<NavigationCubit>(context).popOrProjects();
-            },
-            onContact: () {
-              BlocProvider.of<NavigationCubit>(context).replaceToContact();
-            },
-          ),
           body: SingleChildScrollView(
             child: ResponsiveWidget(
               desktopScreen: DesktopProjectDetailsPage(
@@ -78,9 +62,7 @@ class _ContactUsState extends State<ProjectDetailsPage>
   void _openLinkAction(String? link) async {
     Uri? uri = Uri.tryParse(link ?? "");
     if (uri != null) {
-      await canLaunchUrl(uri)
-          ? await launchUrl(uri)
-          : throw 'Could not launch $link';
+      await canLaunchUrl(uri) ? await launchUrl(uri) : throw 'Could not launch $link';
     }
   }
 }

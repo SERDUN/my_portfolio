@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:my_portfolio/layers/presenter/pages/host/pages/portfolio/projects/widgets/desktop_portfolio_item.dart';
 import 'package:my_portfolio/layers/presenter/pages/host/pages/portfolio/projects/widgets/mobile_portfolio_item.dart';
 
+import '../../../../../../../application/route/app_route_consts.dart';
 import '../../../../../../domain/entity/model/projects/project_model.dart';
 import '../../../../../common/widgets/behaviour/responsive_widget.dart';
-import '../../../../../navigation/state/navigation_cubit.dart';
+
 class PortfolioItem extends StatelessWidget {
   final ProjectModel project;
 
-  const PortfolioItem({Key? key, required this.project}) : super(key: key);
+  const PortfolioItem({
+    super.key,
+    required this.project,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +22,8 @@ class PortfolioItem extends StatelessWidget {
         onTap: () => _openDetails(context),
         child: ResponsiveWidget(
           desktopScreen: DesktopPortfolioItem(
-            chipColor:
-                _getChipColorTechnology(project.tags.mainTechnology, context),
-            chipName:
-                _getChipStringTechnology(project.tags.mainTechnology, context),
+            chipColor: _getChipColorTechnology(project.tags.mainTechnology, context),
+            chipName: _getChipStringTechnology(project.tags.mainTechnology, context),
             project: project,
             tags: _getThematicsTags(project.tags.projects),
             openDetails: () => _openDetails(context),
@@ -33,8 +35,11 @@ class PortfolioItem extends StatelessWidget {
         ));
   }
 
-  void _openDetails(BuildContext context) =>
-      BlocProvider.of<NavigationCubit>(context).openProjectDetails(project.id);
+  void _openDetails(BuildContext context) {
+    GoRouter.of(context).goNamed(AppRoutInfo.project.name, params: <String, String>{
+      AppRoutInfo.projectId: project.id!,
+    });
+  }
 
   Color _getChipColorTechnology(String technology, BuildContext context) {
     switch (technology) {
