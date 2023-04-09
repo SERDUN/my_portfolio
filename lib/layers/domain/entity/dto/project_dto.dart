@@ -7,7 +7,7 @@ part 'project_dto.g.dart';
 
 @JsonSerializable()
 class ProjectDTO {
-  final int? id;
+  final String? id;
   final String? name;
   final String? intro;
   final String? description;

@@ -2,7 +2,7 @@
   "version": 1,
   "projects": [
     {
-      "id": 0,
+      "id": "0",
       "name": "Portfolio",
       "intro": "Place where current skills are described and what has been done is demonstrated",
       "description": "Web application for visualizing current skills. The application uses a clean architecture with 3 layers like data, domain, and presenter.\n About data layer: In this section implemented repository and created datasource for getting resource. At now implemented  asset datasource repository which parse json file with static date, and return dto for use case;\nIn future if need or partly i will add remote datasource which will be comunicate with http server (Cloud functions).\n About domain layer: In this section i describe common thinks like models, mappers, usecases.  In usecases described basic feature for separated logic, at current moment  we haven't difficult logic and therefore there are only convertng dto to mapper and handling base exceptions.\n About domain presenter: Using BLoC for getting data and handle cases. Used base named navigation and base host  container... ",
@@ -61,7 +61,7 @@
       }
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Alias",
       "intro": "Alias or Charades - guess word board game",
       "description": "'Alias or Charades - guess word board game is a new free version of the world-famous activity Alias board game. The objective of Alias is to explain words to team members. For each word thats correctly guessed by one of your teammates, your team gets a point. Our app lets you play Alias anywhere without a ton of paper cards and a board.  Now you could add set on any language. Play your own sets with your friends or share it to all word. Cool, isn’t it? Check it out here: https://getalias.co/ The best feature of free Alias is its themed sets of words. We’ve already prepared Space, Party and Food sets. We’re planning to make lots more soon. You can also play the standard Alias to set your difficulty level and play with a random set of words. A separate Alias game mode for kids with pictures alongside words is also available in this version. Alias is an awesome game for both small and large groups. Having a party or a picnic? Don’t know what to do with your family on a rainy day? You could play Alias. It’s great for all ages. All you need is at least four people and the app.\",',\n",
@@ -133,7 +133,7 @@
       }
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "mPet",
       "intro": "A mobile app to store and share pets medical and health data and find useful information about pet",
       "description": "Manage, store and transfer pet medical records and health information. Communicate with veterinarians and pet service providers through video, text and send pictures. Locate pet service providers using Google locator.\",\n",
@@ -185,7 +185,7 @@
       }
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Columbus Coffee Rewards",
       "intro": "A loyalty app that allows Columbus Coffee customers to earn points and find nearby locations",
       "description": "The app helps handle discounts on coffee and shows the nearest coffee shops. Default Android application with clean architecture and MVVM and bindings for the presenter.",
@@ -244,7 +244,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Foodie Family",
       "intro": "Foodie Family - a convenient service for ordering and delivery of ready meals from restaurants!",
       "description": "Two applications for food delivery were developed, the first role being a customer and the other a driver. \n\nThe project uses redux and auxiliary libraries that, for example, help with code generation. \n\nThe main problem with this project was the migration to version 2.0, but all the requirements were met after the migration and some refactoring.",
@@ -309,7 +309,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Lune",
       "intro": "An application for saving money",
       "description": "Application for saving money and creating transfers; As project architecture used clean architecture with layers(data, domain, presenter) and framework modular for di, navigation, and divide modules and BLoC as the presenter architecture.\n\nThis enabled us to separate layers and not tie components together too much. It also allows us to change the app’s logic with minimal changes to UI components. Modularity offers the benefit of being able to change components without influencing other components and to add dependencies when required.\n\nThe general challenge in this app was creating plugins because the bank service framework didn't have a flutter plugin. And Android and ios libs were not stable. But as a result, was created a plugin that handles most cases and allows the use of bank service functionality.",
@@ -358,7 +358,7 @@
       }
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Arrkas",
       "intro": "A mobile app for buying and selling paperless coupons that caters to Saudi retailers and consumers",
       "description": "Arrkas is a Saudi startup looking to solve problems in the Saudi coupon market. The idea behind Arrkas is to connect buyers and sellers in one app. Buyers can access dozens of paperless coupons and receive rewards for transactions, whereas sellers can sell coupons to customers. ",
@@ -425,7 +425,7 @@
       }
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Daberli",
       "intro": "Service that allows you to sell services.",
       "description": "Service that allows you to sell services.",
@@ -511,7 +511,7 @@
       }
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "NightApp",
       "intro": "A heatmap that shows live attendance at bars, nightclubs, restaurants, and karaoke",
       "description": "The Android app was built using the MVP design pattern, which allowed us to split the business logic from the UI perfectly. To write the app, we chose Kotlin. Kotlin helped us reduce the amount of code compared to Java. We used the RxKotlin framework built on the basis of the Paternal Observer pattern. RxKotlin gave us the possibility to subscribe to events and work more conveniently with the background streams that are most actively used when requesting a server with the help of the Retrofit framework. To implement all of our client’s ideas, we chose Google Maps because they allowed us to customize the marker that helps users see how busy a certain place is. As the app features photos of different places, we used the Glide library to cache photos. The Dexter libraries were excellent for permission queries and added more convenience. With Dexter, it's easy to ask users for permission to record data to the phone's memory or access the camera or geolocation features.",
@@ -574,7 +574,7 @@
       }
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Slaywoke",
       "intro": "A location-based social network for meeting new people at schools and universities",
       "description": "It's a social network for active people who like colorful life. In-app realized mechanics, which connect classic user posts with maps, this mechanic allows looking at where the post was created. \n\nFor the project organize was used clean architecture, but in this project was skipped \"use case layer\", but this step was mistaken since some presenters have kept logic that emitted problems when need add change.\n\nIn general, for presenter used BloC but to keep global data I used redux which is too much I think now, it would be more concise to use Provider(InheritedWidget) to observe global data.\n\nMost challenges in this project were actualizing and syncing data to map visualization like markers. Because the app has many triggers which force to get updates from the server.\n\nAnd next challenge was in working with video and images which didn't compress on the server-side but after some writing line codes  and some additional loaders I compressed media on the mobile side which allow me to save much memory    \n",

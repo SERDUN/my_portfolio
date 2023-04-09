@@ -3,7 +3,7 @@ import 'package:my_portfolio/layers/domain/entity/model/projects/project_media_m
 import 'project_tags_model.dart';
 
 class ProjectModel {
-  final int? id;
+  final String? id;
   final String? name;
   final String? intro;
   final String? description;

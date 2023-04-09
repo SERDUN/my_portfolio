@@ -5,7 +5,7 @@ part 'portfolio_dto.g.dart';
 
 @JsonSerializable()
 class PortfolioDTO {
-  int? version;
+  // int? version;
   List<ProjectDTO>? projects;
 
   PortfolioDTO();

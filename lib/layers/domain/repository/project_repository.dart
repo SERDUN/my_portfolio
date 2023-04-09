@@ -6,6 +6,5 @@ import '../entity/model/error/common/failure.dart';
 abstract class ProjectRepository {
   Future<Either<Failure, List<ProjectDTO>>> getProjects(String localization);
 
-  Future<Either<Failure, ProjectDTO>> getProjectById(
-      int id, String localization);
+  Future<Either<Failure, ProjectDTO>> getProjectById(String id, String localization);
 }
