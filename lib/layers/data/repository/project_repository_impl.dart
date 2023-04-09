@@ -16,16 +16,14 @@ class ProjectRepositoryImpl extends ProjectRepository {
   ProjectRepositoryImpl(this.source);
 
   @override
-  Future<Either<Failure, ProjectDTO>> getProjectById(int id,String localization) async {
+  Future<Either<Failure, ProjectDTO>> getProjectById(String id, String localization) async {
     var projects = await getProjects(localization);
     if (projects.isRight) {
-      var project =
-          projects.right.firstWhereOrNull((element) => element.id == id);
+      var project = projects.right.firstWhereOrNull((element) => element.id == id);
       if (project != null) {
         return Future.value(Right(project));
       } else {
-        return Future.value(
-            Left(DefaultFailure("Project with this ID was not found")));
+        return Future.value(Left(DefaultFailure("Project with this ID was not found")));
       }
     } else {
       return Future.value(Left(projects.left));
