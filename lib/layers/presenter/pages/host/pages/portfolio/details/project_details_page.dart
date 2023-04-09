@@ -15,7 +15,7 @@ import 'bloc/event.dart';
 import 'bloc/state.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
-  final int id;
+  final String id;
 
   const ProjectDetailsPage({Key? key, required this.id}) : super(key: key);
 
