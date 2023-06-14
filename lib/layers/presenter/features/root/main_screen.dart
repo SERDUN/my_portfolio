@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../application/route/app_route_consts.dart';
 import '../../common/widgets/bars/common_app_bar.dart';
-import '../../pages/host/host_routes.dart';
-import '../../pages/host/pages/contact/contact_page.dart';
-import '../../pages/host/pages/home/home_page.dart';
-import '../../pages/host/pages/portfolio/projects/portfolio_page.dart';
+import '../bio/screen/home_page.dart';
+import '../host_routes.dart';
+import '../contact/screen/contact_page.dart';
+import '../projects/screen/portfolio_page.dart';
 
 class MainScreen extends StatefulWidget {
   final Widget screen;
 
-  MainScreen({Key? key, required this.screen}) : super(key: key);
+  const MainScreen({
+    Key? key,
+    required this.screen,
+  }) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -49,7 +51,6 @@ class _MainScreenState extends State<MainScreen> {
         },
       ),
       backgroundColor: Colors.white54,
-      //body: getBody(defaultPage));
       body: widget.screen,
     );
   }

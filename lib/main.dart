@@ -1,8 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'application/app_environment_keys.dart';
@@ -14,13 +13,12 @@ import 'layers/domain/usecase/projects/get_projects_use_case.dart';
 import 'layers/domain/usecase/user/get_user_use_case.dart';
 import 'layers/presenter/common/style/app_theme.dart';
 import 'layers/presenter/common/widgets/proxy/bloc/datasource_language_notifier_cubit.dart';
+import 'layers/presenter/features/bio/bloc/bloc.dart';
+import 'layers/presenter/features/contact/bloc/bloc.dart';
+import 'layers/presenter/features/contact/bloc/event.dart';
+import 'layers/presenter/features/project/bloc/bloc.dart';
+import 'layers/presenter/features/projects/bloc/bloc.dart';
 import 'layers/presenter/features/root/app_routes.dart';
-import 'layers/presenter/pages/host/host_routes.dart';
-import 'layers/presenter/pages/host/pages/contact/bloc/bloc.dart';
-import 'layers/presenter/pages/host/pages/contact/bloc/event.dart';
-import 'layers/presenter/pages/host/pages/home/bloc/bloc.dart';
-import 'layers/presenter/pages/host/pages/portfolio/details/bloc/bloc.dart';
-import 'layers/presenter/pages/host/pages/portfolio/projects/bloc/bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,16 +65,15 @@ class DataProvider extends StatelessWidget {
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  final _rootNavigatorKey = GlobalKey<NavigatorState>();
-  final _shellNavigatorKey = GlobalKey<NavigatorState>();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
