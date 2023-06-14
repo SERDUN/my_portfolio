@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_portfolio/layers/presenter/app/app.dart';
 
-import '../../common/widgets/bars/common_app_bar.dart';
-import '../bio/screen/home_page.dart';
-import '../host_routes.dart';
-import '../contact/screen/contact_page.dart';
-import '../projects/screen/portfolio_page.dart';
+import '../models/host_routes.dart';
+import '../widgets/common_app_bar.dart';
+import '../../bio/screen/home_page.dart';
+import '../../contact/screen/contact_page.dart';
+import '../../projects/screen/portfolio_page.dart';
 
 class MainScreen extends StatefulWidget {
   final Widget screen;

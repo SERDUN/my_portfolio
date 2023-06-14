@@ -1,10 +1,5 @@
 import 'package:go_router/go_router.dart';
-import '../features/bio/screen/home_page.dart';
-import '../features/contact/screen/contact_page.dart';
-
-import '../features/project/screen/project_details_page.dart';
-import '../features/projects/screen/portfolio_page.dart';
-import '../features/root/main_screen.dart';
+import '../features/features.dart';
 import '../common/widgets/text/not_found_page.dart';
 
 import 'app_route_consts.dart';

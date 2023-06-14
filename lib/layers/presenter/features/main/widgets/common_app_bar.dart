@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_fields.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-import '../../../features/host_routes.dart';
-import '../behaviour/responsive_widget.dart';
-import '../switcher/switcher_language.dart';
+import '../../../common/widgets/behaviour/responsive_widget.dart';
+import '../../../common/widgets/switcher/switcher_language.dart';
+
+import '../models/host_routes.dart';
 
 class CommonAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Function onHome;
