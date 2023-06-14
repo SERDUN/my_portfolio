@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../features/features.dart';
-import '../common/widgets/text/not_found_page.dart';
+import '../common/widgets/holder/not_found_page.dart';
 
 import 'app_route_consts.dart';
 

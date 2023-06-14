@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/core/core.dart';
+import 'package:my_portfolio/layers/presenter/common/widgets/widgets.dart';
 import 'package:my_portfolio/layers/presenter/features/bio/widgets/about_me/about_me.dart';
 import 'package:my_portfolio/layers/presenter/features/bio/widgets/intro/intro_page_mobile.dart';
 import 'package:my_portfolio/layers/presenter/features/bio/widgets/services/services.dart';
@@ -10,8 +10,6 @@ import 'package:my_portfolio/layers/presenter/features/bio/widgets/services/serv
 import 'package:url_launcher/url_launcher.dart';
 
 
-import '../../../common/widgets/behaviour/responsive_widget.dart';
-import '../../../common/widgets/footer/footer.dart';
 import '../bloc/bloc.dart';
 import '../bloc/event.dart';
 import '../bloc/state.dart';
@@ -85,7 +83,6 @@ class _HomePageState extends State<HomePage> {
                 Container(
                     margin: const EdgeInsets.only(bottom: 24),
                     child: const Services()),
-                const AppFooter()
               ],
             ),
           ));

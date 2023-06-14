@@ -21,18 +21,18 @@ class DashHorizontal extends StatelessWidget {
     return Container(
       child: CustomPaint(
           size: Size(width, 1),
-          painter: DashedLineVerticalPainter(opacity, dashSpace, dashHeight)),
+          painter: DashedLineHorizontalPainter(opacity, dashSpace, dashHeight)),
       margin: margin,
     );
   }
 }
 
-class DashedLineVerticalPainter extends CustomPainter {
+class DashedLineHorizontalPainter extends CustomPainter {
   final double opacity;
   final double dashSpaceArg;
   final double dashHeightArg;
 
-  DashedLineVerticalPainter(
+  DashedLineHorizontalPainter(
       this.opacity, this.dashSpaceArg, this.dashHeightArg);
 
   @override
