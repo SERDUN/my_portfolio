@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_portfolio/application/logger.dart';
+import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/layers/presenter/features/bio/widgets/about_me/about_me.dart';
 import 'package:my_portfolio/layers/presenter/features/bio/widgets/intro/intro_page_mobile.dart';
 import 'package:my_portfolio/layers/presenter/features/bio/widgets/services/services.dart';

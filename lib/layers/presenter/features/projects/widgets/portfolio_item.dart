@@ -4,7 +4,7 @@ import 'package:my_portfolio/layers/presenter/common/extension/style/own_theme_f
 import 'package:my_portfolio/layers/presenter/features/projects/widgets/desktop_portfolio_item.dart';
 import 'package:my_portfolio/layers/presenter/features/projects/widgets/mobile_portfolio_item.dart';
 
-import '../../../../../../../../application/route/app_route_consts.dart';
+import '../../../../../../../../core/route/app_route_consts.dart';
 import '../../../../domain/entity/model/projects/project_model.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 

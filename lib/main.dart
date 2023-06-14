@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'application/app_environment_keys.dart';
+import 'core/app_environment_keys.dart';
 import 'di/injection.dart';
 import 'layers/domain/usecase/config/update_local_config_use_case.dart';
 import 'layers/domain/usecase/contacts/get_contacts_use_case.dart';
@@ -39,16 +39,21 @@ class DataProvider extends StatelessWidget {
             create: (BuildContext context) => InfoBloc(di<GetUserUseCase>()),
           ),
           BlocProvider<ProjectsBloc>(
-            create: (BuildContext context) => ProjectsBloc(di<GetProjectsUseCase>()),
+            create: (BuildContext context) =>
+                ProjectsBloc(di<GetProjectsUseCase>()),
           ),
           BlocProvider<ProjectDetailsBloc>(
-            create: (BuildContext context) => ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
+            create: (BuildContext context) =>
+                ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
           ),
           BlocProvider<ContactsBloc>(
-            create: (BuildContext context) => ContactsBloc(di<GetContactsUseCase>())..add(InitContactsEvent()),
+            create: (BuildContext context) =>
+                ContactsBloc(di<GetContactsUseCase>())
+                  ..add(InitContactsEvent()),
           ),
           BlocProvider(
-            create: (BuildContext context) => DatasourceLanguageNotifierCubit(di<UpdateLocalConfigUseCase>()),
+            create: (BuildContext context) =>
+                DatasourceLanguageNotifierCubit(di<UpdateLocalConfigUseCase>()),
           )
         ],
         child: EasyLocalization(
@@ -82,7 +87,8 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       title: "Dmitro Serdun",
       theme: CustomTheme.lightTheme,
-      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
+      builder: (context, widget) => ResponsiveWrapper.builder(
+          BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 450,
           defaultScale: true,

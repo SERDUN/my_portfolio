@@ -6,7 +6,7 @@ import 'package:my_portfolio/layers/presenter/features/project/widgets/mobile_pr
 
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../../../../../application/logger.dart';
+import 'package:my_portfolio/core/core.dart';
 import '../../../common/widgets/behaviour/responsive_widget.dart';
 import '../bloc/bloc.dart';
 import '../bloc/event.dart';

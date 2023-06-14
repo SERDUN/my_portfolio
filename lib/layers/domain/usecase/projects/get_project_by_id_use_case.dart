@@ -1,10 +1,12 @@
 import 'package:injectable/injectable.dart';
+
+import 'package:my_portfolio/core/core.dart';
+
 import 'package:my_portfolio/layers/domain/entity/dto/project_dto.dart';
 import 'package:my_portfolio/layers/domain/entity/model/error/common/default_error.dart';
 import 'package:my_portfolio/layers/domain/entity/model/projects/project_model.dart';
 import 'package:my_portfolio/layers/domain/repository/project_repository.dart';
 
-import '../../../../application/logger.dart';
 import '../../common/base_use_case.dart';
 import '../../common/mapper_contract.dart';
 import '../../entity/argument/project_details_arg.dart';

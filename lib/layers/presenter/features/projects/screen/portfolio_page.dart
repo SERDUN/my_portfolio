@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/layers/presenter/features/projects/widgets/portfolio_item.dart';
 
-import '../../../../../../../../application/logger.dart';
+import 'package:my_portfolio/core/core.dart';
 import '../../../common/widgets/decoration/decoration_view.dart';
 import '../bloc/bloc.dart';
 import '../bloc/event.dart';
