@@ -1,15 +1,15 @@
 import 'package:go_router/go_router.dart';
-import '../../../../core/route/app_route_consts.dart';
-import '../bio/screen/home_page.dart';
-import '../contact/screen/contact_page.dart';
+import '../features/bio/screen/home_page.dart';
+import '../features/contact/screen/contact_page.dart';
 
-import '../project/screen/project_details_page.dart';
-import '../projects/screen/portfolio_page.dart';
-import 'main_screen.dart';
-import 'not_found_page.dart';
+import '../features/project/screen/project_details_page.dart';
+import '../features/projects/screen/portfolio_page.dart';
+import '../features/root/main_screen.dart';
+import '../common/widgets/text/not_found_page.dart';
+
+import 'app_route_consts.dart';
 
 class AppRouter {
-
   static final GoRouter _router = GoRouter(
     initialLocation: AppRoutInfo.resume.path,
     debugLogDiagnostics: true,

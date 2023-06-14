@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_portfolio/layers/presenter/app/app.dart';
 
-import '../../../../core/route/app_route_consts.dart';
 import '../../common/widgets/bars/common_app_bar.dart';
 import '../bio/screen/home_page.dart';
 import '../host_routes.dart';

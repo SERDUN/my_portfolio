@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../icon.dart';
+import 'icon.dart';
 
 enum IconTextType { selectable, clickable }
 

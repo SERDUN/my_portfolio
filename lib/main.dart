@@ -18,7 +18,7 @@ import 'layers/presenter/features/contact/bloc/bloc.dart';
 import 'layers/presenter/features/contact/bloc/event.dart';
 import 'layers/presenter/features/project/bloc/bloc.dart';
 import 'layers/presenter/features/projects/bloc/bloc.dart';
-import 'layers/presenter/features/root/app_routes.dart';
+import 'layers/presenter/app/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
