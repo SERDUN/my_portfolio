@@ -12,7 +12,6 @@ import 'layers/domain/usecase/projects/get_project_by_id_use_case.dart';
 import 'layers/domain/usecase/projects/get_projects_use_case.dart';
 import 'layers/domain/usecase/user/get_user_use_case.dart';
 import 'layers/presenter/common/style/app_theme.dart';
-import 'layers/presenter/common/widgets/proxy/bloc/datasource_language_notifier_cubit.dart';
 import 'layers/presenter/features/bio/bloc/bloc.dart';
 import 'layers/presenter/features/contact/bloc/bloc.dart';
 import 'layers/presenter/features/contact/bloc/event.dart';
@@ -51,10 +50,6 @@ class DataProvider extends StatelessWidget {
                 ContactsBloc(di<GetContactsUseCase>())
                   ..add(InitContactsEvent()),
           ),
-          BlocProvider(
-            create: (BuildContext context) =>
-                DatasourceLanguageNotifierCubit(di<UpdateLocalConfigUseCase>()),
-          )
         ],
         child: EasyLocalization(
           supportedLocales: const [
