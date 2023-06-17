@@ -14,14 +14,20 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
+  domain:
+    path: package/domain
+
+  data:
+    path: package/data
+
   responsive_framework: ^0.1.7
   matrix4_transform: ^2.0.1
   octo_image: ^1.0.1
   url_launcher: ^6.1.0
   carousel_slider: ^4.1.1
   transparent_image: ^2.0.0
-  get_it: ^7.2.0
-  injectable: ^1.5.3
+  get_it: ^7.6.0
+  injectable: ^2.1.2
   json_annotation: ^4.5.0
   flutter_bloc: ^8.0.1
   easy_localization: ^3.0.0
@@ -32,7 +38,7 @@ dependencies:
 dev_dependencies:
   json_serializable: ^6.2.0
   build_runner: ^2.1.10
-  injectable_generator: ^1.5.3
+  injectable_generator: ^2.1.6
   flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
@@ -54,11 +60,6 @@ flutter:
     - assets/image/icons/google_play.webp
     - assets/image/icons/app_store.webp
     - assets/image/icons/location.webp
-    - assets/data/en/projects.json
-    - assets/data/en/user.json
-    - assets/data/uk/projects.json
-    - assets/data/uk/user.json
-    - assets/data/contact.json
     - assets/translations/
 
 

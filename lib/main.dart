@@ -1,23 +1,15 @@
+import 'package:domain/domain.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'app/app.dart';
 import 'core/app_environment_keys.dart';
+import 'core/style/style.dart';
 import 'di/injection.dart';
-import 'layers/domain/usecase/config/update_local_config_use_case.dart';
-import 'layers/domain/usecase/contacts/get_contacts_use_case.dart';
-import 'layers/domain/usecase/projects/get_project_by_id_use_case.dart';
-import 'layers/domain/usecase/projects/get_projects_use_case.dart';
-import 'layers/domain/usecase/user/get_user_use_case.dart';
-import 'layers/presenter/common/style/app_theme.dart';
-import 'layers/presenter/features/bio/bloc/bloc.dart';
-import 'layers/presenter/features/contact/bloc/bloc.dart';
-import 'layers/presenter/features/contact/bloc/event.dart';
-import 'layers/presenter/features/project/bloc/bloc.dart';
-import 'layers/presenter/features/projects/bloc/bloc.dart';
-import 'layers/presenter/app/app_routes.dart';
+import 'features/features.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,17 +30,13 @@ class DataProvider extends StatelessWidget {
             create: (BuildContext context) => InfoBloc(di<GetUserUseCase>()),
           ),
           BlocProvider<ProjectsBloc>(
-            create: (BuildContext context) =>
-                ProjectsBloc(di<GetProjectsUseCase>()),
+            create: (BuildContext context) => ProjectsBloc(di<GetProjectsUseCase>()),
           ),
           BlocProvider<ProjectDetailsBloc>(
-            create: (BuildContext context) =>
-                ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
+            create: (BuildContext context) => ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
           ),
           BlocProvider<ContactsBloc>(
-            create: (BuildContext context) =>
-                ContactsBloc(di<GetContactsUseCase>())
-                  ..add(InitContactsEvent()),
+            create: (BuildContext context) => ContactsBloc(di<GetContactsUseCase>()),
           ),
         ],
         child: EasyLocalization(
@@ -82,8 +70,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       title: "Dmitro Serdun",
       theme: CustomTheme.lightTheme,
-      builder: (context, widget) => ResponsiveWrapper.builder(
-          BouncingScrollWrapper.builder(context, widget!),
+      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 450,
           defaultScale: true,
