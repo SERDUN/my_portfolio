@@ -1,11 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/extension/extension.dart';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:octo_image/octo_image.dart';
 
+import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
-
 
 class IntroPageMobile extends StatelessWidget {
   final String? avatar;
@@ -61,24 +60,16 @@ class IntroPageMobile extends StatelessWidget {
               text: TextSpan(children: [
                 TextSpan(
                     text: userFullName.getLetter(),
-                    style: textTheme.headline1?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: colorScheme.primary)),
+                    style: textTheme.headline1?.copyWith(fontWeight: FontWeight.w500, color: colorScheme.primary)),
                 TextSpan(
-                    text: userFullName.getLettersFromPosition(
-                        wordPosition: 0, fromPosition: 1),
-                    style: textTheme.headline1
-                        ?.copyWith(fontWeight: FontWeight.w500)),
+                    text: userFullName.getLettersFromPosition(wordPosition: 0, fromPosition: 1),
+                    style: textTheme.headline1?.copyWith(fontWeight: FontWeight.w500)),
                 TextSpan(
                     text: " ${userFullName.getLetter(wordPosition: 1)}",
-                    style: textTheme.headline1?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: colorScheme.primary)),
+                    style: textTheme.headline1?.copyWith(fontWeight: FontWeight.w500, color: colorScheme.primary)),
                 TextSpan(
-                    text: userFullName.getLettersFromPosition(
-                        wordPosition: 1, fromPosition: 1),
-                    style: textTheme.headline1
-                        ?.copyWith(fontWeight: FontWeight.w500)),
+                    text: userFullName.getLettersFromPosition(wordPosition: 1, fromPosition: 1),
+                    style: textTheme.headline1?.copyWith(fontWeight: FontWeight.w500)),
               ])),
         ),
         const SizedBox(

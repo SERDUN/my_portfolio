@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+
 import 'package:domain/domain.dart';
 
 import 'event.dart';

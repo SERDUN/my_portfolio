@@ -1,6 +1,3 @@
-
-
-
 import 'package:domain/domain.dart';
 
 class ProjectsState {

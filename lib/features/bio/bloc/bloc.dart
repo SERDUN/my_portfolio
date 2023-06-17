@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+
 import 'package:domain/domain.dart';
+
 import 'event.dart';
 import 'state.dart';
 
@@ -11,8 +13,7 @@ class InfoBloc extends Bloc<InfoEvent, InfoState> {
   }
 
   void _getUserEvent(GetUserEvent event, Emitter<InfoState> emit) async {
-    var user =
-        (await userUseCase.execute(lang: event.locale!));
+    var user = (await userUseCase.execute(lang: event.locale!));
     emit(state.fill(user));
   }
 }

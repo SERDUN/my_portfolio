@@ -1,10 +1,10 @@
-import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
+
 import 'package:octo_image/octo_image.dart';
 
+import 'package:domain/domain.dart';
+
 import 'package:my_portfolio/core/widgets/widgets.dart';
-
-
 
 class MobilePortfolioItem extends StatelessWidget {
   final Function openDetails;

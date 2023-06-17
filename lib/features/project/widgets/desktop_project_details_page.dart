@@ -1,22 +1,21 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:domain/domain.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/extension/extension.dart';
 
 import 'package:octo_image/octo_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
+
+import 'package:domain/domain.dart';
+
+import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 import 'project_links.dart';
-
 
 class DesktopProjectDetailsPage extends StatelessWidget {
   final ProjectModel project;
   final Function(String) openLink;
 
-  const DesktopProjectDetailsPage(
-      {Key? key, required this.project, required this.openLink})
-      : super(key: key);
+  const DesktopProjectDetailsPage({Key? key, required this.project, required this.openLink}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +45,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1
-                                    ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.italic),
+                                    ?.copyWith(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
                               ),
                               const DecorationViewLines(
                                 margin: EdgeInsets.only(top: 0, bottom: 4),
@@ -67,11 +64,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle1
-                                  ?.copyWith(
-                                      fontWeight: FontWeight.w100,
-                                      color: Theme.of(context)
-                                          .colorPlate()
-                                          .grey),
+                                  ?.copyWith(fontWeight: FontWeight.w100, color: Theme.of(context).colorPlate().grey),
                             )),
                       ),
                     ],
@@ -144,10 +137,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
         ),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Wrap(
-                children: (project.tags.develop)
-                    .map((e) => _buildTags(context, e))
-                    .toList())),
+            child: Wrap(children: (project.tags.develop).map((e) => _buildTags(context, e)).toList())),
         const SizedBox(
           height: 80,
         ),
@@ -179,8 +169,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
             scrollDirection: Axis.horizontal,
           ),
           itemCount: project.media?.screenshots.length ?? 0,
-          itemBuilder:
-              (BuildContext context, int itemIndex, int pageViewIndex) {
+          itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
             return SizedBox(
               width: double.infinity,
               height: double.infinity,
@@ -189,14 +178,10 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                 elevation: 4,
                 child: Padding(
                   child: ClipRRect(
-                      borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(4.0)),
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
-                        image: Image.network(
-                                project.media?.screenshots[itemIndex].url ??
-                                    "")
-                            .image,
+                        image: Image.network(project.media?.screenshots[itemIndex].url ?? "").image,
                         placeholderBuilder: OctoPlaceholder.blurHash(
                           'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                         ),
@@ -222,16 +207,12 @@ class DesktopProjectDetailsPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              child: Image.asset("assets/image/icons/category.webp",
-                  width: 24, height: 24),
+              child: Image.asset("assets/image/icons/category.webp", width: 24, height: 24),
               padding: const EdgeInsets.all(8),
             ),
             Text(
               text,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  ?.copyWith(fontStyle: FontStyle.italic),
+              style: Theme.of(context).textTheme.headline5?.copyWith(fontStyle: FontStyle.italic),
             ),
             const SizedBox(
               width: 24,

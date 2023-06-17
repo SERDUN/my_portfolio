@@ -1,10 +1,11 @@
-import 'package:domain/domain.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:my_portfolio/core/widgets/widgets.dart';
+import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class ContactMe extends StatefulWidget {
   final ContactsModel contactsModel;
@@ -43,14 +44,11 @@ class _ContactMeState extends State<ContactMe> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    buildBuildFacebookInfo(context,
-                        width: MediaQuery.of(context).size.width / 3),
+                    buildBuildFacebookInfo(context, width: MediaQuery.of(context).size.width / 3),
                     const SizedBox(height: 24),
-                    buildBuildLinkedinInfo(context,
-                        width: MediaQuery.of(context).size.width / 3),
+                    buildBuildLinkedinInfo(context, width: MediaQuery.of(context).size.width / 3),
                     const SizedBox(height: 24),
-                    buildBuildInstagramInfo(context,
-                        width: MediaQuery.of(context).size.width / 3),
+                    buildBuildInstagramInfo(context, width: MediaQuery.of(context).size.width / 3),
                   ],
                 ),
               ),
@@ -62,14 +60,11 @@ class _ContactMeState extends State<ContactMe> {
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildBuildContactInfo(context,
-                      width: MediaQuery.of(context).size.width / 3),
+                  buildBuildContactInfo(context, width: MediaQuery.of(context).size.width / 3),
                   const SizedBox(height: 24),
-                  buildBuildPhoneInfo(context,
-                      width: MediaQuery.of(context).size.width / 3),
+                  buildBuildPhoneInfo(context, width: MediaQuery.of(context).size.width / 3),
                   const SizedBox(height: 24),
-                  _buildLocationInfo(context,
-                      width: MediaQuery.of(context).size.width / 3),
+                  _buildLocationInfo(context, width: MediaQuery.of(context).size.width / 3),
                 ],
               )),
             ],
@@ -155,8 +150,7 @@ class _ContactMeState extends State<ContactMe> {
     );
   }
 
-  Widget buildBuildFacebookInfo(BuildContext context,
-      {bool isInvert = true, double? width}) {
+  Widget buildBuildFacebookInfo(BuildContext context, {bool isInvert = true, double? width}) {
     return IconText(
       imagePath: 'assets/image/icons/facebook.webp',
       title: tr("contact_facebook"),
@@ -168,8 +162,7 @@ class _ContactMeState extends State<ContactMe> {
     );
   }
 
-  Widget buildBuildLinkedinInfo(BuildContext context,
-      {bool isInvert = true, double? width}) {
+  Widget buildBuildLinkedinInfo(BuildContext context, {bool isInvert = true, double? width}) {
     return IconText(
       imagePath: 'assets/image/icons/linkedin.webp',
       title: tr("contact_linkedin"),
@@ -181,8 +174,7 @@ class _ContactMeState extends State<ContactMe> {
     );
   }
 
-  Widget buildBuildInstagramInfo(BuildContext context,
-      {bool isInvert = true, double? width}) {
+  Widget buildBuildInstagramInfo(BuildContext context, {bool isInvert = true, double? width}) {
     return IconText(
       imagePath: 'assets/image/icons/instagram.webp',
       title: tr("contact_instagram"),

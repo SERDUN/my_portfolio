@@ -1,22 +1,21 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:domain/domain.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:octo_image/octo_image.dart';
+import 'package:easy_localization/easy_localization.dart';
+
+import 'package:domain/domain.dart';
+
 import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
-import 'package:octo_image/octo_image.dart';
-
 import 'project_links.dart';
-
 
 class MobileProjectDetailsPage extends StatelessWidget {
   final ProjectModel project;
   final Function(String) openLink;
 
-  const MobileProjectDetailsPage(
-      {Key? key, required this.project, required this.openLink})
-      : super(key: key);
+  const MobileProjectDetailsPage({Key? key, required this.project, required this.openLink}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +41,10 @@ class MobileProjectDetailsPage extends StatelessWidget {
             child: Text(
               (project.intro ?? ""),
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                  fontWeight: FontWeight.w100,
-                  color: Theme.of(context).colorPlate().grey),
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1
+                  ?.copyWith(fontWeight: FontWeight.w100, color: Theme.of(context).colorPlate().grey),
             )),
         const SizedBox(
           height: 40,
@@ -106,9 +106,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: (project.tags.develop)
-                  .map((e) => _buildTags(context, e))
-                  .toList()),
+              children: (project.tags.develop).map((e) => _buildTags(context, e)).toList()),
         ),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -143,8 +141,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
             scrollDirection: Axis.horizontal,
           ),
           itemCount: project.media?.screenshots.length,
-          itemBuilder:
-              (BuildContext context, int itemIndex, int pageViewIndex) {
+          itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
             return SizedBox(
               width: double.infinity,
               height: double.infinity,
@@ -153,14 +150,10 @@ class MobileProjectDetailsPage extends StatelessWidget {
                 elevation: 4,
                 child: Padding(
                   child: ClipRRect(
-                      borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(4.0)),
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
-                        image: Image.network(
-                                project.media?.screenshots[itemIndex].url ??
-                                    "")
-                            .image,
+                        image: Image.network(project.media?.screenshots[itemIndex].url ?? "").image,
                         placeholderBuilder: OctoPlaceholder.blurHash(
                           'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                         ),
@@ -187,18 +180,16 @@ class MobileProjectDetailsPage extends StatelessWidget {
         Container(
           child: Text(
             " - ",
-            style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                fontWeight: FontWeight.w100,
-                color: Theme.of(context).colorPlate().orange),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                ?.copyWith(fontWeight: FontWeight.w100, color: Theme.of(context).colorPlate().orange),
           ),
           padding: const EdgeInsets.all(8),
         ),
         Text(
           text,
-          style: Theme.of(context)
-              .textTheme
-              .headline5
-              ?.copyWith(fontStyle: FontStyle.italic),
+          style: Theme.of(context).textTheme.headline5?.copyWith(fontStyle: FontStyle.italic),
         ),
         const SizedBox(
           width: 24,

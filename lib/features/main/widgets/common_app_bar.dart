@@ -1,7 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/extension/extension.dart';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
+
+import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 import '../models/host_routes.dart';
@@ -46,7 +48,7 @@ class _CommonAppBarState extends State<CommonAppBar> {
     String newLocale = context.locale.languageCode == "en" ? 'uk' : 'en';
     EasyLocalization.of(context)?.setLocale(Locale(newLocale));
 
- //   html.window.location.reload();
+    //   html.window.location.reload();
   }
 }
 
@@ -95,17 +97,13 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
                   )),
             ),
             SwitcherLanguage(
-              margin: EdgeInsets.only(
-                  right: ResponsiveWrapper.of(context).isDesktop ? 16 : 8),
+              margin: EdgeInsets.only(right: ResponsiveWrapper.of(context).isDesktop ? 16 : 8),
               onTapOnName: widget.onHome,
               localizationChanged: super.widget.localizationChanged,
             )
           ],
         ),
-        Container(
-            height: 1,
-            margin: const EdgeInsets.only(bottom: 0),
-            color: const Color(0xFFEEEEEE)),
+        Container(height: 1, margin: const EdgeInsets.only(bottom: 0), color: const Color(0xFFEEEEEE)),
       ],
     );
   }
@@ -150,9 +148,10 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
       backgroundColor: Colors.transparent,
       primary: Theme.of(context).buttonTheme.colorScheme!.secondary,
       padding: const EdgeInsets.all(8),
-      textStyle: Theme.of(context).textTheme.headline5!.copyWith(
-          fontWeight: FontWeight.w500,
-          color: Theme.of(context).buttonTheme.colorScheme!.secondary),
+      textStyle: Theme.of(context)
+          .textTheme
+          .headline5!
+          .copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).buttonTheme.colorScheme!.secondary),
     );
 
     final ButtonStyle activeFlatButtonStyle = TextButton.styleFrom(
@@ -160,9 +159,10 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
       shadowColor: Colors.transparent,
       primary: Theme.of(context).buttonTheme.colorScheme!.primary,
       padding: const EdgeInsets.all(8),
-      textStyle: Theme.of(context).textTheme.headline5!.copyWith(
-          fontWeight: FontWeight.w500,
-          color: Theme.of(context).buttonTheme.colorScheme!.secondary),
+      textStyle: Theme.of(context)
+          .textTheme
+          .headline5!
+          .copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).buttonTheme.colorScheme!.secondary),
     );
 
     return Container(
@@ -176,9 +176,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               tr("menu_title_home"),
               textAlign: TextAlign.center,
             ),
-            style: rout == HomeRoutes.intro
-                ? flatButtonStyle
-                : activeFlatButtonStyle,
+            style: rout == HomeRoutes.intro ? flatButtonStyle : activeFlatButtonStyle,
           ),
           TextButton(
             onPressed: () => _openProjects(),
@@ -186,9 +184,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               tr("menu_title_portfolio"),
               textAlign: TextAlign.center,
             ),
-            style: rout == HomeRoutes.projects
-                ? flatButtonStyle
-                : activeFlatButtonStyle,
+            style: rout == HomeRoutes.projects ? flatButtonStyle : activeFlatButtonStyle,
           ),
           TextButton(
             onPressed: () => _openContacts(),
@@ -196,9 +192,7 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
               tr("menu_title_contact"),
               textAlign: TextAlign.center,
             ),
-            style: rout == HomeRoutes.contact
-                ? flatButtonStyle
-                : activeFlatButtonStyle,
+            style: rout == HomeRoutes.contact ? flatButtonStyle : activeFlatButtonStyle,
           ),
         ],
       ),
