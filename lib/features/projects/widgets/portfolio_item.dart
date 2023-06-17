@@ -8,7 +8,6 @@ import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'desktop_portfolio_item.dart';
 import 'mobile_portfolio_item.dart';
 
-
 class PortfolioItem extends StatelessWidget {
   final ProjectModel project;
 
@@ -37,7 +36,7 @@ class PortfolioItem extends StatelessWidget {
   }
 
   void _openDetails(BuildContext context) {
-    GoRouter.of(context).goNamed(AppRoutInfo.project.name, params: <String, String>{
+    GoRouter.of(context).goNamed(AppRoutInfo.project.name, pathParameters: <String, String>{
       AppRoutInfo.projectId: project.id!,
     });
   }
