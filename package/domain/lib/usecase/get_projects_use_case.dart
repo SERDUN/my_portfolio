@@ -22,7 +22,7 @@ class GetProjectsUseCaseImpl implements GetProjectsUseCase {
 
   @override
   Future<List<ProjectModel>> execute({required String lang}) async {
-    var result = await userRepository.getProjects(lang!);
+    var result = await userRepository.getProjects(lang);
     return mapper.mapToModels(result);
   }
 }

@@ -2,10 +2,9 @@ import 'package:injectable/injectable.dart';
 
 import 'package:collection/collection.dart';
 
-import 'package:domain/entity/entity.dart';
-import 'package:domain/repository/repository.dart';
+import 'package:domain/domain.dart';
 
-import '../datasource/local/assets_data_source.dart';
+import '../datasource/datasource.dart';
 
 @Injectable(as: ProjectRepository)
 class ProjectRepositoryImpl extends ProjectRepository {

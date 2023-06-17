@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+
 import 'package:injectable/injectable.dart';
 
 import 'package:domain/entity/entity.dart';
