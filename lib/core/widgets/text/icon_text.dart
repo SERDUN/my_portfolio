@@ -31,22 +31,18 @@ class IconText extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-
       child: buildBaseStruct(context),
     );
   }
 
   Widget buildBaseStruct(BuildContext context) {
     return Row(
-      crossAxisAlignment:
-          isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-      mainAxisAlignment:
-          isInverted ? MainAxisAlignment.end : MainAxisAlignment.start,
+      crossAxisAlignment: isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+      mainAxisAlignment: isInverted ? MainAxisAlignment.end : MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
       children: [
         _buildIcon(imagePath, !isInverted),
-        _buildWidget(imagePath, title, content, url,
-            Theme.of(context).textTheme.bodyText1!, context),
+        _buildWidget(imagePath, title, content, url, Theme.of(context).textTheme.bodyText1!, context),
         _buildIcon(imagePath, isInverted),
       ],
     );
@@ -57,9 +53,7 @@ class IconText extends StatelessWidget {
         onTap: () => call(url),
         child: Visibility(
           child: MouseRegion(
-              cursor: type == IconTextType.clickable
-                  ? SystemMouseCursors.click
-                  : SystemMouseCursors.basic,
+              cursor: type == IconTextType.clickable ? SystemMouseCursors.click : SystemMouseCursors.basic,
               child: Padding(
                 child: AppIcon(imagePath, size: 56),
                 padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -68,23 +62,20 @@ class IconText extends StatelessWidget {
         ));
   }
 
-  Widget _buildWidget(String imagePath, String title, String content,
-      String url, TextStyle textStyle, BuildContext context) {
+  Widget _buildWidget(
+      String imagePath, String title, String content, String url, TextStyle textStyle, BuildContext context) {
     switch (type) {
       case IconTextType.selectable:
-        return _buildSelectableWidget(imagePath, title, content, url,
-            Theme.of(context).textTheme.bodyText1!, context);
+        return _buildSelectableWidget(imagePath, title, content, url, Theme.of(context).textTheme.bodyLarge!, context);
       case IconTextType.clickable:
-        return _buildClickableWidget(imagePath, title, content, url,
-            Theme.of(context).textTheme.bodyText1!, context);
+        return _buildClickableWidget(imagePath, title, content, url, Theme.of(context).textTheme.bodyLarge!, context);
     }
   }
 
-  Widget _buildClickableWidget(String imagePath, String title, String content,
-      String url, TextStyle textStyle, BuildContext context) {
+  Widget _buildClickableWidget(
+      String imagePath, String title, String content, String url, TextStyle textStyle, BuildContext context) {
     return Column(
-      crossAxisAlignment:
-          isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+      crossAxisAlignment: isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
         GestureDetector(
             onTap: () => call(url),
@@ -92,19 +83,13 @@ class IconText extends StatelessWidget {
                 cursor: SystemMouseCursors.click,
                 child: Text(
                   title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline4
-                      ?.copyWith(fontWeight: FontWeight.w200),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ))),
         const SizedBox(height: 5),
         SelectableText.rich(
           TextSpan(
             text: content,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1
-                ?.copyWith(fontStyle: FontStyle.italic),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontStyle: FontStyle.italic),
             mouseCursor: SystemMouseCursors.click,
             recognizer: TapGestureRecognizer()..onTap = () => call(url),
           ),
@@ -113,29 +98,21 @@ class IconText extends StatelessWidget {
     );
   }
 
-  Widget _buildSelectableWidget(String imagePath, String title, String content,
-      String url, TextStyle textStyle, BuildContext context) {
+  Widget _buildSelectableWidget(
+      String imagePath, String title, String content, String url, TextStyle textStyle, BuildContext context) {
     return Column(
-      crossAxisAlignment:
-          isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-
+      crossAxisAlignment: isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: Theme.of(context)
-              .textTheme
-              .headline4
-              ?.copyWith(fontWeight: FontWeight.w200),
+          style: Theme.of(context).textTheme.labelLarge,
         ),
         const SizedBox(height: 5),
         GestureDetector(
           onTap: () => call(url),
           child: SelectableText(
             content,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1
-                ?.copyWith(fontStyle: FontStyle.italic),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontStyle: FontStyle.italic),
           ),
         ),
       ],
