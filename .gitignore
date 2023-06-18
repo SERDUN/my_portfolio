@@ -73,3 +73,6 @@ android/app/release/
 
 # Code generation
 lib/di/injection.config.dart
+
+# Dependencies
+.flutter-plugins-dependencies
