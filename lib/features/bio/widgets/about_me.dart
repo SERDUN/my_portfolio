@@ -19,28 +19,28 @@ class AboutMe extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Container(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.background,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 tr("portfolio_about_me"),
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
                 height: 8,
               ),
               SelectableText(
                 aboutMe,
-                style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.w100),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(
                 height: 32,
               ),
               Text(
                 tr("intro_skills"),
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
                 height: 8,
@@ -48,11 +48,11 @@ class AboutMe extends StatelessWidget {
               TreeView(
                 data: skills,
                 subCategoryTextStyle: ResponsiveWrapper.of(context).isDesktop
-                    ? Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.w100)
-                    : Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.w100),
+                    ? Theme.of(context).textTheme.bodyLarge!
+                    : Theme.of(context).textTheme.bodyMedium!,
                 categoryTextStyle: ResponsiveWrapper.of(context).isDesktop
-                    ? Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.w500)
-                    : Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.w500),
+                    ? Theme.of(context).textTheme.bodyLarge!
+                    : Theme.of(context).textTheme.bodyMedium!,
               )
             ],
           ),

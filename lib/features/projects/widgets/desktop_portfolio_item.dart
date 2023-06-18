@@ -4,7 +4,6 @@ import 'package:octo_image/octo_image.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class DesktopPortfolioItem extends StatelessWidget {
@@ -46,7 +45,7 @@ class DesktopPortfolioItem extends StatelessWidget {
                       Wrap(crossAxisAlignment: WrapCrossAlignment.center, alignment: WrapAlignment.center, children: [
                         Text(
                           project.name ?? "",
-                          style: Theme.of(context).textTheme.headline1,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                         const SizedBox(
                           width: 8,
@@ -62,9 +61,7 @@ class DesktopPortfolioItem extends StatelessWidget {
                       Text(
                         project.description ?? "",
                         maxLines: 3,
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(
                         height: 4,

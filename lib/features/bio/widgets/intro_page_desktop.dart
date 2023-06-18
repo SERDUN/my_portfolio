@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
@@ -45,27 +46,37 @@ class IntroPageDesktop extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(
-            height: 88,
-          ),
-          SelectableText(
-            jobPosition,
-            style: textTheme.subtitle1,
+            height: 64,
           ),
           RichText(
               textAlign: TextAlign.center,
               text: TextSpan(children: [
                 TextSpan(
-                    text: userFullName.getLetter(),
-                    style: textTheme.headline1?.copyWith(fontWeight: FontWeight.w500, color: colorScheme.primary)),
+                  text: userFullName.getLetter(),
+                  style: textTheme.displayLarge?.copyWith(
+                    color: colorScheme.primary,
+                    fontFamily: GoogleFonts.comforter().fontFamily,
+                  ),
+                ),
                 TextSpan(
-                    text: userFullName.getLettersFromPosition(wordPosition: 0, fromPosition: 1),
-                    style: textTheme.headline1?.copyWith(fontWeight: FontWeight.w500)),
+                  text: userFullName.getLettersFromPosition(wordPosition: 0, fromPosition: 1),
+                  style: textTheme.displayMedium?.copyWith(
+                    fontFamily: GoogleFonts.comforter().fontFamily,
+                  ),
+                ),
                 TextSpan(
-                    text: " ${userFullName.getLetter(wordPosition: 1)}",
-                    style: textTheme.headline1?.copyWith(fontWeight: FontWeight.w500, color: colorScheme.primary)),
+                  text: " ${userFullName.getLetter(wordPosition: 1)}",
+                  style: textTheme.displayLarge?.copyWith(
+                    fontFamily: GoogleFonts.comforter().fontFamily,
+                    color: colorScheme.primary,
+                  ),
+                ),
                 TextSpan(
-                    text: userFullName.getLettersFromPosition(wordPosition: 1, fromPosition: 1),
-                    style: textTheme.headline1?.copyWith(fontWeight: FontWeight.w500)),
+                  text: userFullName.getLettersFromPosition(wordPosition: 1, fromPosition: 1),
+                  style: textTheme.displayMedium?.copyWith(
+                    fontFamily: GoogleFonts.comforter().fontFamily,
+                  ),
+                ),
               ])),
           const DashVertical(
             height: 24,

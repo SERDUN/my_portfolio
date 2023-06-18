@@ -6,7 +6,6 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 import 'project_links.dart';
@@ -42,10 +41,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                             children: [
                               Text(
                                 (project.name ?? "").toUpperCase(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline1
-                                    ?.copyWith(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(fontStyle: FontStyle.italic),
                               ),
                               const DecorationViewLines(
                                 margin: EdgeInsets.only(top: 0, bottom: 4),
@@ -112,18 +108,19 @@ class DesktopProjectDetailsPage extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Text(
             project.description ?? "",
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
         const SizedBox(
           height: 24,
         ),
         Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Text(
-              "Software stack",
-              style: Theme.of(context).textTheme.headline4,
-            )),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          child: Text(
+            "Software stack",
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+        ),
         DashHorizontal(
           opacity: .5,
           dashSpace: 16,
@@ -141,7 +138,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Text(
               "Screenshots",
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineSmall,
             )),
         DashHorizontal(
           width: MediaQuery.of(context).size.width,

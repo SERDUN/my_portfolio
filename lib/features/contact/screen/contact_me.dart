@@ -186,13 +186,6 @@ class _ContactMeState extends State<ContactMe> {
     );
   }
 
-  // "contact_phone": "Phone",
-  // "contact_email": "Email",
-  // "contact_location": "Location",
-  // "contact_facebook": "Facebook",
-  // "contact_linkedin": "Linkedin",
-  // "contact_instagram": "Instagram"
-
   void launchUrl(String url) async {
     await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
   }
