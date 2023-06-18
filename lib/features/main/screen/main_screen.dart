@@ -23,7 +23,6 @@ class MainScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
         title: const Text("Dmitro Serdun"),
         leading: SwitcherLanguage(
-          onTapOnName: () {},
           localizationChanged: () => _changeLanguage(context),
         ),
         actions: [
