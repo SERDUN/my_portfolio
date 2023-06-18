@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 
-
 import '../common/mapper_contract.dart';
 import '../entity/dto/project_dto.dart';
 import '../entity/model/project_model.dart';

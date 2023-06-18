@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 import '../common/mapper_contract.dart';
 import '../entity/dto/contacts_dto.dart';
 import '../entity/model/contacts_model.dart';
-
 import '../repository/user_repository.dart';
 
 abstract class GetContactsUseCase {
