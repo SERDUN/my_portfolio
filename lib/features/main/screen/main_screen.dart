@@ -1,29 +1,56 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import '../models/host_routes.dart';
-import '../widgets/common_app_bar.dart';
+import 'package:my_portfolio/core/widgets/widgets.dart';
+
+import '../widgets/widgets.dart';
 
 class MainScreen extends StatelessWidget {
-  final StatefulNavigationShell navigationShell;
-
   const MainScreen({
     Key? key,
     required this.navigationShell,
   }) : super(key: key);
 
+  final StatefulNavigationShell navigationShell;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(
-        defaultPage: HomeRoutes.values[navigationShell.currentIndex],
-        onHome: () => navigationShell.goBranch(0),
-        onPortfolio: () => navigationShell.goBranch(1),
-        onContact: () => navigationShell.goBranch(2),
+      appBar: AppBar(
+        toolbarHeight: kMinInteractiveDimension,
+        backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+        title: const Text("Dmitro Serdun"),
+        leading: SwitcherLanguage(
+          onTapOnName: () {},
+          localizationChanged: () => _changeLanguage(context),
+        ),
+        actions: [
+          ActionTab(
+            isSelected: navigationShell.currentIndex == 0,
+            onTab: () => navigationShell.goBranch(0),
+            title: "Bio",
+          ),
+          ActionTab(
+            isSelected: navigationShell.currentIndex == 1,
+            onTab: () => navigationShell.goBranch(1),
+            title: "Portfolio",
+          ),
+          ActionTab(
+            isSelected: navigationShell.currentIndex == 2,
+            onTab: () => navigationShell.goBranch(2),
+            title: "Contacts",
+          ),
+        ],
       ),
-      backgroundColor: Colors.white54,
+      backgroundColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
       body: navigationShell,
     );
+  }
+
+  void _changeLanguage(BuildContext context) {
+    String newLocale = context.locale.languageCode == "en" ? 'uk' : 'en';
+    EasyLocalization.of(context)?.setLocale(Locale(newLocale));
   }
 }
