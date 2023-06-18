@@ -20,8 +20,14 @@ class DashHorizontal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: CustomPaint(
-          size: Size(width, 1),
-          painter: DashedLineHorizontalPainter(opacity, dashSpace, dashHeight)),
+        size: Size(width, 1),
+        painter: DashedLineHorizontalPainter(
+          opacity,
+          dashSpace,
+          dashHeight,
+          Theme.of(context).colorScheme.primary,
+        ),
+      ),
       margin: margin,
     );
   }
@@ -32,14 +38,15 @@ class DashedLineHorizontalPainter extends CustomPainter {
   final double dashSpaceArg;
   final double dashHeightArg;
 
-  DashedLineHorizontalPainter(
-      this.opacity, this.dashSpaceArg, this.dashHeightArg);
+  final Color color;
+
+  DashedLineHorizontalPainter(this.opacity, this.dashSpaceArg, this.dashHeightArg, this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     double dashHeight = dashHeightArg, dashSpace = dashSpaceArg, startY = 0;
     final paint = Paint()
-      ..color = Colors.orange[300]!.withOpacity(opacity)
+      ..color = color.withOpacity(opacity)
       ..strokeWidth = 1;
     while (startY < size.width) {
       canvas.drawLine(Offset(startY, 0), Offset(startY + dashHeight, 0), paint);
