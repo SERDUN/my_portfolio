@@ -31,9 +31,19 @@ class AppRouter {
               StatefulShellBranch(
                 routes: <RouteBase>[
                   GoRoute(
-                    path: AppRoutInfo.portfolio.path,
-                    builder: (BuildContext context, GoRouterState state) => const PortfolioPage(),
-                  ),
+                      path: AppRoutInfo.portfolio.path,
+                      builder: (BuildContext context, GoRouterState state) => const PortfolioPage(),
+                      routes: [
+                        GoRoute(
+                          path: AppRoutInfo.project.path,
+                          name: AppRoutInfo.project.name,
+                          pageBuilder: (context, state) => NoTransitionPage(
+                            child: ProjectDetailsPage(
+                              id: state.pathParameters[AppRoutInfo.projectId]!,
+                            ),
+                          ),
+                        ),
+                      ]),
                 ],
               ),
               StatefulShellBranch(
@@ -41,17 +51,6 @@ class AppRouter {
                   GoRoute(
                     path: AppRoutInfo.contacts.path,
                     builder: (BuildContext context, GoRouterState state) => const ContactPage(),
-                    routes: [
-                      GoRoute(
-                        path: AppRoutInfo.project.path,
-                        name: AppRoutInfo.project.name,
-                        pageBuilder: (context, state) => NoTransitionPage(
-                          child: ProjectDetailsPage(
-                            id: state.pathParameters[AppRoutInfo.projectId]!,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               ),
