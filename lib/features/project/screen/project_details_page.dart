@@ -41,17 +41,15 @@ class _ContactUsState extends State<ProjectDetailsPage> with TickerProviderState
           child: CircularProgressIndicator(),
         );
       } else {
-        return Scaffold(
-          body: SingleChildScrollView(
-            child: ResponsiveWidget(
-              desktopScreen: DesktopProjectDetailsPage(
-                project: state.projects!,
-                openLink: _openLinkAction,
-              ),
-              mobileScreen: MobileProjectDetailsPage(
-                project: state.projects!,
-                openLink: _openLinkAction,
-              ),
+        return SingleChildScrollView(
+          child: ResponsiveWidget(
+            desktopScreen: DesktopProjectDetailsPage(
+              project: state.projects!,
+              openLink: _openLinkAction,
+            ),
+            mobileScreen: MobileProjectDetailsPage(
+              project: state.projects!,
+              openLink: _openLinkAction,
             ),
           ),
         );

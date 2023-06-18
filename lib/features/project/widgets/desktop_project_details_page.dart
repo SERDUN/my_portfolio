@@ -21,71 +21,75 @@ class DesktopProjectDetailsPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
-          height: 40,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Flexible(
-                flex: 4,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Row(
-                    children: [
-                      Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
+        Container(
+            color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(
+                  height: 40,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                        flex: 4,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: Row(
                             children: [
-                              Text(
-                                (project.name ?? "").toUpperCase(),
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(fontStyle: FontStyle.italic),
+                              Container(
+                                  margin: const EdgeInsets.symmetric(horizontal: 24),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        (project.name ?? "").toUpperCase(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayMedium
+                                            ?.copyWith(fontStyle: FontStyle.italic),
+                                      ),
+                                      const DecorationViewLines(
+                                        margin: EdgeInsets.only(top: 0, bottom: 4),
+                                      ),
+                                    ],
+                                  )),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width / 3,
                               ),
-                              const DecorationViewLines(
-                                margin: EdgeInsets.only(top: 0, bottom: 4),
+                              Expanded(
+                                child: Container(
+                                    margin: const EdgeInsets.only(right: 8),
+                                    child: Text(
+                                      (project.intro ?? "").toUpperCase(),
+                                      textAlign: TextAlign.right,
+                                    )),
                               ),
                             ],
-                          )),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 3,
-                      ),
-                      Expanded(
-                        child: Container(
-                            margin: const EdgeInsets.only(right: 8),
-                            child: Text(
-                              (project.intro ?? "").toUpperCase(),
-                              textAlign: TextAlign.right,
-                            )),
-                      ),
-                    ],
+                          ),
+                        )),
+                  ],
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 16),
+                  height: 56,
+                  child: ProjectLinks(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    android: project.linkAndroid,
+                    ios: project.linkIOS,
+                    github: project.linkSource,
+                    openLink: openLink,
                   ),
-                )),
-          ],
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Container(
-          margin: const EdgeInsets.only(right: 16),
-          height: 56,
-          child: ProjectLinks(
-            mainAxisAlignment: MainAxisAlignment.end,
-            android: project.linkAndroid,
-            ios: project.linkIOS,
-            github: project.linkSource,
-            openLink: openLink,
-          ),
-        ),
-        const SizedBox(
-          height: 88,
-        ),
-        Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Text(
-              tr("portfolio_description"),
-              style: Theme.of(context).textTheme.headline4,
+                ),
+                const SizedBox(
+                  height: 88,
+                ),
+              ],
             )),
         DashHorizontal(
           opacity: .5,
@@ -94,6 +98,12 @@ class DesktopProjectDetailsPage extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           margin: const EdgeInsets.only(top: 16),
         ),
+        Container(
+            margin: const EdgeInsets.symmetric(horizontal: 24),
+            child: Text(
+              tr("portfolio_description"),
+              style: Theme.of(context).textTheme.headline4,
+            )),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Container(

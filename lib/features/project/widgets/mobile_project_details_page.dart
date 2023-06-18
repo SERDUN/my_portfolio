@@ -174,9 +174,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          child: Text(
-            " - ",
-          ),
+          child: const Text(" - "),
           padding: const EdgeInsets.all(8),
         ),
         Text(
