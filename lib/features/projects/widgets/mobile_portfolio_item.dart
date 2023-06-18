@@ -47,7 +47,7 @@ class MobilePortfolioItem extends StatelessWidget {
                   ),
                   DashHorizontal(
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(vertical: 16),
+                    margin: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   ClipRRect(
                       borderRadius: BorderRadius.circular(9.0),

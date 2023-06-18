@@ -9,7 +9,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../bloc/bloc.dart';
 import '../bloc/event.dart';
 import '../bloc/state.dart';
-import '../widgets/intro_page_desktop.dart';
 import '../widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {

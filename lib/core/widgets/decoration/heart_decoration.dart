@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Heart extends StatelessWidget {
+  const Heart({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
@@ -35,11 +38,9 @@ class TrianglePainter extends CustomPainter {
 
     Path path = Path();
     path.moveTo(0.5 * width, height * 0.35);
-    path.cubicTo(0.2 * width, height * 0.1, -0.25 * width, height * 0.6,
-        0.5 * width, height);
+    path.cubicTo(0.2 * width, height * 0.1, -0.25 * width, height * 0.6, 0.5 * width, height);
     path.moveTo(0.5 * width, height * 0.35);
-    path.cubicTo(0.8 * width, height * 0.1, 1.25 * width, height * 0.6,
-        0.5 * width, height);
+    path.cubicTo(0.8 * width, height * 0.1, 1.25 * width, height * 0.6, 0.5 * width, height);
 
     canvas.drawPath(path, paint1);
     canvas.drawPath(path, paint);

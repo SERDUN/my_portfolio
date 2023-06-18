@@ -47,7 +47,7 @@ class DataProvider extends StatelessWidget {
           startLocale: const Locale.fromSubtags(languageCode: 'uk'),
           path: 'assets/translations',
           useOnlyLangCode: true,
-          child: MyApp(),
+          child: const MyApp(),
         ));
   }
 }

@@ -2,8 +2,6 @@ import 'package:injectable/injectable.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:domain/repository/repository.dart';
-
 import '../datasource/datasource.dart';
 
 @Injectable(as: UserRepository)
