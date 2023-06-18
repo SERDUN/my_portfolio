@@ -82,7 +82,7 @@ class IntroPageDesktop extends StatelessWidget {
             height: 24,
           ),
           const SizedBox(
-            height: 8,
+            height: 16,
           ),
           ButtonOutline(
             text: tr("button_download_cv"),

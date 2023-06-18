@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void didChangeDependencies() {
     String? locale = EasyLocalization.of(context)?.locale.languageCode;
-    pLogger.i("HomePage-> didChangeDependencies $locale");
     _bloc.add(GetUserEvent(locale));
     super.didChangeDependencies();
   }
