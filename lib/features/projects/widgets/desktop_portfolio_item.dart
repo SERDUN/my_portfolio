@@ -54,10 +54,6 @@ class DesktopPortfolioItem extends StatelessWidget {
                         SimpleChip(
                           text: chipName,
                           color: chipColor,
-                          textStyle: Theme.of(context).textTheme.headline6?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.italic,
-                              color: Theme.of(context).colorPlate().white100),
                         )
                       ]),
                       SizedBox(
@@ -76,11 +72,6 @@ class DesktopPortfolioItem extends StatelessWidget {
                       Text(
                         tags,
                         maxLines: 3,
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                            overflow: TextOverflow.ellipsis,
-                            fontWeight: FontWeight.w100,
-                            fontStyle: FontStyle.italic,
-                            color: Theme.of(context).colorPlate().yellow),
                       ),
                       const Spacer(),
                       DashHorizontal(

@@ -117,8 +117,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
           child: Icon(
             Icons.home,
             color: rout == HomeRoutes.intro
-                ? Theme.of(context).colorPlate().orange
-                : Theme.of(context).colorPlate().yellow,
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.secondary,
           ),
         ),
         TextButton(
@@ -126,8 +126,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
           child: Icon(
             Icons.article_outlined,
             color: rout == HomeRoutes.projects
-                ? Theme.of(context).colorPlate().orange
-                : Theme.of(context).colorPlate().yellow,
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.secondary,
           ),
         ),
         TextButton(
@@ -135,8 +135,8 @@ class _GeneralMenuBarState extends State<GeneralMenuBar> {
           child: Icon(
             Icons.perm_contact_cal,
             color: rout == HomeRoutes.contact
-                ? Theme.of(context).colorPlate().orange
-                : Theme.of(context).colorPlate().yellow,
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.secondary,
           ),
         ),
       ],

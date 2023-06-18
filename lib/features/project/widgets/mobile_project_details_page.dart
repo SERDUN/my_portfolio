@@ -41,10 +41,6 @@ class MobileProjectDetailsPage extends StatelessWidget {
             child: Text(
               (project.intro ?? ""),
               textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1
-                  ?.copyWith(fontWeight: FontWeight.w100, color: Theme.of(context).colorPlate().grey),
             )),
         const SizedBox(
           height: 40,
@@ -180,10 +176,6 @@ class MobileProjectDetailsPage extends StatelessWidget {
         Container(
           child: Text(
             " - ",
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                ?.copyWith(fontWeight: FontWeight.w100, color: Theme.of(context).colorPlate().orange),
           ),
           padding: const EdgeInsets.all(8),
         ),

@@ -51,7 +51,7 @@ class PortfolioItem extends StatelessWidget {
       case "android":
         return Colors.green;
     }
-    return Theme.of(context).colorPlate.call().orange!;
+    return Theme.of(context).colorScheme.primary;
   }
 
   //todo change on resources

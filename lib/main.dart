@@ -7,7 +7,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'app/app.dart';
 import 'core/app_environment_keys.dart';
-import 'core/style/style.dart';
 import 'di/injection.dart';
 import 'features/features.dart';
 
@@ -69,7 +68,6 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: "Dmitro Serdun",
-      theme: CustomTheme.lightTheme,
       builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 450,

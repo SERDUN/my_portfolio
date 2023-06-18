@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/extension/style/own_theme_fields.dart';
 
 class TreeNode extends StatefulWidget {
   final int level;
@@ -42,7 +41,6 @@ class TreeNode extends StatefulWidget {
 class _TreeNodeState extends State<TreeNode> {
   bool _isExpanded = false;
 
-
   @override
   initState() {
     _isExpanded = widget.expanded;
@@ -63,28 +61,24 @@ class _TreeNodeState extends State<TreeNode> {
             child: InkWell(
                 onTap: children.isNotEmpty
                     ? () {
-                  if (widget.leadingOnTap != null &&
-                      widget.leadingOnTap is Function) {
-                    widget.leadingOnTap!();
-                  }
-                  setState(() {
-                    _isExpanded = !_isExpanded;
-                    if (widget.trailingOnTap != null &&
-                        widget.trailingOnTap is Function) {
-                      widget.trailingOnTap!();
-                    }
-                  });
-                }
+                        if (widget.leadingOnTap != null && widget.leadingOnTap is Function) {
+                          widget.leadingOnTap!();
+                        }
+                        setState(() {
+                          _isExpanded = !_isExpanded;
+                          if (widget.trailingOnTap != null && widget.trailingOnTap is Function) {
+                            widget.trailingOnTap!();
+                          }
+                        });
+                      }
                     : null,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
                       child: children.length > 1
-                          ? Image.asset("assets/image/icons/category.webp",
-                          width: 24, height: 24)
-                          : Image.asset("assets/image/icons/sub_category.webp",
-                          width: 24, height: 24),
+                          ? Image.asset("assets/image/icons/category.webp", width: 24, height: 24)
+                          : Image.asset("assets/image/icons/sub_category.webp", width: 24, height: 24),
                       padding: const EdgeInsets.all(8),
                     ),
                     Expanded(child: widget.title ?? Container()),
@@ -92,18 +86,13 @@ class _TreeNodeState extends State<TreeNode> {
                     Visibility(
                       visible: children.isNotEmpty,
                       child: Center(
-                          child: Transform.rotate(
-                              angle: -pi / (_isExpanded ? 1 : 360),
-                              child: Image.asset(
-                                "assets/image/icons/up_arrow.webp",
-                                width: 16,
-                                height: 16,
-                                color: Theme
-                                    .of(context)
-                                    .colorPlate
-                                    .call()
-                                    .orange,
-                              )),
+                        child: Transform.rotate(
+                            angle: -pi / (_isExpanded ? 1 : 360),
+                            child: Image.asset(
+                              "assets/image/icons/up_arrow.webp",
+                              width: 16,
+                              height: 16,
+                            )),
                       ),
                     ),
                   ],

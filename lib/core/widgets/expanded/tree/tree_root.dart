@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/core/extension/style/own_theme_fields.dart';
 
 class TreeRoot extends StatefulWidget {
   final int level;
@@ -68,7 +67,6 @@ class _TreeNodeState extends State<TreeRoot> {
                               "assets/image/icons/up_arrow.webp",
                               width: 16,
                               height: 16,
-                              color: Theme.of(context).colorPlate.call().orange,
                             )),
                       ),
                     ),

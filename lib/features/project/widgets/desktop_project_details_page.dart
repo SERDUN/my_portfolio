@@ -61,10 +61,6 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                             child: Text(
                               (project.intro ?? "").toUpperCase(),
                               textAlign: TextAlign.right,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle1
-                                  ?.copyWith(fontWeight: FontWeight.w100, color: Theme.of(context).colorPlate().grey),
                             )),
                       ),
                     ],

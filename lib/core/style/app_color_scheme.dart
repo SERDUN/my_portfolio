@@ -7,36 +7,4 @@ class AppColorScheme {
   static const orange = Color(0xffB85252);
   static const white = Color(0xffEADEDE);
   static const white100 = Color(0xffffffff);
-
-  static ColorScheme get appGeneralColorScheme {
-    return const ColorScheme(
-      primary: yellow,
-      secondary: orange,
-      surface: white,
-      error: orange,
-      onBackground: white,
-      brightness: Brightness.dark,
-      background: white,
-      onError: yellow,
-      onSecondary: orange,
-      onPrimary: yellow,
-      onSurface: white,
-    );
-  }
-
-  static ColorScheme get appButtonColorScheme {
-    return const ColorScheme(
-      primary: yellow,
-      secondary: orange,
-      surface: white,
-      error: orange,
-      onBackground: white,
-      brightness: Brightness.dark,
-      background: white,
-      onError: yellow,
-      onSecondary: orange,
-      onPrimary: yellow,
-      onSurface: white,
-    );
-  }
 }

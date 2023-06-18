@@ -46,7 +46,7 @@ class IntroPageMobile extends StatelessWidget {
                 height: 128,
                 image: Image.network(avatar!).image,
                 octoSet: OctoSet.circleAvatar(
-                  backgroundColor: Theme.of(context).colorPlate().yellow!,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   text: Text(
                     "SD",
                     style: Theme.of(context).textTheme.bodyText2,
