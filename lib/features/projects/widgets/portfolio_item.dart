@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'package:my_portfolio/app/app.dart';
 
