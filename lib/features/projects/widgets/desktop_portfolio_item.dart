@@ -7,20 +7,20 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class DesktopPortfolioItem extends StatelessWidget {
+  const DesktopPortfolioItem({
+    Key? key,
+    required this.openDetails,
+    required this.project,
+    required this.chipColor,
+    required this.tags,
+    required this.chipName,
+  }) : super(key: key);
+
   final Function openDetails;
   final ProjectModel project;
   final Color chipColor;
   final String chipName;
   final String tags;
-
-  const DesktopPortfolioItem(
-      {Key? key,
-      required this.openDetails,
-      required this.project,
-      required this.chipColor,
-      required this.tags,
-      required this.chipName})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

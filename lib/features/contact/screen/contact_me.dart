@@ -8,9 +8,12 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class ContactMe extends StatefulWidget {
-  final ContactsModel contactsModel;
+  const ContactMe({
+    Key? key,
+    required this.contactsModel,
+  }) : super(key: key);
 
-  const ContactMe({Key? key, required this.contactsModel}) : super(key: key);
+  final ContactsModel contactsModel;
 
   @override
   _ContactMeState createState() => _ContactMeState();

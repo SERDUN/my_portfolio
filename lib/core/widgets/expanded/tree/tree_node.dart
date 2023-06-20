@@ -3,19 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class TreeNode extends StatefulWidget {
-  final int level;
-  final bool expanded;
-  final bool isRoot;
-  final double offsetLeft;
-  final List<Widget> children;
-
-  final Widget? title;
-  final Widget? trailing;
-
-  final Function? titleOnTap;
-  final Function? leadingOnTap;
-  final Function? trailingOnTap;
-
   const TreeNode({
     Key? key,
     this.level = 0,
@@ -33,6 +20,19 @@ class TreeNode extends StatefulWidget {
     this.leadingOnTap,
     this.trailingOnTap,
   }) : super(key: key);
+
+  final int level;
+  final bool expanded;
+  final bool isRoot;
+  final double offsetLeft;
+  final List<Widget> children;
+
+  final Widget? title;
+  final Widget? trailing;
+
+  final Function? titleOnTap;
+  final Function? leadingOnTap;
+  final Function? trailingOnTap;
 
   @override
   _TreeNodeState createState() => _TreeNodeState();

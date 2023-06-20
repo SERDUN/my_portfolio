@@ -1,27 +1,26 @@
 import 'package:flutter/widgets.dart';
 
 class ProjectLinks extends StatelessWidget {
+  const ProjectLinks({
+    Key? key,
+    required this.mainAxisAlignment,
+    this.android = "",
+    this.ios = "",
+    this.github = "",
+    required this.onOpenLink,
+    this.margin = EdgeInsets.zero,
+    this.iconSize = 56,
+  }) : super(key: key);
+
   final String android;
   final String ios;
   final String github;
   final EdgeInsets margin;
   final double iconSize;
-  final Function(String) openLink;
+
+  final Function(String) onOpenLink;
 
   final MainAxisAlignment mainAxisAlignment;
-
-
-
-  const ProjectLinks(
-      {Key? key,
-      required this.mainAxisAlignment,
-      this.android = "",
-      this.ios = "",
-      this.github = "",
-      required this.openLink,
-      this.margin = EdgeInsets.zero,
-      this.iconSize = 56})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +32,19 @@ class ProjectLinks extends StatelessWidget {
           SocialPart(
             link: github,
             iconSize: iconSize,
-            openLink: openLink,
+            openLink: onOpenLink,
             icon: "assets/image/icons/github.webp",
           ),
           SocialPart(
             link: android,
             iconSize: iconSize,
-            openLink: openLink,
+            openLink: onOpenLink,
             icon: "assets/image/icons/google_play.webp",
           ),
           SocialPart(
             link: ios,
             iconSize: iconSize,
-            openLink: openLink,
+            openLink: onOpenLink,
             icon: "assets/image/icons/app_store.webp",
           ),
         ],

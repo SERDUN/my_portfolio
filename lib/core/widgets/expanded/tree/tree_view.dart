@@ -5,13 +5,6 @@ import 'tree_node.dart';
 import 'tree_root.dart';
 
 class TreeView extends StatelessWidget {
-  final List<PortfolioSkillsModel> data;
-
-  final double offsetLeft;
-
-  final TextStyle subCategoryTextStyle;
-  final TextStyle categoryTextStyle;
-
   const TreeView({
     Key? key,
     required this.data,
@@ -19,6 +12,14 @@ class TreeView extends StatelessWidget {
     required this.subCategoryTextStyle,
     required this.categoryTextStyle,
   }) : super(key: key);
+
+
+  final List<PortfolioSkillsModel> data;
+
+  final double offsetLeft;
+
+  final TextStyle subCategoryTextStyle;
+  final TextStyle categoryTextStyle;
 
   List<TreeNode> _geneTreeNodes(List list) {
     List treeNodes = <TreeNode>[];

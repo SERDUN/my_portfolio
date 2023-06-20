@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SimpleChip extends StatelessWidget {
+  const SimpleChip({
+    Key? key,
+    required this.text,
+    this.color,
+    this.textStyle,
+  }) : super(key: key);
+
   final String text;
   final Color? color;
   final TextStyle? textStyle;
-
-  const SimpleChip({Key? key, required this.text, this.color, this.textStyle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

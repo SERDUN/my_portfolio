@@ -8,22 +8,22 @@ import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class IntroPageMobile extends StatelessWidget {
+  const IntroPageMobile({
+    Key? key,
+    required this.userFullName,
+    required this.jobPosition,
+    required this.textTheme,
+    required this.colorScheme,
+    this.openCv,
+    required this.avatar,
+  }) : super(key: key);
+
   final String? avatar;
   final String userFullName;
   final String jobPosition;
   final TextTheme textTheme;
   final ColorScheme colorScheme;
   final Function()? openCv;
-
-  const IntroPageMobile(
-      {Key? key,
-      required this.userFullName,
-      required this.jobPosition,
-      required this.textTheme,
-      required this.colorScheme,
-      this.openCv,
-      required this.avatar})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

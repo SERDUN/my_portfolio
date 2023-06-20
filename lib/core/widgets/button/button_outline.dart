@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ButtonOutline extends StatelessWidget {
+  const ButtonOutline({
+    Key? key,
+    required this.onTap,
+    required this.text,
+    this.corner = 16,
+    this.width,
+    this.margin,
+  }) : super(key: key);
+
   final Function onTap;
   final String text;
   final double? width;
   final double corner;
   final EdgeInsets? margin;
-
-  const ButtonOutline({Key? key, required this.onTap, required this.text, this.corner = 16, this.width, this.margin})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

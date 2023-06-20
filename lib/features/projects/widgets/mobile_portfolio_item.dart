@@ -7,12 +7,14 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class MobilePortfolioItem extends StatelessWidget {
+  const MobilePortfolioItem({
+    Key? key,
+    required this.openDetails,
+    required this.project,
+  }) : super(key: key);
+
   final Function openDetails;
   final ProjectModel project;
-
-  const MobilePortfolioItem(
-      {Key? key, required this.openDetails, required this.project})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +55,7 @@ class MobilePortfolioItem extends StatelessWidget {
                       child: OctoImage(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.75,
-                          image: Image.network(project.media?.preview.url ?? "")
-                              .image,
+                          image: Image.network(project.media?.preview.url ?? "").image,
                           placeholderBuilder: OctoPlaceholder.blurHash(
                             'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                           ),

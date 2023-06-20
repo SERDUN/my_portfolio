@@ -22,7 +22,9 @@ void main() async {
 }
 
 class DataProvider extends StatelessWidget {
-  const DataProvider({Key? key}) : super(key: key);
+  const DataProvider({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

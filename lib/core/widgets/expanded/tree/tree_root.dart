@@ -3,13 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class TreeRoot extends StatefulWidget {
-  final int level;
-  final bool expanded;
-  final double offsetLeft;
-  final List<Widget> children;
-
-  final Widget? title;
-
   const TreeRoot({
     Key? key,
     this.level = 0,
@@ -18,6 +11,13 @@ class TreeRoot extends StatefulWidget {
     this.children = const [],
     this.title = const Text('Title'),
   }) : super(key: key);
+
+  final int level;
+  final bool expanded;
+  final double offsetLeft;
+  final List<Widget> children;
+
+  final Widget? title;
 
   @override
   _TreeNodeState createState() => _TreeNodeState();

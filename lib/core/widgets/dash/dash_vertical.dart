@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
 class DashVertical extends StatelessWidget {
+  const DashVertical({
+    Key? key,
+    required this.height,
+    this.width,
+    this.margin = EdgeInsets.zero,
+    this.opacity = 1.0,
+    this.horizontalRepeatCount = 1,
+    this.horizontalRepeatSpace = 8,
+  }) : super(key: key);
+
   final double height;
   final double? width;
   final EdgeInsets margin;
   final double opacity;
   final double horizontalRepeatCount;
   final double horizontalRepeatSpace;
-
-  const DashVertical(
-      {Key? key,
-      required this.height,
-      this.width,
-      this.margin = EdgeInsets.zero,
-      this.opacity = 1.0,
-      this.horizontalRepeatCount = 1,
-      this.horizontalRepeatSpace = 8})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +37,18 @@ class DashVertical extends StatelessWidget {
 }
 
 class DashedLineVerticalPainter extends CustomPainter {
-  final double opacity;
-  final double horizontalRepeatCount;
-  final double horizontalRepeatSpace;
-
-  final Color color;
-
   DashedLineVerticalPainter(
     this.opacity,
     this.horizontalRepeatCount,
     this.horizontalRepeatSpace,
     this.color,
   );
+
+  final double opacity;
+  final double horizontalRepeatCount;
+  final double horizontalRepeatSpace;
+
+  final Color color;
 
   @override
   void paint(Canvas canvas, Size size) {

@@ -14,7 +14,9 @@ import 'package:my_portfolio/core/widgets/widgets.dart';
 import '../widgets/portfolio_item.dart';
 
 class PortfolioPage extends StatefulWidget {
-  const PortfolioPage({Key? key}) : super(key: key);
+  const PortfolioPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();

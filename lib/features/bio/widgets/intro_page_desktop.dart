@@ -7,20 +7,20 @@ import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class IntroPageDesktop extends StatelessWidget {
+  const IntroPageDesktop({
+    Key? key,
+    required this.textTheme,
+    required this.jobPosition,
+    required this.colorScheme,
+    required this.userFullName,
+    required this.openCv,
+  }) : super(key: key);
+
   final String userFullName;
   final String jobPosition;
   final TextTheme textTheme;
   final ColorScheme colorScheme;
   final Function() openCv;
-
-  const IntroPageDesktop(
-      {Key? key,
-      required this.textTheme,
-      required this.jobPosition,
-      required this.colorScheme,
-      required this.userFullName,
-      required this.openCv})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

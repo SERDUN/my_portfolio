@@ -45,11 +45,11 @@ class _ContactUsState extends State<ProjectDetailsPage> with TickerProviderState
           child: ResponsiveWidget(
             desktopScreen: DesktopProjectDetailsPage(
               project: state.projects!,
-              openLink: _openLinkAction,
+              onOpenLink: _openLinkAction,
             ),
             mobileScreen: MobileProjectDetailsPage(
               project: state.projects!,
-              openLink: _openLinkAction,
+              onOpen: _openLinkAction,
             ),
           ),
         );

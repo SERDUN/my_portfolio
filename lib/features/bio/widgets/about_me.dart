@@ -8,10 +8,14 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class AboutMe extends StatelessWidget {
+  const AboutMe({
+    Key? key,
+    required this.aboutMe,
+    required this.skills,
+  }) : super(key: key);
+
   final String aboutMe;
   final List<PortfolioSkillsModel> skills;
-
-  const AboutMe({Key? key, required this.aboutMe, required this.skills}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

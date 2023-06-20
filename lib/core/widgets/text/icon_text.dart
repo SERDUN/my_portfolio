@@ -6,6 +6,18 @@ import 'icon.dart';
 enum IconTextType { selectable, clickable }
 
 class IconText extends StatelessWidget {
+  const IconText({
+    Key? key,
+    required this.imagePath,
+    required this.title,
+    required this.content,
+    required this.call,
+    required this.url,
+    this.type = IconTextType.clickable,
+    this.width,
+    this.isInverted = false,
+  }) : super(key: key);
+
   final String imagePath;
   final String title;
   final String content;
@@ -14,18 +26,6 @@ class IconText extends StatelessWidget {
   final double? width;
   final bool isInverted;
   final Function(String url) call;
-
-  const IconText(
-      {Key? key,
-      required this.imagePath,
-      required this.title,
-      required this.content,
-      required this.call,
-      required this.url,
-      this.type = IconTextType.clickable,
-      this.width,
-      this.isInverted = false})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -11,19 +11,21 @@ import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'project_links.dart';
 
 class DesktopProjectDetailsPage extends StatelessWidget {
-  final ProjectModel project;
-  final Function(String) openLink;
+  const DesktopProjectDetailsPage({
+    Key? key,
+    required this.project,
+    required this.onOpenLink,
+  }) : super(key: key);
 
-  const DesktopProjectDetailsPage({Key? key, required this.project, required this.openLink}) : super(key: key);
+  final ProjectModel project;
+  final Function(String) onOpenLink;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-            // color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
-            child: Column(
+        Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(
@@ -83,11 +85,11 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                 android: project.linkAndroid,
                 ios: project.linkIOS,
                 github: project.linkSource,
-                openLink: openLink,
+                onOpenLink: onOpenLink,
               ),
             ),
           ],
-        )),
+        ),
         const SizedBox(
           height: 64,
         ),

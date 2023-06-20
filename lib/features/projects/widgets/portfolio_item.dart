@@ -11,12 +11,12 @@ import 'desktop_portfolio_item.dart';
 import 'mobile_portfolio_item.dart';
 
 class PortfolioItem extends StatelessWidget {
-  final ProjectModel project;
-
   const PortfolioItem({
     super.key,
     required this.project,
   });
+
+  final ProjectModel project;
 
   @override
   Widget build(BuildContext context) {

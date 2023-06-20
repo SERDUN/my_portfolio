@@ -11,10 +11,14 @@ import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'project_links.dart';
 
 class MobileProjectDetailsPage extends StatelessWidget {
-  final ProjectModel project;
-  final Function(String) openLink;
+  const MobileProjectDetailsPage({
+    Key? key,
+    required this.project,
+    required this.onOpen,
+  }) : super(key: key);
 
-  const MobileProjectDetailsPage({Key? key, required this.project, required this.openLink}) : super(key: key);
+  final ProjectModel project;
+  final Function(String) onOpen;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +55,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
           android: project.linkAndroid,
           ios: project.linkIOS,
           github: project.linkSource,
-          openLink: openLink,
+          onOpenLink: onOpen,
         ),
         const SizedBox(
           height: 40,
@@ -106,9 +110,8 @@ class MobileProjectDetailsPage extends StatelessWidget {
               "Screenshots",
               style: Theme.of(context).textTheme.displaySmall,
             )),
-        DashHorizontal(
-
-          margin: const EdgeInsets.only(top: 16, bottom: 16),
+        const DashHorizontal(
+          margin: EdgeInsets.only(top: 16, bottom: 16),
         ),
         SizedBox(
             child: CarouselSlider.builder(
