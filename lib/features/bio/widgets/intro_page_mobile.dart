@@ -50,7 +50,7 @@ class IntroPageMobile extends StatelessWidget {
                   backgroundColor: Theme.of(context).colorScheme.primary,
                   text: Text(
                     "SD",
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),
               ),

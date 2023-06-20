@@ -42,7 +42,7 @@ class IconText extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         _buildIcon(imagePath, !isInverted),
-        _buildWidget(imagePath, title, content, url, Theme.of(context).textTheme.bodyText1!, context),
+        _buildWidget(imagePath, title, content, url, Theme.of(context).textTheme.labelMedium!, context),
         _buildIcon(imagePath, isInverted),
       ],
     );

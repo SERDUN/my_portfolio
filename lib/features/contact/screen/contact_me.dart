@@ -28,9 +28,9 @@ class _ContactMeState extends State<ContactMe> {
             height: 40,
           ),
           Text(
-            tr("contact_get_in_touch").toUpperCase(),
+            tr("contact_get_in_touch"),
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
           const DecorationViewLines(),
           const SizedBox(
@@ -85,7 +85,7 @@ class _ContactMeState extends State<ContactMe> {
               child: Text(
                 tr("contact_get_in_touch").toUpperCase(),
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline1,
+                style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
             const DecorationViewLines(),

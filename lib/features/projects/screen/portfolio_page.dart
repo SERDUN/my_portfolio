@@ -47,7 +47,7 @@ class _HomePageState extends State<PortfolioPage> {
                 Center(
                   child: Text(
                     tr("last_project_title"),
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
                 const DecorationViewLines(),

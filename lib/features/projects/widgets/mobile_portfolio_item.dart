@@ -23,7 +23,7 @@ class MobilePortfolioItem extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 32),
           child: Text(
             project.name ?? "",
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
         ),
         Card(
@@ -40,13 +40,12 @@ class MobilePortfolioItem extends StatelessWidget {
                     child: Text(
                       project.description ?? "",
                       maxLines: 3,
-                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             overflow: TextOverflow.ellipsis,
                           ),
                     ),
                   ),
                   DashHorizontal(
-                    width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   ClipRRect(

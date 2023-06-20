@@ -22,98 +22,93 @@ class DesktopProjectDetailsPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-            color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+            // color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 40,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Flexible(
-                        flex: 4,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 16),
-                          child: Row(
-                            children: [
-                              Container(
-                                  margin: const EdgeInsets.symmetric(horizontal: 24),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        (project.name ?? "").toUpperCase(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayMedium
-                                            ?.copyWith(fontStyle: FontStyle.italic),
-                                      ),
-                                      const DecorationViewLines(
-                                        margin: EdgeInsets.only(top: 0, bottom: 4),
-                                      ),
-                                    ],
-                                  )),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width / 3,
-                              ),
-                              Expanded(
-                                child: Container(
-                                    margin: const EdgeInsets.only(right: 8),
-                                    child: Text(
-                                      (project.intro ?? "").toUpperCase(),
-                                      textAlign: TextAlign.right,
-                                    )),
-                              ),
-                            ],
+                Flexible(
+                    flex: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: Row(
+                        children: [
+                          Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 24),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    (project.name ?? "").toUpperCase(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium
+                                        ?.copyWith(fontStyle: FontStyle.italic),
+                                  ),
+                                  const DecorationViewLines(
+                                    margin: EdgeInsets.only(top: 0, bottom: 4),
+                                  ),
+                                ],
+                              )),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width / 3,
                           ),
-                        )),
-                  ],
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Container(
-                  margin: const EdgeInsets.only(right: 16),
-                  height: 56,
-                  child: ProjectLinks(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    android: project.linkAndroid,
-                    ios: project.linkIOS,
-                    github: project.linkSource,
-                    openLink: openLink,
-                  ),
-                ),
-                const SizedBox(
-                  height: 88,
-                ),
+                          Expanded(
+                            child: Container(
+                                margin: const EdgeInsets.only(right: 8),
+                                child: Text(
+                                  (project.intro ?? "").toUpperCase(),
+                                  textAlign: TextAlign.right,
+                                )),
+                          ),
+                        ],
+                      ),
+                    )),
               ],
-            )),
-        DashHorizontal(
-          opacity: .5,
-          dashSpace: 16,
-          dashHeight: 16,
-          width: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.only(top: 16),
-        ),
-        Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Text(
-              tr("portfolio_description"),
-              style: Theme.of(context).textTheme.headline4,
-            )),
-        Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 72),
-              child: SelectableText(
-                "",
-                style: Theme.of(context).textTheme.headline6,
-                textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Container(
+              margin: const EdgeInsets.only(right: 16),
+              height: 56,
+              child: ProjectLinks(
+                mainAxisAlignment: MainAxisAlignment.end,
+                android: project.linkAndroid,
+                ios: project.linkIOS,
+                github: project.linkSource,
+                openLink: openLink,
               ),
-            )),
+            ),
+          ],
+        )),
+        const SizedBox(
+          height: 64,
+        ),
+        Row(
+          children: [
+            Container(
+                margin: const EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  tr("portfolio_description"),
+                  style: Theme.of(context).textTheme.headlineSmall,
+                )),
+            const Expanded(
+              child: DashHorizontal(
+                margin: EdgeInsets.only(top: 8),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 16,
+        ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Text(
@@ -122,40 +117,49 @@ class DesktopProjectDetailsPage extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 24,
+          height: 64,
         ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 24),
-          child: Text(
-            "Software stack",
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+        Row(
+          children: [
+            Container(
+                margin: const EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  tr("Стек залежностей"),
+                  style: Theme.of(context).textTheme.headlineSmall,
+                )),
+            const Expanded(
+              child: DashHorizontal(
+                margin: EdgeInsets.only(top: 8),
+              ),
+            ),
+          ],
         ),
-        DashHorizontal(
-          opacity: .5,
-          dashSpace: 16,
-          dashHeight: 16,
-          width: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.only(top: 16, bottom: 16),
+        const SizedBox(
+          height: 16,
         ),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Wrap(children: (project.tags.develop).map((e) => _buildTags(context, e)).toList())),
         const SizedBox(
-          height: 80,
+          height: 64,
         ),
-        Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Text(
-              "Screenshots",
-              style: Theme.of(context).textTheme.headlineSmall,
-            )),
-        DashHorizontal(
-          width: MediaQuery.of(context).size.width,
-          opacity: .5,
-          dashSpace: 16,
-          dashHeight: 16,
-          margin: const EdgeInsets.only(top: 16, bottom: 16),
+        Row(
+          children: [
+            Container(
+                margin: const EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  tr("Скріншоти"),
+                  style: Theme.of(context).textTheme.headlineSmall,
+                )),
+            const Expanded(
+              child: DashHorizontal(
+                margin: EdgeInsets.only(top: 8),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 16,
         ),
         SizedBox(
             child: CarouselSlider.builder(
@@ -210,12 +214,17 @@ class DesktopProjectDetailsPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              child: Image.asset("assets/image/icons/category.webp", width: 24, height: 24),
+              child: Image.asset(
+                "assets/image/icons/category.webp",
+                width: 24,
+                height: 24,
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
               padding: const EdgeInsets.all(8),
             ),
             Text(
               text,
-              style: Theme.of(context).textTheme.headline5?.copyWith(fontStyle: FontStyle.italic),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontStyle: FontStyle.italic),
             ),
             const SizedBox(
               width: 24,

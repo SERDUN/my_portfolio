@@ -70,14 +70,14 @@ class _MyAppState extends State<MyApp> {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       theme: FlexThemeData.light(
-        scheme: FlexScheme.orangeM3,
+        scheme: FlexScheme.espresso,
         fontFamily: GoogleFonts.gentiumPlus().fontFamily,
       ),
       darkTheme: FlexThemeData.dark(
-        scheme: FlexScheme.orangeM3,
+        scheme: FlexScheme.espresso,
         fontFamily: GoogleFonts.gentiumPlus().fontFamily,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       locale: context.locale,
       title: "Dmitro Serdun",
       builder: (context, widget) => ResponsiveWrapper.builder(

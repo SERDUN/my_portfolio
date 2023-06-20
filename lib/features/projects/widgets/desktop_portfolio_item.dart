@@ -45,7 +45,7 @@ class DesktopPortfolioItem extends StatelessWidget {
                       Wrap(crossAxisAlignment: WrapCrossAlignment.center, alignment: WrapAlignment.center, children: [
                         Text(
                           project.name ?? "",
-                          style: Theme.of(context).textTheme.displayMedium,
+                          style: Theme.of(context).textTheme.headlineLarge,
                         ),
                         const SizedBox(
                           width: 8,
@@ -72,7 +72,6 @@ class DesktopPortfolioItem extends StatelessWidget {
                       ),
                       const Spacer(),
                       DashHorizontal(
-                        width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.only(left: 8, right: 32, bottom: 4),
                       )
                     ],

@@ -35,8 +35,8 @@ class AboutMe extends StatelessWidget {
                 aboutMe,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              const SizedBox(
-                height: 32,
+              const Divider(
+                height: 40,
               ),
               Text(
                 tr("intro_skills"),

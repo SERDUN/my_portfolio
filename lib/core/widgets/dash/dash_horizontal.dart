@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
 
 class DashHorizontal extends StatelessWidget {
-  final double width;
   final EdgeInsets margin;
   final double opacity;
   final double dashSpace;
-  final double dashHeight;
+  final double dashWidth;
 
-  const DashHorizontal(
-      {Key? key,
-      required this.width,
-      this.margin = EdgeInsets.zero,
-      this.opacity = 1.0,
-      this.dashSpace = 8.0,
-      this.dashHeight = 8.0})
-      : super(key: key);
+  const DashHorizontal({
+    Key? key,
+    this.margin = EdgeInsets.zero,
+    this.opacity = 0.5,
+    this.dashSpace = 16.0,
+    this.dashWidth = 16.0,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomPaint(
-        size: Size(width, 1),
-        painter: DashedLineHorizontalPainter(
-          opacity,
-          dashSpace,
-          dashHeight,
-          Theme.of(context).colorScheme.primary,
+    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+      return Container(
+        child: CustomPaint(
+          size: Size(constraints.maxWidth, 1),
+          painter: DashedLineHorizontalPainter(
+            opacity,
+            dashSpace,
+            dashWidth,
+            Theme.of(context).colorScheme.primary,
+          ),
         ),
-      ),
-      margin: margin,
-    );
+        margin: margin,
+      );
+    });
   }
 }
 

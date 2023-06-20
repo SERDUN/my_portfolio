@@ -6,7 +6,6 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 import 'project_links.dart';
@@ -29,7 +28,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             (project.name ?? "").toUpperCase(),
-            style: Theme.of(context).textTheme.headline3,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
         ),
         const Align(alignment: Alignment.center, child: DecorationViewLines()),
@@ -61,13 +60,9 @@ class MobileProjectDetailsPage extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               tr("portfolio_description"),
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.displaySmall,
             )),
         DashHorizontal(
-          opacity: .5,
-          dashSpace: 16,
-          dashHeight: 16,
-          width: MediaQuery.of(context).size.width,
           margin: const EdgeInsets.only(top: 8),
         ),
         const SizedBox(
@@ -77,7 +72,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               project.description ?? "",
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyMedium,
             )),
         const SizedBox(
           height: 40,
@@ -86,13 +81,9 @@ class MobileProjectDetailsPage extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               "Software stack",
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.displaySmall,
             )),
         DashHorizontal(
-          opacity: .5,
-          dashSpace: 16,
-          dashHeight: 16,
-          width: MediaQuery.of(context).size.width,
           margin: const EdgeInsets.only(top: 8),
         ),
         const SizedBox(
@@ -113,13 +104,10 @@ class MobileProjectDetailsPage extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               "Screenshots",
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.displaySmall,
             )),
         DashHorizontal(
-          width: MediaQuery.of(context).size.width,
-          opacity: .5,
-          dashSpace: 16,
-          dashHeight: 16,
+
           margin: const EdgeInsets.only(top: 16, bottom: 16),
         ),
         SizedBox(
@@ -179,7 +167,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
         ),
         Text(
           text,
-          style: Theme.of(context).textTheme.headline5?.copyWith(fontStyle: FontStyle.italic),
+          style: Theme.of(context).textTheme.displaySmall?.copyWith(fontStyle: FontStyle.italic),
         ),
         const SizedBox(
           width: 24,
