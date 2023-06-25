@@ -66,8 +66,8 @@ class MobileProjectDetailsPage extends StatelessWidget {
               tr("portfolio_description"),
               style: Theme.of(context).textTheme.displaySmall,
             )),
-        DashHorizontal(
-          margin: const EdgeInsets.only(top: 8),
+        const DashHorizontal(
+          margin: EdgeInsets.only(top: 8),
         ),
         const SizedBox(
           height: 16,
@@ -87,8 +87,8 @@ class MobileProjectDetailsPage extends StatelessWidget {
               "Software stack",
               style: Theme.of(context).textTheme.displaySmall,
             )),
-        DashHorizontal(
-          margin: const EdgeInsets.only(top: 8),
+        const DashHorizontal(
+          margin: EdgeInsets.only(top: 8),
         ),
         const SizedBox(
           height: 16,
