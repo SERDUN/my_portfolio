@@ -125,7 +125,7 @@ class _ContactMeState extends State<ContactMe> {
       url: widget.contactsModel.location,
       type: IconTextType.selectable,
       width: width,
-      call: launchUrl,
+      call: launchLink,
     );
   }
 
@@ -137,7 +137,7 @@ class _ContactMeState extends State<ContactMe> {
       url: widget.contactsModel.phone,
       type: IconTextType.selectable,
       width: width,
-      call: launchUrl,
+      call: launchLink,
     );
   }
 
@@ -149,7 +149,7 @@ class _ContactMeState extends State<ContactMe> {
       url: widget.contactsModel.mail,
       type: IconTextType.selectable,
       width: width,
-      call: launchUrl,
+      call: launchLink,
     );
   }
 
@@ -161,7 +161,7 @@ class _ContactMeState extends State<ContactMe> {
       url: widget.contactsModel.facebookLink,
       width: width,
       isInverted: isInvert,
-      call: launchUrl,
+      call: launchLink,
     );
   }
 
@@ -173,7 +173,7 @@ class _ContactMeState extends State<ContactMe> {
       url: widget.contactsModel.linkedinLink,
       width: width,
       isInverted: isInvert,
-      call: launchUrl,
+      call: launchLink,
     );
   }
 
@@ -185,11 +185,12 @@ class _ContactMeState extends State<ContactMe> {
       url: widget.contactsModel.instagramLink,
       width: width,
       isInverted: isInvert,
-      call: launchUrl,
+      call: launchLink,
     );
   }
 
-  void launchUrl(String url) async {
-    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+  void launchLink(String url) async {
+    final link = Uri.tryParse(url);
+    if (link != null) await canLaunchUrl(link) ? launchUrl(link) : throw 'Could not launch $link';
   }
 }
