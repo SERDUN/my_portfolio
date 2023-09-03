@@ -1,13 +1,26 @@
-{
-  "mail": "fireserdun@gmail.com",
-  "phone": "(+380)979826361",
-  "location": "Ukraine, Odesa",
-  "github_username": "ISERDUN",
-  "github_link": "https://github.com/ISERDUN",
-  "linkedin_username": "dmitro-serdun-22261b110",
-  "linkedin_link": "https://www.linkedin.com/in/dmitro-serdun-22261b110",
-  "instagram_username": "i_serdun",
-  "instagram_link": "https://www.instagram.com/i_serdun",
-  "facebook_username": "100014314170900",
-  "facebook_link": "https://facebook.com/100014314170900"
-}
+[
+  {
+    "title": "Email",
+    "value": "fireserdun@gmail.com"
+  },
+  {
+    "title": "Telegram",
+    "value": "https://github.com/ISERDUN"
+  },
+  {
+    "title": "Github",
+    "value": "https://github.com/ISERDUN"
+  },
+  {
+    "title": "Linkedin",
+    "value": "https://www.linkedin.com/in/dmitro-serdun-22261b110"
+  },
+  {
+    "title": "Instagram",
+    "value": "https://www.instagram.com/i_serdun"
+  },
+  {
+    "title": "Facebook",
+    "value": "https://facebook.com/100014314170900"
+  }
+]
