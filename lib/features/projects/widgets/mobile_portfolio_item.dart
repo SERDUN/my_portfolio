@@ -29,41 +29,40 @@ class MobilePortfolioItem extends StatelessWidget {
           ),
         ),
         Card(
-            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-            elevation: 3,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 8, right: 40),
-                    child: Text(
-                      project.description ?? "",
-                      maxLines: 3,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                    ),
+          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          elevation: 3,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(left: 8, right: 40),
+                  child: Text(
+                    project.description ?? "",
+                    maxLines: 3,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(overflow: TextOverflow.ellipsis),
                   ),
-                  const DashHorizontal(
-                    margin: EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(9.0),
-                      child: OctoImage(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.75,
-                          image: Image.network(project.preview ?? "").image,
-                          placeholderBuilder: OctoPlaceholder.blurHash(
-                            'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-                          ),
-                          errorBuilder: OctoError.icon(color: Colors.red),
-                          fit: BoxFit.fitWidth))
-                ],
-              ),
-            ))
+                ),
+                const DashHorizontal(
+                  margin: EdgeInsets.symmetric(vertical: 16),
+                ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(9.0),
+                    child: OctoImage(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.75,
+                        image: Image.network(project.preview ?? "").image,
+                        placeholderBuilder: OctoPlaceholder.blurHash(
+                          'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                        ),
+                        errorBuilder: OctoError.icon(color: Colors.red),
+                        fit: BoxFit.fitWidth))
+              ],
+            ),
+          ),
+        )
       ],
     );
   }

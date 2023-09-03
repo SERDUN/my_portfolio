@@ -35,9 +35,10 @@ class _HomePageState extends State<PortfolioPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectsBloc, ProjectsState>(builder: (context, state) {
-      return SingleChildScrollView(
-        child: Container(
+    return BlocBuilder<ProjectsBloc, ProjectsState>(
+      builder: (context, state) {
+        return SingleChildScrollView(
+          child: Container(
             width: double.infinity,
             decoration: const BoxDecoration(),
             child: Column(
@@ -68,14 +69,14 @@ class _HomePageState extends State<PortfolioPage> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: state.projects.length,
                         itemBuilder: (context, i) {
-                          return PortfolioItem(
-                            project: state.projects[i],
-                          );
+                          return PortfolioItem(project: state.projects[i]);
                         },
                       ),
               ],
-            )),
-      );
-    });
+            ),
+          ),
+        );
+      },
+    );
   }
 }

@@ -21,20 +21,21 @@ class PortfolioItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () => _openDetails(context),
-        child: ResponsiveWidget(
-          desktopScreen: DesktopPortfolioItem(
-            chipColor: Colors.blue,
-            chipName: " _getChipStringTechnology(project.tags.mainTechnology, context)",
-            project: project,
-            tags: _getThematicsTags(project.technologies),
-            openDetails: () => _openDetails(context),
-          ),
-          mobileScreen: MobilePortfolioItem(
-            project: project,
-            openDetails: () => _openDetails(context),
-          ),
-        ));
+      onTap: () => _openDetails(context),
+      child: ResponsiveWidget(
+        desktopScreen: DesktopPortfolioItem(
+          chipColor: _getChipColorTechnology(context, project.technologies.first),
+          chipName: project.technologies.first.toUpperCase(),
+          project: project,
+          tags: _getThematicsTags(project.technologies),
+          openDetails: () => _openDetails(context),
+        ),
+        mobileScreen: MobilePortfolioItem(
+          project: project,
+          openDetails: () => _openDetails(context),
+        ),
+      ),
+    );
   }
 
   void _openDetails(BuildContext context) {
@@ -43,25 +44,14 @@ class PortfolioItem extends StatelessWidget {
     });
   }
 
-  // Color _getChipColorTechnology(String technology, BuildContext context) {
-  //   switch (technology) {
-  //     case "flutter":
-  //       return Colors.blue;
-  //     case "android":
-  //       return Colors.green;
-  //   }
-  //   return Theme.of(context).colorScheme.primary;
-  // }
-
-  //todo change on resources
-  String _getChipStringTechnology(String technology, BuildContext context) {
-    switch (technology) {
+  Color _getChipColorTechnology(BuildContext context, String technology) {
+    switch (technology.toLowerCase()) {
       case "flutter":
-        return "Flutter";
+        return Colors.blue;
       case "android":
-        return "Android";
+        return Colors.green;
     }
-    return "Project";
+    return Theme.of(context).colorScheme.primary;
   }
 
   String _getThematicsTags(List<String> social) {
