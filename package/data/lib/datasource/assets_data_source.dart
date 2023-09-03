@@ -8,7 +8,7 @@ import 'package:domain/entity/entity.dart';
 
 @Singleton()
 class AssetsDataSource {
-  Future<List<ProjectDTO>> getProjectData(String localization) async {
+  Future<List<ProjectDTO>> getProjects(String localization) async {
     String data = localization == "en"
         ? await rootBundle.loadString('packages/data/assets/data/en/projects.json')
         : await rootBundle.loadString('packages/data/assets/data/uk/projects.json');
@@ -18,7 +18,7 @@ class AssetsDataSource {
     return Future.value(projects);
   }
 
-  Future<List<ContactsDTO>> getContactData() async {
+  Future<List<ContactsDTO>> getContacts() async {
     String data = await rootBundle.loadString('packages/data/assets/data/contact.json');
     var jsonResult = json.decode(data) as List;
     List<ContactsDTO> contacts = jsonResult.map((data) => ContactsDTO.fromJson(data)).toList();
@@ -32,7 +32,7 @@ class AssetsDataSource {
     return Future.value(skills);
   }
 
-  Future<PortfolioUserDTO> getUserData(String localization) async {
+  Future<PortfolioUserDTO> getUser(String localization) async {
     String data = localization == "en"
         ? await rootBundle.loadString('packages/data/assets/data/en/user.json')
         : await rootBundle.loadString('packages/data/assets/data/uk/user.json');

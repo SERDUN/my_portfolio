@@ -17,12 +17,13 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future<PortfolioUserDTO> getUser(String localization) async {
     PortfolioUserDTO user = await apiDatasource.getUser(localization);
+    // PortfolioUserDTO user = await assetDataSource.getUser(localization);
     return Future.value((user));
   }
 
   @override
   Future<List<ContactsDTO>> getContacts() async {
-    List<ContactsDTO> contacts = await assetDataSource.getContactData();
+    List<ContactsDTO> contacts = await assetDataSource.getContacts();
     // List<ContactsDTO> contacts = await apiDatasource.getContacts();
     return Future.value(contacts);
   }

@@ -7,10 +7,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i2;
 
+import 'package:data/datasource/api_datasource.dart' as _i3;
+import 'package:data/datasource/assets_data_source.dart' as _i4;
 import 'package:data/datasource/datasource.dart' as _i8;
-import 'package:data/datasource/local/assets_data_source.dart' as _i4;
-import 'package:data/datasource/local/memory_data_source.dart' as _i5;
-import 'package:data/datasource/remote/api_datasource.dart' as _i3;
+import 'package:data/datasource/memory_data_source.dart' as _i5;
 import 'package:data/repository/project_repository_impl.dart' as _i7;
 import 'package:data/repository/setting_repository_impl.dart' as _i10;
 import 'package:data/repository/user_repository_impl.dart' as _i9;

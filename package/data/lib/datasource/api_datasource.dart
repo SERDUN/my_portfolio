@@ -73,10 +73,6 @@ class ApiDatasource {
     var jsonResult = jsonDecode(response.body) as List;
     List<PortfolioSkillsDTO> contacts = jsonResult.map((data) => PortfolioSkillsDTO.fromJson(data)).toList();
     return contacts;
-    // String data = await rootBundle.loadString('packages/data/assets/data/en/skills.json');
-    // var jsonResult = json.decode(data) as List;
-    // List<PortfolioSkillsDTO> skills = jsonResult.map((data) => PortfolioSkillsDTO.fromJson(data)).toList();
-    // return Future.value(skills);
   }
 
   Future<PortfolioUserDTO> getUser(String localization) async {

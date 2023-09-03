@@ -1,3 +1,3 @@
-export 'local/assets_data_source.dart';
-export 'local/memory_data_source.dart';
-export 'remote/api_datasource.dart';
+export 'assets_data_source.dart';
+export 'memory_data_source.dart';
+export 'api_datasource.dart';
