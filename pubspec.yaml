@@ -49,20 +49,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/image/icons/facebook.webp
-    - assets/image/icons/mail.webp
-    - assets/image/icons/instagram.webp
-    - assets/image/icons/linkedin.webp
     - assets/image/language/uk.webp
     - assets/image/language/en.webp
     - assets/image/icons/category.webp
     - assets/image/icons/up_arrow.webp
     - assets/image/icons/sub_category.webp
-    - assets/image/icons/github.webp
-    - assets/image/icons/phone.webp
     - assets/image/icons/google_play.webp
     - assets/image/icons/app_store.webp
-    - assets/image/icons/location.webp
     - assets/translations/
 
 
