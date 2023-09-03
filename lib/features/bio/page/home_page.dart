@@ -43,8 +43,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InfoBloc, InfoState>(builder: (context, state) {
-      return AnimatedOpacity(
+    return BlocBuilder<InfoBloc, InfoState>(
+      builder: (context, state) {
+        return AnimatedOpacity(
           opacity: state.userModel != null ? 1.0 : 0.0,
           duration: const Duration(milliseconds: 500),
           child: SingleChildScrollView(
@@ -52,21 +53,24 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ResponsiveWidget(
-                  desktopScreen: IntroPageDesktop(
-                    openCv: () => openCVAction(state.userModel?.cv),
-                    colorScheme: Theme.of(context).colorScheme,
-                    textTheme: Theme.of(context).textTheme,
-                    userFullName: state.userModel?.name ?? "##### #####",
-                    jobPosition: state.userModel?.position ?? "#####",
-                  ),
-                  mobileScreen: IntroPageMobile(
-                    openCv: () => openCVAction(state.userModel?.cv),
-                    colorScheme: Theme.of(context).colorScheme,
-                    textTheme: Theme.of(context).textTheme,
-                    userFullName: state.userModel?.name ?? "##### #####",
-                    jobPosition: state.userModel?.position ?? "#####",
-                    avatar: state.userModel?.avatar,
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 64,
+                      ),
+                      NameIntro(
+                        fullName: state.userModel?.name,
+                      ),
+                      ButtonOutline(
+                        text: tr("button_download_cv"),
+                        onTap: () => openCVAction(state.userModel!.cv),
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                    ],
                   ),
                 ),
                 Container(
@@ -80,8 +84,10 @@ class _HomePageState extends State<HomePage> {
                     )),
               ],
             ),
-          ));
-    });
+          ),
+        );
+      },
+    );
   }
 
   void openCVAction(String? link) async {
