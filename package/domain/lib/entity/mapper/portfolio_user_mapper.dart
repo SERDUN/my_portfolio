@@ -15,12 +15,14 @@ class PortfolioUserMapper extends Mapper<PortfolioUserDTO, PortfolioUserModel> {
   @override
   PortfolioUserModel mapToModel(PortfolioUserDTO dto) {
     return PortfolioUserModel(
-        intro: dto.intro ?? "",
-        avatar: dto.avatar ?? "",
-        cv: dto.cv ?? "",
-        skills: mapper.mapToModels(dto.skills ?? []),
-        name: dto.name ?? "",
-        position: dto.position ?? "");
+      firstName: dto.firstName ?? '',
+      secondName: dto.secondName ?? '',
+      intro: dto.intro ?? "",
+      avatar: dto.avatarUrl ?? "",
+      cv: dto.cvUrl ?? "",
+      // skills: mapper.mapToModels(dto.skills ?? []),
+      position: dto.position ?? "",
+    );
   }
 
   @override

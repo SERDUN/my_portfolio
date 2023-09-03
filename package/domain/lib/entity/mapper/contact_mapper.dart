@@ -9,17 +9,9 @@ class ContactMapper extends Mapper<ContactsDTO, ContactsModel> {
   @override
   ContactsModel mapToModel(ContactsDTO dto) {
     return ContactsModel(
-        mail: dto.mail,
-        phone: dto.phone,
-        location: dto.location,
-        githubUsername: dto.githubUsername,
-        githubLink: dto.githubLink,
-        linkedinUsername: dto.linkedinUsername,
-        linkedinLink: dto.linkedinLink,
-        instagramUsername: dto.instagramUsername,
-        instagramLink: dto.instagramLink,
-        facebookUsername: dto.facebookUsername,
-        facebookLink: dto.facebookLink);
+      title: dto.title,
+      value: dto.value,
+    );
   }
 
   @override

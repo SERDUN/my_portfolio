@@ -1,8 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'project_media_dto.dart';
-import 'project_tags_dto.dart';
-
 part 'project_dto.g.dart';
 
 @JsonSerializable()
@@ -14,16 +11,28 @@ class ProjectDTO {
   final String? linkAndroid;
   final String? linkIOS;
   final String? linkSource;
-  final ProjectTagsDTO? tags;
-  final ProjectMediaDTO? media;
+  final List<String> spheres;
+  final List<String> technologies;
+  @JsonKey(name: 'screenshots')
+  final List<String> screenshots;
+  @JsonKey(name: 'preview')
+  final String? preview;
 
-  ProjectDTO({this.id,this.name, this.intro, this.description, this.linkAndroid, this.linkIOS, this.linkSource, this.tags, this.media});
-
+  ProjectDTO({
+    this.id,
+    this.name,
+    this.intro,
+    this.description,
+    this.linkAndroid,
+    this.linkIOS,
+    this.linkSource,
+    this.spheres = const [],
+    this.technologies = const [],
+    this.screenshots = const [],
+    this.preview,
+  });
 
   factory ProjectDTO.fromJson(Map<String, dynamic> json) => _$ProjectDTOFromJson(json);
 
-
   Map<String, dynamic> toJson() => _$ProjectDTOToJson(this);
-
 }
-

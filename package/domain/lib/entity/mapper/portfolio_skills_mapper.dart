@@ -9,7 +9,7 @@ class PortfolioSkillsMapper extends Mapper<PortfolioSkillsDTO, PortfolioSkillsMo
 
   @override
   PortfolioSkillsModel mapToModel(PortfolioSkillsDTO dto) {
-    return PortfolioSkillsModel(children: mapToModels(dto.children), expanded: dto.expanded??false, title: dto.title);
+    return PortfolioSkillsModel(children: mapToModels(dto.subskills), expanded: dto.expanded??false, title: dto.title);
   }
 
   @override

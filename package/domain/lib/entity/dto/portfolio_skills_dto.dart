@@ -6,12 +6,14 @@ part 'portfolio_skills_dto.g.dart';
 class PortfolioSkillsDTO {
   final String title;
   bool? expanded;
-  List<PortfolioSkillsDTO> children;
+  List<PortfolioSkillsDTO> subskills;
 
-  PortfolioSkillsDTO({required this.title,this.children=const []});
+  PortfolioSkillsDTO({
+    required this.title,
+    this.subskills = const [],
+  });
 
-  factory PortfolioSkillsDTO.fromJson(Map<String, dynamic> json) =>
-      _$PortfolioSkillsDTOFromJson(json);
+  factory PortfolioSkillsDTO.fromJson(Map<String, dynamic> json) => _$PortfolioSkillsDTOFromJson(json);
 
   Map<String, dynamic> toJson() => _$PortfolioSkillsDTOToJson(this);
 }
