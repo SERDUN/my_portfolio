@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'portfolio_skills_dto.dart';
-
 part 'portfolio_user_dto.g.dart';
 
 @JsonSerializable()
