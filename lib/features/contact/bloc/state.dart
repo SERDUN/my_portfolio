@@ -1,7 +1,7 @@
 import 'package:domain/domain.dart';
 
 class ContactsState {
-  final ContactsModel? contacts;
+  final List<ContactsModel>? contacts;
 
   ContactsState(this.contacts);
 
@@ -9,7 +9,7 @@ class ContactsState {
     return ContactsState(null);
   }
 
-  ContactsState fill(ContactsModel projectModel) {
+  ContactsState fill(List<ContactsModel>? projectModel) {
     return ContactsState(projectModel);
   }
 }

@@ -31,7 +31,10 @@ class DataProvider extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider<InfoBloc>(
-            create: (BuildContext context) => InfoBloc(di<GetUserUseCase>()),
+            create: (BuildContext context) => InfoBloc(
+              di<GetUserUseCase>(),
+              di.get(),
+            ),
           ),
           BlocProvider<ProjectsBloc>(
             create: (BuildContext context) => ProjectsBloc(di<GetProjectsUseCase>()),

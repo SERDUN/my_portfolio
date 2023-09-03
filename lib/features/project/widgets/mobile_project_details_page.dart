@@ -97,7 +97,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: (project.tags.develop).map((e) => _buildTags(context, e)).toList()),
+              children: (project.spheres).map((e) => _buildTags(context, e)).toList()),
         ),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -127,7 +127,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
             enlargeCenterPage: true,
             scrollDirection: Axis.horizontal,
           ),
-          itemCount: project.media?.screenshots.length,
+          itemCount: project.screenshots.length,
           itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
             return SizedBox(
               width: double.infinity,
@@ -140,7 +140,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
                       borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
-                        image: Image.network(project.media?.screenshots[itemIndex].url ?? "").image,
+                        image: Image.network(project.screenshots[itemIndex]).image,
                         placeholderBuilder: OctoPlaceholder.blurHash(
                           'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                         ),

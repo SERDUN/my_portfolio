@@ -5,3 +5,8 @@ class GetUserEvent extends InfoEvent {
 
   GetUserEvent(this.locale);
 }
+
+
+class GetUserSkillsEvent extends InfoEvent {
+  GetUserSkillsEvent();
+}

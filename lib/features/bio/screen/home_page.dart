@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
   void didChangeDependencies() {
     String? locale = EasyLocalization.of(context)?.locale.languageCode;
     _bloc.add(GetUserEvent(locale));
+    _bloc.add(GetUserSkillsEvent());
     super.didChangeDependencies();
   }
 
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                       minWidth: double.infinity,
                     ),
                     child: AboutMe(
-                      skills: state.userModel?.skills ?? [],
+                      skills: state.skills ?? [],
                       aboutMe: state.userModel?.intro ?? "",
                     )),
               ],

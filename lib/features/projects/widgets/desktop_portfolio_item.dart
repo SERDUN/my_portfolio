@@ -91,7 +91,7 @@ class DesktopPortfolioItem extends StatelessWidget {
           child: ClipRRect(
               borderRadius: BorderRadius.circular(6.0),
               child: OctoImage(
-                  image: Image.network(project.media?.preview.url ?? "").image,
+                  image: Image.network(project.preview ?? "").image,
                   placeholderBuilder: OctoPlaceholder.blurHash(
                     'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                   ),

@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_portfolio/core/widgets/decoration/decoration.dart';
 
 import '../bloc/bloc.dart';
 import '../bloc/state.dart';
-import 'contact_me.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({
@@ -17,16 +18,61 @@ class ContactPage extends StatefulWidget {
 class _HomePageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ContactsBloc, ContactsState>(builder: (context, state) {
-      return state.contacts == null
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : SingleChildScrollView(
-              child: ContactMe(
-                contactsModel: state.contacts!,
-              ),
-            );
-    });
+    return BlocBuilder<ContactsBloc, ContactsState>(
+      builder: (context, state) {
+        return state.contacts == null
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Text(
+                    tr("contact_get_in_touch"),
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  const DecorationViewLines(),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Expanded(
+                    child: Wrap(
+                      spacing: 16,
+                      runSpacing: 8,
+                      children: state.contacts!
+                          .map(
+                            (contact) => SizedBox(
+                              width: 280,
+                              height: 224,
+                              child: Card(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      contact.title,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      contact.value,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  )
+                ],
+              );
+      },
+    );
   }
 }

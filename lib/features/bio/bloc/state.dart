@@ -2,8 +2,9 @@ import 'package:domain/domain.dart';
 
 class InfoState {
   final PortfolioUserModel? userModel;
+  final List<PortfolioSkillsModel>? skills;
 
-  InfoState({this.userModel});
+  InfoState({this.userModel, this.skills});
 
   InfoState init() {
     return InfoState();
@@ -17,5 +18,8 @@ class InfoState {
     return InfoState(userModel: userModel);
   }
 
-
+  // TODO: RENAME
+  InfoState fillSkills(List<PortfolioSkillsModel> skills) {
+    return InfoState(skills: skills, userModel: userModel);
+  }
 }

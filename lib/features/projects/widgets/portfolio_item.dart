@@ -24,10 +24,10 @@ class PortfolioItem extends StatelessWidget {
         onTap: () => _openDetails(context),
         child: ResponsiveWidget(
           desktopScreen: DesktopPortfolioItem(
-            chipColor: _getChipColorTechnology(project.tags.mainTechnology, context),
-            chipName: _getChipStringTechnology(project.tags.mainTechnology, context),
+            chipColor: Colors.blue,
+            chipName: " _getChipStringTechnology(project.tags.mainTechnology, context)",
             project: project,
-            tags: _getThematicsTags(project.tags.projects),
+            tags: _getThematicsTags(project.technologies),
             openDetails: () => _openDetails(context),
           ),
           mobileScreen: MobilePortfolioItem(
@@ -43,15 +43,15 @@ class PortfolioItem extends StatelessWidget {
     });
   }
 
-  Color _getChipColorTechnology(String technology, BuildContext context) {
-    switch (technology) {
-      case "flutter":
-        return Colors.blue;
-      case "android":
-        return Colors.green;
-    }
-    return Theme.of(context).colorScheme.primary;
-  }
+  // Color _getChipColorTechnology(String technology, BuildContext context) {
+  //   switch (technology) {
+  //     case "flutter":
+  //       return Colors.blue;
+  //     case "android":
+  //       return Colors.green;
+  //   }
+  //   return Theme.of(context).colorScheme.primary;
+  // }
 
   //todo change on resources
   String _getChipStringTechnology(String technology, BuildContext context) {

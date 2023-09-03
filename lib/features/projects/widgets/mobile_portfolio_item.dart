@@ -55,7 +55,7 @@ class MobilePortfolioItem extends StatelessWidget {
                       child: OctoImage(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.75,
-                          image: Image.network(project.media?.preview.url ?? "").image,
+                          image: Image.network(project.preview ?? "").image,
                           placeholderBuilder: OctoPlaceholder.blurHash(
                             'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                           ),

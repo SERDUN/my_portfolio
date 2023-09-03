@@ -141,7 +141,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
         ),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Wrap(children: (project.tags.develop).map((e) => _buildTags(context, e)).toList())),
+            child: Wrap(children: (project.technologies).map((e) => _buildTags(context, e)).toList())),
         const SizedBox(
           height: 64,
         ),
@@ -177,7 +177,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
             enlargeCenterPage: true,
             scrollDirection: Axis.horizontal,
           ),
-          itemCount: project.media?.screenshots.length ?? 0,
+          itemCount: project.screenshots.length,
           itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
             return SizedBox(
               width: double.infinity,
@@ -190,7 +190,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                       borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
-                        image: Image.network(project.media?.screenshots[itemIndex].url ?? "").image,
+                        image: Image.network(project.screenshots[itemIndex]).image,
                         placeholderBuilder: OctoPlaceholder.blurHash(
                           'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                         ),
