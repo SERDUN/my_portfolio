@@ -6,7 +6,7 @@ import '../entity/model/contacts_model.dart';
 import '../repository/user_repository.dart';
 
 abstract class GetContactsUseCase {
-  Future execute();
+  Future<List<ContactsModel>> execute();
 }
 
 @Injectable(as: GetContactsUseCase)
@@ -20,8 +20,9 @@ class GetContactsUseCaseImpl implements GetContactsUseCase {
   );
 
   @override
-  Future<ContactsModel> execute() async {
-    ContactsDTO userDTO = await userRepository.getContacts();
-    return Future.value(mapper.mapToModel(userDTO));
+  Future<List<ContactsModel>> execute() async {
+    List<ContactsDTO> contacts = await userRepository.getContacts();
+    List<ContactsModel> models = contacts.map((data) => mapper.mapToModel(data)).toList();
+    return models;
   }
 }

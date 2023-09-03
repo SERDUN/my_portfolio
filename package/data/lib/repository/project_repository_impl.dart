@@ -9,8 +9,9 @@ import '../datasource/datasource.dart';
 @Injectable(as: ProjectRepository)
 class ProjectRepositoryImpl extends ProjectRepository {
   final AssetsDataSource source;
+  final ApiDatasource apiDatasource;
 
-  ProjectRepositoryImpl(this.source);
+  ProjectRepositoryImpl(this.source, this.apiDatasource);
 
   @override
   Future<ProjectDTO> getProjectById(String id, String localization) async {
@@ -21,7 +22,8 @@ class ProjectRepositoryImpl extends ProjectRepository {
 
   @override
   Future<List<ProjectDTO>> getProjects(String localization) async {
-    PortfolioDTO user = await source.getProjectData(localization);
-    return Future.value(user.projects ?? []);
+    List<ProjectDTO> projects = await source.getProjectData(localization);
+    // List<ProjectDTO> projects = await apiDatasource.getProjects('en');
+    return projects ?? [];
   }
 }

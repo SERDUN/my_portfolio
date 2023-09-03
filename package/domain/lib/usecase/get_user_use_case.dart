@@ -1,3 +1,5 @@
+// ignore_for_file: null_argument_to_non_null_type
+
 import 'package:injectable/injectable.dart';
 
 import '../common/mapper_contract.dart';
@@ -22,7 +24,11 @@ class GetUserUseCaseImpl implements GetUserUseCase {
 
   @override
   Future<PortfolioUserModel> execute({required String lang}) async {
-    PortfolioUserDTO userDTO = (await userRepository.getUser(lang));
-    return Future.value(mapper.mapToModel(userDTO));
+    try {
+      PortfolioUserDTO userDTO = (await userRepository.getUser(lang));
+      return Future.value(mapper.mapToModel(userDTO));
+    } catch (e) {
+      return Future.value(null);
+    }
   }
 }

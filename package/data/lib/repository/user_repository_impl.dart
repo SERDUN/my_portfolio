@@ -6,19 +6,31 @@ import '../datasource/datasource.dart';
 
 @Injectable(as: UserRepository)
 class UserRepositoryImpl extends UserRepository {
-  final AssetsDataSource source;
+  final ApiDatasource apiDatasource;
+  final AssetsDataSource assetDataSource;
 
-  UserRepositoryImpl(this.source);
+  UserRepositoryImpl(
+    this.assetDataSource,
+    this.apiDatasource,
+  );
 
   @override
   Future<PortfolioUserDTO> getUser(String localization) async {
-    PortfolioUserDTO user = await source.getUserData(localization);
+    PortfolioUserDTO user = await apiDatasource.getUser(localization);
     return Future.value((user));
   }
 
   @override
-  Future<ContactsDTO> getContacts() async {
-    ContactsDTO user = await source.getContactData();
-    return Future.value(user);
+  Future<List<ContactsDTO>> getContacts() async {
+    List<ContactsDTO> contacts = await assetDataSource.getContactData();
+    // List<ContactsDTO> contacts = await apiDatasource.getContacts();
+    return Future.value(contacts);
+  }
+
+  @override
+  Future<List<PortfolioSkillsDTO>> getSkills(String userId, String localization) async {
+    List<PortfolioSkillsDTO> skills = await assetDataSource.getSkills();
+    // List<PortfolioSkillsDTO> skills = await apiDatasource.getSkills();
+    return Future.value(skills);
   }
 }
