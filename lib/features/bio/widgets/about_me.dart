@@ -20,7 +20,6 @@ class AboutMe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Container(
           color: Theme.of(context).colorScheme.background.withOpacity(0.8),
