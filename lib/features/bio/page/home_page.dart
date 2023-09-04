@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_portfolio/features/bio/bloc/bio_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
-import '../bloc/bloc.dart';
-import '../bloc/event.dart';
-import '../bloc/state.dart';
 import '../widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,32 +19,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final InfoBloc _bloc = BlocProvider.of<InfoBloc>(context);
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  late final BioCubit _bloc = BlocProvider.of<BioCubit>(context);
 
   @override
   void didChangeDependencies() {
-    String? locale = EasyLocalization.of(context)?.locale.languageCode;
-    _bloc.add(GetUserEvent(locale));
-    _bloc.add(GetUserSkillsEvent());
+
     super.didChangeDependencies();
   }
 
   @override
   void didUpdateWidget(covariant HomePage oldWidget) {
+    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
   }
-
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InfoBloc, InfoState>(
+    _bloc.getUserEvent();
+    _bloc.getUserSkills();
+    return BlocBuilder<BioCubit, BioState>(
       builder: (context, state) {
         return AnimatedOpacity(
-          opacity: state.userModel != null ? 1.0 : 0.0,
+          opacity: state.user != null ? 1.0 : 0.0,
           duration: const Duration(milliseconds: 500),
           child: SingleChildScrollView(
             child: Column(
@@ -61,11 +54,11 @@ class _HomePageState extends State<HomePage> {
                         height: 64,
                       ),
                       NameIntro(
-                        fullName: state.userModel?.name,
+                        fullName: state.user?.name,
                       ),
                       ButtonOutline(
                         text: tr("button_download_cv"),
-                        onTap: () => openCVAction(state.userModel!.cv),
+                        onTap: () => openCVAction(state.user!.cv),
                       ),
                       const SizedBox(
                         height: 40,
@@ -80,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: AboutMe(
                       skills: state.skills ?? [],
-                      aboutMe: state.userModel?.intro ?? "",
+                      aboutMe: state.user?.intro ?? "",
                     )),
               ],
             ),

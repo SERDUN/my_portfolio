@@ -18,12 +18,13 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey(context?.locale?.languageCode),
       appBar: AppBar(
         toolbarHeight: kMinInteractiveDimension,
         backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
         title: const Text("Dmitro Serdun"),
         leading: SwitcherLanguage(
-          localizationChanged: () => _changeLanguage(context),
+          localizationChanged: () => CallbackInheritedWidget.of(context)?.callback(),
         ),
         actions: [
           ActionTab(
@@ -46,10 +47,5 @@ class MainScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
       body: navigationShell,
     );
-  }
-
-  void _changeLanguage(BuildContext context) {
-    String newLocale = context.locale.languageCode == "en" ? 'uk' : 'en';
-    EasyLocalization.of(context)?.setLocale(Locale(newLocale));
   }
 }
