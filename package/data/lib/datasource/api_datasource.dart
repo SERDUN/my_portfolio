@@ -65,7 +65,6 @@ class ApiDatasource {
     return contacts;
   }
 
-
   Future<List<PortfolioSkillsDTO>> getSkills() async {
     final response = await apiClient.get(_endpoint(skillsPath), headers: {
       'accept-language': 'en',
@@ -76,7 +75,9 @@ class ApiDatasource {
   }
 
   Future<PortfolioUserDTO> getUser(String localization) async {
-    final response = await apiClient.get(_endpoint(userPath));
+    final response = await  apiClient.get(_endpoint(userPath), headers: {
+      'accept-language': localization,
+    });
     return PortfolioUserDTO.fromJson(jsonDecode(response.body));
   }
 }
