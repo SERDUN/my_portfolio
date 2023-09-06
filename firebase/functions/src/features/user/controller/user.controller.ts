@@ -36,7 +36,8 @@ export default class UserController extends BaseController {
         // TODO: add validation
         // @ts-ignore
         const userId: string = req.header("x-user-id");
-        const data = await this.userService.getUserById(userId);
+        const language: string = req.header("accept-language") ?? "en";
+        const data = await this.userService.getUserById(userId, language);
         this.ok(res, data);
     }
 

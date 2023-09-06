@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import { inject, injectable} from 'inversify';
+import {inject, injectable} from 'inversify';
 
 import IUserService from './user.service.interface';
 import IUserRepository from '../repository/user.repository.interface';
@@ -18,8 +18,8 @@ export default class UserService implements IUserService {
     }
 
 
-    getUserById(id: string): Promise<User | null> {
-        return this.userRepository.getById(id);
+    getUserById(id: string, language: string): Promise<User | null> {
+        return this.userRepository.getById(id,language);
     }
 
     getUserSkills(id: string): Promise<Skill[]> {

@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import { inject, injectable} from 'inversify';
+import {inject, injectable} from 'inversify';
 import {firestore} from 'firebase-admin';
 
 import {admin} from '../../../config/firebase';
@@ -31,18 +31,18 @@ export default class UserRepository implements IUserRepository {
 
 
     // TODO: Handle moment when no application with id
-    async getById(id: string): Promise<User | null> {
+    async getById(id: string, language: string): Promise<User | null> {
         const reference = (await this.userCollection.doc(id).get());
 
         if (reference.exists) {
             const data = reference.data()!;
-            return data['en']
+            return data[language]
         }
 
         return this.userMapper.toClass(reference);
     }
 
-   async getSkills(id: string): Promise<Skill[]> {
+    async getSkills(id: string): Promise<Skill[]> {
         const doc = this.skillsCollection.doc(id);
         const reference = await doc.get();
 
