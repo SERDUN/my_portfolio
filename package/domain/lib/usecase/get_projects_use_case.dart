@@ -1,3 +1,4 @@
+import 'package:domain/services/services.dart';
 import 'package:injectable/injectable.dart';
 
 import '../common/mapper_contract.dart';
@@ -6,22 +7,24 @@ import '../entity/model/project_model.dart';
 import '../repository/project_repository.dart';
 
 abstract class GetProjectsUseCase {
-  Future<List<ProjectModel>> execute({required String lang});
+  Future<List<ProjectModel>> execute();
 }
 
 @Injectable(as: GetProjectsUseCase)
 class GetProjectsUseCaseImpl implements GetProjectsUseCase {
-  final ProjectRepository userRepository;
-  final Mapper<ProjectDTO, ProjectModel> mapper;
-
   GetProjectsUseCaseImpl(
     this.userRepository,
     this.mapper,
+    this.localizationService,
   );
 
+  final ProjectRepository userRepository;
+  final Mapper<ProjectDTO, ProjectModel> mapper;
+  final LocalizationService localizationService;
+
   @override
-  Future<List<ProjectModel>> execute({required String lang}) async {
-    var result = await userRepository.getProjects(lang);
+  Future<List<ProjectModel>> execute() async {
+    var result = await userRepository.getProjects(localizationService.locale);
     return mapper.mapToModels(result);
   }
 }

@@ -4,9 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:my_portfolio/localization/localization.dart';
 
-import '../bloc/bloc.dart';
-import '../bloc/event.dart';
-import '../bloc/state.dart';
+import '../bloc/projects_cubit.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
@@ -22,17 +20,17 @@ class PortfolioPage extends StatefulWidget {
 }
 
 class _HomePageState extends State<PortfolioPage> {
-  late final ProjectsBloc _bloc = BlocProvider.of<ProjectsBloc>(context);
+  late final ProjectsCubit _bloc = BlocProvider.of<ProjectsCubit>(context);
 
   @override
   void didChangeDependencies() {
-    _bloc.add(InitProjectsEvent(""));
+    _bloc.getProjects();
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectsBloc, ProjectsState>(
+    return BlocBuilder<ProjectsCubit, ProjectsState>(
       builder: (context, state) {
         return SingleChildScrollView(
           child: Container(

@@ -39,8 +39,8 @@ class DataProvider extends StatelessWidget {
             di.get(),
           ),
         ),
-        BlocProvider<ProjectsBloc>(
-          create: (BuildContext context) => ProjectsBloc(di<GetProjectsUseCase>()),
+        BlocProvider<ProjectsCubit>(
+          create: (BuildContext context) => ProjectsCubit(di<GetProjectsUseCase>()),
         ),
         BlocProvider<ProjectDetailsBloc>(
           create: (BuildContext context) => ProjectDetailsBloc(di<GetProjectByIdUseCase>()),
