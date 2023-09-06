@@ -24,6 +24,6 @@ class ProjectRepositoryImpl extends ProjectRepository {
   Future<List<ProjectDTO>> getProjects(String localization) async {
     List<ProjectDTO> projects = await source.getProjects(localization);
     // List<ProjectDTO> projects = await apiDatasource.getProjects('en');
-    return projects ?? [];
+    return projects;
   }
 }

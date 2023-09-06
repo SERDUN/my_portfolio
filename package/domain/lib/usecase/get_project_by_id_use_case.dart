@@ -13,9 +13,9 @@ abstract class GetProjectByIdUseCase {
 @Injectable(as: GetProjectByIdUseCase)
 class GetProjectByIdUseCaseImpl implements GetProjectByIdUseCase {
   GetProjectByIdUseCaseImpl(
+    this.localizationService,
     this.userRepository,
     this.mapper,
-    this.localizationService,
   );
 
   final LocalizationService localizationService;

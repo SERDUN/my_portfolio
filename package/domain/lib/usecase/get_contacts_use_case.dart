@@ -11,13 +11,13 @@ abstract class GetContactsUseCase {
 
 @Injectable(as: GetContactsUseCase)
 class GetContactsUseCaseImpl implements GetContactsUseCase {
-  final UserRepository userRepository;
-  final Mapper<ContactsDTO, ContactsModel> mapper;
-
   GetContactsUseCaseImpl(
     this.userRepository,
     this.mapper,
   );
+
+  final UserRepository userRepository;
+  final Mapper<ContactsDTO, ContactsModel> mapper;
 
   @override
   Future<List<ContactsModel>> execute() async {

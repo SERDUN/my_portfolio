@@ -10,8 +10,8 @@ abstract class UpdateLocalConfigUseCase {
 @Injectable(as: UpdateLocalConfigUseCase)
 class UpdateLocalConfigUseCaseImpl implements UpdateLocalConfigUseCase {
   UpdateLocalConfigUseCaseImpl(
-    this.configRepository,
     this.localizationService,
+    this.configRepository,
   );
 
   final LocalizationService localizationService;
@@ -19,6 +19,6 @@ class UpdateLocalConfigUseCaseImpl implements UpdateLocalConfigUseCase {
 
   @override
   Future execute() async {
-    return configRepository.updateSelectedLanguage(localizationService.locale!);
+    return configRepository.updateSelectedLanguage(localizationService.locale);
   }
 }
