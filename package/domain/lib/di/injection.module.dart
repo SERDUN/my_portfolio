@@ -61,6 +61,7 @@ class DomainPackageModule extends _i1.MicroPackageModule {
           gh<_i21.LocalizationService>(),
         ));
     gh.factory<_i22.GetUserSkillsUseCase>(() => _i22.GetUserUseCaseSkillsImpl(
+          gh<_i21.LocalizationService>(),
           gh<_i23.UserRepository>(),
           gh<_i4.Mapper<_i23.PortfolioSkillsDTO, _i23.PortfolioSkillsModel>>(),
         ));

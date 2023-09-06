@@ -34,7 +34,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<List<PortfolioSkillsDTO>> getSkills(String userId, String localization) async {
+  Future<List<PortfolioSkillsDTO>> getSkills(String localization) async {
     List<PortfolioSkillsDTO> skills = await assetDataSource.getSkills();
     // List<PortfolioSkillsDTO> skills = await apiDatasource.getSkills();
     return Future.value(skills);
