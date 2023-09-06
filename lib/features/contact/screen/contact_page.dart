@@ -1,7 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/core/widgets/decoration/decoration.dart';
+import 'package:my_portfolio/localization/localization.dart';
 
 import '../bloc/bloc.dart';
 import '../bloc/state.dart';
@@ -32,7 +32,7 @@ class _HomePageState extends State<ContactPage> {
                     height: 40,
                   ),
                   Text(
-                    tr("contact_get_in_touch"),
+                    context.l10n.contact_get_in_touch,
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
                   const DecorationViewLines(),

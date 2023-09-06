@@ -23,7 +23,6 @@ class GetUserUseCaseImpl implements GetUserUseCase {
   final LocalizationService localizationService;
   final UserRepository userRepository;
   final Mapper<PortfolioUserDTO, PortfolioUserModel> mapper;
-  final String defaultLanguage = "en";
 
   @override
   Future<PortfolioUserModel> execute() async {

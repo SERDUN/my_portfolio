@@ -16,7 +16,7 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:my_portfolio/di/injection.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   Future<_i1.GetIt> init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:my_portfolio/core/core.dart';
+import 'package:my_portfolio/localization/localization.dart';
 
 import '../bloc/bloc.dart';
 import '../bloc/event.dart';
@@ -27,9 +26,7 @@ class _HomePageState extends State<PortfolioPage> {
 
   @override
   void didChangeDependencies() {
-    String? locale = EasyLocalization.of(context)?.locale.languageCode;
-    pLogger.i("PortfolioPage-> didChangeDependencies $locale");
-    _bloc.add(InitProjectsEvent(locale));
+    _bloc.add(InitProjectsEvent(""));
     super.didChangeDependencies();
   }
 
@@ -49,7 +46,7 @@ class _HomePageState extends State<PortfolioPage> {
                 ),
                 Center(
                   child: Text(
-                    tr("last_project_title"),
+                    context.l10n.last_project_title,
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),

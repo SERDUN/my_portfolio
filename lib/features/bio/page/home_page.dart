@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/features/bio/bloc/bio_cubit.dart';
+import 'package:my_portfolio/localization/localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
@@ -23,19 +23,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void didChangeDependencies() {
-
+    _bloc.getUserEvent();
+    _bloc.getUserSkills();
     super.didChangeDependencies();
   }
 
   @override
-  void didUpdateWidget(covariant HomePage oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-  }
-  @override
   Widget build(BuildContext context) {
-    _bloc.getUserEvent();
-    _bloc.getUserSkills();
     return BlocBuilder<BioCubit, BioState>(
       builder: (context, state) {
         return AnimatedOpacity(
@@ -57,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                         fullName: state.user?.name,
                       ),
                       ButtonOutline(
-                        text: tr("button_download_cv"),
+                        text: context.l10n.button_download_cv,
                         onTap: () => openCVAction(state.user!.cv),
                       ),
                       const SizedBox(

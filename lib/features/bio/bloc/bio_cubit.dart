@@ -16,7 +16,7 @@ class BioCubit extends Cubit<BioState> {
   }
 
   void getUserEvent() async {
-    var user = (await userUseCase.execute());
+    var user = await userUseCase.execute();
     emit(state.copyWith(status: BioStatus.success, user: user));
   }
 

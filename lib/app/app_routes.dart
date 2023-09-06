@@ -17,7 +17,10 @@ class AppRouter {
         routes: [
           StatefulShellRoute.indexedStack(
             builder: (BuildContext context, GoRouterState state, StatefulNavigationShell navigationShell) {
-              return MainScreen(navigationShell: navigationShell);
+              return MainScreen(
+                navigationShell: navigationShell,
+                key: ValueKey(state.pageKey),
+              );
             },
             branches: <StatefulShellBranch>[
               StatefulShellBranch(

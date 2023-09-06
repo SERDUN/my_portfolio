@@ -38,7 +38,7 @@ class DomainPackageModule extends _i1.MicroPackageModule {
   // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {
-    gh.factory<_i3.LocalizationService>(() => _i3.LocalizationService());
+    gh.singleton<_i3.LocalizationService>(_i3.LocalizationService());
     gh.factory<_i4.Mapper<_i5.ProjectDTO, _i6.ProjectModel>>(
         () => _i7.ProjectMapper());
     gh.factory<_i4.Mapper<_i8.ContactsDTO, _i9.ContactsModel>>(

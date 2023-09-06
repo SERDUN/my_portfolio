@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:easy_localization/easy_localization.dart';
+import 'package:my_portfolio/localization/localization.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 import 'package:domain/domain.dart';
@@ -28,7 +28,7 @@ class AboutMe extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                tr("portfolio_about_me"),
+                context.l10n.portfolio_about_me,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
@@ -42,7 +42,7 @@ class AboutMe extends StatelessWidget {
                 height: 40,
               ),
               Text(
-                tr("intro_skills"),
+                context.l10n.intro_skills,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(

@@ -1,9 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
+import 'package:my_portfolio/main.dart';
 
 import '../widgets/widgets.dart';
 
@@ -18,13 +18,12 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: ValueKey(context?.locale?.languageCode),
       appBar: AppBar(
         toolbarHeight: kMinInteractiveDimension,
         backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
         title: const Text("Dmitro Serdun"),
         leading: SwitcherLanguage(
-          localizationChanged: () => CallbackInheritedWidget.of(context)?.callback(),
+          localizationChanged: () => _changeLanguage(context),
         ),
         actions: [
           ActionTab(
@@ -47,5 +46,10 @@ class MainScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
       body: navigationShell,
     );
+  }
+
+  void _changeLanguage(BuildContext context) {
+    final locale = Localizations.localeOf(context).languageCode;
+    Application.of(context).setLocale(Locale(locale == "en" ? 'uk' : 'en'));
   }
 }

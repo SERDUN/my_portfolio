@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
 
-@Singleton()
+@singleton
 class LocalizationService {
-  String _locale = 'en';
+  var _locale = 'en';
 
   String get locale => this._locale;
 
