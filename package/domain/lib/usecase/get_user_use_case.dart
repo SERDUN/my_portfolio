@@ -9,7 +9,7 @@ import '../entity/model/portfolio_user_model.dart';
 import '../repository/user_repository.dart';
 
 abstract class GetUserUseCase {
-  Future<PortfolioUserModel> execute();
+  Stream<PortfolioUserModel> execute();
 }
 
 @Injectable(as: GetUserUseCase)
@@ -25,12 +25,7 @@ class GetUserUseCaseImpl implements GetUserUseCase {
   final Mapper<PortfolioUserDTO, PortfolioUserModel> mapper;
 
   @override
-  Future<PortfolioUserModel> execute() async {
-    try {
-      PortfolioUserDTO userDTO = await userRepository.getUser(localizationService.locale);
-      return Future.value(mapper.mapToModel(userDTO));
-    } catch (e) {
-      return Future.value(null);
-    }
+  Stream<PortfolioUserModel> execute() {
+    return userRepository.getUser(localizationService.locale).map((event) => mapper.mapToModel(event));
   }
 }

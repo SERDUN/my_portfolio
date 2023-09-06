@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:domain/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,13 +13,17 @@ class BioCubit extends Cubit<BioState> {
   final GetUserSkillsUseCase skillsUseCase;
 
   BioCubit(this.userUseCase, this.skillsUseCase) : super(const BioState()) {
-    getUserEvent();
     getUserSkills();
   }
 
-  void getUserEvent() async {
-    var user = await userUseCase.execute();
-    emit(state.copyWith(status: BioStatus.success, user: user));
+  StreamSubscription? streamSubscription;
+
+  void subscribeOnUserData() {
+    streamSubscription?.cancel();
+    streamSubscription = null;
+    streamSubscription = userUseCase.execute().listen((event) {
+      emit(state.copyWith(status: BioStatus.success, user: event));
+    });
   }
 
   void getUserSkills() async {

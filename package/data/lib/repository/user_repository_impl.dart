@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:injectable/injectable.dart';
 
 import 'package:domain/domain.dart';
@@ -15,10 +17,13 @@ class UserRepositoryImpl extends UserRepository {
   );
 
   @override
-  Future<PortfolioUserDTO> getUser(String localization) async {
-    PortfolioUserDTO user = await apiDatasource.getUser(localization);
-    // PortfolioUserDTO user = await assetDataSource.getUser(localization);
-    return Future.value((user));
+  Stream<PortfolioUserDTO> getUser(String localization) {
+    final StreamController<PortfolioUserDTO> _streamController = StreamController<PortfolioUserDTO>();
+    Future.microtask(() async {
+      await _streamController.addStream(assetDataSource.getUser(localization).asStream());
+      await _streamController.addStream(apiDatasource.getUser(localization).asStream());
+    });
+    return _streamController.stream;
   }
 
   @override
