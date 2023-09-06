@@ -5,53 +5,53 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get last_project_title => 'Проекти';
+  String get lastProjectTitle => 'Проекти';
 
   @override
-  String get menu_title_home => 'Резюме';
+  String get menuTitleHome => 'Резюме';
 
   @override
-  String get menu_title_portfolio => 'Портфоліо';
+  String get menuTitlePortfolio => 'Портфоліо';
 
   @override
-  String get menu_title_contact => 'Контакти';
+  String get menuTitleContact => 'Контакти';
 
   @override
-  String get button_download_cv => 'Отримати резюме';
+  String get buttonDownloadCv => 'Download CV';
 
   @override
-  String get unknown_page_title => '404';
+  String get unknownPageTitle => '404';
 
   @override
-  String get unknown_page_description => 'російський корабль йди на х*й';
+  String get unknownPageDescription => 'російський корабель йди на х*й';
 
   @override
-  String get portfolio_description => 'Опис';
+  String get portfolioDescription => 'Опис';
 
   @override
-  String get portfolio_about_me => 'Про мене';
+  String get portfolioAboutMe => 'Про мене';
 
   @override
-  String get intro_skills => 'Навики';
+  String get introSkills => 'Навики';
 
   @override
-  String get contact_get_in_touch => 'Контакти';
+  String get contactGetInTouch => 'Контакти';
 
   @override
-  String get contact_phone => 'Телефон';
+  String get contactPhone => 'Телефон';
 
   @override
-  String get contact_email => 'Електронна пошта';
+  String get contactEmail => 'Електронна пошта';
 
   @override
-  String get contact_location => 'Розташування';
+  String get contactLocation => 'Розташування';
 
   @override
-  String get contact_facebook => 'Фейзбук';
+  String get contactFacebook => 'Фейсбук';
 
   @override
-  String get contact_linkedin => 'Лінкед';
+  String get contactLinkedin => 'LinkedIn';
 
   @override
-  String get contact_instagram => 'Інста';
+  String get contactInstagram => 'Інста';
 }

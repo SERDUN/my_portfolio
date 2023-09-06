@@ -93,107 +93,107 @@ abstract class AppLocalizations {
     Locale('uk')
   ];
 
-  /// No description provided for @last_project_title.
+  /// No description provided for @lastProjectTitle.
   ///
   /// In en, this message translates to:
   /// **'Projects'**
-  String get last_project_title;
+  String get lastProjectTitle;
 
-  /// No description provided for @menu_title_home.
+  /// No description provided for @menuTitleHome.
   ///
   /// In en, this message translates to:
   /// **'Home'**
-  String get menu_title_home;
+  String get menuTitleHome;
 
-  /// No description provided for @menu_title_portfolio.
+  /// No description provided for @menuTitlePortfolio.
   ///
   /// In en, this message translates to:
   /// **'Portfolio'**
-  String get menu_title_portfolio;
+  String get menuTitlePortfolio;
 
-  /// No description provided for @menu_title_contact.
+  /// No description provided for @menuTitleContact.
   ///
   /// In en, this message translates to:
   /// **'Contact'**
-  String get menu_title_contact;
+  String get menuTitleContact;
 
-  /// No description provided for @button_download_cv.
+  /// No description provided for @buttonDownloadCv.
   ///
   /// In en, this message translates to:
   /// **'Download CV'**
-  String get button_download_cv;
+  String get buttonDownloadCv;
 
-  /// No description provided for @unknown_page_title.
+  /// No description provided for @unknownPageTitle.
   ///
   /// In en, this message translates to:
   /// **'404'**
-  String get unknown_page_title;
+  String get unknownPageTitle;
 
-  /// No description provided for @unknown_page_description.
+  /// No description provided for @unknownPageDescription.
   ///
   /// In en, this message translates to:
-  /// **'Fuck russia!'**
-  String get unknown_page_description;
+  /// **'Fuck Russia!'**
+  String get unknownPageDescription;
 
-  /// No description provided for @portfolio_description.
+  /// No description provided for @portfolioDescription.
   ///
   /// In en, this message translates to:
   /// **'Description'**
-  String get portfolio_description;
+  String get portfolioDescription;
 
-  /// No description provided for @portfolio_about_me.
+  /// No description provided for @portfolioAboutMe.
   ///
   /// In en, this message translates to:
   /// **'About me'**
-  String get portfolio_about_me;
+  String get portfolioAboutMe;
 
-  /// No description provided for @intro_skills.
+  /// No description provided for @introSkills.
   ///
   /// In en, this message translates to:
   /// **'Skills'**
-  String get intro_skills;
+  String get introSkills;
 
-  /// No description provided for @contact_get_in_touch.
+  /// No description provided for @contactGetInTouch.
   ///
   /// In en, this message translates to:
   /// **'Get in touch'**
-  String get contact_get_in_touch;
+  String get contactGetInTouch;
 
-  /// No description provided for @contact_phone.
+  /// No description provided for @contactPhone.
   ///
   /// In en, this message translates to:
   /// **'Phone'**
-  String get contact_phone;
+  String get contactPhone;
 
-  /// No description provided for @contact_email.
+  /// No description provided for @contactEmail.
   ///
   /// In en, this message translates to:
   /// **'Email'**
-  String get contact_email;
+  String get contactEmail;
 
-  /// No description provided for @contact_location.
+  /// No description provided for @contactLocation.
   ///
   /// In en, this message translates to:
   /// **'Location'**
-  String get contact_location;
+  String get contactLocation;
 
-  /// No description provided for @contact_facebook.
+  /// No description provided for @contactFacebook.
   ///
   /// In en, this message translates to:
   /// **'Facebook'**
-  String get contact_facebook;
+  String get contactFacebook;
 
-  /// No description provided for @contact_linkedin.
+  /// No description provided for @contactLinkedin.
   ///
   /// In en, this message translates to:
-  /// **'Linkedin'**
-  String get contact_linkedin;
+  /// **'LinkedIn'**
+  String get contactLinkedin;
 
-  /// No description provided for @contact_instagram.
+  /// No description provided for @contactInstagram.
   ///
   /// In en, this message translates to:
   /// **'Instagram'**
-  String get contact_instagram;
+  String get contactInstagram;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

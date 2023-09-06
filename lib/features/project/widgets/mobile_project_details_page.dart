@@ -63,7 +63,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            context.l10n.portfolio_description,
+            context.l10n.portfolioDescription,
             style: Theme.of(context).textTheme.displaySmall,
           ),
         ),

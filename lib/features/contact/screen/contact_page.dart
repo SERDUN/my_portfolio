@@ -39,7 +39,7 @@ class _HomePageState extends State<ContactPage> {
                     height: 40,
                   ),
                   Text(
-                    context.l10n.contact_get_in_touch,
+                    context.l10n.contactGetInTouch,
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
                   const DecorationViewLines(),

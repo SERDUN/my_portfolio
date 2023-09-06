@@ -98,7 +98,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                context.l10n.portfolio_description,
+                context.l10n.portfolioDescription,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),

@@ -28,7 +28,7 @@ class AboutMe extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                context.l10n.portfolio_about_me,
+                context.l10n.portfolioAboutMe,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
@@ -42,7 +42,7 @@ class AboutMe extends StatelessWidget {
                 height: 40,
               ),
               Text(
-                context.l10n.intro_skills,
+                context.l10n.introSkills,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(

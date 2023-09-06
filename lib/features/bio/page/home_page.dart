@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                         fullName: state.user?.name,
                       ),
                       ButtonOutline(
-                        text: context.l10n.button_download_cv,
+                        text: context.l10n.buttonDownloadCv,
                         onTap: () => openCVAction(state.user!.cv),
                       ),
                       const SizedBox(

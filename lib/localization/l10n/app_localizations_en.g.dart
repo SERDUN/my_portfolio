@@ -5,53 +5,53 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get last_project_title => 'Projects';
+  String get lastProjectTitle => 'Projects';
 
   @override
-  String get menu_title_home => 'Home';
+  String get menuTitleHome => 'Home';
 
   @override
-  String get menu_title_portfolio => 'Portfolio';
+  String get menuTitlePortfolio => 'Portfolio';
 
   @override
-  String get menu_title_contact => 'Contact';
+  String get menuTitleContact => 'Contact';
 
   @override
-  String get button_download_cv => 'Download CV';
+  String get buttonDownloadCv => 'Download CV';
 
   @override
-  String get unknown_page_title => '404';
+  String get unknownPageTitle => '404';
 
   @override
-  String get unknown_page_description => 'Fuck russia!';
+  String get unknownPageDescription => 'Fuck Russia!';
 
   @override
-  String get portfolio_description => 'Description';
+  String get portfolioDescription => 'Description';
 
   @override
-  String get portfolio_about_me => 'About me';
+  String get portfolioAboutMe => 'About me';
 
   @override
-  String get intro_skills => 'Skills';
+  String get introSkills => 'Skills';
 
   @override
-  String get contact_get_in_touch => 'Get in touch';
+  String get contactGetInTouch => 'Get in touch';
 
   @override
-  String get contact_phone => 'Phone';
+  String get contactPhone => 'Phone';
 
   @override
-  String get contact_email => 'Email';
+  String get contactEmail => 'Email';
 
   @override
-  String get contact_location => 'Location';
+  String get contactLocation => 'Location';
 
   @override
-  String get contact_facebook => 'Facebook';
+  String get contactFacebook => 'Facebook';
 
   @override
-  String get contact_linkedin => 'Linkedin';
+  String get contactLinkedin => 'LinkedIn';
 
   @override
-  String get contact_instagram => 'Instagram';
+  String get contactInstagram => 'Instagram';
 }
