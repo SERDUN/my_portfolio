@@ -27,7 +27,7 @@ class BioCubit extends Cubit<BioState> {
   }
 
   void getUserSkills() async {
-    var skills = await skillsUseCase.execute(lang: "en");
+    var skills = await skillsUseCase.execute();
     emit(state.copyWith(status: BioStatus.success, skills: skills));
   }
 }

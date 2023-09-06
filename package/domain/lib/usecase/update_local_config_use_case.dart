@@ -1,23 +1,24 @@
+import 'package:domain/services/services.dart';
 import 'package:injectable/injectable.dart';
 
 import '../repository/setting_repository.dart';
 
 abstract class UpdateLocalConfigUseCase {
-  Future execute({
-    String? language,
-  });
+  Future execute();
 }
 
 @Injectable(as: UpdateLocalConfigUseCase)
 class UpdateLocalConfigUseCaseImpl implements UpdateLocalConfigUseCase {
-  final ConfigRepository configRepository;
-
   UpdateLocalConfigUseCaseImpl(
     this.configRepository,
+    this.localizationService,
   );
 
+  final LocalizationService localizationService;
+  final ConfigRepository configRepository;
+
   @override
-  Future execute({String? language}) async {
-    return configRepository.updateSelectedLanguage(language!);
+  Future execute() async {
+    return configRepository.updateSelectedLanguage(localizationService.locale!);
   }
 }

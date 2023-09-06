@@ -21,14 +21,14 @@ import 'package:domain/entity/model/contacts_model.dart' as _i9;
 import 'package:domain/entity/model/portfolio_skills_model.dart' as _i12;
 import 'package:domain/entity/model/portfolio_user_model.dart' as _i25;
 import 'package:domain/entity/model/project_model.dart' as _i6;
-import 'package:domain/repository/project_repository.dart' as _i19;
+import 'package:domain/repository/project_repository.dart' as _i20;
 import 'package:domain/repository/setting_repository.dart' as _i15;
-import 'package:domain/repository/user_repository.dart' as _i17;
+import 'package:domain/repository/user_repository.dart' as _i18;
 import 'package:domain/services/localization_service.dart' as _i3;
-import 'package:domain/services/services.dart' as _i21;
-import 'package:domain/usecase/get_contacts_use_case.dart' as _i16;
-import 'package:domain/usecase/get_project_by_id_use_case.dart' as _i18;
-import 'package:domain/usecase/get_projects_use_case.dart' as _i20;
+import 'package:domain/services/services.dart' as _i16;
+import 'package:domain/usecase/get_contacts_use_case.dart' as _i17;
+import 'package:domain/usecase/get_project_by_id_use_case.dart' as _i19;
+import 'package:domain/usecase/get_projects_use_case.dart' as _i21;
 import 'package:domain/usecase/get_user_skills_use_case.dart' as _i22;
 import 'package:domain/usecase/get_user_use_case.dart' as _i27;
 import 'package:domain/usecase/update_local_config_use_case.dart' as _i14;
@@ -46,22 +46,26 @@ class DomainPackageModule extends _i1.MicroPackageModule {
     gh.factory<_i4.Mapper<_i11.PortfolioSkillsDTO, _i12.PortfolioSkillsModel>>(
         () => _i13.PortfolioSkillsMapper());
     gh.factory<_i14.UpdateLocalConfigUseCase>(
-        () => _i14.UpdateLocalConfigUseCaseImpl(gh<_i15.ConfigRepository>()));
-    gh.factory<_i16.GetContactsUseCase>(() => _i16.GetContactsUseCaseImpl(
-          gh<_i17.UserRepository>(),
+        () => _i14.UpdateLocalConfigUseCaseImpl(
+              gh<_i15.ConfigRepository>(),
+              gh<_i16.LocalizationService>(),
+            ));
+    gh.factory<_i17.GetContactsUseCase>(() => _i17.GetContactsUseCaseImpl(
+          gh<_i18.UserRepository>(),
           gh<_i4.Mapper<_i8.ContactsDTO, _i9.ContactsModel>>(),
         ));
-    gh.factory<_i18.GetProjectByIdUseCase>(() => _i18.GetProjectByIdUseCaseImpl(
-          gh<_i19.ProjectRepository>(),
+    gh.factory<_i19.GetProjectByIdUseCase>(() => _i19.GetProjectByIdUseCaseImpl(
+          gh<_i20.ProjectRepository>(),
           gh<_i4.Mapper<_i5.ProjectDTO, _i6.ProjectModel>>(),
+          gh<_i16.LocalizationService>(),
         ));
-    gh.factory<_i20.GetProjectsUseCase>(() => _i20.GetProjectsUseCaseImpl(
-          gh<_i19.ProjectRepository>(),
+    gh.factory<_i21.GetProjectsUseCase>(() => _i21.GetProjectsUseCaseImpl(
+          gh<_i20.ProjectRepository>(),
           gh<_i4.Mapper<_i5.ProjectDTO, _i6.ProjectModel>>(),
-          gh<_i21.LocalizationService>(),
+          gh<_i16.LocalizationService>(),
         ));
     gh.factory<_i22.GetUserSkillsUseCase>(() => _i22.GetUserUseCaseSkillsImpl(
-          gh<_i21.LocalizationService>(),
+          gh<_i16.LocalizationService>(),
           gh<_i23.UserRepository>(),
           gh<_i4.Mapper<_i23.PortfolioSkillsDTO, _i23.PortfolioSkillsModel>>(),
         ));
@@ -69,8 +73,8 @@ class DomainPackageModule extends _i1.MicroPackageModule {
         _i26.PortfolioUserMapper(gh<
             _i4.Mapper<_i11.PortfolioSkillsDTO, _i12.PortfolioSkillsModel>>()));
     gh.factory<_i27.GetUserUseCase>(() => _i27.GetUserUseCaseImpl(
-          gh<_i21.LocalizationService>(),
-          gh<_i17.UserRepository>(),
+          gh<_i16.LocalizationService>(),
+          gh<_i18.UserRepository>(),
           gh<_i4.Mapper<_i24.PortfolioUserDTO, _i25.PortfolioUserModel>>(),
         ));
   }
