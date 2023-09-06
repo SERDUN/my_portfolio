@@ -4,9 +4,6 @@ import 'package:domain/domain.dart';
 import 'package:injectable/injectable.dart';
 
 import '../common/mapper_contract.dart';
-import '../entity/dto/portfolio_user_dto.dart';
-import '../entity/model/portfolio_user_model.dart';
-import '../repository/user_repository.dart';
 
 abstract class GetUserSkillsUseCase {
   Future<List<PortfolioSkillsModel>> execute({

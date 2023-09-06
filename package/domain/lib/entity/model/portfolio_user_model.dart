@@ -1,5 +1,3 @@
-import 'portfolio_skills_model.dart';
-
 class PortfolioUserModel {
   final String firstName;
   final String secondName;
@@ -7,7 +5,6 @@ class PortfolioUserModel {
   final String intro;
   final String avatar;
   final String cv;
-  // final List<PortfolioSkillsModel> skills;
 
   PortfolioUserModel({
     required this.firstName,
@@ -16,7 +13,6 @@ class PortfolioUserModel {
     required this.cv,
     required this.avatar,
     required this.intro,
-    // required this.skills,
   });
 
   String get name => firstName + secondName;
