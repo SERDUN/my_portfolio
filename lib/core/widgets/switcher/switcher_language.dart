@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SwitcherLanguage extends StatelessWidget {
@@ -13,20 +12,21 @@ class SwitcherLanguage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Localizations.localeOf(context).languageCode;
     return MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
           child: Stack(
             children: [
               Padding(
-                child: buildLanguage(context.locale.languageCode == "en"
-                    ? "assets/image/language/uk.webp"
-                    : "assets/image/language/en.webp"),
+                child: buildLanguage(
+                  locale == "en" ? "assets/image/language/uk.webp" : "assets/image/language/en.webp",
+                ),
                 padding: const EdgeInsets.only(left: 8),
               ),
-              buildLanguage(context.locale.languageCode == "en"
-                  ? "assets/image/language/en.webp"
-                  : "assets/image/language/uk.webp")
+              buildLanguage(
+                locale == "en" ? "assets/image/language/en.webp" : "assets/image/language/uk.webp",
+              )
             ],
           ),
           onTap: localizationChanged,
