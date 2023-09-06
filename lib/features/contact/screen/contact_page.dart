@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/core/widgets/decoration/decoration.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
-import '../bloc/bloc.dart';
-import '../bloc/state.dart';
+import '../bloc/contacts_cubit.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({
@@ -16,9 +15,17 @@ class ContactPage extends StatefulWidget {
 }
 
 class _HomePageState extends State<ContactPage> {
+  late final ContactsCubit _bloc = BlocProvider.of<ContactsCubit>(context);
+
+  @override
+  void didChangeDependencies() {
+    _bloc.getContacts();
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ContactsBloc, ContactsState>(
+    return BlocBuilder<ContactsCubit, ContactsState>(
       builder: (context, state) {
         return state.contacts == null
             ? const Center(

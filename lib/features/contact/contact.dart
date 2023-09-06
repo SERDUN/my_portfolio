@@ -1,2 +1,2 @@
 export 'screen/contact_page.dart';
-export 'bloc/bloc.dart';
+export 'bloc/contacts_cubit.dart';
