@@ -12,7 +12,6 @@ import 'package:data/datasource/assets_data_source.dart' as _i4;
 import 'package:data/datasource/datasource.dart' as _i8;
 import 'package:data/datasource/memory_data_source.dart' as _i5;
 import 'package:data/repository/project_repository_impl.dart' as _i7;
-import 'package:data/repository/setting_repository_impl.dart' as _i10;
 import 'package:data/repository/user_repository_impl.dart' as _i9;
 import 'package:domain/domain.dart' as _i6;
 import 'package:injectable/injectable.dart' as _i1;
@@ -35,7 +34,5 @@ class DataPackageModule extends _i1.MicroPackageModule {
           gh<_i8.AssetsDataSource>(),
           gh<_i8.ApiDatasource>(),
         ));
-    gh.factory<_i6.ConfigRepository>(
-        () => _i10.SettingRepositoryImpl(gh<_i8.MemoryDataSource>()));
   }
 }
