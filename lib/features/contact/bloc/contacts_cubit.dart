@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,8 +14,19 @@ class ContactsCubit extends Cubit<ContactsState> {
 
   final GetContactsUseCase useCase;
 
+  StreamSubscription? _contactsStreamSubscription;
+
   void getContacts() async {
-    var contacts = await useCase.execute();
-    emit(state.copyWith(contacts: contacts));
+    _contactsStreamSubscription?.cancel();
+    _contactsStreamSubscription = null;
+    _contactsStreamSubscription = useCase.execute().listen((event) {
+      emit(state.copyWith(status: ContactsStatus.success, contacts: event));
+    });
+  }
+
+  @override
+  Future<void> close() async {
+    await super.close();
+    _contactsStreamSubscription?.cancel();
   }
 }

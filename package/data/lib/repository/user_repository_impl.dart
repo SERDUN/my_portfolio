@@ -27,16 +27,22 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<List<ContactsDTO>> getContacts() async {
-    List<ContactsDTO> contacts = await assetDataSource.getContacts();
-    // List<ContactsDTO> contacts = await apiDatasource.getContacts();
-    return Future.value(contacts);
+  Stream<List<ContactsDTO>> getContacts(String localization) {
+    final StreamController<List<ContactsDTO>> _streamController = StreamController<List<ContactsDTO>>();
+    Future.microtask(() async {
+      await _streamController.addStream(assetDataSource.getContacts().asStream());
+      await _streamController.addStream(apiDatasource.getContacts().asStream());
+    });
+    return _streamController.stream;
   }
 
   @override
-  Future<List<PortfolioSkillsDTO>> getSkills(String localization) async {
-    List<PortfolioSkillsDTO> skills = await assetDataSource.getSkills();
-    // List<PortfolioSkillsDTO> skills = await apiDatasource.getSkills();
-    return Future.value(skills);
+  Stream<List<PortfolioSkillsDTO>> getSkills(String localization) {
+    final StreamController<List<PortfolioSkillsDTO>> _streamController = StreamController<List<PortfolioSkillsDTO>>();
+    Future.microtask(() async {
+      await _streamController.addStream(assetDataSource.getSkills().asStream());
+      await _streamController.addStream(apiDatasource.getSkills().asStream());
+    });
+    return _streamController.stream;
   }
 }

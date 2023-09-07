@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 import '../common/mapper_contract.dart';
 
 abstract class GetUserSkillsUseCase {
-  Future<List<PortfolioSkillsModel>> execute();
+  Stream<List<PortfolioSkillsModel>> execute();
 }
 
 @Injectable(as: GetUserSkillsUseCase)
@@ -23,13 +23,9 @@ class GetUserUseCaseSkillsImpl implements GetUserSkillsUseCase {
   final Mapper<PortfolioSkillsDTO, PortfolioSkillsModel> mapper;
 
   @override
-  Future<List<PortfolioSkillsModel>> execute() async {
-    try {
-      final dtos = await userRepository.getSkills(localizationService.locale);
-      final models = dtos.nonNulls.map((dto) => mapper.mapToModel(dto)).toList();
-      return Future.value(models);
-    } catch (e) {
-      return Future.value(null);
-    }
+  Stream<List<PortfolioSkillsModel>> execute() {
+    return userRepository
+        .getSkills(localizationService.locale)
+        .map((event) => event.map((dto) => mapper.mapToModel(dto)).toList());
   }
 }

@@ -51,6 +51,7 @@ class DomainPackageModule extends _i1.MicroPackageModule {
               gh<_i16.ConfigRepository>(),
             ));
     gh.factory<_i17.GetContactsUseCase>(() => _i17.GetContactsUseCaseImpl(
+          gh<_i15.LocalizationService>(),
           gh<_i18.UserRepository>(),
           gh<_i4.Mapper<_i8.ContactsDTO, _i9.ContactsModel>>(),
         ));

@@ -3,7 +3,7 @@ import 'package:domain/domain.dart';
 abstract class UserRepository {
   Stream<PortfolioUserDTO> getUser(String localization);
 
-  Future<List<PortfolioSkillsDTO>> getSkills(String localization);
+  Stream<List<PortfolioSkillsDTO>> getSkills(String localization);
 
-  Future<List<ContactsDTO>> getContacts();
+  Stream<List<ContactsDTO>> getContacts(String localization);
 }
