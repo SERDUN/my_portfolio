@@ -7,7 +7,9 @@ import '../entity/model/project_model.dart';
 import '../repository/project_repository.dart';
 
 abstract class GetProjectByIdUseCase {
-  Future<ProjectModel> execute({required String id});
+  Stream<ProjectModel> execute({
+    required String id,
+  });
 }
 
 @Injectable(as: GetProjectByIdUseCase)
@@ -23,8 +25,9 @@ class GetProjectByIdUseCaseImpl implements GetProjectByIdUseCase {
   final Mapper<ProjectDTO, ProjectModel> mapper;
 
   @override
-  Future<ProjectModel> execute({required String id}) async {
-    var result = await userRepository.getProjectById(id, localizationService.locale);
-    return mapper.mapToModel(result);
+  Stream<ProjectModel> execute({
+    required String id,
+  }) {
+    return userRepository.getProjectById(id, localizationService.locale).map((event) => mapper.mapToModel(event));
   }
 }

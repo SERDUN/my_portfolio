@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:injectable/injectable.dart';
 
 import 'package:collection/collection.dart';
@@ -8,22 +10,28 @@ import '../datasource/datasource.dart';
 
 @Injectable(as: ProjectRepository)
 class ProjectRepositoryImpl extends ProjectRepository {
-  final AssetsDataSource source;
+  final AssetsDataSource assetsDatasource;
   final ApiDatasource apiDatasource;
 
-  ProjectRepositoryImpl(this.source, this.apiDatasource);
+  ProjectRepositoryImpl(this.assetsDatasource, this.apiDatasource);
 
   @override
-  Future<ProjectDTO> getProjectById(String id, String localization) async {
-    var projects = await getProjects(localization);
-    var project = projects.firstWhereOrNull((element) => element.id == id);
-    return Future.value(project);
+  Stream<ProjectDTO> getProjectById(String id, String localization) {
+    final StreamController<ProjectDTO> _streamController = StreamController<ProjectDTO>();
+    Future.microtask(() async {
+      await _streamController.addStream(assetsDatasource.getProject(id, localization).asStream());
+      await _streamController.addStream(apiDatasource.getProject(id, localization).asStream());
+    });
+    return _streamController.stream;
   }
 
   @override
-  Future<List<ProjectDTO>> getProjects(String localization) async {
-    List<ProjectDTO> projects = await source.getProjects(localization);
-    // List<ProjectDTO> projects = await apiDatasource.getProjects('en');
-    return projects;
+  Stream<List<ProjectDTO>> getProjects(String localization) {
+    final StreamController<List<ProjectDTO>> _streamController = StreamController<List<ProjectDTO>>();
+    Future.microtask(() async {
+      await _streamController.addStream(assetsDatasource.getProjects(localization).asStream());
+      await _streamController.addStream(apiDatasource.getProjects(localization).asStream());
+    });
+    return _streamController.stream;
   }
 }

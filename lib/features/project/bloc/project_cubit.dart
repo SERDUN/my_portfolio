@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
-import 'package:domain/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'package:domain/domain.dart';
 
 part 'project_state.dart';
 
@@ -11,8 +14,19 @@ class ProjectCubit extends Cubit<ProjectState> {
 
   final GetProjectByIdUseCase useCase;
 
+  StreamSubscription? _userStreamSubscription;
+
   void getProjectById(String id) async {
-    var projectResult = await useCase.execute(id: id);
-    emit(state.copyWith(project: projectResult));
+    _userStreamSubscription?.cancel();
+    _userStreamSubscription = null;
+    _userStreamSubscription = useCase.execute(id: id).listen((event) {
+      emit(state.copyWith(status: ProjectStatus.success, project: event));
+    });
+  }
+
+  @override
+  Future<void> close() async {
+    await super.close();
+    _userStreamSubscription?.cancel();
   }
 }

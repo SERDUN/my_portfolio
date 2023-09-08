@@ -1,7 +1,7 @@
 import '../entity/dto/project_dto.dart';
 
 abstract class ProjectRepository {
-  Future<List<ProjectDTO>> getProjects(String localization);
+  Stream<List<ProjectDTO>> getProjects(String localization);
 
-  Future< ProjectDTO> getProjectById(String id, String localization);
+  Stream<ProjectDTO> getProjectById(String id, String localization);
 }

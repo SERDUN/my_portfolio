@@ -56,6 +56,15 @@ class ApiDatasource {
     return projects;
   }
 
+  Future<ProjectDTO> getProject(String id, String localization) async {
+    final response = await apiClient.get(_endpoint("$projectsPath/$id"), headers: {
+      'accept-language': localization,
+    });
+    var jsonResult = jsonDecode(response.body);
+    var projects = ProjectDTO.fromJson(jsonResult);
+    return projects;
+  }
+
   Future<List<ContactsDTO>> getContacts() async {
     final response = await apiClient.get(_endpoint(contactsPath), headers: {
       'accept-language': 'en',
@@ -75,7 +84,7 @@ class ApiDatasource {
   }
 
   Future<PortfolioUserDTO> getUser(String localization) async {
-    final response = await  apiClient.get(_endpoint(userPath), headers: {
+    final response = await apiClient.get(_endpoint(userPath), headers: {
       'accept-language': localization,
     });
     return PortfolioUserDTO.fromJson(jsonDecode(response.body));

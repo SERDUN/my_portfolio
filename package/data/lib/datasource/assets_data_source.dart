@@ -18,6 +18,11 @@ class AssetsDataSource {
     return Future.value(projects);
   }
 
+  Future<ProjectDTO> getProject(String id, String localization) async {
+    List<ProjectDTO> projects = await getProjects(localization);
+    return Future.value(projects.firstWhere((element) => element.id == id));
+  }
+
   Future<List<ContactsDTO>> getContacts() async {
     String data = await rootBundle.loadString('packages/data/assets/data/contact.json');
     var jsonResult = json.decode(data) as List;
