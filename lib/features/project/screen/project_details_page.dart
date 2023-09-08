@@ -5,33 +5,34 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
-import '../bloc/bloc.dart';
-import '../bloc/event.dart';
-import '../bloc/state.dart';
+import '../bloc/project_cubit.dart';
 import '../widgets/widgets.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
-  final String id;
+  const ProjectDetailsPage({
+    Key? key,
+    required this.id,
+  }) : super(key: key);
 
-  const ProjectDetailsPage({Key? key, required this.id}) : super(key: key);
+  final String id;
 
   @override
   _ContactUsState createState() => _ContactUsState();
 }
 
 class _ContactUsState extends State<ProjectDetailsPage> with TickerProviderStateMixin {
-  late final ProjectDetailsBloc _bloc = BlocProvider.of<ProjectDetailsBloc>(context);
+  late final ProjectCubit _bloc = BlocProvider.of<ProjectCubit>(context);
 
   @override
   void didChangeDependencies() {
-    _bloc.add(GetProjectEvent(widget.id, ""));
+    _bloc.getProjectById(widget.id);
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectDetailsBloc, ProjectDetailsState>(builder: (context, state) {
-      if (state.projects == null) {
+    return BlocBuilder<ProjectCubit, ProjectState>(builder: (context, state) {
+      if (state.project == null) {
         return const Center(
           child: CircularProgressIndicator(),
         );
@@ -39,11 +40,11 @@ class _ContactUsState extends State<ProjectDetailsPage> with TickerProviderState
         return SingleChildScrollView(
           child: ResponsiveWidget(
             desktopScreen: DesktopProjectDetailsPage(
-              project: state.projects!,
+              project: state.project!,
               onOpenLink: _openLinkAction,
             ),
             mobileScreen: MobileProjectDetailsPage(
-              project: state.projects!,
+              project: state.project!,
               onOpen: _openLinkAction,
             ),
           ),
