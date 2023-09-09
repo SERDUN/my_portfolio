@@ -19,30 +19,24 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Stream<PortfolioUserDTO> getUser(String localization) {
     final StreamController<PortfolioUserDTO> _streamController = StreamController<PortfolioUserDTO>();
-    Future.microtask(() async {
-      await _streamController.addStream(assetDataSource.getUser(localization).asStream());
-      await _streamController.addStream(apiDatasource.getUser(localization).asStream());
-    });
+    _streamController.addStream(assetDataSource.getUser(localization).asStream());
+    _streamController.addStream(apiDatasource.getUser(localization).asStream());
     return _streamController.stream;
   }
 
   @override
   Stream<List<ContactsDTO>> getContacts(String localization) {
     final StreamController<List<ContactsDTO>> _streamController = StreamController<List<ContactsDTO>>();
-    Future.microtask(() async {
-      await _streamController.addStream(assetDataSource.getContacts().asStream());
-      await _streamController.addStream(apiDatasource.getContacts().asStream());
-    });
+    _streamController.addStream(assetDataSource.getContacts().asStream());
+    _streamController.addStream(apiDatasource.getContacts().asStream());
     return _streamController.stream;
   }
 
   @override
   Stream<List<PortfolioSkillsDTO>> getSkills(String localization) {
     final StreamController<List<PortfolioSkillsDTO>> _streamController = StreamController<List<PortfolioSkillsDTO>>();
-    Future.microtask(() async {
-      await _streamController.addStream(assetDataSource.getSkills().asStream());
-      await _streamController.addStream(apiDatasource.getSkills().asStream());
-    });
+    _streamController.addStream(assetDataSource.getSkills().asStream());
+    _streamController.addStream(apiDatasource.getSkills().asStream());
     return _streamController.stream;
   }
 }

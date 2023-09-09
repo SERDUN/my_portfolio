@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:injectable/injectable.dart';
 
-import 'package:collection/collection.dart';
-
 import 'package:domain/domain.dart';
 
 import '../datasource/datasource.dart';
@@ -18,20 +16,16 @@ class ProjectRepositoryImpl extends ProjectRepository {
   @override
   Stream<ProjectDTO> getProjectById(String id, String localization) {
     final StreamController<ProjectDTO> _streamController = StreamController<ProjectDTO>();
-    Future.microtask(() async {
-      await _streamController.addStream(assetsDatasource.getProject(id, localization).asStream());
-      await _streamController.addStream(apiDatasource.getProject(id, localization).asStream());
-    });
+    _streamController.addStream(assetsDatasource.getProject(id, localization).asStream());
+    _streamController.addStream(apiDatasource.getProject(id, localization).asStream());
     return _streamController.stream;
   }
 
   @override
   Stream<List<ProjectDTO>> getProjects(String localization) {
     final StreamController<List<ProjectDTO>> _streamController = StreamController<List<ProjectDTO>>();
-    Future.microtask(() async {
-      await _streamController.addStream(assetsDatasource.getProjects(localization).asStream());
-      await _streamController.addStream(apiDatasource.getProjects(localization).asStream());
-    });
+    _streamController.addStream(assetsDatasource.getProjects(localization).asStream());
+    _streamController.addStream(apiDatasource.getProjects(localization).asStream());
     return _streamController.stream;
   }
 }
