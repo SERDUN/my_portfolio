@@ -11,6 +11,7 @@ import '../datasource/datasource.dart';
 class UserRepositoryImpl extends UserRepository {
   UserRepositoryImpl(
     @Named('hasServerSync') this.hasServerSync,
+    @Named('hasLocalSync') this.hasLocalSync,
     this.assetDataSource,
     this.apiDatasource,
   );
@@ -19,28 +20,29 @@ class UserRepositoryImpl extends UserRepository {
   final AssetsDataSource assetDataSource;
 
   final bool hasServerSync;
+  final bool hasLocalSync;
 
   @override
   Stream<PortfolioUserDTO> getUser(String localization) {
     final StreamController<PortfolioUserDTO> _streamController = StreamController<PortfolioUserDTO>();
-    _streamController.addFuture(assetDataSource.getUser(localization));
-    _streamController.addFuture(apiDatasource.getUser(localization), ignore: !hasServerSync);
+    if (hasLocalSync) _streamController.addFuture(assetDataSource.getUser(localization));
+    if (hasServerSync) _streamController.addFuture(apiDatasource.getUser(localization));
     return _streamController.stream;
   }
 
   @override
   Stream<List<ContactsDTO>> getContacts(String localization) {
     final StreamController<List<ContactsDTO>> _streamController = StreamController<List<ContactsDTO>>();
-    _streamController.addFuture(assetDataSource.getContacts());
-    _streamController.addFuture(apiDatasource.getContacts(), ignore: !hasServerSync);
+    if (hasLocalSync) _streamController.addFuture(assetDataSource.getContacts());
+    if (hasServerSync) _streamController.addFuture(apiDatasource.getContacts());
     return _streamController.stream;
   }
 
   @override
   Stream<List<PortfolioSkillsDTO>> getSkills(String localization) {
     final StreamController<List<PortfolioSkillsDTO>> _streamController = StreamController<List<PortfolioSkillsDTO>>();
-    _streamController.addFuture(assetDataSource.getSkills(localization));
-    _streamController.addFuture(apiDatasource.getSkills(localization), ignore: !hasServerSync);
+    if (hasLocalSync) _streamController.addFuture(assetDataSource.getSkills(localization));
+    if (hasServerSync) _streamController.addFuture(apiDatasource.getSkills(localization));
     return _streamController.stream;
   }
 }

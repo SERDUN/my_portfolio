@@ -41,6 +41,10 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.hasServerSync,
       instanceName: 'hasServerSync',
     );
+    gh.factory<bool>(
+      () => registerModule.hasLocalSync,
+      instanceName: 'hasLocalSync',
+    );
     return this;
   }
 }

@@ -29,4 +29,7 @@ abstract class RegisterModule {
 
   @Named("hasServerSync")
   bool get hasServerSync => false;
+
+  @Named("hasLocalSync")
+  bool get hasLocalSync => true;
 }
