@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
+import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/main.dart';
 
 import '../widgets/widgets.dart';
@@ -49,7 +50,8 @@ class MainScreen extends StatelessWidget {
   }
 
   void _changeLanguage(BuildContext context) {
-    final locale = Localizations.localeOf(context).languageCode;
-    Application.of(context).setLocale(Locale(locale == "en" ? 'uk' : 'en'));
+    final languageProvider = LanguageProvider.read(context);
+    final currentLanguage = languageProvider?.languageNotifier.currentLocale;
+    languageProvider?.setLocale(Locale(currentLanguage?.languageCode == "en" ? 'uk' : 'en'));
   }
 }

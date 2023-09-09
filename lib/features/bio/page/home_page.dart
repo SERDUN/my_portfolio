@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_portfolio/features/bio/bloc/bio_cubit.dart';
 import 'package:my_portfolio/localization/localization.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
+import '../../../main.dart';
 import '../widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,10 +24,12 @@ class _HomePageState extends State<HomePage> {
   late final BioCubit _bloc = BlocProvider.of<BioCubit>(context);
 
   @override
-  void didChangeDependencies() {
-    _bloc.subscribeOnUserData();
-    _bloc.subscribeOnUserSkills();
-    super.didChangeDependencies();
+  void initState() {
+    LanguageProvider.read(context)?.languageNotifier.addListener(() {
+      _bloc.subscribeOnUserData();
+      _bloc.subscribeOnUserSkills();
+    });
+    super.initState();
   }
 
   @override
