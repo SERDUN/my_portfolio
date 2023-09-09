@@ -17,11 +17,6 @@ class ContactPage extends StatefulWidget {
 class _HomePageState extends State<ContactPage> {
   late final ContactsCubit _bloc = BlocProvider.of<ContactsCubit>(context);
 
-  @override
-  void didChangeDependencies() {
-    _bloc.getContacts();
-    super.didChangeDependencies();
-  }
 
   @override
   Widget build(BuildContext context) {

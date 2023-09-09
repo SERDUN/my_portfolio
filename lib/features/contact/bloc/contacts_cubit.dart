@@ -5,12 +5,23 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/localization/localization.dart';
+
 part 'contacts_state.dart';
 
 part 'contacts_cubit.freezed.dart';
 
 class ContactsCubit extends Cubit<ContactsState> {
-  ContactsCubit(this.useCase) : super(const ContactsState(status: ContactsStatus.initial));
+  ContactsCubit(this.useCase, this.languageNotifier) : super(const ContactsState(status: ContactsStatus.initial)) {
+    _initState();
+    languageNotifier.addListener(_initState);
+  }
+
+  void _initState() {
+    getContacts();
+  }
+
+  final LanguageNotifier languageNotifier;
 
   final GetContactsUseCase useCase;
 
@@ -28,5 +39,6 @@ class ContactsCubit extends Cubit<ContactsState> {
   Future<void> close() async {
     await super.close();
     _contactsStreamSubscription?.cancel();
+    languageNotifier.removeListener(_initState);
   }
 }

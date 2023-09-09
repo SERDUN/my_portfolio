@@ -23,12 +23,6 @@ class _HomePageState extends State<PortfolioPage> {
   late final ProjectsCubit _bloc = BlocProvider.of<ProjectsCubit>(context);
 
   @override
-  void didChangeDependencies() {
-    _bloc.getProjects();
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProjectsCubit, ProjectsState>(
       builder: (context, state) {

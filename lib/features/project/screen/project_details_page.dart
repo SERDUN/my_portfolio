@@ -11,24 +11,13 @@ import '../widgets/widgets.dart';
 class ProjectDetailsPage extends StatefulWidget {
   const ProjectDetailsPage({
     Key? key,
-    required this.id,
   }) : super(key: key);
-
-  final String id;
 
   @override
   _ContactUsState createState() => _ContactUsState();
 }
 
 class _ContactUsState extends State<ProjectDetailsPage> with TickerProviderStateMixin {
-  late final ProjectCubit _bloc = BlocProvider.of<ProjectCubit>(context);
-
-  @override
-  void didChangeDependencies() {
-    _bloc.getProjectById(widget.id);
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProjectCubit, ProjectState>(builder: (context, state) {
