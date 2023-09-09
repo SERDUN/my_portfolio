@@ -37,6 +37,10 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.baseUrl,
       instanceName: 'baseUrl',
     );
+    gh.factory<bool>(
+      () => registerModule.hasServerSync,
+      instanceName: 'hasServerSync',
+    );
     return this;
   }
 }

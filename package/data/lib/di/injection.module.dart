@@ -27,10 +27,12 @@ class DataPackageModule extends _i1.MicroPackageModule {
     gh.singleton<_i4.AssetsDataSource>(_i4.AssetsDataSource());
     gh.singleton<_i5.MemoryDataSource>(_i5.MemoryDataSource());
     gh.factory<_i6.ProjectRepository>(() => _i7.ProjectRepositoryImpl(
+          gh<bool>(instanceName: 'hasServerSync'),
           gh<_i8.AssetsDataSource>(),
           gh<_i8.ApiDatasource>(),
         ));
     gh.factory<_i6.UserRepository>(() => _i9.UserRepositoryImpl(
+          gh<bool>(instanceName: 'hasServerSync'),
           gh<_i8.AssetsDataSource>(),
           gh<_i8.ApiDatasource>(),
         ));

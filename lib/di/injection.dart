@@ -26,4 +26,7 @@ abstract class RegisterModule {
 
   @Named("userId")
   String get userId => 'R5KVoOkqVztd4uxKxTCt';
+
+  @Named("hasServerSync")
+  bool get hasServerSync => false;
 }
