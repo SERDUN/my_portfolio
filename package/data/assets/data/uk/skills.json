@@ -24,12 +24,12 @@
         "subskills": []
       },
       {
-        "title": "Localization",
+        "title": "Локалізація",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Ability to implement complex and performant layout",
+        "title": "Здатність реалізовувати складні та продуктивні макети",
         "expanded": false,
         "subskills": []
       },
@@ -39,27 +39,27 @@
         "subskills": []
       },
       {
-        "title": "Creating plugin",
+        "title": "Створення плагінів",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Custom animation",
+        "title": "Користувацька анімація",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Navigator 1.0 Imperative",
+        "title": "Navigator 1.0 Імперативний",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Navigator 2.0 Declarative",
+        "title": "Navigator 2.0 Декларативний",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Constraints",
+        "title": "Обмеження",
         "expanded": false,
         "subskills": []
       }
@@ -70,7 +70,7 @@
     "expanded": false,
     "subskills": [
       {
-        "title": "Java core",
+        "title": "Основи Java",
         "expanded": false,
         "subskills": []
       },
@@ -97,20 +97,20 @@
     ]
   },
   {
-    "title": "Another",
+    "title": "Інше",
     "expanded": true,
     "subskills": [
       {
-        "title": "Architecture",
+        "title": "Архітектура",
         "expanded": false,
         "subskills": [
           {
-            "title": "Clean architecture/MVP/MVVM",
+            "title": "Чиста архітектура/MVP/MVVM",
             "expanded": false,
             "subskills": []
           },
           {
-            "title": "OOP/SOLID",
+            "title": "ООП/SOLID",
             "expanded": false,
             "subskills": []
           },
@@ -127,7 +127,7 @@
         ]
       },
       {
-        "title": "Services",
+        "title": "Сервіси",
         "expanded": false,
         "subskills": [
           {
@@ -141,23 +141,23 @@
             "subskills": []
           },
           {
-            "title": "Payments integration",
+            "title": "Інтеграція платежів",
             "expanded": false,
             "subskills": []
           }
         ]
       },
       {
-        "title": "Backend",
+        "title": "Бекенд",
         "expanded": false,
         "subskills": [
           {
-            "title": "NodeJS (Beginner)",
+            "title": "NodeJS (Початківець)",
             "expanded": false,
             "subskills": []
           },
           {
-            "title": "Firebase cloud functions",
+            "title": "Функції Firebase Cloud",
             "expanded": false,
             "subskills": []
           },
@@ -167,7 +167,7 @@
             "subskills": []
           },
           {
-            "title": "Firebase database",
+            "title": "Firebase База Даних",
             "expanded": false,
             "subskills": []
           }

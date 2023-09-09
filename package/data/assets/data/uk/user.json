@@ -1,9 +1,9 @@
 {
-  "first_name": "Dmitro",
-  "second_name": "Serdun",
-  "name": "Dmitro Serdun",
+  "first_name": "Дмитро",
+  "second_name": "Сердун",
+  "name": "Дмитро Сердун",
   "avatar_url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/data/avatar.webp",
   "cv_url": "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing",
-  "position": "Mobile Developer!",
-  "intro": "Hi, let me introduce myself. \nMe twenty-five years and i Live in Ukraine, Odesa. I'm a mobile developer with more than 4 years of experience.\nMy essential platform is Android but for the last 2 years  in general i've created or were practiced Flutter cross-platform projects. \nBy the way you are checking my Flutter skills directly at the moment while scrolling this page)\n                      \n\nGlory to Ukraine"
+  "position": "Мобільний розробник!",
+  "intro": "Привіт, дозвольте представити себе. \nМені двадцять п'ять років, і я живу в Україні, Одеса. Я мобільний розробник з більш ніж 4-річним досвідом роботи.\nМоя основна платформа - Android, але протягом останніх 2 років я створював або практикував проекти Flutter для кросплатформенної розробки.\nДо речі, ви зараз перевіряєте мої навички Flutter, прокручуючи цю сторінку)\n \n\nСлава Україні"
 }
