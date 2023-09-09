@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void didChangeDependencies() {
     _bloc.subscribeOnUserData();
-    // _bloc.getUserSkills();
+    _bloc.subscribeOnUserSkills();
     super.didChangeDependencies();
   }
 

@@ -39,8 +39,8 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Stream<List<PortfolioSkillsDTO>> getSkills(String localization) {
     final StreamController<List<PortfolioSkillsDTO>> _streamController = StreamController<List<PortfolioSkillsDTO>>();
-    _streamController.addFuture(assetDataSource.getSkills());
-    _streamController.addFuture(apiDatasource.getSkills(), ignore: !hasServerSync);
+    _streamController.addFuture(assetDataSource.getSkills(localization));
+    _streamController.addFuture(apiDatasource.getSkills(localization), ignore: !hasServerSync);
     return _streamController.stream;
   }
 }

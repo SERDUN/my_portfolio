@@ -30,17 +30,15 @@ class AssetsDataSource {
     return Future.value(contacts);
   }
 
-  Future<List<PortfolioSkillsDTO>> getSkills() async {
-    String data = await rootBundle.loadString('packages/data/assets/data/en/skills.json');
+  Future<List<PortfolioSkillsDTO>> getSkills(String localization) async {
+    String data = await rootBundle.loadString('packages/data/assets/data/$localization/skills.json');
     var jsonResult = json.decode(data) as List;
     List<PortfolioSkillsDTO> skills = jsonResult.map((data) => PortfolioSkillsDTO.fromJson(data)).toList();
     return Future.value(skills);
   }
 
   Future<PortfolioUserDTO> getUser(String localization) async {
-    String data = localization == "en"
-        ? await rootBundle.loadString('packages/data/assets/data/en/user.json')
-        : await rootBundle.loadString('packages/data/assets/data/uk/user.json');
+    String data = await rootBundle.loadString('packages/data/assets/data/$localization/user.json');
     var jsonResult = json.decode(data);
     PortfolioUserDTO portfolioDTO = PortfolioUserDTO.fromJson(jsonResult);
     return Future.value(portfolioDTO);

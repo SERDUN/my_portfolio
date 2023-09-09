@@ -25,7 +25,7 @@ class BioCubit extends Cubit<BioState> {
     });
   }
 
-  void getUserSkills() async {
+  void subscribeOnUserSkills() async {
     _skillsStreamSubscription?.cancel();
     _skillsStreamSubscription = null;
     _skillsStreamSubscription = skillsUseCase.execute().listen((event) {

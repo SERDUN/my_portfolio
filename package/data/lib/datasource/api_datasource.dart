@@ -74,9 +74,9 @@ class ApiDatasource {
     return contacts;
   }
 
-  Future<List<PortfolioSkillsDTO>> getSkills() async {
+  Future<List<PortfolioSkillsDTO>> getSkills(String localization) async {
     final response = await apiClient.get(_endpoint(skillsPath), headers: {
-      'accept-language': 'en',
+      'accept-language': localization,
     });
     var jsonResult = jsonDecode(response.body) as List;
     List<PortfolioSkillsDTO> contacts = jsonResult.map((data) => PortfolioSkillsDTO.fromJson(data)).toList();
