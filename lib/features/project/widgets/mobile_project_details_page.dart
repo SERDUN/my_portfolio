@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:my_portfolio/localization/localization.dart';
 import 'package:octo_image/octo_image.dart';
 
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
+import 'package:my_portfolio/localization/localization.dart';
 
 import 'project_links.dart';
 
@@ -40,11 +40,12 @@ class MobileProjectDetailsPage extends StatelessWidget {
           height: 8,
         ),
         Container(
-            margin: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              (project.intro ?? ""),
-              textAlign: TextAlign.center,
-            )),
+          margin: const EdgeInsets.symmetric(horizontal: 8),
+          child: Text(
+            (project.intro ?? ""),
+            textAlign: TextAlign.center,
+          ),
+        ),
         const SizedBox(
           height: 40,
         ),
@@ -74,11 +75,12 @@ class MobileProjectDetailsPage extends StatelessWidget {
           height: 16,
         ),
         Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              project.description ?? "",
-              style: Theme.of(context).textTheme.bodyMedium,
-            )),
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            project.description ?? "",
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ),
         const SizedBox(
           height: 40,
         ),
@@ -115,29 +117,29 @@ class MobileProjectDetailsPage extends StatelessWidget {
           margin: EdgeInsets.only(top: 16, bottom: 16),
         ),
         SizedBox(
-            child: CarouselSlider.builder(
-          options: CarouselOptions(
-            height: MediaQuery.of(context).size.width / 2,
-            aspectRatio: 9 / 16,
-            viewportFraction: 0.25,
-            initialPage: 0,
-            enableInfiniteScroll: true,
-            reverse: false,
-            autoPlay: false,
-            autoPlayCurve: Curves.fastOutSlowIn,
-            enlargeCenterPage: true,
-            scrollDirection: Axis.horizontal,
-          ),
-          itemCount: project.screenshots.length,
-          itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
-            return SizedBox(
-              width: double.infinity,
-              height: double.infinity,
-              child: Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                elevation: 4,
-                child: Padding(
-                  child: ClipRRect(
+          child: CarouselSlider.builder(
+            options: CarouselOptions(
+              height: MediaQuery.of(context).size.width / 2,
+              aspectRatio: 9 / 16,
+              viewportFraction: 0.25,
+              initialPage: 0,
+              enableInfiniteScroll: true,
+              reverse: false,
+              autoPlay: false,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enlargeCenterPage: true,
+              scrollDirection: Axis.horizontal,
+            ),
+            itemCount: project.screenshots.length,
+            itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
+              return SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  elevation: 4,
+                  child: Padding(
+                    child: ClipRRect(
                       borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
@@ -147,13 +149,15 @@ class MobileProjectDetailsPage extends StatelessWidget {
                         ),
                         errorBuilder: OctoError.icon(color: Colors.red),
                         fit: BoxFit.scaleDown,
-                      )),
-                  padding: const EdgeInsets.all(8),
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(8),
+                  ),
                 ),
-              ),
-            );
-          },
-        )),
+              );
+            },
+          ),
+        ),
         const SizedBox(
           height: 40,
         )

@@ -11,11 +11,7 @@ import 'injection.config.dart';
     ExternalModule(DomainPackageModule),
   ],
 )
-Future<GetIt> configureDependencies(String environment) async {
-  final di = GetIt.asNewInstance();
-  await di.init();
-  return di;
-}
+Future<GetIt> configureDependencies(String environment) async => GetIt.asNewInstance().init();
 
 @module
 abstract class RegisterModule {

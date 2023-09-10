@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'package:my_portfolio/localization/localization.dart';
-import 'package:my_portfolio/main.dart';
 
 import '../widgets/widgets.dart';
 

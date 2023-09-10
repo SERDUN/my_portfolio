@@ -9,20 +9,20 @@ import 'package:get_it/get_it.dart';
 import 'core/app_environment_keys.dart';
 import 'di/injection.dart';
 
-Future<void> bootstrap(FutureOr<Widget> Function(GetIt di) builder) async {
-  await runZonedGuarded(
-    () async {
-      WidgetsFlutterBinding.ensureInitialized();
-      usePathUrlStrategy();
+Future<void> bootstrap(FutureOr<Widget> Function(GetIt di) builder) async =>
+    runZonedGuarded(() async => _initialize(builder), _handleError);
 
-      final di = await configureDependencies(AppEnvironmentKey.dev);
+void _initialize(FutureOr<Widget> Function(GetIt di) builder) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
 
-      return runApp(await builder(di));
-    },
-    (error, stackTrace) {
-      if (kDebugMode) {
-        print(error);
-      }
-    },
-  );
+  final di = await configureDependencies(AppEnvironmentKey.dev);
+
+  return runApp(await builder(di));
+}
+
+void _handleError(Object error, StackTrace stack) {
+  if (kDebugMode) {
+    print(error);
+  }
 }

@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
 import '../bloc/projects_cubit.dart';
-
-import 'package:my_portfolio/core/widgets/widgets.dart';
-
 import '../widgets/portfolio_item.dart';
 
 class PortfolioPage extends StatefulWidget {
@@ -20,8 +18,6 @@ class PortfolioPage extends StatefulWidget {
 }
 
 class _HomePageState extends State<PortfolioPage> {
-  late final ProjectsCubit _bloc = BlocProvider.of<ProjectsCubit>(context);
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProjectsCubit, ProjectsState>(
@@ -57,9 +53,7 @@ class _HomePageState extends State<PortfolioPage> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: state.projects.length,
-                        itemBuilder: (context, i) {
-                          return PortfolioItem(project: state.projects[i]);
-                        },
+                        itemBuilder: (context, i) => PortfolioItem(project: state.projects[i]),
                       ),
               ],
             ),

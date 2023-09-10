@@ -1,1 +1,5 @@
-enum HomeRoutes { intro, projects, contact }
+enum HomeRoutes {
+  intro,
+  projects,
+  contact,
+}

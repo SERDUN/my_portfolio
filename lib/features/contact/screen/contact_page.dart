@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:my_portfolio/core/widgets/decoration/decoration.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
@@ -16,7 +18,6 @@ class ContactPage extends StatefulWidget {
 
 class _HomePageState extends State<ContactPage> {
   late final ContactsCubit _bloc = BlocProvider.of<ContactsCubit>(context);
-
 
   @override
   Widget build(BuildContext context) {

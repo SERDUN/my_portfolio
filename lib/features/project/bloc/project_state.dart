@@ -1,6 +1,11 @@
 part of 'project_cubit.dart';
 
-enum ProjectStatus { initial, loading, error, success }
+enum ProjectStatus {
+  initial,
+  loading,
+  error,
+  success,
+}
 
 @freezed
 class ProjectState with _$ProjectState {

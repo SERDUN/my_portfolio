@@ -12,7 +12,10 @@ part 'contacts_state.dart';
 part 'contacts_cubit.freezed.dart';
 
 class ContactsCubit extends Cubit<ContactsState> {
-  ContactsCubit(this.useCase, this.languageNotifier) : super(const ContactsState(status: ContactsStatus.initial)) {
+  ContactsCubit(
+    this.useCase,
+    this.languageNotifier,
+  ) : super(const ContactsState(status: ContactsStatus.initial)) {
     _initState();
     languageNotifier.addListener(_initState);
   }

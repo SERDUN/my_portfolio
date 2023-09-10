@@ -49,16 +49,16 @@ class MobilePortfolioItem extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 16),
                 ),
                 ClipRRect(
-                    borderRadius: BorderRadius.circular(9.0),
-                    child: OctoImage(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 0.75,
-                        image: Image.network(project.preview ?? "").image,
-                        placeholderBuilder: OctoPlaceholder.blurHash(
-                          'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-                        ),
-                        errorBuilder: OctoError.icon(color: Colors.red),
-                        fit: BoxFit.fitWidth))
+                  borderRadius: BorderRadius.circular(9.0),
+                  child: OctoImage(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.75,
+                    image: Image.network(project.preview ?? "").image,
+                    placeholderBuilder: OctoPlaceholder.blurHash('LEHV6nWB2yk8pyo0adR*.7kCMdnj'),
+                    errorBuilder: OctoError.icon(color: Colors.red),
+                    fit: BoxFit.fitWidth,
+                  ),
+                )
               ],
             ),
           ),

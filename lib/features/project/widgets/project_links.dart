@@ -70,15 +70,18 @@ class SocialPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-        visible: link.isNotEmpty,
-        child: MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-                onTap: () => openLink(link),
-                child: Image.asset(
-                  icon,
-                  width: iconSize,
-                  height: iconSize,
-                ))));
+      visible: link.isNotEmpty,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: () => openLink(link),
+          child: Image.asset(
+            icon,
+            width: iconSize,
+            height: iconSize,
+          ),
+        ),
+      ),
+    );
   }
 }

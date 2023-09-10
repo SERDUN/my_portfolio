@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/localization/localization.dart';
 
 import 'package:octo_image/octo_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 import 'project_links.dart';
@@ -36,42 +36,42 @@ class DesktopProjectDetailsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Flexible(
-                    flex: 4,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: Row(
-                        children: [
-                          Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 24),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    (project.name ?? "").toUpperCase(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium
-                                        ?.copyWith(fontStyle: FontStyle.italic),
-                                  ),
-                                  const DecorationViewLines(
-                                    margin: EdgeInsets.only(top: 0, bottom: 4),
-                                  ),
-                                ],
-                              )),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width / 3,
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                (project.name ?? "").toUpperCase(),
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(fontStyle: FontStyle.italic),
+                              ),
+                              const DecorationViewLines(
+                                margin: EdgeInsets.only(top: 0, bottom: 4),
+                              ),
+                            ],
                           ),
-                          Expanded(
-                            child: Container(
-                                margin: const EdgeInsets.only(right: 8),
-                                child: Text(
-                                  (project.intro ?? "").toUpperCase(),
-                                  textAlign: TextAlign.right,
-                                )),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 3,
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 8),
+                            child: Text(
+                              (project.intro ?? "").toUpperCase(),
+                              textAlign: TextAlign.right,
+                            ),
                           ),
-                        ],
-                      ),
-                    )),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(
@@ -165,45 +165,46 @@ class DesktopProjectDetailsPage extends StatelessWidget {
           height: 16,
         ),
         SizedBox(
-            child: CarouselSlider.builder(
-          options: CarouselOptions(
-            height: MediaQuery.of(context).size.width / 2,
-            aspectRatio: 9 / 16,
-            viewportFraction: 0.25,
-            initialPage: 0,
-            enableInfiniteScroll: true,
-            reverse: false,
-            autoPlay: false,
-            autoPlayCurve: Curves.fastOutSlowIn,
-            enlargeCenterPage: true,
-            scrollDirection: Axis.horizontal,
-          ),
-          itemCount: project.screenshots.length,
-          itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
-            return SizedBox(
-              width: double.infinity,
-              height: double.infinity,
-              child: Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                elevation: 4,
-                child: Padding(
-                  child: ClipRRect(
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: OctoImage(
-                        image: Image.network(project.screenshots[itemIndex]).image,
-                        placeholderBuilder: OctoPlaceholder.blurHash(
-                          'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-                        ),
-                        errorBuilder: OctoError.icon(color: Colors.red),
-                        fit: BoxFit.scaleDown,
-                      )),
-                  padding: const EdgeInsets.all(8),
+          child: CarouselSlider.builder(
+            options: CarouselOptions(
+              height: MediaQuery.of(context).size.width / 2,
+              aspectRatio: 9 / 16,
+              viewportFraction: 0.25,
+              initialPage: 0,
+              enableInfiniteScroll: true,
+              reverse: false,
+              autoPlay: false,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enlargeCenterPage: true,
+              scrollDirection: Axis.horizontal,
+            ),
+            itemCount: project.screenshots.length,
+            itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
+              return SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  elevation: 4,
+                  child: Padding(
+                    child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: OctoImage(
+                          image: Image.network(project.screenshots[itemIndex]).image,
+                          placeholderBuilder: OctoPlaceholder.blurHash(
+                            'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                          ),
+                          errorBuilder: OctoError.icon(color: Colors.red),
+                          fit: BoxFit.scaleDown,
+                        )),
+                    padding: const EdgeInsets.all(8),
+                  ),
                 ),
-              ),
-            );
-          },
-        )),
+              );
+            },
+          ),
+        ),
       ],
     );
   }
