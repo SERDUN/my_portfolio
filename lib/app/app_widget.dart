@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_portfolio/di/injection.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
@@ -17,7 +17,10 @@ import 'app_route_consts.dart';
 class Application extends StatefulWidget {
   const Application({
     Key? key,
+    required this.di,
   }) : super(key: key);
+
+  final GetIt di;
 
   @override
   State<Application> createState() => _ApplicationState();
@@ -27,6 +30,8 @@ class _ApplicationState extends State<Application> {
   final LanguageNotifier _languageNotifier = LanguageNotifier();
 
   late final GoRouter _router = _buildRouting();
+
+  get di => widget.di;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +117,11 @@ class _ApplicationState extends State<Application> {
                     GoRoute(
                       path: AppRoutInfo.resume.path,
                       builder: (BuildContext context, GoRouterState state) => BlocProvider<BioCubit>(
-                        create: (BuildContext context) => BioCubit(di<GetUserUseCase>(), di.get(), _languageNotifier),
+                        create: (BuildContext context) => BioCubit(
+                          di<GetUserUseCase>(),
+                          di<GetUserSkillsUseCase>(),
+                          _languageNotifier,
+                        ),
                         child: const HomePage(),
                       ),
                     ),
@@ -123,7 +132,10 @@ class _ApplicationState extends State<Application> {
                     GoRoute(
                       path: AppRoutInfo.portfolio.path,
                       builder: (BuildContext context, GoRouterState state) => BlocProvider<ProjectsCubit>(
-                        create: (BuildContext context) => ProjectsCubit(di<GetProjectsUseCase>(), _languageNotifier),
+                        create: (BuildContext context) => ProjectsCubit(
+                          di<GetProjectsUseCase>(),
+                          _languageNotifier,
+                        ),
                         child: const PortfolioPage(),
                       ),
                       routes: [
@@ -148,7 +160,10 @@ class _ApplicationState extends State<Application> {
                     GoRoute(
                       path: AppRoutInfo.contacts.path,
                       builder: (BuildContext context, GoRouterState state) => BlocProvider<ContactsCubit>(
-                        create: (BuildContext context) => ContactsCubit(di<GetContactsUseCase>(), _languageNotifier),
+                        create: (BuildContext context) => ContactsCubit(
+                          di<GetContactsUseCase>(),
+                          _languageNotifier,
+                        ),
                         child: const ContactPage(),
                       ),
                     ),

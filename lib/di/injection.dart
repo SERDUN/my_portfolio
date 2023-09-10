@@ -5,17 +5,16 @@ import 'package:injectable/injectable.dart';
 
 import 'injection.config.dart';
 
-late GetIt di;
-
 @InjectableInit(
   externalPackageModulesBefore: [
     ExternalModule(DataPackageModule),
     ExternalModule(DomainPackageModule),
   ],
 )
-Future configureDependencies(String environment) async {
-  di = GetIt.asNewInstance();
-  di.init();
+Future<GetIt> configureDependencies(String environment) async {
+  final di = GetIt.asNewInstance();
+  await di.init();
+  return di;
 }
 
 @module

@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
-import 'di/injection.dart';
-import 'core/core.dart';
+import 'bootstrap.dart';
+
 import 'app/app.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  // setUrlStrategy(PathUrlStrategy());
-  await configureDependencies(AppEnvironmentKey.dev);
-  runApp(const Application());
+  bootstrap((di) async {
+    return Application(di: di);
+  });
 }
