@@ -27,8 +27,10 @@ class Application extends StatefulWidget {
 }
 
 class _ApplicationState extends State<Application> {
-  final LanguageNotifier _languageNotifier = LanguageNotifier();
   final ThemeModelNotifier _styleNotifier = ThemeModelNotifier();
+  late final LanguageNotifier _languageNotifier = LanguageNotifier((locale) {
+    di.get<LocalizationService>().locale = locale.languageCode;
+  });
 
   late final GoRouter _router = _buildRouting();
 
@@ -37,12 +39,14 @@ class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
     return LanguageProvider(
-      languageNotifier: _languageNotifier,
-      onLanguageChanged: _updateLanguage,
+      notifier: _languageNotifier,
       child: ThemeModeProvider(
         notifier: _styleNotifier,
         child: Builder(
           builder: (context) {
+            final languageNotifier = LanguageProvider.watch(context);
+            final themeModeNotifier = ThemeModeProvider.watch(context);
+
             return MaterialApp.router(
               localizationsDelegates: const [
                 AppLocalizations.delegate,
@@ -62,9 +66,9 @@ class _ApplicationState extends State<Application> {
                 scheme: FlexScheme.espresso,
                 fontFamily: GoogleFonts.gentiumPlus().fontFamily,
               ),
-              themeMode: ThemeModeProvider.watch(context)?.themeModeNotifier.themeMode,
+              themeMode: themeModeNotifier?.themeModeNotifier.themeMode,
               restorationScopeId: "application",
-              locale: _languageNotifier.currentLocale,
+              locale: languageNotifier?.languageNotifier.currentLocale,
               title: "Dmitro Serdun",
               builder: (context, widget) => ResponsiveWrapper.builder(
                 BouncingScrollWrapper.builder(context, widget!),
@@ -91,11 +95,6 @@ class _ApplicationState extends State<Application> {
         ),
       ),
     );
-  }
-
-  void _updateLanguage(Locale value) {
-    di.get<LocalizationService>().locale = value.languageCode;
-    setState(() {});
   }
 
   GoRouter _buildRouting() {

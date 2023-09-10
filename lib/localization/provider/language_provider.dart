@@ -5,18 +5,13 @@ import 'language_notifier.dart';
 class LanguageProvider extends InheritedNotifier {
   const LanguageProvider({
     super.key,
-    required this.languageNotifier,
-    required this.onLanguageChanged,
+    required super.notifier,
     required super.child,
   });
 
-  final LanguageNotifier languageNotifier;
-  final Function(Locale value) onLanguageChanged;
+  LanguageNotifier get languageNotifier => notifier as LanguageNotifier;
 
-  void setLocale(Locale value) {
-    onLanguageChanged.call(value);
-    languageNotifier.changeLanguage(Locale(value.languageCode));
-  }
+  void setLocale(Locale value) => languageNotifier.changeLanguage(Locale(value.languageCode));
 
   static LanguageProvider? watch(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<LanguageProvider>();
