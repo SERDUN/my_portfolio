@@ -28,6 +28,7 @@ class Application extends StatefulWidget {
 
 class _ApplicationState extends State<Application> {
   final LanguageNotifier _languageNotifier = LanguageNotifier();
+  final ThemeModelNotifier _styleNotifier = ThemeModelNotifier();
 
   late final GoRouter _router = _buildRouting();
 
@@ -38,53 +39,56 @@ class _ApplicationState extends State<Application> {
     return LanguageProvider(
       languageNotifier: _languageNotifier,
       onLanguageChanged: _updateLanguage,
-      child: Builder(
-        builder: (context) {
-          return MaterialApp.router(
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('en', ''),
-              Locale('uk', ''),
-            ],
-            theme: FlexThemeData.light(
-              scheme: FlexScheme.espresso,
-              fontFamily: GoogleFonts.gentiumPlus().fontFamily,
-            ),
-            darkTheme: FlexThemeData.dark(
-              scheme: FlexScheme.espresso,
-              fontFamily: GoogleFonts.gentiumPlus().fontFamily,
-            ),
-            themeMode: ThemeMode.dark,
-            restorationScopeId: "application",
-            locale: _languageNotifier.currentLocale,
-            title: "Dmitro Serdun",
-            builder: (context, widget) => ResponsiveWrapper.builder(
-              BouncingScrollWrapper.builder(context, widget!),
-              maxWidth: 1200,
-              minWidth: 450,
-              defaultScale: true,
-              debugLog: false,
-              breakpoints: [
-                const ResponsiveBreakpoint.autoScale(320, name: MOBILE),
-                const ResponsiveBreakpoint.autoScale(450, name: MOBILE),
-                const ResponsiveBreakpoint.autoScaleDown(800, name: TABLET),
-                const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-                const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-                const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+      child: ThemeModeProvider(
+        notifier: _styleNotifier,
+        child: Builder(
+          builder: (context) {
+            return MaterialApp.router(
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
               ],
-              background: Container(
-                color: Theme.of(context).colorScheme.surface,
+              supportedLocales: const [
+                Locale('en', ''),
+                Locale('uk', ''),
+              ],
+              theme: FlexThemeData.light(
+                scheme: FlexScheme.espresso,
+                fontFamily: GoogleFonts.gentiumPlus().fontFamily,
               ),
-            ),
-            debugShowCheckedModeBanner: false,
-            routerConfig: _router,
-          );
-        },
+              darkTheme: FlexThemeData.dark(
+                scheme: FlexScheme.espresso,
+                fontFamily: GoogleFonts.gentiumPlus().fontFamily,
+              ),
+              themeMode: ThemeModeProvider.watch(context)?.themeModeNotifier.themeMode,
+              restorationScopeId: "application",
+              locale: _languageNotifier.currentLocale,
+              title: "Dmitro Serdun",
+              builder: (context, widget) => ResponsiveWrapper.builder(
+                BouncingScrollWrapper.builder(context, widget!),
+                maxWidth: 1200,
+                minWidth: 450,
+                defaultScale: true,
+                debugLog: false,
+                breakpoints: [
+                  const ResponsiveBreakpoint.autoScale(320, name: MOBILE),
+                  const ResponsiveBreakpoint.autoScale(450, name: MOBILE),
+                  const ResponsiveBreakpoint.autoScaleDown(800, name: TABLET),
+                  const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+                  const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+                  const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+                ],
+                background: Container(
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+              ),
+              debugShowCheckedModeBanner: false,
+              routerConfig: _router,
+            );
+          },
+        ),
       ),
     );
   }
