@@ -1,12 +1,8 @@
-import 'dart:math';
-
-import 'package:domain/services/services.dart';
 import 'package:injectable/injectable.dart';
 
-import '../common/mapper_contract.dart';
-import '../entity/dto/contacts_dto.dart';
-import '../entity/model/contacts_model.dart';
-import '../repository/user_repository.dart';
+import 'package:domain/entity/entity.dart';
+import 'package:domain/repository/repository.dart';
+import 'package:domain/common/common.dart';
 
 abstract class GetContactsUseCase {
   Stream<List<ContactsModel>> execute();
@@ -15,19 +11,19 @@ abstract class GetContactsUseCase {
 @Injectable(as: GetContactsUseCase)
 class GetContactsUseCaseImpl implements GetContactsUseCase {
   GetContactsUseCaseImpl(
-    this.localizationService,
+    this.config,
     this.userRepository,
     this.mapper,
   );
 
-  final LocalizationService localizationService;
+  final Config config;
   final UserRepository userRepository;
   final Mapper<ContactsDTO, ContactsModel> mapper;
 
   @override
   Stream<List<ContactsModel>> execute() {
     return userRepository
-        .getContacts(localizationService.locale)
+        .getContacts(config.currentLocale)
         .map((event) => event.map((data) => mapper.mapToModel(data)).toList());
   }
 }

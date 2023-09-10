@@ -29,7 +29,7 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   final ThemeModelNotifier _styleNotifier = ThemeModelNotifier();
   late final LanguageNotifier _languageNotifier = LanguageNotifier((locale) {
-    di.get<LocalizationService>().locale = locale.languageCode;
+    di<Config>().setCurrentLocale = locale.languageCode;
   });
 
   late final GoRouter _router = _buildRouting();

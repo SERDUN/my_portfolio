@@ -1,12 +1,9 @@
 // ignore_for_file: null_argument_to_non_null_type
-
-import 'package:domain/services/services.dart';
 import 'package:injectable/injectable.dart';
 
-import '../common/mapper_contract.dart';
-import '../entity/dto/portfolio_user_dto.dart';
-import '../entity/model/portfolio_user_model.dart';
-import '../repository/user_repository.dart';
+import 'package:domain/entity/entity.dart';
+import 'package:domain/repository/repository.dart';
+import 'package:domain/common/common.dart';
 
 abstract class GetUserUseCase {
   Stream<PortfolioUserModel> execute();
@@ -15,17 +12,17 @@ abstract class GetUserUseCase {
 @Injectable(as: GetUserUseCase)
 class GetUserUseCaseImpl implements GetUserUseCase {
   GetUserUseCaseImpl(
-    this.localizationService,
+    this.config,
     this.userRepository,
     this.mapper,
   );
 
-  final LocalizationService localizationService;
+  final Config config;
   final UserRepository userRepository;
   final Mapper<PortfolioUserDTO, PortfolioUserModel> mapper;
 
   @override
   Stream<PortfolioUserModel> execute() {
-    return userRepository.getUser(localizationService.locale).map((event) => mapper.mapToModel(event));
+    return userRepository.getUser(config.currentLocale).map((event) => mapper.mapToModel(event));
   }
 }

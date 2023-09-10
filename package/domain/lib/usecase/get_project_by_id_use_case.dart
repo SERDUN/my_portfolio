@@ -1,10 +1,8 @@
-import 'package:domain/services/services.dart';
 import 'package:injectable/injectable.dart';
 
-import '../common/mapper_contract.dart';
-import '../entity/dto/project_dto.dart';
-import '../entity/model/project_model.dart';
-import '../repository/project_repository.dart';
+import 'package:domain/entity/entity.dart';
+import 'package:domain/repository/repository.dart';
+import 'package:domain/common/common.dart';
 
 abstract class GetProjectByIdUseCase {
   Stream<ProjectModel> execute({
@@ -15,12 +13,12 @@ abstract class GetProjectByIdUseCase {
 @Injectable(as: GetProjectByIdUseCase)
 class GetProjectByIdUseCaseImpl implements GetProjectByIdUseCase {
   GetProjectByIdUseCaseImpl(
-    this.localizationService,
+    this.config,
     this.userRepository,
     this.mapper,
   );
 
-  final LocalizationService localizationService;
+  final Config config;
   final ProjectRepository userRepository;
   final Mapper<ProjectDTO, ProjectModel> mapper;
 
@@ -28,6 +26,6 @@ class GetProjectByIdUseCaseImpl implements GetProjectByIdUseCase {
   Stream<ProjectModel> execute({
     required String id,
   }) {
-    return userRepository.getProjectById(id, localizationService.locale).map((event) => mapper.mapToModel(event));
+    return userRepository.getProjectById(id, config.currentLocale).map((event) => mapper.mapToModel(event));
   }
 }
