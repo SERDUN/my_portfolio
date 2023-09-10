@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:my_portfolio/localization/localization.dart';
-import 'package:responsive_framework/responsive_wrapper.dart';
+import 'package:responsive_framework/responsive_breakpoints.dart';
 
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
+import 'package:my_portfolio/localization/localization.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({
@@ -50,10 +50,10 @@ class AboutMe extends StatelessWidget {
               ),
               TreeView(
                 data: skills,
-                subCategoryTextStyle: ResponsiveWrapper.of(context).isDesktop
+                subCategoryTextStyle: ResponsiveBreakpoints.of(context).isDesktop
                     ? Theme.of(context).textTheme.bodyLarge!
                     : Theme.of(context).textTheme.bodyMedium!,
-                categoryTextStyle: ResponsiveWrapper.of(context).isDesktop
+                categoryTextStyle: ResponsiveBreakpoints.of(context).isDesktop
                     ? Theme.of(context).textTheme.bodyLarge!
                     : Theme.of(context).textTheme.bodyMedium!,
               )

@@ -46,8 +46,20 @@ class _ApplicationState extends State<Application> {
           builder: (context) {
             final languageNotifier = LanguageProvider.watch(context);
             final themeModeNotifier = ThemeModeProvider.watch(context);
-
             return MaterialApp.router(
+              builder: (context, child) => ResponsiveBreakpoints.builder(
+                child: MaxWidthBox(
+                  maxWidth: 1200,
+                  background: Container(color: Theme.of(context).colorScheme.surface),
+                  child: BouncingScrollWrapper.builder(context, child!, dragWithMouse: true),
+                ),
+                breakpoints: [
+                  const Breakpoint(start: 0, end: 450, name: MOBILE),
+                  const Breakpoint(start: 451, end: 800, name: TABLET),
+                  const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+                  const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+                ],
+              ),
               localizationsDelegates: const [
                 AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
@@ -70,24 +82,6 @@ class _ApplicationState extends State<Application> {
               restorationScopeId: "application",
               locale: languageNotifier?.languageNotifier.currentLocale,
               title: "Dmitro Serdun",
-              builder: (context, widget) => ResponsiveWrapper.builder(
-                BouncingScrollWrapper.builder(context, widget!),
-                maxWidth: 1200,
-                minWidth: 450,
-                defaultScale: true,
-                debugLog: false,
-                breakpoints: [
-                  const ResponsiveBreakpoint.autoScale(320, name: MOBILE),
-                  const ResponsiveBreakpoint.autoScale(450, name: MOBILE),
-                  const ResponsiveBreakpoint.autoScaleDown(800, name: TABLET),
-                  const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-                  const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-                  const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
-                ],
-                background: Container(
-                  color: Theme.of(context).colorScheme.surface,
-                ),
-              ),
               debugShowCheckedModeBanner: false,
               routerConfig: _router,
             );

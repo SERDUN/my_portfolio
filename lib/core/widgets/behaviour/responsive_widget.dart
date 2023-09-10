@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_wrapper.dart';
+
+import 'package:responsive_framework/responsive_breakpoints.dart';
 
 class ResponsiveWidget extends StatelessWidget {
   const ResponsiveWidget({
@@ -15,11 +16,11 @@ class ResponsiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ResponsiveWrapper.of(context).isDesktop) {
+    if (ResponsiveBreakpoints.of(context).isDesktop) {
       return desktopScreen ?? tabletScreen ?? mobileScreen!;
     }
 
-    if (ResponsiveWrapper.of(context).isTablet) {
+    if (ResponsiveBreakpoints.of(context).isTablet) {
       return tabletScreen ?? desktopScreen ?? mobileScreen!;
     }
 
