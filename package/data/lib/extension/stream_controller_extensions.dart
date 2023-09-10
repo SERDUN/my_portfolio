@@ -1,7 +1,7 @@
 import 'dart:async';
 
 extension StreamControllerExtension on StreamController {
-  void addFuture(
+  Future addFuture(
     Future future, {
     bool? cancelOnError,
   }) =>

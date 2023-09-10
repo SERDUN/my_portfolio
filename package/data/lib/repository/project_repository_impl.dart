@@ -25,16 +25,20 @@ class ProjectRepositoryImpl extends ProjectRepository {
   @override
   Stream<ProjectDTO> getProjectById(String id, String localization) {
     final StreamController<ProjectDTO> _streamController = StreamController<ProjectDTO>();
-    if (hasLocalSync) _streamController.addFuture(assetsDatasource.getProject(id, localization));
-    if (hasServerSync) _streamController.addFuture(apiDatasource.getProject(id, localization));
+    Future.microtask(() async {
+      if (hasLocalSync) await _streamController.addFuture(assetsDatasource.getProject(id, localization));
+      if (hasServerSync) await _streamController.addFuture(apiDatasource.getProject(id, localization));
+    });
     return _streamController.stream;
   }
 
   @override
   Stream<List<ProjectDTO>> getProjects(String localization) {
     final StreamController<List<ProjectDTO>> _streamController = StreamController<List<ProjectDTO>>();
-    if (hasLocalSync) _streamController.addFuture(assetsDatasource.getProjects(localization));
-    if (hasServerSync) _streamController.addFuture(apiDatasource.getProjects(localization));
+    Future.microtask(() async {
+      if (hasLocalSync) await _streamController.addFuture(assetsDatasource.getProjects(localization));
+      if (hasServerSync) await _streamController.addFuture(apiDatasource.getProjects(localization));
+    });
     return _streamController.stream;
   }
 }
