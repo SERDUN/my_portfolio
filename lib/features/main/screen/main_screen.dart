@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'package:my_portfolio/localization/localization.dart';
+import 'package:my_portfolio/core/style/provider/theme_mode_provider.dart';
 
 import '../widgets/widgets.dart';
 
@@ -17,13 +18,26 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeModeProvider? themeMode = ThemeModeProvider.read(context);
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: kMinInteractiveDimension,
         backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
         title: const Text("Dmitro Serdun"),
-        leading: SwitcherLanguage(
-          localizationChanged: () => _changeLanguage(context),
+        leadingWidth: 72,
+        leading: Row(
+          children: [
+            const SizedBox(width: 8),
+            SwitcherLanguage(
+              localizationChanged: () => _changeLanguage(context),
+            ),
+            const SizedBox(width: 8),
+            ThemeModeSwitcher(
+              themeMode: themeMode!.themeModeNotifier.themeMode,
+              onThemeChange: (mode) => themeMode.setThemeMode(mode),
+            )
+          ],
         ),
         actions: [
           ActionTab(
