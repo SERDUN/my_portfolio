@@ -7,7 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/core/style/style.dart';
+import 'package:my_portfolio/style/style.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/features/features.dart';
 import 'package:my_portfolio/localization/localization.dart';

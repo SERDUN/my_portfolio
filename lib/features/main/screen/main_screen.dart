@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'package:my_portfolio/localization/localization.dart';
-import 'package:my_portfolio/core/style/provider/theme_mode_provider.dart';
+import 'package:my_portfolio/style/style.dart';
 
 import '../widgets/widgets.dart';
 
