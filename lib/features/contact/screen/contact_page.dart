@@ -7,17 +7,10 @@ import 'package:my_portfolio/localization/localization.dart';
 
 import '../bloc/contacts_cubit.dart';
 
-class ContactPage extends StatefulWidget {
+class ContactPage extends StatelessWidget {
   const ContactPage({
     Key? key,
   }) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<ContactPage> {
-  late final ContactsCubit _bloc = BlocProvider.of<ContactsCubit>(context);
 
   @override
   Widget build(BuildContext context) {
