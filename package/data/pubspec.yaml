@@ -1,7 +1,7 @@
 name: data
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+publish_to: none
 
 environment:
   sdk: '>=3.0.3 <4.0.0'
@@ -11,6 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
 
+  domain:
+    path: ../domain
+
+  injectable: ^2.3.0
+  get_it:
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -19,8 +27,6 @@ dev_dependencies:
   flutter_lints: ^2.0.3
   http: ^1.1.0
 
-  domain:
-    path: ../domain
 
 flutter:
   assets:

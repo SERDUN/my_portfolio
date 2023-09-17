@@ -23,7 +23,7 @@ class ApiClient extends http.BaseClient {
   }
 }
 
-@Injectable()
+@injectable
 class ApiDatasource {
   ApiDatasource({
     @Named('userId') required this.userId,

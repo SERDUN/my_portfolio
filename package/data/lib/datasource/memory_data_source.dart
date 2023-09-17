@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 
-@Singleton()
+@singleton
 class MemoryDataSource {
   String? language;
 

@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 
 import 'package:domain/entity/entity.dart';
 
-@Singleton()
+@singleton
 class AssetsDataSource {
   Future<List<ProjectDTO>> getProjects(String localization) async {
     String data = localization == "en"

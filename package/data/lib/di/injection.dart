@@ -4,4 +4,4 @@ import 'package:injectable/injectable.dart';
 late GetIt di;
 
 @InjectableInit.microPackage()
-initMicroPackage(){}
+initMicroPackage() {}
