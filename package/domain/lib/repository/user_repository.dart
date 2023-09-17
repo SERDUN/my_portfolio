@@ -1,4 +1,4 @@
-import 'package:domain/domain.dart';
+import 'package:data/data.dart';
 
 abstract class UserRepository {
   Stream<PortfolioUserDTO> getUser(String localization);

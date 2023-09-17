@@ -1,4 +1,4 @@
-import '../entity/dto/project_dto.dart';
+import 'package:data/data.dart';
 
 abstract class ProjectRepository {
   Stream<List<ProjectDTO>> getProjects(String localization);

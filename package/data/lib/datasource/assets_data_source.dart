@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'package:injectable/injectable.dart';
 
-import 'package:domain/entity/entity.dart';
+import '../dto/dto.dart';
 
 @singleton
 class AssetsDataSource {

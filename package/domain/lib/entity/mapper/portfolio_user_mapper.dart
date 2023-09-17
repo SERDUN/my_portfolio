@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
 
+import 'package:data/data.dart';
+
 import '../../common/mapper_contract.dart';
-import '../dto/portfolio_skills_dto.dart';
-import '../dto/portfolio_user_dto.dart';
 import '../model/portfolio_skills_model.dart';
 import '../model/portfolio_user_model.dart';
 
@@ -20,7 +20,6 @@ class PortfolioUserMapper extends Mapper<PortfolioUserDTO, PortfolioUserModel> {
       intro: dto.intro ?? "",
       avatar: dto.avatarUrl ?? "",
       cv: dto.cvUrl ?? "",
-      // skills: mapper.mapToModels(dto.skills ?? []),
       position: dto.position ?? "",
     );
   }

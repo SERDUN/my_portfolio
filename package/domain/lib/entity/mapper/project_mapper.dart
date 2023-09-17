@@ -1,7 +1,8 @@
 import 'package:injectable/injectable.dart';
 
+import 'package:data/data.dart';
+
 import '../../common/mapper_contract.dart';
-import '../dto/project_dto.dart';
 import '../model/project_model.dart';
 
 @Injectable(as: Mapper<ProjectDTO, ProjectModel>)

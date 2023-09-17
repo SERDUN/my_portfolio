@@ -14,7 +14,7 @@ import 'package:data/di/injection.dart' as _i10;
 import 'package:data/repository/project_repository_impl.dart' as _i6;
 import 'package:data/repository/useful_repository_impl.dart' as _i8;
 import 'package:data/repository/user_repository_impl.dart' as _i9;
-import 'package:domain/domain.dart' as _i5;
+import 'package:domain/repository/repository.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i1;
 
 class DataPackageModule extends _i1.MicroPackageModule {

@@ -1,10 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-
-import 'package:domain/domain.dart';
-
 import 'package:injectable/injectable.dart';
+
+import '../dto/dto.dart';
 
 class ApiClient extends http.BaseClient {
   ApiClient(this._inner, this._customHeaders);

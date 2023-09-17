@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:data/extension/stream_controller_extensions.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:domain/domain.dart';
+import 'package:domain/repository/repository.dart';
 
+import '../dto/dto.dart';
 import '../datasource/datasource.dart';
 
 @Injectable(as: UsefulRepository)

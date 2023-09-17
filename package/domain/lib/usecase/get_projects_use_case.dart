@@ -1,7 +1,8 @@
 import 'package:injectable/injectable.dart';
 
-import 'package:domain/common/common.dart';
+import 'package:data/data.dart';
 
+import 'package:domain/common/common.dart';
 import 'package:domain/entity/entity.dart';
 import 'package:domain/repository/repository.dart';
 
