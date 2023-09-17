@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:my_portfolio/core/core.dart';
+import 'package:my_portfolio/localization/localization.dart';
 
 import '../bloc/useful_cubit.dart';
 import '../widget/widgets.dart';
@@ -37,7 +38,7 @@ class _HelpScreenState extends State<HelpScreen> {
                       height: 40,
                     ),
                     Text(
-                      "Useful commands",
+                      context.l10n.featureUsefulTitle,
                       style: textThemes.displaySmall,
                     ),
                     const DecorationViewLines(),
@@ -45,7 +46,7 @@ class _HelpScreenState extends State<HelpScreen> {
                       height: 40,
                     ),
                     Text(
-                      "This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.",
+                      context.l10n.featureUsefulDescription,
                       style: textThemes.labelSmall?.copyWith(color: colorScheme.onBackground.withOpacity(0.2)),
                     ),
                     SingleChildScrollView(

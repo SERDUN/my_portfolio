@@ -93,12 +93,6 @@ abstract class AppLocalizations {
     Locale('uk')
   ];
 
-  /// No description provided for @lastProjectTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Projects'**
-  String get lastProjectTitle;
-
   /// No description provided for @menuTitleHome.
   ///
   /// In en, this message translates to:
@@ -116,6 +110,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Contact'**
   String get menuTitleContact;
+
+  /// No description provided for @menuTitleUseful.
+  ///
+  /// In en, this message translates to:
+  /// **'Useful'**
+  String get menuTitleUseful;
+
+  /// No description provided for @featureUsefulTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Useful commands'**
+  String get featureUsefulTitle;
+
+  /// No description provided for @featureUsefulDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.'**
+  String get featureUsefulDescription;
+
+  /// No description provided for @lastProjectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Projects'**
+  String get lastProjectTitle;
 
   /// No description provided for @buttonDownloadCv.
   ///

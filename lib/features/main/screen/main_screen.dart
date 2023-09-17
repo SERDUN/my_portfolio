@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -43,22 +45,22 @@ class MainScreen extends StatelessWidget {
           ActionTab(
             isSelected: navigationShell.currentIndex == 0,
             onTab: () => navigationShell.goBranch(0),
-            title: "Bio",
+            title: context.l10n.menuTitleHome,
           ),
           ActionTab(
             isSelected: navigationShell.currentIndex == 1,
             onTab: () => navigationShell.goBranch(1),
-            title: "Portfolio",
+            title: context.l10n.menuTitlePortfolio,
           ),
           ActionTab(
             isSelected: navigationShell.currentIndex == 2,
             onTab: () => navigationShell.goBranch(2),
-            title: "Contacts",
+            title: context.l10n.menuTitleContact,
           ),
           ActionTab(
             isSelected: navigationShell.currentIndex == 3,
             onTab: () => navigationShell.goBranch(3),
-            title: "Useful",
+            title: context.l10n.menuTitleUseful,
           ),
         ],
       ),

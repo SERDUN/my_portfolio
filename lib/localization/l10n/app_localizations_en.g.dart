@@ -5,9 +5,6 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get lastProjectTitle => 'Projects';
-
-  @override
   String get menuTitleHome => 'Home';
 
   @override
@@ -15,6 +12,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get menuTitleContact => 'Contact';
+
+  @override
+  String get menuTitleUseful => 'Useful';
+
+  @override
+  String get featureUsefulTitle => 'Useful commands';
+
+  @override
+  String get featureUsefulDescription => 'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.';
+
+  @override
+  String get lastProjectTitle => 'Projects';
 
   @override
   String get buttonDownloadCv => 'Download CV';

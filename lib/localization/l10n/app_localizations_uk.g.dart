@@ -5,9 +5,6 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get lastProjectTitle => 'Проекти';
-
-  @override
   String get menuTitleHome => 'Резюме';
 
   @override
@@ -15,6 +12,18 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get menuTitleContact => 'Контакти';
+
+  @override
+  String get menuTitleUseful => 'Корисне';
+
+  @override
+  String get featureUsefulTitle => 'Корисні команди';
+
+  @override
+  String get featureUsefulDescription => 'Ця вкладка не має інформаційного значення для користувачів третьої сторони, в ній лише команди, які я часто використовую, і я зазвичай забуваю.';
+
+  @override
+  String get lastProjectTitle => 'Проекти';
 
   @override
   String get buttonDownloadCv => 'Download CV';
