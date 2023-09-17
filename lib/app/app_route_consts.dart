@@ -23,7 +23,7 @@ abstract class AppRoutInfo {
   );
   static const project = RouteData(
     name: 'portfolio/project',
-    path: ':$projectId/project',
+    path: ':$projectId',
   );
 
   static const contacts = RouteData(
