@@ -8,9 +8,9 @@ import '../model/portfolio_user_model.dart';
 
 @Injectable(as: Mapper<PortfolioUserDTO, PortfolioUserModel>)
 class PortfolioUserMapper extends Mapper<PortfolioUserDTO, PortfolioUserModel> {
-  final Mapper<PortfolioSkillsDTO, PortfolioSkillsModel> mapper;
-
   PortfolioUserMapper(this.mapper);
+
+  final Mapper<PortfolioSkillsDTO, PortfolioSkillsModel> mapper;
 
   @override
   PortfolioUserModel mapToModel(PortfolioUserDTO dto) {
