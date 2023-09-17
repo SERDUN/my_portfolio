@@ -37,6 +37,13 @@ class AssetsDataSource {
     return Future.value(skills);
   }
 
+  Future<List<UsefulCommandsDTO>> getUsefulCommand(String localization) async {
+    String data = await rootBundle.loadString('packages/data/assets/data/$localization/useful_commands.json');
+    var jsonResult = json.decode(data) as List;
+    List<UsefulCommandsDTO> skills = jsonResult.map((data) => UsefulCommandsDTO.fromJson(data)).toList();
+    return Future.value(skills);
+  }
+
   Future<PortfolioUserDTO> getUser(String localization) async {
     String data = await rootBundle.loadString('packages/data/assets/data/$localization/user.json');
     var jsonResult = json.decode(data);

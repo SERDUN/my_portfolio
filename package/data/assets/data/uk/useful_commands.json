@@ -1,0 +1,85 @@
+[
+  {
+    "title": "Flutter",
+    "commands": [
+      {
+        "title": "Запустити build_runner з видаленням конфліктних результатів",
+        "command": "flutter pub run build_runner build --delete-conflicting-outputs"
+      },
+      {
+        "title": "Створити файли локалізації",
+        "command": "flutter gen-l10n"
+      },
+      {
+        "title": "Створити код Flutter за допомогою fluttergen",
+        "command": "fluttergen"
+      },
+      {
+        "title": "Створити екран запуску Flutter Native",
+        "command": "dart run flutter_native_splash:create"
+      },
+      {
+        "title": "Створити значки запуску Flutter",
+        "command": "flutter pub run flutter_launcher_icons"
+      },
+      {
+        "title": "Налаштувати FlutterFire для конкретного проекту та платформ",
+        "command": "flutterfire configure --project-name=webtrit-voip-softphone --platforms=android,ios,web"
+      },
+      {
+        "title": "Налаштувати FlutterFire",
+        "command": "flutterfire configure"
+      },
+      {
+        "title": "Створити код за допомогою Pigeon із вхідним файлом 'pigeons/callkeep.messages.dart'",
+        "command": "dart run pigeon --input pigeons/callkeep.messages.dart"
+      }
+    ]
+  },
+  {
+    "title": "Git",
+    "commands": [
+      {
+        "title": "Перемістити HEAD до попереднього коміту, залишаючи збережені зміни.",
+        "command": "git reset HEAD~"
+      },
+      {
+        "title": "Скасувати об'єднання в процесі, відкинувши зміни.",
+        "command": "git merge --abort"
+      },
+      {
+        "title": "Скинути HEAD до попереднього коміту",
+        "command": "git reset HEAD~"
+      },
+      {
+        "title": "Позначити версію",
+        "command": "git tag v0.0.98"
+      },
+      {
+        "title": "Відправити позначку на гілку 'develop'",
+        "command": "git push origin develop v0.0.98"
+      },
+      {
+        "title": "Скасувати об'єднання в процесі",
+        "command": "git merge --abort"
+      },
+      {
+        "title": "Примусово відправити гілку 'feature/signup' на початок",
+        "command": "git push origin feature/signup -f"
+      },
+      {
+        "title": "Примусово відправити гілку 'develop' на початок",
+        "command": "git push origin develop --force"
+      }
+    ]
+  },
+  {
+    "title": "Загальне",
+    "commands": [
+      {
+        "title": "Перейти до суперкористувача (root)",
+        "command": "sudo -s"
+      }
+    ]
+  }
+]

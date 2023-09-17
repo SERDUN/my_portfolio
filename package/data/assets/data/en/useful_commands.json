@@ -1,0 +1,85 @@
+[
+  {
+    "title": "Flutter",
+    "commands": [
+      {
+        "title": "Run build_runner with delete-conflicting-outputs",
+        "command": "flutter pub run build_runner build --delete-conflicting-outputs"
+      },
+      {
+        "title": "Generate localization files",
+        "command": "flutter gen-l10n"
+      },
+      {
+        "title": "Generate Flutter code using fluttergen",
+        "command": "fluttergen"
+      },
+      {
+        "title": "Generate Flutter Native Splash screen",
+        "command": "dart run flutter_native_splash:create"
+      },
+      {
+        "title": "Generate Flutter launcher icons",
+        "command": "flutter pub run flutter_launcher_icons"
+      },
+      {
+        "title": "Configure FlutterFire with specific project and platforms",
+        "command": "flutterfire configure --project-name=webtrit-voip-softphone --platforms=android,ios,web"
+      },
+      {
+        "title": "Configure FlutterFire",
+        "command": "flutterfire configure"
+      },
+      {
+        "title": "Generate code using Pigeon with input file 'pigeons/callkeep.messages.dart'",
+        "command": "dart run pigeon --input pigeons/callkeep.messages.dart"
+      }
+    ]
+  },
+  {
+    "title": "Git",
+    "commands": [
+      {
+        "title": "Moves HEAD to previous commit, but leaves changes staged.",
+        "command": "git reset HEAD~"
+      },
+      {
+        "title": "Cancels a merge in progress, discarding changes.",
+        "command": "git merge --abort"
+      },
+      {
+        "title": "Reset HEAD to previous commit",
+        "command": "git reset HEAD~"
+      },
+      {
+        "title": "Tag a version",
+        "command": "git tag v0.0.98"
+      },
+      {
+        "title": "Push a tag to the 'develop' branch",
+        "command": "git push origin develop v0.0.98"
+      },
+      {
+        "title": "Abort a merge in progress",
+        "command": "git merge --abort"
+      },
+      {
+        "title": "Force push 'feature/signup' branch to origin",
+        "command": "git push origin feature/signup -f"
+      },
+      {
+        "title": "Force push 'develop' branch to origin",
+        "command": "git push origin develop --force"
+      }
+    ]
+  },
+  {
+    "title": "General",
+    "commands": [
+      {
+        "title": "Switch to superuser (root)",
+        "command": "sudo -s"
+      }
+    ]
+  }
+]

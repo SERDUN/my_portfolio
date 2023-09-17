@@ -30,6 +30,10 @@ abstract class AppRoutInfo {
     name: 'contacts',
     path: '/contacts',
   );
+  static const useful = RouteData(
+    name: 'useful',
+    path: '/useful',
+  );
 
   static const String projectId = 'projectId';
   static const String keyThemeId = 'themeId';

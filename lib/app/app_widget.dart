@@ -166,6 +166,20 @@ class _ApplicationState extends State<Application> {
                     ),
                   ],
                 ),
+                StatefulShellBranch(
+                  routes: <RouteBase>[
+                    GoRoute(
+                      path: AppRoutInfo.useful.path,
+                      builder: (BuildContext context, GoRouterState state) => BlocProvider<UsefulCubit>(
+                        create: (BuildContext context) => UsefulCubit(
+                          di<GetUsefulCommandsUseCase>(),
+                          _languageNotifier,
+                        ),
+                        child: const HelpScreen(),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ],

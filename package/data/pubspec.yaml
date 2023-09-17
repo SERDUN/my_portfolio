@@ -17,8 +17,6 @@ dependencies:
   injectable: ^2.3.0
   get_it:
 
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -30,6 +28,8 @@ dev_dependencies:
 
 flutter:
   assets:
+    - assets/data/en/useful_commands.json
+    - assets/data/uk/useful_commands.json
     - assets/data/en/projects.json
     - assets/data/en/user.json
     - assets/data/en/skills.json

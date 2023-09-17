@@ -55,6 +55,11 @@ class MainScreen extends StatelessWidget {
             onTab: () => navigationShell.goBranch(2),
             title: "Contacts",
           ),
+          ActionTab(
+            isSelected: navigationShell.currentIndex == 3,
+            onTab: () => navigationShell.goBranch(3),
+            title: "Useful",
+          ),
         ],
       ),
       backgroundColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
