@@ -20,22 +20,17 @@ dependencies:
 
   bloc: ^8.1.2
   flutter_bloc: ^8.1.3
-
+  get_it: ^7.6.4
+  injectable: ^2.3.0
+  freezed_annotation: ^2.4.1
+  freezed: ^2.4.2
+  flex_color_scheme: ^7.3.1
+  google_fonts: ^5.1.0
+  go_router: ^10.1.2
   responsive_framework: ^1.1.0
-  matrix4_transform: ^2.0.1
   octo_image: ^1.0.2
   url_launcher: ^6.1.14
   carousel_slider: ^4.2.1
-  transparent_image: ^2.0.1
-  get_it: ^7.6.4
-  injectable: ^2.3.0
-  json_annotation: ^4.8.1
-  logger: ^2.0.2
-  go_router: ^10.1.2
-  flex_color_scheme: ^7.3.1
-  google_fonts: ^5.1.0
-  freezed_annotation: ^2.4.1
-  freezed: ^2.4.2
   intl: ^0.18.1
 
 dev_dependencies:
