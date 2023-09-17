@@ -35,7 +35,7 @@ class TreeNode extends StatefulWidget {
   final Function? trailingOnTap;
 
   @override
-  _TreeNodeState createState() => _TreeNodeState();
+  State<TreeNode> createState() => _TreeNodeState();
 }
 
 class _TreeNodeState extends State<TreeNode> {

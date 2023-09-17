@@ -20,7 +20,7 @@ class TreeRoot extends StatefulWidget {
   final Widget? title;
 
   @override
-  _TreeNodeState createState() => _TreeNodeState();
+  State<TreeRoot> createState() => _TreeNodeState();
 }
 
 class _TreeNodeState extends State<TreeRoot> {

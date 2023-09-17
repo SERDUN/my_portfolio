@@ -14,7 +14,7 @@ class PortfolioPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<PortfolioPage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<PortfolioPage> {

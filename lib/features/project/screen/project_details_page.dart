@@ -14,7 +14,7 @@ class ProjectDetailsPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ContactUsState createState() => _ContactUsState();
+  State<ProjectDetailsPage> createState() => _ContactUsState();
 }
 
 class _ContactUsState extends State<ProjectDetailsPage> with TickerProviderStateMixin {
