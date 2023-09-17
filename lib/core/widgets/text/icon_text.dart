@@ -52,13 +52,13 @@ class IconText extends StatelessWidget {
     return GestureDetector(
         onTap: () => call(url),
         child: Visibility(
+          visible: isVisible,
           child: MouseRegion(
               cursor: type == IconTextType.clickable ? SystemMouseCursors.click : SystemMouseCursors.basic,
               child: Padding(
-                child: AppIcon(imagePath, size: 56),
                 padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: AppIcon(imagePath, size: 56),
               )),
-          visible: isVisible,
         ));
   }
 

@@ -139,6 +139,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   elevation: 4,
                   child: Padding(
+                    padding: const EdgeInsets.all(8),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -151,7 +152,6 @@ class MobileProjectDetailsPage extends StatelessWidget {
                         fit: BoxFit.scaleDown,
                       ),
                     ),
-                    padding: const EdgeInsets.all(8),
                   ),
                 ),
               );
@@ -170,8 +170,8 @@ class MobileProjectDetailsPage extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          child: const Text(" - "),
           padding: const EdgeInsets.all(8),
+          child: const Text(" - "),
         ),
         Text(
           text,

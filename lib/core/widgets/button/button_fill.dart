@@ -23,11 +23,11 @@ class ButtonFill extends StatelessWidget {
 
     return TextButton(
       onPressed: () => onTap,
+      style: flatButtonStyle,
       child: Text(
         text,
         textAlign: TextAlign.center,
       ),
-      style: flatButtonStyle,
     );
   }
 }

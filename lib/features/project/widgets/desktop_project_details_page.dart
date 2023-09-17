@@ -187,6 +187,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   elevation: 4,
                   child: Padding(
+                    padding: const EdgeInsets.all(8),
                     child: ClipRRect(
                         borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
                         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -198,7 +199,6 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                           errorBuilder: OctoError.icon(color: Colors.red),
                           fit: BoxFit.scaleDown,
                         )),
-                    padding: const EdgeInsets.all(8),
                   ),
                 ),
               );
@@ -218,13 +218,13 @@ class DesktopProjectDetailsPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
+              padding: const EdgeInsets.all(8),
               child: Image.asset(
                 "assets/image/icons/category.webp",
                 width: 24,
                 height: 24,
                 color: Theme.of(context).colorScheme.onBackground,
               ),
-              padding: const EdgeInsets.all(8),
             ),
             Text(
               text,

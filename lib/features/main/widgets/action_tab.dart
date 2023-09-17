@@ -15,7 +15,6 @@ class ActionTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Text(title, style: Theme.of(context).textTheme.titleMedium),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
           Theme.of(context).colorScheme.primary.withOpacity(isSelected ? 0.1 : 0.0),
@@ -27,6 +26,7 @@ class ActionTab extends StatelessWidget {
         ),
       ),
       onPressed: () => onTab(),
+      child: Text(title, style: Theme.of(context).textTheme.titleMedium),
     );
   }
 }

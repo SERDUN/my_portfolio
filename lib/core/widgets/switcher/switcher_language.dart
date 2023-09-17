@@ -16,20 +16,20 @@ class SwitcherLanguage extends StatelessWidget {
     return MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
+          onTap: localizationChanged,
           child: Stack(
             children: [
               Padding(
+                padding: const EdgeInsets.only(left: 8),
                 child: buildLanguage(
                   locale == "en" ? "assets/image/language/uk.webp" : "assets/image/language/en.webp",
                 ),
-                padding: const EdgeInsets.only(left: 8),
               ),
               buildLanguage(
                 locale == "en" ? "assets/image/language/en.webp" : "assets/image/language/uk.webp",
               )
             ],
           ),
-          onTap: localizationChanged,
         ));
   }
 

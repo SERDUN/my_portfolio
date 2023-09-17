@@ -57,7 +57,7 @@ class PortfolioItem extends StatelessWidget {
   String _getThematicsTags(List<String> social) {
     String tags = "";
     for (var element in social) {
-      tags = tags + "#$element ";
+      tags = "$tags#$element ";
     }
     return tags;
   }

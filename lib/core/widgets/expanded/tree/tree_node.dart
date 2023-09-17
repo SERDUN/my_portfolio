@@ -76,10 +76,10 @@ class _TreeNodeState extends State<TreeNode> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
+                      padding: const EdgeInsets.all(8),
                       child: children.length > 1
                           ? Image.asset("assets/image/icons/category.webp", width: 24, height: 24)
                           : Image.asset("assets/image/icons/sub_category.webp", width: 24, height: 24),
-                      padding: const EdgeInsets.all(8),
                     ),
                     Expanded(child: widget.title ?? Container()),
                     const SizedBox(width: 6.0),
@@ -102,8 +102,8 @@ class _TreeNodeState extends State<TreeNode> {
           child: Padding(
             padding: EdgeInsets.only(left: level + 1 * offsetLeft),
             child: Column(
-              children: widget.children,
               crossAxisAlignment: CrossAxisAlignment.start,
+              children: widget.children,
             ),
           ),
         ),

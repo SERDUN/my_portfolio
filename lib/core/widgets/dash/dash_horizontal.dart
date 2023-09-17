@@ -18,6 +18,7 @@ class DashHorizontal extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       return Container(
+        margin: margin,
         child: CustomPaint(
           size: Size(constraints.maxWidth, 1),
           painter: DashedLineHorizontalPainter(
@@ -27,7 +28,6 @@ class DashHorizontal extends StatelessWidget {
             Theme.of(context).colorScheme.primary,
           ),
         ),
-        margin: margin,
       );
     });
   }

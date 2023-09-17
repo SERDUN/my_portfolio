@@ -34,11 +34,11 @@ class ButtonOutline extends StatelessWidget {
       width: width,
       child: TextButton(
         onPressed: () => onTap(),
+        style: flatButtonStyle,
         child: Text(
           text,
           textAlign: TextAlign.center,
         ),
-        style: flatButtonStyle,
       ),
     );
   }

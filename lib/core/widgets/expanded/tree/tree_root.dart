@@ -80,8 +80,8 @@ class _TreeNodeState extends State<TreeRoot> {
                     left: level + 1 * offsetLeft,
                   ),
                   child: Column(
-                    children: widget.children,
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    children: widget.children,
                   ),
                 ),
               ),
