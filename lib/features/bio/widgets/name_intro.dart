@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:my_portfolio/core/extension/extension.dart';
-import 'package:my_portfolio/core/widgets/dash/dash.dart';
+import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class NameIntro extends StatelessWidget {
   const NameIntro({
@@ -20,9 +20,10 @@ class NameIntro extends StatelessWidget {
     return Row(
       children: [
         const Expanded(
-          child: DashHorizontal(
-            dashWidth: 8,
+          child: Dash(
+            dashSize: 8,
             opacity: 0.25,
+            direction: DashedLineDirection.horizontal,
           ),
         ),
         RichText(
@@ -59,9 +60,10 @@ class NameIntro extends StatelessWidget {
           ),
         ),
         const Expanded(
-          child: DashHorizontal(
-            dashWidth: 8,
+          child: Dash(
+            dashSize: 8,
             opacity: 0.25,
+            direction: DashedLineDirection.horizontal,
           ),
         ),
       ],

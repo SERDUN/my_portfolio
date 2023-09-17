@@ -68,8 +68,9 @@ class MobileProjectDetailsPage extends StatelessWidget {
             style: Theme.of(context).textTheme.displaySmall,
           ),
         ),
-        const DashHorizontal(
+        const Dash(
           margin: EdgeInsets.only(top: 8),
+          direction: DashedLineDirection.horizontal,
         ),
         const SizedBox(
           height: 16,
@@ -90,8 +91,9 @@ class MobileProjectDetailsPage extends StatelessWidget {
               "Software stack",
               style: Theme.of(context).textTheme.displaySmall,
             )),
-        const DashHorizontal(
+        const Dash(
           margin: EdgeInsets.only(top: 8),
+          direction: DashedLineDirection.horizontal,
         ),
         const SizedBox(
           height: 16,
@@ -113,8 +115,9 @@ class MobileProjectDetailsPage extends StatelessWidget {
               "Screenshots",
               style: Theme.of(context).textTheme.displaySmall,
             )),
-        const DashHorizontal(
+        const Dash(
           margin: EdgeInsets.only(top: 16, bottom: 16),
+          direction: DashedLineDirection.horizontal,
         ),
         SizedBox(
           child: CarouselSlider.builder(

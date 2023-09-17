@@ -103,8 +103,9 @@ class DesktopProjectDetailsPage extends StatelessWidget {
               ),
             ),
             const Expanded(
-              child: DashHorizontal(
-                margin: EdgeInsets.only(top: 8),
+              child: Dash(
+                margin: EdgeInsets.symmetric(vertical: 8),
+                direction: DashedLineDirection.horizontal,
               ),
             ),
           ],
@@ -131,8 +132,9 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineSmall,
                 )),
             const Expanded(
-              child: DashHorizontal(
-                margin: EdgeInsets.only(top: 8),
+              child: Dash(
+                margin: EdgeInsets.symmetric(vertical: 8),
+                direction: DashedLineDirection.horizontal,
               ),
             ),
           ],
@@ -155,8 +157,9 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineSmall,
                 )),
             const Expanded(
-              child: DashHorizontal(
-                margin: EdgeInsets.only(top: 8),
+              child: Dash(
+                margin: EdgeInsets.symmetric(vertical: 8),
+                direction: DashedLineDirection.horizontal,
               ),
             ),
           ],

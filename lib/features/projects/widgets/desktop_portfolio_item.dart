@@ -92,12 +92,9 @@ class DesktopPortfolioItem extends StatelessWidget {
                     maxLines: 3,
                   ),
                   const Spacer(),
-                  const DashHorizontal(
-                    margin: EdgeInsets.only(
-                      left: 8,
-                      right: 32,
-                      bottom: 4,
-                    ),
+                  const Dash(
+                    margin: EdgeInsets.symmetric(vertical: 16),
+                    direction: DashedLineDirection.horizontal,
                   )
                 ],
               ),

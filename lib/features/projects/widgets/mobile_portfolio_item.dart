@@ -45,8 +45,9 @@ class MobilePortfolioItem extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(overflow: TextOverflow.ellipsis),
                   ),
                 ),
-                const DashHorizontal(
+                const Dash(
                   margin: EdgeInsets.symmetric(vertical: 16),
+                  direction: DashedLineDirection.horizontal,
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(9.0),
