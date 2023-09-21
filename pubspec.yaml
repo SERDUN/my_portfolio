@@ -34,7 +34,6 @@ dependencies:
   intl: ^0.18.1
 
 dev_dependencies:
-  json_serializable: ^6.7.1
   build_runner: ^2.4.6
   injectable_generator: ^2.4.0
   flutter_lints: ^2.0.3
