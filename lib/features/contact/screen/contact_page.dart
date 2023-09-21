@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:my_portfolio/core/widgets/decoration/decoration.dart';
+import 'package:my_portfolio/features/contact/widgets/contact_item.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
 import '../bloc/contacts_cubit.dart';
@@ -40,29 +42,11 @@ class ContactPage extends StatelessWidget {
                       spacing: 16,
                       runSpacing: 8,
                       children: state.contacts!
-                          .map(
-                            (contact) => SizedBox(
-                              width: 280,
-                              height: 224,
-                              child: Card(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      contact.title,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    Text(
-                                      contact.value,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
+                          .map((contact) => ContactItem(
+                                title: contact.title,
+                                value: contact.value,
+                                onTap: openLink,
+                              ))
                           .toList(),
                     ),
                   )
@@ -70,5 +54,12 @@ class ContactPage extends StatelessWidget {
               );
       },
     );
+  }
+
+  void openLink(String link) async {
+    Uri? uri = Uri.tryParse(link);
+    if (uri != null) {
+      await canLaunchUrl(uri) ? await launchUrl(uri) : throw 'Could not launch $link';
+    }
   }
 }
