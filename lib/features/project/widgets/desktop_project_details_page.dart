@@ -77,15 +77,18 @@ class DesktopProjectDetailsPage extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            Container(
-              margin: const EdgeInsets.only(right: 16),
-              height: 56,
-              child: ProjectLinks(
-                mainAxisAlignment: MainAxisAlignment.end,
-                android: project.linkAndroid,
-                ios: project.linkIOS,
-                github: project.linkSource,
-                onOpenLink: onOpenLink,
+            Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                margin: const EdgeInsets.only(right: 24),
+                height: 56,
+                child: ProjectLinks(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  android: project.linkAndroid,
+                  ios: project.linkIOS,
+                  github: project.linkGithub,
+                  onOpenLink: onOpenLink,
+                ),
               ),
             ),
           ],

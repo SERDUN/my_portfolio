@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:ionicons/ionicons.dart';
 
 class ProjectLinks extends StatelessWidget {
   const ProjectLinks({
@@ -9,7 +10,7 @@ class ProjectLinks extends StatelessWidget {
     this.github = "",
     required this.onOpenLink,
     this.margin = EdgeInsets.zero,
-    this.iconSize = 56,
+    this.iconSize = 32,
   }) : super(key: key);
 
   final String android;
@@ -26,27 +27,30 @@ class ProjectLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      child: Row(
-        mainAxisAlignment: mainAxisAlignment,
+      child: Wrap(
+        spacing: 16,
         children: [
-          SocialPart(
-            link: github,
-            iconSize: iconSize,
-            openLink: onOpenLink,
-            icon: "assets/image/icons/github.webp",
-          ),
-          SocialPart(
-            link: android,
-            iconSize: iconSize,
-            openLink: onOpenLink,
-            icon: "assets/image/icons/google_play.webp",
-          ),
-          SocialPart(
-            link: ios,
-            iconSize: iconSize,
-            openLink: onOpenLink,
-            icon: "assets/image/icons/app_store.webp",
-          ),
+          if (github.isNotEmpty)
+            SocialPart(
+              link: github,
+              iconSize: iconSize,
+              openLink: onOpenLink,
+              icon: Ionicons.logo_github,
+            ),
+          if (android.isNotEmpty)
+            SocialPart(
+              link: android,
+              iconSize: iconSize,
+              openLink: onOpenLink,
+              icon: Ionicons.logo_google_playstore,
+            ),
+          if (ios.isNotEmpty)
+            SocialPart(
+              link: ios,
+              iconSize: iconSize,
+              openLink: onOpenLink,
+              icon: Ionicons.logo_apple_appstore,
+            ),
         ],
       ),
     );
@@ -62,24 +66,20 @@ class SocialPart extends StatelessWidget {
     required this.icon,
   }) : super(key: key);
 
-  final String icon;
+  final IconData icon;
   final String link;
   final double iconSize;
   final Function(String) openLink;
 
   @override
   Widget build(BuildContext context) {
-    return Visibility(
-      visible: link.isNotEmpty,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () => openLink(link),
-          child: Image.asset(
-            icon,
-            width: iconSize,
-            height: iconSize,
-          ),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => openLink(link),
+        child: Icon(
+          icon,
+          size: iconSize,
         ),
       ),
     );

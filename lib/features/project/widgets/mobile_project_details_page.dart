@@ -55,7 +55,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           android: project.linkAndroid,
           ios: project.linkIOS,
-          github: project.linkSource,
+          github: project.linkGithub,
           onOpenLink: onOpen,
         ),
         const SizedBox(
