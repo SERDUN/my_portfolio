@@ -10,7 +10,7 @@ class ProjectDTO {
   final String? description;
   final String? linkAndroid;
   final String? linkIOS;
-  final String? linkSource;
+  final String? linkGithub;
   final List<String> spheres;
   final List<String> technologies;
   @JsonKey(name: 'screenshots')
@@ -25,7 +25,7 @@ class ProjectDTO {
     this.description,
     this.linkAndroid,
     this.linkIOS,
-    this.linkSource,
+    this.linkGithub,
     this.spheres = const [],
     this.technologies = const [],
     this.screenshots = const [],

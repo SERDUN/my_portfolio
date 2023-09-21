@@ -16,6 +16,8 @@ dependencies:
 
   injectable: ^2.3.0
   get_it:
+  json_serializable: ^6.7.1
+
 
 dev_dependencies:
   flutter_test:

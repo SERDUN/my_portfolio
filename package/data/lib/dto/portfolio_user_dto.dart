@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'portfolio_user_dto.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class PortfolioUserDTO {
   PortfolioUserDTO({
     this.firstName,

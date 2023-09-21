@@ -7,7 +7,7 @@ class ProjectModel {
     this.technologies = const [],
     required this.linkAndroid,
     required this.linkIOS,
-    required this.linkSource,
+    required this.linkGithub,
     this.screenshots = const [],
     this.preview,
     this.id,
@@ -19,7 +19,7 @@ class ProjectModel {
   final String? description;
   final String linkAndroid;
   final String linkIOS;
-  final String linkSource;
+  final String linkGithub;
   final List<String> spheres;
   final List<String> technologies;
   final List<String> screenshots;

@@ -11,9 +11,9 @@ ProjectDTO _$ProjectDTOFromJson(Map<String, dynamic> json) => ProjectDTO(
       name: json['name'] as String?,
       intro: json['intro'] as String?,
       description: json['description'] as String?,
-      linkAndroid: json['link_android'] as String?,
-      linkIOS: json['link_i_o_s'] as String?,
-      linkSource: json['link_source'] as String?,
+      linkAndroid: json['linkAndroid'] as String?,
+      linkIOS: json['linkIOS'] as String?,
+      linkGithub: json['linkGithub'] as String?,
       spheres: (json['spheres'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -35,9 +35,9 @@ Map<String, dynamic> _$ProjectDTOToJson(ProjectDTO instance) =>
       'name': instance.name,
       'intro': instance.intro,
       'description': instance.description,
-      'link_android': instance.linkAndroid,
-      'link_i_o_s': instance.linkIOS,
-      'link_source': instance.linkSource,
+      'linkAndroid': instance.linkAndroid,
+      'linkIOS': instance.linkIOS,
+      'linkGithub': instance.linkGithub,
       'spheres': instance.spheres,
       'technologies': instance.technologies,
       'screenshots': instance.screenshots,
