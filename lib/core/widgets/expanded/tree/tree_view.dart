@@ -1,5 +1,6 @@
-import 'package:domain/entity/model/portfolio_skills_model.dart';
 import 'package:flutter/material.dart';
+
+import 'package:domain/entity/model/portfolio_skills_model.dart';
 
 import 'tree_node.dart';
 import 'tree_root.dart';
@@ -13,13 +14,38 @@ class TreeView extends StatelessWidget {
     required this.categoryTextStyle,
   }) : super(key: key);
 
-
   final List<PortfolioSkillsModel> data;
 
   final double offsetLeft;
 
   final TextStyle subCategoryTextStyle;
   final TextStyle categoryTextStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: List.generate(
+        data.length,
+        (int index) {
+          final PortfolioSkillsModel item = data[index];
+          final title = MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Text(
+                item.title,
+                style: categoryTextStyle,
+              ));
+
+          return TreeRoot(
+            title: title,
+            expanded: item.expanded,
+            offsetLeft: offsetLeft,
+            children: _geneTreeNodes(item.children),
+          );
+        },
+      ),
+    );
+  }
 
   List<TreeNode> _geneTreeNodes(List list) {
     List treeNodes = <TreeNode>[];
@@ -41,28 +67,5 @@ class TreeView extends StatelessWidget {
     }
 
     return treeNodes as List<TreeNode>;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(data.length, (int index) {
-        final PortfolioSkillsModel item = data[index];
-        final title = MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: Text(
-              item.title,
-              style: categoryTextStyle,
-            ));
-
-        return TreeRoot(
-          title: title,
-          expanded: item.expanded,
-          offsetLeft: offsetLeft,
-          children: _geneTreeNodes(item.children),
-        );
-      }),
-    );
   }
 }

@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:ionicons/ionicons.dart';
+
 class TreeRoot extends StatefulWidget {
   const TreeRoot({
     Key? key,
@@ -9,7 +11,7 @@ class TreeRoot extends StatefulWidget {
     this.expanded = false,
     this.offsetLeft = 24.0,
     this.children = const [],
-    this.title = const Text('Title'),
+    this.title,
   }) : super(key: key);
 
   final int level;
@@ -38,6 +40,7 @@ class _TreeNodeState extends State<TreeRoot> {
     final children = widget.children;
     final offsetLeft = widget.offsetLeft;
     return GestureDetector(
+      onTap: _handleTap,
       child: Card(
         color: Theme.of(context).cardTheme.color,
         margin: const EdgeInsets.symmetric(vertical: 8),
@@ -52,22 +55,17 @@ class _TreeNodeState extends State<TreeRoot> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     widget.title ?? Container(),
-                    const SizedBox(
-                      width: 8,
-                    ),
+                    const SizedBox(width: 8),
                     const Spacer(),
                     Center(
                       child: InkWell(
-                        onTap: () {
-                          _handleTap();
-                        },
+                        onTap: _handleTap,
                         child: Transform.rotate(
-                            angle: -pi / (_isExpanded ? 1 : 360),
-                            child: Image.asset(
-                              "assets/image/icons/up_arrow.webp",
-                              width: 16,
-                              height: 16,
-                            )),
+                          angle: -pi / (_isExpanded ? 1 : 360),
+                          child: Icon(
+                            _isExpanded ? Ionicons.radio_button_on : Ionicons.radio_button_off,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -89,7 +87,6 @@ class _TreeNodeState extends State<TreeRoot> {
           ),
         ),
       ),
-      onTap: () => _handleTap(),
     );
   }
 

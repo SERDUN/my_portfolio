@@ -1,6 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+
+import 'package:ionicons/ionicons.dart';
+
+import 'package:my_portfolio/app/app.dart';
 
 class TreeNode extends StatefulWidget {
   const TreeNode({
@@ -57,46 +59,50 @@ class _TreeNodeState extends State<TreeNode> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-            padding: const EdgeInsets.only(left: 0.0, right: 12.0, top: 8),
-            child: InkWell(
-                onTap: children.isNotEmpty
-                    ? () {
-                        if (widget.leadingOnTap != null && widget.leadingOnTap is Function) {
-                          widget.leadingOnTap!();
-                        }
-                        setState(() {
-                          _isExpanded = !_isExpanded;
-                          if (widget.trailingOnTap != null && widget.trailingOnTap is Function) {
-                            widget.trailingOnTap!();
-                          }
-                        });
+          padding: const EdgeInsets.only(left: 0.0, right: 12.0, top: 16),
+          child: InkWell(
+            onTap: children.isNotEmpty
+                ? () {
+                    if (widget.leadingOnTap != null && widget.leadingOnTap is Function) {
+                      widget.leadingOnTap!();
+                    }
+                    setState(() {
+                      _isExpanded = !_isExpanded;
+                      if (widget.trailingOnTap != null && widget.trailingOnTap is Function) {
+                        widget.trailingOnTap!();
                       }
-                    : null,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      child: children.length > 1
-                          ? Image.asset("assets/image/icons/category.webp", width: 24, height: 24)
-                          : Image.asset("assets/image/icons/sub_category.webp", width: 24, height: 24),
+                    });
+                  }
+                : null,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: children.length > 1
+                      ? Assets.image.icons.category.image(
+                          width: 24,
+                          height: 24,
+                          color: Theme.of(context).colorScheme.onBackground,
+                        )
+                      : Assets.image.icons.subCategory.image(width: 24, height: 24),
+                ),
+                Expanded(child: widget.title ?? Container()),
+                const SizedBox(width: 6.0),
+                Visibility(
+                  visible: children.isNotEmpty,
+                  child: Center(
+                    child: Icon(
+                      _isExpanded ? Ionicons.pizza : Ionicons.pizza_outline,
+                      color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+                      size: 24,
                     ),
-                    Expanded(child: widget.title ?? Container()),
-                    const SizedBox(width: 6.0),
-                    Visibility(
-                      visible: children.isNotEmpty,
-                      child: Center(
-                        child: Transform.rotate(
-                            angle: -pi / (_isExpanded ? 1 : 360),
-                            child: Image.asset(
-                              "assets/image/icons/up_arrow.webp",
-                              width: 16,
-                              height: 16,
-                            )),
-                      ),
-                    ),
-                  ],
-                ))),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         Visibility(
           visible: children.isNotEmpty && _isExpanded,
           child: Padding(
