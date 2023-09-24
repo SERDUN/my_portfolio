@@ -1,11 +1,11 @@
 class PortfolioUserModel {
   PortfolioUserModel({
     required this.firstName,
-    required this.position,
     required this.secondName,
-    required this.cv,
-    required this.avatar,
+    required this.position,
     required this.intro,
+    required this.avatar,
+    required this.cv,
   });
 
   final String firstName;
