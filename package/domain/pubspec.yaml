@@ -17,6 +17,7 @@ dependencies:
   json_annotation: ^4.8.1
   injectable: ^2.3.0
   build_runner: ^2.4.6
+  collection: ^1.17.2
   get_it:
 
 dev_dependencies:
