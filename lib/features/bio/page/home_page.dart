@@ -50,7 +50,8 @@ class _HomePageState extends State<HomePage> {
                         height: 64,
                       ),
                       NameIntro(
-                        fullName: state.user?.name,
+                        firstName: state.user?.firstName,
+                        secondName: state.user?.secondName,
                       ),
                       ButtonOutline(
                         text: context.l10n.buttonDownloadCv,

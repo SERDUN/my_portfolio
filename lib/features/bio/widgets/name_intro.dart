@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:my_portfolio/core/extension/extension.dart';
 import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class NameIntro extends StatelessWidget {
   const NameIntro({
     super.key,
-    required this.fullName,
+    required this.firstName,
+    required this.secondName,
   });
 
-  final String? fullName;
+  final String? firstName;
+  final String? secondName;
 
   @override
   Widget build(BuildContext context) {
@@ -31,27 +32,27 @@ class NameIntro extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: fullName?.getLetter() ?? "##### #####",
+                text: firstName?.substring(0, 1) ?? "##### #####",
                 style: textTheme.displayLarge?.copyWith(
                   color: colorScheme.primary,
                   fontFamily: GoogleFonts.comforter().fontFamily,
                 ),
               ),
               TextSpan(
-                text: fullName?.getLettersFromPosition(wordPosition: 0, fromPosition: 1),
+                text: firstName?.substring(1),
                 style: textTheme.displayMedium?.copyWith(
                   fontFamily: GoogleFonts.comforter().fontFamily,
                 ),
               ),
               TextSpan(
-                text: " ${fullName?.getLetter().getLetter(wordPosition: 1)}",
+                text: " ${secondName?.substring(0, 1)}",
                 style: textTheme.displayLarge?.copyWith(
-                  fontFamily: GoogleFonts.comforter().fontFamily,
                   color: colorScheme.primary,
+                  fontFamily: GoogleFonts.comforter().fontFamily,
                 ),
               ),
               TextSpan(
-                text: fullName?.getLetter().getLettersFromPosition(wordPosition: 1, fromPosition: 1),
+                text: secondName?.substring(1),
                 style: textTheme.displayMedium?.copyWith(
                   fontFamily: GoogleFonts.comforter().fontFamily,
                 ),
