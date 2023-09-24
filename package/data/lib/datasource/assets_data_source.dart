@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
+import 'package:data/gen/gen.dart';
 
 import 'package:injectable/injectable.dart';
 
@@ -8,11 +8,9 @@ import '../dto/dto.dart';
 
 @singleton
 class AssetsDataSource {
-  Future<List<ProjectDTO>> getProjects(String localization) async {
-    String data = localization == "en"
-        ? await rootBundle.loadString('packages/data/assets/data/en/projects.json')
-        : await rootBundle.loadString('packages/data/assets/data/uk/projects.json');
 
+  Future<List<ProjectDTO>> getProjects(String localization) async {
+    String data = await Assets.data.projects(localization);
     var jsonResult = jsonDecode(data) as List;
     List<ProjectDTO> projects = jsonResult.map((data) => ProjectDTO.fromJson(data)).toList();
     return Future.value(projects);
@@ -23,29 +21,29 @@ class AssetsDataSource {
     return Future.value(projects.firstWhere((element) => element.id == id));
   }
 
-  Future<List<ContactsDTO>> getContacts() async {
-    String data = await rootBundle.loadString('packages/data/assets/data/contact.json');
+  Future<List<ContactsDTO>> getContacts(String localization) async {
+    String data = await Assets.data.contact(localization);
     var jsonResult = json.decode(data) as List;
     List<ContactsDTO> contacts = jsonResult.map((data) => ContactsDTO.fromJson(data)).toList();
     return Future.value(contacts);
   }
 
   Future<List<PortfolioSkillsDTO>> getSkills(String localization) async {
-    String data = await rootBundle.loadString('packages/data/assets/data/$localization/skills.json');
+    String data = await Assets.data.skills(localization);
     var jsonResult = json.decode(data) as List;
     List<PortfolioSkillsDTO> skills = jsonResult.map((data) => PortfolioSkillsDTO.fromJson(data)).toList();
     return Future.value(skills);
   }
 
   Future<List<UsefulCommandsDTO>> getUsefulCommand(String localization) async {
-    String data = await rootBundle.loadString('packages/data/assets/data/$localization/useful_commands.json');
+    String data = await Assets.data.usefulCommands(localization);
     var jsonResult = json.decode(data) as List;
     List<UsefulCommandsDTO> skills = jsonResult.map((data) => UsefulCommandsDTO.fromJson(data)).toList();
     return Future.value(skills);
   }
 
   Future<PortfolioUserDTO> getUser(String localization) async {
-    String data = await rootBundle.loadString('packages/data/assets/data/$localization/user.json');
+    String data = await Assets.data.user(localization);
     var jsonResult = json.decode(data);
     PortfolioUserDTO portfolioDTO = PortfolioUserDTO.fromJson(jsonResult);
     return Future.value(portfolioDTO);

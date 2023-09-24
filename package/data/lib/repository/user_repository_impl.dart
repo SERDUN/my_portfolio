@@ -38,7 +38,7 @@ class UserRepositoryImpl extends UserRepository {
   Stream<List<ContactsDTO>> getContacts(String localization) {
     final StreamController<List<ContactsDTO>> _streamController = StreamController<List<ContactsDTO>>();
     Future.microtask(() async {
-      if (hasLocalSync) await _streamController.addFuture(assetDataSource.getContacts());
+      if (hasLocalSync) await _streamController.addFuture(assetDataSource.getContacts(localization));
       if (hasServerSync) await _streamController.addFuture(apiDatasource.getContacts());
     });
 
