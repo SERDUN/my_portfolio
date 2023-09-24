@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:data/extension/stream_controller_extensions.dart';
 import 'package:injectable/injectable.dart';
 
+import 'package:data/extension/extension.dart';
 import 'package:domain/repository/repository.dart';
 
 import '../dto/dto.dart';
