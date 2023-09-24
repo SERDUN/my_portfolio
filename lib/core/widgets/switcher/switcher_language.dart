@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:my_portfolio/app/app.dart';
+
 class SwitcherLanguage extends StatelessWidget {
   const SwitcherLanguage({
     Key? key,
@@ -22,11 +24,11 @@ class SwitcherLanguage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: buildLanguage(
-                  locale == "en" ? "assets/image/language/uk.webp" : "assets/image/language/en.webp",
+                  locale == "en" ? Assets.image.language.uk.path : Assets.image.language.en.path,
                 ),
               ),
               buildLanguage(
-                locale == "en" ? "assets/image/language/en.webp" : "assets/image/language/uk.webp",
+                locale == "en" ? Assets.image.language.en.path : Assets.image.language.uk.path,
               )
             ],
           ),
