@@ -45,10 +45,3 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
-    - assets/image/language/uk.webp
-    - assets/image/language/en.webp
-    - assets/image/icons/category.webp
-    - assets/image/icons/up_arrow.webp
-    - assets/image/icons/sub_category.webp
-    - assets/image/icons/google_play.webp
-    - assets/image/icons/app_store.webp
