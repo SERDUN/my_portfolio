@@ -1,0 +1,343 @@
+[
+  {
+    "id": "0",
+    "name": "Портфоліо",
+    "intro": "Місце, де описуються поточні навички та демонструється, що було зроблено",
+    "description": "Веб-застосунок для візуалізації поточних навичок. Застосунок використовує чисту архітектуру з трьома рівнями: даних, домену та презентера.\n Про рівень даних: у цьому розділі реалізовано репозиторій та створено джерело даних для отримання ресурсу. Наразі реалізовано репозиторій джерела даних, який розбирає JSON-файл із статичними даними та повертає DTO для використання у випадках використання;\nУ майбутньому, якщо потрібно або частково, я додамо віддалене джерело даних, яке буде взаємодіяти з HTTP-сервером (хмарні функції).\n Про рівень домену: у цьому розділі описано загальні речі, такі як моделі, мапери, використання. У використаннях описано основні функції для відокремлення логіки; на даний момент у нас немає складної логіки, і тому тут лише конвертування DTO в мапер та обробка базових виключень.\n Про домен-презентер: для отримання даних і обробки випадків використовується BLoC. Використовується базова назва навігації та базовий контейнер хосту...",
+    "linkAndroid": "",
+    "linkIOS": "",
+    "linkGithub": "https://github.com/SERDUN/my_portfolio",
+    "spheres": [
+      "Портфоліо",
+      "Соціальне"
+    ],
+    "technologies": [
+      "Flutter",
+      "BLoC",
+      "Web",
+      "Lottie",
+      "Octo image",
+      "Url launcher",
+      "get_it",
+      "injectable",
+      "json_annotation"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr6.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr1.webp"
+  },
+  {
+    "id": "1",
+    "name": "Alias",
+    "intro": "",
+    "description": "Гра в слова 'Alias' або 'Charades' - це нова безкоштовна версія всесвітньо відомої гри на дошці 'Alias'. Мета гри 'Alias' - пояснити слова членам команди. За кожне слово, яке правильно вгадує один із ваших товаришів по команді, ваша команда отримує очко. Наш додаток дозволяє грати в 'Alias' будь-де, без надмірної кількості паперових карток і дошки. Тепер ви можете додавати набори на будь-якій мові. Грайте власними наборами з друзями або діліться ними з усім світом. Круто, чи не так? Перевірте це тут: https://getalias.co/ Найкращою особливістю безкоштовного 'Alias' є тематичні набори слів. Ми вже підготували набори 'Космос', 'Вечірка' і 'Їжа'. Ми плануємо створювати багато інших наборів найближчим часом. Ви також можете грати в стандартний 'Alias', вибираючи рівень складності та граючи із випадковим набором слів. У цій версії також доступний окремий режим гри в 'Alias' для дітей з картинками поруч із словами. 'Alias' - це чудова гра як для невеликих, так і для великих груп. Маєте вечірку або пікнік? Не знаєте, що робити з родиною в дощовий день? Ви можете грати в 'Alias'. Вона чудово підходить для всіх вікових груп. Вам потрібно щонайменше чотири особи та додаток.\",\n",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=com.steelkiwi.alias",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Гра",
+      "Карти",
+      "Вечірка"
+    ],
+    "technologies": [
+      "Android",
+      "Java",
+      "RX",
+      "Auth",
+      "Jetpack",
+      "Room"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr6.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr7.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr8.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr9.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr10.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr10.webp"
+  },
+  {
+    "id": "2",
+    "name": "mPet",
+    "intro": "Мобільний додаток для зберігання та обміну медичними та оздоровчими даними про домашніх тварин та пошуку корисної інформації про них",
+    "description": "Управляйте, зберігайте та передавайте медичні записи і інформацію про здоров'я домашніх тварин. Зв'язуйтесь з ветеринарами та постачальниками послуг для домашніх тварин за допомогою відео, текстових повідомлень та відправки фотографій. Знаходьте постачальників послуг для домашніх тварин за допомогою карт Google.\",\n",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=com.mpethealthapp",
+    "linkIOS": "https://apps.apple.com/ua/app/mpet-pet-health-and-wellness/id1488159440",
+    "linkGithub": "",
+    "spheres": [
+      "Здоров'я",
+      "Домашні тварини",
+      "Собаки"
+    ],
+    "technologies": [
+      "Flutter",
+      "BLoC",
+      "Google Map",
+      "Permission",
+      "Notification"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp"
+  },
+  {
+    "id": "3",
+    "name": "Columbus Coffee Rewards",
+    "intro": "Додаток лояльності, який дозволяє клієнтам Columbus Coffee заробляти бали та знаходити найближчі заклади",
+    "description": "Історія Columbus Coffee почалася в 1994 році, коли четверо поціновувачів кави, включаючи Девіда Бертона, отримали ідею для кав'ярні, яка поділиться кращими кавовими традиціями з усього світу. Після багатої підготовки вони відкрили своє перше кавове місце в центрі Окленда. На сьогодні Columbus Coffee є преміальною франшизою швидкого харчування, яка налічує понад 60 кав'ярень на Північному і Південному островах Нової Зеландії.",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=com.tranxactor.columbuscoffee2021",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Меню ресторанів",
+      "Азія і Тихоокеанський регіон",
+      "Роздрібна торгівля та харчові технології",
+      "Додаток лояльності"
+    ],
+    "technologies": [
+      "Android",
+      "Navigator",
+      "Google Map",
+      "JetPack",
+      "Notification",
+      "QR",
+      "Система токенів"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr6.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr1.webp"
+  },
+  {
+    "id": "4",
+    "name": "Foodie Family",
+    "intro": "Foodie Family - зручний сервіс для замовлення та доставки готових страв з ресторанів!",
+    "description": "Було розроблено два додатки для доставки їжі, перший роль якого - клієнт, а інший - водій. У проекті використовується Redux та допоміжні бібліотеки, які, наприклад, допомагають з генерацією коду. Основною проблемою цього проекту була міграція до версії 2.0, але після міграції та певного рефакторингу були виконані всі вимоги.",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=ua.org.foodie.family",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Здоров'я",
+      "Домашні тварини",
+      "Собаки"
+    ],
+    "technologies": [
+      "Dart",
+      "Flutter",
+      "Redux",
+      "Авторизація за номером",
+      "Сповіщення",
+      "Локатор"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr6.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr7.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr8.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr1.webp"
+  },
+  {
+    "id": "5",
+    "name": "Lune",
+    "intro": "",
+    "description": "Ми використовували концепцію дизайну чистої архітектури BLoC для інтерфейсу користувача (UI). Це дозволило нам розділити шари і не занадто сильно пов'язувати компоненти між собою. Воно також дозволяє змінювати логіку додатка з мінімальними змінами в компонентах інтерфейсу користувача. Модульність надає можливість змінювати компоненти без впливу на інші компоненти та додавати залежності при необхідності.",
+    "linkAndroid": "",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Меню ресторанів",
+      "Азія і Тихоокеанський регіон",
+      "Роздрібна торгівля та харчові технології",
+      "Додаток лояльності"
+    ],
+    "technologies": [
+      "Flutter",
+      "Спеціалізований плагін",
+      "Оплата",
+      "Bloc",
+      "Модульність"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr4.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr4.webp"
+  },
+  {
+    "id": "6",
+    "name": "Arrkas",
+    "intro": "Мобільний додаток для покупки та продажу безконтактних купонів, спрямований на саудівських роздрібних торговців і споживачів",
+    "description": "Arrkas - це саудівський стартап, який прагне вирішити проблеми на ринку купонів в Саудівській Аравії. Ідея Arrkas полягає в тому, щоб об'єднати покупців і продавців в одному додатку. Покупці можуть отримувати доступ до десятків безконтактних купонів та отримувати винагороди за транзакції, в той час як продавці можуть продавати купони покупцям.",
+    "linkAndroid": "https://andriodapk.com/androidapp/1476532534/arrkas-%D8%A7%D8%B1%D8%AE%D8%B5",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Близький Схід і Африка",
+      "Фінанси",
+      "Додаток для собак"
+    ],
+    "technologies": [
+      "Android",
+      "Dagger",
+      "MVP",
+      "MAP"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr6.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr7.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr8.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr9.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr1.webp"
+  },
+  {
+    "id": "7",
+    "name": "Daberli",
+    "intro": "Мобільний додаток для зберігання та обміну медичними та оздоровчими даними про домашніх тварин та пошуку корисної інформації про них",
+    "description": "Управляйте, зберігайте та передавайте медичні записи і інформацію про здоров'я домашніх тварин. Зв'язуйтесь з ветеринарами та постачальниками послуг для домашніх тварин через відео, текстові повідомлення та відправляйте фотографії. Знаходьте постачальників послуг для домашніх тварин за допомогою Google Locator.",
+    "linkAndroid": "",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Здоров'я",
+      "Домашні тварини",
+      "Собаки"
+    ],
+    "technologies": [
+      "Flutter",
+      "BLoC",
+      "Google Map",
+      "Dart",
+      "Локалізація",
+      "Redux",
+      "Apple Pay",
+      "Оплата",
+      "Сповіщення",
+      "Вкладена навігація",
+      "Спільні налаштування",
+      "get_it",
+      "redux_epics",
+      "crashlytics",
+      "chopper"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr6.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr7.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr8.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr9.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr0.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr11.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr1.webp"
+  },
+  {
+    "id": "8",
+    "name": "NightApp",
+    "intro": "Теплова карта, яка показує живу відвідуваність барів, нічних клубів, ресторанів та караоке",
+    "description": "Додаток для Android, побудований з використанням шаблону проектування MVP, що дозволив нам ідеально розділити бізнес-логіку від інтерфейсу користувача. Для написання додатка ми обрали Kotlin, що допомогло нам зменшити обсяг коду порівняно з Java. Ми використовували фреймворк RxKotlin на основі патерну Paternal Observer . RxKotlin дав нам можливість підписуватися на події та зручно працювати з фоновими потоками, які активно використовуються при запитах до сервера за допомогою фреймворку Retrofit. Для реалізації всіх ідей нашого клієнта ми обрали Google Maps, оскільки вони дозволили налаштувати маркер, який допомагає користувачам бачити, наскільки зайняте певне місце. Оскільки додаток містить фотографії різних місць, ми використовували бібліотеку Glide для кешування фотографій. Бібліотеки Dexter чудово підходили для запитів на отримання дозволів та додавали більше зручності. З Dexter легко запитувати дозвіл від користувачів на запис даних в пам'ять телефону або доступ до камери чи геолокації.",
+    "linkAndroid": "",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Північна Америка",
+      "Соціальні мережі",
+      "Живий чат"
+    ],
+    "technologies": [
+      "Android",
+      "MVP",
+      "Google Map",
+      "Google Services",
+      "Firebase",
+      "Спеціальний вигляд",
+      "Canvas",
+      "Спеціальні маркери"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr6.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr7.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr1.webp"
+  },
+  {
+    "id": "9",
+    "name": "Slaywoke",
+    "intro": "Локаційна соціальна мережа для знайомства з новими людьми в школах та університетах",
+    "description": "Для швидкого створення MVP Slaywoke ми запропонували використовувати фреймворк Flutter, який є крос-платформеним. Це дозволило заощадити час на розробці додатка, оскільки ми могли писати код один раз і запускати його як на Android, так і на iOS. Це дозволило Еріку випробувати свою ідею серед користувачів Android і iPhone. Нам потрібно було відображати користувачів, що знаходяться поблизу, на динамічній карті з наложенням радару. Google Maps, здавалося, були ідеальним варіантом, але на той час Flutter не надав повної підтримки Google Maps, що означало, що ми не могли змінювати колірну схему та настроювати маркери. Ми вирішили вирішити це, будуючи ці функції з нуля. Сьогодні Flutter вже надає повну підтримку Google Maps, тому це не є проблемою для нових додатків.",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=com.slaylive.app",
+    "linkIOS": "https://apps.apple.com/ru/app/slaywoke/id1459371943",
+    "linkGithub": "",
+    "spheres": [
+      "Північна Америка",
+      "Соціальні мережі",
+      "Живий чат"
+    ],
+    "technologies": [
+      "Flutter",
+      "BLoC",
+      "Google Map",
+      "Redux",
+      "Локатор",
+      "Зображення",
+      "Відео",
+      "Запис",
+      "Спеціальний плагін",
+      "Оптимізація"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr6.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr7.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr8.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr9.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr2.webp"
+  }
+]

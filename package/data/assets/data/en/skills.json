@@ -1,0 +1,178 @@
+[
+  {
+    "title": "Flutter",
+    "expanded": true,
+    "subskills": [
+      {
+        "title": "Dart",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Provider",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "BLoC",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Redux",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Localization",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Ability to implement complex and performant layout",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Web",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Creating plugin",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Custom animation",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Navigator 1.0 Imperative",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Navigator 2.0 Declarative",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Constraints",
+        "expanded": false,
+        "subskills": []
+      }
+    ]
+  },
+  {
+    "title": "Android",
+    "expanded": false,
+    "subskills": [
+      {
+        "title": "Java core",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Kotlin",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Jetpack",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Koin",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Retrofit",
+        "expanded": false,
+        "subskills": []
+      }
+    ]
+  },
+  {
+    "title": "Another",
+    "expanded": true,
+    "subskills": [
+      {
+        "title": "Architecture",
+        "expanded": false,
+        "subskills": [
+          {
+            "title": "Clean architecture/MVP/MVVM",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "OOP/SOLID",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "KISS",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "RESTful",
+            "expanded": false,
+            "subskills": []
+          }
+        ]
+      },
+      {
+        "title": "Services",
+        "expanded": false,
+        "subskills": [
+          {
+            "title": "Git",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "Firebase",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "Payments integration",
+            "expanded": false,
+            "subskills": []
+          }
+        ]
+      },
+      {
+        "title": "Backend",
+        "expanded": false,
+        "subskills": [
+          {
+            "title": "NodeJS (Beginner)",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "Firebase cloud functions",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "SQL",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "Firebase database",
+            "expanded": false,
+            "subskills": []
+          }
+        ]
+      }
+    ]
+  }
+]

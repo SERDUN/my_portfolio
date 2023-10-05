@@ -1,0 +1,178 @@
+[
+  {
+    "title": "Flutter",
+    "expanded": true,
+    "subskills": [
+      {
+        "title": "Dart",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Provider",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "BLoC",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Redux",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Локалізація",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Здатність реалізовувати складні та продуктивні макети",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Web",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Створення плагінів",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Користувацька анімація",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Navigator 1.0 Імперативний",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Navigator 2.0 Декларативний",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Обмеження",
+        "expanded": false,
+        "subskills": []
+      }
+    ]
+  },
+  {
+    "title": "Android",
+    "expanded": false,
+    "subskills": [
+      {
+        "title": "Основи Java",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Kotlin",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Jetpack",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Koin",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Retrofit",
+        "expanded": false,
+        "subskills": []
+      }
+    ]
+  },
+  {
+    "title": "Інше",
+    "expanded": true,
+    "subskills": [
+      {
+        "title": "Архітектура",
+        "expanded": false,
+        "subskills": [
+          {
+            "title": "Чиста архітектура/MVP/MVVM",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "ООП/SOLID",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "KISS",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "RESTful",
+            "expanded": false,
+            "subskills": []
+          }
+        ]
+      },
+      {
+        "title": "Сервіси",
+        "expanded": false,
+        "subskills": [
+          {
+            "title": "Git",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "Firebase",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "Інтеграція платежів",
+            "expanded": false,
+            "subskills": []
+          }
+        ]
+      },
+      {
+        "title": "Бекенд",
+        "expanded": false,
+        "subskills": [
+          {
+            "title": "NodeJS (Початківець)",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "Функції Firebase Cloud",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "SQL",
+            "expanded": false,
+            "subskills": []
+          },
+          {
+            "title": "Firebase База Даних",
+            "expanded": false,
+            "subskills": []
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,12 +1,13 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
+import 'package:domain/domain.dart';
+
 import 'injection.config.dart';
 
-late GetIt di;
-
-@injectableInit
-Future configureDependencies(String environment) async {
-  di = GetIt.asNewInstance();
-  await $initGetIt(di, environment: environment);
-}
+@InjectableInit(
+  externalPackageModulesAfter: [
+    ExternalModule(DomainPackageModule),
+  ],
+)
+Future<GetIt> configureDependencies(String environment) async => GetIt.asNewInstance().init();

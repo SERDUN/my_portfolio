@@ -1,0 +1,22 @@
+{
+  "menuTitleHome": "Home",
+  "menuTitlePortfolio": "Portfolio",
+  "menuTitleContact": "Contact",
+  "menuTitleUseful": "Useful",
+  "featureUsefulTitle": "Useful commands",
+  "featureUsefulDescription": "This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.",
+  "lastProjectTitle": "Projects",
+  "buttonDownloadCv": "Download CV",
+  "unknownPageTitle": "404",
+  "unknownPageDescription": "Fuck Russia!",
+  "portfolioDescription": "Description",
+  "portfolioAboutMe": "About me",
+  "introSkills": "Skills",
+  "contactGetInTouch": "Get in touch",
+  "contactPhone": "Phone",
+  "contactEmail": "Email",
+  "contactLocation": "Location",
+  "contactFacebook": "Facebook",
+  "contactLinkedin": "LinkedIn",
+  "contactInstagram": "Instagram"
+}

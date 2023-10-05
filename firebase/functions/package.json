@@ -1,0 +1,40 @@
+{
+  "name": "functions",
+  "scripts": {
+    "debug": "lsof -t -i :7980 -i:7981 -i:7982 -i:7983 -i:7984 -i:7985 -i:9229 | xargs kill -9 && tsc && firebase emulators:start --inspect-functions",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+
+  },
+  "engines": {
+    "node": "18"
+  },
+
+  "main": "lib/index.js",
+  "dependencies": {
+    "@types/node": "^18.15.11",
+    "and": "^0.0.3",
+    "body-parser": "^1.20.2",
+    "class-transformer": "^0.5.1",
+    "connect-timeout": "^1.9.0",
+    "firebase": "^8.6.8",
+    "firebase-admin": "^11.7.0",
+    "firebase-functions": "^4.4.1",
+    "inversify": "^6.0.1",
+    "joi": "^17.9.1",
+    "lodash-humps-ts": "^0.0.6",
+    "reflect-metadata": "^0.1.13",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "devDependencies": {
+    "@types/connect-timeout": "^0.0.36",
+    "typescript": "^4.6.4"
+  },
+  "private": true
+}
