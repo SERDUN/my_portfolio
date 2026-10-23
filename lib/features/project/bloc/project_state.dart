@@ -8,7 +8,7 @@ enum ProjectStatus {
 }
 
 @freezed
-class ProjectState with _$ProjectState {
+abstract class ProjectState with _$ProjectState {
   const factory ProjectState({
     @Default(ProjectStatus.initial) ProjectStatus status,
     ProjectModel? project,

@@ -8,9 +8,9 @@ enum ProjectsStatus {
 }
 
 @freezed
-class ProjectsState with _$ProjectsState {
+abstract class ProjectsState with _$ProjectsState {
   const factory ProjectsState({
     @Default(ProjectsStatus.initial) ProjectsStatus status,
-    @Default([]) final List<ProjectModel> projects,
+    @Default([]) List<ProjectModel> projects,
   }) = _ProjectsState;
 }

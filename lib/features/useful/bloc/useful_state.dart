@@ -8,9 +8,9 @@ enum UsefulStatus {
 }
 
 @freezed
-class UsefulState with _$UsefulState {
+abstract class UsefulState with _$UsefulState {
   const factory UsefulState({
     @Default(UsefulStatus.initial) UsefulStatus status,
-    @Default([]) final List<UsefulCommandsModel> usefulCommands,
+    @Default([]) List<UsefulCommandsModel> usefulCommands,
   }) = _UsefulState;
 }

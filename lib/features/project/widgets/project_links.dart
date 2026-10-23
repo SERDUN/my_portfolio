@@ -35,21 +35,21 @@ class ProjectLinks extends StatelessWidget {
               link: github,
               iconSize: iconSize,
               openLink: onOpenLink,
-              icon: Ionicons.logo_github,
+              icon: Ionicons.logoGithub,
             ),
           if (android.isNotEmpty)
             SocialPart(
               link: android,
               iconSize: iconSize,
               openLink: onOpenLink,
-              icon: Ionicons.logo_google_playstore,
+              icon: Ionicons.logoGooglePlaystore,
             ),
           if (ios.isNotEmpty)
             SocialPart(
               link: ios,
               iconSize: iconSize,
               openLink: onOpenLink,
-              icon: Ionicons.logo_apple_appstore,
+              icon: Ionicons.logoAppleAppstore,
             ),
         ],
       ),

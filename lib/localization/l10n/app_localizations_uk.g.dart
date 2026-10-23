@@ -1,4 +1,8 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.g.dart';
+
+// ignore_for_file: type=lint
 
 /// The translations for Ukrainian (`uk`).
 class AppLocalizationsUk extends AppLocalizations {
@@ -20,7 +24,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get featureUsefulTitle => 'Корисні команди';
 
   @override
-  String get featureUsefulDescription => 'Ця вкладка не має інформаційного значення для користувачів третьої сторони, в ній лише команди, які я часто використовую, і я зазвичай забуваю.';
+  String get featureUsefulDescription =>
+      'Ця вкладка не має інформаційного значення для користувачів третьої сторони, в ній лише команди, які я часто використовую, і я зазвичай забуваю.';
 
   @override
   String get lastProjectTitle => 'Проекти';
