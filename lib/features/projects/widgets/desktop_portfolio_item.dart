@@ -42,7 +42,7 @@ class DesktopPortfolioItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6.0),
                     child: OctoImage(
                       image: Image.network(project.preview ?? "").image,
-                      placeholderBuilder: OctoPlaceholder.blurHash('LEHV6nWB2yk8pyo0adR*.7kCMdnj'),
+                      placeholderBuilder: blurHashPlaceholderBuilder('LEHV6nWB2yk8pyo0adR*.7kCMdnj'),
                       errorBuilder: OctoError.icon(color: Colors.red),
                       fit: BoxFit.cover,
                     ),

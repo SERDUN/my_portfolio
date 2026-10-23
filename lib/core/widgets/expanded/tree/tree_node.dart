@@ -93,7 +93,7 @@ class _TreeNodeState extends State<TreeNode> {
                   visible: children.isNotEmpty,
                   child: Center(
                     child: Icon(
-                      _isExpanded ? Ionicons.pizza : Ionicons.pizza_outline,
+                      _isExpanded ? Ionicons.pizza : Ionicons.pizzaOutline,
                       color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
                       size: 24,
                     ),

@@ -8,9 +8,9 @@ enum ContactsStatus {
 }
 
 @freezed
-class ContactsState with _$ContactsState {
+abstract class ContactsState with _$ContactsState {
   const factory ContactsState({
     @Default(ContactsStatus.initial) ContactsStatus status,
-    final List<ContactsModel>? contacts,
+    List<ContactsModel>? contacts,
   }) = _ContactsState;
 }

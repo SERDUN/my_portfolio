@@ -50,7 +50,7 @@ class _ApplicationState extends State<Application> {
               builder: (context, child) => ResponsiveBreakpoints.builder(
                 child: MaxWidthBox(
                   maxWidth: 1200,
-                  background: Container(color: Theme.of(context).colorScheme.surface),
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   child: BouncingScrollWrapper.builder(context, child!, dragWithMouse: true),
                 ),
                 breakpoints: [

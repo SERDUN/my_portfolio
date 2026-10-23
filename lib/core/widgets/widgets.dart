@@ -6,3 +6,4 @@ export 'expanded/expanded.dart';
 export 'holder/holder.dart';
 export 'switcher/switcher.dart';
 export 'text/text.dart';
+export 'image/image.dart';

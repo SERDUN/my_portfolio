@@ -1,4 +1,8 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.g.dart';
+
+// ignore_for_file: type=lint
 
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
@@ -20,7 +24,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get featureUsefulTitle => 'Useful commands';
 
   @override
-  String get featureUsefulDescription => 'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.';
+  String get featureUsefulDescription =>
+      'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.';
 
   @override
   String get lastProjectTitle => 'Projects';

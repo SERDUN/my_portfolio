@@ -63,7 +63,7 @@ class _TreeNodeState extends State<TreeRoot> {
                         child: Transform.rotate(
                           angle: -pi / (_isExpanded ? 1 : 360),
                           child: Icon(
-                            _isExpanded ? Ionicons.radio_button_on : Ionicons.radio_button_off,
+                            _isExpanded ? Ionicons.radioButtonOn : Ionicons.radioButtonOff,
                           ),
                         ),
                       ),

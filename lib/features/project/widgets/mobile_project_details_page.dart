@@ -148,7 +148,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: OctoImage(
                         image: Image.network(project.screenshots[itemIndex]).image,
-                        placeholderBuilder: OctoPlaceholder.blurHash(
+                        placeholderBuilder: blurHashPlaceholderBuilder(
                           'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
                         ),
                         errorBuilder: OctoError.icon(color: Colors.red),

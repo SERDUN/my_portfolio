@@ -55,7 +55,7 @@ class MobilePortfolioItem extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.75,
                     image: Image.network(project.preview ?? "").image,
-                    placeholderBuilder: OctoPlaceholder.blurHash('LEHV6nWB2yk8pyo0adR*.7kCMdnj'),
+                    placeholderBuilder: blurHashPlaceholderBuilder('LEHV6nWB2yk8pyo0adR*.7kCMdnj'),
                     errorBuilder: OctoError.icon(color: Colors.red),
                     fit: BoxFit.fitWidth,
                   ),
