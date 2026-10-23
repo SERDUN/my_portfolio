@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -47,24 +47,29 @@ class _ApplicationState extends State<Application> {
             final languageNotifier = LanguageProvider.watch(context);
             final themeModeNotifier = ThemeModeProvider.watch(context);
             return MaterialApp.router(
-              builder: (context, child) => ResponsiveBreakpoints.builder(
-                child: MaxWidthBox(
-                  maxWidth: 1200,
-                  backgroundColor: Theme.of(context).colorScheme.surface,
-                  child: BouncingScrollWrapper.builder(context, child!, dragWithMouse: true),
+              // Bridges ThemeData and MaterialLocalizations to packages that
+              // still import package:flutter/material.dart (responsive_framework,
+              // carousel_slider, octo_image, flutter_blurhash). Deprecated by
+              // design: drop it once those packages move to material_ui.
+              // ignore: deprecated_member_use
+              builder: (context, child) => MaterialUiCompatibilityBridge(
+                child: ResponsiveBreakpoints.builder(
+                  child: MaxWidthBox(
+                    maxWidth: 1200,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
+                    child: BouncingScrollWrapper.builder(context, child!, dragWithMouse: true),
+                  ),
+                  breakpoints: [
+                    const Breakpoint(start: 0, end: 450, name: MOBILE),
+                    const Breakpoint(start: 451, end: 800, name: TABLET),
+                    const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+                    const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+                  ],
                 ),
-                breakpoints: [
-                  const Breakpoint(start: 0, end: 450, name: MOBILE),
-                  const Breakpoint(start: 451, end: 800, name: TABLET),
-                  const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-                  const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-                ],
               ),
-              localizationsDelegates: const [
+              localizationsDelegates: [
                 AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
+                ...GlobalMaterialLocalizations.delegates,
               ],
               supportedLocales: const [
                 Locale('en', ''),
