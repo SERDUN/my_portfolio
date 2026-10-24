@@ -13,9 +13,7 @@ import '../widgets/contact_item.dart';
 
 /// Contacts: the statement, a short description and one card per channel.
 class ContactPage extends StatelessWidget {
-  const ContactPage({
-    super.key,
-  });
+  const ContactPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,28 +25,32 @@ class ContactPage extends StatelessWidget {
       builder: (context, state) {
         final contacts = state.contacts;
         return PageScaffold(
-          child: contacts == null
-              ? const Center(child: CircularProgressIndicator())
-              : ContentWidth(
-                  padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Eyebrow(l10n.menuTitleContact),
-                      const SizedBox(height: 10),
-                      Text(l10n.contactGetInTouch, style: isMobile ? textTheme.headlineLarge : textTheme.displayMedium),
-                      const SizedBox(height: 14),
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 640),
-                        child: Text(l10n.contactDescription, style: textTheme.bodyMedium?.copyWith(color: context.palette.muted)),
-                      ),
-                      const SizedBox(height: 32),
-                      ResponsiveGrid(
-                        children: [for (final contact in contacts) ContactCard(contact: contact)],
-                      ),
-                    ],
+          child: LoadStatusView(
+            status: state.status,
+            hasData: contacts.isNotEmpty,
+            onRetry: context.read<ContactsCubit>().load,
+            builder: (context) => ContentWidth(
+              padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Eyebrow(l10n.menuTitleContact),
+                  const SizedBox(height: 10),
+                  Text(l10n.contactGetInTouch, style: isMobile ? textTheme.headlineLarge : textTheme.displayMedium),
+                  const SizedBox(height: 14),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 640),
+                    child: Text(
+                      l10n.contactDescription,
+                      style: textTheme.bodyMedium?.copyWith(color: context.palette.muted),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 32),
+                  ResponsiveGrid(children: [for (final contact in contacts) ContactCard(contact: contact)]),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );

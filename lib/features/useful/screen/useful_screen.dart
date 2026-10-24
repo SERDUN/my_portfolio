@@ -16,9 +16,7 @@ import '../widget/widgets.dart';
 /// The owner's cheat sheet: one card per group, every command with a copy
 /// button.
 class HelpScreen extends StatelessWidget {
-  const HelpScreen({
-    super.key,
-  });
+  const HelpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,34 +26,33 @@ class HelpScreen extends StatelessWidget {
 
     return BlocBuilder<UsefulCubit, UsefulState>(
       builder: (context, state) {
-        final loading = state.status == UsefulStatus.initial || state.status == UsefulStatus.loading;
         return PageScaffold(
-          child: loading
-              ? const Center(child: CircularProgressIndicator())
-              : ContentWidth(
-                  padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Eyebrow(l10n.menuTitleUseful),
-                      const SizedBox(height: 10),
-                      Text(l10n.featureUsefulTitle, style: isMobile ? textTheme.headlineLarge : textTheme.displayMedium),
-                      const SizedBox(height: 14),
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 640),
-                        child: Text(
-                          l10n.featureUsefulDescription,
-                          style: textTheme.bodyMedium?.copyWith(color: context.palette.muted),
-                        ),
-                      ),
-                      const SizedBox(height: 32),
-                      for (final group in state.usefulCommands) ...[
-                        _GroupCard(group: group),
-                        const SizedBox(height: 20),
-                      ],
-                    ],
+          child: LoadStatusView(
+            status: state.status,
+            hasData: state.usefulCommands.isNotEmpty,
+            onRetry: context.read<UsefulCubit>().load,
+            builder: (context) => ContentWidth(
+              padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Eyebrow(l10n.menuTitleUseful),
+                  const SizedBox(height: 10),
+                  Text(l10n.featureUsefulTitle, style: isMobile ? textTheme.headlineLarge : textTheme.displayMedium),
+                  const SizedBox(height: 14),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 640),
+                    child: Text(
+                      l10n.featureUsefulDescription,
+                      style: textTheme.bodyMedium?.copyWith(color: context.palette.muted),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 32),
+                  for (final group in state.usefulCommands) ...[_GroupCard(group: group), const SizedBox(height: 20)],
+                ],
+              ),
+            ),
+          ),
         );
       },
     );

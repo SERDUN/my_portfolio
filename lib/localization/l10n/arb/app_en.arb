@@ -80,5 +80,8 @@
   "contactDescription": "Email is the fastest way. The other links lead where I post and answer.",
   "copyCommand": "Copy",
   "copiedCommand": "Copied",
-  "notFoundHome": "Back home"
+  "notFoundHome": "Back home",
+  "errorLoadFailed": "Could not load this page.",
+  "errorRetry": "Try again",
+  "errorProjectNotFound": "There is no such project."
 }

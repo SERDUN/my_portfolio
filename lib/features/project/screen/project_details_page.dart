@@ -19,9 +19,7 @@ import '../widgets/widgets.dart';
 /// One project: hero with the store buttons and the lead screenshot, the
 /// description and stack, the screenshot gallery, and the next project.
 class ProjectDetailsPage extends StatelessWidget {
-  const ProjectDetailsPage({
-    super.key,
-  });
+  const ProjectDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,40 +28,63 @@ class ProjectDetailsPage extends StatelessWidget {
         final project = state.project;
         final isMobile = ResponsiveBreakpoints.of(context).isMobile;
         return PageScaffold(
-          child: project == null
-              ? const Center(child: CircularProgressIndicator())
-              : ContentWidth(
-                  padding: EdgeInsets.only(top: isMobile ? 16 : 32, bottom: 96),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: PillButton(
-                          label: context.l10n.backToProjects,
-                          icon: Icons.arrow_back_rounded,
-                          iconLeading: true,
-                          variant: PillButtonVariant.ghost,
-                          onPressed: () => context.go(AppRoutInfo.portfolio.path),
-                        ),
-                      ),
-                      SizedBox(height: isMobile ? 16 : 32),
-                      ProjectHero(project: project),
-                      SizedBox(height: isMobile ? 48 : 72),
-                      ProjectAbout(project: project),
-                      if (project.screenshots.isNotEmpty) ...[
-                        SizedBox(height: isMobile ? 48 : 72),
-                        ProjectGallery(project: project),
-                      ],
-                      if (state.nextProject != null) ...[
-                        const SizedBox(height: 40),
-                        _NextProject(project: state.nextProject!),
-                      ],
-                    ],
-                  ),
-                ),
+          child: LoadStatusView(
+            status: state.status,
+            hasData: project != null,
+            onRetry: state.isNotFound ? null : context.read<ProjectCubit>().load,
+            failureMessage: state.isNotFound ? context.l10n.errorProjectNotFound : null,
+            failureAction: state.isNotFound
+                ? PillButton(
+                    label: context.l10n.backToProjects,
+                    icon: Icons.arrow_back_rounded,
+                    iconLeading: true,
+                    variant: PillButtonVariant.outline,
+                    onPressed: () => context.go(AppRoutInfo.portfolio.path),
+                  )
+                : null,
+            builder: (context) => _ProjectBody(project: project!, next: state.nextProject, isMobile: isMobile),
+          ),
         );
       },
+    );
+  }
+}
+
+class _ProjectBody extends StatelessWidget {
+  const _ProjectBody({required this.project, required this.next, required this.isMobile});
+
+  final ProjectModel project;
+  final ProjectModel? next;
+  final bool isMobile;
+
+  @override
+  Widget build(BuildContext context) {
+    return ContentWidth(
+      padding: EdgeInsets.only(top: isMobile ? 16 : 32, bottom: 96),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: PillButton(
+              label: context.l10n.backToProjects,
+              icon: Icons.arrow_back_rounded,
+              iconLeading: true,
+              variant: PillButtonVariant.ghost,
+              onPressed: () => context.go(AppRoutInfo.portfolio.path),
+            ),
+          ),
+          SizedBox(height: isMobile ? 16 : 32),
+          ProjectHero(project: project),
+          SizedBox(height: isMobile ? 48 : 72),
+          ProjectAbout(project: project),
+          if (project.screenshots.isNotEmpty) ...[
+            SizedBox(height: isMobile ? 48 : 72),
+            ProjectGallery(project: project),
+          ],
+          if (next != null) ...[const SizedBox(height: 40), _NextProject(project: next!)],
+        ],
+      ),
     );
   }
 }
@@ -79,10 +100,14 @@ class _NextProject extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Container(
       padding: const EdgeInsets.only(top: 28),
-      decoration: BoxDecoration(border: Border(top: BorderSide(color: palette.line))),
+      decoration: BoxDecoration(
+        border: Border(top: BorderSide(color: palette.line)),
+      ),
       child: Row(
         children: [
-          Expanded(child: Text(context.l10n.projectNext, style: textTheme.bodyMedium?.copyWith(color: palette.muted))),
+          Expanded(
+            child: Text(context.l10n.projectNext, style: textTheme.bodyMedium?.copyWith(color: palette.muted)),
+          ),
           Semantics(
             link: true,
             child: InkWell(

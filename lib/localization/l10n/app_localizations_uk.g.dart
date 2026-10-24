@@ -191,4 +191,13 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get notFoundHome => 'На головну';
+
+  @override
+  String get errorLoadFailed => 'Не вдалося завантажити сторінку.';
+
+  @override
+  String get errorRetry => 'Спробувати ще';
+
+  @override
+  String get errorProjectNotFound => 'Такого проєкту немає.';
 }

@@ -13,6 +13,6 @@ abstract class PortfolioDataSource {
 
   Future<List<ProjectDTO>> getProjects(Language language);
 
-  /// Throws [StateError] when no project has [id].
+  /// Throws [ProjectNotFoundException] when no project has [id].
   Future<ProjectDTO> getProject(String id, Language language);
 }

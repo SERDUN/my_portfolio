@@ -56,5 +56,8 @@
   "contactDescription": "Пошта найшвидша. Решта посилань ведуть туди, де я пишу і відповідаю.",
   "copyCommand": "Копіювати",
   "copiedCommand": "Скопійовано",
-  "notFoundHome": "На головну"
+  "notFoundHome": "На головну",
+  "errorLoadFailed": "Не вдалося завантажити сторінку.",
+  "errorRetry": "Спробувати ще",
+  "errorProjectNotFound": "Такого проєкту немає."
 }

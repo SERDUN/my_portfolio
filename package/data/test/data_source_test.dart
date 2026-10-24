@@ -40,9 +40,9 @@ void main() {
     });
 
     test('does not retry a missing project', () async {
-      final source = FallbackDataSource(primary: _FailingSource(StateError('gone')), fallback: AssetsDataSource());
+      final source = FallbackDataSource(primary: _FailingSource(const ProjectNotFoundException('x')), fallback: AssetsDataSource());
 
-      expect(source.getProject('x', Language.en), throwsStateError);
+      expect(source.getProject('x', Language.en), throwsA(isA<ProjectNotFoundException>()));
     });
   });
 
@@ -69,10 +69,10 @@ void main() {
       expect(api.getProjects(Language.en), throwsA(isA<ApiException>()));
     });
 
-    test('maps a 404 on one project to the StateError of the contract', () {
+    test('maps a 404 on one project to ProjectNotFoundException', () {
       final api = _api((_) async => http.Response('<html>not found</html>', 404));
 
-      expect(api.getProject('nope', Language.en), throwsStateError);
+      expect(api.getProject('nope', Language.en), throwsA(isA<ProjectNotFoundException>()));
     });
   });
 }

@@ -1,25 +1,26 @@
-import 'dart:async';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/core/state/state.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
 part 'bio_state.dart';
 
 part 'bio_cubit.freezed.dart';
 
-class BioCubit extends Cubit<BioState> {
+/// Home page data. The profile decides the page status; skills and projects
+/// are secondary: a failure clears that section (so no stale other-language
+/// data lingers) and is logged, the rest of the page stays.
+class BioCubit extends Cubit<BioState> with CubitSubscriptions<BioState>, LanguageReload<BioState> {
   BioCubit(
     this.userUseCase,
     this.skillsUseCase,
     this.projectsUseCase,
     this.languageNotifier,
   ) : super(const BioState()) {
-    _initState();
-    languageNotifier.addListener(_initState);
+    reloadOn(languageNotifier);
   }
 
   final LanguageNotifier languageNotifier;
@@ -28,45 +29,28 @@ class BioCubit extends Cubit<BioState> {
   final GetUserSkillsUseCase skillsUseCase;
   final GetProjectsUseCase projectsUseCase;
 
-  StreamSubscription? _userStreamSubscription;
-  StreamSubscription? _skillsStreamSubscription;
-  StreamSubscription? _projectsStreamSubscription;
-
-  /// One language snapshot per reload so the three streams never disagree.
-  void _initState() {
-    final language = languageNotifier.language;
-    subscribeOnUserData(language);
-    subscribeOnUserSkills(language);
-    subscribeOnProjects(language);
-  }
-
-  void subscribeOnUserData(Language language) {
-    _userStreamSubscription?.cancel();
-    _userStreamSubscription = userUseCase.execute(language: language).listen((event) {
-      emit(state.copyWith(status: BioStatus.success, user: event));
-    });
-  }
-
-  void subscribeOnUserSkills(Language language) {
-    _skillsStreamSubscription?.cancel();
-    _skillsStreamSubscription = skillsUseCase.execute(language: language).listen((event) {
-      emit(state.copyWith(status: BioStatus.success, skills: event));
-    });
-  }
-
-  void subscribeOnProjects(Language language) {
-    _projectsStreamSubscription?.cancel();
-    _projectsStreamSubscription = projectsUseCase.execute(language: language).listen((event) {
-      emit(state.copyWith(projects: event));
-    });
-  }
-
+  /// One language snapshot per load so the three streams never disagree.
   @override
-  Future<void> close() async {
-    await super.close();
-    _userStreamSubscription?.cancel();
-    _skillsStreamSubscription?.cancel();
-    _projectsStreamSubscription?.cancel();
-    languageNotifier.removeListener(_initState);
+  void load() {
+    final language = languageNotifier.language;
+    loadPrimary(
+      #user,
+      userUseCase.execute(language: language),
+      loading: state.copyWith(status: LoadStatus.loading, error: null),
+      success: (user) => state.copyWith(status: LoadStatus.success, user: user),
+      failure: (error) => state.copyWith(status: LoadStatus.failure, error: error),
+    );
+    subscribe(
+      #skills,
+      skillsUseCase.execute(language: language),
+      onData: (skills) => emit(state.copyWith(skills: skills)),
+      onError: (_, _) => emit(state.copyWith(skills: null)),
+    );
+    subscribe(
+      #projects,
+      projectsUseCase.execute(language: language),
+      onData: (projects) => emit(state.copyWith(projects: projects)),
+      onError: (_, _) => emit(state.copyWith(projects: const [])),
+    );
   }
 }

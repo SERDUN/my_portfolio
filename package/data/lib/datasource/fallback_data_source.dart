@@ -5,7 +5,8 @@ import 'portfolio_data_source.dart';
 
 /// Asks [primary] first and answers from [fallback] when it fails, so a down
 /// or slow API never leaves a page empty while the bundled content exists.
-/// A missing project ([StateError]) is a real answer and is not retried.
+/// A missing project ([ProjectNotFoundException]) is a real answer and is
+/// not retried.
 class FallbackDataSource implements PortfolioDataSource {
   FallbackDataSource({required this.primary, required this.fallback});
 
@@ -15,7 +16,7 @@ class FallbackDataSource implements PortfolioDataSource {
   Future<T> _either<T>(Future<T> Function(PortfolioDataSource source) call) async {
     try {
       return await call(primary);
-    } on StateError {
+    } on ProjectNotFoundException {
       rethrow;
     } catch (_) {
       return call(fallback);

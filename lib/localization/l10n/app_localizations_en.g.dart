@@ -191,4 +191,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notFoundHome => 'Back home';
+
+  @override
+  String get errorLoadFailed => 'Could not load this page.';
+
+  @override
+  String get errorRetry => 'Try again';
+
+  @override
+  String get errorProjectNotFound => 'There is no such project.';
 }

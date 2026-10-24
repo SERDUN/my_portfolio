@@ -1,21 +1,17 @@
 part of 'project_cubit.dart';
 
-enum ProjectStatus {
-  initial,
-  loading,
-  error,
-  success,
-}
-
 @freezed
 abstract class ProjectState with _$ProjectState {
   const ProjectState._();
 
   const factory ProjectState({
-    @Default(ProjectStatus.initial) ProjectStatus status,
+    @Default(LoadStatus.initial) LoadStatus status,
     ProjectModel? project,
     @Default([]) List<ProjectModel> projects,
+    Object? error,
   }) = _ProjectState;
+
+  bool get isNotFound => status == LoadStatus.failure && error is ProjectNotFoundException;
 
   /// The project after the current one in the list, wrapping around; null
   /// while the list is unknown or holds only this project.

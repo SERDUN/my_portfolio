@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProjectState {
 
- ProjectStatus get status; ProjectModel? get project; List<ProjectModel> get projects;
+ LoadStatus get status; ProjectModel? get project; List<ProjectModel> get projects; Object? get error;
 /// Create a copy of ProjectState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $ProjectStateCopyWith<ProjectState> get copyWith => _$ProjectStateCopyWithImpl<P
 @override
 bool operator ==(Object other) {
   final _this = this as ProjectState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProjectState&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.project, _this.project) || other.project == _this.project)&&const DeepCollectionEquality().equals(other.projects, _this.projects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProjectState&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.project, _this.project) || other.project == _this.project)&&const DeepCollectionEquality().equals(other.projects, _this.projects)&&const DeepCollectionEquality().equals(other.error, _this.error));
 }
 
 
 @override
 int get hashCode {
   final _this = this as ProjectState;
-  return Object.hash(runtimeType,_this.status,_this.project,const DeepCollectionEquality().hash(_this.projects));
+  return Object.hash(runtimeType,_this.status,_this.project,const DeepCollectionEquality().hash(_this.projects),const DeepCollectionEquality().hash(_this.error));
 }
 
 @override
 String toString() {
   final _this = this as ProjectState;
-  return 'ProjectState(status: ${_this.status}, project: ${_this.project}, projects: ${_this.projects})';
+  return 'ProjectState(status: ${_this.status}, project: ${_this.project}, projects: ${_this.projects}, error: ${_this.error})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ProjectStateCopyWith<$Res>  {
   factory $ProjectStateCopyWith(ProjectState value, $Res Function(ProjectState) _then) = _$ProjectStateCopyWithImpl;
 @useResult
 $Res call({
- ProjectStatus status, ProjectModel? project, List<ProjectModel> projects
+ LoadStatus status, ProjectModel? project, List<ProjectModel> projects, Object? error
 });
 
 
@@ -68,12 +68,12 @@ class _$ProjectStateCopyWithImpl<$Res>
 
 /// Create a copy of ProjectState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? project = freezed,Object? projects = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? project = freezed,Object? projects = null,Object? error = freezed,}) {
   return _then(ProjectState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as ProjectStatus,project: freezed == project ? _self.project : project // ignore: cast_nullable_to_non_nullable
+as LoadStatus,project: freezed == project ? _self.project : project // ignore: cast_nullable_to_non_nullable
 as ProjectModel?,projects: null == projects ? _self.projects : projects // ignore: cast_nullable_to_non_nullable
-as List<ProjectModel>,
+as List<ProjectModel>,error: freezed == error ? _self.error : error ,
   ));
 }
 
@@ -158,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ProjectStatus status,  ProjectModel? project,  List<ProjectModel> projects)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LoadStatus status,  ProjectModel? project,  List<ProjectModel> projects,  Object? error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProjectState() when $default != null:
-return $default(_that.status,_that.project,_that.projects);case _:
+return $default(_that.status,_that.project,_that.projects,_that.error);case _:
   return orElse();
 
 }
@@ -179,10 +179,10 @@ return $default(_that.status,_that.project,_that.projects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ProjectStatus status,  ProjectModel? project,  List<ProjectModel> projects)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LoadStatus status,  ProjectModel? project,  List<ProjectModel> projects,  Object? error)  $default,) {final _that = this;
 switch (_that) {
 case _ProjectState():
-return $default(_that.status,_that.project,_that.projects);case _:
+return $default(_that.status,_that.project,_that.projects,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -199,10 +199,10 @@ return $default(_that.status,_that.project,_that.projects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ProjectStatus status,  ProjectModel? project,  List<ProjectModel> projects)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LoadStatus status,  ProjectModel? project,  List<ProjectModel> projects,  Object? error)?  $default,) {final _that = this;
 switch (_that) {
 case _ProjectState() when $default != null:
-return $default(_that.status,_that.project,_that.projects);case _:
+return $default(_that.status,_that.project,_that.projects,_that.error);case _:
   return null;
 
 }
@@ -214,10 +214,10 @@ return $default(_that.status,_that.project,_that.projects);case _:
 
 
 class _ProjectState extends ProjectState {
-  const _ProjectState({this.status = ProjectStatus.initial, this.project,  List<ProjectModel> projects = const []}): _projects = projects,super._();
+  const _ProjectState({this.status = LoadStatus.initial, this.project,  List<ProjectModel> projects = const [], this.error}): _projects = projects,super._();
   
 
-@override@JsonKey() final  ProjectStatus status;
+@override@JsonKey() final  LoadStatus status;
 @override final  ProjectModel? project;
  final  List<ProjectModel> _projects;
 @override@JsonKey() List<ProjectModel> get projects {
@@ -226,6 +226,7 @@ class _ProjectState extends ProjectState {
   return EqualUnmodifiableListView(_projects);
 }
 
+@override final  Object? error;
 
 /// Create a copy of ProjectState
 /// with the given fields replaced by the non-null parameter values.
@@ -237,18 +238,18 @@ _$ProjectStateCopyWith<_ProjectState> get copyWith => __$ProjectStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProjectState&&(identical(other.status, status) || other.status == status)&&(identical(other.project, project) || other.project == project)&&const DeepCollectionEquality().equals(other.projects, _projects));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProjectState&&(identical(other.status, status) || other.status == status)&&(identical(other.project, project) || other.project == project)&&const DeepCollectionEquality().equals(other.projects, _projects)&&const DeepCollectionEquality().equals(other.error, error));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,status,project,const DeepCollectionEquality().hash(_projects));
+    return Object.hash(runtimeType,status,project,const DeepCollectionEquality().hash(_projects),const DeepCollectionEquality().hash(error));
 }
 
 @override
 String toString() {
-    return 'ProjectState(status: $status, project: $project, projects: $projects)';
+    return 'ProjectState(status: $status, project: $project, projects: $projects, error: $error)';
 }
 
 
@@ -259,7 +260,7 @@ abstract mixin class _$ProjectStateCopyWith<$Res> implements $ProjectStateCopyWi
   factory _$ProjectStateCopyWith(_ProjectState value, $Res Function(_ProjectState) _then) = __$ProjectStateCopyWithImpl;
 @override @useResult
 $Res call({
- ProjectStatus status, ProjectModel? project, List<ProjectModel> projects
+ LoadStatus status, ProjectModel? project, List<ProjectModel> projects, Object? error
 });
 
 
@@ -276,12 +277,12 @@ class __$ProjectStateCopyWithImpl<$Res>
 
 /// Create a copy of ProjectState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? project = freezed,Object? projects = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? project = freezed,Object? projects = null,Object? error = freezed,}) {
   return _then(_ProjectState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as ProjectStatus,project: freezed == project ? _self.project : project // ignore: cast_nullable_to_non_nullable
+as LoadStatus,project: freezed == project ? _self.project : project // ignore: cast_nullable_to_non_nullable
 as ProjectModel?,projects: null == projects ? _self._projects : projects // ignore: cast_nullable_to_non_nullable
-as List<ProjectModel>,
+as List<ProjectModel>,error: freezed == error ? _self.error : error ,
   ));
 }
 

@@ -445,6 +445,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back home'**
   String get notFoundHome;
+
+  /// No description provided for @errorLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load this page.'**
+  String get errorLoadFailed;
+
+  /// No description provided for @errorRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get errorRetry;
+
+  /// No description provided for @errorProjectNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no such project.'**
+  String get errorProjectNotFound;
 }
 
 class _AppLocalizationsDelegate

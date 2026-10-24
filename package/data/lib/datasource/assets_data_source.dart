@@ -21,7 +21,10 @@ class AssetsDataSource implements PortfolioDataSource {
   @override
   Future<ProjectDTO> getProject(String id, Language language) async {
     final projects = await getProjects(language);
-    return projects.firstWhere((project) => project.id == id);
+    for (final project in projects) {
+      if (project.id == id) return project;
+    }
+    throw ProjectNotFoundException(id);
   }
 
   @override

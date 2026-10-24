@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/core/state/state.dart';
 import 'package:my_portfolio/features/bio/bloc/bio_cubit.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
@@ -89,9 +91,8 @@ void main() {
     await projectsUseCase.controller.close();
   });
 
-  test('starts in the initial state and subscribes to all three use cases', () {
-    expect(cubit.state, const BioState());
-    expect(cubit.state.status, BioStatus.initial);
+  test('starts loading and subscribes to all three use cases', () {
+    expect(cubit.state, const BioState(status: LoadStatus.loading));
     expect(cubit.state.user, isNull);
     expect(cubit.state.skills, isNull);
     expect(cubit.state.projects, isEmpty);
@@ -111,8 +112,8 @@ void main() {
     await subscription.cancel();
 
     expect(states, [
-      BioState(status: BioStatus.success, user: user),
-      BioState(status: BioStatus.success, user: user, skills: skills),
+      BioState(status: LoadStatus.success, user: user),
+      BioState(status: LoadStatus.success, user: user, skills: skills),
     ]);
   });
 
@@ -182,4 +183,58 @@ void main() {
     expect(skillsUseCase.executions, 1);
     expect(projectsUseCase.executions, 1);
   });
+
+  group('errors', () {
+    test('a profile error fails the page and reaches addError', () async {
+      // Bloc reads the observer when a cubit is built, so build one after setting it.
+      final observer = _RecordingObserver();
+      final previous = Bloc.observer;
+      Bloc.observer = observer;
+      addTearDown(() => Bloc.observer = previous);
+      final observed = BioCubit(userUseCase, skillsUseCase, projectsUseCase, languageNotifier);
+      addTearDown(observed.close);
+      final error = StateError('offline');
+
+      userUseCase.controller.addError(error);
+      await Future<void>.delayed(Duration.zero);
+
+      expect(observed.state.status, LoadStatus.failure);
+      expect(observed.state.error, error);
+      expect(observer.errors, contains(error));
+    });
+
+    test('a skills error clears the skills but keeps the page', () async {
+      userUseCase.controller.add(user);
+      skillsUseCase.controller.add(skills);
+      await Future<void>.delayed(Duration.zero);
+      skillsUseCase.controller.addError(Exception('skills down'));
+      await Future<void>.delayed(Duration.zero);
+
+      expect(cubit.state.status, LoadStatus.success);
+      expect(cubit.state.user, user);
+      expect(cubit.state.skills, isNull, reason: 'stale skills from another language must not stay');
+    });
+
+    test('load after a failure goes back to loading and resubscribes', () async {
+      userUseCase.controller.addError(Exception('offline'));
+      await Future<void>.delayed(Duration.zero);
+
+      cubit.load();
+
+      expect(cubit.state.status, LoadStatus.loading);
+      expect(cubit.state.error, isNull);
+      expect(userUseCase.executions, 2);
+    });
+  });
+}
+
+/// Records what reaches [BlocObserver.onError], i.e. what `addError` reports.
+class _RecordingObserver extends BlocObserver {
+  final List<Object> errors = [];
+
+  @override
+  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
+    errors.add(error);
+    super.onError(bloc, error, stackTrace);
+  }
 }
