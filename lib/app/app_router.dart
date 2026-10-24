@@ -7,6 +7,7 @@ import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/features/features.dart';
 
 import 'app_routes.dart';
+import 'contacts/contacts.dart';
 import 'settings/settings.dart';
 
 /// The route tree. Every page builds its cubit from the widget tree

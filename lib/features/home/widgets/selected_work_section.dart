@@ -3,7 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/core.dart';
-import 'package:my_portfolio/features/projects/widgets/project_card.dart';
+import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
 /// Three featured projects as cards, with a link to the full list.
@@ -34,7 +34,12 @@ class SelectedWorkSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 32),
-          ResponsiveGrid(children: [for (final project in projects.take(3)) ProjectCard(project: project)]),
+          ResponsiveGrid(
+            children: [
+              for (final project in projects.take(3))
+                ProjectCard(project: project, onOpen: () => context.openProject(project.id)),
+            ],
+          ),
         ],
       ),
     );

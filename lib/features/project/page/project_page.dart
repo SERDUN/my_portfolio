@@ -1,15 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/app/app_routes.dart';
+import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/core/core.dart';
-import 'package:my_portfolio/features/shell/shell.dart';
-import 'package:my_portfolio/features/projects/widgets/project_card.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
@@ -39,7 +36,7 @@ class ProjectPage extends StatelessWidget {
                     icon: Icons.arrow_back_rounded,
                     iconLeading: true,
                     variant: PillButtonVariant.outline,
-                    onPressed: () => context.go(AppRoutes.projects.path),
+                    onPressed: context.openProjects,
                   )
                 : null,
             builder: (context) => _ProjectBody(project: project!, next: state.nextProject, isMobile: isMobile),
@@ -71,7 +68,7 @@ class _ProjectBody extends StatelessWidget {
               icon: Icons.arrow_back_rounded,
               iconLeading: true,
               variant: PillButtonVariant.ghost,
-              onPressed: () => context.go(AppRoutes.projects.path),
+              onPressed: context.openProjects,
             ),
           ),
           SizedBox(height: isMobile ? 16 : 32),
@@ -111,7 +108,7 @@ class _NextProject extends StatelessWidget {
           Semantics(
             link: true,
             child: InkWell(
-              onTap: () => ProjectCard.open(context, project),
+              onTap: () => context.openProject(project.id),
               borderRadius: BorderRadius.circular(8),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),

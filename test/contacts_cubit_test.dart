@@ -7,7 +7,7 @@ import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/app/settings/settings.dart';
 import 'package:my_portfolio/core/state/state.dart';
-import 'package:my_portfolio/features/contacts/contacts.dart';
+import 'package:my_portfolio/app/contacts/contacts.dart';
 
 class _Contacts implements GetContactsUseCase {
   final controller = StreamController<List<ContactModel>>.broadcast();

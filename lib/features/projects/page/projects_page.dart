@@ -1,19 +1,16 @@
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/app/app_routes.dart';
+import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/core/core.dart';
-import 'package:my_portfolio/features/shell/shell.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
 import '../bloc/projects_cubit.dart';
-import '../widgets/project_card.dart';
 
 /// All projects: a statement header, a platform filter and the cards.
 class ProjectsPage extends StatefulWidget {
@@ -59,7 +56,10 @@ class _ProjectsPageState extends State<ProjectsPage> {
                     tablet: 1,
                     mobile: 1,
                     gap: 24,
-                    children: [for (final project in visible) ProjectCard.horizontal(project: project)],
+                    children: [
+                      for (final project in visible)
+                        ProjectCard.horizontal(project: project, onOpen: () => context.openProject(project.id)),
+                    ],
                   ),
                   const SizedBox(height: 24),
                   Align(
@@ -68,7 +68,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                       label: context.l10n.projects_cta,
                       icon: Icons.arrow_forward_rounded,
                       variant: PillButtonVariant.ghost,
-                      onPressed: () => context.go(AppRoutes.contacts.path),
+                      onPressed: context.openContacts,
                     ),
                   ),
                 ],

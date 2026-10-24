@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:my_portfolio/app/settings/settings.dart';
+import 'package:my_portfolio/core/core.dart';
 
 import '../widgets/widgets.dart';
 
@@ -35,7 +36,7 @@ class ShellPage extends StatelessWidget {
         language: language,
         onLanguageChange: settings.changeLanguage,
       ),
-      body: navigationShell,
+      body: PageFooterScope(footer: const SiteFooter(), child: navigationShell),
     );
   }
 }

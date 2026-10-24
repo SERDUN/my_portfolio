@@ -9,6 +9,7 @@ Personal portfolio of Dmytro Serdun, a Flutter web app: https://serdun.online/
 | `lib/` | the app: `bootstrap.dart`, routing and theme in `app/`, screens in `features/`, shared widgets in `core/`, l10n in `localization/` |
 | `package/domain/` | pure Dart: entities, repository contracts, use cases; depends on nothing but `injectable` |
 | `package/data/` | DTOs, DTO → model mappers (`lib/extension/`), repository implementations, the JSON content under `assets/data/{en,uk}/` |
+| `docs/` | `widgets.md`: the catalogue of shared widgets in `lib/core/widgets/` |
 | `web/` | web shell: `index.html`, manifest, icons |
 | `firebase/` | Firebase project: Cloud Functions (TypeScript), hosting, Firestore and Storage rules |
 

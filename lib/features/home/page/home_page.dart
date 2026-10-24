@@ -1,11 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
-import 'package:my_portfolio/app/app_routes.dart';
+import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/core/core.dart';
-import 'package:my_portfolio/features/shell/shell.dart';
 
 import '../bloc/home_cubit.dart';
 import '../widgets/widgets.dart';
@@ -47,5 +45,5 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _openProjects(BuildContext context) => context.go(AppRoutes.projects.path);
+  void _openProjects(BuildContext context) => context.openProjects();
 }
