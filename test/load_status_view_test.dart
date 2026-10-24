@@ -13,8 +13,6 @@ Widget _host(Widget child) => MaterialApp(
 );
 
 void main() {
-  setUpAll(() => GoogleFonts.config.allowRuntimeFetching = false);
-
   const content = Text('content');
 
   testWidgets('a pending first load shows a spinner', (tester) async {

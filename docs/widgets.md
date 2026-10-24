@@ -44,3 +44,9 @@ directly, never the `app.dart` barrel (it exports the router, which imports ever
 - Every page root carries its screen id through `SemanticId`.
 - Ids are never literals in widgets. Repeated controls build theirs from data with the helpers
   in `keys.dart` (`projectsCardId(project.id)`).
+- Every screen has a `test/semantics/<screen>_semantics_test.dart`: it pumps the app at the
+  screen's route with the fake content from `test/helpers/fake_app.dart` (states the fakes
+  cannot produce, such as a failed load, pump the widget alone in `testHost`), checks the screen anchor and Flutter's
+  labeled-tap-target guideline, asserts each control's id, name and tap action with
+  `expectIdentifiedTapTargets`, and activates controls through `tapViaSemantics`, the way
+  assistive technology does. A new control adds its id to that list.

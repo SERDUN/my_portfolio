@@ -61,7 +61,9 @@ class PillButton extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (iconWidget != null && iconLeading) ...[iconWidget, const SizedBox(width: 10)],
-        Text(label),
+        // Wraps instead of overflowing wherever the parent bounds the width
+        // (Column, Wrap, Expanded); in an unbounded Row it stays on one line.
+        Flexible(child: Text(label, textAlign: TextAlign.center)),
         if (iconWidget != null && !iconLeading) ...[const SizedBox(width: 10), iconWidget],
       ],
     );
