@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuTitleHome => 'Home';
 
   @override
-  String get menuTitlePortfolio => 'Portfolio';
+  String get menuTitlePortfolio => 'Projects';
 
   @override
   String get menuTitleContact => 'Contact';
@@ -74,4 +74,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get contactInstagram => 'Instagram';
+
+  @override
+  String get footerContactTitle => 'Let\'s talk about your next app.';
+
+  @override
+  String get footerSource => 'Source on GitHub';
+
+  @override
+  String get footerGlory => 'Glory to Ukraine';
+
+  @override
+  String get actionOpenMenu => 'Open menu';
+
+  @override
+  String get actionSwitchTheme => 'Switch theme';
+
+  @override
+  String get actionSwitchLanguage => 'Language';
 }

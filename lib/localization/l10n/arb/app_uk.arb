@@ -1,7 +1,7 @@
 {
-  "lastProjectTitle": "Проекти",
+  "lastProjectTitle": "Проєкти",
   "menuTitleHome": "Резюме",
-  "menuTitlePortfolio": "Портфоліо",
+  "menuTitlePortfolio": "Проєкти",
   "menuTitleContact": "Контакти",
   "menuTitleUseful": "Корисне",
   "featureUsefulTitle": "Корисні команди",
@@ -20,5 +20,11 @@
   "contactLocation": "Розташування",
   "contactFacebook": "Фейсбук",
   "contactLinkedin": "Лінкед",
-  "contactInstagram": "Інста"
+  "contactInstagram": "Інста",
+  "footerContactTitle": "Поговорімо про ваш наступний застосунок.",
+  "footerSource": "Код на GitHub",
+  "footerGlory": "Слава Україні",
+  "actionOpenMenu": "Відкрити меню",
+  "actionSwitchTheme": "Змінити тему",
+  "actionSwitchLanguage": "Мова"
 }

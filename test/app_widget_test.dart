@@ -27,7 +27,8 @@ void main() {
 
     expect(tester.takeException(), isNull);
     expect(find.byType(MaterialApp), findsOneWidget);
-    expect(find.byType(AppBar), findsOneWidget);
+    expect(find.byType(SiteHeader), findsOneWidget);
+    expect(find.byType(SiteFooter), findsOneWidget);
     expect(find.text('Dmitro Serdun'), findsOneWidget);
     expect(find.byType(HomePage), findsOneWidget);
     // The bundled English intro reached the UI through the bio cubit.

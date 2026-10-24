@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
+import 'package:my_portfolio/features/main/main.dart';
 
 import '../bloc/project_cubit.dart';
 import '../widgets/widgets.dart';
@@ -26,7 +27,7 @@ class _ContactUsState extends State<ProjectDetailsPage> with TickerProviderState
           child: CircularProgressIndicator(),
         );
       } else {
-        return SingleChildScrollView(
+        return PageScaffold(
           child: ResponsiveWidget(
             desktopScreen: DesktopProjectDetailsPage(
               project: state.project!,
