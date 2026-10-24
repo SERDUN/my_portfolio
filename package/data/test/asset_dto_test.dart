@@ -29,8 +29,8 @@ void main() {
 
   for (final language in languages) {
     group('assets/data/$language', () {
-      test('contact.json parses into ContactsDTO', () {
-        final contacts = readList(language, 'contact').map(ContactsDTO.fromJson).toList();
+      test('contact.json parses into ContactDTO', () {
+        final contacts = readList(language, 'contact').map(ContactDTO.fromJson).toList();
 
         expect(contacts, isNotEmpty);
         for (final contact in contacts) {
@@ -64,8 +64,8 @@ void main() {
         }
       });
 
-      test('skills.json parses into PortfolioSkillsDTO', () {
-        final skills = readList(language, 'skills').map(PortfolioSkillsDTO.fromJson).toList();
+      test('skills.json parses into SkillGroupDTO', () {
+        final skills = readList(language, 'skills').map(SkillGroupDTO.fromJson).toList();
 
         expect(skills, isNotEmpty);
         for (final skill in skills) {
@@ -78,8 +78,8 @@ void main() {
         );
       });
 
-      test('useful_commands.json parses into UsefulCommandsDTO', () {
-        final groups = readList(language, 'useful_commands').map(UsefulCommandsDTO.fromJson).toList();
+      test('useful_commands.json parses into CommandGroupDTO', () {
+        final groups = readList(language, 'useful_commands').map(CommandGroupDTO.fromJson).toList();
 
         expect(groups, isNotEmpty);
         for (final group in groups) {
@@ -118,8 +118,8 @@ void main() {
     });
 
     test('contacts have the same titles and values in both languages', () {
-      final en = readList('en', 'contact').map(ContactsDTO.fromJson).map((c) => '${c.title}=${c.value}').toList();
-      final uk = readList('uk', 'contact').map(ContactsDTO.fromJson).map((c) => '${c.title}=${c.value}').toList();
+      final en = readList('en', 'contact').map(ContactDTO.fromJson).map((c) => '${c.title}=${c.value}').toList();
+      final uk = readList('uk', 'contact').map(ContactDTO.fromJson).map((c) => '${c.title}=${c.value}').toList();
 
       expect(uk, equals(en));
     });

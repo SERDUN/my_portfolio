@@ -84,11 +84,11 @@ class ApiDatasource implements PortfolioDataSource {
   }
 
   @override
-  Future<List<ContactsDTO>> getContacts(Language language) => _getList(_contactsPath, language, ContactsDTO.fromJson);
+  Future<List<ContactDTO>> getContacts(Language language) => _getList(_contactsPath, language, ContactDTO.fromJson);
 
   @override
-  Future<List<PortfolioSkillsDTO>> getSkills(Language language) =>
-      _getList(_skillsPath, language, PortfolioSkillsDTO.fromJson);
+  Future<List<SkillGroupDTO>> getSkills(Language language) =>
+      _getList(_skillsPath, language, SkillGroupDTO.fromJson);
 
   @override
   Future<PortfolioUserDTO> getUser(Language language) async =>

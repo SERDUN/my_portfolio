@@ -1,3 +1,4 @@
+// ignore_for_file: non_constant_identifier_names
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -98,371 +99,323 @@ abstract class AppLocalizations {
     Locale('uk'),
   ];
 
-  /// No description provided for @menuTitleHome.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get menuTitleHome;
-
-  /// No description provided for @menuTitlePortfolio.
-  ///
-  /// In en, this message translates to:
-  /// **'Projects'**
-  String get menuTitlePortfolio;
-
-  /// No description provided for @menuTitleContact.
-  ///
-  /// In en, this message translates to:
-  /// **'Contact'**
-  String get menuTitleContact;
-
-  /// No description provided for @menuTitleUseful.
-  ///
-  /// In en, this message translates to:
-  /// **'Useful'**
-  String get menuTitleUseful;
-
-  /// No description provided for @featureUsefulTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Useful commands'**
-  String get featureUsefulTitle;
-
-  /// No description provided for @featureUsefulDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.'**
-  String get featureUsefulDescription;
-
-  /// No description provided for @lastProjectTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Projects'**
-  String get lastProjectTitle;
-
-  /// No description provided for @buttonDownloadCv.
-  ///
-  /// In en, this message translates to:
-  /// **'Download CV'**
-  String get buttonDownloadCv;
-
-  /// No description provided for @unknownPageTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'404'**
-  String get unknownPageTitle;
-
-  /// No description provided for @unknownPageDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Fuck Russia!'**
-  String get unknownPageDescription;
-
-  /// No description provided for @portfolioDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Description'**
-  String get portfolioDescription;
-
-  /// No description provided for @portfolioAboutMe.
-  ///
-  /// In en, this message translates to:
-  /// **'About me'**
-  String get portfolioAboutMe;
-
-  /// No description provided for @projectDependencyStack.
-  ///
-  /// In en, this message translates to:
-  /// **'Dependency stack'**
-  String get projectDependencyStack;
-
-  /// No description provided for @projectScreenshots.
-  ///
-  /// In en, this message translates to:
-  /// **'Screenshots'**
-  String get projectScreenshots;
-
-  /// No description provided for @introSkills.
-  ///
-  /// In en, this message translates to:
-  /// **'Skills'**
-  String get introSkills;
-
-  /// No description provided for @contactGetInTouch.
-  ///
-  /// In en, this message translates to:
-  /// **'Get in touch'**
-  String get contactGetInTouch;
-
-  /// No description provided for @contactPhone.
-  ///
-  /// In en, this message translates to:
-  /// **'Phone'**
-  String get contactPhone;
-
-  /// No description provided for @contactEmail.
-  ///
-  /// In en, this message translates to:
-  /// **'Email'**
-  String get contactEmail;
-
-  /// No description provided for @contactLocation.
-  ///
-  /// In en, this message translates to:
-  /// **'Location'**
-  String get contactLocation;
-
-  /// No description provided for @contactFacebook.
-  ///
-  /// In en, this message translates to:
-  /// **'Facebook'**
-  String get contactFacebook;
-
-  /// No description provided for @contactLinkedin.
-  ///
-  /// In en, this message translates to:
-  /// **'LinkedIn'**
-  String get contactLinkedin;
-
-  /// No description provided for @contactInstagram.
-  ///
-  /// In en, this message translates to:
-  /// **'Instagram'**
-  String get contactInstagram;
-
-  /// No description provided for @footerContactTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Let\'s talk about your next app.'**
-  String get footerContactTitle;
-
-  /// No description provided for @footerSource.
-  ///
-  /// In en, this message translates to:
-  /// **'Source on GitHub'**
-  String get footerSource;
-
-  /// No description provided for @footerGlory.
-  ///
-  /// In en, this message translates to:
-  /// **'Glory to Ukraine'**
-  String get footerGlory;
-
-  /// No description provided for @actionOpenMenu.
-  ///
-  /// In en, this message translates to:
-  /// **'Open menu'**
-  String get actionOpenMenu;
-
-  /// No description provided for @actionSwitchTheme.
-  ///
-  /// In en, this message translates to:
-  /// **'Switch theme'**
-  String get actionSwitchTheme;
-
-  /// No description provided for @actionSwitchLanguage.
-  ///
-  /// In en, this message translates to:
-  /// **'Language'**
-  String get actionSwitchLanguage;
-
-  /// No description provided for @buttonSeeProjects.
-  ///
-  /// In en, this message translates to:
-  /// **'See projects'**
-  String get buttonSeeProjects;
-
-  /// No description provided for @statsYears.
-  ///
-  /// In en, this message translates to:
-  /// **'years in mobile'**
-  String get statsYears;
-
-  /// No description provided for @statsProjects.
-  ///
-  /// In en, this message translates to:
-  /// **'projects'**
-  String get statsProjects;
-
-  /// No description provided for @statsPlatforms.
-  ///
-  /// In en, this message translates to:
-  /// **'platforms'**
-  String get statsPlatforms;
-
-  /// No description provided for @skillsTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'What I work with'**
-  String get skillsTitle;
-
-  /// No description provided for @skillsDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.'**
-  String get skillsDescription;
-
-  /// No description provided for @selectedWorkEyebrow.
-  ///
-  /// In en, this message translates to:
-  /// **'Selected work'**
-  String get selectedWorkEyebrow;
-
-  /// No description provided for @selectedWorkTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Three projects to start with'**
-  String get selectedWorkTitle;
-
-  /// No description provided for @allProjects.
-  ///
-  /// In en, this message translates to:
-  /// **'All {count} projects'**
-  String allProjects(int count);
-
-  /// No description provided for @projectsTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'{count} apps, {platforms} platforms, one habit: ship it clean.'**
-  String projectsTitle(int count, int platforms);
-
-  /// No description provided for @projectsDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.'**
-  String get projectsDescription;
-
-  /// No description provided for @filterAll.
-  ///
-  /// In en, this message translates to:
-  /// **'All'**
-  String get filterAll;
-
-  /// No description provided for @projectsCta.
-  ///
-  /// In en, this message translates to:
-  /// **'Want one like these? Get in touch'**
-  String get projectsCta;
-
-  /// No description provided for @storeGooglePlay.
-  ///
-  /// In en, this message translates to:
-  /// **'Google Play'**
-  String get storeGooglePlay;
-
-  /// No description provided for @storeAppStore.
-  ///
-  /// In en, this message translates to:
-  /// **'App Store'**
-  String get storeAppStore;
-
-  /// No description provided for @storeGithub.
-  ///
-  /// In en, this message translates to:
-  /// **'GitHub'**
-  String get storeGithub;
-
-  /// No description provided for @backToProjects.
+  /// Link back to the project list
   ///
   /// In en, this message translates to:
   /// **'All projects'**
-  String get backToProjects;
+  String get common_allProjects;
 
-  /// No description provided for @projectAbout.
+  /// App Store name
   ///
   /// In en, this message translates to:
-  /// **'About the project'**
-  String get projectAbout;
+  /// **'App Store'**
+  String get common_appStore;
 
-  /// No description provided for @projectFactPlatforms.
+  /// Button that opens the CV
   ///
   /// In en, this message translates to:
-  /// **'Platforms'**
-  String get projectFactPlatforms;
+  /// **'Download CV'**
+  String get common_downloadCv;
 
-  /// No description provided for @projectFactStack.
+  /// GitHub name
   ///
   /// In en, this message translates to:
-  /// **'Stack'**
-  String get projectFactStack;
+  /// **'GitHub'**
+  String get common_github;
 
-  /// No description provided for @projectFactScreens.
+  /// Google Play store name
   ///
   /// In en, this message translates to:
-  /// **'Screens'**
-  String get projectFactScreens;
+  /// **'Google Play'**
+  String get common_googlePlay;
 
-  /// No description provided for @projectScreensCount.
-  ///
-  /// In en, this message translates to:
-  /// **'{count} screens'**
-  String projectScreensCount(int count);
-
-  /// No description provided for @projectNext.
-  ///
-  /// In en, this message translates to:
-  /// **'Next project'**
-  String get projectNext;
-
-  /// No description provided for @platformIos.
-  ///
-  /// In en, this message translates to:
-  /// **'iOS'**
-  String get platformIos;
-
-  /// No description provided for @platformAndroid.
-  ///
-  /// In en, this message translates to:
-  /// **'Android'**
-  String get platformAndroid;
-
-  /// No description provided for @platformWeb.
-  ///
-  /// In en, this message translates to:
-  /// **'Web'**
-  String get platformWeb;
-
-  /// No description provided for @contactDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Email is the fastest way. The other links lead where I post and answer.'**
-  String get contactDescription;
-
-  /// No description provided for @copyCommand.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy'**
-  String get copyCommand;
-
-  /// No description provided for @copiedCommand.
-  ///
-  /// In en, this message translates to:
-  /// **'Copied'**
-  String get copiedCommand;
-
-  /// No description provided for @notFoundHome.
-  ///
-  /// In en, this message translates to:
-  /// **'Back home'**
-  String get notFoundHome;
-
-  /// No description provided for @errorLoadFailed.
+  /// Message when a page could not load
   ///
   /// In en, this message translates to:
   /// **'Could not load this page.'**
-  String get errorLoadFailed;
+  String get common_loadFailed;
 
-  /// No description provided for @errorRetry.
+  /// Button that retries a failed load
   ///
   /// In en, this message translates to:
   /// **'Try again'**
-  String get errorRetry;
+  String get common_retry;
 
-  /// No description provided for @errorProjectNotFound.
+  /// Description under the contacts title
+  ///
+  /// In en, this message translates to:
+  /// **'Email is the fastest way. The other links lead where I post and answer.'**
+  String get contacts_description;
+
+  /// Title of the contacts page
+  ///
+  /// In en, this message translates to:
+  /// **'Get in touch'**
+  String get contacts_title;
+
+  /// Link from the featured projects to the full list, with the total count
+  ///
+  /// In en, this message translates to:
+  /// **'All {count} projects'**
+  String home_allProjects(int count);
+
+  /// Hero button to the project list
+  ///
+  /// In en, this message translates to:
+  /// **'See projects'**
+  String get home_seeProjects;
+
+  /// Eyebrow above the featured projects
+  ///
+  /// In en, this message translates to:
+  /// **'Selected work'**
+  String get home_selectedWorkEyebrow;
+
+  /// Title of the featured projects section
+  ///
+  /// In en, this message translates to:
+  /// **'Three projects to start with'**
+  String get home_selectedWorkTitle;
+
+  /// Description next to the skills title
+  ///
+  /// In en, this message translates to:
+  /// **'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.'**
+  String get home_skillsDescription;
+
+  /// Eyebrow above the skills section
+  ///
+  /// In en, this message translates to:
+  /// **'Skills'**
+  String get home_skillsEyebrow;
+
+  /// Title of the skills section
+  ///
+  /// In en, this message translates to:
+  /// **'What I work with'**
+  String get home_skillsTitle;
+
+  /// Caption under the platform count
+  ///
+  /// In en, this message translates to:
+  /// **'platforms'**
+  String get home_statsPlatforms;
+
+  /// Caption under the project count
+  ///
+  /// In en, this message translates to:
+  /// **'projects'**
+  String get home_statsProjects;
+
+  /// Caption under the years-of-experience number
+  ///
+  /// In en, this message translates to:
+  /// **'years in mobile'**
+  String get home_statsYears;
+
+  /// Message of the 404 page
+  ///
+  /// In en, this message translates to:
+  /// **'Fuck Russia!'**
+  String get notFound_description;
+
+  /// Button from the 404 page to the home page
+  ///
+  /// In en, this message translates to:
+  /// **'Back home'**
+  String get notFound_home;
+
+  /// Title of the 404 page
+  ///
+  /// In en, this message translates to:
+  /// **'404'**
+  String get notFound_title;
+
+  /// Title of the project description section
+  ///
+  /// In en, this message translates to:
+  /// **'About the project'**
+  String get project_aboutTitle;
+
+  /// Label of the platforms fact in the project hero
+  ///
+  /// In en, this message translates to:
+  /// **'Platforms'**
+  String get project_factPlatforms;
+
+  /// Label of the screen count fact in the project hero
+  ///
+  /// In en, this message translates to:
+  /// **'Screens'**
+  String get project_factScreens;
+
+  /// Label of the stack size fact in the project hero
+  ///
+  /// In en, this message translates to:
+  /// **'Stack'**
+  String get project_factStack;
+
+  /// Label before the link to the next project
+  ///
+  /// In en, this message translates to:
+  /// **'Next project'**
+  String get project_next;
+
+  /// Message for a project id that does not exist
   ///
   /// In en, this message translates to:
   /// **'There is no such project.'**
-  String get errorProjectNotFound;
+  String get project_notFound;
+
+  /// Platform name derived from a Google Play link
+  ///
+  /// In en, this message translates to:
+  /// **'Android'**
+  String get project_platformAndroid;
+
+  /// Platform name derived from an App Store link
+  ///
+  /// In en, this message translates to:
+  /// **'iOS'**
+  String get project_platformIos;
+
+  /// Platform name for a web project
+  ///
+  /// In en, this message translates to:
+  /// **'Web'**
+  String get project_platformWeb;
+
+  /// Count next to the gallery title
+  ///
+  /// In en, this message translates to:
+  /// **'{count} screens'**
+  String project_screensCount(int count);
+
+  /// Title of the screenshot gallery
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshots'**
+  String get project_screenshotsTitle;
+
+  /// Title of the technology stack section
+  ///
+  /// In en, this message translates to:
+  /// **'Dependency stack'**
+  String get project_stackTitle;
+
+  /// Link to the contacts page at the end of the project list
+  ///
+  /// In en, this message translates to:
+  /// **'Want one like these? Get in touch'**
+  String get projects_cta;
+
+  /// Description under the project list title
+  ///
+  /// In en, this message translates to:
+  /// **'Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.'**
+  String get projects_description;
+
+  /// Eyebrow of the project list page
+  ///
+  /// In en, this message translates to:
+  /// **'Projects'**
+  String get projects_eyebrow;
+
+  /// Filter chip that shows every project
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get projects_filterAll;
+
+  /// Statement title of the project list, with project and platform counts
+  ///
+  /// In en, this message translates to:
+  /// **'{count} apps, {platforms} platforms, one habit: ship it clean.'**
+  String projects_title(int count, int platforms);
+
+  /// Footer line next to the Ukrainian flag
+  ///
+  /// In en, this message translates to:
+  /// **'Glory to Ukraine'**
+  String get shell_footerGlory;
+
+  /// Footer link to the source code
+  ///
+  /// In en, this message translates to:
+  /// **'Source on GitHub'**
+  String get shell_footerSource;
+
+  /// Headline of the footer contact band
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s talk about your next app.'**
+  String get shell_footerTitle;
+
+  /// Header and menu link to the contacts page; also the footer eyebrow
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get shell_navContacts;
+
+  /// Header and menu link to the home page
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get shell_navHome;
+
+  /// Header and menu link to the project list
+  ///
+  /// In en, this message translates to:
+  /// **'Projects'**
+  String get shell_navProjects;
+
+  /// Menu link and eyebrow of the useful commands page
+  ///
+  /// In en, this message translates to:
+  /// **'Useful'**
+  String get shell_navUseful;
+
+  /// Tooltip of the mobile menu button
+  ///
+  /// In en, this message translates to:
+  /// **'Open menu'**
+  String get shell_openMenu;
+
+  /// Accessibility label of the language toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get shell_switchLanguage;
+
+  /// Tooltip of the theme button
+  ///
+  /// In en, this message translates to:
+  /// **'Switch theme'**
+  String get shell_switchTheme;
+
+  /// Confirmation after a command was copied
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get useful_copied;
+
+  /// Button that copies a command
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get useful_copy;
+
+  /// Description of the useful commands page
+  ///
+  /// In en, this message translates to:
+  /// **'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.'**
+  String get useful_description;
+
+  /// Title of the useful commands page
+  ///
+  /// In en, this message translates to:
+  /// **'Useful commands'**
+  String get useful_title;
 }
 
 class _AppLocalizationsDelegate

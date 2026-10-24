@@ -2,7 +2,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:my_portfolio/app/app_route_consts.dart';
+import 'package:my_portfolio/app/app_routes.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
 import '../button/pill_button.dart';
@@ -18,13 +18,13 @@ class NotFoundScreen extends StatelessWidget {
     return Scaffold(
       body: StatusMessage(
         icon: Icons.explore_off_rounded,
-        title: l10n.unknownPageTitle,
-        message: l10n.unknownPageDescription,
+        title: l10n.notFound_title,
+        message: l10n.notFound_description,
         action: PillButton(
-          label: l10n.notFoundHome,
+          label: l10n.notFound_home,
           icon: Icons.arrow_back_rounded,
           iconLeading: true,
-          onPressed: () => context.go(AppRoutInfo.resume.path),
+          onPressed: () => context.go(AppRoutes.home.path),
         ),
       ),
     );

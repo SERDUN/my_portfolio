@@ -19,12 +19,12 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Stream<List<ContactsModel>> getContacts(Language language) async* {
+  Stream<List<ContactModel>> getContacts(Language language) async* {
     yield (await source.getContacts(language)).toDomain();
   }
 
   @override
-  Stream<List<PortfolioSkillsModel>> getSkills(Language language) async* {
+  Stream<List<SkillGroupModel>> getSkills(Language language) async* {
     yield (await source.getSkills(language)).toDomain();
   }
 }

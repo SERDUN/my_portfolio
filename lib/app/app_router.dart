@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/features/features.dart';
 
-import 'app_route_consts.dart';
+import 'app_routes.dart';
 import 'settings/settings.dart';
 
 /// The route tree. Every page builds its cubit from the widget tree
@@ -14,7 +14,7 @@ import 'settings/settings.dart';
 /// publishes, the language from [AppSettingsCubit]. No service locator here.
 GoRouter buildAppRouter() {
   return GoRouter(
-    initialLocation: AppRoutInfo.resume.path,
+    initialLocation: AppRoutes.home.path,
     debugLogDiagnostics: kDebugMode,
     routes: [
       StatefulShellRoute.indexedStack(
@@ -25,16 +25,17 @@ GoRouter buildAppRouter() {
             BlocProvider(create: (context) => ShellCubit(context.read(), context.read<AppSettingsCubit>())),
             BlocProvider(create: (context) => ContactsCubit(context.read(), context.read<AppSettingsCubit>())),
           ],
-          child: MainScreen(navigationShell: navigationShell, key: ValueKey(state.pageKey)),
+          child: ShellPage(navigationShell: navigationShell, key: ValueKey(state.pageKey)),
         ),
         branches: [
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoutInfo.resume.path,
+                path: AppRoutes.home.path,
+                name: AppRoutes.home.name,
                 builder: (context, state) => BlocProvider(
                   create: (context) =>
-                      BioCubit(context.read(), context.read(), context.read(), context.read<AppSettingsCubit>()),
+                      HomeCubit(context.read(), context.read(), context.read(), context.read<AppSettingsCubit>()),
                   child: const HomePage(),
                 ),
               ),
@@ -43,23 +44,24 @@ GoRouter buildAppRouter() {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoutInfo.portfolio.path,
+                path: AppRoutes.projects.path,
+                name: AppRoutes.projects.name,
                 builder: (context, state) => BlocProvider(
                   create: (context) => ProjectsCubit(context.read(), context.read<AppSettingsCubit>()),
-                  child: const PortfolioPage(),
+                  child: const ProjectsPage(),
                 ),
                 routes: [
                   GoRoute(
-                    path: AppRoutInfo.project.path,
-                    name: AppRoutInfo.project.name,
+                    path: AppRoutes.project.path,
+                    name: AppRoutes.project.name,
                     builder: (context, state) => BlocProvider(
                       create: (context) => ProjectCubit(
                         context.read(),
                         context.read(),
                         context.read<AppSettingsCubit>(),
-                        state.pathParameters[AppRoutInfo.projectId]!,
+                        state.pathParameters[AppRoutes.projectIdParam]!,
                       ),
-                      child: const ProjectDetailsPage(),
+                      child: const ProjectPage(),
                     ),
                   ),
                 ],
@@ -69,19 +71,21 @@ GoRouter buildAppRouter() {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoutInfo.contacts.path,
+                path: AppRoutes.contacts.path,
+                name: AppRoutes.contacts.name,
                 // Contacts come from the ContactsCubit above every page.
-                builder: (context, state) => const ContactPage(),
+                builder: (context, state) => const ContactsPage(),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoutInfo.useful.path,
+                path: AppRoutes.useful.path,
+                name: AppRoutes.useful.name,
                 builder: (context, state) => BlocProvider(
                   create: (context) => UsefulCubit(context.read(), context.read<AppSettingsCubit>()),
-                  child: const HelpScreen(),
+                  child: const UsefulCommandsPage(),
                 ),
               ),
             ],

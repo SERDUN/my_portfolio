@@ -1,6 +1,6 @@
-export 'bio/bio.dart';
-export 'contact/contact.dart';
-export 'main/main.dart';
+export 'contacts/contacts.dart';
+export 'home/home.dart';
 export 'project/project.dart';
 export 'projects/projects.dart';
+export 'shell/shell.dart';
 export 'useful/useful.dart';

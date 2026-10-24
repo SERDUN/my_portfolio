@@ -1,50 +1,170 @@
 {
-  "menuTitleHome": "Home",
-  "menuTitlePortfolio": "Projects",
-  "menuTitleContact": "Contact",
-  "menuTitleUseful": "Useful",
-  "featureUsefulTitle": "Useful commands",
-  "featureUsefulDescription": "This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.",
-  "lastProjectTitle": "Projects",
-  "buttonDownloadCv": "Download CV",
-  "unknownPageTitle": "404",
-  "unknownPageDescription": "Fuck Russia!",
-  "portfolioDescription": "Description",
-  "portfolioAboutMe": "About me",
-  "projectDependencyStack": "Dependency stack",
-  "projectScreenshots": "Screenshots",
-  "introSkills": "Skills",
-  "contactGetInTouch": "Get in touch",
-  "contactPhone": "Phone",
-  "contactEmail": "Email",
-  "contactLocation": "Location",
-  "contactFacebook": "Facebook",
-  "contactLinkedin": "LinkedIn",
-  "contactInstagram": "Instagram",
-  "footerContactTitle": "Let's talk about your next app.",
-  "footerSource": "Source on GitHub",
-  "footerGlory": "Glory to Ukraine",
-  "actionOpenMenu": "Open menu",
-  "actionSwitchTheme": "Switch theme",
-  "actionSwitchLanguage": "Language",
-  "buttonSeeProjects": "See projects",
-  "statsYears": "years in mobile",
-  "statsProjects": "projects",
-  "statsPlatforms": "platforms",
-  "skillsTitle": "What I work with",
-  "skillsDescription": "Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.",
-  "selectedWorkEyebrow": "Selected work",
-  "selectedWorkTitle": "Three projects to start with",
-  "allProjects": "All {count} projects",
-  "@allProjects": {
+  "@@locale": "en",
+  "common_allProjects": "All projects",
+  "@common_allProjects": {
+    "description": "Link back to the project list"
+  },
+  "common_appStore": "App Store",
+  "@common_appStore": {
+    "description": "App Store name"
+  },
+  "common_downloadCv": "Download CV",
+  "@common_downloadCv": {
+    "description": "Button that opens the CV"
+  },
+  "common_github": "GitHub",
+  "@common_github": {
+    "description": "GitHub name"
+  },
+  "common_googlePlay": "Google Play",
+  "@common_googlePlay": {
+    "description": "Google Play store name"
+  },
+  "common_loadFailed": "Could not load this page.",
+  "@common_loadFailed": {
+    "description": "Message when a page could not load"
+  },
+  "common_retry": "Try again",
+  "@common_retry": {
+    "description": "Button that retries a failed load"
+  },
+  "contacts_description": "Email is the fastest way. The other links lead where I post and answer.",
+  "@contacts_description": {
+    "description": "Description under the contacts title"
+  },
+  "contacts_title": "Get in touch",
+  "@contacts_title": {
+    "description": "Title of the contacts page"
+  },
+  "home_allProjects": "All {count} projects",
+  "@home_allProjects": {
+    "description": "Link from the featured projects to the full list, with the total count",
     "placeholders": {
       "count": {
         "type": "int"
       }
     }
   },
-  "projectsTitle": "{count} apps, {platforms} platforms, one habit: ship it clean.",
-  "@projectsTitle": {
+  "home_seeProjects": "See projects",
+  "@home_seeProjects": {
+    "description": "Hero button to the project list"
+  },
+  "home_selectedWorkEyebrow": "Selected work",
+  "@home_selectedWorkEyebrow": {
+    "description": "Eyebrow above the featured projects"
+  },
+  "home_selectedWorkTitle": "Three projects to start with",
+  "@home_selectedWorkTitle": {
+    "description": "Title of the featured projects section"
+  },
+  "home_skillsDescription": "Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.",
+  "@home_skillsDescription": {
+    "description": "Description next to the skills title"
+  },
+  "home_skillsEyebrow": "Skills",
+  "@home_skillsEyebrow": {
+    "description": "Eyebrow above the skills section"
+  },
+  "home_skillsTitle": "What I work with",
+  "@home_skillsTitle": {
+    "description": "Title of the skills section"
+  },
+  "home_statsPlatforms": "platforms",
+  "@home_statsPlatforms": {
+    "description": "Caption under the platform count"
+  },
+  "home_statsProjects": "projects",
+  "@home_statsProjects": {
+    "description": "Caption under the project count"
+  },
+  "home_statsYears": "years in mobile",
+  "@home_statsYears": {
+    "description": "Caption under the years-of-experience number"
+  },
+  "notFound_description": "Fuck Russia!",
+  "@notFound_description": {
+    "description": "Message of the 404 page"
+  },
+  "notFound_home": "Back home",
+  "@notFound_home": {
+    "description": "Button from the 404 page to the home page"
+  },
+  "notFound_title": "404",
+  "@notFound_title": {
+    "description": "Title of the 404 page"
+  },
+  "project_aboutTitle": "About the project",
+  "@project_aboutTitle": {
+    "description": "Title of the project description section"
+  },
+  "project_factPlatforms": "Platforms",
+  "@project_factPlatforms": {
+    "description": "Label of the platforms fact in the project hero"
+  },
+  "project_factScreens": "Screens",
+  "@project_factScreens": {
+    "description": "Label of the screen count fact in the project hero"
+  },
+  "project_factStack": "Stack",
+  "@project_factStack": {
+    "description": "Label of the stack size fact in the project hero"
+  },
+  "project_next": "Next project",
+  "@project_next": {
+    "description": "Label before the link to the next project"
+  },
+  "project_notFound": "There is no such project.",
+  "@project_notFound": {
+    "description": "Message for a project id that does not exist"
+  },
+  "project_platformAndroid": "Android",
+  "@project_platformAndroid": {
+    "description": "Platform name derived from a Google Play link"
+  },
+  "project_platformIos": "iOS",
+  "@project_platformIos": {
+    "description": "Platform name derived from an App Store link"
+  },
+  "project_platformWeb": "Web",
+  "@project_platformWeb": {
+    "description": "Platform name for a web project"
+  },
+  "project_screensCount": "{count} screens",
+  "@project_screensCount": {
+    "description": "Count next to the gallery title",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "project_screenshotsTitle": "Screenshots",
+  "@project_screenshotsTitle": {
+    "description": "Title of the screenshot gallery"
+  },
+  "project_stackTitle": "Dependency stack",
+  "@project_stackTitle": {
+    "description": "Title of the technology stack section"
+  },
+  "projects_cta": "Want one like these? Get in touch",
+  "@projects_cta": {
+    "description": "Link to the contacts page at the end of the project list"
+  },
+  "projects_description": "Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.",
+  "@projects_description": {
+    "description": "Description under the project list title"
+  },
+  "projects_eyebrow": "Projects",
+  "@projects_eyebrow": {
+    "description": "Eyebrow of the project list page"
+  },
+  "projects_filterAll": "All",
+  "@projects_filterAll": {
+    "description": "Filter chip that shows every project"
+  },
+  "projects_title": "{count} apps, {platforms} platforms, one habit: ship it clean.",
+  "@projects_title": {
+    "description": "Statement title of the project list, with project and platform counts",
     "placeholders": {
       "count": {
         "type": "int"
@@ -54,34 +174,60 @@
       }
     }
   },
-  "projectsDescription": "Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.",
-  "filterAll": "All",
-  "projectsCta": "Want one like these? Get in touch",
-  "storeGooglePlay": "Google Play",
-  "storeAppStore": "App Store",
-  "storeGithub": "GitHub",
-  "backToProjects": "All projects",
-  "projectAbout": "About the project",
-  "projectFactPlatforms": "Platforms",
-  "projectFactStack": "Stack",
-  "projectFactScreens": "Screens",
-  "projectScreensCount": "{count} screens",
-  "@projectScreensCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
+  "shell_footerGlory": "Glory to Ukraine",
+  "@shell_footerGlory": {
+    "description": "Footer line next to the Ukrainian flag"
   },
-  "projectNext": "Next project",
-  "platformIos": "iOS",
-  "platformAndroid": "Android",
-  "platformWeb": "Web",
-  "contactDescription": "Email is the fastest way. The other links lead where I post and answer.",
-  "copyCommand": "Copy",
-  "copiedCommand": "Copied",
-  "notFoundHome": "Back home",
-  "errorLoadFailed": "Could not load this page.",
-  "errorRetry": "Try again",
-  "errorProjectNotFound": "There is no such project."
+  "shell_footerSource": "Source on GitHub",
+  "@shell_footerSource": {
+    "description": "Footer link to the source code"
+  },
+  "shell_footerTitle": "Let's talk about your next app.",
+  "@shell_footerTitle": {
+    "description": "Headline of the footer contact band"
+  },
+  "shell_navContacts": "Contact",
+  "@shell_navContacts": {
+    "description": "Header and menu link to the contacts page; also the footer eyebrow"
+  },
+  "shell_navHome": "Home",
+  "@shell_navHome": {
+    "description": "Header and menu link to the home page"
+  },
+  "shell_navProjects": "Projects",
+  "@shell_navProjects": {
+    "description": "Header and menu link to the project list"
+  },
+  "shell_navUseful": "Useful",
+  "@shell_navUseful": {
+    "description": "Menu link and eyebrow of the useful commands page"
+  },
+  "shell_openMenu": "Open menu",
+  "@shell_openMenu": {
+    "description": "Tooltip of the mobile menu button"
+  },
+  "shell_switchLanguage": "Language",
+  "@shell_switchLanguage": {
+    "description": "Accessibility label of the language toggle"
+  },
+  "shell_switchTheme": "Switch theme",
+  "@shell_switchTheme": {
+    "description": "Tooltip of the theme button"
+  },
+  "useful_copied": "Copied",
+  "@useful_copied": {
+    "description": "Confirmation after a command was copied"
+  },
+  "useful_copy": "Copy",
+  "@useful_copy": {
+    "description": "Button that copies a command"
+  },
+  "useful_description": "This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.",
+  "@useful_description": {
+    "description": "Description of the useful commands page"
+  },
+  "useful_title": "Useful commands",
+  "@useful_title": {
+    "description": "Title of the useful commands page"
+  }
 }

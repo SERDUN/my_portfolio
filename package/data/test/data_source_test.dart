@@ -14,13 +14,13 @@ class _FailingSource implements PortfolioDataSource {
   final Object error;
 
   @override
-  Future<List<ContactsDTO>> getContacts(Language language) => Future.error(error);
+  Future<List<ContactDTO>> getContacts(Language language) => Future.error(error);
   @override
   Future<ProjectDTO> getProject(String id, Language language) => Future.error(error);
   @override
   Future<List<ProjectDTO>> getProjects(Language language) => Future.error(error);
   @override
-  Future<List<PortfolioSkillsDTO>> getSkills(Language language) => Future.error(error);
+  Future<List<SkillGroupDTO>> getSkills(Language language) => Future.error(error);
   @override
   Future<PortfolioUserDTO> getUser(Language language) => Future.error(error);
 }

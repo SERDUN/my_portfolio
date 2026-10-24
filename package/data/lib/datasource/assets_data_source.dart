@@ -28,21 +28,21 @@ class AssetsDataSource implements PortfolioDataSource {
   }
 
   @override
-  Future<List<ContactsDTO>> getContacts(Language language) async {
+  Future<List<ContactDTO>> getContacts(Language language) async {
     final json = jsonDecode(await Assets.data.contact(language)) as List;
-    return json.map((item) => ContactsDTO.fromJson(item as Map<String, dynamic>)).toList();
+    return json.map((item) => ContactDTO.fromJson(item as Map<String, dynamic>)).toList();
   }
 
   @override
-  Future<List<PortfolioSkillsDTO>> getSkills(Language language) async {
+  Future<List<SkillGroupDTO>> getSkills(Language language) async {
     final json = jsonDecode(await Assets.data.skills(language)) as List;
-    return json.map((item) => PortfolioSkillsDTO.fromJson(item as Map<String, dynamic>)).toList();
+    return json.map((item) => SkillGroupDTO.fromJson(item as Map<String, dynamic>)).toList();
   }
 
   /// Not part of [PortfolioDataSource]: the API has no endpoint for it.
-  Future<List<UsefulCommandsDTO>> getUsefulCommand(Language language) async {
+  Future<List<CommandGroupDTO>> getUsefulCommand(Language language) async {
     final json = jsonDecode(await Assets.data.usefulCommands(language)) as List;
-    return json.map((item) => UsefulCommandsDTO.fromJson(item as Map<String, dynamic>)).toList();
+    return json.map((item) => CommandGroupDTO.fromJson(item as Map<String, dynamic>)).toList();
   }
 
   @override

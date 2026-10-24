@@ -5,30 +5,30 @@ import 'package:domain/domain.dart';
 
 /// DTO → domain model mapping, the only place where both shapes meet.
 void main() {
-  group('ContactsDTO.toDomain', () {
+  group('ContactDTO.toDomain', () {
     test('copies title and value', () {
-      final model = ContactsDTO('Email', 'me@example.com').toDomain();
+      final model = ContactDTO('Email', 'me@example.com').toDomain();
 
       expect(model.title, 'Email');
       expect(model.value, 'me@example.com');
     });
 
     test('maps a list in order', () {
-      final models = [ContactsDTO('A', '1'), ContactsDTO('B', '2')].toDomain();
+      final models = [ContactDTO('A', '1'), ContactDTO('B', '2')].toDomain();
 
       expect(models.map((m) => m.title), ['A', 'B']);
     });
   });
 
-  group('PortfolioSkillsDTO.toDomain', () {
-    test('maps the tree recursively', () {
-      final dto = PortfolioSkillsDTO(
+  group('SkillGroupDTO.toDomain', () {
+    test('maps a group with its skills', () {
+      final dto = SkillGroupDTO(
         title: 'Flutter',
         subskills: [
-          PortfolioSkillsDTO(title: 'Bloc')..expanded = true,
-          PortfolioSkillsDTO(
+          SkillGroupDTO(title: 'Bloc')..expanded = true,
+          SkillGroupDTO(
             title: 'Testing',
-            subskills: [PortfolioSkillsDTO(title: 'Widget tests')],
+            subskills: [SkillGroupDTO(title: 'Widget tests')],
           ),
         ],
       );
@@ -36,9 +36,7 @@ void main() {
       final model = dto.toDomain();
 
       expect(model.title, 'Flutter');
-      expect(model.children.map((c) => c.title), ['Bloc', 'Testing']);
-      expect(model.children[0].children, isEmpty);
-      expect(model.children[1].children.single.title, 'Widget tests');
+      expect(model.skills.map((s) => s.title), ['Bloc', 'Testing'], reason: 'deeper levels are not mapped');
     });
   });
 
@@ -153,11 +151,11 @@ void main() {
     });
   });
 
-  group('UsefulCommandsDTO.toDomain', () {
+  group('CommandGroupDTO.toDomain', () {
     test('maps a group with its commands', () {
-      final model = UsefulCommandsDTO('Git', [
-        UsefulCommandDTO('Status', 'git status'),
-        UsefulCommandDTO('Log', 'git log'),
+      final model = CommandGroupDTO('Git', [
+        CommandDTO('Status', 'git status'),
+        CommandDTO('Log', 'git log'),
       ]).toDomain();
 
       expect(model.title, 'Git');

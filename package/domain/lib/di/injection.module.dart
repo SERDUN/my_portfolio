@@ -16,14 +16,20 @@ import 'package:domain/usecase/get_user_use_case.dart' as _i542;
 import 'package:injectable/injectable.dart' as _i526;
 
 class DomainPackageModule extends _i526.MicroPackageModule {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
-    gh.factory<_i481.GetUsefulCommandsUseCase>(() => _i481.GetUsefulCommandsUseCaseImpl(gh<_i174.UsefulRepository>()));
-    gh.factory<_i542.GetUserUseCase>(() => _i542.GetUserUseCaseImpl(gh<_i174.UserRepository>()));
-    gh.factory<_i1021.GetContactsUseCase>(() => _i1021.GetContactsUseCaseImpl(gh<_i174.UserRepository>()));
-    gh.factory<_i32.GetProjectsUseCase>(() => _i32.GetProjectsUseCaseImpl(gh<_i174.ProjectRepository>()));
-    gh.factory<_i402.GetProjectByIdUseCase>(() => _i402.GetProjectByIdUseCaseImpl(gh<_i174.ProjectRepository>()));
-    gh.factory<_i802.GetUserSkillsUseCase>(() => _i802.GetUserSkillsUseCaseImpl(gh<_i174.UserRepository>()));
+    gh.factory<_i481.GetUsefulCommandsUseCase>(
+        () => _i481.GetUsefulCommandsUseCaseImpl(gh<_i174.UsefulRepository>()));
+    gh.factory<_i542.GetUserUseCase>(
+        () => _i542.GetUserUseCaseImpl(gh<_i174.UserRepository>()));
+    gh.factory<_i1021.GetContactsUseCase>(
+        () => _i1021.GetContactsUseCaseImpl(gh<_i174.UserRepository>()));
+    gh.factory<_i32.GetProjectsUseCase>(
+        () => _i32.GetProjectsUseCaseImpl(gh<_i174.ProjectRepository>()));
+    gh.factory<_i402.GetProjectByIdUseCase>(
+        () => _i402.GetProjectByIdUseCaseImpl(gh<_i174.ProjectRepository>()));
+    gh.factory<_i802.GetUserSkillsUseCase>(
+        () => _i802.GetUserSkillsUseCaseImpl(gh<_i174.UserRepository>()));
   }
 }

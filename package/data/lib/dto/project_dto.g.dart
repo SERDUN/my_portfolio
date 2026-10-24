@@ -15,25 +15,36 @@ ProjectDTO _$ProjectDTOFromJson(Map<String, dynamic> json) => ProjectDTO(
   linkAndroid: json['linkAndroid'] as String?,
   linkIOS: json['linkIOS'] as String?,
   linkGithub: json['linkGithub'] as String?,
-  spheres: (json['spheres'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
-  technologies: (json['technologies'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
-  screenshots: (json['screenshots'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
+  spheres:
+      (json['spheres'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+      const [],
+  technologies:
+      (json['technologies'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList() ??
+      const [],
+  screenshots:
+      (json['screenshots'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList() ??
+      const [],
   preview: json['preview'] as String?,
   featured: json['featured'] as bool? ?? false,
 );
 
-Map<String, dynamic> _$ProjectDTOToJson(ProjectDTO instance) => <String, dynamic>{
-  'id': instance.id,
-  'name': instance.name,
-  'platform': instance.platform,
-  'intro': instance.intro,
-  'description': instance.description,
-  'linkAndroid': instance.linkAndroid,
-  'linkIOS': instance.linkIOS,
-  'linkGithub': instance.linkGithub,
-  'spheres': instance.spheres,
-  'technologies': instance.technologies,
-  'screenshots': instance.screenshots,
-  'preview': instance.preview,
-  'featured': instance.featured,
-};
+Map<String, dynamic> _$ProjectDTOToJson(ProjectDTO instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'platform': instance.platform,
+      'intro': instance.intro,
+      'description': instance.description,
+      'linkAndroid': instance.linkAndroid,
+      'linkIOS': instance.linkIOS,
+      'linkGithub': instance.linkGithub,
+      'spheres': instance.spheres,
+      'technologies': instance.technologies,
+      'screenshots': instance.screenshots,
+      'preview': instance.preview,
+      'featured': instance.featured,
+    };

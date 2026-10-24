@@ -27,10 +27,10 @@ class FallbackDataSource implements PortfolioDataSource {
   Future<PortfolioUserDTO> getUser(Language language) => _either((s) => s.getUser(language));
 
   @override
-  Future<List<PortfolioSkillsDTO>> getSkills(Language language) => _either((s) => s.getSkills(language));
+  Future<List<SkillGroupDTO>> getSkills(Language language) => _either((s) => s.getSkills(language));
 
   @override
-  Future<List<ContactsDTO>> getContacts(Language language) => _either((s) => s.getContacts(language));
+  Future<List<ContactDTO>> getContacts(Language language) => _either((s) => s.getContacts(language));
 
   @override
   Future<List<ProjectDTO>> getProjects(Language language) => _either((s) => s.getProjects(language));

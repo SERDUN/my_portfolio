@@ -19,10 +19,10 @@ class UsefulCubit extends Cubit<UsefulState> with CubitSubscriptions<UsefulState
 
   @override
   void load() => loadPrimary(
-    #usefulCommands,
+    #groups,
     useCase.execute(language: language),
     loading: state.copyWith(status: LoadStatus.loading, error: null),
-    success: (usefulCommands) => state.copyWith(status: LoadStatus.success, usefulCommands: usefulCommands),
+    success: (groups) => state.copyWith(status: LoadStatus.success, groups: groups),
     failure: (error) => state.copyWith(status: LoadStatus.failure, error: error),
   );
 }

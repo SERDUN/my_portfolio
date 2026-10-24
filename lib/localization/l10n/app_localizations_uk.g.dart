@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
 import 'app_localizations.g.dart';
@@ -9,195 +11,171 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get menuTitleHome => 'Резюме';
+  String get common_allProjects => 'Усі проєкти';
 
   @override
-  String get menuTitlePortfolio => 'Проєкти';
+  String get common_appStore => 'App Store';
 
   @override
-  String get menuTitleContact => 'Контакти';
+  String get common_downloadCv => 'Отримати резюме';
 
   @override
-  String get menuTitleUseful => 'Корисне';
+  String get common_github => 'GitHub';
 
   @override
-  String get featureUsefulTitle => 'Корисні команди';
+  String get common_googlePlay => 'Google Play';
 
   @override
-  String get featureUsefulDescription =>
-      'Ця вкладка не має інформаційного значення для користувачів третьої сторони, в ній лише команди, які я часто використовую, і я зазвичай забуваю.';
+  String get common_loadFailed => 'Не вдалося завантажити сторінку.';
 
   @override
-  String get lastProjectTitle => 'Проєкти';
+  String get common_retry => 'Спробувати ще';
 
   @override
-  String get buttonDownloadCv => 'Отримати резюме';
+  String get contacts_description =>
+      'Пошта найшвидша. Решта посилань ведуть туди, де я пишу і відповідаю.';
 
   @override
-  String get unknownPageTitle => '404';
+  String get contacts_title => 'Контакти';
 
   @override
-  String get unknownPageDescription => 'російський корабель йди на х*й';
-
-  @override
-  String get portfolioDescription => 'Опис';
-
-  @override
-  String get portfolioAboutMe => 'Про мене';
-
-  @override
-  String get projectDependencyStack => 'Стек залежностей';
-
-  @override
-  String get projectScreenshots => 'Скріншоти';
-
-  @override
-  String get introSkills => 'Навики';
-
-  @override
-  String get contactGetInTouch => 'Контакти';
-
-  @override
-  String get contactPhone => 'Телефон';
-
-  @override
-  String get contactEmail => 'Електронна пошта';
-
-  @override
-  String get contactLocation => 'Розташування';
-
-  @override
-  String get contactFacebook => 'Фейсбук';
-
-  @override
-  String get contactLinkedin => 'Лінкед';
-
-  @override
-  String get contactInstagram => 'Інста';
-
-  @override
-  String get footerContactTitle => 'Поговорімо про ваш наступний застосунок.';
-
-  @override
-  String get footerSource => 'Код на GitHub';
-
-  @override
-  String get footerGlory => 'Слава Україні';
-
-  @override
-  String get actionOpenMenu => 'Відкрити меню';
-
-  @override
-  String get actionSwitchTheme => 'Змінити тему';
-
-  @override
-  String get actionSwitchLanguage => 'Мова';
-
-  @override
-  String get buttonSeeProjects => 'Переглянути проєкти';
-
-  @override
-  String get statsYears => 'років у мобільній розробці';
-
-  @override
-  String get statsProjects => 'проєктів';
-
-  @override
-  String get statsPlatforms => 'платформи';
-
-  @override
-  String get skillsTitle => 'З чим я працюю';
-
-  @override
-  String get skillsDescription =>
-      'Згруповано так, як я користуюся ними щодня: спершу Flutter, під ним Android-коріння, і те, що навколо клієнта.';
-
-  @override
-  String get selectedWorkEyebrow => 'Вибрані роботи';
-
-  @override
-  String get selectedWorkTitle => 'Три проєкти для початку';
-
-  @override
-  String allProjects(int count) {
+  String home_allProjects(int count) {
     return 'Усі проєкти: $count';
   }
 
   @override
-  String projectsTitle(int count, int platforms) {
-    return '$count застосунків, $platforms платформи, одна звичка: доводити до релізу.';
-  }
+  String get home_seeProjects => 'Переглянути проєкти';
 
   @override
-  String get projectsDescription =>
-      'Застосунки в сторах і клієнтські проєкти за останні роки. Flutter там, де команда хотіла одну кодову базу, нативний Android там, де без нього ніяк.';
+  String get home_selectedWorkEyebrow => 'Вибрані роботи';
 
   @override
-  String get filterAll => 'Усі';
+  String get home_selectedWorkTitle => 'Три проєкти для початку';
 
   @override
-  String get projectsCta => 'Хочете щось подібне? Напишіть';
+  String get home_skillsDescription =>
+      'Згруповано так, як я користуюся ними щодня: спершу Flutter, під ним Android-коріння, і те, що навколо клієнта.';
 
   @override
-  String get storeGooglePlay => 'Google Play';
+  String get home_skillsEyebrow => 'Навики';
 
   @override
-  String get storeAppStore => 'App Store';
+  String get home_skillsTitle => 'З чим я працюю';
 
   @override
-  String get storeGithub => 'GitHub';
+  String get home_statsPlatforms => 'платформи';
 
   @override
-  String get backToProjects => 'Усі проєкти';
+  String get home_statsProjects => 'проєктів';
 
   @override
-  String get projectAbout => 'Про проєкт';
+  String get home_statsYears => 'років у мобільній розробці';
 
   @override
-  String get projectFactPlatforms => 'Платформи';
+  String get notFound_description => 'російський корабель йди на х*й';
 
   @override
-  String get projectFactStack => 'Стек';
+  String get notFound_home => 'На головну';
 
   @override
-  String get projectFactScreens => 'Екранів';
+  String get notFound_title => '404';
 
   @override
-  String projectScreensCount(int count) {
+  String get project_aboutTitle => 'Про проєкт';
+
+  @override
+  String get project_factPlatforms => 'Платформи';
+
+  @override
+  String get project_factScreens => 'Екранів';
+
+  @override
+  String get project_factStack => 'Стек';
+
+  @override
+  String get project_next => 'Наступний проєкт';
+
+  @override
+  String get project_notFound => 'Такого проєкту немає.';
+
+  @override
+  String get project_platformAndroid => 'Android';
+
+  @override
+  String get project_platformIos => 'iOS';
+
+  @override
+  String get project_platformWeb => 'Web';
+
+  @override
+  String project_screensCount(int count) {
     return 'Екранів: $count';
   }
 
   @override
-  String get projectNext => 'Наступний проєкт';
+  String get project_screenshotsTitle => 'Скріншоти';
 
   @override
-  String get platformIos => 'iOS';
+  String get project_stackTitle => 'Стек залежностей';
 
   @override
-  String get platformAndroid => 'Android';
+  String get projects_cta => 'Хочете щось подібне? Напишіть';
 
   @override
-  String get platformWeb => 'Web';
+  String get projects_description =>
+      'Застосунки в сторах і клієнтські проєкти за останні роки. Flutter там, де команда хотіла одну кодову базу, нативний Android там, де без нього ніяк.';
 
   @override
-  String get contactDescription =>
-      'Пошта найшвидша. Решта посилань ведуть туди, де я пишу і відповідаю.';
+  String get projects_eyebrow => 'Проєкти';
 
   @override
-  String get copyCommand => 'Копіювати';
+  String get projects_filterAll => 'Усі';
 
   @override
-  String get copiedCommand => 'Скопійовано';
+  String projects_title(int count, int platforms) {
+    return '$count застосунків, $platforms платформи, одна звичка: доводити до релізу.';
+  }
 
   @override
-  String get notFoundHome => 'На головну';
+  String get shell_footerGlory => 'Слава Україні';
 
   @override
-  String get errorLoadFailed => 'Не вдалося завантажити сторінку.';
+  String get shell_footerSource => 'Код на GitHub';
 
   @override
-  String get errorRetry => 'Спробувати ще';
+  String get shell_footerTitle => 'Поговорімо про ваш наступний застосунок.';
 
   @override
-  String get errorProjectNotFound => 'Такого проєкту немає.';
+  String get shell_navContacts => 'Контакти';
+
+  @override
+  String get shell_navHome => 'Резюме';
+
+  @override
+  String get shell_navProjects => 'Проєкти';
+
+  @override
+  String get shell_navUseful => 'Корисне';
+
+  @override
+  String get shell_openMenu => 'Відкрити меню';
+
+  @override
+  String get shell_switchLanguage => 'Мова';
+
+  @override
+  String get shell_switchTheme => 'Змінити тему';
+
+  @override
+  String get useful_copied => 'Скопійовано';
+
+  @override
+  String get useful_copy => 'Копіювати';
+
+  @override
+  String get useful_description =>
+      'Ця вкладка не має інформаційного значення для користувачів третьої сторони, в ній лише команди, які я часто використовую, і я зазвичай забуваю.';
+
+  @override
+  String get useful_title => 'Корисні команди';
 }

@@ -6,7 +6,7 @@ import '../repository/repository.dart';
 
 /// Contact channels.
 abstract class GetContactsUseCase {
-  Stream<List<ContactsModel>> execute({required Language language});
+  Stream<List<ContactModel>> execute({required Language language});
 }
 
 @Injectable(as: GetContactsUseCase)
@@ -16,5 +16,5 @@ class GetContactsUseCaseImpl implements GetContactsUseCase {
   final UserRepository userRepository;
 
   @override
-  Stream<List<ContactsModel>> execute({required Language language}) => userRepository.getContacts(language);
+  Stream<List<ContactModel>> execute({required Language language}) => userRepository.getContacts(language);
 }

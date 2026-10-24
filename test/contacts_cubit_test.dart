@@ -7,14 +7,14 @@ import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/app/settings/settings.dart';
 import 'package:my_portfolio/core/state/state.dart';
-import 'package:my_portfolio/features/contact/contact.dart';
+import 'package:my_portfolio/features/contacts/contacts.dart';
 
 class _Contacts implements GetContactsUseCase {
-  final controller = StreamController<List<ContactsModel>>.broadcast();
+  final controller = StreamController<List<ContactModel>>.broadcast();
   final List<Language> languages = [];
 
   @override
-  Stream<List<ContactsModel>> execute({required Language language}) {
+  Stream<List<ContactModel>> execute({required Language language}) {
     languages.add(language);
     return controller.stream;
   }
@@ -25,7 +25,7 @@ void main() {
   late AppSettingsCubit settings;
   late ContactsCubit cubit;
 
-  final channels = [ContactsModel(title: 'Email', value: 'me@example.com')];
+  final channels = [ContactModel(title: 'Email', value: 'me@example.com')];
 
   setUp(() {
     useCase = _Contacts();
