@@ -6,8 +6,6 @@
 
 import 'dart:async' as _i687;
 
-import 'package:domain/common/common.dart' as _i563;
-import 'package:domain/common/config.dart' as _i523;
 import 'package:domain/repository/repository.dart' as _i174;
 import 'package:domain/usecase/get_contacts_use_case.dart' as _i1021;
 import 'package:domain/usecase/get_project_by_id_use_case.dart' as _i402;
@@ -21,32 +19,17 @@ class DomainPackageModule extends _i526.MicroPackageModule {
 // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
-    gh.singleton<_i523.Config>(() => _i523.Config());
-    gh.factory<_i1021.GetContactsUseCase>(() => _i1021.GetContactsUseCaseImpl(
-          gh<_i563.Config>(),
-          gh<_i174.UserRepository>(),
-        ));
-    gh.factory<_i542.GetUserUseCase>(() => _i542.GetUserUseCaseImpl(
-          gh<_i563.Config>(),
-          gh<_i174.UserRepository>(),
-        ));
-    gh.factory<_i802.GetUserSkillsUseCase>(() => _i802.GetUserSkillsUseCaseImpl(
-          gh<_i563.Config>(),
-          gh<_i174.UserRepository>(),
-        ));
-    gh.factory<_i402.GetProjectByIdUseCase>(
-        () => _i402.GetProjectByIdUseCaseImpl(
-              gh<_i563.Config>(),
-              gh<_i174.ProjectRepository>(),
-            ));
-    gh.factory<_i32.GetProjectsUseCase>(() => _i32.GetProjectsUseCaseImpl(
-          gh<_i563.Config>(),
-          gh<_i174.ProjectRepository>(),
-        ));
     gh.factory<_i481.GetUsefulCommandsUseCase>(
-        () => _i481.GetUsefulCommandsUseCaseImpl(
-              gh<_i563.Config>(),
-              gh<_i174.UsefulRepository>(),
-            ));
+        () => _i481.GetUsefulCommandsUseCaseImpl(gh<_i174.UsefulRepository>()));
+    gh.factory<_i542.GetUserUseCase>(
+        () => _i542.GetUserUseCaseImpl(gh<_i174.UserRepository>()));
+    gh.factory<_i1021.GetContactsUseCase>(
+        () => _i1021.GetContactsUseCaseImpl(gh<_i174.UserRepository>()));
+    gh.factory<_i32.GetProjectsUseCase>(
+        () => _i32.GetProjectsUseCaseImpl(gh<_i174.ProjectRepository>()));
+    gh.factory<_i402.GetProjectByIdUseCase>(
+        () => _i402.GetProjectByIdUseCaseImpl(gh<_i174.ProjectRepository>()));
+    gh.factory<_i802.GetUserSkillsUseCase>(
+        () => _i802.GetUserSkillsUseCaseImpl(gh<_i174.UserRepository>()));
   }
 }

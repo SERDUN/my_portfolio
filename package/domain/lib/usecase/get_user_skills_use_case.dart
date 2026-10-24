@@ -4,18 +4,17 @@ import '../common/common.dart';
 import '../entity/entity.dart';
 import '../repository/repository.dart';
 
-/// Skill groups in the current locale.
+/// Skill groups with their skills.
 abstract class GetUserSkillsUseCase {
-  Stream<List<PortfolioSkillsModel>> execute();
+  Stream<List<PortfolioSkillsModel>> execute({required Language language});
 }
 
 @Injectable(as: GetUserSkillsUseCase)
 class GetUserSkillsUseCaseImpl implements GetUserSkillsUseCase {
-  GetUserSkillsUseCaseImpl(this.config, this.userRepository);
+  GetUserSkillsUseCaseImpl(this.userRepository);
 
-  final Config config;
   final UserRepository userRepository;
 
   @override
-  Stream<List<PortfolioSkillsModel>> execute() => userRepository.getSkills(config.currentLocale);
+  Stream<List<PortfolioSkillsModel>> execute({required Language language}) => userRepository.getSkills(language);
 }

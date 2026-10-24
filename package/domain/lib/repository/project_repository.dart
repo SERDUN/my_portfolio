@@ -1,10 +1,11 @@
+import '../common/common.dart';
 import '../entity/model/model.dart';
 
 /// The portfolio projects.
 abstract class ProjectRepository {
-  /// All projects in [localization], in display order.
-  Stream<List<ProjectModel>> getProjects(String localization);
+  /// All projects in [language], in display order.
+  Stream<List<ProjectModel>> getProjects(Language language);
 
   /// One project by [id]; errors when there is none.
-  Stream<ProjectModel> getProjectById(String id, String localization);
+  Stream<ProjectModel> getProjectById(String id, Language language);
 }

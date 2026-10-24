@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
+import 'package:domain/domain.dart';
+
 import '../dto/dto.dart';
 
 class ApiClient extends http.BaseClient {
@@ -46,45 +48,45 @@ class ApiDatasource {
 
   Uri _endpoint(String path) => baseUrl.replace(path: baseUrl.path + path);
 
-  Future<List<ProjectDTO>> getProjects(String localization) async {
+  Future<List<ProjectDTO>> getProjects(Language language) async {
     final response = await apiClient.get(_endpoint(projectsPath), headers: {
-      'accept-language': localization,
+      'accept-language': language.code,
     });
     var jsonResult = jsonDecode(response.body) as List;
     List<ProjectDTO> projects = jsonResult.map((data) => ProjectDTO.fromJson(data)).toList();
     return projects;
   }
 
-  Future<ProjectDTO> getProject(String id, String localization) async {
+  Future<ProjectDTO> getProject(String id, Language language) async {
     final response = await apiClient.get(_endpoint("$projectsPath/$id"), headers: {
-      'accept-language': localization,
+      'accept-language': language.code,
     });
     var jsonResult = jsonDecode(response.body);
     var projects = ProjectDTO.fromJson(jsonResult);
     return projects;
   }
 
-  Future<List<ContactsDTO>> getContacts(String localization) async {
+  Future<List<ContactsDTO>> getContacts(Language language) async {
     final response = await apiClient.get(_endpoint(contactsPath), headers: {
-      'accept-language': localization,
+      'accept-language': language.code,
     });
     var jsonResult = jsonDecode(response.body) as List;
     List<ContactsDTO> contacts = jsonResult.map((data) => ContactsDTO.fromJson(data)).toList();
     return contacts;
   }
 
-  Future<List<PortfolioSkillsDTO>> getSkills(String localization) async {
+  Future<List<PortfolioSkillsDTO>> getSkills(Language language) async {
     final response = await apiClient.get(_endpoint(skillsPath), headers: {
-      'accept-language': localization,
+      'accept-language': language.code,
     });
     var jsonResult = jsonDecode(response.body) as List;
     List<PortfolioSkillsDTO> contacts = jsonResult.map((data) => PortfolioSkillsDTO.fromJson(data)).toList();
     return contacts;
   }
 
-  Future<PortfolioUserDTO> getUser(String localization) async {
+  Future<PortfolioUserDTO> getUser(Language language) async {
     final response = await apiClient.get(_endpoint(userPath), headers: {
-      'accept-language': localization,
+      'accept-language': language.code,
     });
     return PortfolioUserDTO.fromJson(jsonDecode(response.body));
   }

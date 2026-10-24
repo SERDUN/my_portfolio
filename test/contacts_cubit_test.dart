@@ -12,9 +12,12 @@ class FakeGetContactsUseCase implements GetContactsUseCase {
   final controller = StreamController<List<ContactsModel>>.broadcast();
   int executions = 0;
 
+  final List<Language> languages = [];
+
   @override
-  Stream<List<ContactsModel>> execute() {
+  Stream<List<ContactsModel>> execute({required Language language}) {
     executions++;
+    languages.add(language);
     return controller.stream;
   }
 }
@@ -28,7 +31,7 @@ void main() {
 
   setUp(() {
     useCase = FakeGetContactsUseCase();
-    languageNotifier = LanguageNotifier((_) {});
+    languageNotifier = LanguageNotifier();
     cubit = ContactsCubit(useCase, languageNotifier);
   });
 
@@ -68,6 +71,7 @@ void main() {
   test('resubscribes when the language changes and stops after close', () async {
     languageNotifier.changeLanguage(const Locale('uk'));
     expect(useCase.executions, 2);
+    expect(useCase.languages, [Language.en, Language.uk]);
 
     await cubit.close();
     expect(useCase.controller.hasListener, isFalse);

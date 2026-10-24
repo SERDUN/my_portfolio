@@ -28,13 +28,18 @@ class Application extends StatefulWidget {
 
 class _ApplicationState extends State<Application> {
   final ThemeModelNotifier _styleNotifier = ThemeModelNotifier();
-  late final LanguageNotifier _languageNotifier = LanguageNotifier((locale) {
-    di<Config>().setCurrentLocale = locale.languageCode;
-  });
+  final LanguageNotifier _languageNotifier = LanguageNotifier();
 
   late final GoRouter _router = _buildRouting();
 
   GetIt get di => widget.di;
+
+  @override
+  void dispose() {
+    _languageNotifier.dispose();
+    _styleNotifier.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -4,18 +4,17 @@ import '../common/common.dart';
 import '../entity/entity.dart';
 import '../repository/repository.dart';
 
-/// Contact channels in the current locale.
+/// Contact channels.
 abstract class GetContactsUseCase {
-  Stream<List<ContactsModel>> execute();
+  Stream<List<ContactsModel>> execute({required Language language});
 }
 
 @Injectable(as: GetContactsUseCase)
 class GetContactsUseCaseImpl implements GetContactsUseCase {
-  GetContactsUseCaseImpl(this.config, this.userRepository);
+  GetContactsUseCaseImpl(this.userRepository);
 
-  final Config config;
   final UserRepository userRepository;
 
   @override
-  Stream<List<ContactsModel>> execute() => userRepository.getContacts(config.currentLocale);
+  Stream<List<ContactsModel>> execute({required Language language}) => userRepository.getContacts(language);
 }

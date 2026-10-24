@@ -32,29 +32,31 @@ class BioCubit extends Cubit<BioState> {
   StreamSubscription? _skillsStreamSubscription;
   StreamSubscription? _projectsStreamSubscription;
 
+  /// One language snapshot per reload so the three streams never disagree.
   void _initState() {
-    subscribeOnUserData();
-    subscribeOnUserSkills();
-    subscribeOnProjects();
+    final language = languageNotifier.language;
+    subscribeOnUserData(language);
+    subscribeOnUserSkills(language);
+    subscribeOnProjects(language);
   }
 
-  void subscribeOnUserData() {
+  void subscribeOnUserData(Language language) {
     _userStreamSubscription?.cancel();
-    _userStreamSubscription = userUseCase.execute().listen((event) {
+    _userStreamSubscription = userUseCase.execute(language: language).listen((event) {
       emit(state.copyWith(status: BioStatus.success, user: event));
     });
   }
 
-  void subscribeOnUserSkills() {
+  void subscribeOnUserSkills(Language language) {
     _skillsStreamSubscription?.cancel();
-    _skillsStreamSubscription = skillsUseCase.execute().listen((event) {
+    _skillsStreamSubscription = skillsUseCase.execute(language: language).listen((event) {
       emit(state.copyWith(status: BioStatus.success, skills: event));
     });
   }
 
-  void subscribeOnProjects() {
+  void subscribeOnProjects(Language language) {
     _projectsStreamSubscription?.cancel();
-    _projectsStreamSubscription = projectsUseCase.execute().listen((event) {
+    _projectsStreamSubscription = projectsUseCase.execute(language: language).listen((event) {
       emit(state.copyWith(projects: event));
     });
   }

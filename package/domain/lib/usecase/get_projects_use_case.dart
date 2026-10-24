@@ -4,18 +4,17 @@ import '../common/common.dart';
 import '../entity/entity.dart';
 import '../repository/repository.dart';
 
-/// All projects in the current locale.
+/// All projects in display order.
 abstract class GetProjectsUseCase {
-  Stream<List<ProjectModel>> execute();
+  Stream<List<ProjectModel>> execute({required Language language});
 }
 
 @Injectable(as: GetProjectsUseCase)
 class GetProjectsUseCaseImpl implements GetProjectsUseCase {
-  GetProjectsUseCaseImpl(this.config, this.projectRepository);
+  GetProjectsUseCaseImpl(this.projectRepository);
 
-  final Config config;
   final ProjectRepository projectRepository;
 
   @override
-  Stream<List<ProjectModel>> execute() => projectRepository.getProjects(config.currentLocale);
+  Stream<List<ProjectModel>> execute({required Language language}) => projectRepository.getProjects(language);
 }

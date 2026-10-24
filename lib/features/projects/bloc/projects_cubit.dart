@@ -13,8 +13,8 @@ part 'projects_cubit.freezed.dart';
 
 class ProjectsCubit extends Cubit<ProjectsState> {
   ProjectsCubit(this.useCase, this.languageNotifier) : super(const ProjectsState(status: ProjectsStatus.initial)) {
-    _initState();
-    languageNotifier.addListener(_initState);
+    _reload();
+    languageNotifier.addListener(_reload);
   }
 
   final LanguageNotifier languageNotifier;
@@ -23,14 +23,11 @@ class ProjectsCubit extends Cubit<ProjectsState> {
 
   StreamSubscription? _projectsStreamSubscription;
 
-  void _initState() {
-    getProjects();
-  }
+  void _reload() => getProjects(languageNotifier.language);
 
-  void getProjects() async {
+  void getProjects(Language language) {
     _projectsStreamSubscription?.cancel();
-    _projectsStreamSubscription = null;
-    _projectsStreamSubscription = useCase.execute().listen((event) {
+    _projectsStreamSubscription = useCase.execute(language: language).listen((event) {
       emit(state.copyWith(projects: event));
     });
   }
@@ -39,6 +36,6 @@ class ProjectsCubit extends Cubit<ProjectsState> {
   Future<void> close() async {
     await super.close();
     _projectsStreamSubscription?.cancel();
-    languageNotifier.removeListener(_initState);
+    languageNotifier.removeListener(_reload);
   }
 }

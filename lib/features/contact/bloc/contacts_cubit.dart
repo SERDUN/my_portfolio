@@ -16,12 +16,8 @@ class ContactsCubit extends Cubit<ContactsState> {
     this.useCase,
     this.languageNotifier,
   ) : super(const ContactsState(status: ContactsStatus.initial)) {
-    _initState();
-    languageNotifier.addListener(_initState);
-  }
-
-  void _initState() {
-    getContacts();
+    _reload();
+    languageNotifier.addListener(_reload);
   }
 
   final LanguageNotifier languageNotifier;
@@ -30,10 +26,11 @@ class ContactsCubit extends Cubit<ContactsState> {
 
   StreamSubscription? _contactsStreamSubscription;
 
-  void getContacts() async {
+  void _reload() => getContacts(languageNotifier.language);
+
+  void getContacts(Language language) {
     _contactsStreamSubscription?.cancel();
-    _contactsStreamSubscription = null;
-    _contactsStreamSubscription = useCase.execute().listen((event) {
+    _contactsStreamSubscription = useCase.execute(language: language).listen((event) {
       emit(state.copyWith(status: ContactsStatus.success, contacts: event));
     });
   }
@@ -42,6 +39,6 @@ class ContactsCubit extends Cubit<ContactsState> {
   Future<void> close() async {
     await super.close();
     _contactsStreamSubscription?.cancel();
-    languageNotifier.removeListener(_initState);
+    languageNotifier.removeListener(_reload);
   }
 }

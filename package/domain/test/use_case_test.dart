@@ -5,7 +5,7 @@ import 'package:domain/domain.dart';
 /// In-memory repositories that record the localization they were asked for
 /// and serve canned models; no data package, no assets.
 class FakeUserRepository implements UserRepository {
-  final List<String> requestedLocales = [];
+  final List<Language> requestedLanguages = [];
 
   PortfolioUserModel user = PortfolioUserModel(
     firstName: 'Dmitro',
@@ -19,26 +19,26 @@ class FakeUserRepository implements UserRepository {
   List<ContactsModel> contacts = [ContactsModel(title: 'Email', value: 'me@example.com')];
 
   @override
-  Stream<PortfolioUserModel> getUser(String localization) {
-    requestedLocales.add(localization);
+  Stream<PortfolioUserModel> getUser(Language language) {
+    requestedLanguages.add(language);
     return Stream.value(user);
   }
 
   @override
-  Stream<List<PortfolioSkillsModel>> getSkills(String localization) {
-    requestedLocales.add(localization);
+  Stream<List<PortfolioSkillsModel>> getSkills(Language language) {
+    requestedLanguages.add(language);
     return Stream.value(skills);
   }
 
   @override
-  Stream<List<ContactsModel>> getContacts(String localization) {
-    requestedLocales.add(localization);
+  Stream<List<ContactsModel>> getContacts(Language language) {
+    requestedLanguages.add(language);
     return Stream.value(contacts);
   }
 }
 
 class FakeProjectRepository implements ProjectRepository {
-  final List<String> requestedLocales = [];
+  final List<Language> requestedLanguages = [];
   final List<String> requestedIds = [];
 
   List<ProjectModel> projects = [
@@ -47,14 +47,14 @@ class FakeProjectRepository implements ProjectRepository {
   ];
 
   @override
-  Stream<List<ProjectModel>> getProjects(String localization) {
-    requestedLocales.add(localization);
+  Stream<List<ProjectModel>> getProjects(Language language) {
+    requestedLanguages.add(language);
     return Stream.value(projects);
   }
 
   @override
-  Stream<ProjectModel> getProjectById(String id, String localization) {
-    requestedLocales.add(localization);
+  Stream<ProjectModel> getProjectById(String id, Language language) {
+    requestedLanguages.add(language);
     requestedIds.add(id);
     final match = projects.where((p) => p.id == id);
     if (match.isEmpty) return Stream.error(StateError('no project $id'));
@@ -63,11 +63,11 @@ class FakeProjectRepository implements ProjectRepository {
 }
 
 class FakeUsefulRepository implements UsefulRepository {
-  final List<String> requestedLocales = [];
+  final List<Language> requestedLanguages = [];
 
   @override
-  Stream<List<UsefulCommandsModel>> getUsefulCommands(String localization) {
-    requestedLocales.add(localization);
+  Stream<List<UsefulCommandsModel>> getUsefulCommands(Language language) {
+    requestedLanguages.add(language);
     return Stream.value([
       UsefulCommandsModel('Git', [UsefulCommandModel('Status', 'git status')]),
     ]);
@@ -75,73 +75,59 @@ class FakeUsefulRepository implements UsefulRepository {
 }
 
 void main() {
-  late Config config;
   late FakeUserRepository userRepository;
   late FakeProjectRepository projectRepository;
   late FakeUsefulRepository usefulRepository;
 
   setUp(() {
-    config = Config();
     userRepository = FakeUserRepository();
     projectRepository = FakeProjectRepository();
     usefulRepository = FakeUsefulRepository();
   });
 
-  group('Config', () {
-    test('defaults to English and normalizes unsupported locales', () {
-      expect(config.currentLocale, 'en');
-
-      config.setCurrentLocale = 'uk';
-      expect(config.currentLocale, 'uk');
-
-      config.setCurrentLocale = 'de';
-      expect(config.currentLocale, 'en');
-    });
-  });
-
-  group('LanguageTools', () {
-    test('knows the supported languages', () {
-      expect(LanguageTools.isAvailableLanguage('uk'), isTrue);
-      expect(LanguageTools.isAvailableLanguage('ru'), isFalse);
-      expect(LanguageTools.normalizeLanguage('pl'), LanguageTools.defaultLanguage);
+  group('Language.fromCode', () {
+    test('resolves codes with region and case variants', () {
+      expect(Language.fromCode('uk'), Language.uk);
+      expect(Language.fromCode('uk-UA'), Language.uk);
+      expect(Language.fromCode('UK_ua'), Language.uk);
+      expect(Language.fromCode('en'), Language.en);
     });
 
-    test('checkLocale dispatches to the locale or the default', () {
-      final functions = {'en': () => 'english', 'uk': () => 'ukrainian'};
-
-      expect(LanguageTools.checkLocale('uk', languageFunctions: functions), 'ukrainian');
-      expect(LanguageTools.checkLocale('fr', languageFunctions: functions), 'english');
+    test('falls back to English for anything unknown', () {
+      expect(Language.fromCode('ua'), Language.fallback);
+      expect(Language.fromCode('de'), Language.fallback);
+      expect(Language.fromCode(''), Language.fallback);
+      expect(Language.fromCode(null), Language.fallback);
     });
   });
 
   group('GetUserUseCase', () {
-    test('asks the repository for the current locale', () async {
-      config.setCurrentLocale = 'uk';
-      final useCase = GetUserUseCaseImpl(config, userRepository);
+    test('asks the repository for the given language', () async {
+      final useCase = GetUserUseCaseImpl(userRepository);
 
-      final user = await useCase.execute().first;
+      final user = await useCase.execute(language: Language.uk).first;
 
       expect(user.name, 'Dmitro Serdun');
-      expect(userRepository.requestedLocales, ['uk']);
+      expect(userRepository.requestedLanguages, [Language.uk]);
     });
   });
 
   group('GetUserSkillsUseCase', () {
-    test('returns the skills for the default locale', () async {
-      final useCase = GetUserSkillsUseCaseImpl(config, userRepository);
+    test('passes the language through unchanged', () async {
+      final useCase = GetUserSkillsUseCaseImpl(userRepository);
 
-      final skills = await useCase.execute().first;
+      final skills = await useCase.execute(language: Language.en).first;
 
       expect(skills.map((s) => s.title), ['Flutter']);
-      expect(userRepository.requestedLocales, ['en']);
+      expect(userRepository.requestedLanguages, [Language.en]);
     });
   });
 
   group('GetContactsUseCase', () {
     test('returns every contact', () async {
-      final useCase = GetContactsUseCaseImpl(config, userRepository);
+      final useCase = GetContactsUseCaseImpl(userRepository);
 
-      final contacts = await useCase.execute().first;
+      final contacts = await useCase.execute(language: Language.en).first;
 
       expect(contacts.single.title, 'Email');
       expect(contacts.single.value, 'me@example.com');
@@ -150,43 +136,42 @@ void main() {
 
   group('GetProjectsUseCase', () {
     test('returns the list in order', () async {
-      final useCase = GetProjectsUseCaseImpl(config, projectRepository);
+      final useCase = GetProjectsUseCaseImpl(projectRepository);
 
-      final projects = await useCase.execute().first;
+      final projects = await useCase.execute(language: Language.en).first;
 
       expect(projects.map((p) => p.name), ['First', 'Second']);
-      expect(projectRepository.requestedLocales, ['en']);
+      expect(projectRepository.requestedLanguages, [Language.en]);
     });
   });
 
   group('GetProjectByIdUseCase', () {
-    test('passes the id and the current locale to the repository', () async {
-      config.setCurrentLocale = 'uk';
-      final useCase = GetProjectByIdUseCaseImpl(config, projectRepository);
+    test('passes the id and the language to the repository', () async {
+      final useCase = GetProjectByIdUseCaseImpl(projectRepository);
 
-      final project = await useCase.execute(id: '1').first;
+      final project = await useCase.execute(id: '1', language: Language.uk).first;
 
       expect(project.name, 'Second');
       expect(projectRepository.requestedIds, ['1']);
-      expect(projectRepository.requestedLocales, ['uk']);
+      expect(projectRepository.requestedLanguages, [Language.uk]);
     });
 
     test('propagates a repository error', () {
-      final useCase = GetProjectByIdUseCaseImpl(config, projectRepository);
+      final useCase = GetProjectByIdUseCaseImpl(projectRepository);
 
-      expect(useCase.execute(id: 'missing').first, throwsStateError);
+      expect(useCase.execute(id: 'missing', language: Language.en).first, throwsStateError);
     });
   });
 
   group('GetUsefulCommandsUseCase', () {
     test('returns command groups', () async {
-      final useCase = GetUsefulCommandsUseCaseImpl(config, usefulRepository);
+      final useCase = GetUsefulCommandsUseCaseImpl(usefulRepository);
 
-      final groups = await useCase.execute().first;
+      final groups = await useCase.execute(language: Language.en).first;
 
       expect(groups.single.title, 'Git');
       expect(groups.single.commands.single.command, 'git status');
-      expect(usefulRepository.requestedLocales, ['en']);
+      expect(usefulRepository.requestedLanguages, [Language.en]);
     });
   });
 }

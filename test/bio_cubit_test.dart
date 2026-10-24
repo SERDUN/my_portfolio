@@ -12,9 +12,12 @@ class FakeGetUserUseCase implements GetUserUseCase {
   final controller = StreamController<PortfolioUserModel>.broadcast();
   int executions = 0;
 
+  final List<Language> languages = [];
+
   @override
-  Stream<PortfolioUserModel> execute() {
+  Stream<PortfolioUserModel> execute({required Language language}) {
     executions++;
+    languages.add(language);
     return controller.stream;
   }
 }
@@ -24,7 +27,7 @@ class FakeGetUserSkillsUseCase implements GetUserSkillsUseCase {
   int executions = 0;
 
   @override
-  Stream<List<PortfolioSkillsModel>> execute() {
+  Stream<List<PortfolioSkillsModel>> execute({required Language language}) {
     executions++;
     return controller.stream;
   }
@@ -35,7 +38,7 @@ class FakeGetProjectsUseCase implements GetProjectsUseCase {
   int executions = 0;
 
   @override
-  Stream<List<ProjectModel>> execute() {
+  Stream<List<ProjectModel>> execute({required Language language}) {
     executions++;
     return controller.stream;
   }
@@ -75,7 +78,7 @@ void main() {
     userUseCase = FakeGetUserUseCase();
     skillsUseCase = FakeGetUserSkillsUseCase();
     projectsUseCase = FakeGetProjectsUseCase();
-    languageNotifier = LanguageNotifier((_) {});
+    languageNotifier = LanguageNotifier();
     cubit = BioCubit(userUseCase, skillsUseCase, projectsUseCase, languageNotifier);
   });
 
@@ -156,9 +159,10 @@ void main() {
     expect(cubit.state.platformCount, 2);
   });
 
-  test('resubscribes to all use cases when the language changes', () async {
+  test('resubscribes to all use cases with the new language when it changes', () async {
     languageNotifier.changeLanguage(const Locale('uk'));
 
+    expect(userUseCase.languages, [Language.en, Language.uk]);
     expect(userUseCase.executions, 2);
     expect(skillsUseCase.executions, 2);
     expect(projectsUseCase.executions, 2);

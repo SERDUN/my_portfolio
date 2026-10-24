@@ -1,2 +1,1 @@
-export 'config.dart';
-export 'language_tools.dart';
+export 'language.dart';

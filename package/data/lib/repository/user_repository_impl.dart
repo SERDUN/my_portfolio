@@ -24,24 +24,24 @@ class UserRepositoryImpl implements UserRepository {
   final bool hasLocalSync;
 
   @override
-  Stream<PortfolioUserModel> getUser(String localization) async* {
+  Stream<PortfolioUserModel> getUser(Language language) async* {
     _requireSource();
-    if (hasLocalSync) yield (await assetDataSource.getUser(localization)).toDomain();
-    if (hasServerSync) yield (await apiDatasource.getUser(localization)).toDomain();
+    if (hasLocalSync) yield (await assetDataSource.getUser(language)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getUser(language)).toDomain();
   }
 
   @override
-  Stream<List<ContactsModel>> getContacts(String localization) async* {
+  Stream<List<ContactsModel>> getContacts(Language language) async* {
     _requireSource();
-    if (hasLocalSync) yield (await assetDataSource.getContacts(localization)).toDomain();
-    if (hasServerSync) yield (await apiDatasource.getContacts(localization)).toDomain();
+    if (hasLocalSync) yield (await assetDataSource.getContacts(language)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getContacts(language)).toDomain();
   }
 
   @override
-  Stream<List<PortfolioSkillsModel>> getSkills(String localization) async* {
+  Stream<List<PortfolioSkillsModel>> getSkills(Language language) async* {
     _requireSource();
-    if (hasLocalSync) yield (await assetDataSource.getSkills(localization)).toDomain();
-    if (hasServerSync) yield (await apiDatasource.getSkills(localization)).toDomain();
+    if (hasLocalSync) yield (await assetDataSource.getSkills(language)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getSkills(language)).toDomain();
   }
 
   void _requireSource() {

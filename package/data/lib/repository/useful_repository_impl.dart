@@ -14,7 +14,7 @@ class UsefulRepositoryImpl implements UsefulRepository {
   final AssetsDataSource assetDataSource;
 
   @override
-  Stream<List<UsefulCommandsModel>> getUsefulCommands(String localization) async* {
-    yield (await assetDataSource.getUsefulCommand(localization)).toDomain();
+  Stream<List<UsefulCommandsModel>> getUsefulCommands(Language language) async* {
+    yield (await assetDataSource.getUsefulCommand(language)).toDomain();
   }
 }
