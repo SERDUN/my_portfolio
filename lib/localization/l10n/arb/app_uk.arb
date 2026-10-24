@@ -52,5 +52,9 @@
   "projectNext": "Наступний проєкт",
   "platformIos": "iOS",
   "platformAndroid": "Android",
-  "platformWeb": "Web"
+  "platformWeb": "Web",
+  "contactDescription": "Пошта найшвидша. Решта посилань ведуть туди, де я пишу і відповідаю.",
+  "copyCommand": "Копіювати",
+  "copiedCommand": "Скопійовано",
+  "notFoundHome": "На головну"
 }

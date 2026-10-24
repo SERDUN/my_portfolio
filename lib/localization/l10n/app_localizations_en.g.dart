@@ -178,4 +178,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get platformWeb => 'Web';
+
+  @override
+  String get contactDescription =>
+      'Email is the fastest way. The other links lead where I post and answer.';
+
+  @override
+  String get copyCommand => 'Copy';
+
+  @override
+  String get copiedCommand => 'Copied';
+
+  @override
+  String get notFoundHome => 'Back home';
 }

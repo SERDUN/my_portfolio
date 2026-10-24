@@ -12,6 +12,13 @@ class AppTheme {
   static const double radiusCard = 24;
   static const double radiusTile = 18;
 
+  /// Fraunces has no Cyrillic. Ukrainian headings fall through to Playfair
+  /// Display; both styles are requested so the italic file is loaded too.
+  static List<String> get displayFallback => [
+        GoogleFonts.playfairDisplay().fontFamily!,
+        GoogleFonts.playfairDisplay(fontStyle: FontStyle.italic).fontFamily!,
+      ];
+
   static ThemeData light() => _build(Brightness.light, AppPalette.light);
 
   static ThemeData dark() => _build(Brightness.dark, AppPalette.dark);
@@ -147,7 +154,8 @@ class AppTheme {
   static TextTheme _textTheme(AppPalette p) {
     final base = GoogleFonts.manropeTextTheme();
     TextStyle display(double size, {double height = 1.04, FontWeight weight = FontWeight.w400}) =>
-        GoogleFonts.fraunces(fontSize: size, height: height, fontWeight: weight, letterSpacing: -0.02 * size, color: p.ink);
+        GoogleFonts.fraunces(fontSize: size, height: height, fontWeight: weight, letterSpacing: -0.02 * size, color: p.ink)
+            .copyWith(fontFamilyFallback: displayFallback);
     TextStyle sans(double size, {double height = 1.5, FontWeight weight = FontWeight.w400, Color? color}) =>
         GoogleFonts.manrope(fontSize: size, height: height, fontWeight: weight, color: color ?? p.ink);
 

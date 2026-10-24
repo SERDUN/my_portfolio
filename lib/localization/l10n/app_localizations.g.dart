@@ -421,6 +421,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Web'**
   String get platformWeb;
+
+  /// No description provided for @contactDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is the fastest way. The other links lead where I post and answer.'**
+  String get contactDescription;
+
+  /// No description provided for @copyCommand.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copyCommand;
+
+  /// No description provided for @copiedCommand.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get copiedCommand;
+
+  /// No description provided for @notFoundHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back home'**
+  String get notFoundHome;
 }
 
 class _AppLocalizationsDelegate

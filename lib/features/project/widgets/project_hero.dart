@@ -86,7 +86,7 @@ class _Copy extends StatelessWidget {
               height: 1.3,
               fontStyle: FontStyle.italic,
               color: palette.body,
-            ),
+            ).copyWith(fontFamilyFallback: AppTheme.displayFallback),
           ),
         ],
         const SizedBox(height: 22),

@@ -178,4 +178,17 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get platformWeb => 'Web';
+
+  @override
+  String get contactDescription =>
+      'Пошта найшвидша. Решта посилань ведуть туди, де я пишу і відповідаю.';
+
+  @override
+  String get copyCommand => 'Копіювати';
+
+  @override
+  String get copiedCommand => 'Скопійовано';
+
+  @override
+  String get notFoundHome => 'На головну';
 }

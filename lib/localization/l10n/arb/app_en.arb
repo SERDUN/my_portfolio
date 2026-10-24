@@ -76,5 +76,9 @@
   "projectNext": "Next project",
   "platformIos": "iOS",
   "platformAndroid": "Android",
-  "platformWeb": "Web"
+  "platformWeb": "Web",
+  "contactDescription": "Email is the fastest way. The other links lead where I post and answer.",
+  "copyCommand": "Copy",
+  "copiedCommand": "Copied",
+  "notFoundHome": "Back home"
 }
