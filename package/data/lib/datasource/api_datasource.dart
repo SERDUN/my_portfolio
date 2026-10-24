@@ -6,88 +6,92 @@ import 'package:injectable/injectable.dart';
 import 'package:domain/domain.dart';
 
 import '../dto/dto.dart';
+import 'portfolio_data_source.dart';
 
+/// A non-2xx answer from the API.
+class ApiException implements Exception {
+  ApiException(this.statusCode, this.uri);
+
+  final int statusCode;
+  final Uri uri;
+
+  @override
+  String toString() => 'ApiException($statusCode, $uri)';
+}
+
+/// Adds the JSON and owner headers to every request.
 class ApiClient extends http.BaseClient {
   ApiClient(this._inner, this._customHeaders);
 
   final http.Client _inner;
-
   final Map<String, String> _customHeaders;
 
+  @override
   Future<http.StreamedResponse> send(http.BaseRequest request) {
     request.headers['content-type'] = 'application/json; charset=utf-8';
     request.headers['accept'] = 'application/json';
-
     request.headers.addAll(_customHeaders);
-
     return _inner.send(request);
   }
 }
 
-@injectable
-class ApiDatasource {
+/// Fetches the content from the Cloud Functions API. Registered lazily in
+/// every environment; only the api environment binds it as the source.
+@lazySingleton
+class ApiDatasource implements PortfolioDataSource {
   ApiDatasource({
     @Named('userId') required this.userId,
     @Named('baseUrl') required this.baseUrl,
-  });
+    @ignoreParam http.Client? client,
+  }) : _client = ApiClient(client ?? http.Client(), {'x-user-id': userId});
 
   final String userId;
   final Uri baseUrl;
+  final http.Client _client;
 
-  late final apiClient = ApiClient(http.Client(), {
-    'x-user-id': userId,
-  });
-
-  get userPath => "/user";
-
-  get contactsPath => "/contacts";
-
-  get skillsPath => "/skills";
-
-  get projectsPath => "/projects";
+  static const _userPath = '/user';
+  static const _contactsPath = '/contacts';
+  static const _skillsPath = '/skills';
+  static const _projectsPath = '/projects';
 
   Uri _endpoint(String path) => baseUrl.replace(path: baseUrl.path + path);
 
-  Future<List<ProjectDTO>> getProjects(Language language) async {
-    final response = await apiClient.get(_endpoint(projectsPath), headers: {
-      'accept-language': language.code,
-    });
-    var jsonResult = jsonDecode(response.body) as List;
-    List<ProjectDTO> projects = jsonResult.map((data) => ProjectDTO.fromJson(data)).toList();
-    return projects;
+  /// GETs [path] and decodes the body; non-2xx answers throw [ApiException]
+  /// before any JSON is parsed, so an error object never becomes a DTO.
+  Future<Object?> _get(String path, Language language) async {
+    final uri = _endpoint(path);
+    final response = await _client.get(uri, headers: {'accept-language': language.code});
+    if (response.statusCode < 200 || response.statusCode >= 300) throw ApiException(response.statusCode, uri);
+    return jsonDecode(utf8.decode(response.bodyBytes));
   }
 
+  Future<List<T>> _getList<T>(String path, Language language, T Function(Map<String, dynamic>) fromJson) async {
+    final json = await _get(path, language) as List;
+    return json.map((item) => fromJson(item as Map<String, dynamic>)).toList();
+  }
+
+  @override
+  Future<List<ProjectDTO>> getProjects(Language language) => _getList(_projectsPath, language, ProjectDTO.fromJson);
+
+  @override
   Future<ProjectDTO> getProject(String id, Language language) async {
-    final response = await apiClient.get(_endpoint("$projectsPath/$id"), headers: {
-      'accept-language': language.code,
-    });
-    var jsonResult = jsonDecode(response.body);
-    var projects = ProjectDTO.fromJson(jsonResult);
-    return projects;
+    try {
+      return ProjectDTO.fromJson(await _get('$_projectsPath/$id', language) as Map<String, dynamic>);
+    } on ApiException catch (e) {
+      // Keep the contract of PortfolioDataSource: a missing project is a StateError.
+      if (e.statusCode == 404) throw StateError('no project $id');
+      rethrow;
+    }
   }
 
-  Future<List<ContactsDTO>> getContacts(Language language) async {
-    final response = await apiClient.get(_endpoint(contactsPath), headers: {
-      'accept-language': language.code,
-    });
-    var jsonResult = jsonDecode(response.body) as List;
-    List<ContactsDTO> contacts = jsonResult.map((data) => ContactsDTO.fromJson(data)).toList();
-    return contacts;
-  }
+  @override
+  Future<List<ContactsDTO>> getContacts(Language language) => _getList(_contactsPath, language, ContactsDTO.fromJson);
 
-  Future<List<PortfolioSkillsDTO>> getSkills(Language language) async {
-    final response = await apiClient.get(_endpoint(skillsPath), headers: {
-      'accept-language': language.code,
-    });
-    var jsonResult = jsonDecode(response.body) as List;
-    List<PortfolioSkillsDTO> contacts = jsonResult.map((data) => PortfolioSkillsDTO.fromJson(data)).toList();
-    return contacts;
-  }
+  @override
+  Future<List<PortfolioSkillsDTO>> getSkills(Language language) =>
+      _getList(_skillsPath, language, PortfolioSkillsDTO.fromJson);
 
-  Future<PortfolioUserDTO> getUser(Language language) async {
-    final response = await apiClient.get(_endpoint(userPath), headers: {
-      'accept-language': language.code,
-    });
-    return PortfolioUserDTO.fromJson(jsonDecode(response.body));
-  }
+  @override
+  Future<PortfolioUserDTO> getUser(Language language) async =>
+      PortfolioUserDTO.fromJson(await _get(_userPath, language) as Map<String, dynamic>);
 }

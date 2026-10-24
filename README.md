@@ -40,6 +40,10 @@ flutter build web --release
 
 The build goes to `build/web`. The app uses path URLs, so whatever serves it must rewrite unknown paths to `index.html` (the `firebase/firebase.json` hosting config already does).
 
+## Data source
+
+The container binds one `PortfolioDataSource` per environment. The default reads the bundled JSON; `--dart-define=DATA_SOURCE=api` binds the Cloud Functions client instead (`AppEnvironment` in `lib/di/environment.dart`). The command cheat sheet always comes from the assets.
+
 ## Checks
 
 ```sh

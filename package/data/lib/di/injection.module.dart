@@ -16,46 +16,44 @@ import 'package:data/repository/user_repository_impl.dart' as _i320;
 import 'package:domain/domain.dart' as _i494;
 import 'package:injectable/injectable.dart' as _i526;
 
+const String _assets = 'assets';
+const String _api = 'api';
+
 class DataPackageModule extends _i526.MicroPackageModule {
 // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     final registerModule = _$RegisterModule();
-    gh.singleton<_i882.AssetsDataSource>(() => _i882.AssetsDataSource());
-    gh.factory<bool>(
-      () => registerModule.hasServerSync,
-      instanceName: 'hasServerSync',
-    );
+    gh.lazySingleton<_i882.AssetsDataSource>(() => _i882.AssetsDataSource());
     gh.factory<String>(
       () => registerModule.userId,
       instanceName: 'userId',
-    );
-    gh.factory<bool>(
-      () => registerModule.hasLocalSync,
-      instanceName: 'hasLocalSync',
     );
     gh.factory<Uri>(
       () => registerModule.baseUrl,
       instanceName: 'baseUrl',
     );
+    gh.lazySingleton<_i822.PortfolioDataSource>(
+      () => registerModule.assetsSource(gh<_i822.AssetsDataSource>()),
+      registerFor: {_assets},
+    );
     gh.factory<_i494.UsefulRepository>(
         () => _i390.UsefulRepositoryImpl(gh<_i822.AssetsDataSource>()));
-    gh.factory<_i420.ApiDatasource>(() => _i420.ApiDatasource(
+    gh.lazySingleton<_i420.ApiDatasource>(() => _i420.ApiDatasource(
           userId: gh<String>(instanceName: 'userId'),
           baseUrl: gh<Uri>(instanceName: 'baseUrl'),
         ));
-    gh.factory<_i494.ProjectRepository>(() => _i851.ProjectRepositoryImpl(
-          gh<bool>(instanceName: 'hasServerSync'),
-          gh<bool>(instanceName: 'hasLocalSync'),
-          gh<_i822.AssetsDataSource>(),
-          gh<_i822.ApiDatasource>(),
-        ));
-    gh.factory<_i494.UserRepository>(() => _i320.UserRepositoryImpl(
-          gh<bool>(instanceName: 'hasServerSync'),
-          gh<bool>(instanceName: 'hasLocalSync'),
-          gh<_i822.AssetsDataSource>(),
-          gh<_i822.ApiDatasource>(),
-        ));
+    gh.lazySingleton<_i822.PortfolioDataSource>(
+      () => registerModule.apiSource(
+        gh<_i822.ApiDatasource>(),
+        gh<_i822.AssetsDataSource>(),
+      ),
+      registerFor: {_api},
+    );
+    gh.factory<_i494.ProjectRepository>(
+        () => _i851.ProjectRepositoryImpl(gh<_i822.PortfolioDataSource>()));
+    gh.factory<_i494.UserRepository>(
+        () => _i320.UserRepositoryImpl(gh<_i822.PortfolioDataSource>()));
   }
 }
 

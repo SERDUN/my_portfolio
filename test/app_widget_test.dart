@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:my_portfolio/app/app.dart';
-import 'package:my_portfolio/core/app_environment_keys.dart';
+import 'package:data/data.dart';
 import 'package:my_portfolio/di/injection.dart';
 import 'package:my_portfolio/features/features.dart';
 
@@ -16,7 +16,7 @@ void main() {
   });
 
   testWidgets('renders the first frames and the home page without exceptions', (tester) async {
-    final di = await configureDependencies(AppEnvironmentKey.dev);
+    final di = await configureDependencies(DataEnvironment.assets);
 
     await tester.pumpWidget(Application(di: di));
     expect(tester.takeException(), isNull);
