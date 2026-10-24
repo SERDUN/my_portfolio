@@ -59,5 +59,22 @@
   "projectsCta": "Want one like these? Get in touch",
   "storeGooglePlay": "Google Play",
   "storeAppStore": "App Store",
-  "storeGithub": "GitHub"
+  "storeGithub": "GitHub",
+  "backToProjects": "All projects",
+  "projectAbout": "About the project",
+  "projectFactPlatforms": "Platforms",
+  "projectFactStack": "Stack",
+  "projectFactScreens": "Screens",
+  "projectScreensCount": "{count} screens",
+  "@projectScreensCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "projectNext": "Next project",
+  "platformIos": "iOS",
+  "platformAndroid": "Android",
+  "platformWeb": "Web"
 }

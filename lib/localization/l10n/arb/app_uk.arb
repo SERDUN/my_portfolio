@@ -42,5 +42,15 @@
   "projectsCta": "Хочете щось подібне? Напишіть",
   "storeGooglePlay": "Google Play",
   "storeAppStore": "App Store",
-  "storeGithub": "GitHub"
+  "storeGithub": "GitHub",
+  "backToProjects": "Усі проєкти",
+  "projectAbout": "Про проєкт",
+  "projectFactPlatforms": "Платформи",
+  "projectFactStack": "Стек",
+  "projectFactScreens": "Екранів",
+  "projectScreensCount": "Екранів: {count}",
+  "projectNext": "Наступний проєкт",
+  "platformIos": "iOS",
+  "platformAndroid": "Android",
+  "platformWeb": "Web"
 }
