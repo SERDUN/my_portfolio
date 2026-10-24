@@ -9,7 +9,9 @@ part 'contacts_state.dart';
 
 part 'contacts_cubit.freezed.dart';
 
-/// Contact channels for the contacts page.
+/// The contact channels, loaded once above every page: the footer and the
+/// contacts page both read this one instance. Required data for the contacts
+/// page, so a failure is a visible, retryable state.
 class ContactsCubit extends Cubit<ContactsState> with CubitSubscriptions<ContactsState>, LanguageReload<ContactsState> {
   ContactsCubit(this.useCase, LanguageSource languages) : super(const ContactsState()) {
     reloadOn(languages);

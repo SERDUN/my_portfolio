@@ -16,5 +16,6 @@ class GetUsefulCommandsUseCaseImpl implements GetUsefulCommandsUseCase {
   final UsefulRepository usefulRepository;
 
   @override
-  Stream<List<UsefulCommandsModel>> execute({required Language language}) => usefulRepository.getUsefulCommands(language);
+  Stream<List<UsefulCommandsModel>> execute({required Language language}) =>
+      usefulRepository.getUsefulCommands(language);
 }

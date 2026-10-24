@@ -174,4 +174,27 @@ void main() {
       expect(usefulRepository.requestedLanguages, [Language.en]);
     });
   });
+
+  group('ContactsModel', () {
+    test('an address is opened through mailto, a URL as is', () {
+      final email = ContactsModel(title: 'Email', value: 'me@example.com');
+      final github = ContactsModel(title: 'GitHub', value: 'https://github.com/me');
+
+      expect(email.isEmail, isTrue);
+      expect(email.link, 'mailto:me@example.com');
+      expect(github.isEmail, isFalse);
+      expect(github.link, 'https://github.com/me');
+    });
+
+    test('a handle is not an email and a mailto value is not prefixed twice', () {
+      final handle = ContactsModel(title: 'Telegram', value: '@ISerdun');
+      final prefixed = ContactsModel(title: 'Email', value: 'mailto:me@example.com');
+
+      expect(handle.isEmail, isFalse);
+      expect(handle.link, '@ISerdun');
+      expect(prefixed.isEmail, isTrue);
+      expect(prefixed.link, 'mailto:me@example.com');
+      expect(prefixed.displayValue, 'me@example.com');
+    });
+  });
 }

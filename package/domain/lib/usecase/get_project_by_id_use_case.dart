@@ -16,5 +16,6 @@ class GetProjectByIdUseCaseImpl implements GetProjectByIdUseCase {
   final ProjectRepository projectRepository;
 
   @override
-  Stream<ProjectModel> execute({required String id, required Language language}) => projectRepository.getProjectById(id, language);
+  Stream<ProjectModel> execute({required String id, required Language language}) =>
+      projectRepository.getProjectById(id, language);
 }

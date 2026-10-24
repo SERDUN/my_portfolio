@@ -11,7 +11,7 @@ import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import '../bloc/shell_cubit.dart';
+import 'package:my_portfolio/features/contact/bloc/contacts_cubit.dart';
 
 /// Dark footer band: "Let's talk", the email, the social links as pills, and
 /// the bottom line with the flag and secondary navigation.
@@ -29,10 +29,11 @@ class SiteFooter extends StatelessWidget {
       color: palette.footer,
       child: ContentWidth(
         padding: EdgeInsets.only(top: isMobile ? 40 : 80, bottom: isMobile ? 28 : 40),
-        child: BlocBuilder<ShellCubit, ShellState>(
+        child: BlocBuilder<ContactsCubit, ContactsState>(
+          buildWhen: (previous, current) => previous.contacts != current.contacts,
           builder: (context, state) {
-            final email = state.contacts.where(_isEmail).map((c) => c.value).firstOrNull;
-            final socials = state.contacts.where((c) => !_isEmail(c)).toList();
+            final email = state.contacts.where((c) => c.isEmail).firstOrNull;
+            final socials = state.contacts.where((c) => !c.isEmail).toList();
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -46,15 +47,12 @@ class SiteFooter extends StatelessWidget {
       ),
     );
   }
-
-  static bool _isEmail(ContactsModel contact) =>
-      contact.title.toLowerCase() == 'email' || contact.value.contains('@') && !contact.value.contains('/');
 }
 
 class _ContactBlock extends StatelessWidget {
   const _ContactBlock({required this.email, required this.socials});
 
-  final String? email;
+  final ContactsModel? email;
   final List<ContactsModel> socials;
 
   @override
@@ -79,9 +77,9 @@ class _ContactBlock extends StatelessWidget {
           Semantics(
             link: true,
             child: InkWell(
-              onTap: () => openExternalUrl(mailto(email!)),
+              onTap: () => openExternalUrl(email!.link),
               child: Text(
-                email!,
+                email!.displayValue,
                 style: GoogleFonts.fraunces(
                   fontSize: isMobile ? 20 : 28,
                   color: palette.footerText,
@@ -129,7 +127,7 @@ class _SocialPill extends StatelessWidget {
   Widget build(BuildContext context) {
     final palette = context.palette;
     return OutlinedButton(
-      onPressed: () => openExternalUrl(contact.value),
+      onPressed: () => openExternalUrl(contact.link),
       style: OutlinedButton.styleFrom(
         foregroundColor: palette.footerText,
         side: BorderSide(color: palette.footerLine),
