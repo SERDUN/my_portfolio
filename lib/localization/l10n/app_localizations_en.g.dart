@@ -122,4 +122,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String allProjects(int count) {
     return 'All $count projects';
   }
+
+  @override
+  String projectsTitle(int count, int platforms) {
+    return '$count apps, $platforms platforms, one habit: ship it clean.';
+  }
+
+  @override
+  String get projectsDescription =>
+      'Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get projectsCta => 'Want one like these? Get in touch';
+
+  @override
+  String get storeGooglePlay => 'Google Play';
+
+  @override
+  String get storeAppStore => 'App Store';
+
+  @override
+  String get storeGithub => 'GitHub';
 }

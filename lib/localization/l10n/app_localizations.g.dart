@@ -319,6 +319,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All {count} projects'**
   String allProjects(int count);
+
+  /// No description provided for @projectsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} apps, {platforms} platforms, one habit: ship it clean.'**
+  String projectsTitle(int count, int platforms);
+
+  /// No description provided for @projectsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.'**
+  String get projectsDescription;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @projectsCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Want one like these? Get in touch'**
+  String get projectsCta;
+
+  /// No description provided for @storeGooglePlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Play'**
+  String get storeGooglePlay;
+
+  /// No description provided for @storeAppStore.
+  ///
+  /// In en, this message translates to:
+  /// **'App Store'**
+  String get storeAppStore;
+
+  /// No description provided for @storeGithub.
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub'**
+  String get storeGithub;
 }
 
 class _AppLocalizationsDelegate

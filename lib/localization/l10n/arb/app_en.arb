@@ -42,5 +42,22 @@
         "type": "int"
       }
     }
-  }
+  },
+  "projectsTitle": "{count} apps, {platforms} platforms, one habit: ship it clean.",
+  "@projectsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "platforms": {
+        "type": "int"
+      }
+    }
+  },
+  "projectsDescription": "Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.",
+  "filterAll": "All",
+  "projectsCta": "Want one like these? Get in touch",
+  "storeGooglePlay": "Google Play",
+  "storeAppStore": "App Store",
+  "storeGithub": "GitHub"
 }

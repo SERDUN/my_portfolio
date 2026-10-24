@@ -35,5 +35,12 @@
   "skillsDescription": "Згруповано так, як я користуюся ними щодня: спершу Flutter, під ним Android-коріння, і те, що навколо клієнта.",
   "selectedWorkEyebrow": "Вибрані роботи",
   "selectedWorkTitle": "Три проєкти для початку",
-  "allProjects": "Усі проєкти: {count}"
+  "allProjects": "Усі проєкти: {count}",
+  "projectsTitle": "{count} застосунків, {platforms} платформи, одна звичка: доводити до релізу.",
+  "projectsDescription": "Застосунки в сторах і клієнтські проєкти за останні роки. Flutter там, де команда хотіла одну кодову базу, нативний Android там, де без нього ніяк.",
+  "filterAll": "Усі",
+  "projectsCta": "Хочете щось подібне? Напишіть",
+  "storeGooglePlay": "Google Play",
+  "storeAppStore": "App Store",
+  "storeGithub": "GitHub"
 }

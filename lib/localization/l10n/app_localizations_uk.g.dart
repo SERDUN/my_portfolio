@@ -122,4 +122,28 @@ class AppLocalizationsUk extends AppLocalizations {
   String allProjects(int count) {
     return 'Усі проєкти: $count';
   }
+
+  @override
+  String projectsTitle(int count, int platforms) {
+    return '$count застосунків, $platforms платформи, одна звичка: доводити до релізу.';
+  }
+
+  @override
+  String get projectsDescription =>
+      'Застосунки в сторах і клієнтські проєкти за останні роки. Flutter там, де команда хотіла одну кодову базу, нативний Android там, де без нього ніяк.';
+
+  @override
+  String get filterAll => 'Усі';
+
+  @override
+  String get projectsCta => 'Хочете щось подібне? Напишіть';
+
+  @override
+  String get storeGooglePlay => 'Google Play';
+
+  @override
+  String get storeAppStore => 'App Store';
+
+  @override
+  String get storeGithub => 'GitHub';
 }
