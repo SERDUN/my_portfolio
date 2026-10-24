@@ -2,7 +2,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 
-import 'package:my_portfolio/app/settings/settings.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 import 'package:my_portfolio/app/app_frame.dart';
@@ -61,9 +60,42 @@ Widget testHost(Widget child, {Locale locale = const Locale('en')}) => MaterialA
   home: Scaffold(body: child),
 );
 
-/// Settings for tests that need an [AppSettingsCubit]; closed after the test.
-AppSettingsCubit testSettings(WidgetTester tester) {
-  final settings = AppSettingsCubit();
-  addTearDown(settings.close);
-  return settings;
+/// Asserts every id in [ids] is on screen exactly once, as a tap target
+/// with a non-empty name. Icon buttons are named by their tooltip; list
+/// those in [namedByTooltip].
+void expectIdentifiedTapTargets(WidgetTester tester, Iterable<String> ids, {Set<String> namedByTooltip = const {}}) {
+  for (final id in ids) {
+    final finder = findSemanticsId(id);
+    expect(finder, findsOneWidget, reason: 'id $id');
+    final data = tester.getSemantics(finder).getSemanticsData();
+    expect(data.identifier, id);
+    expect(data.hasAction(SemanticsAction.tap), isTrue, reason: '$id has no tap action');
+    if (namedByTooltip.contains(id)) {
+      expect(data.tooltip, isNotEmpty, reason: '$id has no tooltip');
+    } else {
+      expect(data.label, isNotEmpty, reason: '$id has no name');
+      expect(data.tooltip, isEmpty, reason: '$id speaks a stray tooltip');
+    }
+  }
+}
+
+/// Asserts the screen anchor [screenId] is present and that every tap
+/// target on screen has a name (Flutter's labeledTapTargetGuideline).
+Future<void> expectAccessibleScreen(WidgetTester tester, String screenId) async {
+  expect(findSemanticsId(screenId), findsOneWidget, reason: 'screen $screenId');
+  await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+}
+
+/// A widget test with the semantics tree on. The handle is released in
+/// `finally`: a failing expectation would otherwise leave it open and add a
+/// second, misleading failure. (A tear-down runs too late for this check.)
+void testSemanticsWidgets(String description, WidgetTesterCallback body) {
+  testWidgets(description, (tester) async {
+    final handle = tester.ensureSemantics();
+    try {
+      await body(tester);
+    } finally {
+      handle.dispose();
+    }
+  });
 }

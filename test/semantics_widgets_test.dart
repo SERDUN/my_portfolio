@@ -9,15 +9,11 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/features/useful/widgets/command_tile.dart';
-import 'package:my_portfolio/style/style.dart';
 
 import 'helpers/semantics.dart';
 
 void main() {
-  setUpAll(() => GoogleFonts.config.allowRuntimeFetching = false);
-
-  testWidgets('PillButton: one node with label, id and tap; activates via semantics', (tester) async {
-    final handle = tester.ensureSemantics();
+  testSemanticsWidgets('PillButton: one node with label, id and tap; activates via semantics', (tester) async {
     var taps = 0;
     await tester.pumpWidget(
       testHost(PillButton(label: 'Download CV', identifier: homeDownloadCvId, onPressed: () => taps++)),
@@ -32,11 +28,9 @@ void main() {
     );
     await tapViaSemantics(tester, findSemanticsId(homeDownloadCvId));
     expect(taps, 1);
-    handle.dispose();
   });
 
-  testWidgets('LanguageToggle: each pill is named by its language and carries its id', (tester) async {
-    final handle = tester.ensureSemantics();
+  testSemanticsWidgets('LanguageToggle: each pill is named by its language and carries its id', (tester) async {
     Language? chosen;
     await tester.pumpWidget(
       testHost(
@@ -61,11 +55,9 @@ void main() {
     );
     await tapViaSemantics(tester, findSemanticsId(shellLanguageOptionId('uk')));
     expect(chosen, Language.uk);
-    handle.dispose();
   });
 
-  testWidgets('ProjectCard: the whole card is one named, identified tap target', (tester) async {
-    final handle = tester.ensureSemantics();
+  testSemanticsWidgets('ProjectCard: the whole card is one named, identified tap target', (tester) async {
     var opened = 0;
     await tester.pumpWidget(
       testHost(
@@ -94,11 +86,9 @@ void main() {
     );
     await tapViaSemantics(tester, findSemanticsId(projectsCardId('7')));
     expect(opened, 1);
-    handle.dispose();
   });
 
-  testWidgets('the copy button keeps its id across languages and announces the copy', (tester) async {
-    final handle = tester.ensureSemantics();
+  testSemanticsWidgets('the copy button keeps its id across languages and announces the copy', (tester) async {
     tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(SystemChannels.platform, (_) async => null);
     addTearDown(() => tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(SystemChannels.platform, null));
 
@@ -123,7 +113,6 @@ void main() {
     await tester.pump();
     expect(tester.getSemantics(findSemanticsId(id)), isSemantics(label: 'Скопійовано: Позначити версію'));
     await tester.pump(const Duration(seconds: 3));
-    handle.dispose();
   });
 
   test('every literal id in keys.dart is unique', () {

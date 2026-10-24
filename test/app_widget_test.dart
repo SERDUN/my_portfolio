@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:my_portfolio/app/app.dart';
@@ -10,11 +9,6 @@ import 'package:my_portfolio/features/features.dart';
 /// Pumps the real [Application] on the real container: router, theme,
 /// localization delegates and the home page backed by the bundled assets.
 void main() {
-  setUpAll(() {
-    // No network in tests: fall back to the default font instead of fetching.
-    GoogleFonts.config.allowRuntimeFetching = false;
-  });
-
   testWidgets('renders the first frames and the home page without exceptions', (tester) async {
     final di = await configureDependencies(DataEnvironment.assets);
 

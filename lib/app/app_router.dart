@@ -13,9 +13,10 @@ import 'settings/settings.dart';
 /// The route tree. Every page builds its cubit from the widget tree
 /// (`context.read`): use cases come from the RepositoryProviders the app root
 /// publishes, the language from [AppSettingsCubit]. No service locator here.
-GoRouter buildAppRouter() {
+/// [initialLocation] is for tests that start on a deep link.
+GoRouter buildAppRouter({String? initialLocation}) {
   return GoRouter(
-    initialLocation: AppRoutes.home.path,
+    initialLocation: initialLocation ?? AppRoutes.home.path,
     debugLogDiagnostics: kDebugMode,
     routes: [
       StatefulShellRoute.indexedStack(
@@ -94,6 +95,10 @@ GoRouter buildAppRouter() {
         ],
       ),
     ],
-    errorBuilder: (context, state) => const NotFoundScreen(),
+    // Every page outside the shell enters without a transition. While the
+    // shell animated out under one, heading back in put its navigation shell
+    // (a single GlobalKey) in the tree twice. A future top-level route needs
+    // a NoTransitionPage as well.
+    errorPageBuilder: (context, state) => NoTransitionPage(key: state.pageKey, child: const NotFoundScreen()),
   );
 }
