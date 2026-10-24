@@ -6,7 +6,7 @@ import '../repository/repository.dart';
 
 /// Skill groups with their skills.
 abstract class GetUserSkillsUseCase {
-  Stream<List<PortfolioSkillsModel>> execute({required Language language});
+  Stream<List<SkillGroupModel>> execute({required Language language});
 }
 
 @Injectable(as: GetUserSkillsUseCase)
@@ -16,5 +16,5 @@ class GetUserSkillsUseCaseImpl implements GetUserSkillsUseCase {
   final UserRepository userRepository;
 
   @override
-  Stream<List<PortfolioSkillsModel>> execute({required Language language}) => userRepository.getSkills(language);
+  Stream<List<SkillGroupModel>> execute({required Language language}) => userRepository.getSkills(language);
 }

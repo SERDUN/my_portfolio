@@ -31,7 +31,7 @@ void main() {
     expect(find.byType(SiteFooter), findsOneWidget);
     expect(find.text('Dmitro Serdun'), findsOneWidget);
     expect(find.byType(HomePage), findsOneWidget);
-    // The bundled English intro reached the UI through the bio cubit.
+    // The bundled English intro reached the UI through the home cubit.
     expect(find.textContaining('introduce myself'), findsOneWidget);
   });
 }

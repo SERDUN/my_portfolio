@@ -5,7 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/app/app_route_consts.dart';
+import 'package:my_portfolio/app/app_routes.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
@@ -34,7 +34,7 @@ class ProjectCard extends StatelessWidget {
   final int maxTags;
 
   static void open(BuildContext context, ProjectModel project) {
-    GoRouter.of(context).goNamed(AppRoutInfo.project.name, pathParameters: {AppRoutInfo.projectId: project.id});
+    GoRouter.of(context).goNamed(AppRoutes.project.name, pathParameters: {AppRoutes.projectIdParam: project.id});
   }
 
   @override
@@ -172,9 +172,9 @@ class ProjectCard extends StatelessWidget {
   List<Widget> _stores(BuildContext context) {
     final l10n = context.l10n;
     final stores = <String>[
-      if (project.links.googlePlay != null) l10n.storeGooglePlay,
-      if (project.links.appStore != null) l10n.storeAppStore,
-      if (project.links.github != null) l10n.storeGithub,
+      if (project.links.googlePlay != null) l10n.common_googlePlay,
+      if (project.links.appStore != null) l10n.common_appStore,
+      if (project.links.github != null) l10n.common_github,
     ];
     if (stores.isEmpty) return const [];
     return [

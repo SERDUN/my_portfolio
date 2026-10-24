@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UsefulState {
 
- LoadStatus get status; List<UsefulCommandsModel> get usefulCommands; Object? get error;
+ LoadStatus get status; List<CommandGroupModel> get groups; Object? get error;
 /// Create a copy of UsefulState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $UsefulStateCopyWith<UsefulState> get copyWith => _$UsefulStateCopyWithImpl<Usef
 @override
 bool operator ==(Object other) {
   final _this = this as UsefulState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsefulState&&(identical(other.status, _this.status) || other.status == _this.status)&&const DeepCollectionEquality().equals(other.usefulCommands, _this.usefulCommands)&&const DeepCollectionEquality().equals(other.error, _this.error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsefulState&&(identical(other.status, _this.status) || other.status == _this.status)&&const DeepCollectionEquality().equals(other.groups, _this.groups)&&const DeepCollectionEquality().equals(other.error, _this.error));
 }
 
 
 @override
 int get hashCode {
   final _this = this as UsefulState;
-  return Object.hash(runtimeType,_this.status,const DeepCollectionEquality().hash(_this.usefulCommands),const DeepCollectionEquality().hash(_this.error));
+  return Object.hash(runtimeType,_this.status,const DeepCollectionEquality().hash(_this.groups),const DeepCollectionEquality().hash(_this.error));
 }
 
 @override
 String toString() {
   final _this = this as UsefulState;
-  return 'UsefulState(status: ${_this.status}, usefulCommands: ${_this.usefulCommands}, error: ${_this.error})';
+  return 'UsefulState(status: ${_this.status}, groups: ${_this.groups}, error: ${_this.error})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $UsefulStateCopyWith<$Res>  {
   factory $UsefulStateCopyWith(UsefulState value, $Res Function(UsefulState) _then) = _$UsefulStateCopyWithImpl;
 @useResult
 $Res call({
- LoadStatus status, List<UsefulCommandsModel> usefulCommands, Object? error
+ LoadStatus status, List<CommandGroupModel> groups, Object? error
 });
 
 
@@ -68,11 +68,11 @@ class _$UsefulStateCopyWithImpl<$Res>
 
 /// Create a copy of UsefulState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? usefulCommands = null,Object? error = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? groups = null,Object? error = freezed,}) {
   return _then(UsefulState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as LoadStatus,usefulCommands: null == usefulCommands ? _self.usefulCommands : usefulCommands // ignore: cast_nullable_to_non_nullable
-as List<UsefulCommandsModel>,error: freezed == error ? _self.error : error ,
+as LoadStatus,groups: null == groups ? _self.groups : groups // ignore: cast_nullable_to_non_nullable
+as List<CommandGroupModel>,error: freezed == error ? _self.error : error ,
   ));
 }
 
@@ -157,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LoadStatus status,  List<UsefulCommandsModel> usefulCommands,  Object? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LoadStatus status,  List<CommandGroupModel> groups,  Object? error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UsefulState() when $default != null:
-return $default(_that.status,_that.usefulCommands,_that.error);case _:
+return $default(_that.status,_that.groups,_that.error);case _:
   return orElse();
 
 }
@@ -178,10 +178,10 @@ return $default(_that.status,_that.usefulCommands,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LoadStatus status,  List<UsefulCommandsModel> usefulCommands,  Object? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LoadStatus status,  List<CommandGroupModel> groups,  Object? error)  $default,) {final _that = this;
 switch (_that) {
 case _UsefulState():
-return $default(_that.status,_that.usefulCommands,_that.error);case _:
+return $default(_that.status,_that.groups,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +198,10 @@ return $default(_that.status,_that.usefulCommands,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LoadStatus status,  List<UsefulCommandsModel> usefulCommands,  Object? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LoadStatus status,  List<CommandGroupModel> groups,  Object? error)?  $default,) {final _that = this;
 switch (_that) {
 case _UsefulState() when $default != null:
-return $default(_that.status,_that.usefulCommands,_that.error);case _:
+return $default(_that.status,_that.groups,_that.error);case _:
   return null;
 
 }
@@ -213,15 +213,15 @@ return $default(_that.status,_that.usefulCommands,_that.error);case _:
 
 
 class _UsefulState implements UsefulState {
-  const _UsefulState({this.status = LoadStatus.initial,  List<UsefulCommandsModel> usefulCommands = const [], this.error}): _usefulCommands = usefulCommands;
+  const _UsefulState({this.status = LoadStatus.initial,  List<CommandGroupModel> groups = const [], this.error}): _groups = groups;
   
 
 @override@JsonKey() final  LoadStatus status;
- final  List<UsefulCommandsModel> _usefulCommands;
-@override@JsonKey() List<UsefulCommandsModel> get usefulCommands {
-  if (_usefulCommands is EqualUnmodifiableListView) return _usefulCommands;
+ final  List<CommandGroupModel> _groups;
+@override@JsonKey() List<CommandGroupModel> get groups {
+  if (_groups is EqualUnmodifiableListView) return _groups;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_usefulCommands);
+  return EqualUnmodifiableListView(_groups);
 }
 
 @override final  Object? error;
@@ -236,18 +236,18 @@ _$UsefulStateCopyWith<_UsefulState> get copyWith => __$UsefulStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsefulState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.usefulCommands, _usefulCommands)&&const DeepCollectionEquality().equals(other.error, error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsefulState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.groups, _groups)&&const DeepCollectionEquality().equals(other.error, error));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_usefulCommands),const DeepCollectionEquality().hash(error));
+    return Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_groups),const DeepCollectionEquality().hash(error));
 }
 
 @override
 String toString() {
-    return 'UsefulState(status: $status, usefulCommands: $usefulCommands, error: $error)';
+    return 'UsefulState(status: $status, groups: $groups, error: $error)';
 }
 
 
@@ -258,7 +258,7 @@ abstract mixin class _$UsefulStateCopyWith<$Res> implements $UsefulStateCopyWith
   factory _$UsefulStateCopyWith(_UsefulState value, $Res Function(_UsefulState) _then) = __$UsefulStateCopyWithImpl;
 @override @useResult
 $Res call({
- LoadStatus status, List<UsefulCommandsModel> usefulCommands, Object? error
+ LoadStatus status, List<CommandGroupModel> groups, Object? error
 });
 
 
@@ -275,11 +275,11 @@ class __$UsefulStateCopyWithImpl<$Res>
 
 /// Create a copy of UsefulState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? usefulCommands = null,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? groups = null,Object? error = freezed,}) {
   return _then(_UsefulState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as LoadStatus,usefulCommands: null == usefulCommands ? _self._usefulCommands : usefulCommands // ignore: cast_nullable_to_non_nullable
-as List<UsefulCommandsModel>,error: freezed == error ? _self.error : error ,
+as LoadStatus,groups: null == groups ? _self._groups : groups // ignore: cast_nullable_to_non_nullable
+as List<CommandGroupModel>,error: freezed == error ? _self.error : error ,
   ));
 }
 

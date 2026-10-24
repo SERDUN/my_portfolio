@@ -80,9 +80,9 @@ void main() {
     });
   });
 
-  group('PortfolioSkillsDTO', () {
+  group('SkillGroupDTO', () {
     test('parses nested subskills and optional expanded flag', () {
-      final dto = PortfolioSkillsDTO.fromJson({
+      final dto = SkillGroupDTO.fromJson({
         'title': 'Flutter',
         'expanded': true,
         'subskills': [
@@ -105,23 +105,23 @@ void main() {
     });
 
     test('requires a title', () {
-      expect(() => PortfolioSkillsDTO.fromJson({'subskills': []}), throwsA(isA<TypeError>()));
+      expect(() => SkillGroupDTO.fromJson({'subskills': []}), throwsA(isA<TypeError>()));
     });
   });
 
-  group('ContactsDTO', () {
+  group('ContactDTO', () {
     test('requires both title and value', () {
-      final dto = ContactsDTO.fromJson({'title': 'Email', 'value': 'me@example.com'});
+      final dto = ContactDTO.fromJson({'title': 'Email', 'value': 'me@example.com'});
 
       expect(dto.title, 'Email');
       expect(dto.value, 'me@example.com');
-      expect(() => ContactsDTO.fromJson({'title': 'Email'}), throwsA(isA<TypeError>()));
+      expect(() => ContactDTO.fromJson({'title': 'Email'}), throwsA(isA<TypeError>()));
     });
   });
 
-  group('UsefulCommandsDTO', () {
+  group('CommandGroupDTO', () {
     test('parses a group with its commands', () {
-      final dto = UsefulCommandsDTO.fromJson({
+      final dto = CommandGroupDTO.fromJson({
         'title': 'Git',
         'commands': [
           {'title': 'Status', 'command': 'git status'},
@@ -134,19 +134,7 @@ void main() {
     });
 
     test('requires the commands list', () {
-      expect(() => UsefulCommandsDTO.fromJson({'title': 'Git'}), throwsA(isA<TypeError>()));
-    });
-  });
-
-  group('PortfolioDTO', () {
-    test('parses an optional projects list', () {
-      expect(PortfolioDTO.fromJson({}).projects, isNull);
-      final dto = PortfolioDTO.fromJson({
-        'projects': [
-          {'id': '1', 'name': 'One'},
-        ],
-      });
-      expect(dto.projects?.single.name, 'One');
+      expect(() => CommandGroupDTO.fromJson({'title': 'Git'}), throwsA(isA<TypeError>()));
     });
   });
 }

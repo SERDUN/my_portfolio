@@ -6,7 +6,7 @@ import '../repository/repository.dart';
 
 /// Command groups of the cheat sheet.
 abstract class GetUsefulCommandsUseCase {
-  Stream<List<UsefulCommandsModel>> execute({required Language language});
+  Stream<List<CommandGroupModel>> execute({required Language language});
 }
 
 @Injectable(as: GetUsefulCommandsUseCase)
@@ -16,6 +16,5 @@ class GetUsefulCommandsUseCaseImpl implements GetUsefulCommandsUseCase {
   final UsefulRepository usefulRepository;
 
   @override
-  Stream<List<UsefulCommandsModel>> execute({required Language language}) =>
-      usefulRepository.getUsefulCommands(language);
+  Stream<List<CommandGroupModel>> execute({required Language language}) => usefulRepository.getUsefulCommands(language);
 }

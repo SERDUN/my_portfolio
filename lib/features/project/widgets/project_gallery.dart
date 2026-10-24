@@ -30,9 +30,9 @@ class ProjectGallery extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.alphabetic,
           children: [
-            Expanded(child: Text(l10n.projectScreenshots, style: textTheme.headlineLarge)),
+            Expanded(child: Text(l10n.project_screenshotsTitle, style: textTheme.headlineLarge)),
             const SizedBox(width: 16),
-            Text(l10n.projectScreensCount(shots.length), style: textTheme.bodySmall),
+            Text(l10n.project_screensCount(shots.length), style: textTheme.bodySmall),
           ],
         ),
         const SizedBox(height: 24),

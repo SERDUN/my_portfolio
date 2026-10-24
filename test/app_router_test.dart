@@ -22,13 +22,13 @@ class _User implements GetUserUseCase {
 
 class _Skills implements GetUserSkillsUseCase {
   @override
-  Stream<List<PortfolioSkillsModel>> execute({required Language language}) => Stream.value(const []);
+  Stream<List<SkillGroupModel>> execute({required Language language}) => Stream.value(const []);
 }
 
 class _Contacts implements GetContactsUseCase {
   @override
-  Stream<List<ContactsModel>> execute({required Language language}) =>
-      Stream.value([ContactsModel(title: 'Email', value: 'fake@example.com')]);
+  Stream<List<ContactModel>> execute({required Language language}) =>
+      Stream.value([ContactModel(title: 'Email', value: 'fake@example.com')]);
 }
 
 class _Projects implements GetProjectsUseCase {
@@ -45,8 +45,8 @@ class _ProjectById implements GetProjectByIdUseCase {
 
 class _Useful implements GetUsefulCommandsUseCase {
   @override
-  Stream<List<UsefulCommandsModel>> execute({required Language language}) => Stream.value([
-    UsefulCommandsModel('Git', [UsefulCommandModel('Status', 'git status')]),
+  Stream<List<CommandGroupModel>> execute({required Language language}) => Stream.value([
+    CommandGroupModel('Git', [CommandModel('Status', 'git status')]),
   ]);
 }
 
@@ -88,23 +88,23 @@ void main() {
       expect(tester.takeException(), isNull, reason: path);
     }
 
-    await visit(AppRoutInfo.resume.path);
+    await visit(AppRoutes.home.path);
     expect(find.byType(HomePage), findsOneWidget);
     expect(find.textContaining('Fake intro'), findsOneWidget);
 
-    await visit(AppRoutInfo.portfolio.path);
-    expect(find.byType(PortfolioPage), findsOneWidget);
+    await visit(AppRoutes.projects.path);
+    expect(find.byType(ProjectsPage), findsOneWidget);
     expect(find.text('Fake project'), findsWidgets);
 
-    await visit('${AppRoutInfo.portfolio.path}/missing');
-    expect(find.byType(ProjectDetailsPage), findsOneWidget);
+    await visit('${AppRoutes.projects.path}/missing');
+    expect(find.byType(ProjectPage), findsOneWidget);
     expect(find.text('There is no such project.'), findsOneWidget);
 
-    await visit(AppRoutInfo.contacts.path);
-    expect(find.byType(ContactPage), findsOneWidget);
+    await visit(AppRoutes.contacts.path);
+    expect(find.byType(ContactsPage), findsOneWidget);
 
-    await visit(AppRoutInfo.useful.path);
-    expect(find.byType(HelpScreen), findsOneWidget);
+    await visit(AppRoutes.useful.path);
+    expect(find.byType(UsefulCommandsPage), findsOneWidget);
     expect(find.text('git status'), findsOneWidget);
   });
 }

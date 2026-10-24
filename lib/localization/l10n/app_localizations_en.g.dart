@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
 import 'app_localizations.g.dart';
@@ -9,195 +11,171 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get menuTitleHome => 'Home';
+  String get common_allProjects => 'All projects';
 
   @override
-  String get menuTitlePortfolio => 'Projects';
+  String get common_appStore => 'App Store';
 
   @override
-  String get menuTitleContact => 'Contact';
+  String get common_downloadCv => 'Download CV';
 
   @override
-  String get menuTitleUseful => 'Useful';
+  String get common_github => 'GitHub';
 
   @override
-  String get featureUsefulTitle => 'Useful commands';
+  String get common_googlePlay => 'Google Play';
 
   @override
-  String get featureUsefulDescription =>
-      'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.';
+  String get common_loadFailed => 'Could not load this page.';
 
   @override
-  String get lastProjectTitle => 'Projects';
+  String get common_retry => 'Try again';
 
   @override
-  String get buttonDownloadCv => 'Download CV';
+  String get contacts_description =>
+      'Email is the fastest way. The other links lead where I post and answer.';
 
   @override
-  String get unknownPageTitle => '404';
+  String get contacts_title => 'Get in touch';
 
   @override
-  String get unknownPageDescription => 'Fuck Russia!';
-
-  @override
-  String get portfolioDescription => 'Description';
-
-  @override
-  String get portfolioAboutMe => 'About me';
-
-  @override
-  String get projectDependencyStack => 'Dependency stack';
-
-  @override
-  String get projectScreenshots => 'Screenshots';
-
-  @override
-  String get introSkills => 'Skills';
-
-  @override
-  String get contactGetInTouch => 'Get in touch';
-
-  @override
-  String get contactPhone => 'Phone';
-
-  @override
-  String get contactEmail => 'Email';
-
-  @override
-  String get contactLocation => 'Location';
-
-  @override
-  String get contactFacebook => 'Facebook';
-
-  @override
-  String get contactLinkedin => 'LinkedIn';
-
-  @override
-  String get contactInstagram => 'Instagram';
-
-  @override
-  String get footerContactTitle => 'Let\'s talk about your next app.';
-
-  @override
-  String get footerSource => 'Source on GitHub';
-
-  @override
-  String get footerGlory => 'Glory to Ukraine';
-
-  @override
-  String get actionOpenMenu => 'Open menu';
-
-  @override
-  String get actionSwitchTheme => 'Switch theme';
-
-  @override
-  String get actionSwitchLanguage => 'Language';
-
-  @override
-  String get buttonSeeProjects => 'See projects';
-
-  @override
-  String get statsYears => 'years in mobile';
-
-  @override
-  String get statsProjects => 'projects';
-
-  @override
-  String get statsPlatforms => 'platforms';
-
-  @override
-  String get skillsTitle => 'What I work with';
-
-  @override
-  String get skillsDescription =>
-      'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.';
-
-  @override
-  String get selectedWorkEyebrow => 'Selected work';
-
-  @override
-  String get selectedWorkTitle => 'Three projects to start with';
-
-  @override
-  String allProjects(int count) {
+  String home_allProjects(int count) {
     return 'All $count projects';
   }
 
   @override
-  String projectsTitle(int count, int platforms) {
-    return '$count apps, $platforms platforms, one habit: ship it clean.';
-  }
+  String get home_seeProjects => 'See projects';
 
   @override
-  String get projectsDescription =>
-      'Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.';
+  String get home_selectedWorkEyebrow => 'Selected work';
 
   @override
-  String get filterAll => 'All';
+  String get home_selectedWorkTitle => 'Three projects to start with';
 
   @override
-  String get projectsCta => 'Want one like these? Get in touch';
+  String get home_skillsDescription =>
+      'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.';
 
   @override
-  String get storeGooglePlay => 'Google Play';
+  String get home_skillsEyebrow => 'Skills';
 
   @override
-  String get storeAppStore => 'App Store';
+  String get home_skillsTitle => 'What I work with';
 
   @override
-  String get storeGithub => 'GitHub';
+  String get home_statsPlatforms => 'platforms';
 
   @override
-  String get backToProjects => 'All projects';
+  String get home_statsProjects => 'projects';
 
   @override
-  String get projectAbout => 'About the project';
+  String get home_statsYears => 'years in mobile';
 
   @override
-  String get projectFactPlatforms => 'Platforms';
+  String get notFound_description => 'Fuck Russia!';
 
   @override
-  String get projectFactStack => 'Stack';
+  String get notFound_home => 'Back home';
 
   @override
-  String get projectFactScreens => 'Screens';
+  String get notFound_title => '404';
 
   @override
-  String projectScreensCount(int count) {
+  String get project_aboutTitle => 'About the project';
+
+  @override
+  String get project_factPlatforms => 'Platforms';
+
+  @override
+  String get project_factScreens => 'Screens';
+
+  @override
+  String get project_factStack => 'Stack';
+
+  @override
+  String get project_next => 'Next project';
+
+  @override
+  String get project_notFound => 'There is no such project.';
+
+  @override
+  String get project_platformAndroid => 'Android';
+
+  @override
+  String get project_platformIos => 'iOS';
+
+  @override
+  String get project_platformWeb => 'Web';
+
+  @override
+  String project_screensCount(int count) {
     return '$count screens';
   }
 
   @override
-  String get projectNext => 'Next project';
+  String get project_screenshotsTitle => 'Screenshots';
 
   @override
-  String get platformIos => 'iOS';
+  String get project_stackTitle => 'Dependency stack';
 
   @override
-  String get platformAndroid => 'Android';
+  String get projects_cta => 'Want one like these? Get in touch';
 
   @override
-  String get platformWeb => 'Web';
+  String get projects_description =>
+      'Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.';
 
   @override
-  String get contactDescription =>
-      'Email is the fastest way. The other links lead where I post and answer.';
+  String get projects_eyebrow => 'Projects';
 
   @override
-  String get copyCommand => 'Copy';
+  String get projects_filterAll => 'All';
 
   @override
-  String get copiedCommand => 'Copied';
+  String projects_title(int count, int platforms) {
+    return '$count apps, $platforms platforms, one habit: ship it clean.';
+  }
 
   @override
-  String get notFoundHome => 'Back home';
+  String get shell_footerGlory => 'Glory to Ukraine';
 
   @override
-  String get errorLoadFailed => 'Could not load this page.';
+  String get shell_footerSource => 'Source on GitHub';
 
   @override
-  String get errorRetry => 'Try again';
+  String get shell_footerTitle => 'Let\'s talk about your next app.';
 
   @override
-  String get errorProjectNotFound => 'There is no such project.';
+  String get shell_navContacts => 'Contact';
+
+  @override
+  String get shell_navHome => 'Home';
+
+  @override
+  String get shell_navProjects => 'Projects';
+
+  @override
+  String get shell_navUseful => 'Useful';
+
+  @override
+  String get shell_openMenu => 'Open menu';
+
+  @override
+  String get shell_switchLanguage => 'Language';
+
+  @override
+  String get shell_switchTheme => 'Switch theme';
+
+  @override
+  String get useful_copied => 'Copied';
+
+  @override
+  String get useful_copy => 'Copy';
+
+  @override
+  String get useful_description =>
+      'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.';
+
+  @override
+  String get useful_title => 'Useful commands';
 }

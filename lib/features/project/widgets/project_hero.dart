@@ -101,15 +101,15 @@ class _Copy extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: _Fact(label: l10n.projectFactPlatforms, value: _platforms(context)),
+                child: _Fact(label: l10n.project_factPlatforms, value: _platforms(context)),
               ),
               const SizedBox(width: 16),
               Expanded(
-                child: _Fact(label: l10n.projectFactStack, value: '${project.technologies.length}'),
+                child: _Fact(label: l10n.project_factStack, value: '${project.technologies.length}'),
               ),
               const SizedBox(width: 16),
               Expanded(
-                child: _Fact(label: l10n.projectFactScreens, value: '${project.screenshots.length}'),
+                child: _Fact(label: l10n.project_factScreens, value: '${project.screenshots.length}'),
               ),
             ],
           ),
@@ -122,9 +122,9 @@ class _Copy extends StatelessWidget {
   String _platforms(BuildContext context) {
     final l10n = context.l10n;
     final names = <String>[
-      if (project.links.appStore != null) l10n.platformIos,
-      if (project.links.googlePlay != null) l10n.platformAndroid,
-      if (project.technologies.any((t) => t.toLowerCase() == 'web')) l10n.platformWeb,
+      if (project.links.appStore != null) l10n.project_platformIos,
+      if (project.links.googlePlay != null) l10n.project_platformAndroid,
+      if (project.technologies.any((t) => t.toLowerCase() == 'web')) l10n.project_platformWeb,
     ];
     if (names.isNotEmpty) return names.join(', ');
     return project.platform?.label ?? '—';
@@ -142,21 +142,21 @@ class _StoreButtons extends StatelessWidget {
     final buttons = <Widget>[
       if (project.links.appStore != null)
         PillButton(
-          label: l10n.storeAppStore,
+          label: l10n.common_appStore,
           icon: Ionicons.logoAppleAppstore,
           variant: PillButtonVariant.ink,
           onPressed: () => openUri(project.links.appStore),
         ),
       if (project.links.googlePlay != null)
         PillButton(
-          label: l10n.storeGooglePlay,
+          label: l10n.common_googlePlay,
           icon: Ionicons.logoGooglePlaystore,
           variant: project.links.appStore == null ? PillButtonVariant.ink : PillButtonVariant.outline,
           onPressed: () => openUri(project.links.googlePlay),
         ),
       if (project.links.github != null)
         PillButton(
-          label: l10n.storeGithub,
+          label: l10n.common_github,
           icon: Ionicons.logoGithub,
           variant: project.links.hasStore ? PillButtonVariant.outline : PillButtonVariant.ink,
           onPressed: () => openUri(project.links.github),

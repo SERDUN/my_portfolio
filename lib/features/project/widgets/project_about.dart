@@ -22,7 +22,7 @@ class ProjectAbout extends StatelessWidget {
     final about = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(l10n.projectAbout, style: textTheme.headlineLarge),
+        Text(l10n.project_aboutTitle, style: textTheme.headlineLarge),
         const SizedBox(height: 16),
         SelectableText(project.description, style: textTheme.bodyLarge),
       ],
@@ -31,7 +31,7 @@ class ProjectAbout extends StatelessWidget {
     final stack = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(l10n.projectDependencyStack, style: textTheme.headlineLarge),
+        Text(l10n.project_stackTitle, style: textTheme.headlineLarge),
         const SizedBox(height: 16),
         Wrap(spacing: 8, runSpacing: 8, children: [for (final tech in project.technologies) TagChip(tech)]),
       ],

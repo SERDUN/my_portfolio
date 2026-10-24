@@ -8,8 +8,8 @@ class FakeUserRepository implements UserRepository {
   final List<Language> requestedLanguages = [];
 
   PortfolioUserModel user = PortfolioUserModel(firstName: 'Dmitro', secondName: 'Serdun', position: '', intro: '');
-  List<PortfolioSkillsModel> skills = [PortfolioSkillsModel(title: 'Flutter')];
-  List<ContactsModel> contacts = [ContactsModel(title: 'Email', value: 'me@example.com')];
+  List<SkillGroupModel> skills = [SkillGroupModel(title: 'Flutter')];
+  List<ContactModel> contacts = [ContactModel(title: 'Email', value: 'me@example.com')];
 
   @override
   Stream<PortfolioUserModel> getUser(Language language) {
@@ -18,13 +18,13 @@ class FakeUserRepository implements UserRepository {
   }
 
   @override
-  Stream<List<PortfolioSkillsModel>> getSkills(Language language) {
+  Stream<List<SkillGroupModel>> getSkills(Language language) {
     requestedLanguages.add(language);
     return Stream.value(skills);
   }
 
   @override
-  Stream<List<ContactsModel>> getContacts(Language language) {
+  Stream<List<ContactModel>> getContacts(Language language) {
     requestedLanguages.add(language);
     return Stream.value(contacts);
   }
@@ -56,10 +56,10 @@ class FakeUsefulRepository implements UsefulRepository {
   final List<Language> requestedLanguages = [];
 
   @override
-  Stream<List<UsefulCommandsModel>> getUsefulCommands(Language language) {
+  Stream<List<CommandGroupModel>> getUsefulCommands(Language language) {
     requestedLanguages.add(language);
     return Stream.value([
-      UsefulCommandsModel('Git', [UsefulCommandModel('Status', 'git status')]),
+      CommandGroupModel('Git', [CommandModel('Status', 'git status')]),
     ]);
   }
 }
@@ -165,10 +165,10 @@ void main() {
     });
   });
 
-  group('ContactsModel', () {
+  group('ContactModel', () {
     test('an address is opened through mailto, a URL as is', () {
-      final email = ContactsModel(title: 'Email', value: 'me@example.com');
-      final github = ContactsModel(title: 'GitHub', value: 'https://github.com/me');
+      final email = ContactModel(title: 'Email', value: 'me@example.com');
+      final github = ContactModel(title: 'GitHub', value: 'https://github.com/me');
 
       expect(email.isEmail, isTrue);
       expect(email.link, 'mailto:me@example.com');
@@ -177,8 +177,8 @@ void main() {
     });
 
     test('a handle is not an email and a mailto value is not prefixed twice', () {
-      final handle = ContactsModel(title: 'Telegram', value: '@ISerdun');
-      final prefixed = ContactsModel(title: 'Email', value: 'mailto:me@example.com');
+      final handle = ContactModel(title: 'Telegram', value: '@ISerdun');
+      final prefixed = ContactModel(title: 'Email', value: 'mailto:me@example.com');
 
       expect(handle.isEmail, isFalse);
       expect(handle.link, '@ISerdun');

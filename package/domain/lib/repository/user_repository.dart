@@ -7,8 +7,8 @@ abstract class UserRepository {
   Stream<PortfolioUserModel> getUser(Language language);
 
   /// Skill groups with their skills, in [language].
-  Stream<List<PortfolioSkillsModel>> getSkills(Language language);
+  Stream<List<SkillGroupModel>> getSkills(Language language);
 
   /// Contact channels, in [language].
-  Stream<List<ContactsModel>> getContacts(Language language);
+  Stream<List<ContactModel>> getContacts(Language language);
 }

@@ -7,9 +7,9 @@ import '../dto/dto.dart';
 abstract class PortfolioDataSource {
   Future<PortfolioUserDTO> getUser(Language language);
 
-  Future<List<PortfolioSkillsDTO>> getSkills(Language language);
+  Future<List<SkillGroupDTO>> getSkills(Language language);
 
-  Future<List<ContactsDTO>> getContacts(Language language);
+  Future<List<ContactDTO>> getContacts(Language language);
 
   Future<List<ProjectDTO>> getProjects(Language language);
 

@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/app/settings/settings.dart';
-import 'package:my_portfolio/features/main/main.dart';
+import 'package:my_portfolio/features/shell/shell.dart';
 
 class _User implements GetUserUseCase {
   final controller = StreamController<PortfolioUserModel>.broadcast();

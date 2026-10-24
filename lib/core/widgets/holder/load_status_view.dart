@@ -38,7 +38,7 @@ class LoadStatusView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final message = failureMessage ?? context.l10n.errorLoadFailed;
+    final message = failureMessage ?? context.l10n.common_loadFailed;
     if (hasData) {
       if (status != LoadStatus.failure) return builder(context);
       return Column(
@@ -60,7 +60,7 @@ class LoadStatusView extends StatelessWidget {
               failureAction ??
               (onRetry == null
                   ? null
-                  : PillButton(label: context.l10n.errorRetry, icon: Icons.refresh_rounded, onPressed: onRetry)),
+                  : PillButton(label: context.l10n.common_retry, icon: Icons.refresh_rounded, onPressed: onRetry)),
         );
       case LoadStatus.initial:
       case LoadStatus.loading:
@@ -91,7 +91,7 @@ class _FailureBanner extends StatelessWidget {
             Icon(Icons.cloud_off_rounded, size: 18, color: palette.muted),
             const SizedBox(width: 10),
             Expanded(child: Text(message, style: Theme.of(context).textTheme.bodySmall)),
-            if (onRetry != null) TextButton(onPressed: onRetry, child: Text(context.l10n.errorRetry)),
+            if (onRetry != null) TextButton(onPressed: onRetry, child: Text(context.l10n.common_retry)),
           ],
         ),
       ),
