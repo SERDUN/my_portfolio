@@ -170,6 +170,18 @@ abstract class AppLocalizations {
   /// **'About me'**
   String get portfolioAboutMe;
 
+  /// No description provided for @projectDependencyStack.
+  ///
+  /// In en, this message translates to:
+  /// **'Dependency stack'**
+  String get projectDependencyStack;
+
+  /// No description provided for @projectScreenshots.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshots'**
+  String get projectScreenshots;
+
   /// No description provided for @introSkills.
   ///
   /// In en, this message translates to:

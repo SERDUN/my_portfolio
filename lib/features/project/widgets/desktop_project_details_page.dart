@@ -131,7 +131,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
             Container(
                 margin: const EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
-                  "Стек залежностей",
+                  context.l10n.projectDependencyStack,
                   style: Theme.of(context).textTheme.headlineSmall,
                 )),
             const Expanded(
@@ -156,7 +156,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
             Container(
                 margin: const EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
-                  "Скріншоти",
+                  context.l10n.projectScreenshots,
                   style: Theme.of(context).textTheme.headlineSmall,
                 )),
             const Expanded(

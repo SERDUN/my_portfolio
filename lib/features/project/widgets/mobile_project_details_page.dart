@@ -88,7 +88,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              "Software stack",
+              context.l10n.projectDependencyStack,
               style: Theme.of(context).textTheme.displaySmall,
             )),
         const Dash(
@@ -112,7 +112,7 @@ class MobileProjectDetailsPage extends StatelessWidget {
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              "Screenshots",
+              context.l10n.projectScreenshots,
               style: Theme.of(context).textTheme.displaySmall,
             )),
         const Dash(
