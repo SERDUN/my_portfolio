@@ -1,33 +1,21 @@
 import 'package:injectable/injectable.dart';
 
-import 'package:data/data.dart';
+import '../common/common.dart';
+import '../entity/entity.dart';
+import '../repository/repository.dart';
 
-import 'package:domain/entity/entity.dart';
-import 'package:domain/repository/repository.dart';
-import 'package:domain/common/common.dart';
-
+/// One project by id in the current locale.
 abstract class GetProjectByIdUseCase {
-  Stream<ProjectModel> execute({
-    required String id,
-  });
+  Stream<ProjectModel> execute({required String id});
 }
 
 @Injectable(as: GetProjectByIdUseCase)
 class GetProjectByIdUseCaseImpl implements GetProjectByIdUseCase {
-  GetProjectByIdUseCaseImpl(
-    this.config,
-    this.userRepository,
-    this.mapper,
-  );
+  GetProjectByIdUseCaseImpl(this.config, this.projectRepository);
 
   final Config config;
-  final ProjectRepository userRepository;
-  final Mapper<ProjectDTO, ProjectModel> mapper;
+  final ProjectRepository projectRepository;
 
   @override
-  Stream<ProjectModel> execute({
-    required String id,
-  }) {
-    return userRepository.getProjectById(id, config.currentLocale).map((event) => mapper.mapToModel(event));
-  }
+  Stream<ProjectModel> execute({required String id}) => projectRepository.getProjectById(id, config.currentLocale);
 }

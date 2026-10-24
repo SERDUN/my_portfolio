@@ -1,15 +1,15 @@
-import 'dart:async';
-
-import 'package:data/extension/stream_controller_extensions.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:domain/repository/repository.dart';
+import 'package:domain/domain.dart';
 
-import '../dto/dto.dart';
 import '../datasource/datasource.dart';
+import '../extension/extension.dart';
 
+/// Serves projects from the bundled assets and, when enabled, refreshes them
+/// from the API afterwards. Each stream completes after the last enabled
+/// source and errors when none is enabled.
 @Injectable(as: ProjectRepository)
-class ProjectRepositoryImpl extends ProjectRepository {
+class ProjectRepositoryImpl implements ProjectRepository {
   ProjectRepositoryImpl(
     @Named('hasServerSync') this.hasServerSync,
     @Named('hasLocalSync') this.hasLocalSync,
@@ -24,22 +24,20 @@ class ProjectRepositoryImpl extends ProjectRepository {
   final bool hasLocalSync;
 
   @override
-  Stream<ProjectDTO> getProjectById(String id, String localization) {
-    final StreamController<ProjectDTO> _streamController = StreamController<ProjectDTO>();
-    Future.microtask(() async {
-      if (hasLocalSync) await _streamController.addFuture(assetsDatasource.getProject(id, localization));
-      if (hasServerSync) await _streamController.addFuture(apiDatasource.getProject(id, localization));
-    });
-    return _streamController.stream;
+  Stream<ProjectModel> getProjectById(String id, String localization) async* {
+    _requireSource();
+    if (hasLocalSync) yield (await assetsDatasource.getProject(id, localization)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getProject(id, localization)).toDomain();
   }
 
   @override
-  Stream<List<ProjectDTO>> getProjects(String localization) {
-    final StreamController<List<ProjectDTO>> _streamController = StreamController<List<ProjectDTO>>();
-    Future.microtask(() async {
-      if (hasLocalSync) await _streamController.addFuture(assetsDatasource.getProjects(localization));
-      if (hasServerSync) await _streamController.addFuture(apiDatasource.getProjects(localization));
-    });
-    return _streamController.stream;
+  Stream<List<ProjectModel>> getProjects(String localization) async* {
+    _requireSource();
+    if (hasLocalSync) yield (await assetsDatasource.getProjects(localization)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getProjects(localization)).toDomain();
+  }
+
+  void _requireSource() {
+    if (!hasLocalSync && !hasServerSync) throw StateError('ProjectRepositoryImpl has no data source enabled');
   }
 }

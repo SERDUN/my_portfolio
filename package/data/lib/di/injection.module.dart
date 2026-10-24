@@ -13,7 +13,7 @@ import 'package:data/di/injection.dart' as _i237;
 import 'package:data/repository/project_repository_impl.dart' as _i851;
 import 'package:data/repository/useful_repository_impl.dart' as _i390;
 import 'package:data/repository/user_repository_impl.dart' as _i320;
-import 'package:domain/repository/repository.dart' as _i174;
+import 'package:domain/domain.dart' as _i494;
 import 'package:injectable/injectable.dart' as _i526;
 
 class DataPackageModule extends _i526.MicroPackageModule {
@@ -38,23 +38,19 @@ class DataPackageModule extends _i526.MicroPackageModule {
       () => registerModule.baseUrl,
       instanceName: 'baseUrl',
     );
+    gh.factory<_i494.UsefulRepository>(
+        () => _i390.UsefulRepositoryImpl(gh<_i822.AssetsDataSource>()));
     gh.factory<_i420.ApiDatasource>(() => _i420.ApiDatasource(
           userId: gh<String>(instanceName: 'userId'),
           baseUrl: gh<Uri>(instanceName: 'baseUrl'),
         ));
-    gh.factory<_i174.UsefulRepository>(() => _i390.UsefulRepositoryImpl(
+    gh.factory<_i494.ProjectRepository>(() => _i851.ProjectRepositoryImpl(
           gh<bool>(instanceName: 'hasServerSync'),
           gh<bool>(instanceName: 'hasLocalSync'),
           gh<_i822.AssetsDataSource>(),
           gh<_i822.ApiDatasource>(),
         ));
-    gh.factory<_i174.ProjectRepository>(() => _i851.ProjectRepositoryImpl(
-          gh<bool>(instanceName: 'hasServerSync'),
-          gh<bool>(instanceName: 'hasLocalSync'),
-          gh<_i822.AssetsDataSource>(),
-          gh<_i822.ApiDatasource>(),
-        ));
-    gh.factory<_i174.UserRepository>(() => _i320.UserRepositoryImpl(
+    gh.factory<_i494.UserRepository>(() => _i320.UserRepositoryImpl(
           gh<bool>(instanceName: 'hasServerSync'),
           gh<bool>(instanceName: 'hasLocalSync'),
           gh<_i822.AssetsDataSource>(),

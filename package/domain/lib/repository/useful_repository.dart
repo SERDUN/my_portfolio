@@ -1,5 +1,7 @@
-import 'package:data/data.dart';
+import '../entity/model/model.dart';
 
+/// The owner's command cheat sheet.
 abstract class UsefulRepository {
-  Stream<List<UsefulCommandsDTO>> getUsefulCommands(String localization);
+  /// Command groups in [localization].
+  Stream<List<UsefulCommandsModel>> getUsefulCommands(String localization);
 }

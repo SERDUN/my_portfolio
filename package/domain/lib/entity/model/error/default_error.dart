@@ -1,1 +1,0 @@
-class DefaultFailure implements Exception {}

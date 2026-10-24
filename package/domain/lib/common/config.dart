@@ -7,5 +7,5 @@ class Config {
 
   String get currentLocale => _currentLocale;
 
-  void set setCurrentLocale(String locale) => _currentLocale = LanguageTools.normalizeLanguage(locale);
+  set setCurrentLocale(String locale) => _currentLocale = LanguageTools.normalizeLanguage(locale);
 }

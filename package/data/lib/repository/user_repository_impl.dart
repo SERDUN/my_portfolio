@@ -1,15 +1,15 @@
-import 'dart:async';
-
 import 'package:injectable/injectable.dart';
 
-import 'package:data/extension/extension.dart';
-import 'package:domain/repository/repository.dart';
+import 'package:domain/domain.dart';
 
-import '../dto/dto.dart';
 import '../datasource/datasource.dart';
+import '../extension/extension.dart';
 
+/// Serves the owner's profile, skills and contacts from the bundled assets
+/// and, when enabled, refreshes them from the API afterwards. Each stream
+/// completes after the last enabled source and errors when none is enabled.
 @Injectable(as: UserRepository)
-class UserRepositoryImpl extends UserRepository {
+class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(
     @Named('hasServerSync') this.hasServerSync,
     @Named('hasLocalSync') this.hasLocalSync,
@@ -24,35 +24,27 @@ class UserRepositoryImpl extends UserRepository {
   final bool hasLocalSync;
 
   @override
-  Stream<PortfolioUserDTO> getUser(String localization) {
-    final StreamController<PortfolioUserDTO> _streamController = StreamController<PortfolioUserDTO>();
-    Future.microtask(() async {
-      if (hasLocalSync) await _streamController.addFuture(assetDataSource.getUser(localization));
-      if (hasServerSync) await _streamController.addFuture(apiDatasource.getUser(localization));
-    });
-
-    return _streamController.stream;
+  Stream<PortfolioUserModel> getUser(String localization) async* {
+    _requireSource();
+    if (hasLocalSync) yield (await assetDataSource.getUser(localization)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getUser(localization)).toDomain();
   }
 
   @override
-  Stream<List<ContactsDTO>> getContacts(String localization) {
-    final StreamController<List<ContactsDTO>> _streamController = StreamController<List<ContactsDTO>>();
-    Future.microtask(() async {
-      if (hasLocalSync) await _streamController.addFuture(assetDataSource.getContacts(localization));
-      if (hasServerSync) await _streamController.addFuture(apiDatasource.getContacts());
-    });
-
-    return _streamController.stream;
+  Stream<List<ContactsModel>> getContacts(String localization) async* {
+    _requireSource();
+    if (hasLocalSync) yield (await assetDataSource.getContacts(localization)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getContacts(localization)).toDomain();
   }
 
   @override
-  Stream<List<PortfolioSkillsDTO>> getSkills(String localization) {
-    final StreamController<List<PortfolioSkillsDTO>> _streamController = StreamController<List<PortfolioSkillsDTO>>();
-    Future.microtask(() async {
-      if (hasLocalSync) await _streamController.addFuture(assetDataSource.getSkills(localization));
-      if (hasServerSync) await _streamController.addFuture(apiDatasource.getSkills(localization));
-    });
+  Stream<List<PortfolioSkillsModel>> getSkills(String localization) async* {
+    _requireSource();
+    if (hasLocalSync) yield (await assetDataSource.getSkills(localization)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getSkills(localization)).toDomain();
+  }
 
-    return _streamController.stream;
+  void _requireSource() {
+    if (!hasLocalSync && !hasServerSync) throw StateError('UserRepositoryImpl has no data source enabled');
   }
 }
