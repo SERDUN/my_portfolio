@@ -7,8 +7,8 @@ Personal portfolio of Dmytro Serdun, a Flutter web app: https://serdun.online/
 | Path | What it is |
 |---|---|
 | `lib/` | the app: `bootstrap.dart`, routing and theme in `app/`, screens in `features/`, shared widgets in `core/`, l10n in `localization/` |
-| `package/domain/` | entities, mappers, use cases, repository interfaces |
-| `package/data/` | DTOs, repositories, the JSON content under `assets/data/{en,uk}/` |
+| `package/domain/` | pure Dart: entities, repository contracts, use cases; depends on nothing but `injectable` |
+| `package/data/` | DTOs, DTO → model mappers (`lib/extension/`), repository implementations, the JSON content under `assets/data/{en,uk}/` |
 | `web/` | web shell: `index.html`, manifest, icons |
 | `firebase/` | Firebase project: Cloud Functions (TypeScript), hosting, Firestore and Storage rules |
 
@@ -45,7 +45,7 @@ The build goes to `build/web`. The app uses path URLs, so whatever serves it mus
 ```sh
 flutter analyze
 flutter test
-(cd package/domain && flutter test)
+(cd package/domain && dart test)
 (cd package/data && flutter test)
 ```
 

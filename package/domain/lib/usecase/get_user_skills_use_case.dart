@@ -1,32 +1,21 @@
-// ignore_for_file: null_argument_to_non_null_type
 import 'package:injectable/injectable.dart';
 
-import 'package:data/data.dart';
+import '../common/common.dart';
+import '../entity/entity.dart';
+import '../repository/repository.dart';
 
-import 'package:domain/entity/entity.dart';
-import 'package:domain/repository/repository.dart';
-import 'package:domain/common/common.dart';
-
+/// Skill groups in the current locale.
 abstract class GetUserSkillsUseCase {
   Stream<List<PortfolioSkillsModel>> execute();
 }
 
 @Injectable(as: GetUserSkillsUseCase)
-class GetUserUseCaseSkillsImpl implements GetUserSkillsUseCase {
-  GetUserUseCaseSkillsImpl(
-    this.config,
-    this.userRepository,
-    this.mapper,
-  );
+class GetUserSkillsUseCaseImpl implements GetUserSkillsUseCase {
+  GetUserSkillsUseCaseImpl(this.config, this.userRepository);
 
   final Config config;
   final UserRepository userRepository;
-  final Mapper<PortfolioSkillsDTO, PortfolioSkillsModel> mapper;
 
   @override
-  Stream<List<PortfolioSkillsModel>> execute() {
-    return userRepository
-        .getSkills(config.currentLocale)
-        .map((event) => event.map((dto) => mapper.mapToModel(dto)).toList());
-  }
+  Stream<List<PortfolioSkillsModel>> execute() => userRepository.getSkills(config.currentLocale);
 }

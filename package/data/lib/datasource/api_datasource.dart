@@ -64,9 +64,9 @@ class ApiDatasource {
     return projects;
   }
 
-  Future<List<ContactsDTO>> getContacts() async {
+  Future<List<ContactsDTO>> getContacts(String localization) async {
     final response = await apiClient.get(_endpoint(contactsPath), headers: {
-      'accept-language': 'en',
+      'accept-language': localization,
     });
     var jsonResult = jsonDecode(response.body) as List;
     List<ContactsDTO> contacts = jsonResult.map((data) => ContactsDTO.fromJson(data)).toList();

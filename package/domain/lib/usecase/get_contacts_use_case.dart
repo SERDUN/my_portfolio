@@ -1,31 +1,21 @@
 import 'package:injectable/injectable.dart';
 
-import 'package:data/data.dart';
+import '../common/common.dart';
+import '../entity/entity.dart';
+import '../repository/repository.dart';
 
-import 'package:domain/entity/entity.dart';
-import 'package:domain/repository/repository.dart';
-import 'package:domain/common/common.dart';
-
+/// Contact channels in the current locale.
 abstract class GetContactsUseCase {
   Stream<List<ContactsModel>> execute();
 }
 
 @Injectable(as: GetContactsUseCase)
 class GetContactsUseCaseImpl implements GetContactsUseCase {
-  GetContactsUseCaseImpl(
-    this.config,
-    this.userRepository,
-    this.mapper,
-  );
+  GetContactsUseCaseImpl(this.config, this.userRepository);
 
   final Config config;
   final UserRepository userRepository;
-  final Mapper<ContactsDTO, ContactsModel> mapper;
 
   @override
-  Stream<List<ContactsModel>> execute() {
-    return userRepository
-        .getContacts(config.currentLocale)
-        .map((event) => event.map((data) => mapper.mapToModel(data)).toList());
-  }
+  Stream<List<ContactsModel>> execute() => userRepository.getContacts(config.currentLocale);
 }

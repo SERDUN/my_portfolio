@@ -1,29 +1,21 @@
 import 'package:injectable/injectable.dart';
 
-import 'package:data/data.dart';
+import '../common/common.dart';
+import '../entity/entity.dart';
+import '../repository/repository.dart';
 
-import 'package:domain/common/common.dart';
-import 'package:domain/entity/entity.dart';
-import 'package:domain/repository/repository.dart';
-
+/// All projects in the current locale.
 abstract class GetProjectsUseCase {
   Stream<List<ProjectModel>> execute();
 }
 
 @Injectable(as: GetProjectsUseCase)
 class GetProjectsUseCaseImpl implements GetProjectsUseCase {
-  GetProjectsUseCaseImpl(
-    this.config,
-    this.userRepository,
-    this.mapper,
-  );
+  GetProjectsUseCaseImpl(this.config, this.projectRepository);
 
   final Config config;
-  final ProjectRepository userRepository;
-  final Mapper<ProjectDTO, ProjectModel> mapper;
+  final ProjectRepository projectRepository;
 
   @override
-  Stream<List<ProjectModel>> execute() {
-    return userRepository.getProjects(config.currentLocale).map((event) => mapper.mapToModels(event));
-  }
+  Stream<List<ProjectModel>> execute() => projectRepository.getProjects(config.currentLocale);
 }

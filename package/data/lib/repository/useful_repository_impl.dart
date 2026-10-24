@@ -1,35 +1,20 @@
-import 'dart:async';
-
-import 'package:data/extension/stream_controller_extensions.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:domain/repository/repository.dart';
+import 'package:domain/domain.dart';
 
-import '../dto/dto.dart';
 import '../datasource/datasource.dart';
+import '../extension/extension.dart';
 
+/// Serves the command cheat sheet from the bundled assets. The API has no
+/// endpoint for it, so there is no server source to toggle.
 @Injectable(as: UsefulRepository)
-class UsefulRepositoryImpl extends UsefulRepository {
-  UsefulRepositoryImpl(
-    @Named('hasServerSync') this.hasServerSync,
-    @Named('hasLocalSync') this.hasLocalSync,
-    this.assetDataSource,
-    this.apiDatasource,
-  );
+class UsefulRepositoryImpl implements UsefulRepository {
+  UsefulRepositoryImpl(this.assetDataSource);
 
-  final ApiDatasource apiDatasource;
   final AssetsDataSource assetDataSource;
 
-  final bool hasServerSync;
-  final bool hasLocalSync;
-
   @override
-  Stream<List<UsefulCommandsDTO>> getUsefulCommands(String localization) {
-    final StreamController<List<UsefulCommandsDTO>> _streamController = StreamController<List<UsefulCommandsDTO>>();
-    Future.microtask(() async {
-      if (hasLocalSync) await _streamController.addFuture(assetDataSource.getUsefulCommand(localization));
-    });
-
-    return _streamController.stream;
+  Stream<List<UsefulCommandsModel>> getUsefulCommands(String localization) async* {
+    yield (await assetDataSource.getUsefulCommand(localization)).toDomain();
   }
 }
