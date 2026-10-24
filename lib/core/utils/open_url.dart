@@ -7,6 +7,3 @@ Future<bool> openExternalUrl(String? link) async {
   if (uri == null || !uri.hasScheme) return false;
   return launchUrl(uri, mode: LaunchMode.externalApplication);
 }
-
-/// Builds a mailto link for an address so it can go through [openExternalUrl].
-String mailto(String address) => 'mailto:$address';

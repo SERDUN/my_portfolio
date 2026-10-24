@@ -5,10 +5,11 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/features/main/main.dart';
+
+import '../bloc/contacts_cubit.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import '../bloc/contacts_cubit.dart';
 import '../widgets/contact_item.dart';
 
 /// Contacts: the statement, a short description and one card per channel.

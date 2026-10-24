@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ShellState {
 
- PortfolioUserModel? get user; List<ContactsModel> get contacts;
+ PortfolioUserModel? get user;
 /// Create a copy of ShellState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $ShellStateCopyWith<ShellState> get copyWith => _$ShellStateCopyWithImpl<ShellSt
 @override
 bool operator ==(Object other) {
   final _this = this as ShellState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShellState&&(identical(other.user, _this.user) || other.user == _this.user)&&const DeepCollectionEquality().equals(other.contacts, _this.contacts));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShellState&&(identical(other.user, _this.user) || other.user == _this.user));
 }
 
 
 @override
 int get hashCode {
   final _this = this as ShellState;
-  return Object.hash(runtimeType,_this.user,const DeepCollectionEquality().hash(_this.contacts));
+  return Object.hash(runtimeType,_this.user);
 }
 
 @override
 String toString() {
   final _this = this as ShellState;
-  return 'ShellState(user: ${_this.user}, contacts: ${_this.contacts})';
+  return 'ShellState(user: ${_this.user})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ShellStateCopyWith<$Res>  {
   factory $ShellStateCopyWith(ShellState value, $Res Function(ShellState) _then) = _$ShellStateCopyWithImpl;
 @useResult
 $Res call({
- PortfolioUserModel? user, List<ContactsModel> contacts
+ PortfolioUserModel? user
 });
 
 
@@ -68,11 +68,10 @@ class _$ShellStateCopyWithImpl<$Res>
 
 /// Create a copy of ShellState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? user = freezed,Object? contacts = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? user = freezed,}) {
   return _then(ShellState(
 user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as PortfolioUserModel?,contacts: null == contacts ? _self.contacts : contacts // ignore: cast_nullable_to_non_nullable
-as List<ContactsModel>,
+as PortfolioUserModel?,
   ));
 }
 
@@ -157,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PortfolioUserModel? user,  List<ContactsModel> contacts)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PortfolioUserModel? user)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ShellState() when $default != null:
-return $default(_that.user,_that.contacts);case _:
+return $default(_that.user);case _:
   return orElse();
 
 }
@@ -178,10 +177,10 @@ return $default(_that.user,_that.contacts);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PortfolioUserModel? user,  List<ContactsModel> contacts)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PortfolioUserModel? user)  $default,) {final _that = this;
 switch (_that) {
 case _ShellState():
-return $default(_that.user,_that.contacts);case _:
+return $default(_that.user);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +197,10 @@ return $default(_that.user,_that.contacts);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PortfolioUserModel? user,  List<ContactsModel> contacts)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PortfolioUserModel? user)?  $default,) {final _that = this;
 switch (_that) {
 case _ShellState() when $default != null:
-return $default(_that.user,_that.contacts);case _:
+return $default(_that.user);case _:
   return null;
 
 }
@@ -213,17 +212,10 @@ return $default(_that.user,_that.contacts);case _:
 
 
 class _ShellState implements ShellState {
-  const _ShellState({this.user,  List<ContactsModel> contacts = const []}): _contacts = contacts;
+  const _ShellState({this.user});
   
 
 @override final  PortfolioUserModel? user;
- final  List<ContactsModel> _contacts;
-@override@JsonKey() List<ContactsModel> get contacts {
-  if (_contacts is EqualUnmodifiableListView) return _contacts;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_contacts);
-}
-
 
 /// Create a copy of ShellState
 /// with the given fields replaced by the non-null parameter values.
@@ -235,18 +227,18 @@ _$ShellStateCopyWith<_ShellState> get copyWith => __$ShellStateCopyWithImpl<_She
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShellState&&(identical(other.user, user) || other.user == user)&&const DeepCollectionEquality().equals(other.contacts, _contacts));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShellState&&(identical(other.user, user) || other.user == user));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,user,const DeepCollectionEquality().hash(_contacts));
+    return Object.hash(runtimeType,user);
 }
 
 @override
 String toString() {
-    return 'ShellState(user: $user, contacts: $contacts)';
+    return 'ShellState(user: $user)';
 }
 
 
@@ -257,7 +249,7 @@ abstract mixin class _$ShellStateCopyWith<$Res> implements $ShellStateCopyWith<$
   factory _$ShellStateCopyWith(_ShellState value, $Res Function(_ShellState) _then) = __$ShellStateCopyWithImpl;
 @override @useResult
 $Res call({
- PortfolioUserModel? user, List<ContactsModel> contacts
+ PortfolioUserModel? user
 });
 
 
@@ -274,11 +266,10 @@ class __$ShellStateCopyWithImpl<$Res>
 
 /// Create a copy of ShellState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? user = freezed,Object? contacts = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? user = freezed,}) {
   return _then(_ShellState(
 user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as PortfolioUserModel?,contacts: null == contacts ? _self._contacts : contacts // ignore: cast_nullable_to_non_nullable
-as List<ContactsModel>,
+as PortfolioUserModel?,
   ));
 }
 

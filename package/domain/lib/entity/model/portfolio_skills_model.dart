@@ -1,9 +1,5 @@
 class PortfolioSkillsModel {
-  PortfolioSkillsModel({
-    required this.title,
-    required this.expanded,
-    required this.children,
-  });
+  PortfolioSkillsModel({required this.title, required this.expanded, required this.children});
 
   final String title;
   final bool expanded;

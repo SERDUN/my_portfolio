@@ -1,8 +1,5 @@
 class UsefulCommandsModel {
-  UsefulCommandsModel(
-    this.title,
-    this.commands,
-  );
+  UsefulCommandsModel(this.title, this.commands);
 
   final String title;
 
@@ -10,10 +7,7 @@ class UsefulCommandsModel {
 }
 
 class UsefulCommandModel {
-  UsefulCommandModel(
-    this.title,
-    this.command,
-  );
+  UsefulCommandModel(this.title, this.command);
 
   final String title;
   final String command;

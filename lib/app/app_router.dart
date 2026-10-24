@@ -18,8 +18,13 @@ GoRouter buildAppRouter() {
     debugLogDiagnostics: kDebugMode,
     routes: [
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) => BlocProvider(
-          create: (context) => ShellCubit(context.read(), context.read(), context.read<AppSettingsCubit>()),
+        // Shared by every page below: the owner for the header, the contacts
+        // for the footer and the contacts page. Each loads once.
+        builder: (context, state, navigationShell) => MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => ShellCubit(context.read(), context.read<AppSettingsCubit>())),
+            BlocProvider(create: (context) => ContactsCubit(context.read(), context.read<AppSettingsCubit>())),
+          ],
           child: MainScreen(navigationShell: navigationShell, key: ValueKey(state.pageKey)),
         ),
         branches: [
@@ -65,10 +70,8 @@ GoRouter buildAppRouter() {
             routes: [
               GoRoute(
                 path: AppRoutInfo.contacts.path,
-                builder: (context, state) => BlocProvider(
-                  create: (context) => ContactsCubit(context.read(), context.read<AppSettingsCubit>()),
-                  child: const ContactPage(),
-                ),
+                // Contacts come from the ContactsCubit above every page.
+                builder: (context, state) => const ContactPage(),
               ),
             ],
           ),

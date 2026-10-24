@@ -12,8 +12,6 @@ class ContactCard extends StatelessWidget {
 
   final ContactsModel contact;
 
-  bool get _isEmail => contact.value.contains('@') && !contact.value.contains('/');
-
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
@@ -31,7 +29,7 @@ class ContactCard extends StatelessWidget {
         ),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          onTap: () => openExternalUrl(_isEmail ? mailto(contact.value) : contact.value),
+          onTap: () => openExternalUrl(contact.link),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(24, 22, 20, 22),
             child: Row(

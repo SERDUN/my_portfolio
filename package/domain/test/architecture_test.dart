@@ -8,17 +8,15 @@ import 'package:test/test.dart';
 /// files are checked too: the DI module is exactly where a stray dependency
 /// used to resurface.
 void main() {
-  final libFiles = Directory('lib')
-      .listSync(recursive: true)
-      .whereType<File>()
-      .where((f) => f.path.endsWith('.dart'))
-      .toList();
+  final libFiles = Directory(
+    'lib',
+  ).listSync(recursive: true).whereType<File>().where((f) => f.path.endsWith('.dart')).toList();
 
   List<String> offendersMatching(RegExp pattern) => [
-        for (final file in libFiles)
-          for (final line in file.readAsLinesSync())
-            if (pattern.hasMatch(line)) '${file.path}: ${line.trim()}',
-      ];
+    for (final file in libFiles)
+      for (final line in file.readAsLinesSync())
+        if (pattern.hasMatch(line)) '${file.path}: ${line.trim()}',
+  ];
 
   test('lib/ has no Flutter, data, http or serialization imports or exports', () {
     final forbidden = RegExp(
