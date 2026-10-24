@@ -3,6 +3,8 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'package:domain/domain.dart';
+
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
@@ -24,16 +26,16 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
     required this.onNavigate,
     required this.themeMode,
     required this.onThemeChange,
-    required this.locale,
-    required this.onLocaleChange,
+    required this.language,
+    required this.onLanguageChange,
   });
 
   final ShellDestination current;
   final ValueChanged<ShellDestination> onNavigate;
   final ThemeMode themeMode;
   final ValueChanged<ThemeMode> onThemeChange;
-  final Locale locale;
-  final ValueChanged<Locale> onLocaleChange;
+  final Language language;
+  final ValueChanged<Language> onLanguageChange;
 
   static const double desktopHeight = 76;
   static const double mobileHeight = 64;
@@ -50,7 +52,9 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
     return Material(
       color: palette.ground,
       child: Container(
-        decoration: BoxDecoration(border: Border(bottom: BorderSide(color: palette.line))),
+        decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: palette.line)),
+        ),
         child: SafeArea(
           bottom: false,
           child: SizedBox(
@@ -76,8 +80,8 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
                     _cvButton(context),
                   ] else ...[
                     LanguageToggle.compact(
-                      current: locale,
-                      onChanged: onLocaleChange,
+                      current: language,
+                      onChanged: onLanguageChange,
                       semanticLabel: context.l10n.actionSwitchLanguage,
                     ),
                     const SizedBox(width: 8),
@@ -133,16 +137,12 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         LanguageToggle(
-          current: locale,
-          onChanged: onLocaleChange,
+          current: language,
+          onChanged: onLanguageChange,
           semanticLabel: context.l10n.actionSwitchLanguage,
         ),
         const SizedBox(width: 12),
-        ThemeModeSwitcher(
-          themeMode: themeMode,
-          onThemeChange: onThemeChange,
-          tooltip: context.l10n.actionSwitchTheme,
-        ),
+        ThemeModeSwitcher(themeMode: themeMode, onThemeChange: onThemeChange, tooltip: context.l10n.actionSwitchTheme),
       ],
     );
   }

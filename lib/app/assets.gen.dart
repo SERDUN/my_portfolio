@@ -20,12 +20,10 @@ class $AssetsImageIconsGen {
   const $AssetsImageIconsGen();
 
   /// File path: assets/image/icons/category.webp
-  AssetGenImage get category =>
-      const AssetGenImage('assets/image/icons/category.webp');
+  AssetGenImage get category => const AssetGenImage('assets/image/icons/category.webp');
 
   /// File path: assets/image/icons/sub_category.webp
-  AssetGenImage get subCategory =>
-      const AssetGenImage('assets/image/icons/sub_category.webp');
+  AssetGenImage get subCategory => const AssetGenImage('assets/image/icons/sub_category.webp');
 
   /// List of all assets
   List<AssetGenImage> get values => [category, subCategory];
@@ -108,15 +106,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;

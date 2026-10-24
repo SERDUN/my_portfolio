@@ -1,40 +1,33 @@
 import 'package:material_ui/material_ui.dart';
 
+import 'package:domain/domain.dart';
+
 import 'package:my_portfolio/style/style.dart';
 
-/// Two-pill segmented control: EN | UK. The selected pill is ink on paper.
+/// Two-pill segmented control: EN | UK, or one round button in [compact]
+/// mode. Speaks [Language] directly so no locale conversion can pick a
+/// language that does not exist.
 class LanguageToggle extends StatelessWidget {
-  const LanguageToggle({
-    super.key,
-    required this.current,
-    required this.onChanged,
-    this.locales = const [Locale('en'), Locale('uk')],
-    this.semanticLabel,
-  }) : compact = false;
-
-  final Locale current;
-  final ValueChanged<Locale> onChanged;
-  final List<Locale> locales;
-  final String? semanticLabel;
+  const LanguageToggle({super.key, required this.current, required this.onChanged, this.semanticLabel})
+    : compact = false;
 
   /// One round button showing the current code; a tap moves to the next
-  /// locale. For narrow headers where two pills do not fit.
+  /// language. For narrow headers where two pills do not fit.
+  const LanguageToggle.compact({super.key, required this.current, required this.onChanged, this.semanticLabel})
+    : compact = true;
+
+  final Language current;
+  final ValueChanged<Language> onChanged;
+  final String? semanticLabel;
   final bool compact;
 
-  const LanguageToggle.compact({
-    super.key,
-    required this.current,
-    required this.onChanged,
-    this.locales = const [Locale('en'), Locale('uk')],
-    this.semanticLabel,
-  }) : compact = true;
+  static const List<Language> _languages = Language.values;
 
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
     if (compact) {
-      final index = locales.indexWhere((l) => l.languageCode == current.languageCode);
-      final next = locales[(index + 1) % locales.length];
+      final next = _languages[(_languages.indexOf(current) + 1) % _languages.length];
       return Semantics(
         button: true,
         label: semanticLabel,
@@ -49,8 +42,10 @@ class LanguageToggle extends StatelessWidget {
               onTap: () => onChanged(next),
               child: Center(
                 child: Text(
-                  current.languageCode.toUpperCase(),
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: palette.ink, fontWeight: FontWeight.w700),
+                  current.code.toUpperCase(),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelSmall?.copyWith(color: palette.ink, fontWeight: FontWeight.w700),
                 ),
               ),
             ),
@@ -71,23 +66,33 @@ class LanguageToggle extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            for (final locale in locales) _pill(context, locale, locale.languageCode == current.languageCode),
+            for (final language in _languages)
+              _LanguagePill(language: language, selected: language == current, onTap: () => onChanged(language)),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _pill(BuildContext context, Locale locale, bool selected) {
+class _LanguagePill extends StatelessWidget {
+  const _LanguagePill({required this.language, required this.selected, required this.onTap});
+
+  final Language language;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
     final palette = context.palette;
-    final label = locale.languageCode.toUpperCase();
+    final label = language.code.toUpperCase();
     return Semantics(
       button: true,
       selected: selected,
       label: label,
       child: InkWell(
         borderRadius: BorderRadius.circular(999),
-        onTap: selected ? null : () => onChanged(locale),
+        onTap: selected ? null : onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 150),
           height: 32,
@@ -101,9 +106,9 @@ class LanguageToggle extends StatelessWidget {
             child: Text(
               label,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: selected ? palette.ground : palette.muted,
-                    fontWeight: FontWeight.w700,
-                  ),
+                color: selected ? palette.ground : palette.muted,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ),

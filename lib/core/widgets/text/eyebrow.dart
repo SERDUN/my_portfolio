@@ -13,10 +13,9 @@ class Eyebrow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text.toUpperCase(),
-      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            color: color ?? context.palette.accent,
-            letterSpacing: 1.8,
-          ),
+      style: Theme.of(
+        context,
+      ).textTheme.labelSmall?.copyWith(color: color ?? context.palette.accent, letterSpacing: 1.8),
     );
   }
 }

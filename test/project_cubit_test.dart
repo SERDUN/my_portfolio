@@ -6,7 +6,7 @@ import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/state/state.dart';
 import 'package:my_portfolio/features/project/bloc/project_cubit.dart';
-import 'package:my_portfolio/localization/localization.dart';
+import 'package:my_portfolio/app/settings/settings.dart';
 
 class _FakeById implements GetProjectByIdUseCase {
   final controller = StreamController<ProjectModel>.broadcast();
@@ -31,16 +31,19 @@ ProjectModel _project(String id) => ProjectModel(id: id, name: 'P$id', linkAndro
 void main() {
   late _FakeById byId;
   late _FakeList list;
+  late AppSettingsCubit settings;
   late ProjectCubit cubit;
 
   setUp(() {
     byId = _FakeById();
     list = _FakeList();
-    cubit = ProjectCubit(byId, list, LanguageNotifier(), '1');
+    settings = AppSettingsCubit();
+    cubit = ProjectCubit(byId, list, settings, '1');
   });
 
   tearDown(() async {
     await cubit.close();
+    await settings.close();
     await byId.controller.close();
     await list.controller.close();
   });

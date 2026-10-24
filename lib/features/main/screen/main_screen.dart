@@ -1,19 +1,16 @@
 import 'package:material_ui/material_ui.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:my_portfolio/localization/localization.dart';
-import 'package:my_portfolio/style/style.dart';
+import 'package:my_portfolio/app/settings/settings.dart';
 
 import '../widgets/widgets.dart';
 
 /// Shell around the four top-level pages: the site header on top, the current
 /// branch of the [StatefulNavigationShell] below.
 class MainScreen extends StatelessWidget {
-  const MainScreen({
-    super.key,
-    required this.navigationShell,
-  });
+  const MainScreen({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
@@ -21,8 +18,9 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = ThemeModeProvider.watch(context);
-    final language = LanguageProvider.watch(context);
+    final settings = context.read<AppSettingsCubit>();
+    final themeMode = context.select((AppSettingsCubit c) => c.state.themeMode);
+    final language = context.select((AppSettingsCubit c) => c.state.language);
     final index = navigationShell.currentIndex.clamp(0, _destinations.length - 1);
 
     return Scaffold(
@@ -32,10 +30,10 @@ class MainScreen extends StatelessWidget {
           destination.index,
           initialLocation: destination.index == navigationShell.currentIndex,
         ),
-        themeMode: themeMode?.themeModeNotifier.themeMode ?? ThemeMode.system,
-        onThemeChange: (mode) => themeMode?.setThemeMode(mode),
-        locale: language?.languageNotifier.currentLocale ?? Localizations.localeOf(context),
-        onLocaleChange: (locale) => language?.setLocale(locale),
+        themeMode: themeMode,
+        onThemeChange: settings.changeThemeMode,
+        language: language,
+        onLanguageChange: settings.changeLanguage,
       ),
       body: navigationShell,
     );

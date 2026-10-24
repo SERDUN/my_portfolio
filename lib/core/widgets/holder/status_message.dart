@@ -5,13 +5,7 @@ import 'package:my_portfolio/style/style.dart';
 /// Centered icon, message and optional action: the one layout for errors,
 /// empty states and the 404 page.
 class StatusMessage extends StatelessWidget {
-  const StatusMessage({
-    super.key,
-    required this.icon,
-    required this.message,
-    this.title,
-    this.action,
-  });
+  const StatusMessage({super.key, required this.icon, required this.message, this.title, this.action});
 
   final IconData icon;
   final String message;

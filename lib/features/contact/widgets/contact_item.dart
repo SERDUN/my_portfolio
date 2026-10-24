@@ -41,8 +41,10 @@ class ContactCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(contact.title.toUpperCase(),
-                          style: textTheme.labelSmall?.copyWith(letterSpacing: 1.3, fontSize: 12)),
+                      Text(
+                        contact.title.toUpperCase(),
+                        style: textTheme.labelSmall?.copyWith(letterSpacing: 1.3, fontSize: 12),
+                      ),
                       const SizedBox(height: 8),
                       Text(shown, style: textTheme.titleMedium, maxLines: 2, overflow: TextOverflow.ellipsis),
                     ],

@@ -6,11 +6,7 @@ import 'site_footer.dart';
 /// at least one viewport tall so the footer never floats mid-screen while a
 /// page is still loading.
 class PageScaffold extends StatelessWidget {
-  const PageScaffold({
-    super.key,
-    required this.child,
-    this.showFooter = true,
-  });
+  const PageScaffold({super.key, required this.child, this.showFooter = true});
 
   final Widget child;
   final bool showFooter;

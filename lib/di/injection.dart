@@ -8,9 +8,6 @@ import 'injection.config.dart';
 
 @InjectableInit(
   // injectable 3 no longer discovers micro packages: list every module here.
-  externalPackageModulesAfter: [
-    ExternalModule(DataPackageModule),
-    ExternalModule(DomainPackageModule),
-  ],
+  externalPackageModulesAfter: [ExternalModule(DataPackageModule), ExternalModule(DomainPackageModule)],
 )
 Future<GetIt> configureDependencies(String environment) async => GetIt.asNewInstance().init(environment: environment);

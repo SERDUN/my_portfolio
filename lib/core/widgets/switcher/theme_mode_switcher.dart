@@ -3,12 +3,7 @@ import 'package:material_ui/material_ui.dart';
 /// Round icon button that cycles system → light → dark → system. The icon
 /// always shows the mode that is currently applied.
 class ThemeModeSwitcher extends StatelessWidget {
-  const ThemeModeSwitcher({
-    super.key,
-    required this.themeMode,
-    required this.onThemeChange,
-    this.tooltip,
-  });
+  const ThemeModeSwitcher({super.key, required this.themeMode, required this.onThemeChange, this.tooltip});
 
   final ThemeMode themeMode;
   final ValueChanged<ThemeMode> onThemeChange;

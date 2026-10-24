@@ -50,11 +50,7 @@ class PhoneFrame extends StatelessWidget {
             color: palette.ink,
             borderRadius: BorderRadius.vertical(top: Radius.circular(radius)),
             boxShadow: [
-              BoxShadow(
-                color: palette.ink.withValues(alpha: 0.18),
-                blurRadius: 40,
-                offset: const Offset(0, 24),
-              ),
+              BoxShadow(color: palette.ink.withValues(alpha: 0.18), blurRadius: 40, offset: const Offset(0, 24)),
             ],
           ),
           padding: EdgeInsets.only(top: bezel, left: bezel, right: bezel),

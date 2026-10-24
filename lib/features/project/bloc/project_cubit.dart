@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/state/state.dart';
-import 'package:my_portfolio/localization/localization.dart';
 
 part 'project_state.dart';
 
@@ -13,18 +12,12 @@ part 'project_cubit.freezed.dart';
 /// One project page. The project decides the status; the list (for the
 /// "next project" link) is secondary and is cleared when it fails.
 class ProjectCubit extends Cubit<ProjectState> with CubitSubscriptions<ProjectState>, LanguageReload<ProjectState> {
-  ProjectCubit(
-    this.useCase,
-    this.projectsUseCase,
-    this.languageNotifier,
-    this.projectId,
-  ) : super(const ProjectState()) {
-    reloadOn(languageNotifier);
+  ProjectCubit(this.useCase, this.projectsUseCase, LanguageSource languages, this.projectId)
+    : super(const ProjectState()) {
+    reloadOn(languages);
   }
 
   final String projectId;
-
-  final LanguageNotifier languageNotifier;
 
   final GetProjectByIdUseCase useCase;
 
@@ -33,7 +26,6 @@ class ProjectCubit extends Cubit<ProjectState> with CubitSubscriptions<ProjectSt
 
   @override
   void load() {
-    final language = languageNotifier.language;
     loadPrimary(
       #project,
       useCase.execute(id: projectId, language: language),

@@ -68,9 +68,9 @@ class _MobileMenu extends StatelessWidget {
             ListTile(
               title: Text(
                 label,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: destination == current ? palette.accent : palette.ink,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(color: destination == current ? palette.accent : palette.ink),
               ),
               trailing: destination == current ? Icon(Icons.check_rounded, color: palette.accent) : null,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
