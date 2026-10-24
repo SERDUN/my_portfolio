@@ -1,6 +1,8 @@
 import 'package:material_ui/material_ui.dart';
 
-class ThemeModeSwitcher extends StatefulWidget {
+/// Shows the icon of the theme mode that is currently applied and, on tap,
+/// requests the next mode in the cycle system -> light -> dark -> system.
+class ThemeModeSwitcher extends StatelessWidget {
   const ThemeModeSwitcher({
     super.key,
     required this.themeMode,
@@ -8,14 +10,7 @@ class ThemeModeSwitcher extends StatefulWidget {
   });
 
   final ThemeMode themeMode;
-  final Function(ThemeMode themeMode) onThemeChange;
-
-  @override
-  State<ThemeModeSwitcher> createState() => _ThemeModeSwitcherState();
-}
-
-class _ThemeModeSwitcherState extends State<ThemeModeSwitcher> {
-  late int _themeModePosition = widget.themeMode.index + 1;
+  final ValueChanged<ThemeMode> onThemeChange;
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +18,26 @@ class _ThemeModeSwitcherState extends State<ThemeModeSwitcher> {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
-      onTap: _onThemeChanged,
+      onTap: () => onThemeChange(_nextThemeMode(themeMode)),
       child: Icon(
-        _getIconForThemeMode(_currentTheme()),
+        _iconForThemeMode(themeMode),
         color: Theme.of(context).colorScheme.onSurface,
       ),
     );
   }
 
-  ThemeMode _currentTheme() {
-    return ThemeMode.values[_themeModePosition % 3];
+  static ThemeMode _nextThemeMode(ThemeMode current) {
+    switch (current) {
+      case ThemeMode.system:
+        return ThemeMode.light;
+      case ThemeMode.light:
+        return ThemeMode.dark;
+      case ThemeMode.dark:
+        return ThemeMode.system;
+    }
   }
 
-  IconData _getIconForThemeMode(ThemeMode themeMode) {
+  static IconData _iconForThemeMode(ThemeMode themeMode) {
     switch (themeMode) {
       case ThemeMode.dark:
         return Icons.nightlight_round;
@@ -44,11 +46,5 @@ class _ThemeModeSwitcherState extends State<ThemeModeSwitcher> {
       case ThemeMode.system:
         return Icons.auto_awesome;
     }
-  }
-
-  void _onThemeChanged() {
-    widget.onThemeChange(_currentTheme());
-    _themeModePosition++;
-    setState(() {});
   }
 }

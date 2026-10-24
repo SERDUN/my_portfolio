@@ -18,7 +18,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeModeProvider? themeMode = ThemeModeProvider.read(context);
+    ThemeModeProvider? themeMode = ThemeModeProvider.watch(context);
 
     return Scaffold(
       appBar: AppBar(
