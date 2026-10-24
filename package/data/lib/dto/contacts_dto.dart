@@ -4,10 +4,7 @@ part 'contacts_dto.g.dart';
 
 @JsonSerializable()
 class ContactsDTO {
-  ContactsDTO(
-    this.title,
-    this.value,
-  );
+  ContactsDTO(this.title, this.value);
 
   @JsonKey(name: 'title')
   final String title;

@@ -8,10 +8,7 @@ class PortfolioSkillsDTO {
   bool? expanded;
   List<PortfolioSkillsDTO> subskills;
 
-  PortfolioSkillsDTO({
-    required this.title,
-    this.subskills = const [],
-  });
+  PortfolioSkillsDTO({required this.title, this.subskills = const []});
 
   factory PortfolioSkillsDTO.fromJson(Map<String, dynamic> json) => _$PortfolioSkillsDTOFromJson(json);
 

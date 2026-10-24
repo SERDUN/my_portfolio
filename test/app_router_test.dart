@@ -16,8 +16,6 @@ class _User implements GetUserUseCase {
       secondName: 'Owner',
       position: 'Tester',
       intro: 'Fake intro from a fake use case',
-      avatar: '',
-      cv: '',
     ),
   );
 }
@@ -36,7 +34,7 @@ class _Contacts implements GetContactsUseCase {
 class _Projects implements GetProjectsUseCase {
   @override
   Stream<List<ProjectModel>> execute({required Language language}) =>
-      Stream.value([ProjectModel(id: '1', name: 'Fake project', linkAndroid: '', linkIOS: '', linkGithub: '')]);
+      Stream.value([ProjectModel(id: '1', name: 'Fake project')]);
 }
 
 class _ProjectById implements GetProjectByIdUseCase {

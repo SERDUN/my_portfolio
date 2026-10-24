@@ -34,15 +34,13 @@ class ProjectCard extends StatelessWidget {
   final int maxTags;
 
   static void open(BuildContext context, ProjectModel project) {
-    final id = project.id;
-    if (id == null) return;
-    GoRouter.of(context).goNamed(AppRoutInfo.project.name, pathParameters: {AppRoutInfo.projectId: id});
+    GoRouter.of(context).goNamed(AppRoutInfo.project.name, pathParameters: {AppRoutInfo.projectId: project.id});
   }
 
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    final name = project.name ?? '';
+    final name = project.name;
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     final horizontal = layout == ProjectCardLayout.horizontal;
 
@@ -71,7 +69,7 @@ class ProjectCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        PhoneFrame(imageUrl: project.preview, height: frameHeight, semanticLabel: project.name),
+        PhoneFrame(image: project.preview, height: frameHeight, semanticLabel: project.name),
         const SizedBox(height: 18),
         _title(context),
         ..._intro(context, lines: 3),
@@ -88,7 +86,7 @@ class ProjectCard extends StatelessWidget {
         SizedBox(
           width: frameWidth,
           child: PhoneFrame(
-            imageUrl: project.preview,
+            image: project.preview,
             height: isMobile ? 150 : frameHeight,
             phoneWidth: frameWidth,
             topInset: isMobile ? 12 : 22,
@@ -125,7 +123,7 @@ class ProjectCard extends StatelessWidget {
   Widget _title(BuildContext context, {bool wrapTag = false}) {
     final textTheme = Theme.of(context).textTheme;
     final platform = project.platform;
-    final name = Text(project.name ?? '', style: textTheme.headlineSmall, maxLines: 2, overflow: TextOverflow.ellipsis);
+    final name = Text(project.name, style: textTheme.headlineSmall, maxLines: 2, overflow: TextOverflow.ellipsis);
     if (platform == null) return name;
     if (wrapTag) {
       return Wrap(
@@ -145,7 +143,7 @@ class ProjectCard extends StatelessWidget {
   }
 
   List<Widget> _intro(BuildContext context, {required int lines, TextStyle? style}) {
-    final text = (project.intro ?? '').isNotEmpty ? project.intro! : (project.description ?? '');
+    final text = project.summary;
     if (text.isEmpty) return const [];
     return [
       const SizedBox(height: 10),
@@ -159,8 +157,7 @@ class ProjectCard extends StatelessWidget {
   }
 
   List<Widget> _tags(BuildContext context) {
-    final platform = project.platform?.toLowerCase();
-    final tags = project.technologies.where((t) => t.toLowerCase() != platform).take(maxTags).toList();
+    final tags = project.stack.take(maxTags).toList();
     if (tags.isEmpty) return const [];
     return [
       const SizedBox(height: 14),
@@ -175,9 +172,9 @@ class ProjectCard extends StatelessWidget {
   List<Widget> _stores(BuildContext context) {
     final l10n = context.l10n;
     final stores = <String>[
-      if (project.linkAndroid.isNotEmpty) l10n.storeGooglePlay,
-      if (project.linkIOS.isNotEmpty) l10n.storeAppStore,
-      if (project.linkGithub.isNotEmpty) l10n.storeGithub,
+      if (project.links.googlePlay != null) l10n.storeGooglePlay,
+      if (project.links.appStore != null) l10n.storeAppStore,
+      if (project.links.github != null) l10n.storeGithub,
     ];
     if (stores.isEmpty) return const [];
     return [

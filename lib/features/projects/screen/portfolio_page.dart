@@ -25,7 +25,7 @@ class PortfolioPage extends StatefulWidget {
 
 class _PortfolioPageState extends State<PortfolioPage> {
   /// null = all platforms.
-  String? _platform;
+  ProjectPlatform? _platform;
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +81,8 @@ class _PortfolioPageState extends State<PortfolioPage> {
   }
 
   /// Platform → number of projects, in order of first appearance.
-  static Map<String, int> _platformCounts(List<ProjectModel> projects) {
-    final counts = <String, int>{};
+  static Map<ProjectPlatform, int> _platformCounts(List<ProjectModel> projects) {
+    final counts = <ProjectPlatform, int>{};
     for (final project in projects) {
       final platform = project.platform;
       if (platform != null) counts[platform] = (counts[platform] ?? 0) + 1;
@@ -102,9 +102,9 @@ class _Header extends StatelessWidget {
 
   final int count;
   final int platformCount;
-  final Map<String, int> platforms;
-  final String? selected;
-  final ValueChanged<String?> onSelect;
+  final Map<ProjectPlatform, int> platforms;
+  final ProjectPlatform? selected;
+  final ValueChanged<ProjectPlatform?> onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +137,7 @@ class _Header extends StatelessWidget {
         _FilterChip(label: '${l10n.filterAll} · $count', selected: selected == null, onTap: () => onSelect(null)),
         for (final entry in platforms.entries)
           _FilterChip(
-            label: '${entry.key} · ${entry.value}',
+            label: '${entry.key.label} · ${entry.value}',
             selected: selected == entry.key,
             onTap: () => onSelect(entry.key),
           ),

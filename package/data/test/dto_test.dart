@@ -36,6 +36,7 @@ void main() {
         'screenshots': ['https://img.example/1.png'],
         'preview': 'https://img.example/preview.png',
         'featured': true,
+        'platform': 'flutter',
       };
 
       final dto = ProjectDTO.fromJson(json);

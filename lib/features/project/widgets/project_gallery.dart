@@ -43,7 +43,7 @@ class ProjectGallery extends StatelessWidget {
           gap: 20,
           children: [
             for (var i = 0; i < shots.length; i++)
-              _Shot(url: shots[i], label: '${project.name ?? ''} ${i + 1}', palette: palette),
+              _Shot(url: shots[i], label: '${project.name} ${i + 1}', palette: palette),
           ],
         ),
       ],
@@ -54,7 +54,7 @@ class ProjectGallery extends StatelessWidget {
 class _Shot extends StatelessWidget {
   const _Shot({required this.url, required this.label, required this.palette});
 
-  final String url;
+  final Uri url;
   final String label;
   final AppPalette palette;
 
@@ -78,7 +78,7 @@ class _Shot extends StatelessWidget {
               image: true,
               label: label,
               child: OctoImage(
-                image: Image.network(url).image,
+                image: Image.network(url.toString()).image,
                 placeholderBuilder: blurHashPlaceholderBuilder(ProjectGallery._blurHash),
                 errorBuilder: OctoError.icon(color: palette.muted),
                 fit: BoxFit.cover,

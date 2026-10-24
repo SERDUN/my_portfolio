@@ -45,28 +45,17 @@ class FakeGetProjectsUseCase implements GetProjectsUseCase {
   }
 }
 
-final user = PortfolioUserModel(
-  firstName: 'Dmitro',
-  secondName: 'Serdun',
-  position: 'Mobile Developer',
-  intro: 'Hi',
-  avatar: '',
-  cv: '',
+final user = PortfolioUserModel(firstName: 'Dmitro', secondName: 'Serdun', position: 'Mobile Developer', intro: 'Hi');
+
+final skills = [PortfolioSkillsModel(title: 'Flutter')];
+
+ProjectModel project(String id, {bool featured = false, String? preview, ProjectPlatform? platform}) => ProjectModel(
+  id: id,
+  name: 'Project $id',
+  preview: preview == null ? null : Uri.parse('https://img.example/$preview.png'),
+  featured: featured,
+  platform: platform,
 );
-
-final skills = [PortfolioSkillsModel(title: 'Flutter', expanded: true, children: const [])];
-
-ProjectModel project(String id, {bool featured = false, String? preview, List<String> technologies = const []}) =>
-    ProjectModel(
-      id: id,
-      name: 'Project $id',
-      linkAndroid: '',
-      linkIOS: '',
-      linkGithub: '',
-      preview: preview,
-      featured: featured,
-      technologies: technologies,
-    );
 
 void main() {
   late FakeGetUserUseCase userUseCase;
@@ -152,9 +141,10 @@ void main() {
 
   test('platform count is the number of distinct platforms', () async {
     projectsUseCase.controller.add([
-      project('1', technologies: ['Flutter', 'BLoC']),
-      project('2', technologies: ['android', 'Java']),
-      project('3', technologies: ['Dart', 'Flutter']),
+      project('1', platform: ProjectPlatform.flutter),
+      project('2', platform: ProjectPlatform.android),
+      project('3', platform: ProjectPlatform.flutter),
+      project('4'),
     ]);
     await Future<void>.delayed(Duration.zero);
     expect(cubit.state.platformCount, 2);

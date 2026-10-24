@@ -4,10 +4,7 @@ part 'useful_commands_dto.g.dart';
 
 @JsonSerializable()
 class UsefulCommandsDTO {
-  UsefulCommandsDTO(
-    this.title,
-    this.commands,
-  );
+  UsefulCommandsDTO(this.title, this.commands);
 
   final String title;
 
@@ -20,10 +17,7 @@ class UsefulCommandsDTO {
 
 @JsonSerializable()
 class UsefulCommandDTO {
-  UsefulCommandDTO(
-    this.title,
-    this.command,
-  );
+  UsefulCommandDTO(this.title, this.command);
 
   final String title;
   final String command;

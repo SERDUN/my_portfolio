@@ -33,14 +33,20 @@ void main() {
 
   group('FallbackDataSource', () {
     test('answers from the fallback when the primary fails', () async {
-      final source = FallbackDataSource(primary: _FailingSource(ApiException(503, Uri())), fallback: AssetsDataSource());
+      final source = FallbackDataSource(
+        primary: _FailingSource(ApiException(503, Uri())),
+        fallback: AssetsDataSource(),
+      );
 
       expect(await source.getProjects(Language.en), isNotEmpty);
       expect((await source.getUser(Language.uk)).firstName, isNotEmpty);
     });
 
     test('does not retry a missing project', () async {
-      final source = FallbackDataSource(primary: _FailingSource(const ProjectNotFoundException('x')), fallback: AssetsDataSource());
+      final source = FallbackDataSource(
+        primary: _FailingSource(const ProjectNotFoundException('x')),
+        fallback: AssetsDataSource(),
+      );
 
       expect(source.getProject('x', Language.en), throwsA(isA<ProjectNotFoundException>()));
     });

@@ -55,6 +55,15 @@ void main() {
         expect(ids.toSet().length, ids.length, reason: 'project ids must be unique');
       });
 
+      test('every bundled project maps to a domain model with a platform and a preview', () {
+        final models = readList(language, 'projects').map(ProjectDTO.fromJson).toList().toDomain();
+
+        for (final model in models) {
+          expect(model.platform, isNotNull, reason: '${model.id} needs "platform"');
+          expect(model.preview, isNotNull, reason: '${model.id} needs a valid preview URL');
+        }
+      });
+
       test('skills.json parses into PortfolioSkillsDTO', () {
         final skills = readList(language, 'skills').map(PortfolioSkillsDTO.fromJson).toList();
 

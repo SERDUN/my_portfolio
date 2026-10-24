@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:data/data.dart';
+import 'package:domain/domain.dart';
 
 /// DTO → domain model mapping, the only place where both shapes meet.
 void main() {
@@ -20,7 +21,7 @@ void main() {
   });
 
   group('PortfolioSkillsDTO.toDomain', () {
-    test('maps the tree recursively and defaults expanded to false', () {
+    test('maps the tree recursively', () {
       final dto = PortfolioSkillsDTO(
         title: 'Flutter',
         subskills: [
@@ -35,9 +36,7 @@ void main() {
       final model = dto.toDomain();
 
       expect(model.title, 'Flutter');
-      expect(model.expanded, isFalse);
       expect(model.children.map((c) => c.title), ['Bloc', 'Testing']);
-      expect(model.children[0].expanded, isTrue);
       expect(model.children[0].children, isEmpty);
       expect(model.children[1].children.single.title, 'Widget tests');
     });
@@ -66,8 +65,8 @@ void main() {
       expect(model.headlineAccent, 'every screen');
       expect(model.experienceSince, 2019);
       expect(model.intro, 'Hi');
-      expect(model.avatar, 'https://img.example/avatar.webp');
-      expect(model.cv, 'https://docs.example/cv');
+      expect(model.avatar, Uri.parse('https://img.example/avatar.webp'));
+      expect(model.cv, Uri.parse('https://docs.example/cv'));
     });
 
     test('replaces missing fields with empty strings', () {
@@ -79,14 +78,14 @@ void main() {
       expect(model.location, '');
       expect(model.headline, '');
       expect(model.intro, '');
-      expect(model.avatar, '');
-      expect(model.cv, '');
+      expect(model.avatar, isNull);
+      expect(model.cv, isNull);
       expect(model.experienceSince, isNull);
     });
   });
 
   group('ProjectDTO.toDomain', () {
-    test('copies fields, trims the description and defaults links to empty strings', () {
+    test('copies fields, trims the description and parses links', () {
       final model = ProjectDTO(
         id: '3',
         name: 'App',
@@ -104,18 +103,53 @@ void main() {
       expect(model.name, 'App');
       expect(model.intro, 'intro');
       expect(model.description, 'multi\nline');
-      expect(model.linkAndroid, '');
-      expect(model.linkIOS, '');
-      expect(model.linkGithub, 'https://github.com/example/app');
+      expect(model.links.googlePlay, isNull);
+      expect(model.links.appStore, isNull);
+      expect(model.links.github, Uri.parse('https://github.com/example/app'));
       expect(model.spheres, ['Web']);
       expect(model.technologies, ['Flutter']);
-      expect(model.screenshots, ['https://img.example/1.png']);
-      expect(model.preview, 'https://img.example/preview.png');
+      expect(model.screenshots, [Uri.parse('https://img.example/1.png')]);
+      expect(model.preview, Uri.parse('https://img.example/preview.png'));
+      expect(model.platform, ProjectPlatform.flutter, reason: 'inferred from the stack when the field is missing');
       expect(model.featured, isTrue);
     });
 
-    test('keeps a missing description as null', () {
-      expect(ProjectDTO(id: '1').toDomain().description, isNull);
+    test('a missing description is empty and the explicit platform wins', () {
+      final model = ProjectDTO(id: '1', name: 'A', platform: 'android', technologies: const ['Flutter']).toDomain();
+
+      expect(model.description, '');
+      expect(model.platform, ProjectPlatform.android);
+    });
+
+    test('rejects a project without an id or a name', () {
+      expect(() => ProjectDTO(name: 'A').toDomain(), throwsFormatException);
+      expect(() => ProjectDTO(id: '1', name: ' ').toDomain(), throwsFormatException);
+    });
+
+    test('a list skips broken projects instead of failing', () {
+      final models = [ProjectDTO(id: '1', name: 'Good'), ProjectDTO(id: '2'), ProjectDTO(name: 'No id')].toDomain();
+
+      expect(models.map((m) => m.id), ['1']);
+    });
+
+    test('a padded explicit platform still matches, an unknown one falls back to the stack', () {
+      expect(ProjectDTO(id: '1', name: 'A', platform: ' Android\n').toDomain().platform, ProjectPlatform.android);
+      expect(
+        ProjectDTO(id: '1', name: 'A', platform: 'andriod', technologies: const ['Flutter']).toDomain().platform,
+        ProjectPlatform.flutter,
+      );
+    });
+
+    test('drops links that are not absolute web addresses', () {
+      final model = ProjectDTO(
+        id: '1',
+        name: 'A',
+        linkAndroid: '',
+        linkIOS: 'not a url',
+        linkGithub: 'ftp://x',
+      ).toDomain();
+
+      expect(model.links.isEmpty, isTrue);
     });
   });
 

@@ -1,11 +1,12 @@
+/// The portfolio owner.
 class PortfolioUserModel {
   PortfolioUserModel({
     required this.firstName,
     required this.secondName,
     required this.position,
     required this.intro,
-    required this.avatar,
-    required this.cv,
+    this.avatar,
+    this.cv,
     this.location = '',
     this.headline = '',
     this.headlineAccent = '',
@@ -16,8 +17,12 @@ class PortfolioUserModel {
   final String secondName;
   final String position;
   final String intro;
-  final String avatar;
-  final String cv;
+
+  /// Portrait image; null when the data has none.
+  final Uri? avatar;
+
+  /// The CV document; null hides every "Download CV" button.
+  final Uri? cv;
 
   /// "Odesa, Ukraine"; empty when the data has none.
   final String location;

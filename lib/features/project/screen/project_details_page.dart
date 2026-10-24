@@ -118,7 +118,7 @@ class _NextProject extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(project.name ?? '', style: textTheme.headlineSmall),
+                    Text(project.name, style: textTheme.headlineSmall),
                     const SizedBox(width: 12),
                     Icon(Icons.arrow_forward_rounded, size: 22, color: palette.ink),
                   ],
