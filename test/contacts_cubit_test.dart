@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/core/state/state.dart';
 import 'package:my_portfolio/features/contact/bloc/contacts_cubit.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
@@ -40,9 +41,9 @@ void main() {
     await useCase.controller.close();
   });
 
-  test('starts in the initial state with no contacts and subscribes once', () {
-    expect(cubit.state, const ContactsState(status: ContactsStatus.initial));
-    expect(cubit.state.contacts, isNull);
+  test('starts loading with no contacts and subscribes once', () {
+    expect(cubit.state, const ContactsState(status: LoadStatus.loading));
+    expect(cubit.state.contacts, isEmpty);
     expect(useCase.executions, 1);
   });
 
@@ -51,7 +52,7 @@ void main() {
 
     useCase.controller.add(contacts);
 
-    expect(await next, ContactsState(status: ContactsStatus.success, contacts: contacts));
+    expect(await next, ContactsState(status: LoadStatus.success, contacts: contacts));
   });
 
   test('emits again when the use case pushes a new list', () async {
@@ -64,8 +65,8 @@ void main() {
     await Future<void>.delayed(Duration.zero);
     await subscription.cancel();
 
-    expect(states.map((s) => s.contacts?.length), [1, 0]);
-    expect(states.map((s) => s.status), everyElement(ContactsStatus.success));
+    expect(states.map((s) => s.contacts.length), [1, 0]);
+    expect(states.map((s) => s.status), everyElement(LoadStatus.success));
   });
 
   test('resubscribes when the language changes and stops after close', () async {
@@ -78,5 +79,18 @@ void main() {
 
     languageNotifier.changeLanguage(const Locale('en'));
     expect(useCase.executions, 2, reason: 'a closed cubit must not resubscribe');
+  });
+
+  test('an error moves to failure and load() recovers', () async {
+    useCase.controller.addError(Exception('offline'));
+    await Future<void>.delayed(Duration.zero);
+    expect(cubit.state.status, LoadStatus.failure);
+
+    cubit.load();
+    useCase.controller.add(contacts);
+    await Future<void>.delayed(Duration.zero);
+
+    expect(cubit.state.status, LoadStatus.success);
+    expect(cubit.state.error, isNull);
   });
 }

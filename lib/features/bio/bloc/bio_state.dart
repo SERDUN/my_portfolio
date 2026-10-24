@@ -1,16 +1,15 @@
 part of 'bio_cubit.dart';
 
-enum BioStatus { initial, loading, error, success }
-
 @freezed
 abstract class BioState with _$BioState {
   const BioState._();
 
   const factory BioState({
-    @Default(BioStatus.initial) BioStatus status,
+    @Default(LoadStatus.initial) LoadStatus status,
     PortfolioUserModel? user,
     List<PortfolioSkillsModel>? skills,
     @Default([]) List<ProjectModel> projects,
+    Object? error,
   }) = _BioState;
 
   /// Projects flagged in the data, falling back to the first three with a

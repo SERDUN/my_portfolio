@@ -44,6 +44,6 @@ void main() {
   });
 
   test('getProject throws for an unknown id', () async {
-    expect(dataSource.getProject('no-such-id', Language.en), throwsStateError);
+    expect(dataSource.getProject('no-such-id', Language.en), throwsA(isA<ProjectNotFoundException>()));
   });
 }

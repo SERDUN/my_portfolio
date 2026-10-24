@@ -1,16 +1,10 @@
 part of 'useful_cubit.dart';
 
-enum UsefulStatus {
-  initial,
-  loading,
-  error,
-  success,
-}
-
 @freezed
 abstract class UsefulState with _$UsefulState {
   const factory UsefulState({
-    @Default(UsefulStatus.initial) UsefulStatus status,
+    @Default(LoadStatus.initial) LoadStatus status,
     @Default([]) List<UsefulCommandsModel> usefulCommands,
+    Object? error,
   }) = _UsefulState;
 }

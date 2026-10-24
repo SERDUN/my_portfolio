@@ -1,25 +1,25 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/core/state/state.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
 part 'project_state.dart';
 
 part 'project_cubit.freezed.dart';
 
-class ProjectCubit extends Cubit<ProjectState> {
+/// One project page. The project decides the status; the list (for the
+/// "next project" link) is secondary and is cleared when it fails.
+class ProjectCubit extends Cubit<ProjectState> with CubitSubscriptions<ProjectState>, LanguageReload<ProjectState> {
   ProjectCubit(
     this.useCase,
     this.projectsUseCase,
     this.languageNotifier,
     this.projectId,
   ) : super(const ProjectState()) {
-    _initState();
-    languageNotifier.addListener(_initState);
+    reloadOn(languageNotifier);
   }
 
   final String projectId;
@@ -31,30 +31,26 @@ class ProjectCubit extends Cubit<ProjectState> {
   /// The whole list, for the "next project" link at the bottom.
   final GetProjectsUseCase projectsUseCase;
 
-  StreamSubscription? _projectSubscription;
-  StreamSubscription? _projectsSubscription;
-
-  void _initState() {
-    final language = languageNotifier.language;
-    getProjectById(projectId, language);
-    _projectsSubscription?.cancel();
-    _projectsSubscription = projectsUseCase.execute(language: language).listen((event) {
-      if (!isClosed) emit(state.copyWith(projects: event));
-    });
-  }
-
-  void getProjectById(String id, Language language) {
-    _projectSubscription?.cancel();
-    _projectSubscription = useCase.execute(id: id, language: language).listen((event) {
-      if (!isClosed) emit(state.copyWith(status: ProjectStatus.success, project: event));
-    });
-  }
-
   @override
-  Future<void> close() async {
-    languageNotifier.removeListener(_initState);
-    await _projectSubscription?.cancel();
-    await _projectsSubscription?.cancel();
-    return super.close();
+  void load() {
+    final language = languageNotifier.language;
+    loadPrimary(
+      #project,
+      useCase.execute(id: projectId, language: language),
+      loading: state.copyWith(status: LoadStatus.loading, error: null),
+      success: (project) => state.copyWith(status: LoadStatus.success, project: project),
+      failure: (error) => state.copyWith(
+        status: LoadStatus.failure,
+        error: error,
+        // A project missing in this language is gone, not stale: drop it.
+        project: error is ProjectNotFoundException ? null : state.project,
+      ),
+    );
+    subscribe(
+      #projects,
+      projectsUseCase.execute(language: language),
+      onData: (projects) => emit(state.copyWith(projects: projects)),
+      onError: (_, _) => emit(state.copyWith(projects: const [])),
+    );
   }
 }

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BioState {
 
- BioStatus get status; PortfolioUserModel? get user; List<PortfolioSkillsModel>? get skills; List<ProjectModel> get projects;
+ LoadStatus get status; PortfolioUserModel? get user; List<PortfolioSkillsModel>? get skills; List<ProjectModel> get projects; Object? get error;
 /// Create a copy of BioState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $BioStateCopyWith<BioState> get copyWith => _$BioStateCopyWithImpl<BioState>(thi
 @override
 bool operator ==(Object other) {
   final _this = this as BioState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BioState&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.user, _this.user) || other.user == _this.user)&&const DeepCollectionEquality().equals(other.skills, _this.skills)&&const DeepCollectionEquality().equals(other.projects, _this.projects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BioState&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.user, _this.user) || other.user == _this.user)&&const DeepCollectionEquality().equals(other.skills, _this.skills)&&const DeepCollectionEquality().equals(other.projects, _this.projects)&&const DeepCollectionEquality().equals(other.error, _this.error));
 }
 
 
 @override
 int get hashCode {
   final _this = this as BioState;
-  return Object.hash(runtimeType,_this.status,_this.user,const DeepCollectionEquality().hash(_this.skills),const DeepCollectionEquality().hash(_this.projects));
+  return Object.hash(runtimeType,_this.status,_this.user,const DeepCollectionEquality().hash(_this.skills),const DeepCollectionEquality().hash(_this.projects),const DeepCollectionEquality().hash(_this.error));
 }
 
 @override
 String toString() {
   final _this = this as BioState;
-  return 'BioState(status: ${_this.status}, user: ${_this.user}, skills: ${_this.skills}, projects: ${_this.projects})';
+  return 'BioState(status: ${_this.status}, user: ${_this.user}, skills: ${_this.skills}, projects: ${_this.projects}, error: ${_this.error})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $BioStateCopyWith<$Res>  {
   factory $BioStateCopyWith(BioState value, $Res Function(BioState) _then) = _$BioStateCopyWithImpl;
 @useResult
 $Res call({
- BioStatus status, PortfolioUserModel? user, List<PortfolioSkillsModel>? skills, List<ProjectModel> projects
+ LoadStatus status, PortfolioUserModel? user, List<PortfolioSkillsModel>? skills, List<ProjectModel> projects, Object? error
 });
 
 
@@ -68,13 +68,13 @@ class _$BioStateCopyWithImpl<$Res>
 
 /// Create a copy of BioState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? user = freezed,Object? skills = freezed,Object? projects = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? user = freezed,Object? skills = freezed,Object? projects = null,Object? error = freezed,}) {
   return _then(BioState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as BioStatus,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as LoadStatus,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as PortfolioUserModel?,skills: freezed == skills ? _self.skills : skills // ignore: cast_nullable_to_non_nullable
 as List<PortfolioSkillsModel>?,projects: null == projects ? _self.projects : projects // ignore: cast_nullable_to_non_nullable
-as List<ProjectModel>,
+as List<ProjectModel>,error: freezed == error ? _self.error : error ,
   ));
 }
 
@@ -159,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( BioStatus status,  PortfolioUserModel? user,  List<PortfolioSkillsModel>? skills,  List<ProjectModel> projects)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LoadStatus status,  PortfolioUserModel? user,  List<PortfolioSkillsModel>? skills,  List<ProjectModel> projects,  Object? error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BioState() when $default != null:
-return $default(_that.status,_that.user,_that.skills,_that.projects);case _:
+return $default(_that.status,_that.user,_that.skills,_that.projects,_that.error);case _:
   return orElse();
 
 }
@@ -180,10 +180,10 @@ return $default(_that.status,_that.user,_that.skills,_that.projects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( BioStatus status,  PortfolioUserModel? user,  List<PortfolioSkillsModel>? skills,  List<ProjectModel> projects)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LoadStatus status,  PortfolioUserModel? user,  List<PortfolioSkillsModel>? skills,  List<ProjectModel> projects,  Object? error)  $default,) {final _that = this;
 switch (_that) {
 case _BioState():
-return $default(_that.status,_that.user,_that.skills,_that.projects);case _:
+return $default(_that.status,_that.user,_that.skills,_that.projects,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +200,10 @@ return $default(_that.status,_that.user,_that.skills,_that.projects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( BioStatus status,  PortfolioUserModel? user,  List<PortfolioSkillsModel>? skills,  List<ProjectModel> projects)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LoadStatus status,  PortfolioUserModel? user,  List<PortfolioSkillsModel>? skills,  List<ProjectModel> projects,  Object? error)?  $default,) {final _that = this;
 switch (_that) {
 case _BioState() when $default != null:
-return $default(_that.status,_that.user,_that.skills,_that.projects);case _:
+return $default(_that.status,_that.user,_that.skills,_that.projects,_that.error);case _:
   return null;
 
 }
@@ -215,10 +215,10 @@ return $default(_that.status,_that.user,_that.skills,_that.projects);case _:
 
 
 class _BioState extends BioState {
-  const _BioState({this.status = BioStatus.initial, this.user,  List<PortfolioSkillsModel>? skills,  List<ProjectModel> projects = const []}): _skills = skills,_projects = projects,super._();
+  const _BioState({this.status = LoadStatus.initial, this.user,  List<PortfolioSkillsModel>? skills,  List<ProjectModel> projects = const [], this.error}): _skills = skills,_projects = projects,super._();
   
 
-@override@JsonKey() final  BioStatus status;
+@override@JsonKey() final  LoadStatus status;
 @override final  PortfolioUserModel? user;
  final  List<PortfolioSkillsModel>? _skills;
 @override List<PortfolioSkillsModel>? get skills {
@@ -236,6 +236,7 @@ class _BioState extends BioState {
   return EqualUnmodifiableListView(_projects);
 }
 
+@override final  Object? error;
 
 /// Create a copy of BioState
 /// with the given fields replaced by the non-null parameter values.
@@ -247,18 +248,18 @@ _$BioStateCopyWith<_BioState> get copyWith => __$BioStateCopyWithImpl<_BioState>
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BioState&&(identical(other.status, status) || other.status == status)&&(identical(other.user, user) || other.user == user)&&const DeepCollectionEquality().equals(other.skills, _skills)&&const DeepCollectionEquality().equals(other.projects, _projects));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _BioState&&(identical(other.status, status) || other.status == status)&&(identical(other.user, user) || other.user == user)&&const DeepCollectionEquality().equals(other.skills, _skills)&&const DeepCollectionEquality().equals(other.projects, _projects)&&const DeepCollectionEquality().equals(other.error, error));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,status,user,const DeepCollectionEquality().hash(_skills),const DeepCollectionEquality().hash(_projects));
+    return Object.hash(runtimeType,status,user,const DeepCollectionEquality().hash(_skills),const DeepCollectionEquality().hash(_projects),const DeepCollectionEquality().hash(error));
 }
 
 @override
 String toString() {
-    return 'BioState(status: $status, user: $user, skills: $skills, projects: $projects)';
+    return 'BioState(status: $status, user: $user, skills: $skills, projects: $projects, error: $error)';
 }
 
 
@@ -269,7 +270,7 @@ abstract mixin class _$BioStateCopyWith<$Res> implements $BioStateCopyWith<$Res>
   factory _$BioStateCopyWith(_BioState value, $Res Function(_BioState) _then) = __$BioStateCopyWithImpl;
 @override @useResult
 $Res call({
- BioStatus status, PortfolioUserModel? user, List<PortfolioSkillsModel>? skills, List<ProjectModel> projects
+ LoadStatus status, PortfolioUserModel? user, List<PortfolioSkillsModel>? skills, List<ProjectModel> projects, Object? error
 });
 
 
@@ -286,13 +287,13 @@ class __$BioStateCopyWithImpl<$Res>
 
 /// Create a copy of BioState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? user = freezed,Object? skills = freezed,Object? projects = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? user = freezed,Object? skills = freezed,Object? projects = null,Object? error = freezed,}) {
   return _then(_BioState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as BioStatus,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as LoadStatus,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as PortfolioUserModel?,skills: freezed == skills ? _self._skills : skills // ignore: cast_nullable_to_non_nullable
 as List<PortfolioSkillsModel>?,projects: null == projects ? _self._projects : projects // ignore: cast_nullable_to_non_nullable
-as List<ProjectModel>,
+as List<ProjectModel>,error: freezed == error ? _self.error : error ,
   ));
 }
 

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ContactsState {
 
- ContactsStatus get status; List<ContactsModel>? get contacts;
+ LoadStatus get status; List<ContactsModel> get contacts; Object? get error;
 /// Create a copy of ContactsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $ContactsStateCopyWith<ContactsState> get copyWith => _$ContactsStateCopyWithImp
 @override
 bool operator ==(Object other) {
   final _this = this as ContactsState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ContactsState&&(identical(other.status, _this.status) || other.status == _this.status)&&const DeepCollectionEquality().equals(other.contacts, _this.contacts));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ContactsState&&(identical(other.status, _this.status) || other.status == _this.status)&&const DeepCollectionEquality().equals(other.contacts, _this.contacts)&&const DeepCollectionEquality().equals(other.error, _this.error));
 }
 
 
 @override
 int get hashCode {
   final _this = this as ContactsState;
-  return Object.hash(runtimeType,_this.status,const DeepCollectionEquality().hash(_this.contacts));
+  return Object.hash(runtimeType,_this.status,const DeepCollectionEquality().hash(_this.contacts),const DeepCollectionEquality().hash(_this.error));
 }
 
 @override
 String toString() {
   final _this = this as ContactsState;
-  return 'ContactsState(status: ${_this.status}, contacts: ${_this.contacts})';
+  return 'ContactsState(status: ${_this.status}, contacts: ${_this.contacts}, error: ${_this.error})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ContactsStateCopyWith<$Res>  {
   factory $ContactsStateCopyWith(ContactsState value, $Res Function(ContactsState) _then) = _$ContactsStateCopyWithImpl;
 @useResult
 $Res call({
- ContactsStatus status, List<ContactsModel>? contacts
+ LoadStatus status, List<ContactsModel> contacts, Object? error
 });
 
 
@@ -68,11 +68,11 @@ class _$ContactsStateCopyWithImpl<$Res>
 
 /// Create a copy of ContactsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? contacts = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? contacts = null,Object? error = freezed,}) {
   return _then(ContactsState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as ContactsStatus,contacts: freezed == contacts ? _self.contacts : contacts // ignore: cast_nullable_to_non_nullable
-as List<ContactsModel>?,
+as LoadStatus,contacts: null == contacts ? _self.contacts : contacts // ignore: cast_nullable_to_non_nullable
+as List<ContactsModel>,error: freezed == error ? _self.error : error ,
   ));
 }
 
@@ -157,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ContactsStatus status,  List<ContactsModel>? contacts)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( LoadStatus status,  List<ContactsModel> contacts,  Object? error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ContactsState() when $default != null:
-return $default(_that.status,_that.contacts);case _:
+return $default(_that.status,_that.contacts,_that.error);case _:
   return orElse();
 
 }
@@ -178,10 +178,10 @@ return $default(_that.status,_that.contacts);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ContactsStatus status,  List<ContactsModel>? contacts)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( LoadStatus status,  List<ContactsModel> contacts,  Object? error)  $default,) {final _that = this;
 switch (_that) {
 case _ContactsState():
-return $default(_that.status,_that.contacts);case _:
+return $default(_that.status,_that.contacts,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +198,10 @@ return $default(_that.status,_that.contacts);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ContactsStatus status,  List<ContactsModel>? contacts)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( LoadStatus status,  List<ContactsModel> contacts,  Object? error)?  $default,) {final _that = this;
 switch (_that) {
 case _ContactsState() when $default != null:
-return $default(_that.status,_that.contacts);case _:
+return $default(_that.status,_that.contacts,_that.error);case _:
   return null;
 
 }
@@ -213,19 +213,18 @@ return $default(_that.status,_that.contacts);case _:
 
 
 class _ContactsState implements ContactsState {
-  const _ContactsState({this.status = ContactsStatus.initial,  List<ContactsModel>? contacts}): _contacts = contacts;
+  const _ContactsState({this.status = LoadStatus.initial,  List<ContactsModel> contacts = const [], this.error}): _contacts = contacts;
   
 
-@override@JsonKey() final  ContactsStatus status;
- final  List<ContactsModel>? _contacts;
-@override List<ContactsModel>? get contacts {
-  final value = _contacts;
-  if (value == null) return null;
+@override@JsonKey() final  LoadStatus status;
+ final  List<ContactsModel> _contacts;
+@override@JsonKey() List<ContactsModel> get contacts {
   if (_contacts is EqualUnmodifiableListView) return _contacts;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
+  return EqualUnmodifiableListView(_contacts);
 }
 
+@override final  Object? error;
 
 /// Create a copy of ContactsState
 /// with the given fields replaced by the non-null parameter values.
@@ -237,18 +236,18 @@ _$ContactsStateCopyWith<_ContactsState> get copyWith => __$ContactsStateCopyWith
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ContactsState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.contacts, _contacts));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ContactsState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.contacts, _contacts)&&const DeepCollectionEquality().equals(other.error, error));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_contacts));
+    return Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_contacts),const DeepCollectionEquality().hash(error));
 }
 
 @override
 String toString() {
-    return 'ContactsState(status: $status, contacts: $contacts)';
+    return 'ContactsState(status: $status, contacts: $contacts, error: $error)';
 }
 
 
@@ -259,7 +258,7 @@ abstract mixin class _$ContactsStateCopyWith<$Res> implements $ContactsStateCopy
   factory _$ContactsStateCopyWith(_ContactsState value, $Res Function(_ContactsState) _then) = __$ContactsStateCopyWithImpl;
 @override @useResult
 $Res call({
- ContactsStatus status, List<ContactsModel>? contacts
+ LoadStatus status, List<ContactsModel> contacts, Object? error
 });
 
 
@@ -276,11 +275,11 @@ class __$ContactsStateCopyWithImpl<$Res>
 
 /// Create a copy of ContactsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? contacts = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? contacts = null,Object? error = freezed,}) {
   return _then(_ContactsState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as ContactsStatus,contacts: freezed == contacts ? _self._contacts : contacts // ignore: cast_nullable_to_non_nullable
-as List<ContactsModel>?,
+as LoadStatus,contacts: null == contacts ? _self._contacts : contacts // ignore: cast_nullable_to_non_nullable
+as List<ContactsModel>,error: freezed == error ? _self.error : error ,
   ));
 }
 

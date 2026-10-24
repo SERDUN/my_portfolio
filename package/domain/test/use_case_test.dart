@@ -57,7 +57,7 @@ class FakeProjectRepository implements ProjectRepository {
     requestedLanguages.add(language);
     requestedIds.add(id);
     final match = projects.where((p) => p.id == id);
-    if (match.isEmpty) return Stream.error(StateError('no project $id'));
+    if (match.isEmpty) return Stream.error(ProjectNotFoundException(id));
     return Stream.value(match.first);
   }
 }
@@ -159,7 +159,7 @@ void main() {
     test('propagates a repository error', () {
       final useCase = GetProjectByIdUseCaseImpl(projectRepository);
 
-      expect(useCase.execute(id: 'missing', language: Language.en).first, throwsStateError);
+      expect(useCase.execute(id: 'missing', language: Language.en).first, throwsA(isA<ProjectNotFoundException>()));
     });
   });
 

@@ -78,8 +78,7 @@ class ApiDatasource implements PortfolioDataSource {
     try {
       return ProjectDTO.fromJson(await _get('$_projectsPath/$id', language) as Map<String, dynamic>);
     } on ApiException catch (e) {
-      // Keep the contract of PortfolioDataSource: a missing project is a StateError.
-      if (e.statusCode == 404) throw StateError('no project $id');
+      if (e.statusCode == 404) throw ProjectNotFoundException(id);
       rethrow;
     }
   }

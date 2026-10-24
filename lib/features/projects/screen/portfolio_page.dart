@@ -17,9 +17,7 @@ import '../widgets/project_card.dart';
 
 /// All projects: a statement header, a platform filter and the cards.
 class PortfolioPage extends StatefulWidget {
-  const PortfolioPage({
-    super.key,
-  });
+  const PortfolioPage({super.key});
 
   @override
   State<PortfolioPage> createState() => _PortfolioPageState();
@@ -39,41 +37,44 @@ class _PortfolioPageState extends State<PortfolioPage> {
         final isMobile = ResponsiveBreakpoints.of(context).isMobile;
 
         return PageScaffold(
-          child: projects.isEmpty
-              ? const Center(child: CircularProgressIndicator())
-              : ContentWidth(
-                  padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _Header(
-                        count: projects.length,
-                        platformCount: platforms.length,
-                        selected: _platform,
-                        platforms: platforms,
-                        onSelect: (platform) => setState(() => _platform = platform),
-                      ),
-                      const SizedBox(height: 32),
-                      ResponsiveGrid(
-                        desktop: 2,
-                        tablet: 1,
-                        mobile: 1,
-                        gap: 24,
-                        children: [for (final project in visible) ProjectCard.horizontal(project: project)],
-                      ),
-                      const SizedBox(height: 24),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: PillButton(
-                          label: context.l10n.projectsCta,
-                          icon: Icons.arrow_forward_rounded,
-                          variant: PillButtonVariant.ghost,
-                          onPressed: () => context.go(AppRoutInfo.contacts.path),
-                        ),
-                      ),
-                    ],
+          child: LoadStatusView(
+            status: state.status,
+            hasData: projects.isNotEmpty,
+            onRetry: context.read<ProjectsCubit>().load,
+            builder: (context) => ContentWidth(
+              padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _Header(
+                    count: projects.length,
+                    platformCount: platforms.length,
+                    selected: _platform,
+                    platforms: platforms,
+                    onSelect: (platform) => setState(() => _platform = platform),
                   ),
-                ),
+                  const SizedBox(height: 32),
+                  ResponsiveGrid(
+                    desktop: 2,
+                    tablet: 1,
+                    mobile: 1,
+                    gap: 24,
+                    children: [for (final project in visible) ProjectCard.horizontal(project: project)],
+                  ),
+                  const SizedBox(height: 24),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: PillButton(
+                      label: context.l10n.projectsCta,
+                      icon: Icons.arrow_forward_rounded,
+                      variant: PillButtonVariant.ghost,
+                      onPressed: () => context.go(AppRoutInfo.contacts.path),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );
@@ -144,10 +145,7 @@ class _Header extends StatelessWidget {
     );
 
     if (!isDesktop) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [copy, const SizedBox(height: 24), filter],
-      );
+      return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [copy, const SizedBox(height: 24), filter]);
     }
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -186,7 +184,9 @@ class _FilterChip extends StatelessWidget {
               widthFactor: 1,
               child: Text(
                 label,
-                style: Theme.of(context).textTheme.labelMedium?.copyWith(color: selected ? palette.ground : palette.ink),
+                style: Theme.of(
+                  context,
+                ).textTheme.labelMedium?.copyWith(color: selected ? palette.ground : palette.ink),
               ),
             ),
           ),
