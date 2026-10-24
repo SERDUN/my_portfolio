@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
@@ -82,19 +83,23 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
                     LanguageToggle.compact(
                       current: language,
                       onChanged: onLanguageChange,
-                      semanticLabel: context.l10n.shell_switchLanguage,
+                      compactIdentifier: shellLanguageCompactId,
                     ),
                     const SizedBox(width: 8),
                     ThemeModeSwitcher(
                       themeMode: themeMode,
                       onThemeChange: onThemeChange,
                       tooltip: context.l10n.shell_switchTheme,
+                      identifier: shellThemeButtonId,
                     ),
                     const SizedBox(width: 8),
-                    IconButton(
-                      tooltip: context.l10n.shell_openMenu,
-                      onPressed: () => showMobileMenu(context, current: current, onNavigate: onNavigate),
-                      icon: const Icon(Icons.menu_rounded, size: 20),
+                    SemanticAction(
+                      identifier: shellMenuButtonId,
+                      child: IconButton(
+                        tooltip: context.l10n.shell_openMenu,
+                        onPressed: () => showMobileMenu(context, current: current, onNavigate: onNavigate),
+                        icon: const Icon(Icons.menu_rounded, size: 20),
+                      ),
                     ),
                   ],
                 ],
@@ -112,18 +117,21 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         NavLink(
+          identifier: shellNavHomeId,
           label: l10n.shell_navHome,
           selected: current == ShellDestination.home,
           onTap: () => onNavigate(ShellDestination.home),
         ),
         const SizedBox(width: 28),
         NavLink(
+          identifier: shellNavProjectsId,
           label: l10n.shell_navProjects,
           selected: current == ShellDestination.projects,
           onTap: () => onNavigate(ShellDestination.projects),
         ),
         const SizedBox(width: 28),
         NavLink(
+          identifier: shellNavContactsId,
           label: l10n.shell_navContacts,
           selected: current == ShellDestination.contacts,
           onTap: () => onNavigate(ShellDestination.contacts),
@@ -139,10 +147,16 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
         LanguageToggle(
           current: language,
           onChanged: onLanguageChange,
-          semanticLabel: context.l10n.shell_switchLanguage,
+          optionIdentifier: (language) => shellLanguageOptionId(language.code),
+          groupLabel: context.l10n.shell_switchLanguage,
         ),
         const SizedBox(width: 12),
-        ThemeModeSwitcher(themeMode: themeMode, onThemeChange: onThemeChange, tooltip: context.l10n.shell_switchTheme),
+        ThemeModeSwitcher(
+          themeMode: themeMode,
+          onThemeChange: onThemeChange,
+          tooltip: context.l10n.shell_switchTheme,
+          identifier: shellThemeButtonId,
+        ),
       ],
     );
   }
@@ -156,6 +170,7 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
           label: context.l10n.common_downloadCv,
           variant: PillButtonVariant.ink,
           compact: true,
+          identifier: shellCvButtonId,
           onPressed: cv == null ? null : () => openUri(cv),
         );
       },
@@ -175,18 +190,21 @@ class _Wordmark extends StatelessWidget {
       builder: (context, state) {
         final user = state.user;
         final name = user == null ? 'Dmitro Serdun' : '${user.firstName} ${user.secondName}';
-        return Semantics(
-          link: true,
+        return SemanticAction.link(
+          label: context.l10n.shell_semanticsLabel_wordmark(name),
+          identifier: shellWordmarkId,
           child: InkWell(
             onTap: onTap,
             borderRadius: BorderRadius.circular(8),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-              child: Text(
-                name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.titleLarge,
+            child: ExcludeSemantics(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                child: Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
             ),
           ),

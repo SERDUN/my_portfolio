@@ -1,10 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 
+import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
 import '../../state/load_status.dart';
 import '../button/pill_button.dart';
+import '../semantics/semantic_action.dart';
 import 'status_message.dart';
 
 /// What a page shows for its primary data:
@@ -60,7 +62,12 @@ class LoadStatusView extends StatelessWidget {
               failureAction ??
               (onRetry == null
                   ? null
-                  : PillButton(label: context.l10n.common_retry, icon: Icons.refresh_rounded, onPressed: onRetry)),
+                  : PillButton(
+                      label: context.l10n.common_retry,
+                      icon: Icons.refresh_rounded,
+                      identifier: statusRetryId,
+                      onPressed: onRetry,
+                    )),
         );
       case LoadStatus.initial:
       case LoadStatus.loading:
@@ -91,7 +98,11 @@ class _FailureBanner extends StatelessWidget {
             Icon(Icons.cloud_off_rounded, size: 18, color: palette.muted),
             const SizedBox(width: 10),
             Expanded(child: Text(message, style: Theme.of(context).textTheme.bodySmall)),
-            if (onRetry != null) TextButton(onPressed: onRetry, child: Text(context.l10n.common_retry)),
+            if (onRetry != null)
+              SemanticAction(
+                identifier: statusBannerRetryId,
+                child: TextButton(onPressed: onRetry, child: Text(context.l10n.common_retry)),
+              ),
           ],
         ),
       ),

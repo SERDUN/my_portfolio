@@ -32,8 +32,23 @@ class AppLocalizationsUk extends AppLocalizations {
   String get common_retry => 'Спробувати ще';
 
   @override
+  String common_semanticsLabel_languageCompact(String code, String next) {
+    return '$code, змінити мову на $next';
+  }
+
+  @override
+  String common_semanticsLabel_languageOption(String code, String name) {
+    return '$code, $name';
+  }
+
+  @override
   String get contacts_description =>
       'Пошта найшвидша. Решта посилань ведуть туди, де я пишу і відповідаю.';
+
+  @override
+  String contacts_semanticsLabel_openChannel(String title, String value) {
+    return '$title: $value';
+  }
 
   @override
   String get contacts_title => 'Контакти';
@@ -116,6 +131,11 @@ class AppLocalizationsUk extends AppLocalizations {
   String get project_screenshotsTitle => 'Скріншоти';
 
   @override
+  String project_semanticsLabel_nextProject(String name) {
+    return 'Наступний проєкт: $name';
+  }
+
+  @override
   String get project_stackTitle => 'Стек залежностей';
 
   @override
@@ -130,6 +150,11 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get projects_filterAll => 'Усі';
+
+  @override
+  String projects_semanticsLabel_openProject(String name, String summary) {
+    return '$name. $summary';
+  }
 
   @override
   String projects_title(int count, int platforms) {
@@ -161,6 +186,11 @@ class AppLocalizationsUk extends AppLocalizations {
   String get shell_openMenu => 'Відкрити меню';
 
   @override
+  String shell_semanticsLabel_wordmark(String name) {
+    return '$name, головна сторінка';
+  }
+
+  @override
   String get shell_switchLanguage => 'Мова';
 
   @override
@@ -175,6 +205,16 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get useful_description =>
       'Ця вкладка не має інформаційного значення для користувачів третьої сторони, в ній лише команди, які я часто використовую, і я зазвичай забуваю.';
+
+  @override
+  String useful_semanticsLabel_copied(String title) {
+    return 'Скопійовано: $title';
+  }
+
+  @override
+  String useful_semanticsLabel_copy(String title) {
+    return 'Копіювати: $title';
+  }
 
   @override
   String get useful_title => 'Корисні команди';

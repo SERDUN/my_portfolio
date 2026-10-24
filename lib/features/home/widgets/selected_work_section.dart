@@ -5,6 +5,7 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/localization/localization.dart';
+import 'package:my_portfolio/app/keys.dart';
 
 /// Three featured projects as cards, with a link to the full list.
 class SelectedWorkSection extends StatelessWidget {
@@ -30,6 +31,7 @@ class SelectedWorkSection extends StatelessWidget {
               label: l10n.home_allProjects(totalCount),
               icon: Icons.arrow_forward_rounded,
               variant: PillButtonVariant.ghost,
+              identifier: homeAllProjectsId,
               onPressed: onSeeAll,
             ),
           ),
@@ -37,7 +39,11 @@ class SelectedWorkSection extends StatelessWidget {
           ResponsiveGrid(
             children: [
               for (final project in projects.take(3))
-                ProjectCard(project: project, onOpen: () => context.openProject(project.id)),
+                ProjectCard(
+                  project: project,
+                  identifier: homeProjectCardId(project.id),
+                  onOpen: () => context.openProject(project.id),
+                ),
             ],
           ),
         ],

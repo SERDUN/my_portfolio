@@ -7,7 +7,8 @@ import 'package:flutter_test/flutter_test.dart';
 /// - a feature never imports another feature;
 /// - a feature never imports the app barrel or the router (they import every
 ///   feature, so that is a cycle);
-/// - core never imports a feature, and from app only typed navigation.
+/// - core never imports a feature, and from app only typed navigation and
+///   the semantics ids (both dependency-free leaves).
 void main() {
   final libDir = Directory('lib').absolute.uri;
 
@@ -46,20 +47,22 @@ void main() {
     expect(offenders, isEmpty);
   });
 
-  test('core imports no feature and from app only navigation', () {
+  test('core imports no feature and from app only navigation and keys', () {
     final offenders = [
       for (final file in dartFiles('lib/core'))
         for (final target in targets(file))
-          if (target.startsWith('features/') || (target.startsWith('app/') && target != 'app/navigation.dart'))
+          if (target.startsWith('features/') ||
+              (target.startsWith('app/') && !const {'app/navigation.dart', 'app/keys.dart'}.contains(target)))
             '${file.path} -> $target',
     ];
     expect(offenders, isEmpty);
   });
 
-  test('typed navigation imports nothing that imports features', () {
+  test('typed navigation and keys import nothing that imports features', () {
     final offenders = [
       for (final target in targets(File('lib/app/navigation.dart')))
-        if (target != 'app/app_routes.dart') target,
+        if (target != 'app/app_routes.dart') 'navigation -> $target',
+      for (final target in targets(File('lib/app/keys.dart'))) 'keys -> $target',
     ];
     expect(offenders, isEmpty);
   });

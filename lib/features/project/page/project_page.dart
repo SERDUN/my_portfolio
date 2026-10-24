@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
@@ -24,22 +25,26 @@ class ProjectPage extends StatelessWidget {
       builder: (context, state) {
         final project = state.project;
         final isMobile = ResponsiveBreakpoints.of(context).isMobile;
-        return PageScaffold(
-          child: LoadStatusView(
-            status: state.status,
-            hasData: project != null,
-            onRetry: state.isNotFound ? null : context.read<ProjectCubit>().load,
-            failureMessage: state.isNotFound ? context.l10n.project_notFound : null,
-            failureAction: state.isNotFound
-                ? PillButton(
-                    label: context.l10n.common_allProjects,
-                    icon: Icons.arrow_back_rounded,
-                    iconLeading: true,
-                    variant: PillButtonVariant.outline,
-                    onPressed: context.openProjects,
-                  )
-                : null,
-            builder: (context) => _ProjectBody(project: project!, next: state.nextProject, isMobile: isMobile),
+        return SemanticId(
+          identifier: projectScreenId,
+          child: PageScaffold(
+            child: LoadStatusView(
+              status: state.status,
+              hasData: project != null,
+              onRetry: state.isNotFound ? null : context.read<ProjectCubit>().load,
+              failureMessage: state.isNotFound ? context.l10n.project_notFound : null,
+              failureAction: state.isNotFound
+                  ? PillButton(
+                      label: context.l10n.common_allProjects,
+                      icon: Icons.arrow_back_rounded,
+                      iconLeading: true,
+                      variant: PillButtonVariant.outline,
+                      identifier: projectNotFoundBackId,
+                      onPressed: context.openProjects,
+                    )
+                  : null,
+              builder: (context) => _ProjectBody(project: project!, next: state.nextProject, isMobile: isMobile),
+            ),
           ),
         );
       },
@@ -68,6 +73,7 @@ class _ProjectBody extends StatelessWidget {
               icon: Icons.arrow_back_rounded,
               iconLeading: true,
               variant: PillButtonVariant.ghost,
+              identifier: projectBackId,
               onPressed: context.openProjects,
             ),
           ),
@@ -105,20 +111,23 @@ class _NextProject extends StatelessWidget {
           Expanded(
             child: Text(context.l10n.project_next, style: textTheme.bodyMedium?.copyWith(color: palette.muted)),
           ),
-          Semantics(
-            link: true,
+          SemanticAction.link(
+            label: context.l10n.project_semanticsLabel_nextProject(project.name),
+            identifier: projectNextId,
             child: InkWell(
               onTap: () => context.openProject(project.id),
               borderRadius: BorderRadius.circular(8),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(project.name, style: textTheme.headlineSmall),
-                    const SizedBox(width: 12),
-                    Icon(Icons.arrow_forward_rounded, size: 22, color: palette.ink),
-                  ],
+              child: ExcludeSemantics(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(project.name, style: textTheme.headlineSmall),
+                      const SizedBox(width: 12),
+                      Icon(Icons.arrow_forward_rounded, size: 22, color: palette.ink),
+                    ],
+                  ),
                 ),
               ),
             ),

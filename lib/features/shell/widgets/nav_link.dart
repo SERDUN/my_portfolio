@@ -1,22 +1,24 @@
 import 'package:material_ui/material_ui.dart';
 
 import 'package:my_portfolio/style/style.dart';
+import 'package:my_portfolio/core/core.dart';
 
 /// Header navigation item: muted text, the current page in ink with an
 /// accent underline.
 class NavLink extends StatelessWidget {
-  const NavLink({super.key, required this.label, required this.selected, required this.onTap});
+  const NavLink({super.key, required this.label, required this.selected, required this.onTap, this.identifier});
 
   final String label;
   final bool selected;
   final VoidCallback onTap;
+  final String? identifier;
 
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
     final textTheme = Theme.of(context).textTheme;
-    return Semantics(
-      link: true,
+    return SemanticAction.link(
+      identifier: identifier,
       selected: selected,
       child: InkWell(
         onTap: onTap,

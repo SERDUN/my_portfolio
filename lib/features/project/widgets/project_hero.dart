@@ -8,6 +8,7 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
+import 'package:my_portfolio/app/keys.dart';
 
 /// Project hero: platform tag and spheres, the name, the intro, the store
 /// buttons, three facts, and the lead screenshot in a large phone frame.
@@ -145,6 +146,7 @@ class _StoreButtons extends StatelessWidget {
           label: l10n.common_appStore,
           icon: Ionicons.logoAppleAppstore,
           variant: PillButtonVariant.ink,
+          identifier: projectAppStoreId,
           onPressed: () => openUri(project.links.appStore),
         ),
       if (project.links.googlePlay != null)
@@ -152,6 +154,7 @@ class _StoreButtons extends StatelessWidget {
           label: l10n.common_googlePlay,
           icon: Ionicons.logoGooglePlaystore,
           variant: project.links.appStore == null ? PillButtonVariant.ink : PillButtonVariant.outline,
+          identifier: projectGooglePlayId,
           onPressed: () => openUri(project.links.googlePlay),
         ),
       if (project.links.github != null)
@@ -159,6 +162,7 @@ class _StoreButtons extends StatelessWidget {
           label: l10n.common_github,
           icon: Ionicons.logoGithub,
           variant: project.links.hasStore ? PillButtonVariant.outline : PillButtonVariant.ink,
+          identifier: projectGithubId,
           onPressed: () => openUri(project.links.github),
         ),
     ];

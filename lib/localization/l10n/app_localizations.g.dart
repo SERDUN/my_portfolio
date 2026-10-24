@@ -141,11 +141,29 @@ abstract class AppLocalizations {
   /// **'Try again'**
   String get common_retry;
 
+  /// Screen reader name of the one-button language toggle: the visible code, then what a tap does
+  ///
+  /// In en, this message translates to:
+  /// **'{code}, switch language to {next}'**
+  String common_semanticsLabel_languageCompact(String code, String next);
+
+  /// Screen reader name of one language pill: the visible code, then the language name
+  ///
+  /// In en, this message translates to:
+  /// **'{code}, {name}'**
+  String common_semanticsLabel_languageOption(String code, String name);
+
   /// Description under the contacts title
   ///
   /// In en, this message translates to:
   /// **'Email is the fastest way. The other links lead where I post and answer.'**
   String get contacts_description;
+
+  /// Screen reader name of a contact card: channel and address
+  ///
+  /// In en, this message translates to:
+  /// **'{title}: {value}'**
+  String contacts_semanticsLabel_openChannel(String title, String value);
 
   /// Title of the contacts page
   ///
@@ -297,6 +315,12 @@ abstract class AppLocalizations {
   /// **'Screenshots'**
   String get project_screenshotsTitle;
 
+  /// Screen reader name of the next project link
+  ///
+  /// In en, this message translates to:
+  /// **'Next project: {name}'**
+  String project_semanticsLabel_nextProject(String name);
+
   /// Title of the technology stack section
   ///
   /// In en, this message translates to:
@@ -326,6 +350,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All'**
   String get projects_filterAll;
+
+  /// Screen reader name of a project card: name, then its summary, platform and stack
+  ///
+  /// In en, this message translates to:
+  /// **'{name}. {summary}'**
+  String projects_semanticsLabel_openProject(String name, String summary);
 
   /// Statement title of the project list, with project and platform counts
   ///
@@ -381,6 +411,12 @@ abstract class AppLocalizations {
   /// **'Open menu'**
   String get shell_openMenu;
 
+  /// Screen reader name of the wordmark, which opens the home page
+  ///
+  /// In en, this message translates to:
+  /// **'{name}, home page'**
+  String shell_semanticsLabel_wordmark(String name);
+
   /// Accessibility label of the language toggle
   ///
   /// In en, this message translates to:
@@ -410,6 +446,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.'**
   String get useful_description;
+
+  /// Screen reader name and announcement after a command was copied
+  ///
+  /// In en, this message translates to:
+  /// **'Copied: {title}'**
+  String useful_semanticsLabel_copied(String title);
+
+  /// Screen reader name of a copy button, naming the command
+  ///
+  /// In en, this message translates to:
+  /// **'Copy: {title}'**
+  String useful_semanticsLabel_copy(String title);
 
   /// Title of the useful commands page
   ///

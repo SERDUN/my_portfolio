@@ -28,9 +28,45 @@
   "@common_retry": {
     "description": "Button that retries a failed load"
   },
+  "common_semanticsLabel_languageCompact": "{code}, switch language to {next}",
+  "@common_semanticsLabel_languageCompact": {
+    "description": "Screen reader name of the one-button language toggle: the visible code, then what a tap does",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "next": {
+        "type": "String"
+      }
+    }
+  },
+  "common_semanticsLabel_languageOption": "{code}, {name}",
+  "@common_semanticsLabel_languageOption": {
+    "description": "Screen reader name of one language pill: the visible code, then the language name",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "contacts_description": "Email is the fastest way. The other links lead where I post and answer.",
   "@contacts_description": {
     "description": "Description under the contacts title"
+  },
+  "contacts_semanticsLabel_openChannel": "{title}: {value}",
+  "@contacts_semanticsLabel_openChannel": {
+    "description": "Screen reader name of a contact card: channel and address",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
   },
   "contacts_title": "Get in touch",
   "@contacts_title": {
@@ -142,6 +178,15 @@
   "@project_screenshotsTitle": {
     "description": "Title of the screenshot gallery"
   },
+  "project_semanticsLabel_nextProject": "Next project: {name}",
+  "@project_semanticsLabel_nextProject": {
+    "description": "Screen reader name of the next project link",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "project_stackTitle": "Dependency stack",
   "@project_stackTitle": {
     "description": "Title of the technology stack section"
@@ -161,6 +206,18 @@
   "projects_filterAll": "All",
   "@projects_filterAll": {
     "description": "Filter chip that shows every project"
+  },
+  "projects_semanticsLabel_openProject": "{name}. {summary}",
+  "@projects_semanticsLabel_openProject": {
+    "description": "Screen reader name of a project card: name, then its summary, platform and stack",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "summary": {
+        "type": "String"
+      }
+    }
   },
   "projects_title": "{count} apps, {platforms} platforms, one habit: ship it clean.",
   "@projects_title": {
@@ -206,6 +263,15 @@
   "@shell_openMenu": {
     "description": "Tooltip of the mobile menu button"
   },
+  "shell_semanticsLabel_wordmark": "{name}, home page",
+  "@shell_semanticsLabel_wordmark": {
+    "description": "Screen reader name of the wordmark, which opens the home page",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "shell_switchLanguage": "Language",
   "@shell_switchLanguage": {
     "description": "Accessibility label of the language toggle"
@@ -225,6 +291,24 @@
   "useful_description": "This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.",
   "@useful_description": {
     "description": "Description of the useful commands page"
+  },
+  "useful_semanticsLabel_copied": "Copied: {title}",
+  "@useful_semanticsLabel_copied": {
+    "description": "Screen reader name and announcement after a command was copied",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "useful_semanticsLabel_copy": "Copy: {title}",
+  "@useful_semanticsLabel_copy": {
+    "description": "Screen reader name of a copy button, naming the command",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
   },
   "useful_title": "Useful commands",
   "@useful_title": {
