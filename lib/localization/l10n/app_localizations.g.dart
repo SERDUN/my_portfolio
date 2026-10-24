@@ -265,6 +265,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get actionSwitchLanguage;
+
+  /// No description provided for @buttonSeeProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'See projects'**
+  String get buttonSeeProjects;
+
+  /// No description provided for @statsYears.
+  ///
+  /// In en, this message translates to:
+  /// **'years in mobile'**
+  String get statsYears;
+
+  /// No description provided for @statsProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'projects'**
+  String get statsProjects;
+
+  /// No description provided for @statsPlatforms.
+  ///
+  /// In en, this message translates to:
+  /// **'platforms'**
+  String get statsPlatforms;
+
+  /// No description provided for @skillsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What I work with'**
+  String get skillsTitle;
+
+  /// No description provided for @skillsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.'**
+  String get skillsDescription;
+
+  /// No description provided for @selectedWorkEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected work'**
+  String get selectedWorkEyebrow;
+
+  /// No description provided for @selectedWorkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Three projects to start with'**
+  String get selectedWorkTitle;
+
+  /// No description provided for @allProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'All {count} projects'**
+  String allProjects(int count);
+
+  /// No description provided for @projectsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} apps, {platforms} platforms, one habit: ship it clean.'**
+  String projectsTitle(int count, int platforms);
+
+  /// No description provided for @projectsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.'**
+  String get projectsDescription;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @projectsCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Want one like these? Get in touch'**
+  String get projectsCta;
+
+  /// No description provided for @storeGooglePlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Play'**
+  String get storeGooglePlay;
+
+  /// No description provided for @storeAppStore.
+  ///
+  /// In en, this message translates to:
+  /// **'App Store'**
+  String get storeAppStore;
+
+  /// No description provided for @storeGithub.
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub'**
+  String get storeGithub;
 }
 
 class _AppLocalizationsDelegate

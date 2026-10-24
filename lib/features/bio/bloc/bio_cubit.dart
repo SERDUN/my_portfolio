@@ -15,6 +15,7 @@ class BioCubit extends Cubit<BioState> {
   BioCubit(
     this.userUseCase,
     this.skillsUseCase,
+    this.projectsUseCase,
     this.languageNotifier,
   ) : super(const BioState()) {
     _initState();
@@ -25,28 +26,36 @@ class BioCubit extends Cubit<BioState> {
 
   final GetUserUseCase userUseCase;
   final GetUserSkillsUseCase skillsUseCase;
+  final GetProjectsUseCase projectsUseCase;
 
   StreamSubscription? _userStreamSubscription;
   StreamSubscription? _skillsStreamSubscription;
+  StreamSubscription? _projectsStreamSubscription;
 
   void _initState() {
     subscribeOnUserData();
     subscribeOnUserSkills();
+    subscribeOnProjects();
   }
 
   void subscribeOnUserData() {
     _userStreamSubscription?.cancel();
-    _userStreamSubscription = null;
     _userStreamSubscription = userUseCase.execute().listen((event) {
       emit(state.copyWith(status: BioStatus.success, user: event));
     });
   }
 
-  void subscribeOnUserSkills() async {
+  void subscribeOnUserSkills() {
     _skillsStreamSubscription?.cancel();
-    _skillsStreamSubscription = null;
     _skillsStreamSubscription = skillsUseCase.execute().listen((event) {
       emit(state.copyWith(status: BioStatus.success, skills: event));
+    });
+  }
+
+  void subscribeOnProjects() {
+    _projectsStreamSubscription?.cancel();
+    _projectsStreamSubscription = projectsUseCase.execute().listen((event) {
+      emit(state.copyWith(projects: event));
     });
   }
 
@@ -55,6 +64,7 @@ class BioCubit extends Cubit<BioState> {
     await super.close();
     _userStreamSubscription?.cancel();
     _skillsStreamSubscription?.cancel();
+    _projectsStreamSubscription?.cancel();
     languageNotifier.removeListener(_initState);
   }
 }

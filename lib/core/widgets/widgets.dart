@@ -2,7 +2,6 @@ export 'behaviour/behaviour.dart';
 export 'button/button.dart';
 export 'chip/chip.dart';
 export 'decoration/decoration.dart';
-export 'expanded/expanded.dart';
 export 'holder/holder.dart';
 export 'image/image.dart';
 export 'layout/layout.dart';

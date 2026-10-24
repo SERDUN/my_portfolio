@@ -9,9 +9,11 @@ part of 'portfolio_skills_dto.dart';
 PortfolioSkillsDTO _$PortfolioSkillsDTOFromJson(Map<String, dynamic> json) =>
     PortfolioSkillsDTO(
       title: json['title'] as String,
-      subskills: (json['subskills'] as List<dynamic>?)
+      subskills:
+          (json['subskills'] as List<dynamic>?)
               ?.map(
-                  (e) => PortfolioSkillsDTO.fromJson(e as Map<String, dynamic>))
+                (e) => PortfolioSkillsDTO.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           const [],
     )..expanded = json['expanded'] as bool?;

@@ -18,6 +18,10 @@ class ProjectDTO {
   @JsonKey(name: 'preview')
   final String? preview;
 
+  /// Shown in the "selected work" block on the home page.
+  @JsonKey(defaultValue: false)
+  final bool featured;
+
   ProjectDTO({
     this.id,
     this.name,
@@ -30,6 +34,7 @@ class ProjectDTO {
     this.technologies = const [],
     this.screenshots = const [],
     this.preview,
+    this.featured = false,
   });
 
   factory ProjectDTO.fromJson(Map<String, dynamic> json) => _$ProjectDTOFromJson(json);

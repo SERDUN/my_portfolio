@@ -92,4 +92,58 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get actionSwitchLanguage => 'Мова';
+
+  @override
+  String get buttonSeeProjects => 'Переглянути проєкти';
+
+  @override
+  String get statsYears => 'років у мобільній розробці';
+
+  @override
+  String get statsProjects => 'проєктів';
+
+  @override
+  String get statsPlatforms => 'платформи';
+
+  @override
+  String get skillsTitle => 'З чим я працюю';
+
+  @override
+  String get skillsDescription =>
+      'Згруповано так, як я користуюся ними щодня: спершу Flutter, під ним Android-коріння, і те, що навколо клієнта.';
+
+  @override
+  String get selectedWorkEyebrow => 'Вибрані роботи';
+
+  @override
+  String get selectedWorkTitle => 'Три проєкти для початку';
+
+  @override
+  String allProjects(int count) {
+    return 'Усі проєкти: $count';
+  }
+
+  @override
+  String projectsTitle(int count, int platforms) {
+    return '$count застосунків, $platforms платформи, одна звичка: доводити до релізу.';
+  }
+
+  @override
+  String get projectsDescription =>
+      'Застосунки в сторах і клієнтські проєкти за останні роки. Flutter там, де команда хотіла одну кодову базу, нативний Android там, де без нього ніяк.';
+
+  @override
+  String get filterAll => 'Усі';
+
+  @override
+  String get projectsCta => 'Хочете щось подібне? Напишіть';
+
+  @override
+  String get storeGooglePlay => 'Google Play';
+
+  @override
+  String get storeAppStore => 'App Store';
+
+  @override
+  String get storeGithub => 'GitHub';
 }

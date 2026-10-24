@@ -26,5 +26,38 @@
   "footerGlory": "Glory to Ukraine",
   "actionOpenMenu": "Open menu",
   "actionSwitchTheme": "Switch theme",
-  "actionSwitchLanguage": "Language"
+  "actionSwitchLanguage": "Language",
+  "buttonSeeProjects": "See projects",
+  "statsYears": "years in mobile",
+  "statsProjects": "projects",
+  "statsPlatforms": "platforms",
+  "skillsTitle": "What I work with",
+  "skillsDescription": "Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.",
+  "selectedWorkEyebrow": "Selected work",
+  "selectedWorkTitle": "Three projects to start with",
+  "allProjects": "All {count} projects",
+  "@allProjects": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "projectsTitle": "{count} apps, {platforms} platforms, one habit: ship it clean.",
+  "@projectsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "platforms": {
+        "type": "int"
+      }
+    }
+  },
+  "projectsDescription": "Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.",
+  "filterAll": "All",
+  "projectsCta": "Want one like these? Get in touch",
+  "storeGooglePlay": "Google Play",
+  "storeAppStore": "App Store",
+  "storeGithub": "GitHub"
 }

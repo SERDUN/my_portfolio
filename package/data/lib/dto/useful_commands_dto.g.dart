@@ -15,19 +15,10 @@ UsefulCommandsDTO _$UsefulCommandsDTOFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$UsefulCommandsDTOToJson(UsefulCommandsDTO instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'commands': instance.commands,
-    };
+    <String, dynamic>{'title': instance.title, 'commands': instance.commands};
 
 UsefulCommandDTO _$UsefulCommandDTOFromJson(Map<String, dynamic> json) =>
-    UsefulCommandDTO(
-      json['title'] as String,
-      json['command'] as String,
-    );
+    UsefulCommandDTO(json['title'] as String, json['command'] as String);
 
 Map<String, dynamic> _$UsefulCommandDTOToJson(UsefulCommandDTO instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'command': instance.command,
-    };
+    <String, dynamic>{'title': instance.title, 'command': instance.command};

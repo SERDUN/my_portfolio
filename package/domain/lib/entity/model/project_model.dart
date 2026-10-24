@@ -11,6 +11,7 @@ class ProjectModel {
     this.screenshots = const [],
     this.preview,
     this.id,
+    this.featured = false,
   });
 
   final String? id;
@@ -24,4 +25,20 @@ class ProjectModel {
   final List<String> technologies;
   final List<String> screenshots;
   final String? preview;
+
+  /// Picked for the "selected work" block on the home page.
+  final bool featured;
+
+  /// "Flutter" or "Android" when the stack names one, else the first
+  /// technology. Used as the platform tag on cards.
+  String? get platform {
+    for (final tech in technologies) {
+      final lower = tech.toLowerCase();
+      if (lower == 'flutter') return 'Flutter';
+      if (lower == 'android') return 'Android';
+    }
+    return technologies.isEmpty ? null : technologies.first;
+  }
+
+  bool get hasStoreLink => linkAndroid.isNotEmpty || linkIOS.isNotEmpty;
 }

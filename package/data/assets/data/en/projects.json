@@ -30,9 +30,9 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr5.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr6.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr1.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/pt/scr1.webp",
+    "featured": false
   },
-
   {
     "id": "1",
     "name": "Alias",
@@ -66,7 +66,8 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr9.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr10.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr10.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/al/scr10.webp",
+    "featured": false
   },
   {
     "id": "2",
@@ -95,7 +96,8 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr4.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp",
+    "featured": true
   },
   {
     "id": "3",
@@ -128,7 +130,8 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr5.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr6.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr1.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/cl/scr1.webp",
+    "featured": false
   },
   {
     "id": "4",
@@ -161,7 +164,8 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr7.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr8.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr1.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr1.webp",
+    "featured": true
   },
   {
     "id": "5",
@@ -190,7 +194,8 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr3.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr4.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr4.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ln/scr4.webp",
+    "featured": false
   },
   {
     "id": "6",
@@ -222,7 +227,8 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr8.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr9.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr1.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ar/scr1.webp",
+    "featured": false
   },
   {
     "id": "7",
@@ -267,7 +273,8 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr0.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr11.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr1.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/db/scr1.webp",
+    "featured": false
   },
   {
     "id": "8",
@@ -301,7 +308,8 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr6.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr7.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr1.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ng/scr1.webp",
+    "featured": false
   },
   {
     "id": "9",
@@ -339,6 +347,7 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr8.webp",
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr9.webp"
     ],
-    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr2.webp"
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/sl/scr2.webp",
+    "featured": true
   }
 ]

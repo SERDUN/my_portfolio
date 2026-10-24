@@ -119,6 +119,7 @@ class _ApplicationState extends State<Application> {
                         create: (BuildContext context) => BioCubit(
                           di<GetUserUseCase>(),
                           di<GetUserSkillsUseCase>(),
+                          di<GetProjectsUseCase>(),
                           _languageNotifier,
                         ),
                         child: const HomePage(),

@@ -92,4 +92,58 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get actionSwitchLanguage => 'Language';
+
+  @override
+  String get buttonSeeProjects => 'See projects';
+
+  @override
+  String get statsYears => 'years in mobile';
+
+  @override
+  String get statsProjects => 'projects';
+
+  @override
+  String get statsPlatforms => 'platforms';
+
+  @override
+  String get skillsTitle => 'What I work with';
+
+  @override
+  String get skillsDescription =>
+      'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.';
+
+  @override
+  String get selectedWorkEyebrow => 'Selected work';
+
+  @override
+  String get selectedWorkTitle => 'Three projects to start with';
+
+  @override
+  String allProjects(int count) {
+    return 'All $count projects';
+  }
+
+  @override
+  String projectsTitle(int count, int platforms) {
+    return '$count apps, $platforms platforms, one habit: ship it clean.';
+  }
+
+  @override
+  String get projectsDescription =>
+      'Store apps and client work from the last years. Flutter where the team wanted one codebase, native Android where it had to be.';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get projectsCta => 'Want one like these? Get in touch';
+
+  @override
+  String get storeGooglePlay => 'Google Play';
+
+  @override
+  String get storeAppStore => 'App Store';
+
+  @override
+  String get storeGithub => 'GitHub';
 }

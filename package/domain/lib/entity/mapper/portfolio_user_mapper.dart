@@ -17,10 +17,14 @@ class PortfolioUserMapper extends Mapper<PortfolioUserDTO, PortfolioUserModel> {
     return PortfolioUserModel(
       firstName: dto.firstName ?? '',
       secondName: dto.secondName ?? '',
-      intro: dto.intro ?? "",
-      avatar: dto.avatarUrl ?? "",
-      cv: dto.cvUrl ?? "",
-      position: dto.position ?? "",
+      intro: dto.intro ?? '',
+      avatar: dto.avatarUrl ?? '',
+      cv: dto.cvUrl ?? '',
+      position: dto.position ?? '',
+      location: dto.location ?? '',
+      headline: dto.headline ?? '',
+      headlineAccent: dto.headlineAccent ?? '',
+      experienceSince: dto.experienceSince,
     );
   }
 

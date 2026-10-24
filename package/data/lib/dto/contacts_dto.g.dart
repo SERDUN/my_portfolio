@@ -6,13 +6,8 @@ part of 'contacts_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ContactsDTO _$ContactsDTOFromJson(Map<String, dynamic> json) => ContactsDTO(
-      json['title'] as String,
-      json['value'] as String,
-    );
+ContactsDTO _$ContactsDTOFromJson(Map<String, dynamic> json) =>
+    ContactsDTO(json['title'] as String, json['value'] as String);
 
 Map<String, dynamic> _$ContactsDTOToJson(ContactsDTO instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'value': instance.value,
-    };
+    <String, dynamic>{'title': instance.title, 'value': instance.value};

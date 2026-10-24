@@ -30,6 +30,17 @@ class FakeGetUserSkillsUseCase implements GetUserSkillsUseCase {
   }
 }
 
+class FakeGetProjectsUseCase implements GetProjectsUseCase {
+  final controller = StreamController<List<ProjectModel>>.broadcast();
+  int executions = 0;
+
+  @override
+  Stream<List<ProjectModel>> execute() {
+    executions++;
+    return controller.stream;
+  }
+}
+
 final user = PortfolioUserModel(
   firstName: 'Dmitro',
   secondName: 'Serdun',
@@ -41,32 +52,49 @@ final user = PortfolioUserModel(
 
 final skills = [PortfolioSkillsModel(title: 'Flutter', expanded: true, children: const [])];
 
+ProjectModel project(String id, {bool featured = false, String? preview, List<String> technologies = const []}) =>
+    ProjectModel(
+      id: id,
+      name: 'Project $id',
+      linkAndroid: '',
+      linkIOS: '',
+      linkGithub: '',
+      preview: preview,
+      featured: featured,
+      technologies: technologies,
+    );
+
 void main() {
   late FakeGetUserUseCase userUseCase;
   late FakeGetUserSkillsUseCase skillsUseCase;
+  late FakeGetProjectsUseCase projectsUseCase;
   late LanguageNotifier languageNotifier;
   late BioCubit cubit;
 
   setUp(() {
     userUseCase = FakeGetUserUseCase();
     skillsUseCase = FakeGetUserSkillsUseCase();
+    projectsUseCase = FakeGetProjectsUseCase();
     languageNotifier = LanguageNotifier((_) {});
-    cubit = BioCubit(userUseCase, skillsUseCase, languageNotifier);
+    cubit = BioCubit(userUseCase, skillsUseCase, projectsUseCase, languageNotifier);
   });
 
   tearDown(() async {
     await cubit.close();
     await userUseCase.controller.close();
     await skillsUseCase.controller.close();
+    await projectsUseCase.controller.close();
   });
 
-  test('starts in the initial state and subscribes to both use cases', () {
+  test('starts in the initial state and subscribes to all three use cases', () {
     expect(cubit.state, const BioState());
     expect(cubit.state.status, BioStatus.initial);
     expect(cubit.state.user, isNull);
     expect(cubit.state.skills, isNull);
+    expect(cubit.state.projects, isEmpty);
     expect(userUseCase.executions, 1);
     expect(skillsUseCase.executions, 1);
+    expect(projectsUseCase.executions, 1);
   });
 
   test('emits success with the user, then merges the skills in', () async {
@@ -98,11 +126,42 @@ void main() {
     expect(states, hasLength(1));
   });
 
-  test('resubscribes to both use cases when the language changes', () async {
+  test('featured projects are the flagged ones, else the first three with a preview', () async {
+    projectsUseCase.controller.add([
+      project('1', preview: 'a'),
+      project('2', featured: true),
+      project('3', preview: 'c'),
+    ]);
+    await Future<void>.delayed(Duration.zero);
+    expect(cubit.state.featuredProjects.map((p) => p.id), ['2']);
+
+    projectsUseCase.controller.add([
+      project('1', preview: 'a'),
+      project('2'),
+      project('3', preview: 'c'),
+      project('4', preview: 'd'),
+      project('5', preview: 'e'),
+    ]);
+    await Future<void>.delayed(Duration.zero);
+    expect(cubit.state.featuredProjects.map((p) => p.id), ['1', '3', '4']);
+  });
+
+  test('platform count is the number of distinct platforms', () async {
+    projectsUseCase.controller.add([
+      project('1', technologies: ['Flutter', 'BLoC']),
+      project('2', technologies: ['android', 'Java']),
+      project('3', technologies: ['Dart', 'Flutter']),
+    ]);
+    await Future<void>.delayed(Duration.zero);
+    expect(cubit.state.platformCount, 2);
+  });
+
+  test('resubscribes to all use cases when the language changes', () async {
     languageNotifier.changeLanguage(const Locale('uk'));
 
     expect(userUseCase.executions, 2);
     expect(skillsUseCase.executions, 2);
+    expect(projectsUseCase.executions, 2);
     // The old subscriptions were cancelled: only the new ones listen.
     expect(userUseCase.controller.hasListener, isTrue);
   });
@@ -112,9 +171,11 @@ void main() {
 
     expect(userUseCase.controller.hasListener, isFalse);
     expect(skillsUseCase.controller.hasListener, isFalse);
+    expect(projectsUseCase.controller.hasListener, isFalse);
 
     languageNotifier.changeLanguage(const Locale('uk'));
     expect(userUseCase.executions, 1, reason: 'a closed cubit must not resubscribe');
     expect(skillsUseCase.executions, 1);
+    expect(projectsUseCase.executions, 1);
   });
 }

@@ -12,6 +12,4 @@ PortfolioDTO _$PortfolioDTOFromJson(Map<String, dynamic> json) => PortfolioDTO()
       .toList();
 
 Map<String, dynamic> _$PortfolioDTOToJson(PortfolioDTO instance) =>
-    <String, dynamic>{
-      'projects': instance.projects,
-    };
+    <String, dynamic>{'projects': instance.projects};

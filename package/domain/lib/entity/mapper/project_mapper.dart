@@ -17,16 +17,18 @@ class ProjectMapper extends Mapper<ProjectDTO, ProjectModel> {
   @override
   ProjectModel mapToModel(ProjectDTO dto) {
     return ProjectModel(
-        name: dto.name,
-        id: dto.id,
-        intro: dto.intro,
-        description: dto.description?.trim(),
-        linkAndroid: dto.linkAndroid ?? "",
-        linkIOS: dto.linkIOS ?? "",
-        linkGithub: dto.linkGithub ?? "",
-        technologies: dto.technologies,
-        spheres: dto.spheres,
-        screenshots: dto.screenshots,
-        preview: dto.preview);
+      name: dto.name,
+      id: dto.id,
+      intro: dto.intro,
+      description: dto.description?.trim(),
+      linkAndroid: dto.linkAndroid ?? "",
+      linkIOS: dto.linkIOS ?? "",
+      linkGithub: dto.linkGithub ?? "",
+      technologies: dto.technologies,
+      spheres: dto.spheres,
+      screenshots: dto.screenshots,
+      preview: dto.preview,
+      featured: dto.featured,
+    );
   }
 }
