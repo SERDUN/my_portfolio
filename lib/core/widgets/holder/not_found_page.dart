@@ -1,8 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 
-import 'package:go_router/go_router.dart';
-
-import 'package:my_portfolio/app/app_routes.dart';
+import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
 import '../button/pill_button.dart';
@@ -24,7 +22,7 @@ class NotFoundScreen extends StatelessWidget {
           label: l10n.notFound_home,
           icon: Icons.arrow_back_rounded,
           iconLeading: true,
-          onPressed: () => context.go(AppRoutes.home.path),
+          onPressed: context.openHome,
         ),
       ),
     );

@@ -6,7 +6,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/core.dart';
-import 'package:my_portfolio/features/shell/shell.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 

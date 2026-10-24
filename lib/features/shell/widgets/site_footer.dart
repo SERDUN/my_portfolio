@@ -1,17 +1,16 @@
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/app/app_routes.dart';
+import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import 'package:my_portfolio/features/contacts/bloc/contacts_cubit.dart';
+import 'package:my_portfolio/app/contacts/contacts.dart';
 
 /// Dark footer band: "Let's talk", the email, the social links as pills, and
 /// the bottom line with the flag and secondary navigation.
@@ -165,8 +164,8 @@ class _BottomLine extends StatelessWidget {
       runSpacing: 4,
       alignment: isMobile ? WrapAlignment.start : WrapAlignment.end,
       children: [
-        _FooterLink(label: l10n.shell_navProjects, style: linkStyle, onTap: () => context.go(AppRoutes.projects.path)),
-        _FooterLink(label: l10n.useful_title, style: linkStyle, onTap: () => context.go(AppRoutes.useful.path)),
+        _FooterLink(label: l10n.shell_navProjects, style: linkStyle, onTap: context.openProjects),
+        _FooterLink(label: l10n.useful_title, style: linkStyle, onTap: context.openUseful),
         _FooterLink(label: l10n.shell_footerSource, style: linkStyle, onTap: () => openExternalUrl(sourceUrl)),
       ],
     );

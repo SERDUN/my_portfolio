@@ -1,14 +1,14 @@
 import 'package:material_ui/material_ui.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/app/app_routes.dart';
-import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
+
+import '../chip/chip.dart';
+import '../image/phone_frame.dart';
 
 enum ProjectCardLayout {
   /// Screenshot on top, text below: the home page grid.
@@ -20,22 +20,26 @@ enum ProjectCardLayout {
 
 /// Project card: phone screenshot in a well, name with the platform tag, the
 /// intro, technology tags and, in the horizontal layout, the spheres and the
-/// stores it shipped to. Opens the project page.
+/// stores it shipped to. Knows nothing about routing: [onOpen] decides.
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key, required this.project, this.frameHeight = 300, this.maxTags = 3})
+  const ProjectCard({super.key, required this.project, required this.onOpen, this.frameHeight = 300, this.maxTags = 3})
     : layout = ProjectCardLayout.vertical;
 
-  const ProjectCard.horizontal({super.key, required this.project, this.frameHeight = 300, this.maxTags = 4})
-    : layout = ProjectCardLayout.horizontal;
+  const ProjectCard.horizontal({
+    super.key,
+    required this.project,
+    required this.onOpen,
+    this.frameHeight = 300,
+    this.maxTags = 4,
+  }) : layout = ProjectCardLayout.horizontal;
 
   final ProjectModel project;
+
+  /// Called on tap; the caller decides where that goes.
+  final VoidCallback onOpen;
   final ProjectCardLayout layout;
   final double frameHeight;
   final int maxTags;
-
-  static void open(BuildContext context, ProjectModel project) {
-    GoRouter.of(context).goNamed(AppRoutes.project.name, pathParameters: {AppRoutes.projectIdParam: project.id});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +59,7 @@ class ProjectCard extends StatelessWidget {
         ),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          onTap: () => open(context, project),
+          onTap: onOpen,
           child: Padding(
             padding: horizontal ? EdgeInsets.all(isMobile ? 14 : 24) : const EdgeInsets.fromLTRB(20, 20, 20, 24),
             child: horizontal ? _horizontal(context, isMobile) : _vertical(context),

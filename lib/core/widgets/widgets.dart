@@ -3,5 +3,7 @@ export 'chip/chip.dart';
 export 'holder/holder.dart';
 export 'image/image.dart';
 export 'layout/layout.dart';
+export 'page/page.dart';
+export 'project/project.dart';
 export 'switcher/switcher.dart';
 export 'text/text.dart';
