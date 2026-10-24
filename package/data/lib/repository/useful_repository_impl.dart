@@ -5,8 +5,8 @@ import 'package:domain/domain.dart';
 import '../datasource/datasource.dart';
 import '../extension/extension.dart';
 
-/// Serves the command cheat sheet from the bundled assets. The API has no
-/// endpoint for it, so there is no server source to toggle.
+/// Serves the command cheat sheet from the bundled assets in every
+/// environment: the API has no endpoint for it.
 @Injectable(as: UsefulRepository)
 class UsefulRepositoryImpl implements UsefulRepository {
   UsefulRepositoryImpl(this.assetDataSource);

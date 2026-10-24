@@ -1,23 +1,30 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
+import '../datasource/datasource.dart';
+import 'environment.dart';
+
 late GetIt di;
 
 @InjectableInit.microPackage()
 void initMicroPackage() {}
 
+/// The single place that decides which [PortfolioDataSource] the
+/// environment gets; the concrete sources are plain lazy singletons.
 @module
 abstract class RegisterModule {
-  // You can register named preemptive types like follows
-  @Named("baseUrl")
+  @Named('baseUrl')
   Uri get baseUrl => Uri.parse('https://us-central1-portfolio-f2eb7.cloudfunctions.net/api/v1');
 
-  @Named("userId")
+  @Named('userId')
   String get userId => 'R5KVoOkqVztd4uxKxTCt';
 
-  @Named("hasServerSync")
-  bool get hasServerSync => false;
+  @Environment(DataEnvironment.assets)
+  @lazySingleton
+  PortfolioDataSource assetsSource(AssetsDataSource assets) => assets;
 
-  @Named("hasLocalSync")
-  bool get hasLocalSync => true;
+  @Environment(DataEnvironment.api)
+  @lazySingleton
+  PortfolioDataSource apiSource(ApiDatasource api, AssetsDataSource assets) =>
+      FallbackDataSource(primary: api, fallback: assets);
 }

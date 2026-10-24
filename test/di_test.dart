@@ -4,7 +4,6 @@ import 'package:get_it/get_it.dart';
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/core/app_environment_keys.dart';
 import 'package:my_portfolio/di/injection.dart';
 
 /// Wires the real container (root config + the `data` and `domain` micro
@@ -17,7 +16,7 @@ void main() {
   late GetIt di;
 
   setUp(() async {
-    di = await configureDependencies(AppEnvironmentKey.dev);
+    di = await configureDependencies(DataEnvironment.assets);
   });
 
   test('resolves every use case the router asks for', () {
@@ -33,16 +32,39 @@ void main() {
     expect(di<UserRepository>(), isA<UserRepository>());
     expect(di<ProjectRepository>(), isA<ProjectRepository>());
     expect(di<UsefulRepository>(), isA<UsefulRepository>());
-    expect(di<bool>(instanceName: 'hasLocalSync'), isTrue);
-    expect(di<bool>(instanceName: 'hasServerSync'), isFalse);
+  });
+
+  test('the assets environment binds the bundled JSON as the data source', () {
+    expect(di<PortfolioDataSource>(), isA<AssetsDataSource>());
+    expect(di<PortfolioDataSource>(), same(di<AssetsDataSource>()));
+  });
+
+  test('the api environment binds the API as the data source', () async {
+    final api = await configureDependencies(DataEnvironment.api);
+
+    expect(api<PortfolioDataSource>(), isA<FallbackDataSource>());
+    expect(api<UsefulRepository>(), isA<UsefulRepository>(), reason: 'commands still come from assets');
+  });
+
+  group('DataEnvironment.fromName', () {
+    test('accepts the known names in any case and defaults an empty value to assets', () {
+      expect(DataEnvironment.fromName(''), DataEnvironment.assets);
+      expect(DataEnvironment.fromName('assets'), DataEnvironment.assets);
+      expect(DataEnvironment.fromName(' API '), DataEnvironment.api);
+    });
+
+    test('rejects an unknown name', () {
+      expect(() => DataEnvironment.fromName('server'), throwsArgumentError);
+    });
   });
 
   test('every call returns an independent container', () async {
-    final other = await configureDependencies(AppEnvironmentKey.dev);
+    final other = await configureDependencies(DataEnvironment.assets);
 
     expect(other, isNot(same(di)));
-    // AssetsDataSource is the only singleton in the graph: a shared container would hand out the same one.
+    // Singletons are per container: a shared container would hand out the same instances.
     expect(other<AssetsDataSource>(), isNot(same(di<AssetsDataSource>())));
+    expect(other<PortfolioDataSource>(), isNot(same(di<PortfolioDataSource>())));
   });
 
   group('use cases read the bundled assets end to end', () {

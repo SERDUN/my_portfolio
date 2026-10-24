@@ -13,4 +13,4 @@ import 'injection.config.dart';
     ExternalModule(DomainPackageModule),
   ],
 )
-Future<GetIt> configureDependencies(String environment) async => GetIt.asNewInstance().init();
+Future<GetIt> configureDependencies(String environment) async => GetIt.asNewInstance().init(environment: environment);

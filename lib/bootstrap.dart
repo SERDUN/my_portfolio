@@ -6,7 +6,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'package:get_it/get_it.dart';
 
-import 'core/app_environment_keys.dart';
+import 'di/environment.dart';
 import 'di/injection.dart';
 
 Future<void> bootstrap(FutureOr<Widget> Function(GetIt di) builder) async =>
@@ -16,7 +16,7 @@ void _initialize(FutureOr<Widget> Function(GetIt di) builder) async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
 
-  final di = await configureDependencies(AppEnvironmentKey.dev);
+  final di = await configureDependencies(AppEnvironment.fromBuild());
 
   return runApp(await builder(di));
 }
