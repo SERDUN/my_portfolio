@@ -56,7 +56,8 @@ class LoadStatusView extends StatelessWidget {
         return StatusMessage(
           icon: Icons.cloud_off_rounded,
           message: message,
-          action: failureAction ??
+          action:
+              failureAction ??
               (onRetry == null
                   ? null
                   : PillButton(label: context.l10n.errorRetry, icon: Icons.refresh_rounded, onPressed: onRetry)),

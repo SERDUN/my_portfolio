@@ -167,7 +167,11 @@ class _BottomLine extends StatelessWidget {
       runSpacing: 4,
       alignment: isMobile ? WrapAlignment.start : WrapAlignment.end,
       children: [
-        _FooterLink(label: l10n.menuTitlePortfolio, style: linkStyle, onTap: () => context.go(AppRoutInfo.portfolio.path)),
+        _FooterLink(
+          label: l10n.menuTitlePortfolio,
+          style: linkStyle,
+          onTap: () => context.go(AppRoutInfo.portfolio.path),
+        ),
         _FooterLink(label: l10n.featureUsefulTitle, style: linkStyle, onTap: () => context.go(AppRoutInfo.useful.path)),
         _FooterLink(label: l10n.footerSource, style: linkStyle, onTap: () => openExternalUrl(sourceUrl)),
       ],
@@ -175,12 +179,11 @@ class _BottomLine extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.only(top: 20),
-      decoration: BoxDecoration(border: Border(top: BorderSide(color: palette.footerLine))),
+      decoration: BoxDecoration(
+        border: Border(top: BorderSide(color: palette.footerLine)),
+      ),
       child: isMobile
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [links, const SizedBox(height: 12), glory],
-            )
+          ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [links, const SizedBox(height: 12), glory])
           : Row(
               children: [
                 glory,

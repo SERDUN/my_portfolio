@@ -8,12 +8,7 @@ import 'package:my_portfolio/localization/localization.dart';
 
 /// Three featured projects as cards, with a link to the full list.
 class SelectedWorkSection extends StatelessWidget {
-  const SelectedWorkSection({
-    super.key,
-    required this.projects,
-    required this.totalCount,
-    required this.onSeeAll,
-  });
+  const SelectedWorkSection({super.key, required this.projects, required this.totalCount, required this.onSeeAll});
 
   final List<ProjectModel> projects;
   final int totalCount;
@@ -39,9 +34,7 @@ class SelectedWorkSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 32),
-          ResponsiveGrid(
-            children: [for (final project in projects.take(3)) ProjectCard(project: project)],
-          ),
+          ResponsiveGrid(children: [for (final project in projects.take(3)) ProjectCard(project: project)]),
         ],
       ),
     );

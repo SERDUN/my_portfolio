@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:material_ui/material_ui.dart';
 
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/state/state.dart';
 import 'package:my_portfolio/features/bio/bloc/bio_cubit.dart';
-import 'package:my_portfolio/localization/localization.dart';
+import 'package:my_portfolio/app/settings/settings.dart';
 
 class FakeGetUserUseCase implements GetUserUseCase {
   final controller = StreamController<PortfolioUserModel>.broadcast();
@@ -73,19 +72,20 @@ void main() {
   late FakeGetUserUseCase userUseCase;
   late FakeGetUserSkillsUseCase skillsUseCase;
   late FakeGetProjectsUseCase projectsUseCase;
-  late LanguageNotifier languageNotifier;
+  late AppSettingsCubit settings;
   late BioCubit cubit;
 
   setUp(() {
     userUseCase = FakeGetUserUseCase();
     skillsUseCase = FakeGetUserSkillsUseCase();
     projectsUseCase = FakeGetProjectsUseCase();
-    languageNotifier = LanguageNotifier();
-    cubit = BioCubit(userUseCase, skillsUseCase, projectsUseCase, languageNotifier);
+    settings = AppSettingsCubit();
+    cubit = BioCubit(userUseCase, skillsUseCase, projectsUseCase, settings);
   });
 
   tearDown(() async {
     await cubit.close();
+    await settings.close();
     await userUseCase.controller.close();
     await skillsUseCase.controller.close();
     await projectsUseCase.controller.close();
@@ -161,7 +161,8 @@ void main() {
   });
 
   test('resubscribes to all use cases with the new language when it changes', () async {
-    languageNotifier.changeLanguage(const Locale('uk'));
+    settings.changeLanguage(Language.uk);
+    await Future<void>.delayed(Duration.zero);
 
     expect(userUseCase.languages, [Language.en, Language.uk]);
     expect(userUseCase.executions, 2);
@@ -178,7 +179,8 @@ void main() {
     expect(skillsUseCase.controller.hasListener, isFalse);
     expect(projectsUseCase.controller.hasListener, isFalse);
 
-    languageNotifier.changeLanguage(const Locale('uk'));
+    settings.changeLanguage(Language.uk);
+    await Future<void>.delayed(Duration.zero);
     expect(userUseCase.executions, 1, reason: 'a closed cubit must not resubscribe');
     expect(skillsUseCase.executions, 1);
     expect(projectsUseCase.executions, 1);
@@ -191,7 +193,7 @@ void main() {
       final previous = Bloc.observer;
       Bloc.observer = observer;
       addTearDown(() => Bloc.observer = previous);
-      final observed = BioCubit(userUseCase, skillsUseCase, projectsUseCase, languageNotifier);
+      final observed = BioCubit(userUseCase, skillsUseCase, projectsUseCase, settings);
       addTearDown(observed.close);
       final error = StateError('offline');
 

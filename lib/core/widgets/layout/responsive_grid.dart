@@ -40,9 +40,11 @@ class ResponsiveGrid extends StatelessWidget {
         cells.add(Expanded(child: i < slice.length ? slice[i] : const SizedBox.shrink()));
       }
       if (rows.isNotEmpty) rows.add(SizedBox(height: gap));
-      rows.add(IntrinsicHeight(
-        child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: cells),
-      ));
+      rows.add(
+        IntrinsicHeight(
+          child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: cells),
+        ),
+      );
     }
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: rows);
   }

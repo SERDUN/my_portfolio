@@ -22,10 +22,10 @@ class PlatformTag extends StatelessWidget {
       child: Text(
         label.toUpperCase(),
         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              color: isFlutter ? palette.onAccent : palette.ground,
-              fontSize: 12,
-              letterSpacing: 1,
-            ),
+          color: isFlutter ? palette.onAccent : palette.ground,
+          fontSize: 12,
+          letterSpacing: 1,
+        ),
       ),
     );
   }

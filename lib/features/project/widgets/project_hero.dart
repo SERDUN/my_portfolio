@@ -94,15 +94,23 @@ class _Copy extends StatelessWidget {
         const SizedBox(height: 28),
         Container(
           padding: const EdgeInsets.only(top: 20),
-          decoration: BoxDecoration(border: Border(top: BorderSide(color: palette.line))),
+          decoration: BoxDecoration(
+            border: Border(top: BorderSide(color: palette.line)),
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(child: _Fact(label: l10n.projectFactPlatforms, value: _platforms(context))),
+              Expanded(
+                child: _Fact(label: l10n.projectFactPlatforms, value: _platforms(context)),
+              ),
               const SizedBox(width: 16),
-              Expanded(child: _Fact(label: l10n.projectFactStack, value: '${project.technologies.length}')),
+              Expanded(
+                child: _Fact(label: l10n.projectFactStack, value: '${project.technologies.length}'),
+              ),
               const SizedBox(width: 16),
-              Expanded(child: _Fact(label: l10n.projectFactScreens, value: '${project.screenshots.length}')),
+              Expanded(
+                child: _Fact(label: l10n.projectFactScreens, value: '${project.screenshots.length}'),
+              ),
             ],
           ),
         ),

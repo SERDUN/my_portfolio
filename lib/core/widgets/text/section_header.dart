@@ -51,11 +51,18 @@ class SectionHeader extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.only(top: divider ? 32 : 0),
-      decoration: divider ? BoxDecoration(border: Border(top: BorderSide(color: context.palette.line))) : null,
+      decoration: divider
+          ? BoxDecoration(
+              border: Border(top: BorderSide(color: context.palette.line)),
+            )
+          : null,
       child: isMobile || side == null
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [heading, if (side != null) ...[const SizedBox(height: 16), side]],
+              children: [
+                heading,
+                if (side != null) ...[const SizedBox(height: 16), side],
+              ],
             )
           : Row(
               crossAxisAlignment: CrossAxisAlignment.end,

@@ -15,9 +15,9 @@ class AppTheme {
   /// Fraunces has no Cyrillic. Ukrainian headings fall through to Playfair
   /// Display; both styles are requested so the italic file is loaded too.
   static List<String> get displayFallback => [
-        GoogleFonts.playfairDisplay().fontFamily!,
-        GoogleFonts.playfairDisplay(fontStyle: FontStyle.italic).fontFamily!,
-      ];
+    GoogleFonts.playfairDisplay().fontFamily!,
+    GoogleFonts.playfairDisplay(fontStyle: FontStyle.italic).fontFamily!,
+  ];
 
   static ThemeData light() => _build(Brightness.light, AppPalette.light);
 
@@ -153,9 +153,13 @@ class AppTheme {
 
   static TextTheme _textTheme(AppPalette p) {
     final base = GoogleFonts.manropeTextTheme();
-    TextStyle display(double size, {double height = 1.04, FontWeight weight = FontWeight.w400}) =>
-        GoogleFonts.fraunces(fontSize: size, height: height, fontWeight: weight, letterSpacing: -0.02 * size, color: p.ink)
-            .copyWith(fontFamilyFallback: displayFallback);
+    TextStyle display(double size, {double height = 1.04, FontWeight weight = FontWeight.w400}) => GoogleFonts.fraunces(
+      fontSize: size,
+      height: height,
+      fontWeight: weight,
+      letterSpacing: -0.02 * size,
+      color: p.ink,
+    ).copyWith(fontFamilyFallback: displayFallback);
     TextStyle sans(double size, {double height = 1.5, FontWeight weight = FontWeight.w400, Color? color}) =>
         GoogleFonts.manrope(fontSize: size, height: height, fontWeight: weight, color: color ?? p.ink);
 

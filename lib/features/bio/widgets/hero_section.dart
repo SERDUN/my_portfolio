@@ -73,10 +73,7 @@ class _HeroCopy extends StatelessWidget {
       children: [
         if (eyebrow.isNotEmpty) ...[Eyebrow(eyebrow), const SizedBox(height: 28)],
         if (user.headline.isNotEmpty)
-          Text.rich(
-            _headlineSpan(user, headlineStyle, palette),
-            style: headlineStyle,
-          )
+          Text.rich(_headlineSpan(user, headlineStyle, palette), style: headlineStyle)
         else
           Text(user.name, style: headlineStyle),
         const SizedBox(height: 28),
@@ -112,14 +109,16 @@ class _HeroCopy extends StatelessWidget {
     final accent = user.headlineAccent;
     final index = accent.isEmpty ? -1 : headline.lastIndexOf(accent);
     if (index < 0) return TextSpan(text: headline);
-    return TextSpan(children: [
-      TextSpan(text: headline.substring(0, index)),
-      TextSpan(
-        text: accent,
-        style: style?.copyWith(color: palette.accent, fontStyle: FontStyle.italic),
-      ),
-      TextSpan(text: headline.substring(index + accent.length)),
-    ]);
+    return TextSpan(
+      children: [
+        TextSpan(text: headline.substring(0, index)),
+        TextSpan(
+          text: accent,
+          style: style?.copyWith(color: palette.accent, fontStyle: FontStyle.italic),
+        ),
+        TextSpan(text: headline.substring(index + accent.length)),
+      ],
+    );
   }
 }
 
@@ -182,11 +181,17 @@ class _Portrait extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(child: _StatTile(value: years == null ? '—' : '$years+', label: l10n.statsYears)),
+              Expanded(
+                child: _StatTile(value: years == null ? '—' : '$years+', label: l10n.statsYears),
+              ),
               const SizedBox(width: 12),
-              Expanded(child: _StatTile(value: '$projectCount', label: l10n.statsProjects)),
+              Expanded(
+                child: _StatTile(value: '$projectCount', label: l10n.statsProjects),
+              ),
               const SizedBox(width: 12),
-              Expanded(child: _StatTile(value: '$platformCount', label: l10n.statsPlatforms)),
+              Expanded(
+                child: _StatTile(value: '$platformCount', label: l10n.statsPlatforms),
+              ),
             ],
           ),
         ),

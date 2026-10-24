@@ -6,11 +6,11 @@ import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
 Widget _host(Widget child) => MaterialApp(
-      theme: AppTheme.light(),
-      localizationsDelegates: const [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
-      supportedLocales: const [Locale('en')],
-      home: Scaffold(body: SingleChildScrollView(child: child)),
-    );
+  theme: AppTheme.light(),
+  localizationsDelegates: const [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
+  supportedLocales: const [Locale('en')],
+  home: Scaffold(body: SingleChildScrollView(child: child)),
+);
 
 void main() {
   setUpAll(() => GoogleFonts.config.allowRuntimeFetching = false);
@@ -31,18 +31,20 @@ void main() {
 
   testWidgets('a failed first load shows the error and calls retry', (tester) async {
     var retried = 0;
-    await tester.pumpWidget(_host(
-      LoadStatusView(status: LoadStatus.failure, hasData: false, onRetry: () => retried++, builder: (_) => content),
-    ));
+    await tester.pumpWidget(
+      _host(
+        LoadStatusView(status: LoadStatus.failure, hasData: false, onRetry: () => retried++, builder: (_) => content),
+      ),
+    );
     expect(find.text('Could not load this page.'), findsOneWidget);
     await tester.tap(find.text('Try again'));
     expect(retried, 1);
   });
 
   testWidgets('a failed reload keeps the loaded content under a banner', (tester) async {
-    await tester.pumpWidget(_host(
-      LoadStatusView(status: LoadStatus.failure, hasData: true, onRetry: () {}, builder: (_) => content),
-    ));
+    await tester.pumpWidget(
+      _host(LoadStatusView(status: LoadStatus.failure, hasData: true, onRetry: () {}, builder: (_) => content)),
+    );
     expect(find.text('content'), findsOneWidget);
     expect(find.text('Could not load this page.'), findsOneWidget);
   });

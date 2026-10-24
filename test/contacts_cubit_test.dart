@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:material_ui/material_ui.dart' show ThemeMode;
 
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/state/state.dart';
 import 'package:my_portfolio/features/contact/bloc/contacts_cubit.dart';
-import 'package:my_portfolio/localization/localization.dart';
+import 'package:my_portfolio/app/settings/settings.dart';
 
 class FakeGetContactsUseCase implements GetContactsUseCase {
   final controller = StreamController<List<ContactsModel>>.broadcast();
@@ -25,19 +25,20 @@ class FakeGetContactsUseCase implements GetContactsUseCase {
 
 void main() {
   late FakeGetContactsUseCase useCase;
-  late LanguageNotifier languageNotifier;
+  late AppSettingsCubit settings;
   late ContactsCubit cubit;
 
   final contacts = [ContactsModel(title: 'Email', value: 'me@example.com')];
 
   setUp(() {
     useCase = FakeGetContactsUseCase();
-    languageNotifier = LanguageNotifier();
-    cubit = ContactsCubit(useCase, languageNotifier);
+    settings = AppSettingsCubit();
+    cubit = ContactsCubit(useCase, settings);
   });
 
   tearDown(() async {
     await cubit.close();
+    await settings.close();
     await useCase.controller.close();
   });
 
@@ -70,14 +71,16 @@ void main() {
   });
 
   test('resubscribes when the language changes and stops after close', () async {
-    languageNotifier.changeLanguage(const Locale('uk'));
+    settings.changeLanguage(Language.uk);
+    await Future<void>.delayed(Duration.zero);
     expect(useCase.executions, 2);
     expect(useCase.languages, [Language.en, Language.uk]);
 
     await cubit.close();
     expect(useCase.controller.hasListener, isFalse);
 
-    languageNotifier.changeLanguage(const Locale('en'));
+    settings.changeLanguage(Language.en);
+    await Future<void>.delayed(Duration.zero);
     expect(useCase.executions, 2, reason: 'a closed cubit must not resubscribe');
   });
 
@@ -92,5 +95,12 @@ void main() {
 
     expect(cubit.state.status, LoadStatus.success);
     expect(cubit.state.error, isNull);
+  });
+
+  test('a theme change does not reload the page', () async {
+    settings.changeThemeMode(ThemeMode.dark);
+    await Future<void>.delayed(Duration.zero);
+
+    expect(useCase.executions, 1);
   });
 }

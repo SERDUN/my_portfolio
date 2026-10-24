@@ -20,15 +20,9 @@ class SkillsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SectionHeader(
-            eyebrow: l10n.introSkills,
-            title: l10n.skillsTitle,
-            description: l10n.skillsDescription,
-          ),
+          SectionHeader(eyebrow: l10n.introSkills, title: l10n.skillsTitle, description: l10n.skillsDescription),
           const SizedBox(height: 32),
-          ResponsiveGrid(
-            children: [for (final group in skills) _SkillGroupCard(group: group)],
-          ),
+          ResponsiveGrid(children: [for (final group in skills) _SkillGroupCard(group: group)]),
         ],
       ),
     );
@@ -64,11 +58,7 @@ class _SkillGroupCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 18),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [for (final skill in group.children) TagChip(skill.title)],
-          ),
+          Wrap(spacing: 8, runSpacing: 8, children: [for (final skill in group.children) TagChip(skill.title)]),
         ],
       ),
     );

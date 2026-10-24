@@ -7,11 +7,7 @@ import 'package:my_portfolio/style/style.dart';
 /// One command: its purpose, the command line in a code box, and a copy
 /// button that confirms for a moment.
 class CommandTile extends StatefulWidget {
-  const CommandTile({
-    super.key,
-    required this.title,
-    required this.command,
-  });
+  const CommandTile({super.key, required this.title, required this.command});
 
   final String title;
   final String command;
@@ -43,10 +39,7 @@ class _CommandTileState extends State<CommandTile> {
         Text(widget.title, style: textTheme.titleSmall),
         const SizedBox(height: 8),
         Container(
-          decoration: BoxDecoration(
-            color: palette.chip,
-            borderRadius: BorderRadius.circular(12),
-          ),
+          decoration: BoxDecoration(color: palette.chip, borderRadius: BorderRadius.circular(12)),
           padding: const EdgeInsets.fromLTRB(14, 6, 6, 6),
           child: Row(
             children: [

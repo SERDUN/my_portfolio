@@ -22,19 +22,11 @@ enum ProjectCardLayout {
 /// intro, technology tags and, in the horizontal layout, the spheres and the
 /// stores it shipped to. Opens the project page.
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({
-    super.key,
-    required this.project,
-    this.frameHeight = 300,
-    this.maxTags = 3,
-  }) : layout = ProjectCardLayout.vertical;
+  const ProjectCard({super.key, required this.project, this.frameHeight = 300, this.maxTags = 3})
+    : layout = ProjectCardLayout.vertical;
 
-  const ProjectCard.horizontal({
-    super.key,
-    required this.project,
-    this.frameHeight = 300,
-    this.maxTags = 4,
-  }) : layout = ProjectCardLayout.horizontal;
+  const ProjectCard.horizontal({super.key, required this.project, this.frameHeight = 300, this.maxTags = 4})
+    : layout = ProjectCardLayout.horizontal;
 
   final ProjectModel project;
   final ProjectCardLayout layout;
@@ -67,9 +59,7 @@ class ProjectCard extends StatelessWidget {
         child: InkWell(
           onTap: () => open(context, project),
           child: Padding(
-            padding: horizontal
-                ? EdgeInsets.all(isMobile ? 14 : 24)
-                : const EdgeInsets.fromLTRB(20, 20, 20, 24),
+            padding: horizontal ? EdgeInsets.all(isMobile ? 14 : 24) : const EdgeInsets.fromLTRB(20, 20, 20, 24),
             child: horizontal ? _horizontal(context, isMobile) : _vertical(context),
           ),
         ),
@@ -114,7 +104,11 @@ class ProjectCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _title(context, wrapTag: true),
-              ..._intro(context, lines: isMobile ? 3 : 4, style: isMobile ? null : Theme.of(context).textTheme.bodyMedium),
+              ..._intro(
+                context,
+                lines: isMobile ? 3 : 4,
+                style: isMobile ? null : Theme.of(context).textTheme.bodyMedium,
+              ),
               if (project.spheres.isNotEmpty && !isMobile) ...[
                 const SizedBox(height: 8),
                 Text(project.spheres.join(' · '), style: Theme.of(context).textTheme.bodySmall),
@@ -155,7 +149,12 @@ class ProjectCard extends StatelessWidget {
     if (text.isEmpty) return const [];
     return [
       const SizedBox(height: 10),
-      Text(text, style: style ?? Theme.of(context).textTheme.bodySmall, maxLines: lines, overflow: TextOverflow.ellipsis),
+      Text(
+        text,
+        style: style ?? Theme.of(context).textTheme.bodySmall,
+        maxLines: lines,
+        overflow: TextOverflow.ellipsis,
+      ),
     ];
   }
 
@@ -183,10 +182,7 @@ class ProjectCard extends StatelessWidget {
     if (stores.isEmpty) return const [];
     return [
       const SizedBox(height: 14),
-      Text(
-        stores.join(' · '),
-        style: Theme.of(context).textTheme.labelMedium?.copyWith(color: context.palette.accent),
-      ),
+      Text(stores.join(' · '), style: Theme.of(context).textTheme.labelMedium?.copyWith(color: context.palette.accent)),
     ];
   }
 }

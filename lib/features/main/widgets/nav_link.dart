@@ -5,12 +5,7 @@ import 'package:my_portfolio/style/style.dart';
 /// Header navigation item: muted text, the current page in ink with an
 /// accent underline.
 class NavLink extends StatelessWidget {
-  const NavLink({
-    super.key,
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
+  const NavLink({super.key, required this.label, required this.selected, required this.onTap});
 
   final String label;
   final bool selected;
@@ -32,9 +27,7 @@ class NavLink extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 4),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: selected ? palette.accent : Colors.transparent, width: 2),
-            ),
+            border: Border(bottom: BorderSide(color: selected ? palette.accent : Colors.transparent, width: 2)),
           ),
           child: Text(
             label,

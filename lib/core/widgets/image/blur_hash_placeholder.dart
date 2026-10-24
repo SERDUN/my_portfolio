@@ -7,11 +7,8 @@ import 'package:octo_image/octo_image.dart';
 /// which octo_image 2.x no longer ships.
 OctoPlaceholderBuilder blurHashPlaceholderBuilder(String hash, {BoxFit? fit}) {
   return (context) => SizedBox.expand(
-        child: Image(
-          image: BlurHashImage(hash),
-          fit: fit ?? BoxFit.cover,
-        ),
-      );
+    child: Image(image: BlurHashImage(hash), fit: fit ?? BoxFit.cover),
+  );
 }
 
 /// BlurHash error widget for [OctoImage]: the blurred placeholder with an

@@ -10,9 +10,7 @@ import 'status_message.dart';
 
 /// Router fallback for unknown paths.
 class NotFoundScreen extends StatelessWidget {
-  const NotFoundScreen({
-    super.key,
-  });
+  const NotFoundScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

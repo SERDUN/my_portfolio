@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/state/state.dart';
-import 'package:my_portfolio/localization/localization.dart';
 
 part 'bio_state.dart';
 
@@ -14,16 +13,10 @@ part 'bio_cubit.freezed.dart';
 /// are secondary: a failure clears that section (so no stale other-language
 /// data lingers) and is logged, the rest of the page stays.
 class BioCubit extends Cubit<BioState> with CubitSubscriptions<BioState>, LanguageReload<BioState> {
-  BioCubit(
-    this.userUseCase,
-    this.skillsUseCase,
-    this.projectsUseCase,
-    this.languageNotifier,
-  ) : super(const BioState()) {
-    reloadOn(languageNotifier);
+  BioCubit(this.userUseCase, this.skillsUseCase, this.projectsUseCase, LanguageSource languages)
+    : super(const BioState()) {
+    reloadOn(languages);
   }
-
-  final LanguageNotifier languageNotifier;
 
   final GetUserUseCase userUseCase;
   final GetUserSkillsUseCase skillsUseCase;
@@ -32,7 +25,6 @@ class BioCubit extends Cubit<BioState> with CubitSubscriptions<BioState>, Langua
   /// One language snapshot per load so the three streams never disagree.
   @override
   void load() {
-    final language = languageNotifier.language;
     loadPrimary(
       #user,
       userUseCase.execute(language: language),
