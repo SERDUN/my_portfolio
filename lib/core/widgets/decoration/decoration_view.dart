@@ -2,9 +2,9 @@ import 'package:material_ui/material_ui.dart';
 
 class DecorationViewLines extends StatelessWidget {
   const DecorationViewLines({
-    Key? key,
+    super.key,
     this.margin = const EdgeInsets.symmetric(vertical: 8),
-  }) : super(key: key);
+  });
   final EdgeInsets margin;
 
   @override

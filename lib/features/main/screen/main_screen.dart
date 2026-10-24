@@ -10,9 +10,9 @@ import '../widgets/widgets.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({
-    Key? key,
+    super.key,
     required this.navigationShell,
-  }) : super(key: key);
+  });
 
   final StatefulNavigationShell navigationShell;
 
@@ -23,7 +23,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: kMinInteractiveDimension,
-        backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+        backgroundColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
         title: const Text("Dmitro Serdun"),
         leadingWidth: 72,
         leading: Row(
@@ -62,7 +62,7 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
       body: navigationShell,
     );
   }

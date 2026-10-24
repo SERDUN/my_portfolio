@@ -16,10 +16,10 @@ class ActionTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(
-          Theme.of(context).colorScheme.primary.withOpacity(isSelected ? 0.1 : 0.0),
+        backgroundColor: WidgetStateProperty.all<Color>(
+          Theme.of(context).colorScheme.primary.withValues(alpha: isSelected ? 0.1 : 0.0),
         ),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0.0),
           ),

@@ -10,8 +10,8 @@ import '../widgets/widgets.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
   const ProjectDetailsPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<ProjectDetailsPage> createState() => _ContactUsState();

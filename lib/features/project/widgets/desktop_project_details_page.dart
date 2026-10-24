@@ -12,10 +12,10 @@ import 'project_links.dart';
 
 class DesktopProjectDetailsPage extends StatelessWidget {
   const DesktopProjectDetailsPage({
-    Key? key,
+    super.key,
     required this.project,
     required this.onOpenLink,
-  }) : super(key: key);
+  });
 
   final ProjectModel project;
   final Function(String) onOpenLink;
@@ -229,7 +229,7 @@ class DesktopProjectDetailsPage extends StatelessWidget {
                 "assets/image/icons/category.webp",
                 width: 24,
                 height: 24,
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             Text(

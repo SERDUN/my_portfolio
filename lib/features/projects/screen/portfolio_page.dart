@@ -10,8 +10,8 @@ import '../widgets/portfolio_item.dart';
 
 class PortfolioPage extends StatefulWidget {
   const PortfolioPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<PortfolioPage> createState() => _HomePageState();

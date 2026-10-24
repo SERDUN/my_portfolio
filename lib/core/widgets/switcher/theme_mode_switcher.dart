@@ -26,7 +26,7 @@ class _ThemeModeSwitcherState extends State<ThemeModeSwitcher> {
       onTap: _onThemeChanged,
       child: Icon(
         _getIconForThemeMode(_currentTheme()),
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.onSurface,
       ),
     );
   }

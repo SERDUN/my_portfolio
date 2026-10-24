@@ -7,7 +7,7 @@ enum IconTextType { selectable, clickable }
 
 class IconText extends StatelessWidget {
   const IconText({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.title,
     required this.content,
@@ -16,7 +16,7 @@ class IconText extends StatelessWidget {
     this.type = IconTextType.clickable,
     this.width,
     this.isInverted = false,
-  }) : super(key: key);
+  });
 
   final String imagePath;
   final String title;

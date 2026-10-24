@@ -3,7 +3,7 @@ import 'package:ionicons/ionicons.dart';
 
 class ProjectLinks extends StatelessWidget {
   const ProjectLinks({
-    Key? key,
+    super.key,
     required this.mainAxisAlignment,
     this.android = "",
     this.ios = "",
@@ -11,7 +11,7 @@ class ProjectLinks extends StatelessWidget {
     required this.onOpenLink,
     this.margin = EdgeInsets.zero,
     this.iconSize = 32,
-  }) : super(key: key);
+  });
 
   final String android;
   final String ios;
@@ -59,12 +59,12 @@ class ProjectLinks extends StatelessWidget {
 
 class SocialPart extends StatelessWidget {
   const SocialPart({
-    Key? key,
+    super.key,
     required this.link,
     required this.iconSize,
     required this.openLink,
     required this.icon,
-  }) : super(key: key);
+  });
 
   final IconData icon;
   final String link;
