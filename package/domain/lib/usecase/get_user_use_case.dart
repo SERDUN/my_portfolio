@@ -4,18 +4,17 @@ import '../common/common.dart';
 import '../entity/entity.dart';
 import '../repository/repository.dart';
 
-/// The owner's profile in the current locale.
+/// The owner's profile.
 abstract class GetUserUseCase {
-  Stream<PortfolioUserModel> execute();
+  Stream<PortfolioUserModel> execute({required Language language});
 }
 
 @Injectable(as: GetUserUseCase)
 class GetUserUseCaseImpl implements GetUserUseCase {
-  GetUserUseCaseImpl(this.config, this.userRepository);
+  GetUserUseCaseImpl(this.userRepository);
 
-  final Config config;
   final UserRepository userRepository;
 
   @override
-  Stream<PortfolioUserModel> execute() => userRepository.getUser(config.currentLocale);
+  Stream<PortfolioUserModel> execute({required Language language}) => userRepository.getUser(language);
 }

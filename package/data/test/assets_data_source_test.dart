@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:data/data.dart';
+import 'package:domain/domain.dart';
 
 /// Loads the bundled JSON through [AssetsDataSource], i.e. through
 /// `rootBundle` under the `packages/data/...` prefix the app uses at runtime.
@@ -9,7 +10,7 @@ void main() {
 
   final dataSource = AssetsDataSource();
 
-  for (final language in ['en', 'uk']) {
+  for (final language in Language.values) {
     group('AssetsDataSource($language)', () {
       test('getUser returns the bundled user', () async {
         final user = await dataSource.getUser(language);
@@ -35,14 +36,14 @@ void main() {
     });
   }
 
-  test('an unsupported locale falls back to English', () async {
-    final fallback = await dataSource.getUser('de');
-    final english = await dataSource.getUser('en');
+  test('each language serves its own content', () async {
+    final english = await dataSource.getUser(Language.en);
+    final ukrainian = await dataSource.getUser(Language.uk);
 
-    expect(fallback.intro, english.intro);
+    expect(ukrainian.intro, isNot(english.intro));
   });
 
   test('getProject throws for an unknown id', () async {
-    expect(dataSource.getProject('no-such-id', 'en'), throwsStateError);
+    expect(dataSource.getProject('no-such-id', Language.en), throwsStateError);
   });
 }

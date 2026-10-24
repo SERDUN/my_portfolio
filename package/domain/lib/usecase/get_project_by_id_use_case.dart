@@ -4,18 +4,17 @@ import '../common/common.dart';
 import '../entity/entity.dart';
 import '../repository/repository.dart';
 
-/// One project by id in the current locale.
+/// One project by id; errors when there is none.
 abstract class GetProjectByIdUseCase {
-  Stream<ProjectModel> execute({required String id});
+  Stream<ProjectModel> execute({required String id, required Language language});
 }
 
 @Injectable(as: GetProjectByIdUseCase)
 class GetProjectByIdUseCaseImpl implements GetProjectByIdUseCase {
-  GetProjectByIdUseCaseImpl(this.config, this.projectRepository);
+  GetProjectByIdUseCaseImpl(this.projectRepository);
 
-  final Config config;
   final ProjectRepository projectRepository;
 
   @override
-  Stream<ProjectModel> execute({required String id}) => projectRepository.getProjectById(id, config.currentLocale);
+  Stream<ProjectModel> execute({required String id, required Language language}) => projectRepository.getProjectById(id, language);
 }

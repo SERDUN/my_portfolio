@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 
+import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/app_environment_keys.dart';
@@ -28,13 +29,6 @@ void main() {
     expect(di<GetUsefulCommandsUseCase>(), isA<GetUsefulCommandsUseCase>());
   });
 
-  test('resolves the shared Config as a singleton used by the language switch', () {
-    final config = di<Config>();
-
-    expect(config, same(di<Config>()));
-    expect(config.currentLocale, 'en');
-  });
-
   test('registers the data package repositories behind the domain interfaces', () {
     expect(di<UserRepository>(), isA<UserRepository>());
     expect(di<ProjectRepository>(), isA<ProjectRepository>());
@@ -47,13 +41,14 @@ void main() {
     final other = await configureDependencies(AppEnvironmentKey.dev);
 
     expect(other, isNot(same(di)));
-    expect(other<Config>(), isNot(same(di<Config>())));
+    // AssetsDataSource is the only singleton in the graph: a shared container would hand out the same one.
+    expect(other<AssetsDataSource>(), isNot(same(di<AssetsDataSource>())));
   });
 
   group('use cases read the bundled assets end to end', () {
     test('user and skills', () async {
-      final user = await di<GetUserUseCase>().execute().first;
-      final skills = await di<GetUserSkillsUseCase>().execute().first;
+      final user = await di<GetUserUseCase>().execute(language: Language.en).first;
+      final skills = await di<GetUserSkillsUseCase>().execute(language: Language.en).first;
 
       expect(user.firstName, isNotEmpty);
       expect(user.secondName, isNotEmpty);
@@ -61,20 +56,19 @@ void main() {
     });
 
     test('projects, project by id, contacts and useful commands', () async {
-      final projects = await di<GetProjectsUseCase>().execute().first;
+      final projects = await di<GetProjectsUseCase>().execute(language: Language.en).first;
       expect(projects, isNotEmpty);
 
-      final project = await di<GetProjectByIdUseCase>().execute(id: projects.first.id!).first;
+      final project = await di<GetProjectByIdUseCase>().execute(id: projects.first.id!, language: Language.en).first;
       expect(project.name, projects.first.name);
 
-      expect(await di<GetContactsUseCase>().execute().first, isNotEmpty);
-      expect(await di<GetUsefulCommandsUseCase>().execute().first, isNotEmpty);
+      expect(await di<GetContactsUseCase>().execute(language: Language.en).first, isNotEmpty);
+      expect(await di<GetUsefulCommandsUseCase>().execute(language: Language.en).first, isNotEmpty);
     });
 
-    test('switching Config to uk serves the Ukrainian assets', () async {
-      final english = await di<GetUserUseCase>().execute().first;
-      di<Config>().setCurrentLocale = 'uk';
-      final ukrainian = await di<GetUserUseCase>().execute().first;
+    test('asking for uk serves the Ukrainian assets', () async {
+      final english = await di<GetUserUseCase>().execute(language: Language.en).first;
+      final ukrainian = await di<GetUserUseCase>().execute(language: Language.uk).first;
 
       expect(ukrainian.intro, isNotEmpty);
       expect(ukrainian.intro, isNot(english.intro));

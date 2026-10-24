@@ -31,12 +31,13 @@ class ShellCubit extends Cubit<ShellState> {
   StreamSubscription<List<ContactsModel>>? _contactsSubscription;
 
   void _load() {
+    final language = languageNotifier.language;
     _userSubscription?.cancel();
-    _userSubscription = userUseCase.execute().listen((user) {
+    _userSubscription = userUseCase.execute(language: language).listen((user) {
       if (!isClosed) emit(state.copyWith(user: user));
     });
     _contactsSubscription?.cancel();
-    _contactsSubscription = contactsUseCase.execute().listen((contacts) {
+    _contactsSubscription = contactsUseCase.execute(language: language).listen((contacts) {
       if (!isClosed) emit(state.copyWith(contacts: contacts));
     });
   }

@@ -24,17 +24,17 @@ class ProjectRepositoryImpl implements ProjectRepository {
   final bool hasLocalSync;
 
   @override
-  Stream<ProjectModel> getProjectById(String id, String localization) async* {
+  Stream<ProjectModel> getProjectById(String id, Language language) async* {
     _requireSource();
-    if (hasLocalSync) yield (await assetsDatasource.getProject(id, localization)).toDomain();
-    if (hasServerSync) yield (await apiDatasource.getProject(id, localization)).toDomain();
+    if (hasLocalSync) yield (await assetsDatasource.getProject(id, language)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getProject(id, language)).toDomain();
   }
 
   @override
-  Stream<List<ProjectModel>> getProjects(String localization) async* {
+  Stream<List<ProjectModel>> getProjects(Language language) async* {
     _requireSource();
-    if (hasLocalSync) yield (await assetsDatasource.getProjects(localization)).toDomain();
-    if (hasServerSync) yield (await apiDatasource.getProjects(localization)).toDomain();
+    if (hasLocalSync) yield (await assetsDatasource.getProjects(language)).toDomain();
+    if (hasServerSync) yield (await apiDatasource.getProjects(language)).toDomain();
   }
 
   void _requireSource() {

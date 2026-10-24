@@ -11,8 +11,8 @@ part 'useful_cubit.freezed.dart';
 
 class UsefulCubit extends Cubit<UsefulState> {
   UsefulCubit(this.useCase, this.languageNotifier) : super(const UsefulState(status: UsefulStatus.initial)) {
-    _initState();
-    languageNotifier.addListener(_initState);
+    _reload();
+    languageNotifier.addListener(_reload);
   }
 
   final LanguageNotifier languageNotifier;
@@ -21,14 +21,11 @@ class UsefulCubit extends Cubit<UsefulState> {
 
   StreamSubscription? _usefulCommandsStreamSubscription;
 
-  void _initState() {
-    getUsefulCommands();
-  }
+  void _reload() => getUsefulCommands(languageNotifier.language);
 
-  void getUsefulCommands() async {
+  void getUsefulCommands(Language language) {
     _usefulCommandsStreamSubscription?.cancel();
-    _usefulCommandsStreamSubscription = null;
-    _usefulCommandsStreamSubscription = useCase.execute().listen((event) {
+    _usefulCommandsStreamSubscription = useCase.execute(language: language).listen((event) {
       emit(state.copyWith(usefulCommands: event, status: UsefulStatus.success));
     });
   }
@@ -37,6 +34,6 @@ class UsefulCubit extends Cubit<UsefulState> {
   Future<void> close() async {
     await super.close();
     _usefulCommandsStreamSubscription?.cancel();
-    languageNotifier.removeListener(_initState);
+    languageNotifier.removeListener(_reload);
   }
 }

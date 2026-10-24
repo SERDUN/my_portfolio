@@ -1,39 +1,36 @@
 import 'package:flutter/services.dart';
 
-import 'package:domain/common/common.dart';
+import 'package:domain/domain.dart';
 
 import 'assets.gen.dart';
 
+/// Bundled JSON per [Language]. An exhaustive switch instead of a map: a
+/// language added to the enum without its assets fails to compile.
 extension AssetsDataGenExtension on $AssetsDataGen {
-  Future<String> _getBundle(String path) async {
-    final package = "packages/data/$path";
-    return rootBundle.loadString(package);
-  }
+  Future<String> _getBundle(String path) => rootBundle.loadString('packages/data/$path');
 
-  Future<String> contact(String localization) => _getBundle(LanguageTools.checkLocale(localization, languageFunctions: {
-        'en': () => en.contact,
-        'uk': () => uk.contact,
-      }));
+  Future<String> contact(Language language) => _getBundle(switch (language) {
+        Language.en => en.contact,
+        Language.uk => uk.contact,
+      });
 
-  Future<String> projects(String localization) =>
-      _getBundle(LanguageTools.checkLocale(localization, languageFunctions: {
-        'en': () => en.projects,
-        'uk': () => uk.projects,
-      }));
+  Future<String> projects(Language language) => _getBundle(switch (language) {
+        Language.en => en.projects,
+        Language.uk => uk.projects,
+      });
 
-  Future<String> skills(String localization) => _getBundle(LanguageTools.checkLocale(localization, languageFunctions: {
-        'en': () => en.skills,
-        'uk': () => uk.skills,
-      }));
+  Future<String> skills(Language language) => _getBundle(switch (language) {
+        Language.en => en.skills,
+        Language.uk => uk.skills,
+      });
 
-  Future<String> usefulCommands(String localization) =>
-      _getBundle(LanguageTools.checkLocale(localization, languageFunctions: {
-        'en': () => en.usefulCommands,
-        'uk': () => uk.usefulCommands,
-      }));
+  Future<String> usefulCommands(Language language) => _getBundle(switch (language) {
+        Language.en => en.usefulCommands,
+        Language.uk => uk.usefulCommands,
+      });
 
-  Future<String> user(String localization) => _getBundle(LanguageTools.checkLocale(localization, languageFunctions: {
-        'en': () => en.user,
-        'uk': () => uk.user,
-      }));
+  Future<String> user(Language language) => _getBundle(switch (language) {
+        Language.en => en.user,
+        Language.uk => uk.user,
+      });
 }

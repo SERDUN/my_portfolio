@@ -35,16 +35,17 @@ class ProjectCubit extends Cubit<ProjectState> {
   StreamSubscription? _projectsSubscription;
 
   void _initState() {
-    getProjectById(projectId);
+    final language = languageNotifier.language;
+    getProjectById(projectId, language);
     _projectsSubscription?.cancel();
-    _projectsSubscription = projectsUseCase.execute().listen((event) {
+    _projectsSubscription = projectsUseCase.execute(language: language).listen((event) {
       if (!isClosed) emit(state.copyWith(projects: event));
     });
   }
 
-  void getProjectById(String id) {
+  void getProjectById(String id, Language language) {
     _projectSubscription?.cancel();
-    _projectSubscription = useCase.execute(id: id).listen((event) {
+    _projectSubscription = useCase.execute(id: id, language: language).listen((event) {
       if (!isClosed) emit(state.copyWith(status: ProjectStatus.success, project: event));
     });
   }

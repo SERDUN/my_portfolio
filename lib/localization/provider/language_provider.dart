@@ -11,7 +11,7 @@ class LanguageProvider extends InheritedNotifier {
 
   LanguageNotifier get languageNotifier => notifier as LanguageNotifier;
 
-  void setLocale(Locale value) => languageNotifier.changeLanguage(Locale(value.languageCode));
+  void setLocale(Locale value) => languageNotifier.changeLanguage(value);
 
   static LanguageProvider? watch(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<LanguageProvider>();
