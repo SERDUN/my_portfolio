@@ -54,11 +54,7 @@ class _ApplicationState extends State<Application> {
               // ignore: deprecated_member_use
               builder: (context, child) => MaterialUiCompatibilityBridge(
                 child: ResponsiveBreakpoints.builder(
-                  child: MaxWidthBox(
-                    maxWidth: 1200,
-                    backgroundColor: Theme.of(context).colorScheme.surface,
-                    child: BouncingScrollWrapper.builder(context, child!, dragWithMouse: true),
-                  ),
+                  child: BouncingScrollWrapper.builder(context, child!, dragWithMouse: true),
                   breakpoints: [
                     const Breakpoint(start: 0, end: 450, name: MOBILE),
                     const Breakpoint(start: 451, end: 800, name: TABLET),
@@ -75,14 +71,8 @@ class _ApplicationState extends State<Application> {
                 Locale('en', ''),
                 Locale('uk', ''),
               ],
-              theme: FlexThemeData.light(
-                scheme: FlexScheme.espresso,
-                fontFamily: GoogleFonts.gentiumPlus().fontFamily,
-              ),
-              darkTheme: FlexThemeData.dark(
-                scheme: FlexScheme.espresso,
-                fontFamily: GoogleFonts.gentiumPlus().fontFamily,
-              ),
+              theme: AppTheme.light(),
+              darkTheme: AppTheme.dark(),
               themeMode: themeModeNotifier?.themeModeNotifier.themeMode,
               restorationScopeId: "application",
               locale: languageNotifier?.languageNotifier.currentLocale,
@@ -108,9 +98,16 @@ class _ApplicationState extends State<Application> {
           routes: [
             StatefulShellRoute.indexedStack(
               builder: (BuildContext context, GoRouterState state, StatefulNavigationShell navigationShell) {
-                return MainScreen(
-                  navigationShell: navigationShell,
-                  key: ValueKey(state.pageKey),
+                return BlocProvider<ShellCubit>(
+                  create: (_) => ShellCubit(
+                    di<GetUserUseCase>(),
+                    di<GetContactsUseCase>(),
+                    _languageNotifier,
+                  ),
+                  child: MainScreen(
+                    navigationShell: navigationShell,
+                    key: ValueKey(state.pageKey),
+                  ),
                 );
               },
               branches: <StatefulShellBranch>[

@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:my_portfolio/core/widgets/widgets.dart';
+import 'package:my_portfolio/features/main/main.dart';
 import 'package:my_portfolio/localization/localization.dart';
 
 import '../bloc/projects_cubit.dart';
@@ -22,7 +23,7 @@ class _HomePageState extends State<PortfolioPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<ProjectsCubit, ProjectsState>(
       builder: (context, state) {
-        return SingleChildScrollView(
+        return PageScaffold(
           child: Container(
             width: double.infinity,
             decoration: const BoxDecoration(),

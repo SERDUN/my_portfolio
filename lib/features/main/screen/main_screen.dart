@@ -2,12 +2,13 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:my_portfolio/core/widgets/widgets.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
 import '../widgets/widgets.dart';
 
+/// Shell around the four top-level pages: the site header on top, the current
+/// branch of the [StatefulNavigationShell] below.
 class MainScreen extends StatelessWidget {
   const MainScreen({
     super.key,
@@ -16,60 +17,27 @@ class MainScreen extends StatelessWidget {
 
   final StatefulNavigationShell navigationShell;
 
+  static const _destinations = ShellDestination.values;
+
   @override
   Widget build(BuildContext context) {
-    ThemeModeProvider? themeMode = ThemeModeProvider.watch(context);
+    final themeMode = ThemeModeProvider.watch(context);
+    final language = LanguageProvider.watch(context);
+    final index = navigationShell.currentIndex.clamp(0, _destinations.length - 1);
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: kMinInteractiveDimension,
-        backgroundColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
-        title: const Text("Dmitro Serdun"),
-        leadingWidth: 72,
-        leading: Row(
-          children: [
-            const SizedBox(width: 8),
-            SwitcherLanguage(
-              localizationChanged: () => _changeLanguage(context),
-            ),
-            const SizedBox(width: 8),
-            ThemeModeSwitcher(
-              themeMode: themeMode!.themeModeNotifier.themeMode,
-              onThemeChange: (mode) => themeMode.setThemeMode(mode),
-            )
-          ],
+      appBar: SiteHeader(
+        current: _destinations[index],
+        onNavigate: (destination) => navigationShell.goBranch(
+          destination.index,
+          initialLocation: destination.index == navigationShell.currentIndex,
         ),
-        actions: [
-          ActionTab(
-            isSelected: navigationShell.currentIndex == 0,
-            onTab: () => navigationShell.goBranch(0),
-            title: context.l10n.menuTitleHome,
-          ),
-          ActionTab(
-            isSelected: navigationShell.currentIndex == 1,
-            onTab: () => navigationShell.goBranch(1),
-            title: context.l10n.menuTitlePortfolio,
-          ),
-          ActionTab(
-            isSelected: navigationShell.currentIndex == 2,
-            onTab: () => navigationShell.goBranch(2),
-            title: context.l10n.menuTitleContact,
-          ),
-          ActionTab(
-            isSelected: navigationShell.currentIndex == 3,
-            onTab: () => navigationShell.goBranch(3),
-            title: context.l10n.menuTitleUseful,
-          ),
-        ],
+        themeMode: themeMode?.themeModeNotifier.themeMode ?? ThemeMode.system,
+        onThemeChange: (mode) => themeMode?.setThemeMode(mode),
+        locale: language?.languageNotifier.currentLocale ?? Localizations.localeOf(context),
+        onLocaleChange: (locale) => language?.setLocale(locale),
       ),
-      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
       body: navigationShell,
     );
-  }
-
-  void _changeLanguage(BuildContext context) {
-    final languageProvider = LanguageProvider.read(context);
-    final currentLanguage = languageProvider?.languageNotifier.currentLocale;
-    languageProvider?.setLocale(Locale(currentLanguage?.languageCode == "en" ? 'uk' : 'en'));
   }
 }

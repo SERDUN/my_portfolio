@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// No description provided for @menuTitlePortfolio.
   ///
   /// In en, this message translates to:
-  /// **'Portfolio'**
+  /// **'Projects'**
   String get menuTitlePortfolio;
 
   /// No description provided for @menuTitleContact.
@@ -229,6 +229,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Instagram'**
   String get contactInstagram;
+
+  /// No description provided for @footerContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s talk about your next app.'**
+  String get footerContactTitle;
+
+  /// No description provided for @footerSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Source on GitHub'**
+  String get footerSource;
+
+  /// No description provided for @footerGlory.
+  ///
+  /// In en, this message translates to:
+  /// **'Glory to Ukraine'**
+  String get footerGlory;
+
+  /// No description provided for @actionOpenMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Open menu'**
+  String get actionOpenMenu;
+
+  /// No description provided for @actionSwitchTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch theme'**
+  String get actionSwitchTheme;
+
+  /// No description provided for @actionSwitchLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get actionSwitchLanguage;
 }
 
 class _AppLocalizationsDelegate

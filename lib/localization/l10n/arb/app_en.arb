@@ -1,6 +1,6 @@
 {
   "menuTitleHome": "Home",
-  "menuTitlePortfolio": "Portfolio",
+  "menuTitlePortfolio": "Projects",
   "menuTitleContact": "Contact",
   "menuTitleUseful": "Useful",
   "featureUsefulTitle": "Useful commands",
@@ -20,5 +20,11 @@
   "contactLocation": "Location",
   "contactFacebook": "Facebook",
   "contactLinkedin": "LinkedIn",
-  "contactInstagram": "Instagram"
+  "contactInstagram": "Instagram",
+  "footerContactTitle": "Let's talk about your next app.",
+  "footerSource": "Source on GitHub",
+  "footerGlory": "Glory to Ukraine",
+  "actionOpenMenu": "Open menu",
+  "actionSwitchTheme": "Switch theme",
+  "actionSwitchLanguage": "Language"
 }

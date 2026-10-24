@@ -12,7 +12,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get menuTitleHome => 'Резюме';
 
   @override
-  String get menuTitlePortfolio => 'Портфоліо';
+  String get menuTitlePortfolio => 'Проєкти';
 
   @override
   String get menuTitleContact => 'Контакти';
@@ -28,7 +28,7 @@ class AppLocalizationsUk extends AppLocalizations {
       'Ця вкладка не має інформаційного значення для користувачів третьої сторони, в ній лише команди, які я часто використовую, і я зазвичай забуваю.';
 
   @override
-  String get lastProjectTitle => 'Проекти';
+  String get lastProjectTitle => 'Проєкти';
 
   @override
   String get buttonDownloadCv => 'Отримати резюме';
@@ -74,4 +74,22 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get contactInstagram => 'Інста';
+
+  @override
+  String get footerContactTitle => 'Поговорімо про ваш наступний застосунок.';
+
+  @override
+  String get footerSource => 'Код на GitHub';
+
+  @override
+  String get footerGlory => 'Слава Україні';
+
+  @override
+  String get actionOpenMenu => 'Відкрити меню';
+
+  @override
+  String get actionSwitchTheme => 'Змінити тему';
+
+  @override
+  String get actionSwitchLanguage => 'Мова';
 }

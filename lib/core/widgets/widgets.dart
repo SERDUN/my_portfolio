@@ -4,6 +4,7 @@ export 'chip/chip.dart';
 export 'decoration/decoration.dart';
 export 'expanded/expanded.dart';
 export 'holder/holder.dart';
+export 'image/image.dart';
+export 'layout/layout.dart';
 export 'switcher/switcher.dart';
 export 'text/text.dart';
-export 'image/image.dart';
