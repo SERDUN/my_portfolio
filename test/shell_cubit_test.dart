@@ -28,8 +28,7 @@ void main() {
     secondName: 'B',
     position: '',
     intro: '',
-    avatar: '',
-    cv: 'https://cv',
+    cv: Uri.parse('https://cv.example'),
   );
 
   setUp(() {

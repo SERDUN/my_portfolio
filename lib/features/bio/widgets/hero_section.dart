@@ -89,7 +89,7 @@ class _HeroCopy extends StatelessWidget {
             PillButton(
               label: l10n.buttonDownloadCv,
               icon: Icons.arrow_downward_rounded,
-              onPressed: user.cv.isEmpty ? null : () => openExternalUrl(user.cv),
+              onPressed: user.cv == null ? null : () => openUri(user.cv),
             ),
             PillButton(
               label: l10n.buttonSeeProjects,
@@ -162,10 +162,10 @@ class _Portrait extends StatelessWidget {
                   ),
                   child: AspectRatio(
                     aspectRatio: 4 / 3,
-                    child: user.avatar.isEmpty
+                    child: user.avatar == null
                         ? const SizedBox.shrink()
                         : Image.network(
-                            user.avatar,
+                            user.avatar.toString(),
                             fit: BoxFit.cover,
                             semanticLabel: user.name,
                             errorBuilder: (_, _, _) => const SizedBox.shrink(),

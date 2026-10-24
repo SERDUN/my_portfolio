@@ -17,9 +17,9 @@ abstract class BioState with _$BioState {
   List<ProjectModel> get featuredProjects {
     final flagged = projects.where((p) => p.featured).toList();
     if (flagged.isNotEmpty) return flagged;
-    return projects.where((p) => p.preview != null && p.preview!.isNotEmpty).take(3).toList();
+    return projects.where((p) => p.preview != null).take(3).toList();
   }
 
   /// Distinct platforms across all projects: Flutter, Android, ...
-  int get platformCount => projects.map((p) => p.platform).whereType<String>().toSet().length;
+  int get platformCount => projects.map((p) => p.platform).whereType<ProjectPlatform>().toSet().length;
 }

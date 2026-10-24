@@ -7,15 +7,8 @@ import 'package:domain/domain.dart';
 class FakeUserRepository implements UserRepository {
   final List<Language> requestedLanguages = [];
 
-  PortfolioUserModel user = PortfolioUserModel(
-    firstName: 'Dmitro',
-    secondName: 'Serdun',
-    position: '',
-    intro: '',
-    avatar: '',
-    cv: '',
-  );
-  List<PortfolioSkillsModel> skills = [PortfolioSkillsModel(title: 'Flutter', expanded: false, children: const [])];
+  PortfolioUserModel user = PortfolioUserModel(firstName: 'Dmitro', secondName: 'Serdun', position: '', intro: '');
+  List<PortfolioSkillsModel> skills = [PortfolioSkillsModel(title: 'Flutter')];
   List<ContactsModel> contacts = [ContactsModel(title: 'Email', value: 'me@example.com')];
 
   @override
@@ -41,10 +34,7 @@ class FakeProjectRepository implements ProjectRepository {
   final List<Language> requestedLanguages = [];
   final List<String> requestedIds = [];
 
-  List<ProjectModel> projects = [
-    ProjectModel(id: '0', name: 'First', linkAndroid: '', linkIOS: '', linkGithub: ''),
-    ProjectModel(id: '1', name: 'Second', linkAndroid: '', linkIOS: '', linkGithub: ''),
-  ];
+  List<ProjectModel> projects = [ProjectModel(id: '0', name: 'First'), ProjectModel(id: '1', name: 'Second')];
 
   @override
   Stream<List<ProjectModel>> getProjects(Language language) {
@@ -195,6 +185,27 @@ void main() {
       expect(prefixed.isEmail, isTrue);
       expect(prefixed.link, 'mailto:me@example.com');
       expect(prefixed.displayValue, 'me@example.com');
+    });
+  });
+
+  group('ProjectModel', () {
+    test('stack drops the platform name and summary falls back to the description', () {
+      final project = ProjectModel(
+        id: '1',
+        name: 'App',
+        description: 'Long text',
+        platform: ProjectPlatform.flutter,
+        technologies: const ['Flutter', 'BLoC', 'flutter'],
+      );
+
+      expect(project.stack, ['BLoC']);
+      expect(project.summary, 'Long text');
+    });
+
+    test('links know whether there is a store to show', () {
+      expect(const ProjectLinks().isEmpty, isTrue);
+      expect(ProjectLinks(github: Uri.parse('https://github.com/x')).hasStore, isFalse);
+      expect(ProjectLinks(appStore: Uri.parse('https://apps.apple.com/x')).hasStore, isTrue);
     });
   });
 }

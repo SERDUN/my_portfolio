@@ -26,7 +26,7 @@ class _FakeList implements GetProjectsUseCase {
   Stream<List<ProjectModel>> execute({required Language language}) => controller.stream;
 }
 
-ProjectModel _project(String id) => ProjectModel(id: id, name: 'P$id', linkAndroid: '', linkIOS: '', linkGithub: '');
+ProjectModel _project(String id) => ProjectModel(id: id, name: 'P$id');
 
 void main() {
   late _FakeById byId;

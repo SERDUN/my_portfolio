@@ -23,7 +23,7 @@ class ProjectHero extends StatelessWidget {
 
     final copy = _Copy(project: project);
     final frame = PhoneFrame(
-      imageUrl: project.preview,
+      image: project.preview,
       height: isMobile ? 380 : 520,
       phoneWidth: isMobile ? 220 : 280,
       bezel: isMobile ? 6 : 8,
@@ -76,11 +76,11 @@ class _Copy extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 22),
-        Text(project.name ?? '', style: isMobile ? textTheme.displaySmall : textTheme.displayLarge),
-        if ((project.intro ?? '').isNotEmpty) ...[
+        Text(project.name, style: isMobile ? textTheme.displaySmall : textTheme.displayLarge),
+        if (project.intro.isNotEmpty) ...[
           const SizedBox(height: 22),
           Text(
-            project.intro!,
+            project.intro,
             style: GoogleFonts.fraunces(
               fontSize: isMobile ? 20 : 26,
               height: 1.3,
@@ -122,12 +122,12 @@ class _Copy extends StatelessWidget {
   String _platforms(BuildContext context) {
     final l10n = context.l10n;
     final names = <String>[
-      if (project.linkIOS.isNotEmpty) l10n.platformIos,
-      if (project.linkAndroid.isNotEmpty) l10n.platformAndroid,
+      if (project.links.appStore != null) l10n.platformIos,
+      if (project.links.googlePlay != null) l10n.platformAndroid,
       if (project.technologies.any((t) => t.toLowerCase() == 'web')) l10n.platformWeb,
     ];
     if (names.isNotEmpty) return names.join(', ');
-    return project.platform ?? '—';
+    return project.platform?.label ?? '—';
   }
 }
 
@@ -140,26 +140,26 @@ class _StoreButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final buttons = <Widget>[
-      if (project.linkIOS.isNotEmpty)
+      if (project.links.appStore != null)
         PillButton(
           label: l10n.storeAppStore,
           icon: Ionicons.logoAppleAppstore,
           variant: PillButtonVariant.ink,
-          onPressed: () => openExternalUrl(project.linkIOS),
+          onPressed: () => openUri(project.links.appStore),
         ),
-      if (project.linkAndroid.isNotEmpty)
+      if (project.links.googlePlay != null)
         PillButton(
           label: l10n.storeGooglePlay,
           icon: Ionicons.logoGooglePlaystore,
-          variant: project.linkIOS.isEmpty ? PillButtonVariant.ink : PillButtonVariant.outline,
-          onPressed: () => openExternalUrl(project.linkAndroid),
+          variant: project.links.appStore == null ? PillButtonVariant.ink : PillButtonVariant.outline,
+          onPressed: () => openUri(project.links.googlePlay),
         ),
-      if (project.linkGithub.isNotEmpty)
+      if (project.links.github != null)
         PillButton(
           label: l10n.storeGithub,
           icon: Ionicons.logoGithub,
-          variant: project.hasStoreLink ? PillButtonVariant.outline : PillButtonVariant.ink,
-          onPressed: () => openExternalUrl(project.linkGithub),
+          variant: project.links.hasStore ? PillButtonVariant.outline : PillButtonVariant.ink,
+          onPressed: () => openUri(project.links.github),
         ),
     ];
     if (buttons.isEmpty) return const SizedBox.shrink();

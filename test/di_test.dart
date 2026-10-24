@@ -81,7 +81,7 @@ void main() {
       final projects = await di<GetProjectsUseCase>().execute(language: Language.en).first;
       expect(projects, isNotEmpty);
 
-      final project = await di<GetProjectByIdUseCase>().execute(id: projects.first.id!, language: Language.en).first;
+      final project = await di<GetProjectByIdUseCase>().execute(id: projects.first.id, language: Language.en).first;
       expect(project.name, projects.first.name);
 
       expect(await di<GetContactsUseCase>().execute(language: Language.en).first, isNotEmpty);

@@ -3,13 +3,9 @@ import 'package:domain/domain.dart';
 import '../dto/portfolio_skills_dto.dart';
 
 extension PortfolioSkillsDtoMapper on PortfolioSkillsDTO {
-  /// Maps the group and its subskills recursively; a missing `expanded`
-  /// reads as collapsed.
-  PortfolioSkillsModel toDomain() => PortfolioSkillsModel(
-        title: title,
-        expanded: expanded ?? false,
-        children: subskills.toDomain(),
-      );
+  /// Maps the group and its subskills recursively. The JSON's `expanded`
+  /// flag is a leftover of the old tree view and is not carried over.
+  PortfolioSkillsModel toDomain() => PortfolioSkillsModel(title: title, children: subskills.toDomain());
 }
 
 extension PortfolioSkillsDtoListMapper on List<PortfolioSkillsDTO> {

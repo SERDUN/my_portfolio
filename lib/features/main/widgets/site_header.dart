@@ -156,7 +156,7 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
           label: context.l10n.buttonDownloadCv,
           variant: PillButtonVariant.ink,
           compact: true,
-          onPressed: cv == null || cv.isEmpty ? null : () => openExternalUrl(cv),
+          onPressed: cv == null ? null : () => openUri(cv),
         );
       },
     );

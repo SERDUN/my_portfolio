@@ -6,6 +6,9 @@ part 'project_dto.g.dart';
 class ProjectDTO {
   final String? id;
   final String? name;
+
+  /// "flutter" or "android"; older data without it is inferred from the stack.
+  final String? platform;
   final String? intro;
   final String? description;
   final String? linkAndroid;
@@ -25,6 +28,7 @@ class ProjectDTO {
   ProjectDTO({
     this.id,
     this.name,
+    this.platform,
     this.intro,
     this.description,
     this.linkAndroid,

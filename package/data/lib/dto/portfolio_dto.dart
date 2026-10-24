@@ -11,8 +11,7 @@ class PortfolioDTO {
 
   PortfolioDTO();
 
-  factory PortfolioDTO.fromJson(Map<String, dynamic> json) =>
-      _$PortfolioDTOFromJson(json);
+  factory PortfolioDTO.fromJson(Map<String, dynamic> json) => _$PortfolioDTOFromJson(json);
 
   Map<String, dynamic> toJson() => _$PortfolioDTOToJson(this);
 }

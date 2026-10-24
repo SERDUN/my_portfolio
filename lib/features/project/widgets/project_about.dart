@@ -24,7 +24,7 @@ class ProjectAbout extends StatelessWidget {
       children: [
         Text(l10n.projectAbout, style: textTheme.headlineLarge),
         const SizedBox(height: 16),
-        SelectableText(project.description ?? '', style: textTheme.bodyLarge),
+        SelectableText(project.description, style: textTheme.bodyLarge),
       ],
     );
 

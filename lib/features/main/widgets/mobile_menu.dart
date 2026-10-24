@@ -83,7 +83,7 @@ class _MobileMenu extends StatelessWidget {
               return PillButton(
                 label: l10n.buttonDownloadCv,
                 icon: Icons.arrow_downward_rounded,
-                onPressed: cv == null || cv.isEmpty ? null : () => openExternalUrl(cv),
+                onPressed: cv == null ? null : () => openUri(cv),
               );
             },
           ),

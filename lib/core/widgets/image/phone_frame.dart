@@ -12,7 +12,7 @@ import 'blur_hash_placeholder.dart';
 class PhoneFrame extends StatelessWidget {
   const PhoneFrame({
     super.key,
-    required this.imageUrl,
+    required this.image,
     this.height = 300,
     this.phoneWidth = 220,
     this.bezel = 6,
@@ -22,7 +22,7 @@ class PhoneFrame extends StatelessWidget {
     this.semanticLabel,
   });
 
-  final String? imageUrl;
+  final Uri? image;
   final double height;
   final double phoneWidth;
   final double bezel;
@@ -36,7 +36,7 @@ class PhoneFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    final url = imageUrl;
+    final url = image;
     return ClipRRect(
       borderRadius: BorderRadius.circular(wellRadius),
       child: Container(
@@ -56,13 +56,13 @@ class PhoneFrame extends StatelessWidget {
           padding: EdgeInsets.only(top: bezel, left: bezel, right: bezel),
           child: ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(radius - bezel)),
-            child: url == null || url.isEmpty
+            child: url == null
                 ? Container(color: palette.chip)
                 : Semantics(
                     image: true,
                     label: semanticLabel,
                     child: OctoImage(
-                      image: Image.network(url).image,
+                      image: Image.network(url.toString()).image,
                       placeholderBuilder: blurHashPlaceholderBuilder(_blurHash),
                       errorBuilder: OctoError.icon(color: palette.muted),
                       fit: BoxFit.cover,
