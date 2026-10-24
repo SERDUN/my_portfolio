@@ -6,13 +6,13 @@ import 'package:ionicons/ionicons.dart';
 
 class TreeRoot extends StatefulWidget {
   const TreeRoot({
-    Key? key,
+    super.key,
     this.level = 0,
     this.expanded = false,
     this.offsetLeft = 24.0,
     this.children = const [],
     this.title,
-  }) : super(key: key);
+  });
 
   final int level;
   final bool expanded;

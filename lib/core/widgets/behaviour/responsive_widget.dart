@@ -4,11 +4,11 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 class ResponsiveWidget extends StatelessWidget {
   const ResponsiveWidget({
-    Key? key,
+    super.key,
     this.desktopScreen,
     this.tabletScreen,
     this.mobileScreen,
-  }) : super(key: key);
+  });
 
   final Widget? desktopScreen;
   final Widget? tabletScreen;

@@ -4,10 +4,10 @@ import 'package:my_portfolio/app/app.dart';
 
 class SwitcherLanguage extends StatelessWidget {
   const SwitcherLanguage({
-    Key? key,
+    super.key,
     this.margin = EdgeInsets.zero,
     required this.localizationChanged,
-  }) : super(key: key);
+  });
 
   final EdgeInsets margin;
   final Function() localizationChanged;

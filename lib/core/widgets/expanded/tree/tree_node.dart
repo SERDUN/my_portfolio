@@ -6,7 +6,7 @@ import 'package:my_portfolio/app/app.dart';
 
 class TreeNode extends StatefulWidget {
   const TreeNode({
-    Key? key,
+    super.key,
     this.level = 0,
     this.expanded = false,
     this.isRoot = false,
@@ -21,7 +21,7 @@ class TreeNode extends StatefulWidget {
     this.titleOnTap,
     this.leadingOnTap,
     this.trailingOnTap,
-  }) : super(key: key);
+  });
 
   final int level;
   final bool expanded;
@@ -83,7 +83,7 @@ class _TreeNodeState extends State<TreeNode> {
                       ? Assets.image.icons.category.image(
                           width: 24,
                           height: 24,
-                          color: Theme.of(context).colorScheme.onBackground,
+                          color: Theme.of(context).colorScheme.onSurface,
                         )
                       : Assets.image.icons.subCategory.image(width: 24, height: 24),
                 ),
@@ -94,7 +94,7 @@ class _TreeNodeState extends State<TreeNode> {
                   child: Center(
                     child: Icon(
                       _isExpanded ? Ionicons.pizza : Ionicons.pizzaOutline,
-                      color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+                      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
                       size: 24,
                     ),
                   ),

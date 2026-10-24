@@ -16,9 +16,9 @@ import 'app_route_consts.dart';
 
 class Application extends StatefulWidget {
   const Application({
-    Key? key,
+    super.key,
     required this.di,
-  }) : super(key: key);
+  });
 
   final GetIt di;
 
@@ -34,7 +34,7 @@ class _ApplicationState extends State<Application> {
 
   late final GoRouter _router = _buildRouting();
 
-  get di => widget.di;
+  GetIt get di => widget.di;
 
   @override
   Widget build(BuildContext context) {

@@ -12,10 +12,10 @@ import 'project_links.dart';
 
 class MobileProjectDetailsPage extends StatelessWidget {
   const MobileProjectDetailsPage({
-    Key? key,
+    super.key,
     required this.project,
     required this.onOpen,
-  }) : super(key: key);
+  });
 
   final ProjectModel project;
   final Function(String) onOpen;

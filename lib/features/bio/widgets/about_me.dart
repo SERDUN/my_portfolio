@@ -9,10 +9,10 @@ import 'package:my_portfolio/localization/localization.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({
-    Key? key,
+    super.key,
     required this.aboutMe,
     required this.skills,
-  }) : super(key: key);
+  });
 
   final String aboutMe;
   final List<PortfolioSkillsModel> skills;
@@ -22,7 +22,7 @@ class AboutMe extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          color: Theme.of(context).colorScheme.background.withOpacity(0.8),
+          color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.8),
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

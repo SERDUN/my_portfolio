@@ -21,7 +21,7 @@ class CommandTile extends StatelessWidget {
           fit: BoxFit.fill,
           child: Icon(
             Icons.copy,
-            color: Theme.of(context).colorScheme.onBackground.withOpacity(.5),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
           ),
         ),
         onTap: () async => Clipboard.setData(

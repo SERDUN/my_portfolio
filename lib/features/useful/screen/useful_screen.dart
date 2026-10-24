@@ -47,7 +47,7 @@ class _HelpScreenState extends State<HelpScreen> {
                     ),
                     Text(
                       context.l10n.featureUsefulDescription,
-                      style: textThemes.labelSmall?.copyWith(color: colorScheme.onBackground.withOpacity(0.2)),
+                      style: textThemes.labelSmall?.copyWith(color: colorScheme.onSurface.withValues(alpha: 0.2)),
                     ),
                     SingleChildScrollView(
                       child: Column(

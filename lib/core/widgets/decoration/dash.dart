@@ -7,13 +7,13 @@ enum DashedLineDirection {
 
 class Dash extends StatelessWidget {
   const Dash({
-    Key? key,
+    super.key,
     this.margin = EdgeInsets.zero,
     this.opacity = 0.5,
     this.dashSpace = 16.0,
     this.dashSize = 16.0,
     required this.direction,
-  }) : super(key: key);
+  });
 
   final EdgeInsets margin;
   final double opacity;
@@ -65,7 +65,7 @@ class DashedLinePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     double dashHeight = dashHeightArg, dashSpace = dashSpaceArg, startY = 0;
     final paint = Paint()
-      ..color = color.withOpacity(opacity)
+      ..color = color.withValues(alpha: opacity)
       ..strokeWidth = 1;
 
     switch (direction) {

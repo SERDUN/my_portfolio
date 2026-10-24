@@ -3,11 +3,11 @@ import 'package:material_ui/material_ui.dart';
 class AppIcon extends StatelessWidget {
   const AppIcon(
     this.path, {
-    Key? key,
+    super.key,
     this.size = 24,
     this.color,
     this.background,
-  }) : super(key: key);
+  });
 
   final String path;
   final double size;

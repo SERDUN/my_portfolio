@@ -8,10 +8,10 @@ import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class MobilePortfolioItem extends StatelessWidget {
   const MobilePortfolioItem({
-    Key? key,
+    super.key,
     required this.openDetails,
     required this.project,
-  }) : super(key: key);
+  });
 
   final Function openDetails;
   final ProjectModel project;

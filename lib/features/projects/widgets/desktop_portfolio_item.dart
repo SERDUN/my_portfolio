@@ -8,13 +8,13 @@ import 'package:my_portfolio/core/widgets/widgets.dart';
 
 class DesktopPortfolioItem extends StatelessWidget {
   const DesktopPortfolioItem({
-    Key? key,
+    super.key,
     required this.openDetails,
     required this.project,
     required this.chipColor,
     required this.tags,
     required this.chipName,
-  }) : super(key: key);
+  });
 
   final Function openDetails;
   final ProjectModel project;

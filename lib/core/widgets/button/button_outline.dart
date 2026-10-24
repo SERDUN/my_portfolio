@@ -2,13 +2,13 @@ import 'package:material_ui/material_ui.dart';
 
 class ButtonOutline extends StatelessWidget {
   const ButtonOutline({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.text,
     this.corner = 16,
     this.width,
     this.margin,
-  }) : super(key: key);
+  });
 
   final Function onTap;
   final String text;

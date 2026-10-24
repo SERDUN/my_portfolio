@@ -7,12 +7,12 @@ import 'tree_root.dart';
 
 class TreeView extends StatelessWidget {
   const TreeView({
-    Key? key,
+    super.key,
     required this.data,
     this.offsetLeft = 24.0,
     required this.subCategoryTextStyle,
     required this.categoryTextStyle,
-  }) : super(key: key);
+  });
 
   final List<PortfolioSkillsModel> data;
 

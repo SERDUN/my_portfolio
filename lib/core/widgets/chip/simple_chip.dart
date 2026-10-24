@@ -2,11 +2,11 @@ import 'package:material_ui/material_ui.dart';
 
 class SimpleChip extends StatelessWidget {
   const SimpleChip({
-    Key? key,
+    super.key,
     required this.text,
     this.color,
     this.textStyle,
-  }) : super(key: key);
+  });
 
   final String text;
   final Color? color;
@@ -18,7 +18,7 @@ class SimpleChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       margin: const EdgeInsets.symmetric(vertical: 4),
       decoration: BoxDecoration(
-        color: color ?? Theme.of(context).colorScheme.primary.withOpacity(0.4),
+        color: color ?? Theme.of(context).colorScheme.primary.withValues(alpha: 0.4),
         borderRadius: BorderRadius.circular(24),
       ),
       child: Text(

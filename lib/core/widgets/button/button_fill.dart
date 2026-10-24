@@ -2,10 +2,10 @@ import 'package:material_ui/material_ui.dart';
 
 class ButtonFill extends StatelessWidget {
   const ButtonFill({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.text,
-  }) : super(key: key);
+  });
 
   final Function onTap;
   final String text;
