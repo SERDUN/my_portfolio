@@ -26,5 +26,21 @@
   "footerGlory": "Glory to Ukraine",
   "actionOpenMenu": "Open menu",
   "actionSwitchTheme": "Switch theme",
-  "actionSwitchLanguage": "Language"
+  "actionSwitchLanguage": "Language",
+  "buttonSeeProjects": "See projects",
+  "statsYears": "years in mobile",
+  "statsProjects": "projects",
+  "statsPlatforms": "platforms",
+  "skillsTitle": "What I work with",
+  "skillsDescription": "Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.",
+  "selectedWorkEyebrow": "Selected work",
+  "selectedWorkTitle": "Three projects to start with",
+  "allProjects": "All {count} projects",
+  "@allProjects": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

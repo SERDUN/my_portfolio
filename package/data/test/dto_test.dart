@@ -35,9 +35,12 @@ void main() {
         'technologies': ['Flutter', 'Dart'],
         'screenshots': ['https://img.example/1.png'],
         'preview': 'https://img.example/preview.png',
+        'featured': true,
       };
 
       final dto = ProjectDTO.fromJson(json);
+
+      expect(dto.featured, isTrue);
 
       expect(dto.linkAndroid, 'https://play.example/app');
       expect(dto.linkIOS, 'https://apps.example/app');

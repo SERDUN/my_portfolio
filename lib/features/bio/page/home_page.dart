@@ -1,14 +1,15 @@
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:my_portfolio/core/core.dart';
+import 'package:my_portfolio/app/app_route_consts.dart';
 import 'package:my_portfolio/features/bio/bloc/bio_cubit.dart';
 import 'package:my_portfolio/features/main/main.dart';
-import 'package:my_portfolio/localization/localization.dart';
 
 import '../widgets/widgets.dart';
 
+/// Home: hero with the portrait and stats, skills as chips, selected work.
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
@@ -18,47 +19,35 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BioCubit, BioState>(
       builder: (context, state) {
+        final user = state.user;
         return PageScaffold(
           child: AnimatedOpacity(
-            opacity: state.user != null ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 500),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            opacity: user != null ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 400),
+            child: user == null
+                ? const SizedBox.shrink()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const SizedBox(height: 64),
-                      NameIntro(
-                        firstName: state.user?.firstName,
-                        secondName: state.user?.secondName,
+                      HeroSection(
+                        user: user,
+                        projectCount: state.projects.length,
+                        platformCount: state.platformCount,
+                        onSeeProjects: () => _openProjects(context),
                       ),
-                      PillButton(
-                        label: context.l10n.buttonDownloadCv,
-                        variant: PillButtonVariant.outline,
-                        onPressed: () => openExternalUrl(state.user?.cv),
+                      SkillsSection(skills: state.skills ?? const []),
+                      SelectedWorkSection(
+                        projects: state.featuredProjects,
+                        totalCount: state.projects.length,
+                        onSeeAll: () => _openProjects(context),
                       ),
-                      const SizedBox(height: 40),
                     ],
                   ),
-                ),
-                Container(
-                  constraints: BoxConstraints(
-                    minHeight: MediaQuery.of(context).size.height / 2,
-                    minWidth: double.infinity,
-                  ),
-                  child: AboutMe(
-                    skills: state.skills ?? [],
-                    aboutMe: state.user?.intro ?? "",
-                  ),
-                ),
-              ],
-            ),
           ),
         );
       },
     );
   }
+
+  void _openProjects(BuildContext context) => context.go(AppRoutInfo.portfolio.path);
 }

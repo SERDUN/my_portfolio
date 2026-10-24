@@ -265,6 +265,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get actionSwitchLanguage;
+
+  /// No description provided for @buttonSeeProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'See projects'**
+  String get buttonSeeProjects;
+
+  /// No description provided for @statsYears.
+  ///
+  /// In en, this message translates to:
+  /// **'years in mobile'**
+  String get statsYears;
+
+  /// No description provided for @statsProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'projects'**
+  String get statsProjects;
+
+  /// No description provided for @statsPlatforms.
+  ///
+  /// In en, this message translates to:
+  /// **'platforms'**
+  String get statsPlatforms;
+
+  /// No description provided for @skillsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What I work with'**
+  String get skillsTitle;
+
+  /// No description provided for @skillsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.'**
+  String get skillsDescription;
+
+  /// No description provided for @selectedWorkEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected work'**
+  String get selectedWorkEyebrow;
+
+  /// No description provided for @selectedWorkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Three projects to start with'**
+  String get selectedWorkTitle;
+
+  /// No description provided for @allProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'All {count} projects'**
+  String allProjects(int count);
 }
 
 class _AppLocalizationsDelegate

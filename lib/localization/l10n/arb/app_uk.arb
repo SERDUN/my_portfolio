@@ -26,5 +26,14 @@
   "footerGlory": "Слава Україні",
   "actionOpenMenu": "Відкрити меню",
   "actionSwitchTheme": "Змінити тему",
-  "actionSwitchLanguage": "Мова"
+  "actionSwitchLanguage": "Мова",
+  "buttonSeeProjects": "Переглянути проєкти",
+  "statsYears": "років у мобільній розробці",
+  "statsProjects": "проєктів",
+  "statsPlatforms": "платформи",
+  "skillsTitle": "З чим я працюю",
+  "skillsDescription": "Згруповано так, як я користуюся ними щодня: спершу Flutter, під ним Android-коріння, і те, що навколо клієнта.",
+  "selectedWorkEyebrow": "Вибрані роботи",
+  "selectedWorkTitle": "Три проєкти для початку",
+  "allProjects": "Усі проєкти: {count}"
 }
