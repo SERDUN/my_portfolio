@@ -1,41 +1,57 @@
 import 'package:material_ui/material_ui.dart';
 
-class ContactItem extends StatelessWidget {
-  const ContactItem({
-    super.key,
-    required this.title,
-    required this.value,
-    required this.onTap,
-  });
+import 'package:domain/domain.dart';
 
-  final String title;
-  final String value;
+import 'package:my_portfolio/core/core.dart';
+import 'package:my_portfolio/style/style.dart';
 
-  final Function(String) onTap;
+/// One contact channel: label, the address and an arrow. Email opens the
+/// mail client, everything else opens the link.
+class ContactCard extends StatelessWidget {
+  const ContactCard({super.key, required this.contact});
+
+  final ContactsModel contact;
+
+  bool get _isEmail => contact.value.contains('@') && !contact.value.contains('/');
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 280,
-      height: 224,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: () => onTap(value),
-        child: Card(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                title,
-                textAlign: TextAlign.center,
-              ),
-              SelectableText(
-                value,
-                textAlign: TextAlign.center,
-              ),
-            ],
+    final palette = context.palette;
+    final textTheme = Theme.of(context).textTheme;
+    final shown = contact.value.replaceFirst(RegExp(r'^https?://(www\.)?'), '');
+
+    return Semantics(
+      link: true,
+      label: '${contact.title}: ${contact.value}',
+      child: Material(
+        color: palette.card,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppTheme.radiusCard),
+          side: BorderSide(color: palette.line),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () => openExternalUrl(_isEmail ? mailto(contact.value) : contact.value),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(24, 22, 20, 22),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(contact.title.toUpperCase(),
+                          style: textTheme.labelSmall?.copyWith(letterSpacing: 1.3, fontSize: 12)),
+                      const SizedBox(height: 8),
+                      Text(shown, style: textTheme.titleMedium, maxLines: 2, overflow: TextOverflow.ellipsis),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Icon(Icons.arrow_outward_rounded, size: 20, color: palette.accent),
+              ],
+            ),
           ),
         ),
       ),

@@ -146,4 +146,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeGithub => 'GitHub';
+
+  @override
+  String get backToProjects => 'All projects';
+
+  @override
+  String get projectAbout => 'About the project';
+
+  @override
+  String get projectFactPlatforms => 'Platforms';
+
+  @override
+  String get projectFactStack => 'Stack';
+
+  @override
+  String get projectFactScreens => 'Screens';
+
+  @override
+  String projectScreensCount(int count) {
+    return '$count screens';
+  }
+
+  @override
+  String get projectNext => 'Next project';
+
+  @override
+  String get platformIos => 'iOS';
+
+  @override
+  String get platformAndroid => 'Android';
+
+  @override
+  String get platformWeb => 'Web';
+
+  @override
+  String get contactDescription =>
+      'Email is the fastest way. The other links lead where I post and answer.';
+
+  @override
+  String get copyCommand => 'Copy';
+
+  @override
+  String get copiedCommand => 'Copied';
+
+  @override
+  String get notFoundHome => 'Back home';
 }

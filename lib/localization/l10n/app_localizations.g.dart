@@ -361,6 +361,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'GitHub'**
   String get storeGithub;
+
+  /// No description provided for @backToProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'All projects'**
+  String get backToProjects;
+
+  /// No description provided for @projectAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About the project'**
+  String get projectAbout;
+
+  /// No description provided for @projectFactPlatforms.
+  ///
+  /// In en, this message translates to:
+  /// **'Platforms'**
+  String get projectFactPlatforms;
+
+  /// No description provided for @projectFactStack.
+  ///
+  /// In en, this message translates to:
+  /// **'Stack'**
+  String get projectFactStack;
+
+  /// No description provided for @projectFactScreens.
+  ///
+  /// In en, this message translates to:
+  /// **'Screens'**
+  String get projectFactScreens;
+
+  /// No description provided for @projectScreensCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} screens'**
+  String projectScreensCount(int count);
+
+  /// No description provided for @projectNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next project'**
+  String get projectNext;
+
+  /// No description provided for @platformIos.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS'**
+  String get platformIos;
+
+  /// No description provided for @platformAndroid.
+  ///
+  /// In en, this message translates to:
+  /// **'Android'**
+  String get platformAndroid;
+
+  /// No description provided for @platformWeb.
+  ///
+  /// In en, this message translates to:
+  /// **'Web'**
+  String get platformWeb;
+
+  /// No description provided for @contactDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is the fastest way. The other links lead where I post and answer.'**
+  String get contactDescription;
+
+  /// No description provided for @copyCommand.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copyCommand;
+
+  /// No description provided for @copiedCommand.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get copiedCommand;
+
+  /// No description provided for @notFoundHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back home'**
+  String get notFoundHome;
 }
 
 class _AppLocalizationsDelegate

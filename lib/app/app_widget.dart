@@ -145,6 +145,7 @@ class _ApplicationState extends State<Application> {
                           builder: (context, state) => BlocProvider<ProjectCubit>(
                             create: (BuildContext context) => ProjectCubit(
                               di<GetProjectByIdUseCase>(),
+                              di<GetProjectsUseCase>(),
                               _languageNotifier,
                               state.pathParameters[AppRoutInfo.projectId]!,
                             ),

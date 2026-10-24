@@ -26,6 +26,7 @@ class PillButton extends StatelessWidget {
     this.icon,
     this.variant = PillButtonVariant.filled,
     this.compact = false,
+    this.iconLeading = false,
   });
 
   final String label;
@@ -36,6 +37,9 @@ class PillButton extends StatelessWidget {
   /// 44 px tall with tighter padding, for toolbars.
   final bool compact;
 
+  /// Puts the icon before the label (a back arrow).
+  final bool iconLeading;
+
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
@@ -44,14 +48,13 @@ class PillButton extends StatelessWidget {
         : const EdgeInsets.symmetric(horizontal: 22, vertical: 14);
     final minimumSize = Size(44, compact ? 44 : 48);
 
+    final iconWidget = icon == null ? null : Icon(icon, size: 18);
     final child = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
+        if (iconWidget != null && iconLeading) ...[iconWidget, const SizedBox(width: 10)],
         Text(label),
-        if (icon != null) ...[
-          const SizedBox(width: 10),
-          Icon(icon, size: 18),
-        ],
+        if (iconWidget != null && !iconLeading) ...[const SizedBox(width: 10), iconWidget],
       ],
     );
 

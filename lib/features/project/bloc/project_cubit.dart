@@ -14,6 +14,7 @@ part 'project_cubit.freezed.dart';
 class ProjectCubit extends Cubit<ProjectState> {
   ProjectCubit(
     this.useCase,
+    this.projectsUseCase,
     this.languageNotifier,
     this.projectId,
   ) : super(const ProjectState()) {
@@ -27,23 +28,32 @@ class ProjectCubit extends Cubit<ProjectState> {
 
   final GetProjectByIdUseCase useCase;
 
-  StreamSubscription? _userStreamSubscription;
+  /// The whole list, for the "next project" link at the bottom.
+  final GetProjectsUseCase projectsUseCase;
+
+  StreamSubscription? _projectSubscription;
+  StreamSubscription? _projectsSubscription;
 
   void _initState() {
     getProjectById(projectId);
+    _projectsSubscription?.cancel();
+    _projectsSubscription = projectsUseCase.execute().listen((event) {
+      if (!isClosed) emit(state.copyWith(projects: event));
+    });
   }
 
-  void getProjectById(String id) async {
-    _userStreamSubscription?.cancel();
-    _userStreamSubscription = null;
-    _userStreamSubscription = useCase.execute(id: id).listen((event) {
-      emit(state.copyWith(status: ProjectStatus.success, project: event));
+  void getProjectById(String id) {
+    _projectSubscription?.cancel();
+    _projectSubscription = useCase.execute(id: id).listen((event) {
+      if (!isClosed) emit(state.copyWith(status: ProjectStatus.success, project: event));
     });
   }
 
   @override
   Future<void> close() async {
-    await super.close();
-    _userStreamSubscription?.cancel();
+    languageNotifier.removeListener(_initState);
+    await _projectSubscription?.cancel();
+    await _projectsSubscription?.cancel();
+    return super.close();
   }
 }

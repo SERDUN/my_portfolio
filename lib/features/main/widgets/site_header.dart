@@ -58,13 +58,15 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
             child: ContentWidth(
               child: Row(
                 children: [
-                  Flexible(
-                    fit: isWide ? FlexFit.loose : FlexFit.tight,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: _Wordmark(onTap: () => onNavigate(ShellDestination.home)),
+                  if (isWide)
+                    _Wordmark(onTap: () => onNavigate(ShellDestination.home))
+                  else
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: _Wordmark(onTap: () => onNavigate(ShellDestination.home)),
+                      ),
                     ),
-                  ),
                   if (isWide) ...[
                     const Spacer(),
                     _navigation(context),

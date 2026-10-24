@@ -178,14 +178,17 @@ class _Portrait extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        Row(
-          children: [
-            Expanded(child: _StatTile(value: years == null ? '—' : '$years+', label: l10n.statsYears)),
-            const SizedBox(width: 12),
-            Expanded(child: _StatTile(value: '$projectCount', label: l10n.statsProjects)),
-            const SizedBox(width: 12),
-            Expanded(child: _StatTile(value: '$platformCount', label: l10n.statsPlatforms)),
-          ],
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(child: _StatTile(value: years == null ? '—' : '$years+', label: l10n.statsYears)),
+              const SizedBox(width: 12),
+              Expanded(child: _StatTile(value: '$projectCount', label: l10n.statsProjects)),
+              const SizedBox(width: 12),
+              Expanded(child: _StatTile(value: '$platformCount', label: l10n.statsPlatforms)),
+            ],
+          ),
         ),
       ],
     );

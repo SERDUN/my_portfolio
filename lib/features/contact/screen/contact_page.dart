@@ -1,14 +1,17 @@
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:my_portfolio/core/core.dart';
-import 'package:my_portfolio/features/contact/widgets/contact_item.dart';
 import 'package:my_portfolio/features/main/main.dart';
 import 'package:my_portfolio/localization/localization.dart';
+import 'package:my_portfolio/style/style.dart';
 
 import '../bloc/contacts_cubit.dart';
+import '../widgets/contact_item.dart';
 
+/// Contacts: the statement, a short description and one card per channel.
 class ContactPage extends StatelessWidget {
   const ContactPage({
     super.key,
@@ -16,35 +19,35 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final textTheme = Theme.of(context).textTheme;
+    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
+
     return BlocBuilder<ContactsCubit, ContactsState>(
       builder: (context, state) {
+        final contacts = state.contacts;
         return PageScaffold(
-          child: state.contacts == null
+          child: contacts == null
               ? const Center(child: CircularProgressIndicator())
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 40),
-                    Text(
-                      context.l10n.contactGetInTouch,
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const DecorationViewLines(),
-                    const SizedBox(height: 40),
-                    Wrap(
-                      spacing: 16,
-                      runSpacing: 8,
-                      alignment: WrapAlignment.center,
-                      children: state.contacts!
-                          .map((contact) => ContactItem(
-                                title: contact.title,
-                                value: contact.value,
-                                onTap: openExternalUrl,
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(height: 40),
-                  ],
+              : ContentWidth(
+                  padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Eyebrow(l10n.menuTitleContact),
+                      const SizedBox(height: 10),
+                      Text(l10n.contactGetInTouch, style: isMobile ? textTheme.headlineLarge : textTheme.displayMedium),
+                      const SizedBox(height: 14),
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 640),
+                        child: Text(l10n.contactDescription, style: textTheme.bodyMedium?.copyWith(color: context.palette.muted)),
+                      ),
+                      const SizedBox(height: 32),
+                      ResponsiveGrid(
+                        children: [for (final contact in contacts) ContactCard(contact: contact)],
+                      ),
+                    ],
+                  ),
                 ),
         );
       },

@@ -146,4 +146,49 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get storeGithub => 'GitHub';
+
+  @override
+  String get backToProjects => 'Усі проєкти';
+
+  @override
+  String get projectAbout => 'Про проєкт';
+
+  @override
+  String get projectFactPlatforms => 'Платформи';
+
+  @override
+  String get projectFactStack => 'Стек';
+
+  @override
+  String get projectFactScreens => 'Екранів';
+
+  @override
+  String projectScreensCount(int count) {
+    return 'Екранів: $count';
+  }
+
+  @override
+  String get projectNext => 'Наступний проєкт';
+
+  @override
+  String get platformIos => 'iOS';
+
+  @override
+  String get platformAndroid => 'Android';
+
+  @override
+  String get platformWeb => 'Web';
+
+  @override
+  String get contactDescription =>
+      'Пошта найшвидша. Решта посилань ведуть туди, де я пишу і відповідаю.';
+
+  @override
+  String get copyCommand => 'Копіювати';
+
+  @override
+  String get copiedCommand => 'Скопійовано';
+
+  @override
+  String get notFoundHome => 'На головну';
 }

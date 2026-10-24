@@ -1,38 +1,75 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
+import 'package:material_ui/material_ui.dart';
 
-class CommandTile extends StatelessWidget {
+import 'package:my_portfolio/localization/localization.dart';
+import 'package:my_portfolio/style/style.dart';
+
+/// One command: its purpose, the command line in a code box, and a copy
+/// button that confirms for a moment.
+class CommandTile extends StatefulWidget {
   const CommandTile({
     super.key,
     required this.title,
-    required this.subtitle,
+    required this.command,
   });
 
   final String title;
-  final String subtitle;
+  final String command;
+
+  @override
+  State<CommandTile> createState() => _CommandTileState();
+}
+
+class _CommandTileState extends State<CommandTile> {
+  bool _copied = false;
+
+  Future<void> _copy() async {
+    await Clipboard.setData(ClipboardData(text: widget.command));
+    if (!mounted) return;
+    setState(() => _copied = true);
+    await Future<void>.delayed(const Duration(seconds: 2));
+    if (mounted) setState(() => _copied = false);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(title),
-      subtitle: SelectableText(subtitle),
-      trailing: InkWell(
-        child: FittedBox(
-          fit: BoxFit.fill,
-          child: Icon(
-            Icons.copy,
-            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .5),
+    final palette = context.palette;
+    final textTheme = Theme.of(context).textTheme;
+    final l10n = context.l10n;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(widget.title, style: textTheme.titleSmall),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            color: palette.chip,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: const EdgeInsets.fromLTRB(14, 6, 6, 6),
+          child: Row(
+            children: [
+              Expanded(
+                child: SelectableText(
+                  widget.command,
+                  style: GoogleFonts.jetBrainsMono(fontSize: 14, height: 1.5, color: palette.ink),
+                ),
+              ),
+              const SizedBox(width: 8),
+              TextButton.icon(
+                onPressed: _copy,
+                style: TextButton.styleFrom(
+                  foregroundColor: _copied ? palette.accent : palette.muted,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                ),
+                icon: Icon(_copied ? Icons.check_rounded : Icons.copy_rounded, size: 18),
+                label: Text(_copied ? l10n.copiedCommand : l10n.copyCommand),
+              ),
+            ],
           ),
         ),
-        onTap: () async => Clipboard.setData(
-          ClipboardData(text: subtitle),
-        ),
-      ),
-      minLeadingWidth: 4,
-      leading: Container(
-        width: 8,
-        color: Theme.of(context).colorScheme.secondary,
-      ),
+      ],
     );
   }
 }
