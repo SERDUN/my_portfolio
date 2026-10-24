@@ -32,8 +32,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get common_retry => 'Try again';
 
   @override
+  String common_semanticsLabel_languageCompact(String code, String next) {
+    return '$code, switch language to $next';
+  }
+
+  @override
+  String common_semanticsLabel_languageOption(String code, String name) {
+    return '$code, $name';
+  }
+
+  @override
   String get contacts_description =>
       'Email is the fastest way. The other links lead where I post and answer.';
+
+  @override
+  String contacts_semanticsLabel_openChannel(String title, String value) {
+    return '$title: $value';
+  }
 
   @override
   String get contacts_title => 'Get in touch';
@@ -116,6 +131,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get project_screenshotsTitle => 'Screenshots';
 
   @override
+  String project_semanticsLabel_nextProject(String name) {
+    return 'Next project: $name';
+  }
+
+  @override
   String get project_stackTitle => 'Dependency stack';
 
   @override
@@ -130,6 +150,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get projects_filterAll => 'All';
+
+  @override
+  String projects_semanticsLabel_openProject(String name, String summary) {
+    return '$name. $summary';
+  }
 
   @override
   String projects_title(int count, int platforms) {
@@ -161,6 +186,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shell_openMenu => 'Open menu';
 
   @override
+  String shell_semanticsLabel_wordmark(String name) {
+    return '$name, home page';
+  }
+
+  @override
   String get shell_switchLanguage => 'Language';
 
   @override
@@ -175,6 +205,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get useful_description =>
       'This tab does not have any informative meaning for third-party users, it is only the commands I often use that I usually forget.';
+
+  @override
+  String useful_semanticsLabel_copied(String title) {
+    return 'Copied: $title';
+  }
+
+  @override
+  String useful_semanticsLabel_copy(String title) {
+    return 'Copy: $title';
+  }
 
   @override
   String get useful_title => 'Useful commands';

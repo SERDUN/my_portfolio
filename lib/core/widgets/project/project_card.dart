@@ -7,8 +7,10 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
+import '../../extensions/project_platform_x.dart';
 import '../chip/chip.dart';
 import '../image/phone_frame.dart';
+import '../semantics/semantic_action.dart';
 
 enum ProjectCardLayout {
   /// Screenshot on top, text below: the home page grid.
@@ -22,13 +24,20 @@ enum ProjectCardLayout {
 /// intro, technology tags and, in the horizontal layout, the spheres and the
 /// stores it shipped to. Knows nothing about routing: [onOpen] decides.
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key, required this.project, required this.onOpen, this.frameHeight = 300, this.maxTags = 3})
-    : layout = ProjectCardLayout.vertical;
+  const ProjectCard({
+    super.key,
+    required this.project,
+    required this.onOpen,
+    this.identifier,
+    this.frameHeight = 300,
+    this.maxTags = 3,
+  }) : layout = ProjectCardLayout.vertical;
 
   const ProjectCard.horizontal({
     super.key,
     required this.project,
     required this.onOpen,
+    this.identifier,
     this.frameHeight = 300,
     this.maxTags = 4,
   }) : layout = ProjectCardLayout.horizontal;
@@ -37,9 +46,20 @@ class ProjectCard extends StatelessWidget {
 
   /// Called on tap; the caller decides where that goes.
   final VoidCallback onOpen;
+
+  /// Automation id from `lib/app/keys.dart`; differs per list the card is in.
+  final String? identifier;
   final ProjectCardLayout layout;
   final double frameHeight;
   final int maxTags;
+
+  /// What the excluded card body shows, for the accessible name: summary,
+  /// platform, stack.
+  String _details() => [
+    if (project.summary.isNotEmpty) project.summary,
+    if (project.platform != null) project.platform!.label,
+    if (project.stack.isNotEmpty) project.stack.join(', '),
+  ].join('. ');
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +68,9 @@ class ProjectCard extends StatelessWidget {
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     final horizontal = layout == ProjectCardLayout.horizontal;
 
-    return Semantics(
-      button: true,
-      label: name,
+    return SemanticAction.button(
+      label: context.l10n.projects_semanticsLabel_openProject(name, _details()),
+      identifier: identifier,
       child: Material(
         color: palette.card,
         shape: RoundedRectangleBorder(
@@ -60,9 +80,12 @@ class ProjectCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onOpen,
-          child: Padding(
-            padding: horizontal ? EdgeInsets.all(isMobile ? 14 : 24) : const EdgeInsets.fromLTRB(20, 20, 20, 24),
-            child: horizontal ? _horizontal(context, isMobile) : _vertical(context),
+          // The label carries the card's text; it would be read twice otherwise.
+          child: ExcludeSemantics(
+            child: Padding(
+              padding: horizontal ? EdgeInsets.all(isMobile ? 14 : 24) : const EdgeInsets.fromLTRB(20, 20, 20, 24),
+              child: horizontal ? _horizontal(context, isMobile) : _vertical(context),
+            ),
           ),
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
+import 'package:my_portfolio/app/keys.dart';
 
 /// Hero: eyebrow with position and location, the headline with its accent
 /// tail, the intro, the two calls to action, and the portrait with three
@@ -89,12 +90,14 @@ class _HeroCopy extends StatelessWidget {
             PillButton(
               label: l10n.common_downloadCv,
               icon: Icons.arrow_downward_rounded,
+              identifier: homeDownloadCvId,
               onPressed: user.cv == null ? null : () => openUri(user.cv),
             ),
             PillButton(
               label: l10n.home_seeProjects,
               icon: Icons.arrow_forward_rounded,
               variant: PillButtonVariant.outline,
+              identifier: homeSeeProjectsId,
               onPressed: onSeeProjects,
             ),
           ],

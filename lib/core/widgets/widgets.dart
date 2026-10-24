@@ -5,5 +5,6 @@ export 'image/image.dart';
 export 'layout/layout.dart';
 export 'page/page.dart';
 export 'project/project.dart';
+export 'semantics/semantics.dart';
 export 'switcher/switcher.dart';
 export 'text/text.dart';

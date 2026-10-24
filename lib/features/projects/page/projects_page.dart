@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
@@ -33,45 +34,53 @@ class _ProjectsPageState extends State<ProjectsPage> {
         final visible = _platform == null ? projects : projects.where((p) => p.platform == _platform).toList();
         final isMobile = ResponsiveBreakpoints.of(context).isMobile;
 
-        return PageScaffold(
-          child: LoadStatusView(
-            status: state.status,
-            hasData: projects.isNotEmpty,
-            onRetry: context.read<ProjectsCubit>().load,
-            builder: (context) => ContentWidth(
-              padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _Header(
-                    count: projects.length,
-                    platformCount: platforms.length,
-                    selected: _platform,
-                    platforms: platforms,
-                    onSelect: (platform) => setState(() => _platform = platform),
-                  ),
-                  const SizedBox(height: 32),
-                  ResponsiveGrid(
-                    desktop: 2,
-                    tablet: 1,
-                    mobile: 1,
-                    gap: 24,
-                    children: [
-                      for (final project in visible)
-                        ProjectCard.horizontal(project: project, onOpen: () => context.openProject(project.id)),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: PillButton(
-                      label: context.l10n.projects_cta,
-                      icon: Icons.arrow_forward_rounded,
-                      variant: PillButtonVariant.ghost,
-                      onPressed: context.openContacts,
+        return SemanticId(
+          identifier: projectsScreenId,
+          child: PageScaffold(
+            child: LoadStatusView(
+              status: state.status,
+              hasData: projects.isNotEmpty,
+              onRetry: context.read<ProjectsCubit>().load,
+              builder: (context) => ContentWidth(
+                padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _Header(
+                      count: projects.length,
+                      platformCount: platforms.length,
+                      selected: _platform,
+                      platforms: platforms,
+                      onSelect: (platform) => setState(() => _platform = platform),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 32),
+                    ResponsiveGrid(
+                      desktop: 2,
+                      tablet: 1,
+                      mobile: 1,
+                      gap: 24,
+                      children: [
+                        for (final project in visible)
+                          ProjectCard.horizontal(
+                            project: project,
+                            identifier: projectsCardId(project.id),
+                            onOpen: () => context.openProject(project.id),
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: PillButton(
+                        label: context.l10n.projects_cta,
+                        icon: Icons.arrow_forward_rounded,
+                        variant: PillButtonVariant.ghost,
+                        identifier: projectsContactCtaId,
+                        onPressed: context.openContacts,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -135,12 +144,14 @@ class _Header extends StatelessWidget {
       runSpacing: 8,
       children: [
         _FilterChip(
+          identifier: projectsFilterAllId,
           label: '${l10n.projects_filterAll} · $count',
           selected: selected == null,
           onTap: () => onSelect(null),
         ),
         for (final entry in platforms.entries)
           _FilterChip(
+            identifier: projectsFilterId(entry.key.name),
             label: '${entry.key.label} · ${entry.value}',
             selected: selected == entry.key,
             onTap: () => onSelect(entry.key),
@@ -163,8 +174,9 @@ class _Header extends StatelessWidget {
 }
 
 class _FilterChip extends StatelessWidget {
-  const _FilterChip({required this.label, required this.selected, required this.onTap});
+  const _FilterChip({required this.identifier, required this.label, required this.selected, required this.onTap});
 
+  final String identifier;
   final String label;
   final bool selected;
   final VoidCallback onTap;
@@ -172,15 +184,17 @@ class _FilterChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    return Semantics(
-      button: true,
+    return SemanticAction.button(
+      identifier: identifier,
       selected: selected,
       child: Material(
         color: selected ? palette.ink : Colors.transparent,
         shape: StadiumBorder(side: BorderSide(color: selected ? palette.ink : Theme.of(context).colorScheme.outline)),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          onTap: selected ? null : onTap,
+          // Re-selecting the active filter is a no-op; the tap stays so the
+          // chip is never a button without an action.
+          onTap: onTap,
           child: Container(
             constraints: const BoxConstraints(minHeight: 44),
             padding: const EdgeInsets.symmetric(horizontal: 16),

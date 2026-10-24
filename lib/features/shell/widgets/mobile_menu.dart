@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
@@ -65,16 +66,20 @@ class _MobileMenu extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           for (final (destination, label) in entries)
-            ListTile(
-              title: Text(
-                label,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleLarge?.copyWith(color: destination == current ? palette.accent : palette.ink),
+            SemanticAction(
+              identifier: shellMenuItemId(destination.name),
+              selected: destination == current,
+              child: ListTile(
+                title: Text(
+                  label,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(color: destination == current ? palette.accent : palette.ink),
+                ),
+                trailing: destination == current ? Icon(Icons.check_rounded, color: palette.accent) : null,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                onTap: () => onNavigate(destination),
               ),
-              trailing: destination == current ? Icon(Icons.check_rounded, color: palette.accent) : null,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-              onTap: () => onNavigate(destination),
             ),
           const SizedBox(height: 16),
           BlocBuilder<ShellCubit, ShellState>(
@@ -83,6 +88,7 @@ class _MobileMenu extends StatelessWidget {
               return PillButton(
                 label: l10n.common_downloadCv,
                 icon: Icons.arrow_downward_rounded,
+                identifier: shellMenuCvButtonId,
                 onPressed: cv == null ? null : () => openUri(cv),
               );
             },

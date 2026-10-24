@@ -4,6 +4,8 @@ import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/style/style.dart';
+import 'package:my_portfolio/app/keys.dart';
+import 'package:my_portfolio/localization/localization.dart';
 
 /// One contact channel: label, the address and an arrow. Email opens the
 /// mail client, everything else opens the link.
@@ -18,9 +20,9 @@ class ContactCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final shown = contact.value.replaceFirst(RegExp(r'^https?://(www\.)?'), '');
 
-    return Semantics(
-      link: true,
-      label: '${contact.title}: ${contact.value}',
+    return SemanticAction.link(
+      label: context.l10n.contacts_semanticsLabel_openChannel(contact.title, contact.displayValue),
+      identifier: contactsCardId(contact.title),
       child: Material(
         color: palette.card,
         shape: RoundedRectangleBorder(
@@ -30,27 +32,30 @@ class ContactCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: () => openExternalUrl(contact.link),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 22, 20, 22),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        contact.title.toUpperCase(),
-                        style: textTheme.labelSmall?.copyWith(letterSpacing: 1.3, fontSize: 12),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(shown, style: textTheme.titleMedium, maxLines: 2, overflow: TextOverflow.ellipsis),
-                    ],
+          // The label already reads channel and address.
+          child: ExcludeSemantics(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(24, 22, 20, 22),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          contact.title.toUpperCase(),
+                          style: textTheme.labelSmall?.copyWith(letterSpacing: 1.3, fontSize: 12),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(shown, style: textTheme.titleMedium, maxLines: 2, overflow: TextOverflow.ellipsis),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Icon(Icons.arrow_outward_rounded, size: 20, color: palette.accent),
-              ],
+                  const SizedBox(width: 12),
+                  Icon(Icons.arrow_outward_rounded, size: 20, color: palette.accent),
+                ],
+              ),
             ),
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/core/core.dart';
 
@@ -17,27 +18,30 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         final user = state.user;
-        return PageScaffold(
-          child: LoadStatusView(
-            status: state.status,
-            hasData: user != null,
-            onRetry: context.read<HomeCubit>().load,
-            builder: (context) => Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                HeroSection(
-                  user: user!,
-                  projectCount: state.projects.length,
-                  platformCount: state.platformCount,
-                  onSeeProjects: () => _openProjects(context),
-                ),
-                SkillsSection(skills: state.skills ?? const []),
-                SelectedWorkSection(
-                  projects: state.featuredProjects,
-                  totalCount: state.projects.length,
-                  onSeeAll: () => _openProjects(context),
-                ),
-              ],
+        return SemanticId(
+          identifier: homeScreenId,
+          child: PageScaffold(
+            child: LoadStatusView(
+              status: state.status,
+              hasData: user != null,
+              onRetry: context.read<HomeCubit>().load,
+              builder: (context) => Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  HeroSection(
+                    user: user!,
+                    projectCount: state.projects.length,
+                    platformCount: state.platformCount,
+                    onSeeProjects: () => _openProjects(context),
+                  ),
+                  SkillsSection(skills: state.skills ?? const []),
+                  SelectedWorkSection(
+                    projects: state.featuredProjects,
+                    totalCount: state.projects.length,
+                    onSeeAll: () => _openProjects(context),
+                  ),
+                ],
+              ),
             ),
           ),
         );

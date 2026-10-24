@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
 
+import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
@@ -25,30 +26,33 @@ class UsefulCommandsPage extends StatelessWidget {
 
     return BlocBuilder<UsefulCubit, UsefulState>(
       builder: (context, state) {
-        return PageScaffold(
-          child: LoadStatusView(
-            status: state.status,
-            hasData: state.groups.isNotEmpty,
-            onRetry: context.read<UsefulCubit>().load,
-            builder: (context) => ContentWidth(
-              padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Eyebrow(l10n.shell_navUseful),
-                  const SizedBox(height: 10),
-                  Text(l10n.useful_title, style: isMobile ? textTheme.headlineLarge : textTheme.displayMedium),
-                  const SizedBox(height: 14),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 640),
-                    child: Text(
-                      l10n.useful_description,
-                      style: textTheme.bodyMedium?.copyWith(color: context.palette.muted),
+        return SemanticId(
+          identifier: usefulScreenId,
+          child: PageScaffold(
+            child: LoadStatusView(
+              status: state.status,
+              hasData: state.groups.isNotEmpty,
+              onRetry: context.read<UsefulCubit>().load,
+              builder: (context) => ContentWidth(
+                padding: EdgeInsets.only(top: isMobile ? 32 : 72, bottom: 96),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Eyebrow(l10n.shell_navUseful),
+                    const SizedBox(height: 10),
+                    Text(l10n.useful_title, style: isMobile ? textTheme.headlineLarge : textTheme.displayMedium),
+                    const SizedBox(height: 14),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 640),
+                      child: Text(
+                        l10n.useful_description,
+                        style: textTheme.bodyMedium?.copyWith(color: context.palette.muted),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 32),
-                  for (final group in state.groups) ...[_GroupCard(group: group), const SizedBox(height: 20)],
-                ],
+                    const SizedBox(height: 32),
+                    for (final group in state.groups) ...[_GroupCard(group: group), const SizedBox(height: 20)],
+                  ],
+                ),
               ),
             ),
           ),

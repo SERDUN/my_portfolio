@@ -2,6 +2,8 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:my_portfolio/style/style.dart';
 
+import '../semantics/semantic_action.dart';
+
 enum PillButtonVariant {
   /// Espresso fill: the primary action of a section.
   filled,
@@ -27,6 +29,7 @@ class PillButton extends StatelessWidget {
     this.variant = PillButtonVariant.filled,
     this.compact = false,
     this.iconLeading = false,
+    this.identifier,
   });
 
   final String label;
@@ -40,8 +43,13 @@ class PillButton extends StatelessWidget {
   /// Puts the icon before the label (a back arrow).
   final bool iconLeading;
 
+  /// Automation id from `lib/app/keys.dart`; the label is the visible text.
+  final String? identifier;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => SemanticAction(identifier: identifier, child: _button(context));
+
+  Widget _button(BuildContext context) {
     final palette = context.palette;
     final padding = compact
         ? const EdgeInsets.symmetric(horizontal: 18, vertical: 10)

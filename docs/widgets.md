@@ -21,6 +21,8 @@ bug. A widget used by two features moves here in the same change, and gets a row
 | `ProjectCard` | `project/project_card.dart` | A project, vertical (home) or `.horizontal` (list); `onOpen` decides where a tap goes |
 | `LanguageToggle` | `switcher/language_toggle.dart` | EN / UK as two pills, or `.compact` as one round button |
 | `ThemeModeSwitcher` | `switcher/theme_mode_switcher.dart` | Round button cycling system → light → dark |
+| `SemanticAction` | `semantics/semantic_action.dart` | Name + automation id + action on ONE merged node; `.button` / `.link` add the role to bare tap targets |
+| `SemanticId` | `semantics/semantic_action.dart` | An automation id that changes nothing else: screen anchors |
 | `Eyebrow` | `text/eyebrow.dart` | Small-caps accent label above a section title |
 | `SectionHeader` | `text/section_header.dart` | Eyebrow + display title with an optional description or action |
 
@@ -28,3 +30,17 @@ Shared state lives in `lib/app/`, not here: `AppSettingsCubit` (language, theme)
 `ContactsCubit` (the contacts the footer and the contacts page share). Navigation goes
 through `context.openProject(id)` and friends: import `package:my_portfolio/app/navigation.dart`
 directly, never the `app.dart` barrel (it exports the router, which imports every feature).
+
+## Accessibility rules
+
+- Every interactive control has a name (its visible text, a tooltip, or a `label` from l10n
+  under `<feature>_semanticsLabel_<control>`) and an id from `lib/app/keys.dart`, both on the
+  node that carries the tap: wrap it in `SemanticAction`, or pass `identifier:` to a shared
+  widget that does (`PillButton`, `ProjectCard`, `ThemeModeSwitcher`).
+- Never put an id on a plain `Semantics` around a tap target: the id lands on a node above the
+  action, and automation finds a node it cannot activate.
+- When a `label` replaces what the control shows, wrap the visible text in `ExcludeSemantics`,
+  or it is read after the label.
+- Every page root carries its screen id through `SemanticId`.
+- Ids are never literals in widgets. Repeated controls build theirs from data with the helpers
+  in `keys.dart` (`projectsCardId(project.id)`).

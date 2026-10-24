@@ -11,6 +11,7 @@ import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
 import 'package:my_portfolio/app/contacts/contacts.dart';
+import 'package:my_portfolio/app/keys.dart';
 
 /// Dark footer band: "Let's talk", the email, the social links as pills, and
 /// the bottom line with the flag and secondary navigation.
@@ -73,8 +74,8 @@ class _ContactBlock extends StatelessWidget {
         ),
         if (email != null) ...[
           const SizedBox(height: 18),
-          Semantics(
-            link: true,
+          SemanticAction.link(
+            identifier: shellFooterEmailId,
             child: InkWell(
               onTap: () => openExternalUrl(email!.link),
               child: Text(
@@ -125,15 +126,18 @@ class _SocialPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    return OutlinedButton(
-      onPressed: () => openExternalUrl(contact.link),
-      style: OutlinedButton.styleFrom(
-        foregroundColor: palette.footerText,
-        side: BorderSide(color: palette.footerLine),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        minimumSize: const Size(44, 44),
+    return SemanticAction(
+      identifier: shellFooterSocialId(contact.title),
+      child: OutlinedButton(
+        onPressed: () => openExternalUrl(contact.link),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: palette.footerText,
+          side: BorderSide(color: palette.footerLine),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          minimumSize: const Size(44, 44),
+        ),
+        child: Text(contact.title),
       ),
-      child: Text(contact.title),
     );
   }
 }
@@ -164,9 +168,24 @@ class _BottomLine extends StatelessWidget {
       runSpacing: 4,
       alignment: isMobile ? WrapAlignment.start : WrapAlignment.end,
       children: [
-        _FooterLink(label: l10n.shell_navProjects, style: linkStyle, onTap: context.openProjects),
-        _FooterLink(label: l10n.useful_title, style: linkStyle, onTap: context.openUseful),
-        _FooterLink(label: l10n.shell_footerSource, style: linkStyle, onTap: () => openExternalUrl(sourceUrl)),
+        _FooterLink(
+          identifier: shellFooterProjectsId,
+          label: l10n.shell_navProjects,
+          style: linkStyle,
+          onTap: context.openProjects,
+        ),
+        _FooterLink(
+          identifier: shellFooterUsefulId,
+          label: l10n.useful_title,
+          style: linkStyle,
+          onTap: context.openUseful,
+        ),
+        _FooterLink(
+          identifier: shellFooterSourceId,
+          label: l10n.shell_footerSource,
+          style: linkStyle,
+          onTap: () => openExternalUrl(sourceUrl),
+        ),
       ],
     );
 
@@ -189,16 +208,17 @@ class _BottomLine extends StatelessWidget {
 }
 
 class _FooterLink extends StatelessWidget {
-  const _FooterLink({required this.label, required this.onTap, this.style});
+  const _FooterLink({required this.identifier, required this.label, required this.onTap, this.style});
 
+  final String identifier;
   final String label;
   final VoidCallback onTap;
   final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      link: true,
+    return SemanticAction.link(
+      identifier: identifier,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(6),
