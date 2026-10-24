@@ -31,7 +31,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get lastProjectTitle => 'Проекти';
 
   @override
-  String get buttonDownloadCv => 'Download CV';
+  String get buttonDownloadCv => 'Отримати резюме';
 
   @override
   String get unknownPageTitle => '404';
@@ -44,6 +44,12 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get portfolioAboutMe => 'Про мене';
+
+  @override
+  String get projectDependencyStack => 'Стек залежностей';
+
+  @override
+  String get projectScreenshots => 'Скріншоти';
 
   @override
   String get introSkills => 'Навики';
@@ -64,7 +70,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get contactFacebook => 'Фейсбук';
 
   @override
-  String get contactLinkedin => 'LinkedIn';
+  String get contactLinkedin => 'Лінкед';
 
   @override
   String get contactInstagram => 'Інста';

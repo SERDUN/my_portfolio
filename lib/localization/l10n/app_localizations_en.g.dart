@@ -46,6 +46,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get portfolioAboutMe => 'About me';
 
   @override
+  String get projectDependencyStack => 'Dependency stack';
+
+  @override
+  String get projectScreenshots => 'Screenshots';
+
+  @override
   String get introSkills => 'Skills';
 
   @override
