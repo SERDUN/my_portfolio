@@ -9,5 +9,7 @@ part of 'contact_dto.dart';
 ContactDTO _$ContactDTOFromJson(Map<String, dynamic> json) =>
     ContactDTO(json['title'] as String, json['value'] as String);
 
-Map<String, dynamic> _$ContactDTOToJson(ContactDTO instance) =>
-    <String, dynamic>{'title': instance.title, 'value': instance.value};
+Map<String, dynamic> _$ContactDTOToJson(ContactDTO instance) => <String, dynamic>{
+  'title': instance.title,
+  'value': instance.value,
+};
