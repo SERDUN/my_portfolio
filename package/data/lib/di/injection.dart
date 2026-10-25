@@ -13,11 +13,10 @@ void initMicroPackage() {}
 /// environment gets; the concrete sources are plain lazy singletons.
 @module
 abstract class RegisterModule {
+  /// The content API (`server/`), from `--dart-define=API_URL=https://...`.
+  /// Without it requests fail and the api environment answers from assets.
   @Named('baseUrl')
-  Uri get baseUrl => Uri.parse('https://us-central1-portfolio-f2eb7.cloudfunctions.net/api/v1');
-
-  @Named('userId')
-  String get userId => 'R5KVoOkqVztd4uxKxTCt';
+  Uri get baseUrl => Uri.parse('${const String.fromEnvironment('API_URL')}/v1');
 
   @Environment(DataEnvironment.assets)
   @lazySingleton

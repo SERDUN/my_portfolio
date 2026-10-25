@@ -26,7 +26,7 @@ class _FailingSource implements PortfolioDataSource {
 }
 
 ApiDatasource _api(MockClientHandler handler) =>
-    ApiDatasource(userId: 'u', baseUrl: Uri.parse('https://api.example/v1'), client: MockClient(handler));
+    ApiDatasource(baseUrl: Uri.parse('https://api.example/v1'), client: MockClient(handler));
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -65,7 +65,6 @@ void main() {
       expect(contacts.single.title, 'Пошта');
       expect(seen.url.toString(), 'https://api.example/v1/contacts');
       expect(seen.headers['accept-language'], 'uk');
-      expect(seen.headers['x-user-id'], 'u');
     });
 
     test('throws ApiException on a non-2xx answer instead of parsing it', () {

@@ -1,0 +1,64 @@
+name: Deploy
+
+# Builds the site from the content API and publishes it to Firebase Hosting.
+# Runs on every push to master, by hand, and when the API reports new
+# content (repository_dispatch "content-updated").
+#
+# Repository settings:
+#   variables  PORTFOLIO_API_URL         root of the content API; unset = build from the committed assets
+#   secrets    FIREBASE_SERVICE_ACCOUNT  JSON key of a service account with Firebase Hosting Admin
+
+on:
+  push:
+    branches: [master]
+    paths-ignore: ['server/**', '**.md']
+  workflow_dispatch:
+  repository_dispatch:
+    types: [content-updated]
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.6
+          channel: stable
+          cache: true
+
+      - name: Pull content from the API
+        if: vars.PORTFOLIO_API_URL != ''
+        working-directory: server
+        run: |
+          dart pub get
+          dart run bin/content.dart pull --api "${{ vars.PORTFOLIO_API_URL }}"
+          git -C .. status --short -- package/data/assets/data
+
+      - name: Generate code
+        run: |
+          flutter pub get
+          (cd package/domain && dart run build_runner build --delete-conflicting-outputs)
+          (cd package/data && dart run build_runner build --delete-conflicting-outputs)
+          dart run build_runner build --delete-conflicting-outputs
+
+      - name: Test
+        run: |
+          flutter test
+          (cd package/data && flutter test)
+
+      - name: Build
+        run: flutter build web --release
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: portfolio-f2eb7
+          entryPoint: firebase
+          channelId: live
