@@ -11,6 +11,9 @@ analyzer:
   exclude:
     - build/**
     - web/**
+    # Nested packages are analyzed on their own, with their own dependencies.
+    - package/**
+    - server/**
 include: package:flutter_lints/flutter.yaml
 
 linter:

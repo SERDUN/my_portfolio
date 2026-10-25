@@ -23,9 +23,9 @@ jobs:
           dart run build_runner build --delete-conflicting-outputs
       - run: flutter analyze
       - run: flutter test
-      - run: cd package/domain && dart test
-      - run: cd package/contract && dart pub get && dart test
-      - run: cd package/data && flutter test
+      - run: cd package/domain && dart analyze && dart test
+      - run: cd package/contract && dart pub get && dart analyze && dart test
+      - run: cd package/data && flutter analyze && flutter test
 
   server:
     runs-on: ubuntu-latest
