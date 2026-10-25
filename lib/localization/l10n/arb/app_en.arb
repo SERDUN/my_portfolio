@@ -81,6 +81,18 @@
       }
     }
   },
+  "home_experienceDescription": "Nine years of production apps: native Android first, Flutter since 2019, and native Kotlin again inside a call plugin.",
+  "@home_experienceDescription": {
+    "description": "Description next to the experience title"
+  },
+  "home_experienceEyebrow": "Experience",
+  "@home_experienceEyebrow": {
+    "description": "Eyebrow above the career timeline"
+  },
+  "home_experienceTitle": "Where I have worked",
+  "@home_experienceTitle": {
+    "description": "Title of the career timeline section"
+  },
   "home_seeProjects": "See projects",
   "@home_seeProjects": {
     "description": "Hero button to the project list"
@@ -93,7 +105,7 @@
   "@home_selectedWorkTitle": {
     "description": "Title of the featured projects section"
   },
-  "home_skillsDescription": "Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.",
+  "home_skillsDescription": "Grouped as in my CV: the mobile stack first, then architecture, real-time media, delivery and the backend around the apps.",
   "@home_skillsDescription": {
     "description": "Description next to the skills title"
   },

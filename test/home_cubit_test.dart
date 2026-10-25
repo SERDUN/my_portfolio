@@ -45,7 +45,7 @@ class FakeGetProjectsUseCase implements GetProjectsUseCase {
   }
 }
 
-final user = PortfolioUserModel(firstName: 'Dmitro', secondName: 'Serdun', position: 'Mobile Developer', intro: 'Hi');
+final user = PortfolioUserModel(firstName: 'Dmytro', secondName: 'Serdun', position: 'Mobile Developer', intro: 'Hi');
 
 final skills = [SkillGroupModel(title: 'Flutter')];
 

@@ -1,13 +1,56 @@
 {
-  "first_name": "Dmitro",
+  "first_name": "Dmytro",
   "second_name": "Serdun",
-  "name": "Dmitro Serdun",
+  "name": "Dmytro Serdun",
   "avatar_url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/data/avatar.webp",
-  "cv_url": "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing",
-  "position": "Mobile developer",
-  "intro": "Hi, let me introduce myself. \nMe twenty-five years and i Live in Ukraine, Odesa. I'm a mobile developer with more than 4 years of experience.\nMy essential platform is Android but for the last 2 years  in general i've created or were practiced Flutter cross-platform projects. \nBy the way you are checking my Flutter skills directly at the moment while scrolling this page)\n                      \n\nGlory to Ukraine",
+  "cv_url": "https://drive.google.com/file/d/1k1ToNQdIbi_jLq9UgeO7i1JdntXrmkbI/view?usp=sharing",
+  "position": "Senior Mobile Developer",
   "location": "Odesa, Ukraine",
-  "headline": "Android and Flutter apps that feel at home on every screen.",
-  "headline_accent": "every screen",
-  "experience_since": 2019
+  "headline": "Flutter and Android apps, down to the operating system.",
+  "headline_accent": "down to the operating system",
+  "experience_since": 2017,
+  "intro": "Mobile developer with 9 years in production apps: native Android since 2017, Flutter since 2019, and native Kotlin again since 2024 as the author of a call-handling plugin. Since 2022 I am the main contributor to a white-label VoIP softphone for iOS, Android and Web.\n\nI work at the boundary between an app and the operating system: background and foreground services, process lifecycle, telephony, audio routing, push wake-ups. I also build the backend, build tooling and CI/CD around the apps I ship.",
+  "experience": [
+    {
+      "company": "PortaOne",
+      "role": "Software Engineer",
+      "period": "Jan 2026 – present",
+      "terms": "full-time",
+      "summary": "The same softphone product, now called PortaPhone, moved under PortaOne together with the call plugin and build tooling. Work continues on the same codebase.",
+      "highlights": []
+    },
+    {
+      "company": "WebTrit",
+      "role": "Senior Flutter Developer",
+      "period": "Jul 2022 – present",
+      "terms": "full-time, remote",
+      "summary": "White-label Flutter softphone for iOS, Android and Web. Public builds: WebTrit and PortaPhone 2 on Google Play and the App Store.",
+      "highlights": [
+        "Main contributor since the start of the project, about 2.5k commits: calls over WebRTC (Janus), SIP presence, chat and SMS, voicemail, contact sync, call history, theming from remote config.",
+        "Author of the Android side of webtrit_callkeep (Kotlin, about 500 commits): Telecom ConnectionService in a separate process with foreground services, so a call survives backgrounding and process death.",
+        "Maintained the company forks of flutter-webrtc and janus-gateway: ICE over VPN, camera crash on concurrent video calls, SDP renegotiation and ICE restart stability.",
+        "CI/CD on GitHub Actions: configure a brand, build, sign and publish to Google Play and TestFlight.",
+        "Patrol end-to-end tests on real devices; the web configurator in Flutter Web with a NestJS backend on Cloud Run and PostgreSQL."
+      ]
+    },
+    {
+      "company": "SteelKiwi Development (now GlobalDev)",
+      "role": "Android Engineer, then Flutter Developer",
+      "period": "Oct 2017 – Oct 2022",
+      "terms": "full-time, on-site, Odesa",
+      "summary": "Native Android and Flutter apps for outsourcing clients, mostly startups building an MVP. Estimation, architecture, code review, releases.",
+      "highlights": [
+        "Native Android (Java, Kotlin): Alias, Columbus Coffee Rewards, Arrkas, NightApp.",
+        "Flutter: mPet, Slaywoke, Daberli, a BLE companion app for measuring inhalation strength and other MVPs."
+      ]
+    },
+    {
+      "company": "Freelance",
+      "role": "Flutter Developer",
+      "period": "2020 – 2022",
+      "terms": "remote",
+      "summary": "Foodie Family: food ordering and delivery with separate client and driver apps and live geolocation, published on Google Play.",
+      "highlights": []
+    }
+  ]
 }

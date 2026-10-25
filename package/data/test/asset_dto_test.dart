@@ -105,6 +105,12 @@ void main() {
         expect(user.intro, isNotNull);
         expect(Uri.tryParse(user.avatarUrl ?? '')?.hasScheme, isTrue, reason: 'avatar_url must be an absolute URL');
         expect(Uri.tryParse(user.cvUrl ?? '')?.hasScheme, isTrue, reason: 'cv_url must be an absolute URL');
+        expect(user.experience, isNotEmpty);
+        for (final item in user.experience!) {
+          expect(item.company, isNotEmpty);
+          expect(item.role, isNotEmpty);
+          expect(item.period, isNotEmpty);
+        }
       });
     });
   }

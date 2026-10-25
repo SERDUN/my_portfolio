@@ -1,8 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'experience_dto.dart';
+
 part 'portfolio_user_dto.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class PortfolioUserDTO {
   PortfolioUserDTO({
     this.firstName,
@@ -15,6 +17,7 @@ class PortfolioUserDTO {
     this.intro,
     this.avatarUrl,
     this.cvUrl,
+    this.experience,
   });
 
   final String? firstName;
@@ -35,6 +38,9 @@ class PortfolioUserDTO {
   /// Year the career started; the hero derives "N+ years" from it.
   final int? experienceSince;
   final String? intro;
+
+  /// Places of work, newest first.
+  final List<ExperienceDTO>? experience;
 
   factory PortfolioUserDTO.fromJson(Map<String, dynamic> json) => _$PortfolioUserDTOFromJson(json);
 

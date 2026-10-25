@@ -1,4 +1,5 @@
 export 'contact_dto.dart';
+export 'experience_dto.dart';
 export 'skill_group_dto.dart';
 export 'portfolio_user_dto.dart';
 export 'project_dto.dart';

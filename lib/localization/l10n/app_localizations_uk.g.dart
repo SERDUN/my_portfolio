@@ -59,6 +59,16 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
+  String get home_experienceDescription =>
+      'Дев\'ять років продакшн-застосунків: спершу нативний Android, з 2019 Flutter, а тепер знову Kotlin усередині плагіна дзвінків.';
+
+  @override
+  String get home_experienceEyebrow => 'Досвід';
+
+  @override
+  String get home_experienceTitle => 'Де я працював';
+
+  @override
   String get home_seeProjects => 'Переглянути проєкти';
 
   @override
@@ -69,10 +79,10 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get home_skillsDescription =>
-      'Згруповано так, як я користуюся ними щодня: спершу Flutter, під ним Android-коріння, і те, що навколо клієнта.';
+      'Згруповано як у резюме: спершу мобільний стек, далі архітектура, медіа в реальному часі, доставка й бекенд навколо застосунків.';
 
   @override
-  String get home_skillsEyebrow => 'Навики';
+  String get home_skillsEyebrow => 'Навички';
 
   @override
   String get home_skillsTitle => 'З чим я працюю';

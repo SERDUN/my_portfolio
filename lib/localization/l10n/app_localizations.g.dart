@@ -177,6 +177,24 @@ abstract class AppLocalizations {
   /// **'All {count} projects'**
   String home_allProjects(int count);
 
+  /// Description next to the experience title
+  ///
+  /// In en, this message translates to:
+  /// **'Nine years of production apps: native Android first, Flutter since 2019, and native Kotlin again inside a call plugin.'**
+  String get home_experienceDescription;
+
+  /// Eyebrow above the career timeline
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get home_experienceEyebrow;
+
+  /// Title of the career timeline section
+  ///
+  /// In en, this message translates to:
+  /// **'Where I have worked'**
+  String get home_experienceTitle;
+
   /// Hero button to the project list
   ///
   /// In en, this message translates to:
@@ -198,7 +216,7 @@ abstract class AppLocalizations {
   /// Description next to the skills title
   ///
   /// In en, this message translates to:
-  /// **'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.'**
+  /// **'Grouped as in my CV: the mobile stack first, then architecture, real-time media, delivery and the backend around the apps.'**
   String get home_skillsDescription;
 
   /// Eyebrow above the skills section

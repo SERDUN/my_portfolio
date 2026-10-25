@@ -79,6 +79,34 @@ void main() {
       expect(model.avatar, isNull);
       expect(model.cv, isNull);
       expect(model.experienceSince, isNull);
+      expect(model.experience, isEmpty);
+    });
+
+    test('maps experience in order and skips entries without a company', () {
+      final model = PortfolioUserDTO(
+        experience: [
+          ExperienceDTO(
+            company: 'WebTrit',
+            role: 'Senior Flutter Developer',
+            period: 'Jul 2022 – present',
+            terms: 'remote',
+            summary: 'Softphone',
+            highlights: ['Calls', ' '],
+          ),
+          ExperienceDTO(role: 'No company'),
+          ExperienceDTO(company: 'Freelance'),
+        ],
+      ).toDomain();
+
+      expect(model.experience.map((e) => e.company), ['WebTrit', 'Freelance']);
+      final first = model.experience.first;
+      expect(first.role, 'Senior Flutter Developer');
+      expect(first.period, 'Jul 2022 – present');
+      expect(first.terms, 'remote');
+      expect(first.summary, 'Softphone');
+      expect(first.highlights, ['Calls']);
+      expect(model.experience.last.role, '');
+      expect(model.experience.last.highlights, isEmpty);
     });
   });
 

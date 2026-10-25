@@ -1,5 +1,6 @@
 import 'package:domain/domain.dart';
 
+import '../dto/experience_dto.dart';
 import '../dto/portfolio_user_dto.dart';
 import 'uri_parsing.dart';
 
@@ -17,5 +18,24 @@ extension PortfolioUserDtoMapper on PortfolioUserDTO {
     headline: headline ?? '',
     headlineAccent: headlineAccent ?? '',
     experienceSince: experienceSince,
+    experience: [
+      for (final item in experience ?? const <ExperienceDTO>[])
+        if ((item.company ?? '').isNotEmpty) item.toDomain(),
+    ],
+  );
+}
+
+extension ExperienceDtoMapper on ExperienceDTO {
+  /// Callers drop entries without a company first; the rest read as empty.
+  ExperienceModel toDomain() => ExperienceModel(
+    company: company ?? '',
+    role: role ?? '',
+    period: period ?? '',
+    terms: terms ?? '',
+    summary: summary ?? '',
+    highlights: [
+      for (final line in highlights ?? const <String>[])
+        if (line.trim().isNotEmpty) line,
+    ],
   );
 }
