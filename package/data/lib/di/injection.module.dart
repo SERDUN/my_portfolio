@@ -25,10 +25,6 @@ class DataPackageModule extends _i526.MicroPackageModule {
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     final registerModule = _$RegisterModule();
     gh.lazySingleton<_i882.AssetsDataSource>(() => _i882.AssetsDataSource());
-    gh.factory<String>(
-      () => registerModule.userId,
-      instanceName: 'userId',
-    );
     gh.factory<Uri>(
       () => registerModule.baseUrl,
       instanceName: 'baseUrl',
@@ -39,10 +35,8 @@ class DataPackageModule extends _i526.MicroPackageModule {
     );
     gh.factory<_i494.UsefulRepository>(
         () => _i390.UsefulRepositoryImpl(gh<_i822.AssetsDataSource>()));
-    gh.lazySingleton<_i420.ApiDatasource>(() => _i420.ApiDatasource(
-          userId: gh<String>(instanceName: 'userId'),
-          baseUrl: gh<Uri>(instanceName: 'baseUrl'),
-        ));
+    gh.lazySingleton<_i420.ApiDatasource>(
+        () => _i420.ApiDatasource(baseUrl: gh<Uri>(instanceName: 'baseUrl')));
     gh.lazySingleton<_i822.PortfolioDataSource>(
       () => registerModule.apiSource(
         gh<_i822.ApiDatasource>(),

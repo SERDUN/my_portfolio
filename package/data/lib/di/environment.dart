@@ -4,7 +4,7 @@ abstract final class DataEnvironment {
   /// Content read from the JSON bundled under `assets/data/`. The default.
   static const String assets = 'assets';
 
-  /// Content fetched from the Cloud Functions API, with the bundled JSON as
+  /// Content fetched from the content API (`server/`), with the bundled JSON as
   /// the fallback when a request fails.
   static const String api = 'api';
 
