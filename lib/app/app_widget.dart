@@ -73,7 +73,7 @@ class AppView extends StatelessWidget {
             themeMode: state.themeMode,
             locale: state.locale,
             restorationScopeId: 'application',
-            title: 'Dmitro Serdun',
+            title: 'Dmytro Serdun',
             debugShowCheckedModeBanner: false,
             routerConfig: router,
           ),

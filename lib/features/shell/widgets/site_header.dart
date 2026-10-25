@@ -189,7 +189,7 @@ class _Wordmark extends StatelessWidget {
       buildWhen: (a, b) => a.user != b.user,
       builder: (context, state) {
         final user = state.user;
-        final name = user == null ? 'Dmitro Serdun' : '${user.firstName} ${user.secondName}';
+        final name = user == null ? 'Dmytro Serdun' : '${user.firstName} ${user.secondName}';
         return SemanticAction.link(
           label: context.l10n.shell_semanticsLabel_wordmark(name),
           identifier: shellWordmarkId,

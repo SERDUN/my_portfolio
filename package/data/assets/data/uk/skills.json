@@ -1,15 +1,81 @@
 [
   {
-    "title": "Flutter",
-    "expanded": true,
+    "title": "Мобільна розробка",
+    "expanded": false,
     "subskills": [
+      {
+        "title": "Flutter",
+        "expanded": false,
+        "subskills": []
+      },
       {
         "title": "Dart",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Provider",
+        "title": "Android",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Kotlin",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Java",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Jetpack",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Telecom",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Foreground services",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Room",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Plugin development",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Flutter Web",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "CallKit",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "PushKit",
+        "expanded": false,
+        "subskills": []
+      }
+    ]
+  },
+  {
+    "title": "Архітектура і стан",
+    "expanded": false,
+    "subskills": [
+      {
+        "title": "Clean Architecture",
         "expanded": false,
         "subskills": []
       },
@@ -24,154 +90,152 @@
         "subskills": []
       },
       {
-        "title": "Локалізація",
+        "title": "freezed",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Здатність реалізовувати складні та продуктивні макети",
+        "title": "get_it",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Web",
+        "title": "Dagger",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Створення плагінів",
+        "title": "auto_route",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Користувацька анімація",
+        "title": "go_router",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Navigator 1.0 Імперативний",
+        "title": "Drift",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Navigator 2.0 Декларативний",
-        "expanded": false,
-        "subskills": []
-      },
-      {
-        "title": "Обмеження",
+        "title": "Melos",
         "expanded": false,
         "subskills": []
       }
     ]
   },
   {
-    "title": "Android",
+    "title": "Реальний час",
     "expanded": false,
     "subskills": [
       {
-        "title": "Основи Java",
+        "title": "WebRTC",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Kotlin",
+        "title": "SIP",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Jetpack",
+        "title": "Janus",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Koin",
+        "title": "SDP",
         "expanded": false,
         "subskills": []
       },
       {
-        "title": "Retrofit",
+        "title": "ICE",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "WebSocket",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "BLE",
         "expanded": false,
         "subskills": []
       }
     ]
   },
   {
-    "title": "Інше",
-    "expanded": true,
+    "title": "Тестування й доставка",
+    "expanded": false,
     "subskills": [
       {
-        "title": "Архітектура",
+        "title": "Patrol",
         "expanded": false,
-        "subskills": [
-          {
-            "title": "Чиста архітектура/MVP/MVVM",
-            "expanded": false,
-            "subskills": []
-          },
-          {
-            "title": "ООП/SOLID",
-            "expanded": false,
-            "subskills": []
-          },
-          {
-            "title": "KISS",
-            "expanded": false,
-            "subskills": []
-          },
-          {
-            "title": "RESTful",
-            "expanded": false,
-            "subskills": []
-          }
-        ]
+        "subskills": []
       },
       {
-        "title": "Сервіси",
+        "title": "GitHub Actions",
         "expanded": false,
-        "subskills": [
-          {
-            "title": "Git",
-            "expanded": false,
-            "subskills": []
-          },
-          {
-            "title": "Firebase",
-            "expanded": false,
-            "subskills": []
-          },
-          {
-            "title": "Інтеграція платежів",
-            "expanded": false,
-            "subskills": []
-          }
-        ]
+        "subskills": []
       },
       {
-        "title": "Бекенд",
+        "title": "Gerrit",
         "expanded": false,
-        "subskills": [
-          {
-            "title": "NodeJS (Початківець)",
-            "expanded": false,
-            "subskills": []
-          },
-          {
-            "title": "Функції Firebase Cloud",
-            "expanded": false,
-            "subskills": []
-          },
-          {
-            "title": "SQL",
-            "expanded": false,
-            "subskills": []
-          },
-          {
-            "title": "Firebase База Даних",
-            "expanded": false,
-            "subskills": []
-          }
-        ]
+        "subskills": []
+      },
+      {
+        "title": "Публікація в сторах",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Підписання збірок",
+        "expanded": false,
+        "subskills": []
+      }
+    ]
+  },
+  {
+    "title": "Бекенд",
+    "expanded": false,
+    "subskills": [
+      {
+        "title": "Node.js",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "NestJS",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "PostgreSQL",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Cloud Run",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Cloud Storage",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Cloud KMS",
+        "expanded": false,
+        "subskills": []
+      },
+      {
+        "title": "Docker",
+        "expanded": false,
+        "subskills": []
       }
     ]
   }

@@ -9,7 +9,8 @@ import 'package:my_portfolio/core/core.dart';
 import '../bloc/home_cubit.dart';
 import '../widgets/widgets.dart';
 
-/// Home: hero with the portrait and stats, skills as chips, selected work.
+/// Home: hero with the portrait and stats, the career timeline, skills as
+/// chips, selected work.
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -34,6 +35,7 @@ class HomePage extends StatelessWidget {
                     platformCount: state.platformCount,
                     onSeeProjects: () => _openProjects(context),
                   ),
+                  ExperienceSection(experience: user.experience),
                   SkillsSection(skills: state.skills ?? const []),
                   SelectedWorkSection(
                     projects: state.featuredProjects,

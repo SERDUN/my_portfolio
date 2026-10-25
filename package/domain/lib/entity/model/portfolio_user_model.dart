@@ -1,3 +1,5 @@
+import 'experience_model.dart';
+
 /// The portfolio owner.
 class PortfolioUserModel {
   PortfolioUserModel({
@@ -11,6 +13,7 @@ class PortfolioUserModel {
     this.headline = '',
     this.headlineAccent = '',
     this.experienceSince,
+    this.experience = const [],
   });
 
   final String firstName;
@@ -35,6 +38,9 @@ class PortfolioUserModel {
 
   /// Year the career started, or null when unknown.
   final int? experienceSince;
+
+  /// Places of work, newest first; empty hides the experience section.
+  final List<ExperienceModel> experience;
 
   String get name => '$firstName $secondName';
 

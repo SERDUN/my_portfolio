@@ -1,5 +1,104 @@
 [
   {
+    "id": "10",
+    "name": "PortaPhone (WebTrit)",
+    "platform": "flutter",
+    "intro": "White-label VoIP softphone for iOS, Android and Web: calls over WebRTC, chat, voicemail and presence",
+    "description": "A white-label softphone that operators brand and ship as their own app. I have been the main contributor since the start of the project in 2022, about 2.5k commits; in 2026 the product moved under PortaOne as PortaPhone.\nCalls run over WebRTC through Janus, with SIP presence, chat and SMS, voicemail, contact sync, call history, embedded web pages, custom login flows and theming from remote config.\nOn Android the calls go through the system Telecom stack via webtrit_callkeep, so they survive backgrounding and process death and work with Bluetooth headsets and the system dialer.\nAround the app: forks of flutter-webrtc and janus-gateway, Patrol end-to-end tests on real devices, and GitHub Actions pipelines that configure a brand, build, sign and publish to Google Play and TestFlight.",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=com.webtrit.phone",
+    "linkIOS": "https://apps.apple.com/us/app/portaphone-2/id1597495444",
+    "linkGithub": "https://github.com/portaone/porta-phone-mobile-app",
+    "spheres": [
+      "Telecom",
+      "VoIP",
+      "White-label"
+    ],
+    "technologies": [
+      "Flutter",
+      "Kotlin",
+      "WebRTC",
+      "SIP",
+      "Janus",
+      "BLoC",
+      "Drift",
+      "auto_route",
+      "Patrol",
+      "GitHub Actions"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr6.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr1.webp",
+    "featured": true
+  },
+  {
+    "id": "11",
+    "name": "webtrit_callkeep",
+    "platform": "flutter",
+    "intro": "Federated Flutter plugin that hands VoIP calls to Android Telecom and iOS CallKit",
+    "description": "A federated Flutter plugin for call handling. I wrote its Android side in Kotlin, about 500 commits across the plugin.\nTelecom ConnectionService runs in a dedicated :callkeep_core process with foreground services, so a call survives app backgrounding and process death. The plugin integrates with the system dialer, Bluetooth headsets and audio routing, the proximity sensor, Samsung notification quirks and the call waiting tone. I also contributed to the iOS side (CallKit, PushKit).",
+    "linkAndroid": "",
+    "linkIOS": "",
+    "linkGithub": "https://github.com/WebTrit/webtrit_callkeep",
+    "spheres": [
+      "Telecom",
+      "Open source",
+      "Plugin"
+    ],
+    "technologies": [
+      "Flutter",
+      "Kotlin",
+      "Android Telecom",
+      "ConnectionService",
+      "Foreground services",
+      "CallKit",
+      "PushKit"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/callkeep/scr1.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/callkeep/scr1.webp",
+    "featured": false
+  },
+  {
+    "id": "12",
+    "name": "Alias AI",
+    "platform": "flutter",
+    "intro": "Party word game in 23 languages, offline or in online rooms with voice chat",
+    "description": "My own product, built and run from 2024 to 2026. A party game where teams explain words to each other against the clock.\nIt plays offline on one phone or in online rooms over WebSocket with voice chat between players, and ships in 23 languages on Google Play.",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=com.serdun.alias_ai",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Game",
+      "Party",
+      "Own product"
+    ],
+    "technologies": [
+      "Flutter",
+      "WebSocket",
+      "Voice chat",
+      "Localization"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr6.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr7.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr8.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr1.webp",
+    "featured": true
+  },
+  {
     "id": "0",
     "name": "Portfolio",
     "platform": "flutter",
@@ -100,7 +199,7 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp"
     ],
     "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp",
-    "featured": true
+    "featured": false
   },
   {
     "id": "3",
@@ -147,9 +246,9 @@
     "linkIOS": "",
     "linkGithub": "",
     "spheres": [
-      "Health",
-      "Pets",
-      "Dog"
+      "Food delivery",
+      "Restaurants",
+      "Geolocation"
     ],
     "technologies": [
       "Dart",
@@ -170,7 +269,7 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr8.webp"
     ],
     "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr1.webp",
-    "featured": true
+    "featured": false
   },
   {
     "id": "5",
@@ -241,7 +340,7 @@
     "id": "7",
     "name": "Daberli",
     "platform": "flutter",
-    "intro": "A mobile app to store and share pets medical and health data and find useful information about pet",
+    "intro": "A delivery app with phone sign-in, Apple Pay, Arabic and English, and the delivery location picked on a map",
     "description": "Manage, store and transfer pet medical records and health information. Communicate with veterinarians and pet service providers through video, text and send pictures. Locate pet service providers using Google locator.",
     "linkAndroid": "",
     "linkIOS": "",

@@ -23,9 +23,9 @@ void main() {
     expect(find.byType(MaterialApp), findsOneWidget);
     expect(find.byType(SiteHeader), findsOneWidget);
     expect(find.byType(SiteFooter), findsOneWidget);
-    expect(find.text('Dmitro Serdun'), findsOneWidget);
+    expect(find.text('Dmytro Serdun'), findsOneWidget);
     expect(find.byType(HomePage), findsOneWidget);
     // The bundled English intro reached the UI through the home cubit.
-    expect(find.textContaining('introduce myself'), findsOneWidget);
+    expect(find.textContaining('call-handling plugin'), findsOneWidget);
   });
 }

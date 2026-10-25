@@ -59,6 +59,16 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get home_experienceDescription =>
+      'Nine years of production apps: native Android first, Flutter since 2019, and native Kotlin again inside a call plugin.';
+
+  @override
+  String get home_experienceEyebrow => 'Experience';
+
+  @override
+  String get home_experienceTitle => 'Where I have worked';
+
+  @override
   String get home_seeProjects => 'See projects';
 
   @override
@@ -69,7 +79,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get home_skillsDescription =>
-      'Grouped the way I use them day to day: Flutter first, the Android roots underneath, and the things around the client.';
+      'Grouped as in my CV: the mobile stack first, then architecture, real-time media, delivery and the backend around the apps.';
 
   @override
   String get home_skillsEyebrow => 'Skills';

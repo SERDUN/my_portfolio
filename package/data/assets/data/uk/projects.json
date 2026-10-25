@@ -1,5 +1,104 @@
 [
   {
+    "id": "10",
+    "name": "PortaPhone (WebTrit)",
+    "platform": "flutter",
+    "intro": "White-label VoIP-софтфон для iOS, Android і Web: дзвінки через WebRTC, чат, голосова пошта й присутність",
+    "description": "White-label софтфон, який оператори брендують і випускають як власний застосунок. Я основний розробник з початку проєкту у 2022 році, близько 2,5 тис. комітів; у 2026 продукт перейшов до PortaOne під назвою PortaPhone.\nДзвінки йдуть через WebRTC і Janus, є SIP-присутність, чат і SMS, голосова пошта, синхронізація контактів, історія дзвінків, вбудовані веб-сторінки, власні сценарії входу й теми з remote config.\nНа Android дзвінки проходять через системний Telecom за допомогою webtrit_callkeep, тому переживають згортання й загибель процесу та працюють з Bluetooth-гарнітурами і системним дайлером.\nНавколо застосунку: форки flutter-webrtc і janus-gateway, наскрізні тести Patrol на реальних пристроях і пайплайни GitHub Actions, що налаштовують бренд, збирають, підписують і публікують у Google Play та TestFlight.",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=com.webtrit.phone",
+    "linkIOS": "https://apps.apple.com/us/app/portaphone-2/id1597495444",
+    "linkGithub": "https://github.com/portaone/porta-phone-mobile-app",
+    "spheres": [
+      "Телеком",
+      "VoIP",
+      "White-label"
+    ],
+    "technologies": [
+      "Flutter",
+      "Kotlin",
+      "WebRTC",
+      "SIP",
+      "Janus",
+      "BLoC",
+      "Drift",
+      "auto_route",
+      "Patrol",
+      "GitHub Actions"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr6.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/porta_phone/scr1.webp",
+    "featured": true
+  },
+  {
+    "id": "11",
+    "name": "webtrit_callkeep",
+    "platform": "flutter",
+    "intro": "Федеративний Flutter-плагін, що передає VoIP-дзвінки в Android Telecom та iOS CallKit",
+    "description": "Федеративний Flutter-плагін для обробки дзвінків. Я написав його Android-частину на Kotlin, близько 500 комітів у плагіні.\nTelecom ConnectionService працює в окремому процесі :callkeep_core з foreground-сервісами, тож дзвінок переживає згортання застосунку й загибель процесу. Плагін інтегрується з системним дайлером, Bluetooth-гарнітурами й маршрутизацією звуку, датчиком наближення, особливостями сповіщень Samsung і тоном другої лінії. Також долучався до iOS-частини (CallKit, PushKit).",
+    "linkAndroid": "",
+    "linkIOS": "",
+    "linkGithub": "https://github.com/WebTrit/webtrit_callkeep",
+    "spheres": [
+      "Телеком",
+      "Відкритий код",
+      "Плагін"
+    ],
+    "technologies": [
+      "Flutter",
+      "Kotlin",
+      "Android Telecom",
+      "ConnectionService",
+      "Foreground services",
+      "CallKit",
+      "PushKit"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/callkeep/scr1.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/callkeep/scr1.webp",
+    "featured": false
+  },
+  {
+    "id": "12",
+    "name": "Alias AI",
+    "platform": "flutter",
+    "intro": "Гра в слова для компанії 23 мовами, офлайн або в онлайн-кімнатах з голосовим чатом",
+    "description": "Мій власний продукт, 2024–2026. Гра для компанії, де команди пояснюють одна одній слова на час.\nГрати можна офлайн на одному телефоні або в онлайн-кімнатах через WebSocket з голосовим чатом між гравцями; у Google Play 23 мови.",
+    "linkAndroid": "https://play.google.com/store/apps/details?id=com.serdun.alias_ai",
+    "linkIOS": "",
+    "linkGithub": "",
+    "spheres": [
+      "Гра",
+      "Для компанії",
+      "Власний продукт"
+    ],
+    "technologies": [
+      "Flutter",
+      "WebSocket",
+      "Голосовий чат",
+      "Локалізація"
+    ],
+    "screenshots": [
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr1.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr2.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr3.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr4.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr5.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr6.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr7.webp",
+      "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr8.webp"
+    ],
+    "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/alias_ai/scr1.webp",
+    "featured": true
+  },
+  {
     "id": "0",
     "name": "Портфоліо",
     "platform": "flutter",
@@ -100,7 +199,7 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp"
     ],
     "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/mp/scr5.webp",
-    "featured": true
+    "featured": false
   },
   {
     "id": "3",
@@ -147,9 +246,9 @@
     "linkIOS": "",
     "linkGithub": "",
     "spheres": [
-      "Здоров'я",
-      "Домашні тварини",
-      "Собаки"
+      "Доставка їжі",
+      "Ресторани",
+      "Геолокація"
     ],
     "technologies": [
       "Dart",
@@ -170,7 +269,7 @@
       "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr8.webp"
     ],
     "preview": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/ff/scr1.webp",
-    "featured": true
+    "featured": false
   },
   {
     "id": "5",
@@ -241,7 +340,7 @@
     "id": "7",
     "name": "Daberli",
     "platform": "flutter",
-    "intro": "Мобільний додаток для зберігання та обміну медичними та оздоровчими даними про домашніх тварин та пошуку корисної інформації про них",
+    "intro": "Застосунок доставки з входом за телефоном, Apple Pay, арабською й англійською та вибором місця доставки на мапі",
     "description": "Управляйте, зберігайте та передавайте медичні записи і інформацію про здоров'я домашніх тварин. Зв'язуйтесь з ветеринарами та постачальниками послуг для домашніх тварин через відео, текстові повідомлення та відправляйте фотографії. Знаходьте постачальників послуг для домашніх тварин за допомогою Google Locator.",
     "linkAndroid": "",
     "linkIOS": "",

@@ -1,13 +1,56 @@
 {
   "first_name": "Дмитро",
-  "second_name": "Сердунь",
+  "second_name": "Сердун",
   "name": "Дмитро Сердун",
   "avatar_url": "https://raw.githubusercontent.com/SERDUN/res_media_screenshots/main/data/avatar.webp",
-  "cv_url": "https://drive.google.com/file/d/1aZ-BcXJFSG8AjnjniG0OEM5NBzm8CMwk/view?usp=sharing",
-  "position": "Мобільний розробник",
-  "intro": "Привіт, дозвольте представити себе. \nМені двадцять п'ять років, і я живу в Україні, Одеса. Я мобільний розробник з більш ніж 4-річним досвідом роботи.\nМоя основна платформа - Android, але протягом останніх 2 років я створював або практикував проекти Flutter для кросплатформенної розробки.\nДо речі, ви зараз перевіряєте мої навички Flutter, прокручуючи цю сторінку)\n \n\nСлава Україні",
+  "cv_url": "https://drive.google.com/file/d/1k1ToNQdIbi_jLq9UgeO7i1JdntXrmkbI/view?usp=sharing",
+  "position": "Senior Mobile Developer",
   "location": "Одеса, Україна",
-  "headline": "Android- і Flutter-застосунки, що почуваються як удома на кожному екрані.",
-  "headline_accent": "на кожному екрані",
-  "experience_since": 2019
+  "headline": "Застосунки на Flutter і Android — аж до рівня операційної системи.",
+  "headline_accent": "аж до рівня операційної системи",
+  "experience_since": 2017,
+  "intro": "Мобільний розробник з 9 роками в продакшн-застосунках: нативний Android з 2017, Flutter з 2019 і знову нативний Kotlin з 2024 як автор плагіна для дзвінків. З 2022 року я основний розробник white-label VoIP-софтфона для iOS, Android і Web.\n\nПрацюю на межі між застосунком і операційною системою: фонові й foreground-сервіси, життєвий цикл процесу, телефонія, маршрутизація звуку, пробудження пушем. Також роблю бекенд, інструменти збірки й CI/CD навколо застосунків, які випускаю.",
+  "experience": [
+    {
+      "company": "PortaOne",
+      "role": "Software Engineer",
+      "period": "січ 2026 – досі",
+      "terms": "повна зайнятість",
+      "summary": "Той самий софтфон, тепер під назвою PortaPhone, перейшов до PortaOne разом із плагіном дзвінків та інструментами збірки. Робота триває в тій самій кодовій базі.",
+      "highlights": []
+    },
+    {
+      "company": "WebTrit",
+      "role": "Senior Flutter Developer",
+      "period": "лип 2022 – досі",
+      "terms": "повна зайнятість, віддалено",
+      "summary": "White-label софтфон на Flutter для iOS, Android і Web. Публічні збірки: WebTrit і PortaPhone 2 у Google Play та App Store.",
+      "highlights": [
+        "Основний розробник з першого дня проєкту, близько 2,5 тис. комітів: дзвінки через WebRTC (Janus), SIP-присутність, чат і SMS, голосова пошта, синхронізація контактів, історія дзвінків, теми з remote config.",
+        "Автор Android-частини webtrit_callkeep (Kotlin, близько 500 комітів): Telecom ConnectionService в окремому процесі з foreground-сервісами, тож дзвінок переживає згортання застосунку й загибель процесу.",
+        "Підтримував форки flutter-webrtc і janus-gateway: ICE через VPN, падіння камери при паралельних відеодзвінках, стабільність SDP-переузгодження й ICE restart.",
+        "CI/CD на GitHub Actions: налаштувати бренд, зібрати, підписати й опублікувати в Google Play та TestFlight.",
+        "Наскрізні тести Patrol на реальних пристроях; веб-конфігуратор на Flutter Web з бекендом на NestJS у Cloud Run і PostgreSQL."
+      ]
+    },
+    {
+      "company": "SteelKiwi Development (тепер GlobalDev)",
+      "role": "Android-розробник, згодом Flutter-розробник",
+      "period": "жов 2017 – жов 2022",
+      "terms": "повна зайнятість, офіс в Одесі",
+      "summary": "Нативні Android- і Flutter-застосунки для клієнтів аутсорсу, переважно стартапів, що будували MVP. Оцінка, архітектура, код-рев'ю, релізи.",
+      "highlights": [
+        "Нативний Android (Java, Kotlin): Alias, Columbus Coffee Rewards, Arrkas, NightApp.",
+        "Flutter: mPet, Slaywoke, Daberli, застосунок-компаньйон для BLE-пристрою, що вимірює силу вдиху, та інші MVP."
+      ]
+    },
+    {
+      "company": "Фриланс",
+      "role": "Flutter-розробник",
+      "period": "2020 – 2022",
+      "terms": "віддалено",
+      "summary": "Foodie Family: замовлення й доставка їжі, окремі застосунки для клієнта й кур'єра з геолокацією, опубліковано в Google Play.",
+      "highlights": []
+    }
+  ]
 }
