@@ -1,6 +1,6 @@
 import 'package:domain/domain.dart';
 
-import '../dto/skill_group_dto.dart';
+import '../dto/dto.dart';
 
 extension SkillGroupDtoMapper on SkillGroupDTO {
   /// A top-level entry is a group and its subskills are the skills. The data
