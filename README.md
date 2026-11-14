@@ -15,7 +15,7 @@ Personal portfolio of Dmytro Serdun, a Flutter web app: https://serdun.online/
 | `docs/` | `widgets.md`: the catalogue of shared widgets in `lib/core/widgets/` |
 | `web/` | web shell: `index.html`, manifest, icons |
 | `apps/jaspr/` | the Jaspr presenter: the same UI pre-rendered to static HTML, see [`apps/jaspr/README.md`](apps/jaspr/README.md) |
-| `tool/scripts/` | `jaspr.sh` (build, serve, test the Jaspr presenter), `layer-deps-check.sh` (no Flutter in the web-clean packages) |
+| `tool/scripts/` | `jaspr.sh` (build, serve, test the Jaspr presenter), `gen_jaspr_l10n.dart` (the Jaspr strings from the ARB files), `layer-deps-check.sh` (no Flutter in the web-clean packages) |
 | `server/` | the content API (Dart, shelf, PostgreSQL) for Railway and the content pull/push CLI |
 | `firebase/` | Firebase Hosting config of the site |
 

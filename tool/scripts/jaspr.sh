@@ -12,6 +12,8 @@
 # `flutter pub get` does not resolve it; every command here runs its
 # `dart pub get` first.
 #
+# The strings are regenerated from the shared ARB files before each command.
+#
 # `build` gets a free port: the pre-render pass starts a real server, 8080 by
 # default, and fails late and opaquely when the port is taken.
 #
@@ -41,6 +43,10 @@ flutter_bin="$(command -v flutter)" || {
 }
 sdk_bin="$(cd "$(dirname "$(resolve "$flutter_bin")")" && pwd)"
 export PATH="$sdk_bin:$PATH"
+
+# The UI strings come from the Flutter app's ARB files; the generated Dart is
+# not committed, so every command regenerates it first (well under a second).
+(cd "$ROOT" && dart tool/scripts/gen_jaspr_l10n.dart >/dev/null)
 
 cd "$ROOT/apps/jaspr"
 dart pub get >/dev/null
