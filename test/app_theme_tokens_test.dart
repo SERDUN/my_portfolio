@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 
+import 'package:design_tokens/design_tokens.dart';
+
 import 'package:my_portfolio/style/style.dart';
 
 /// The theme reads its values from package/design_tokens. These are the values
@@ -108,5 +110,40 @@ void main() {
       expect(style.color, color);
     }
     expect(t.displayLarge!.fontFamilyFallback!.first, startsWith('PlayfairDisplay'));
+  });
+
+  testWidgets('the tracking a widget gets from Theme.of is the tracking in the tokens', (tester) async {
+    late TextTheme localized;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light(),
+        home: Builder(
+          builder: (context) {
+            localized = Theme.of(context).textTheme;
+            return const SizedBox();
+          },
+        ),
+      ),
+    );
+    final roles = <String, TextStyle?>{
+      'display-large': localized.displayLarge,
+      'display-medium': localized.displayMedium,
+      'display-small': localized.displaySmall,
+      'headline-large': localized.headlineLarge,
+      'headline-medium': localized.headlineMedium,
+      'headline-small': localized.headlineSmall,
+      'title-large': localized.titleLarge,
+      'title-medium': localized.titleMedium,
+      'title-small': localized.titleSmall,
+      'body-large': localized.bodyLarge,
+      'body-medium': localized.bodyMedium,
+      'body-small': localized.bodySmall,
+      'label-large': localized.labelLarge,
+      'label-medium': localized.labelMedium,
+      'label-small': localized.labelSmall,
+    };
+    for (final MapEntry(key: name, value: style) in roles.entries) {
+      expect(style!.letterSpacing, closeTo(TypeScale.byName[name]!.letterSpacing, 1e-9), reason: name);
+    }
   });
 }
