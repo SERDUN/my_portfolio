@@ -22,9 +22,8 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 
-# Packages that must stay free of Flutter. package/data joins the list once its
-# asset loading moves behind an interface.
-WEB_CLEAN=(apps/jaspr package/domain package/contract package/presentation)
+# Packages that must stay free of Flutter.
+WEB_CLEAN=(apps/jaspr package/domain package/contract package/presentation package/data)
 
 # Every pubspec in the repository, so a new package is covered without being
 # listed here.

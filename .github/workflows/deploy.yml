@@ -51,7 +51,7 @@ jobs:
       - name: Test
         run: |
           flutter test
-          (cd package/data && flutter test)
+          (cd package/data && dart test)
 
       - name: Build
         run: flutter build web --release

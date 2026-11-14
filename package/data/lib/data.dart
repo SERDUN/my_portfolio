@@ -1,3 +1,4 @@
+export 'assets/assets.dart';
 export 'datasource/datasource.dart';
 export 'di/environment.dart';
 export 'di/injection.module.dart';
