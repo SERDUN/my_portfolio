@@ -4,6 +4,7 @@
 library;
 
 export 'src/contacts/contacts_cubit.dart';
+export 'src/format/contact_address.dart';
 export 'src/format/language_name.dart';
 export 'src/format/project_platform_label.dart';
 export 'src/format/project_platforms.dart';

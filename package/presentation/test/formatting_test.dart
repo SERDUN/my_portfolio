@@ -37,4 +37,15 @@ void main() {
       expect(publishedPlatforms(ProjectModel(id: '1', name: 'a', technologies: const ['Kotlin'])), isEmpty);
     });
   });
+
+  group('ContactAddress.shownAddress', () {
+    test('drops the scheme and www', () {
+      expect(ContactModel(title: 'GitHub', value: 'https://www.github.com/SERDUN').shownAddress, 'github.com/SERDUN');
+      expect(ContactModel(title: 'Telegram', value: 'http://t.me/x').shownAddress, 't.me/x');
+    });
+
+    test('leaves an email or a bare value as it is', () {
+      expect(ContactModel(title: 'Email', value: 'a@b.c').shownAddress, 'a@b.c');
+    });
+  });
 }
