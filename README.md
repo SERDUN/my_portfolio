@@ -6,12 +6,14 @@ Personal portfolio of Dmytro Serdun, a Flutter web app: https://serdun.online/
 
 | Path | What it is |
 |---|---|
-| `lib/` | the app: `bootstrap.dart`, routing and theme in `app/`, screens in `features/`, shared widgets in `core/`, l10n in `localization/` |
+| `lib/` | the Flutter app: `bootstrap.dart`, routing and theme in `app/`, screens in `features/`, shared widgets in `core/`, l10n in `localization/` |
 | `package/domain/` | pure Dart: entities, repository contracts, use cases; depends on nothing but `injectable` |
 | `package/contract/` | pure Dart: the JSON DTOs of the content, shared by the app, the content API and the sync |
 | `package/data/` | DTO → model mappers (`lib/extension/`), data sources, repository implementations, the pulled JSON content under `assets/data/{en,uk}/` |
 | `docs/` | `widgets.md`: the catalogue of shared widgets in `lib/core/widgets/` |
 | `web/` | web shell: `index.html`, manifest, icons |
+| `apps/jaspr/` | the Jaspr presenter: the same UI pre-rendered to static HTML, see [`apps/jaspr/README.md`](apps/jaspr/README.md) |
+| `tool/scripts/` | `jaspr.sh` (build, serve, test the Jaspr presenter), `layer-deps-check.sh` (no Flutter in the web-clean packages) |
 | `server/` | the content API (Dart, shelf, PostgreSQL) for Railway and the content pull/push CLI |
 | `firebase/` | Firebase Hosting config of the site |
 
@@ -56,6 +58,9 @@ flutter test
 (cd package/contract && dart test)
 (cd package/data && flutter test)
 (cd server && dart test)
+tool/scripts/layer-deps-check.sh
+tool/scripts/jaspr.sh analyze
+tool/scripts/jaspr.sh test
 ```
 
 GitHub Actions runs the same on every pull request (`.github/workflows/checks.yml`).

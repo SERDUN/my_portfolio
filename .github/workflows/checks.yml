@@ -27,6 +27,20 @@ jobs:
       - run: cd package/contract && dart pub get && dart analyze && dart test
       - run: cd package/data && flutter analyze && flutter test
 
+  jaspr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.6
+          channel: stable
+          cache: true
+      - run: tool/scripts/layer-deps-check.sh
+      - run: tool/scripts/jaspr.sh analyze
+      - run: tool/scripts/jaspr.sh test
+      - run: tool/scripts/jaspr.sh build
+
   server:
     runs-on: ubuntu-latest
     services:

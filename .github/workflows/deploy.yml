@@ -11,7 +11,7 @@ name: Deploy
 on:
   push:
     branches: [master]
-    paths-ignore: ['server/**', '**.md']
+    paths-ignore: ['server/**', 'apps/**', '**.md']
   workflow_dispatch:
   repository_dispatch:
     types: [content-updated]

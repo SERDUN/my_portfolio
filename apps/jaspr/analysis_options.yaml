@@ -1,0 +1,16 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  errors:
+    # Importing a package this one does not declare is a build failure.
+    depend_on_referenced_packages: error
+  exclude:
+    - "**/*.g.dart"
+    - build/**
+
+linter:
+  rules:
+    prefer_single_quotes: true
+
+formatter:
+  page_width: 120

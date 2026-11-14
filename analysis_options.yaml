@@ -13,6 +13,7 @@ analyzer:
     - web/**
     # Nested packages are analyzed on their own, with their own dependencies.
     - package/**
+    - apps/**
     - server/**
 include: package:flutter_lints/flutter.yaml
 

@@ -1,0 +1,36 @@
+name: my_portfolio_jaspr
+description: "Jaspr presenter of the portfolio site: the same UI as the Flutter app, pre-rendered to HTML."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.10.0
+
+# Deliberately its own resolution with its own pubspec.lock: jaspr's build
+# toolchain wants newer analyzer-based generators than the Flutter app's
+# freezed / injectable_generator, and a shared resolution would move them and
+# churn the app's generated sources. Path dependencies onto package/* resolve
+# fine from here.
+#
+# This package must NEVER declare `flutter`: it compiles to JavaScript, and a
+# Flutter dependency drags in `dart:ui`, which dart2js cannot compile.
+# tool/scripts/layer-deps-check.sh enforces it.
+dependencies:
+  jaspr: ^0.23.4
+
+dev_dependencies:
+  build_runner: ^2.13.1
+  # Not jaspr_web_compilers: it caps the SDK below 3.11. Jaspr 0.23 builds with
+  # the standard compilers.
+  build_web_compilers: ^4.2.0
+  jaspr_builder: ^0.23.4
+  jaspr_cli: ^0.23.4
+  jaspr_test: ^0.23.4
+  lints: ^6.0.0
+  test: ^1.25.0
+
+# Static pre-render: every route is rendered to HTML at build time and the
+# output is a static bundle for Firebase Hosting. The content is known at build
+# time (the deploy pulls it from the content API first), so no server is needed.
+jaspr:
+  mode: static
