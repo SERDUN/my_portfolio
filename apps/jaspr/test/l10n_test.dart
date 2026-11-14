@@ -12,11 +12,9 @@ void main() {
       jsonDecode(File('../../lib/localization/l10n/arb/app_$code.arb').readAsStringSync()) as Map<String, dynamic>;
 
   test('there is a set of strings for every ARB file', () {
-    final codes = Directory('../../lib/localization/l10n/arb')
-        .listSync()
-        .map((f) => RegExp(r'app_(\w+)\.arb$').firstMatch(f.path)?.group(1))
-        .whereType<String>()
-        .toSet();
+    final codes = Directory(
+      '../../lib/localization/l10n/arb',
+    ).listSync().map((f) => RegExp(r'app_(\w+)\.arb$').firstMatch(f.path)?.group(1)).whereType<String>().toSet();
     expect(AppStrings.languageCodes.toSet(), codes);
     for (final code in codes) {
       expect(AppStrings.of(code).languageCode, code);
