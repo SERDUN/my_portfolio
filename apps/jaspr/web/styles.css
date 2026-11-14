@@ -468,10 +468,17 @@ img {
   margin-top: 16px;
 }
 
-/* PageScaffold: the page is at least most of a viewport tall. */
+/* PageScaffold: the page is at least 60 % of the body under the header
+ * (64 px tall up to the tablet range, 76 px above). */
 .site-main {
   display: block;
-  min-height: 60vh;
+  min-height: calc((100vh - 64px) * 0.6);
+}
+
+@media (min-width: 801px) {
+  .site-main {
+    min-height: calc((100vh - 76px) * 0.6);
+  }
 }
 
 /* SiteFooter. */
@@ -1023,6 +1030,196 @@ img {
   }
 }
 
+/* The opening of the projects, contacts and useful pages: eyebrow, 10 px,
+ * the statement, 14 px, the description at most 640 px wide. */
+.page-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.page-intro__title {
+  margin-top: 10px;
+}
+
+.page-intro__description {
+  max-width: 640px;
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+/* ContactsPage and UsefulCommandsPage: 32 px above on phones, 72 above; 96
+ * below; the content 32 px under the intro. */
+.top-page {
+  padding-top: 32px;
+  padding-bottom: 96px;
+}
+
+.top-page__body {
+  margin-top: 32px;
+}
+
+@media (min-width: 451px) {
+  .top-page {
+    padding-top: 72px;
+  }
+}
+
+/* ContactCard: a Material shape (border painted over), label, address and
+ * an accent arrow. */
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px 20px 22px 24px;
+  border-radius: var(--radius-card);
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition: background-color 0.15s;
+}
+
+.contact-card:hover {
+  background: color-mix(in srgb, var(--ink) 4%, var(--card));
+}
+
+.contact-card__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.contact-card__label {
+  font-size: 12px;
+  letter-spacing: 1.3px;
+}
+
+.contact-card__address {
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.contact-card__arrow {
+  color: var(--accent);
+}
+
+/* UsefulCommandsPage: one card per group, 20 px apart. */
+.useful-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.command-group {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--card);
+}
+
+.command-group__title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.command-group__title h2 {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Flutter's Divider(height: 24): a hairline in the middle of 24 px. */
+.command-group__divider {
+  height: 1px;
+  margin: 11.5px 0;
+  border: none;
+  background: var(--line);
+}
+
+.command {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.command__box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px 6px 14px;
+  border-radius: 12px;
+  background: var(--chip);
+}
+
+.command__code {
+  flex: 1;
+  min-width: 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  /* The body-medium tracking a Flutter SelectableText merges in. */
+  letter-spacing: 0.25px;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+/* TextButton.icon: 44 px, 8 / 12 px padding, icon 8 px before the label. */
+.command__copy {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--muted);
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+.command__copy:hover {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.command__copy.is-copied {
+  color: var(--accent);
+}
+
+.command__icon-copied,
+.command__label-copied,
+.command__copy.is-copied .command__icon-copy,
+.command__copy.is-copied .command__label-copy {
+  display: none;
+}
+
+.command__copy.is-copied .command__icon-copied,
+.command__copy.is-copied .command__label-copied {
+  display: inline;
+}
+
+@media (min-width: 451px) {
+  .command-group {
+    padding: 28px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* ProjectsPage: 32 px above on phones, 72 above; 96 below. The header puts
  * the filter beside the copy from 801 px. */
 .projects {
@@ -1037,21 +1234,6 @@ img {
   gap: 24px;
 }
 
-.projects__copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.projects__title {
-  margin-top: 10px;
-}
-
-.projects__description {
-  max-width: 640px;
-  margin-top: 14px;
-  color: var(--muted);
-}
 
 .projects__filter {
   display: flex;
@@ -1119,7 +1301,7 @@ img {
     gap: 40px;
   }
 
-  .projects__copy {
+  .projects__header .page-intro {
     flex: 1;
     min-width: 0;
   }

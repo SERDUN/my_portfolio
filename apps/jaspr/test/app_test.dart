@@ -78,4 +78,27 @@ void main() {
       }
     }
   });
+
+  testServer('the contacts page has a card per channel linking to it', (tester) async {
+    tester.pumpComponent(App(content: content));
+
+    final document = (await tester.request('/contacts')).document!;
+    final contacts = content[Language.en]!.contacts.contacts;
+
+    final cards = document.querySelectorAll('.contact-card');
+    expect(cards.map((c) => c.attributes['href']), contacts.map((c) => c.link));
+    expect(document.querySelector('.nav-link--selected')!.text, content[Language.en]!.strings.shell_navContacts);
+  });
+
+  testServer('the useful page has a copy button per command and loads copy.js', (tester) async {
+    tester.pumpComponent(App(content: content));
+
+    final document = (await tester.request('/uk/useful')).document!;
+    final groups = content[Language.uk]!.useful.groups;
+
+    expect(document.querySelectorAll('.command-group'), hasLength(groups.length));
+    final copies = document.querySelectorAll('[data-copy]').map((b) => b.attributes['data-copy']);
+    expect(copies, [for (final group in groups) ...group.commands.map((c) => c.command)]);
+    expect(document.querySelector('script[src="/copy.js"]'), isNotNull);
+  });
 }
