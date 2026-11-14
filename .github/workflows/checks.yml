@@ -1,0 +1,50 @@
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.6
+          channel: stable
+          cache: true
+      - name: Generate code
+        run: |
+          flutter pub get
+          (cd package/domain && dart run build_runner build --delete-conflicting-outputs)
+          (cd package/data && dart run build_runner build --delete-conflicting-outputs)
+          dart run build_runner build --delete-conflicting-outputs
+      - run: flutter analyze
+      - run: flutter test
+      - run: cd package/domain && dart analyze && dart test
+      - run: cd package/contract && dart pub get && dart analyze && dart test
+      - run: cd package/data && flutter analyze && flutter test
+
+  server:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.13.5
+      - working-directory: server
+        run: |
+          dart pub get
+          dart analyze
+          dart test
+        env:
+          TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres

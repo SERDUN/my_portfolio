@@ -19,33 +19,26 @@ class ApiException implements Exception {
   String toString() => 'ApiException($statusCode, $uri)';
 }
 
-/// Adds the JSON and owner headers to every request.
+/// Adds the JSON headers to every request.
 class ApiClient extends http.BaseClient {
-  ApiClient(this._inner, this._customHeaders);
+  ApiClient(this._inner);
 
   final http.Client _inner;
-  final Map<String, String> _customHeaders;
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) {
-    request.headers['content-type'] = 'application/json; charset=utf-8';
     request.headers['accept'] = 'application/json';
-    request.headers.addAll(_customHeaders);
     return _inner.send(request);
   }
 }
 
-/// Fetches the content from the Cloud Functions API. Registered lazily in
-/// every environment; only the api environment binds it as the source.
+/// Fetches the content from the content API (`server/`). Registered lazily
+/// in every environment; only the api environment binds it as the source.
 @lazySingleton
 class ApiDatasource implements PortfolioDataSource {
-  ApiDatasource({
-    @Named('userId') required this.userId,
-    @Named('baseUrl') required this.baseUrl,
-    @ignoreParam http.Client? client,
-  }) : _client = ApiClient(client ?? http.Client(), {'x-user-id': userId});
+  ApiDatasource({@Named('baseUrl') required this.baseUrl, @ignoreParam http.Client? client})
+    : _client = ApiClient(client ?? http.Client());
 
-  final String userId;
   final Uri baseUrl;
   final http.Client _client;
 
