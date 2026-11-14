@@ -1,0 +1,6 @@
+**
+!package/contract/lib/**
+!package/contract/pubspec.yaml
+!server/bin/**
+!server/lib/**
+!server/pubspec.yaml

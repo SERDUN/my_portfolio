@@ -1,0 +1,20 @@
+name: portfolio_api
+description: Content API of the portfolio on shelf and PostgreSQL, plus the content CLI that pulls it into the app assets.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  args: ^2.7.0
+  contract:
+    path: ../package/contract
+  http: ^1.6.0
+  postgres: ^3.5.20
+  shelf: ^1.4.3
+  shelf_router: ^1.1.5
+
+dev_dependencies:
+  lints: ^6.1.0
+  test: ^1.33.0
