@@ -1,6 +1,6 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
-import 'package:data/data.dart';
+import 'package:contract/contract.dart';
 
 /// Schema-level checks on the generated `fromJson` / `toJson` code with small
 /// hand-built maps: defaults for absent lists, nullability, key names.

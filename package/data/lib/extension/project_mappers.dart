@@ -2,7 +2,7 @@ import 'dart:developer' as developer;
 
 import 'package:domain/domain.dart';
 
-import '../dto/project_dto.dart';
+import '../dto/dto.dart';
 import 'uri_parsing.dart';
 
 extension ProjectDtoMapper on ProjectDTO {

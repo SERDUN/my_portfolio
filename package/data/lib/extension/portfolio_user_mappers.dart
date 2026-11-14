@@ -1,7 +1,6 @@
 import 'package:domain/domain.dart';
 
-import '../dto/experience_dto.dart';
-import '../dto/portfolio_user_dto.dart';
+import '../dto/dto.dart';
 import 'uri_parsing.dart';
 
 extension PortfolioUserDtoMapper on PortfolioUserDTO {

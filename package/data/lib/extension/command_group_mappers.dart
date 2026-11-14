@@ -1,6 +1,6 @@
 import 'package:domain/domain.dart';
 
-import '../dto/command_group_dto.dart';
+import '../dto/dto.dart';
 
 extension CommandDtoMapper on CommandDTO {
   CommandModel toDomain() => CommandModel(title, command);
