@@ -30,7 +30,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
     return BlocBuilder<ProjectsCubit, ProjectsState>(
       builder: (context, state) {
         final projects = state.projects;
-        final platforms = _platformCounts(projects);
+        final platforms = state.platformCounts;
         final visible = _platform == null ? projects : projects.where((p) => p.platform == _platform).toList();
         final isMobile = ResponsiveBreakpoints.of(context).isMobile;
 
@@ -87,16 +87,6 @@ class _ProjectsPageState extends State<ProjectsPage> {
         );
       },
     );
-  }
-
-  /// Platform → number of projects, in order of first appearance.
-  static Map<ProjectPlatform, int> _platformCounts(List<ProjectModel> projects) {
-    final counts = <ProjectPlatform, int>{};
-    for (final project in projects) {
-      final platform = project.platform;
-      if (platform != null) counts[platform] = (counts[platform] ?? 0) + 1;
-    }
-    return counts;
   }
 }
 
