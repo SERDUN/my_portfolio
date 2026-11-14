@@ -24,7 +24,7 @@ cd "$ROOT"
 
 # Packages that must stay free of Flutter. package/data joins the list once its
 # asset loading moves behind an interface.
-WEB_CLEAN=(apps/jaspr package/domain package/contract)
+WEB_CLEAN=(apps/jaspr package/domain package/contract package/presentation)
 
 # Every pubspec in the repository, so a new package is covered without being
 # listed here.

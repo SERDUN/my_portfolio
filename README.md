@@ -8,6 +8,7 @@ Personal portfolio of Dmytro Serdun, a Flutter web app: https://serdun.online/
 |---|---|
 | `lib/` | the Flutter app: `bootstrap.dart`, routing and theme in `app/`, screens in `features/`, shared widgets in `core/`, l10n in `localization/` |
 | `package/domain/` | pure Dart: entities, repository contracts, use cases; depends on nothing but `injectable` |
+| `package/presentation/` | pure Dart: the page cubits and their states, app settings, routes and state helpers, shared by the Flutter app and the Jaspr presenter |
 | `package/contract/` | pure Dart: the JSON DTOs of the content, shared by the app, the content API and the sync |
 | `package/data/` | DTO → model mappers (`lib/extension/`), data sources, repository implementations, the pulled JSON content under `assets/data/{en,uk}/` |
 | `docs/` | `widgets.md`: the catalogue of shared widgets in `lib/core/widgets/` |
@@ -30,6 +31,7 @@ Generated code is only partly committed: `.g.dart`, `.freezed.dart` and the micr
 ```sh
 flutter pub get
 (cd package/domain && dart run build_runner build)
+(cd package/presentation && dart run build_runner build)
 (cd package/data && dart run build_runner build)
 dart run build_runner build
 ```
@@ -55,6 +57,7 @@ The container binds one `PortfolioDataSource` per environment. The default reads
 flutter analyze
 flutter test
 (cd package/domain && dart test)
+(cd package/presentation && dart test)
 (cd package/contract && dart test)
 (cd package/data && flutter test)
 (cd server && dart test)

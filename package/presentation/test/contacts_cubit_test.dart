@@ -1,13 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter_test/flutter_test.dart';
-import 'package:material_ui/material_ui.dart' show ThemeMode;
+import 'package:test/test.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/app/settings/settings.dart';
-import 'package:my_portfolio/core/state/state.dart';
-import 'package:my_portfolio/app/contacts/contacts.dart';
+import 'package:presentation/presentation.dart';
 
 class _Contacts implements GetContactsUseCase {
   final controller = StreamController<List<ContactModel>>.broadcast();
@@ -71,7 +68,7 @@ void main() {
   });
 
   test('reloads on a language change, not on a theme change, and never after close', () async {
-    settings.changeThemeMode(ThemeMode.dark);
+    settings.changeTheme(ThemePreference.dark);
     await Future<void>.delayed(Duration.zero);
     expect(useCase.languages, [Language.en]);
 

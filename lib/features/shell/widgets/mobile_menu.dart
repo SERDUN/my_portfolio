@@ -7,7 +7,7 @@ import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import '../bloc/shell_cubit.dart';
+import 'package:presentation/presentation.dart';
 import 'site_header.dart';
 
 /// Navigation for narrow screens: a bottom sheet with the four destinations

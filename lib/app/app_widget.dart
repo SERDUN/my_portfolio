@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:presentation/presentation.dart';
 
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
@@ -10,7 +11,6 @@ import 'package:my_portfolio/style/style.dart';
 import 'app_frame.dart';
 import 'app_router.dart';
 import 'app_use_cases.dart';
-import 'settings/settings.dart';
 
 /// The composition root: the only widget that reads the container. It
 /// resolves the use cases once, owns the settings cubit and the router, and
@@ -70,8 +70,8 @@ class AppView extends StatelessWidget {
             supportedLocales: supportedLocales,
             theme: AppTheme.light(),
             darkTheme: AppTheme.dark(),
-            themeMode: state.themeMode,
-            locale: state.locale,
+            themeMode: state.theme.themeMode,
+            locale: state.language.locale,
             restorationScopeId: 'application',
             title: 'Dmytro Serdun',
             debugShowCheckedModeBanner: false,

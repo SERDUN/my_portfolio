@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'app_routes.dart';
+import 'package:presentation/presentation.dart';
 
 /// Typed navigation, so features and shared widgets never spell route names
 /// or paths themselves.

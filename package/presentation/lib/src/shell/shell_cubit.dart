@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:domain/domain.dart';
 
-import 'package:my_portfolio/core/state/state.dart';
+import '../state/state.dart';
 
 part 'shell_state.dart';
 

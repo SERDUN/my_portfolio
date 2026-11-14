@@ -1,0 +1,23 @@
+name: presentation
+description: Page cubits, settings, routes and state helpers of the portfolio, shared by the Flutter app and the Jaspr site. Pure Dart, no Flutter.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+
+# Must never declare `flutter` or `jaspr`: both presenters drive these cubits,
+# and the Jaspr one compiles to JavaScript. tool/scripts/layer-deps-check.sh
+# enforces the first half.
+dependencies:
+  bloc: ^9.2.1
+  freezed_annotation: ^3.1.0
+
+  domain:
+    path: ../domain
+
+dev_dependencies:
+  build_runner: ^2.15.0
+  freezed: ^4.0.3
+  lints: ^6.0.0
+  test: ^1.25.0

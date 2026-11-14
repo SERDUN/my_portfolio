@@ -19,6 +19,8 @@ dependencies:
     path: ./package/data
   domain:
     path: ./package/domain
+  presentation:
+    path: ./package/presentation
 
   bloc: ^9.2.1
   flutter_bloc: ^9.1.1

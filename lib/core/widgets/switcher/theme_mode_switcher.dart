@@ -1,5 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
+import 'package:presentation/presentation.dart';
+
 import '../semantics/semantic_action.dart';
 
 /// Round icon button that cycles system → light → dark → system. The icon
@@ -13,8 +15,8 @@ class ThemeModeSwitcher extends StatelessWidget {
     this.identifier,
   });
 
-  final ThemeMode themeMode;
-  final ValueChanged<ThemeMode> onThemeChange;
+  final ThemePreference themeMode;
+  final ValueChanged<ThemePreference> onThemeChange;
   final String? tooltip;
   final String? identifier;
 
@@ -24,30 +26,19 @@ class ThemeModeSwitcher extends StatelessWidget {
       identifier: identifier,
       child: IconButton(
         tooltip: tooltip,
-        onPressed: () => onThemeChange(_nextThemeMode(themeMode)),
+        onPressed: () => onThemeChange(themeMode.next),
         icon: Icon(_iconFor(themeMode), size: 20),
       ),
     );
   }
 
-  static ThemeMode _nextThemeMode(ThemeMode mode) {
+  static IconData _iconFor(ThemePreference mode) {
     switch (mode) {
-      case ThemeMode.system:
-        return ThemeMode.light;
-      case ThemeMode.light:
-        return ThemeMode.dark;
-      case ThemeMode.dark:
-        return ThemeMode.system;
-    }
-  }
-
-  static IconData _iconFor(ThemeMode mode) {
-    switch (mode) {
-      case ThemeMode.dark:
+      case ThemePreference.dark:
         return Icons.nightlight_round;
-      case ThemeMode.light:
+      case ThemePreference.light:
         return Icons.wb_sunny_rounded;
-      case ThemeMode.system:
+      case ThemePreference.system:
         return Icons.auto_awesome;
     }
   }
