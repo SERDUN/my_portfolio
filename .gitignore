@@ -1,6 +1,8 @@
 # Miscellaneous
 *.class
 *.lock
+# The Jaspr presenter has its own resolution, and its lock is what pins it.
+!apps/jaspr/pubspec.lock
 *.log
 *.pyc
 *.swp

@@ -1,0 +1,12 @@
+/* Base stylesheet of the Jaspr presenter. A placeholder: the palette, spacing
+ * and typography come from package/design_tokens in the next stage, so the
+ * two presenters read one set of values. */
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
