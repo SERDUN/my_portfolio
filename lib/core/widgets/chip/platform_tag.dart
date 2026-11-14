@@ -4,7 +4,7 @@ import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/style/style.dart';
 
-import '../../extensions/project_platform_x.dart';
+import 'package:presentation/presentation.dart';
 
 /// Small uppercase tag naming the platform of a project. Flutter is set in
 /// the accent, Android in ink, so the two read apart at a glance.

@@ -7,7 +7,7 @@ import 'package:domain/domain.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import '../../extensions/project_platform_x.dart';
+import 'package:presentation/presentation.dart';
 import '../chip/chip.dart';
 import '../image/phone_frame.dart';
 import '../semantics/semantic_action.dart';

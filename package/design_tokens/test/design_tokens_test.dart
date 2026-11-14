@@ -13,9 +13,9 @@ void main() {
     expect(cssColor(0x801C1613), 'rgba(28, 22, 19, 0.502)');
   });
 
-  test('display type is set tight, sans is not', () {
+  test('display type is set tight, sans carries its tracking', () {
     expect(TypeScale.displayLarge.letterSpacing, closeTo(-1.44, 1e-9));
-    expect(TypeScale.bodyMedium.letterSpacing, 0);
+    expect(TypeScale.bodyMedium.letterSpacing, 0.25);
   });
 
   test('breakpoints cover every width without a gap', () {

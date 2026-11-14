@@ -1,19 +1,38 @@
-import 'package:jaspr/dom.dart';
+import 'package:domain/domain.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_router/jaspr_router.dart';
+import 'package:presentation/presentation.dart';
 
-/// Root of the Jaspr presenter.
-///
-/// A skeleton for now: it proves the toolchain, the separate resolution and the
-/// CI build before any screen is ported. The shell, the router over the shared
-/// routes, the cubits and the design tokens come with the next stages.
+import '../features/home/home_page.dart';
+import '../features/shell/site_header.dart';
+import 'site_content.dart';
+import 'site_page.dart';
+import 'site_paths.dart';
+
+/// Root of the Jaspr presenter: one route per page and language, every one
+/// pre-rendered at build time (jaspr_router registers each route for static
+/// generation, which is why a page per project will be listed explicitly).
 class App extends StatelessComponent {
-  const App({super.key});
+  const App({required this.content, super.key});
+
+  final Map<Language, SiteContent> content;
 
   @override
   Component build(BuildContext context) {
-    return main_([
-      h1([Component.text('Dmytro Serdun')]),
-      p([Component.text('Portfolio, Jaspr presenter.')]),
-    ]);
+    return Router(
+      routes: [
+        for (final language in Language.values)
+          Route(path: SitePaths.home(language), builder: (context, state) => _home(content[language]!)),
+      ],
+    );
   }
+
+  static Component _home(SiteContent content) => sitePage(
+    content,
+    current: ShellDestination.home,
+    route: AppRoutes.home.path,
+    title: content.user.name,
+    description: content.user.intro,
+    child: homePage(content),
+  );
 }

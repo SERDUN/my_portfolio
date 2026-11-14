@@ -1,12 +1,889 @@
-/* Base stylesheet of the Jaspr presenter. A placeholder: the palette, spacing
- * and typography come from package/design_tokens in the next stage, so the
- * two presenters read one set of values. */
+/* The Jaspr presenter's stylesheet. The Flutter screens are the spec: every
+ * size here is the one the Flutter widget named in each block uses. Colours,
+ * fonts and the type scale come from package/design_tokens through the token
+ * stylesheet in <head> (var(--...) and the t-* classes); nothing here writes a
+ * colour of its own except the flag.
+ *
+ * Mobile first, at the shared breakpoints: phones up to 450 px, tablets from
+ * 451 px, "wide" (desktop) from 801 px. */
 
-:root {
-  color-scheme: light dark;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+.icon {
+  flex: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ContentWidth: at most 1200 px including the gutter, 40 px (20 on phones). */
+.content-width {
+  display: block;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 451px) {
+  .content-width {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Eyebrow: label-small, uppercase, accent, 1.8 px tracking. */
+.eyebrow {
+  display: block;
+  color: var(--accent);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+/* SectionHeader: a hairline, 32 px above; heading and side stacked on phones,
+ * side at the bottom right from tablets up. */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.section-header__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.section-header__description {
+  max-width: 420px;
+  color: var(--muted);
+}
+
+@media (min-width: 451px) {
+  .section-header {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 24px;
+  }
+
+  .section-header__heading {
+    flex: 1;
+  }
+}
+
+/* ResponsiveGrid: 3 / 2 / 1 columns, 20 px gaps, rows as tall as the tallest. */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+@media (min-width: 451px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 801px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+
+/* PillButton: stadium, label-large, icon 18 px after the label with a 10 px gap. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  min-width: 44px;
+  padding: 14px 22px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  color: inherit;
+  /* Flutter's buttons take their text style from the button theme, which
+   * carries no letter spacing of its own. */
+  letter-spacing: normal;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s, opacity 0.15s;
+}
+
+.pill--compact {
+  min-height: 44px;
+  padding: 10px 18px;
+}
+
+.pill--filled {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.pill--ink {
+  background: var(--ink);
+  color: var(--ground);
+}
+
+.pill--outline {
+  border-color: var(--outline);
+  color: var(--ink);
+}
+
+.pill--ghost {
+  min-height: 48px;
+  padding: 10px 8px;
+  color: var(--accent);
+}
+
+.pill--filled:hover,
+.pill--ink:hover {
+  opacity: 0.92;
+}
+
+.pill--outline:hover,
+.pill--ghost:hover {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.pill--disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+/* TagChip. */
+.tag-chip {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--chip);
+  color: var(--body);
+  font-weight: 600;
+}
+
+.tag-chip--small {
+  padding: 5px 10px;
+}
+
+.tag-chip--outlined {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* PlatformTag: Flutter in the accent, Android in body ink. */
+.platform-tag {
+  flex: none;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.platform-tag--flutter {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.platform-tag--android {
+  background: var(--body);
+  color: var(--ground);
+}
+
+/* Round 44 px buttons: IconButton and the compact language toggle. */
+.round-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.round-button:hover {
+  background: color-mix(in srgb, var(--ink) 6%, var(--card));
+}
+
+.language-toggle-compact {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ThemeModeSwitcher: one icon per choice, the current one shown. */
+.theme-button__icon {
+  display: none;
+}
+
+:root:not([data-theme-preference]) .theme-button__icon--system,
+:root[data-theme-preference='light'] .theme-button__icon--light,
+:root[data-theme-preference='dark'] .theme-button__icon--dark {
+  display: block;
+}
+
+/* LanguageToggle: card capsule, 3 px inset, 32 px pills; the current one in ink. */
+.language-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--card);
+}
+
+.language-toggle__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  min-width: 44px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  transition: background-color 0.15s;
+}
+
+.language-toggle__pill--selected {
+  background: var(--ink);
+  color: var(--ground);
+}
+
+/* SiteHeader: 64 px with three round buttons up to the tablet range, 76 px with
+ * the navigation, switches and CV link above it. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--ground);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header__row {
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+.site-header__wordmark {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 4px;
+  border-radius: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.site-header__nav,
+.site-header .language-toggle,
+.site-header__cv {
+  display: none;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 801px) {
+  .site-header__row {
+    height: 76px;
+  }
+
+  .site-header__wordmark {
+    flex: none;
+  }
+
+  .site-header__nav {
+    display: flex;
+    align-self: stretch;
+    gap: 28px;
+    margin: 0 auto;
+  }
+
+  .site-header .language-toggle,
+  .site-header__cv {
+    display: inline-flex;
+  }
+
+  .site-header__actions {
+    gap: 12px;
+  }
+
+  .language-toggle-compact,
+  .site-header__menu {
+    display: none;
+  }
+}
+
+/* NavLink: full header height, muted text, the current page in ink with an
+ * accent underline. */
+.nav-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.nav-link--selected {
+  border-bottom-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* The mobile menu bottom sheet. */
+.mobile-menu {
+  inset: auto 0 0 0;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 12px 20px 24px;
+  border: none;
+  border-radius: 28px 28px 0 0;
+  background: var(--card);
+  color: var(--ink);
+}
+
+.mobile-menu::backdrop {
+  background: rgb(0 0 0 / 0.54);
+}
+
+.mobile-menu__handle {
+  width: 40px;
+  height: 4px;
+  margin: 0 auto 16px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 8px 16px;
+  border-radius: 14px;
+  color: var(--ink);
+}
+
+.mobile-menu__item--selected {
+  color: var(--accent);
+}
+
+.mobile-menu__item:hover {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.mobile-menu__cv {
+  display: flex;
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* PageScaffold: the page is at least most of a viewport tall. */
+.site-main {
+  display: block;
+  min-height: 60vh;
+}
+
+/* SiteFooter. */
+.site-footer {
+  background: var(--footer);
+  color: var(--footer-text);
+}
+
+.site-footer__inner {
+  padding-top: 40px;
+  padding-bottom: 28px;
+}
+
+.site-footer__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.site-footer__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.site-footer__eyebrow {
+  color: var(--footer-accent);
+}
+
+.site-footer__title {
+  color: var(--footer-text);
+}
+
+.site-footer__email {
+  font-family: var(--font-display);
+  font-size: 20px;
+  /* The rest comes from the Material default text style (body-medium) it
+   * merges into in Flutter. */
+  line-height: 1.55;
+  letter-spacing: 0.25px;
+  color: var(--footer-text);
+  text-decoration: underline;
+  text-decoration-color: var(--footer-accent);
+  text-decoration-thickness: 1.5px;
+}
+
+.site-footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.site-footer__social {
+  display: inline-flex;
+  letter-spacing: normal;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--footer-line);
+  border-radius: var(--radius-pill);
+  color: var(--footer-text);
+}
+
+.site-footer__social:hover {
+  background: color-mix(in srgb, var(--footer-text) 8%, transparent);
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--footer-line);
+}
+
+.site-footer__glory {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--footer-muted);
+}
+
+.site-footer__flag {
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  background: linear-gradient(#3a7bd5 50%, #f2c94c 50%);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 22px;
+  row-gap: 4px;
+}
+
+.site-footer__link {
+  padding: 12px 4px;
+  border-radius: 6px;
+  color: var(--footer-muted);
+}
+
+@media (min-width: 451px) {
+  .site-footer__inner {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  .site-footer__email {
+    font-size: 28px;
+  }
+
+  .site-footer__bottom {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .site-footer__links {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 801px) {
+  .site-footer__contact {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .site-footer__heading {
+    flex: 7;
+    min-width: 0;
+  }
+
+  .site-footer__socials {
+    flex: 5;
+    justify-content: flex-end;
+  }
+}
+
+/* HeroSection: 40 / 32 px on phones, 88 / 72 above; copy and portrait side by
+ * side from 801 px (7 : 5, 40 px apart), stacked 32 px apart below. */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 40px;
+  padding-bottom: 32px;
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero__copy > .eyebrow {
+  margin-bottom: 28px;
+}
+
+.hero__accent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.hero__intro {
+  max-width: 560px;
+  margin-top: 28px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+  margin-top: 28px;
+}
+
+@media (min-width: 451px) {
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 72px;
+  }
+}
+
+@media (min-width: 801px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .hero__copy {
+    flex: 7;
+    min-width: 0;
+  }
+
+  .hero__portrait {
+    flex: 5;
+    min-width: 0;
+  }
+}
+
+/* The portrait: a 4:3 card with a soft backing card 16 px down and left. */
+.portrait {
+  position: relative;
+  margin: 0 0 16px 16px;
+}
+
+.portrait::before {
+  content: '';
+  position: absolute;
+  inset: 16px 16px -16px -16px;
+  border-radius: 28px;
+  background: var(--accent-soft);
+}
+
+.portrait__frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--card);
+}
+
+.portrait__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.stat-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-tile);
+  background: var(--card);
+}
+
+.stat-tile__value {
+  line-height: 1;
+}
+
+/* Home sections: 16 px above, 72 below; selected work 0 / 96. */
+.home-section {
+  padding-top: 16px;
+  padding-bottom: 72px;
+}
+
+.home-section--last {
+  padding-top: 0;
+  padding-bottom: 96px;
+}
+
+.home-section__body {
+  margin-top: 32px;
+}
+
+/* ExperienceSection. */
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.experience-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--card);
+}
+
+.experience-row__period {
+  color: var(--accent);
+}
+
+.experience-row__role {
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+.experience-row__summary {
+  margin-top: 14px;
+}
+
+.experience-row__highlights {
+  margin-top: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-row__highlights li {
+  display: flex;
+  gap: 10px;
+  padding-top: 6px;
+}
+
+.experience-row__highlights li::before {
+  content: '—';
+  flex: none;
+  color: var(--accent);
+}
+
+@media (min-width: 451px) {
+  .experience-row {
+    flex-direction: row;
+    gap: 24px;
+    padding: 28px;
+  }
+
+  .experience-row__period {
+    flex: none;
+    width: 200px;
+    padding-top: 6px;
+  }
+
+  .experience-row__body {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* Skill group cards. */
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+}
+
+.skill-group__title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.skill-group__title h3 {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ProjectCard, vertical. */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--card);
+  transition: background-color 0.15s;
+}
+
+.project-card:hover {
+  background: color-mix(in srgb, var(--ink) 4%, var(--card));
+}
+
+.project-card__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.project-card__name {
+  flex: 1;
+  min-width: 0;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.project-card__summary {
+  display: -webkit-box;
+  margin-top: 10px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+/* PhoneFrame: a 300 px well, a 220 px phone 28 px from its top, 6 px bezel. */
+.phone-frame {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  padding: 28px 24px 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--accent-soft);
+}
+
+.phone-frame__phone {
+  width: 220px;
+  max-width: 100%;
+  padding: 6px 6px 0;
+  border-radius: 22px 22px 0 0;
+  background: var(--ink);
+  box-shadow: 0 24px 40px color-mix(in srgb, var(--ink) 18%, transparent);
+}
+
+.phone-frame__screen {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  background: var(--chip);
+}
+
+.phone-frame__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
