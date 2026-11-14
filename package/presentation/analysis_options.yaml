@@ -1,0 +1,10 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  errors:
+    depend_on_referenced_packages: error
+  exclude:
+    - "**/*.freezed.dart"
+
+formatter:
+  page_width: 120

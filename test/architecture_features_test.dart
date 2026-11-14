@@ -60,8 +60,7 @@ void main() {
 
   test('typed navigation and keys import nothing that imports features', () {
     final offenders = [
-      for (final target in targets(File('lib/app/navigation.dart')))
-        if (target != 'app/app_routes.dart') 'navigation -> $target',
+      for (final target in targets(File('lib/app/navigation.dart'))) 'navigation -> $target',
       for (final target in targets(File('lib/app/keys.dart'))) 'keys -> $target',
     ];
     expect(offenders, isEmpty);

@@ -1,6 +1,8 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_ui/material_ui.dart';
 
+import 'package:design_tokens/design_tokens.dart';
+
 import 'app_palette.dart';
 
 /// "Editorial espresso": warm paper ground, ink text, one espresso accent.
@@ -8,22 +10,22 @@ import 'app_palette.dart';
 class AppTheme {
   const AppTheme._();
 
-  static const double contentMaxWidth = 1200;
-  static const double radiusCard = 24;
-  static const double radiusTile = 18;
+  static const double contentMaxWidth = LayoutTokens.contentMaxWidth;
+  static const double radiusCard = LayoutTokens.radiusCard;
+  static const double radiusTile = LayoutTokens.radiusTile;
 
   /// Fraunces has no Cyrillic. Ukrainian headings fall through to Playfair
   /// Display; both styles are requested so the italic file is loaded too.
   static List<String> get displayFallback => [
-    GoogleFonts.playfairDisplay().fontFamily!,
-    GoogleFonts.playfairDisplay(fontStyle: FontStyle.italic).fontFamily!,
+    GoogleFonts.getFont(FontTokens.displayFallback).fontFamily!,
+    GoogleFonts.getFont(FontTokens.displayFallback, fontStyle: FontStyle.italic).fontFamily!,
   ];
 
-  static ThemeData light() => _build(Brightness.light, AppPalette.light);
+  static ThemeData light() => _build(Brightness.light, AppPalette.light, ColorTokens.light);
 
-  static ThemeData dark() => _build(Brightness.dark, AppPalette.dark);
+  static ThemeData dark() => _build(Brightness.dark, AppPalette.dark, ColorTokens.dark);
 
-  static ThemeData _build(Brightness brightness, AppPalette p) {
+  static ThemeData _build(Brightness brightness, AppPalette p, ColorTokens t) {
     final scheme = ColorScheme(
       brightness: brightness,
       primary: p.accent,
@@ -36,8 +38,8 @@ class AppTheme {
       onSecondaryContainer: p.body,
       tertiary: p.footerAccent,
       onTertiary: p.footer,
-      error: brightness == Brightness.light ? const Color(0xFFB3261E) : const Color(0xFFF2B8B5),
-      onError: brightness == Brightness.light ? Colors.white : const Color(0xFF601410),
+      error: Color(t.error),
+      onError: Color(t.onError),
       surface: p.ground,
       onSurface: p.ink,
       surfaceContainerLowest: p.card,
@@ -46,17 +48,17 @@ class AppTheme {
       surfaceContainerHigh: p.chip,
       surfaceContainerHighest: p.chip,
       onSurfaceVariant: p.muted,
-      outline: brightness == Brightness.light ? const Color(0xFFC9BDB2) : const Color(0xFF4A3F3A),
+      outline: Color(t.outline),
       outlineVariant: p.line,
       inverseSurface: p.footer,
       onInverseSurface: p.footerText,
       inversePrimary: p.footerAccent,
-      shadow: const Color(0xFF1C1613),
-      scrim: const Color(0xFF1C1613),
+      shadow: Color(t.shadow),
+      scrim: Color(t.shadow),
     );
 
     final text = _textTheme(p);
-    final stadium = RoundedRectangleBorder(borderRadius: BorderRadius.circular(999));
+    final stadium = RoundedRectangleBorder(borderRadius: BorderRadius.circular(LayoutTokens.radiusPill));
 
     return ThemeData(
       useMaterial3: true,
@@ -153,32 +155,48 @@ class AppTheme {
 
   static TextTheme _textTheme(AppPalette p) {
     final base = GoogleFonts.manropeTextTheme();
-    TextStyle display(double size, {double height = 1.04, FontWeight weight = FontWeight.w400}) => GoogleFonts.fraunces(
-      fontSize: size,
-      height: height,
-      fontWeight: weight,
-      letterSpacing: -0.02 * size,
-      color: p.ink,
-    ).copyWith(fontFamilyFallback: displayFallback);
-    TextStyle sans(double size, {double height = 1.5, FontWeight weight = FontWeight.w400, Color? color}) =>
-        GoogleFonts.manrope(fontSize: size, height: height, fontWeight: weight, color: color ?? p.ink);
+    TextStyle style(TextToken token) {
+      final color = switch (token.color) {
+        TextColorRole.ink => p.ink,
+        TextColorRole.body => p.body,
+        TextColorRole.muted => p.muted,
+      };
+      final weight = FontWeight.values[token.weight ~/ 100 - 1];
+      return switch (token.font) {
+        FontRole.display => GoogleFonts.getFont(
+          FontTokens.display,
+          fontSize: token.size,
+          height: token.height,
+          fontWeight: weight,
+          letterSpacing: token.letterSpacing,
+          color: color,
+        ).copyWith(fontFamilyFallback: displayFallback),
+        FontRole.sans => GoogleFonts.getFont(
+          FontTokens.sans,
+          fontSize: token.size,
+          height: token.height,
+          fontWeight: weight,
+          color: color,
+        ),
+      };
+    }
 
     return base.copyWith(
-      displayLarge: display(72),
-      displayMedium: display(56),
-      displaySmall: display(44, height: 1.1),
-      headlineLarge: display(36, height: 1.1),
-      headlineMedium: display(30, height: 1.1, weight: FontWeight.w500),
-      headlineSmall: display(26, height: 1.15, weight: FontWeight.w500),
-      titleLarge: display(24, height: 1.2, weight: FontWeight.w500),
-      titleMedium: sans(17, weight: FontWeight.w600),
-      titleSmall: sans(15, weight: FontWeight.w600),
-      bodyLarge: sans(19, height: 1.55, color: p.body),
-      bodyMedium: sans(17, height: 1.55, color: p.body),
-      bodySmall: sans(15, height: 1.5, color: p.muted),
-      labelLarge: sans(15, height: 1.2, weight: FontWeight.w600),
-      labelMedium: sans(14, height: 1.2, weight: FontWeight.w600),
-      labelSmall: sans(13, height: 1.2, weight: FontWeight.w700, color: p.muted),
+      displayLarge: style(TypeScale.displayLarge),
+      displayMedium: style(TypeScale.displayMedium),
+      displaySmall: style(TypeScale.displaySmall),
+      headlineLarge: style(TypeScale.headlineLarge),
+      headlineMedium: style(TypeScale.headlineMedium),
+      headlineSmall: style(TypeScale.headlineSmall),
+      titleLarge: style(TypeScale.titleLarge),
+      titleMedium: style(TypeScale.titleMedium),
+      titleSmall: style(TypeScale.titleSmall),
+      bodyLarge: style(TypeScale.bodyLarge),
+      bodyMedium: style(TypeScale.bodyMedium),
+      bodySmall: style(TypeScale.bodySmall),
+      labelLarge: style(TypeScale.labelLarge),
+      labelMedium: style(TypeScale.labelMedium),
+      labelSmall: style(TypeScale.labelSmall),
     );
   }
 }

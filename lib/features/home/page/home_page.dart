@@ -6,7 +6,7 @@ import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/app/navigation.dart';
 import 'package:my_portfolio/core/core.dart';
 
-import '../bloc/home_cubit.dart';
+import 'package:presentation/presentation.dart';
 import '../widgets/widgets.dart';
 
 /// Home: hero with the portrait and stats, the career timeline, skills as

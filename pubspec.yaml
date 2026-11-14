@@ -17,8 +17,12 @@ dependencies:
 
   data:
     path: ./package/data
+  design_tokens:
+    path: ./package/design_tokens
   domain:
     path: ./package/domain
+  presentation:
+    path: ./package/presentation
 
   bloc: ^9.2.1
   flutter_bloc: ^9.1.1

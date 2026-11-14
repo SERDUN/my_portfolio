@@ -8,12 +8,14 @@ Personal portfolio of Dmytro Serdun, a Flutter web app: https://serdun.online/
 |---|---|
 | `lib/` | the Flutter app: `bootstrap.dart`, routing and theme in `app/`, screens in `features/`, shared widgets in `core/`, l10n in `localization/` |
 | `package/domain/` | pure Dart: entities, repository contracts, use cases; depends on nothing but `injectable` |
+| `package/presentation/` | pure Dart: the page cubits and their states, app settings, routes and state helpers, shared by the Flutter app and the Jaspr presenter |
+| `package/design_tokens/` | pure Dart, no dependencies: colours, type scale, radii and breakpoints; the Flutter theme and the Jaspr stylesheet both read them |
 | `package/contract/` | pure Dart: the JSON DTOs of the content, shared by the app, the content API and the sync |
-| `package/data/` | DTO → model mappers (`lib/extension/`), data sources, repository implementations, the pulled JSON content under `assets/data/{en,uk}/` |
+| `package/data/` | pure Dart: DTO → model mappers (`lib/extension/`), data sources, repository implementations, the pulled JSON content under `assets/data/{en,uk}/`; a presenter reads those files through `AssetLoader` (the app's is `lib/di/root_bundle_asset_loader.dart`) |
 | `docs/` | `widgets.md`: the catalogue of shared widgets in `lib/core/widgets/` |
 | `web/` | web shell: `index.html`, manifest, icons |
 | `apps/jaspr/` | the Jaspr presenter: the same UI pre-rendered to static HTML, see [`apps/jaspr/README.md`](apps/jaspr/README.md) |
-| `tool/scripts/` | `jaspr.sh` (build, serve, test the Jaspr presenter), `layer-deps-check.sh` (no Flutter in the web-clean packages) |
+| `tool/scripts/` | `jaspr.sh` (build, serve, test the Jaspr presenter), `gen_jaspr_l10n.dart` (the Jaspr strings from the ARB files), `layer-deps-check.sh` (no Flutter in the web-clean packages) |
 | `server/` | the content API (Dart, shelf, PostgreSQL) for Railway and the content pull/push CLI |
 | `firebase/` | Firebase Hosting config of the site |
 
@@ -30,6 +32,7 @@ Generated code is only partly committed: `.g.dart`, `.freezed.dart` and the micr
 ```sh
 flutter pub get
 (cd package/domain && dart run build_runner build)
+(cd package/presentation && dart run build_runner build)
 (cd package/data && dart run build_runner build)
 dart run build_runner build
 ```
@@ -55,8 +58,10 @@ The container binds one `PortfolioDataSource` per environment. The default reads
 flutter analyze
 flutter test
 (cd package/domain && dart test)
+(cd package/presentation && dart test)
 (cd package/contract && dart test)
-(cd package/data && flutter test)
+(cd package/design_tokens && dart test)
+(cd package/data && dart test)
 (cd server && dart test)
 tool/scripts/layer-deps-check.sh
 tool/scripts/jaspr.sh analyze

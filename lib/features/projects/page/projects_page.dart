@@ -11,7 +11,7 @@ import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import '../bloc/projects_cubit.dart';
+import 'package:presentation/presentation.dart';
 
 /// All projects: a statement header, a platform filter and the cards.
 class ProjectsPage extends StatefulWidget {

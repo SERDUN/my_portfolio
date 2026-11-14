@@ -1,14 +1,14 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 
-/// Loads the bundled JSON through [AssetsDataSource], i.e. through
-/// `rootBundle` under the `packages/data/...` prefix the app uses at runtime.
-void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
+import 'support/file_asset_loader.dart';
 
-  final dataSource = AssetsDataSource();
+/// Loads the bundled JSON through [AssetsDataSource] and an [AssetLoader]
+/// that reads the files from disk.
+void main() {
+  final dataSource = AssetsDataSource(const FileAssetLoader());
 
   for (final language in Language.values) {
     group('AssetsDataSource($language)', () {

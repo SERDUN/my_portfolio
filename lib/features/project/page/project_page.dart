@@ -11,7 +11,7 @@ import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import '../bloc/project_cubit.dart';
+import 'package:presentation/presentation.dart';
 import '../widgets/widgets.dart';
 
 /// One project: hero with the store buttons and the lead screenshot, the

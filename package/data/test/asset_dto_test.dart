@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 import 'package:data/data.dart';
 
@@ -9,7 +9,7 @@ import 'package:data/data.dart';
 ///
 /// Guards the asset files and the DTO schema together: a renamed key, a
 /// missing required field or a malformed file in either language fails here.
-/// `flutter test` runs with the package root as cwd, so the files are read
+/// `dart test` runs with the package root as cwd, so the files are read
 /// relative to it.
 void main() {
   const languages = ['en', 'uk'];

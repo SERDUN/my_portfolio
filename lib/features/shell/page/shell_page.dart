@@ -3,7 +3,8 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:my_portfolio/app/settings/settings.dart';
+import 'package:presentation/presentation.dart';
+
 import 'package:my_portfolio/core/core.dart';
 
 import '../widgets/widgets.dart';
@@ -20,7 +21,7 @@ class ShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = context.read<AppSettingsCubit>();
-    final themeMode = context.select((AppSettingsCubit c) => c.state.themeMode);
+    final themeMode = context.select((AppSettingsCubit c) => c.state.theme);
     final language = context.select((AppSettingsCubit c) => c.state.language);
     final index = navigationShell.currentIndex.clamp(0, _destinations.length - 1);
 
@@ -32,7 +33,7 @@ class ShellPage extends StatelessWidget {
           initialLocation: destination.index == navigationShell.currentIndex,
         ),
         themeMode: themeMode,
-        onThemeChange: settings.changeThemeMode,
+        onThemeChange: settings.changeTheme,
         language: language,
         onLanguageChange: settings.changeLanguage,
       ),

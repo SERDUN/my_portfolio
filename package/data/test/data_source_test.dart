@@ -1,11 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
+
+import 'support/file_asset_loader.dart';
 
 /// A source that always throws [error], for the fallback tests.
 class _FailingSource implements PortfolioDataSource {
@@ -29,13 +31,11 @@ ApiDatasource _api(MockClientHandler handler) =>
     ApiDatasource(baseUrl: Uri.parse('https://api.example/v1'), client: MockClient(handler));
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
-
   group('FallbackDataSource', () {
     test('answers from the fallback when the primary fails', () async {
       final source = FallbackDataSource(
         primary: _FailingSource(ApiException(503, Uri())),
-        fallback: AssetsDataSource(),
+        fallback: AssetsDataSource(const FileAssetLoader()),
       );
 
       expect(await source.getProjects(Language.en), isNotEmpty);
@@ -45,7 +45,7 @@ void main() {
     test('does not retry a missing project', () async {
       final source = FallbackDataSource(
         primary: _FailingSource(const ProjectNotFoundException('x')),
-        fallback: AssetsDataSource(),
+        fallback: AssetsDataSource(const FileAssetLoader()),
       );
 
       expect(source.getProject('x', Language.en), throwsA(isA<ProjectNotFoundException>()));

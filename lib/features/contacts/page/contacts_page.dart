@@ -3,7 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'package:my_portfolio/app/contacts/contacts.dart';
+import 'package:presentation/presentation.dart';
 import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';

@@ -1,0 +1,13 @@
+name: design_tokens
+description: Raw design values of the portfolio (colours, type scale, radii, breakpoints), read by the Flutter theme and by the Jaspr stylesheet. Pure Dart, no dependencies.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+
+# No dependencies at all: plain numbers and strings that each presenter turns
+# into its own form (ThemeData on one side, CSS custom properties on the other).
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.0

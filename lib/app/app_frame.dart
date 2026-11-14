@@ -2,11 +2,12 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:responsive_framework/responsive_framework.dart';
 
-const List<Breakpoint> appBreakpoints = [
-  Breakpoint(start: 0, end: 450, name: MOBILE),
-  Breakpoint(start: 451, end: 800, name: TABLET),
-  Breakpoint(start: 801, end: 1920, name: DESKTOP),
-  Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+import 'package:design_tokens/design_tokens.dart' as tokens;
+
+/// The layout ranges from the shared design tokens, so the Jaspr site's media
+/// queries break at the same widths.
+final List<Breakpoint> appBreakpoints = [
+  for (final b in tokens.Breakpoints.all) Breakpoint(start: b.start, end: b.end, name: b.name),
 ];
 
 /// `MaterialApp.builder` of the app: breakpoints for the layouts, mouse drag

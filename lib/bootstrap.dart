@@ -6,8 +6,8 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:presentation/presentation.dart';
 
-import 'core/state/logging_bloc_observer.dart';
 import 'di/environment.dart';
 import 'di/injection.dart';
 

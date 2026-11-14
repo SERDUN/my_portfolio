@@ -18,6 +18,17 @@ environment:
 dependencies:
   jaspr: ^0.23.4
 
+  # The shared layers. Each is Flutter-free, which tool/scripts/layer-deps-check.sh
+  # holds for every package listed here.
+  data:
+    path: ../../package/data
+  design_tokens:
+    path: ../../package/design_tokens
+  domain:
+    path: ../../package/domain
+  presentation:
+    path: ../../package/presentation
+
 dev_dependencies:
   build_runner: ^2.13.1
   # Not jaspr_web_compilers: it caps the SDK below 3.11. Jaspr 0.23 builds with

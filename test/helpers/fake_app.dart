@@ -5,7 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:domain/domain.dart';
 
 import 'package:my_portfolio/app/app.dart';
-import 'package:my_portfolio/app/settings/settings.dart';
+import 'package:presentation/presentation.dart';
 
 /// Content every screen test renders: one of each kind of data, with ids
 /// and titles that are easy to assert on.

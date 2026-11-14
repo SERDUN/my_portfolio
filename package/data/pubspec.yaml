@@ -1,16 +1,16 @@
 name: data
-description: A new Flutter package project.
+description: Data sources, DTO mappers and repository implementations of the portfolio, plus the bundled JSON content. Pure Dart, no Flutter.
 version: 0.0.1
 publish_to: none
 
 environment:
   sdk: ^3.8.0
-  flutter: ">=3.32.0"
 
+# Must never declare `flutter`: the Jaspr presenter reads the content through
+# this package and compiles to JavaScript. Reading a bundled file goes through
+# AssetLoader, which each presenter implements. tool/scripts/layer-deps-check.sh
+# enforces it.
 dependencies:
-  flutter:
-    sdk: flutter
-
   contract:
     path: ../contract
   domain:
@@ -21,13 +21,13 @@ dependencies:
   get_it: ^9.3.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   build_runner: ^2.15.0
-  flutter_gen_runner:
   injectable_generator: ^3.1.3
-  flutter_lints: ^6.0.0
+  lints: ^6.0.0
+  test: ^1.25.0
 
+# Read by the Flutter tool, not by pub: it bundles these files into the app
+# under `packages/data/`. The Jaspr pre-render reads them from disk.
 flutter:
   assets:
     - assets/data/en/

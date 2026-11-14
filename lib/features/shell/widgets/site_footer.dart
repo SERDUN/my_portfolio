@@ -10,7 +10,7 @@ import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import 'package:my_portfolio/app/contacts/contacts.dart';
+import 'package:presentation/presentation.dart';
 import 'package:my_portfolio/app/keys.dart';
 
 /// Dark footer band: "Let's talk", the email, the social links as pills, and

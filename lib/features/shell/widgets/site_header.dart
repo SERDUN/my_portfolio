@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:domain/domain.dart';
+import 'package:presentation/presentation.dart';
 
 import 'package:my_portfolio/app/keys.dart';
 import 'package:my_portfolio/core/core.dart';
 import 'package:my_portfolio/localization/localization.dart';
 import 'package:my_portfolio/style/style.dart';
 
-import '../bloc/shell_cubit.dart';
 import 'mobile_menu.dart';
 import 'nav_link.dart';
 
@@ -33,8 +33,8 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
 
   final ShellDestination current;
   final ValueChanged<ShellDestination> onNavigate;
-  final ThemeMode themeMode;
-  final ValueChanged<ThemeMode> onThemeChange;
+  final ThemePreference themeMode;
+  final ValueChanged<ThemePreference> onThemeChange;
   final Language language;
   final ValueChanged<Language> onLanguageChange;
 

@@ -3,6 +3,8 @@
 *.lock
 # The Jaspr presenter has its own resolution, and its lock is what pins it.
 !apps/jaspr/pubspec.lock
+# Generated from the ARB files by tool/scripts/gen_jaspr_l10n.dart on every jaspr.sh run.
+apps/jaspr/lib/l10n/*.g.dart
 *.log
 *.pyc
 *.swp
