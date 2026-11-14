@@ -30,6 +30,7 @@ Component pillButton({
   bool compact = false,
   bool external = false,
   bool download = false,
+  bool iconLeading = false,
   String? classes,
 }) {
   final classList = [
@@ -41,8 +42,9 @@ Component pillButton({
     ?classes,
   ].join(' ');
   final children = [
+    if (icon != null && iconLeading) appIcon(icon, size: 18),
     span([.text(label)]),
-    if (icon != null) appIcon(icon, size: 18),
+    if (icon != null && !iconLeading) appIcon(icon, size: 18),
   ];
   if (href == null) return span(classes: classList, attributes: const {'aria-disabled': 'true'}, children);
   return a(

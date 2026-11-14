@@ -49,6 +49,8 @@ web/                    styles.css (every rule names the Flutter widget it follo
 
 ## Pages and languages
 
+Routes: `/` and `/portfolio`, one page per project at `/portfolio/<id>` (jaspr_router's static generation takes no path parameters, so each id is a route), and the same under `/uk`. The projects filter is a radio group styled as chips; `:has()` hides the cards of the other platforms, so it works without a script.
+
 Every page is pre-rendered once per language: English at the root (`/`), Ukrainian under `/uk`. The language switch is a link to the same page in the other language, and each page names its other-language versions with `hreflang` links. The Flutter app keeps the language in its state instead; one URL per language is what a static site needs to be found in both.
 
 ## Interactivity without a client bundle
@@ -62,6 +64,8 @@ Three Flutter behaviours the CSS reproduces on purpose:
 - **Letter spacing of the sans steps.** The Flutter theme sets none; `Theme.of` fills it from Material 3's type geometry. The tokens carry those values and a Flutter test holds them equal. Buttons take their text style from the button theme and get none, so `.pill` resets it.
 - **The italic headline accent** is the upright face slanted: the Flutter theme pins each style to the upright file. Only upright faces are loaded here, so the browser synthesises the same slant.
 - **Line breaks in the content** are kept, as a Flutter `Text` keeps them (`multiline()` in `components/layout.dart`).
+- **Borders of Material shapes** (project cards, outlined and footer pills, filter chips) are painted over the box in Flutter and take no room, so the CSS draws them as an inset `box-shadow`; borders of a Flutter `Container` take room, as a CSS border does.
+- **The project intro** is a real Fraunces italic in Flutter (`GoogleFonts.fraunces(fontStyle: italic)`), unlike the slanted headline accent. `web/fonts/` holds that face under the family name `Fraunces Italic`, so only the intro uses it.
 
 ## Own resolution
 

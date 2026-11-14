@@ -47,4 +47,35 @@ void main() {
     final alternates = document.querySelectorAll('link[rel="alternate"]').map((l) => l.attributes['hreflang']);
     expect(alternates, containsAll(['en', 'uk', 'x-default']));
   });
+
+  testServer('the projects page lists every project with a filter per platform', (tester) async {
+    tester.pumpComponent(App(content: content));
+
+    final document = (await tester.request('/portfolio')).document!;
+    final en = content[Language.en]!;
+
+    expect(document.querySelectorAll('.project-card--horizontal'), hasLength(en.projects.projects.length));
+    final filters = document.querySelectorAll('.filter-chip__input').map((i) => i.attributes['value']);
+    expect(filters, ['all', ...en.projects.platformCounts.keys.map((p) => p.name)]);
+    expect(document.querySelector('.filter-chip__input[value="all"]')!.attributes.containsKey('checked'), isTrue);
+  });
+
+  testServer('every project has a page in every language that links to the next one', (tester) async {
+    tester.pumpComponent(App(content: content));
+
+    for (final language in Language.values) {
+      final site = content[language]!;
+      final prefix = language == Language.en ? '' : '/${language.code}';
+      for (final MapEntry(key: id, value: page) in site.projectPages.entries) {
+        final response = await tester.request('$prefix/portfolio/$id');
+        expect(response.statusCode, 200, reason: '$prefix/portfolio/$id');
+        final document = response.document!;
+        expect(document.querySelector('h1')!.text, page.project!.name);
+        expect(
+          document.querySelector('.project-next__link')!.attributes['href'],
+          '$prefix/portfolio/${page.nextProject!.id}',
+        );
+      }
+    }
+  });
 }

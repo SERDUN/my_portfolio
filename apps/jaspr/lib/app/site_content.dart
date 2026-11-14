@@ -16,6 +16,8 @@ class SiteContent {
     required this.shell,
     required this.contacts,
     required this.home,
+    required this.projects,
+    required this.projectPages,
   });
 
   final Language language;
@@ -23,6 +25,12 @@ class SiteContent {
   final ShellState shell;
   final ContactsState contacts;
   final HomeState home;
+
+  /// The projects page.
+  final ProjectsState projects;
+
+  /// One state per project page, by project id, in list order.
+  final Map<String, ProjectState> projectPages;
 
   PortfolioUserModel get user => home.user!;
 }
@@ -62,7 +70,31 @@ Future<SiteContent> _load(
     GetProjectsUseCaseImpl(projects),
     languages,
   );
+  final list = ProjectsCubit(GetProjectsUseCaseImpl(projects), languages);
   try {
+    final projectsState = await _settle(
+      list,
+      (s) => s.status == LoadStatus.success && s.projects.isNotEmpty,
+      '$language projects',
+    );
+    final projectPages = <String, ProjectState>{};
+    for (final project in projectsState.projects) {
+      final page = ProjectCubit(
+        GetProjectByIdUseCaseImpl(projects),
+        GetProjectsUseCaseImpl(projects),
+        languages,
+        project.id,
+      );
+      try {
+        projectPages[project.id] = await _settle(
+          page,
+          (s) => s.status == LoadStatus.success && s.projects.isNotEmpty,
+          '$language project ${project.id}',
+        );
+      } finally {
+        await page.close();
+      }
+    }
     return SiteContent(
       language: language,
       strings: AppStrings.of(language.code),
@@ -73,9 +105,11 @@ Future<SiteContent> _load(
         (s) => s.status == LoadStatus.success && s.skills != null && s.projects.isNotEmpty,
         '$language home',
       ),
+      projects: projectsState,
+      projectPages: projectPages,
     );
   } finally {
-    await Future.wait([shell.close(), contacts.close(), home.close()]);
+    await Future.wait([shell.close(), contacts.close(), home.close(), list.close()]);
   }
 }
 
@@ -87,9 +121,13 @@ Future<S> _settle<S>(
   String what, {
   Duration timeout = const Duration(seconds: 30),
 }) async {
-  bool failed(S state) =>
-      state is HomeState && state.status == LoadStatus.failure ||
-      state is ContactsState && state.status == LoadStatus.failure;
+  bool failed(S state) => switch (state) {
+    HomeState(:final status) ||
+    ContactsState(:final status) ||
+    ProjectsState(:final status) ||
+    ProjectState(:final status) => status == LoadStatus.failure,
+    _ => false,
+  };
   S check(S state) {
     if (failed(state)) throw StateError('$what failed to load: $state');
     return state;

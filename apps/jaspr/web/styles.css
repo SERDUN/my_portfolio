@@ -7,6 +7,29 @@
  * Mobile first, at the shared breakpoints: phones up to 450 px, tablets from
  * 451 px, "wide" (desktop) from 801 px. */
 
+/* Fraunces italic under a name of its own. The Flutter theme draws the
+ * project intro with GoogleFonts.fraunces(fontStyle: italic), a real italic
+ * file, but the home headline accent with the upright file slanted. Loaded as
+ * "Fraunces" it would replace that slant too, so only the intro names it.
+ * Files from Google Fonts (Fraunces v38, SIL Open Font License). */
+@font-face {
+  font-family: 'Fraunces Italic';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/fraunces-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces Italic';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/fraunces-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 *,
 *::before,
 *::after {
@@ -144,7 +167,6 @@ img {
   min-height: 48px;
   min-width: 44px;
   padding: 14px 22px;
-  border: 1px solid transparent;
   border-radius: var(--radius-pill);
   color: inherit;
   /* Flutter's buttons take their text style from the button theme, which
@@ -171,7 +193,10 @@ img {
 }
 
 .pill--outline {
-  border-color: var(--outline);
+  /* The border of a Flutter button (and of any Material shape) is painted
+   * over the box and takes no room from the padding; an inset shadow does the
+   * same, a CSS border would not. */
+  box-shadow: inset 0 0 0 1px var(--outline);
   color: var(--ink);
 }
 
@@ -507,7 +532,7 @@ img {
   align-items: center;
   min-height: 44px;
   padding: 10px 16px;
-  border: 1px solid var(--footer-line);
+  box-shadow: inset 0 0 0 1px var(--footer-line);
   border-radius: var(--radius-pill);
   color: var(--footer-text);
 }
@@ -813,7 +838,8 @@ img {
   flex-direction: column;
   padding: 20px 20px 24px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  /* A Material shape's border: painted over, no room taken (see .pill--outline). */
+  box-shadow: inset 0 0 0 1px var(--line);
   border-radius: var(--radius-card);
   background: var(--card);
   transition: background-color 0.15s;
@@ -854,22 +880,63 @@ img {
   margin-top: 14px;
 }
 
-/* PhoneFrame: a 300 px well, a 220 px phone 28 px from its top, 6 px bezel. */
+/* PhoneFrame: a well with a phone rising out of it, cut at the bottom. The
+ * sizes are the ones each Flutter caller passes; the phone keeps a 24 px
+ * margin to the well's sides, so it narrows in a narrow well. */
 .phone-frame {
+  --well-height: 300px;
+  --phone-width: 220px;
+  --bezel: 6px;
+  --phone-radius: 22px;
+  --well-radius: 18px;
+  --top-inset: 28px;
   display: flex;
   justify-content: center;
-  height: 300px;
-  padding: 28px 24px 0;
+  height: var(--well-height);
+  padding: var(--top-inset) 24px 0;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: var(--well-radius);
   background: var(--accent-soft);
 }
 
+.phone-frame--card-horizontal {
+  --well-height: 150px;
+  --bezel: 4px;
+  --phone-radius: 12px;
+  --well-radius: 14px;
+  --top-inset: 12px;
+}
+
+.phone-frame--hero {
+  --well-height: 380px;
+  --phone-width: 220px;
+  --phone-radius: 24px;
+  --well-radius: 28px;
+}
+
+@media (min-width: 451px) {
+  .phone-frame--card-horizontal {
+    --well-height: 300px;
+    --bezel: 5px;
+    --phone-radius: 18px;
+    --well-radius: 20px;
+    --top-inset: 22px;
+  }
+
+  .phone-frame--hero {
+    --well-height: 520px;
+    --phone-width: 280px;
+    --bezel: 8px;
+    --phone-radius: 30px;
+    --top-inset: 36px;
+  }
+}
+
 .phone-frame__phone {
-  width: 220px;
+  width: var(--phone-width);
   max-width: 100%;
-  padding: 6px 6px 0;
-  border-radius: 22px 22px 0 0;
+  padding: var(--bezel) var(--bezel) 0;
+  border-radius: var(--phone-radius) var(--phone-radius) 0 0;
   background: var(--ink);
   box-shadow: 0 24px 40px color-mix(in srgb, var(--ink) 18%, transparent);
 }
@@ -877,7 +944,7 @@ img {
 .phone-frame__screen {
   height: 100%;
   overflow: hidden;
-  border-radius: 16px 16px 0 0;
+  border-radius: calc(var(--phone-radius) - var(--bezel)) calc(var(--phone-radius) - var(--bezel)) 0 0;
   background: var(--chip);
 }
 
@@ -886,4 +953,379 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: top center;
+}
+
+/* ProjectCard.horizontal: 28 px corners; the 200 px frame (104 on phones)
+ * beside the text, 24 px apart (14 on phones). */
+.project-card--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 28px;
+}
+
+.project-card__frame {
+  flex: none;
+  width: 104px;
+}
+
+.project-card__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-card__title--wrap {
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-top: 0;
+}
+
+.project-card__title--wrap .project-card__name {
+  flex: none;
+  max-width: 100%;
+}
+
+.project-card--horizontal .project-card__spheres,
+.project-card--horizontal .project-card__tags {
+  display: none;
+}
+
+.project-card__spheres {
+  margin-top: 8px;
+}
+
+.project-card__stores {
+  margin-top: 14px;
+  color: var(--accent);
+}
+
+@media (min-width: 451px) {
+  .project-card--horizontal {
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .project-card__frame {
+    width: 200px;
+  }
+
+  .project-card--horizontal .project-card__summary {
+    -webkit-line-clamp: 4;
+  }
+
+  .project-card--horizontal .project-card__spheres {
+    display: block;
+  }
+
+  .project-card--horizontal .project-card__tags {
+    display: flex;
+  }
+}
+
+/* ProjectsPage: 32 px above on phones, 72 above; 96 below. The header puts
+ * the filter beside the copy from 801 px. */
+.projects {
+  padding-top: 32px;
+  padding-bottom: 96px;
+}
+
+.projects__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.projects__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.projects__title {
+  margin-top: 10px;
+}
+
+.projects__description {
+  max-width: 640px;
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+.projects__filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  box-shadow: inset 0 0 0 1px var(--outline);
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.filter-chip:has(:checked) {
+  box-shadow: inset 0 0 0 1px var(--ink);
+  background: var(--ink);
+  color: var(--ground);
+}
+
+.filter-chip:has(:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.filter-chip__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.projects:has(.filter-chip__input[value='flutter']:checked) .project-card[data-platform]:not([data-platform='flutter']),
+.projects:has(.filter-chip__input[value='android']:checked) .project-card[data-platform]:not([data-platform='android']) {
+  display: none;
+}
+
+.projects__cta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+@media (min-width: 451px) {
+  .projects {
+    padding-top: 72px;
+  }
+}
+
+@media (min-width: 801px) {
+  .projects__header {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .projects__copy {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ProjectPage: 16 px above on phones, 32 above; 96 below. */
+.project {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  padding-bottom: 96px;
+}
+
+.project__back {
+  align-self: flex-start;
+}
+
+.project-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+.project-hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.project-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-bottom: 22px;
+}
+
+.project-hero__intro {
+  margin-top: 22px;
+  font-family: 'Fraunces Italic', 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.3;
+  letter-spacing: 0.25px;
+  color: var(--body);
+}
+
+.project-hero__stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.project-hero__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-self: stretch;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.project-hero__stores + .project-hero__facts {
+  margin-top: 28px;
+}
+
+.project-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-fact__label {
+  font-size: 12px;
+  letter-spacing: 1.3px;
+}
+
+.project-about {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.project-about__text,
+.project-about__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-gallery {
+  margin-top: 48px;
+}
+
+.project-gallery__header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.project-gallery__header h2 {
+  flex: 1;
+}
+
+.project-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.project-shot {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--card);
+}
+
+.project-shot__bezel {
+  padding: 5px;
+  border-radius: 18px;
+  background: var(--ink);
+}
+
+.project-shot__bezel img {
+  width: 100%;
+  aspect-ratio: 9 / 19;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 13px;
+}
+
+.project-next {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.project-next__label {
+  flex: 1;
+  color: var(--muted);
+}
+
+.project-next__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  color: var(--ink);
+}
+
+@media (min-width: 451px) {
+  .project {
+    padding-top: 32px;
+  }
+
+  .project-hero {
+    margin-top: 32px;
+  }
+
+  .project-hero__intro {
+    font-size: 26px;
+  }
+
+  .project-about,
+  .project-gallery {
+    margin-top: 72px;
+  }
+
+  .project-gallery__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 801px) {
+  .project-hero,
+  .project-about {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .project-hero__copy,
+  .project-about__text {
+    flex: 7;
+    min-width: 0;
+  }
+
+  .project-hero__frame,
+  .project-about__stack {
+    flex: 5;
+    min-width: 0;
+  }
+
+  .project-gallery__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
