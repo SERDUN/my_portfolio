@@ -9,6 +9,7 @@ Personal portfolio of Dmytro Serdun, a Flutter web app: https://serdun.online/
 | `lib/` | the Flutter app: `bootstrap.dart`, routing and theme in `app/`, screens in `features/`, shared widgets in `core/`, l10n in `localization/` |
 | `package/domain/` | pure Dart: entities, repository contracts, use cases; depends on nothing but `injectable` |
 | `package/presentation/` | pure Dart: the page cubits and their states, app settings, routes and state helpers, shared by the Flutter app and the Jaspr presenter |
+| `package/design_tokens/` | pure Dart, no dependencies: colours, type scale, radii and breakpoints; the Flutter theme and the Jaspr stylesheet both read them |
 | `package/contract/` | pure Dart: the JSON DTOs of the content, shared by the app, the content API and the sync |
 | `package/data/` | pure Dart: DTO → model mappers (`lib/extension/`), data sources, repository implementations, the pulled JSON content under `assets/data/{en,uk}/`; a presenter reads those files through `AssetLoader` (the app's is `lib/di/root_bundle_asset_loader.dart`) |
 | `docs/` | `widgets.md`: the catalogue of shared widgets in `lib/core/widgets/` |
@@ -59,6 +60,7 @@ flutter test
 (cd package/domain && dart test)
 (cd package/presentation && dart test)
 (cd package/contract && dart test)
+(cd package/design_tokens && dart test)
 (cd package/data && dart test)
 (cd server && dart test)
 tool/scripts/layer-deps-check.sh

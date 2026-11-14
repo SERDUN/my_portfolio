@@ -23,7 +23,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 
 # Packages that must stay free of Flutter.
-WEB_CLEAN=(apps/jaspr package/domain package/contract package/presentation package/data)
+WEB_CLEAN=(apps/jaspr package/domain package/contract package/presentation package/data package/design_tokens)
 
 # Every pubspec in the repository, so a new package is covered without being
 # listed here.

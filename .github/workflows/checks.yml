@@ -27,6 +27,7 @@ jobs:
       - run: cd package/domain && dart analyze && dart test
       - run: cd package/presentation && dart analyze && dart test
       - run: cd package/contract && dart pub get && dart analyze && dart test
+      - run: cd package/design_tokens && dart pub get && dart analyze && dart test
       - run: cd package/data && dart pub get && dart analyze && dart test
 
   jaspr:
