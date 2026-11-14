@@ -212,8 +212,8 @@ return $default(_that.status,_that.projects,_that.error);case _:
 /// @nodoc
 
 
-class _ProjectsState implements ProjectsState {
-  const _ProjectsState({this.status = LoadStatus.initial,  List<ProjectModel> projects = const [], this.error}): _projects = projects;
+class _ProjectsState extends ProjectsState {
+  const _ProjectsState({this.status = LoadStatus.initial,  List<ProjectModel> projects = const [], this.error}): _projects = projects,super._();
   
 
 @override@JsonKey() final  LoadStatus status;

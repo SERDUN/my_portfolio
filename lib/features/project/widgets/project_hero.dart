@@ -123,10 +123,13 @@ class _Copy extends StatelessWidget {
   /// "iOS, Android" from the store links; the platform tag when there are none.
   String _platforms(BuildContext context) {
     final l10n = context.l10n;
-    final names = <String>[
-      if (project.links.appStore != null) l10n.project_platformIos,
-      if (project.links.googlePlay != null) l10n.project_platformAndroid,
-      if (project.technologies.any((t) => t.toLowerCase() == 'web')) l10n.project_platformWeb,
+    final names = [
+      for (final platform in publishedPlatforms(project))
+        switch (platform) {
+          PublishedPlatform.ios => l10n.project_platformIos,
+          PublishedPlatform.android => l10n.project_platformAndroid,
+          PublishedPlatform.web => l10n.project_platformWeb,
+        },
     ];
     if (names.isNotEmpty) return names.join(', ');
     return project.platform?.label ?? '—';
