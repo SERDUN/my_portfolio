@@ -3,9 +3,11 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:presentation/presentation.dart';
 
+import '../features/contacts/contacts_page.dart';
 import '../features/home/home_page.dart';
 import '../features/project/project_page.dart';
 import '../features/projects/projects_page.dart';
+import '../features/useful/useful_page.dart';
 import '../features/shell/site_header.dart';
 import 'site_content.dart';
 import 'site_page.dart';
@@ -26,6 +28,8 @@ class App extends StatelessComponent {
       routes: [
         for (final language in Language.values) ...[
           Route(path: SitePaths.home(language), builder: (context, state) => _home(content[language]!)),
+          Route(path: SitePaths.contacts(language), builder: (context, state) => _contacts(content[language]!)),
+          Route(path: SitePaths.useful(language), builder: (context, state) => _useful(content[language]!)),
           Route(path: SitePaths.projects(language), builder: (context, state) => _projects(content[language]!)),
           for (final MapEntry(key: id, value: page) in content[language]!.projectPages.entries)
             Route(
@@ -66,4 +70,22 @@ class App extends StatelessComponent {
       child: projectPage(content, page),
     );
   }
+
+  static Component _contacts(SiteContent content) => sitePage(
+    content,
+    current: ShellDestination.contacts,
+    route: AppRoutes.contacts.path,
+    title: '${content.strings.contacts_title} · ${content.user.name}',
+    description: content.strings.contacts_description,
+    child: contactsPage(content),
+  );
+
+  static Component _useful(SiteContent content) => sitePage(
+    content,
+    current: ShellDestination.useful,
+    route: AppRoutes.useful.path,
+    title: '${content.strings.useful_title} · ${content.user.name}',
+    description: content.strings.useful_description,
+    child: usefulPage(content),
+  );
 }

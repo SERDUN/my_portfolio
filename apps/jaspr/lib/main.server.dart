@@ -49,6 +49,7 @@ const _fonts =
     'https://fonts.googleapis.com/css2'
     '?family=Fraunces:wght@400;500'
     '&family=Manrope:wght@400;500;600;700'
+    '&family=JetBrains+Mono:wght@400'
     '&family=Playfair+Display:wght@400;500'
     '&display=swap';
 

@@ -7,6 +7,7 @@ import '../../app/site_content.dart';
 import '../../app/site_paths.dart';
 import '../../components/icons.dart';
 import '../../components/layout.dart';
+import '../../components/page_intro.dart';
 import '../../components/pill_button.dart';
 import '../../components/project_card.dart';
 
@@ -43,13 +44,11 @@ Component projectsPage(SiteContent content) {
 
   return contentWidth(tag: 'section', classes: 'projects', [
     div(classes: 'projects__header', [
-      div(classes: 'projects__copy', [
-        eyebrow(strings.projects_eyebrow),
-        h1(classes: 'projects__title t-headline-large t-tablet-display-medium', [
-          .text(strings.projects_title(projects.length, platforms.length)),
-        ]),
-        p(classes: 'projects__description t-body-medium', [.text(strings.projects_description)]),
-      ]),
+      pageIntro(
+        eyebrowText: strings.projects_eyebrow,
+        title: strings.projects_title(projects.length, platforms.length),
+        description: strings.projects_description,
+      ),
       div(
         classes: 'projects__filter',
         attributes: {'role': 'radiogroup', 'aria-label': strings.projects_eyebrow},

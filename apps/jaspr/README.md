@@ -49,13 +49,13 @@ web/                    styles.css (every rule names the Flutter widget it follo
 
 ## Pages and languages
 
-Routes: `/` and `/portfolio`, one page per project at `/portfolio/<id>` (jaspr_router's static generation takes no path parameters, so each id is a route), and the same under `/uk`. The projects filter is a radio group styled as chips; `:has()` hides the cards of the other platforms, so it works without a script.
+Routes: `/`, `/portfolio`, `/contacts`, `/useful`, one page per project at `/portfolio/<id>` (jaspr_router's static generation takes no path parameters, so each id is a route), and the same under `/uk`. The projects filter is a radio group styled as chips; `:has()` hides the cards of the other platforms, so it works without a script.
 
 Every page is pre-rendered once per language: English at the root (`/`), Ukrainian under `/uk`. The language switch is a link to the same page in the other language, and each page names its other-language versions with `hreflang` links. The Flutter app keeps the language in its state instead; one URL per language is what a static site needs to be found in both.
 
 ## Interactivity without a client bundle
 
-Nothing here needs Dart in the browser yet, so there is no `main.client.dart` and no island: the menu sheet of narrow screens is an HTML `popover`, and the theme switch (system, light, dark) is `web/theme.js` plus a few lines in `<head>` that apply the stored choice before the first paint. Add `main.client.dart` with the first `@client` island that needs it.
+Nothing here needs Dart in the browser yet, so there is no `main.client.dart` and no island: the menu sheet of narrow screens is an HTML `popover`, and the theme switch (system, light, dark) is `web/theme.js` plus a few lines in `<head>` that apply the stored choice before the first paint. The copy buttons of the useful commands page are `web/copy.js`, loaded on that page only. Add `main.client.dart` with the first `@client` island that needs it.
 
 ## Matching the Flutter rendering
 

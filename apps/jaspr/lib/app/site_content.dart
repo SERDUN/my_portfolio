@@ -18,6 +18,7 @@ class SiteContent {
     required this.home,
     required this.projects,
     required this.projectPages,
+    required this.useful,
   });
 
   final Language language;
@@ -31,6 +32,9 @@ class SiteContent {
 
   /// One state per project page, by project id, in list order.
   final Map<String, ProjectState> projectPages;
+
+  /// The useful commands page.
+  final UsefulState useful;
 
   PortfolioUserModel get user => home.user!;
 }
@@ -52,14 +56,19 @@ Future<Map<Language, SiteContent>> loadSiteContent(AssetLoader assets) async {
   final source = AssetsDataSource(assets);
   final users = UserRepositoryImpl(source);
   final projects = ProjectRepositoryImpl(source);
+  final useful = UsefulRepositoryImpl(source);
 
-  return {for (final language in Language.values) language: await _load(language, users: users, projects: projects)};
+  return {
+    for (final language in Language.values)
+      language: await _load(language, users: users, projects: projects, useful: useful),
+  };
 }
 
 Future<SiteContent> _load(
   Language language, {
   required UserRepository users,
   required ProjectRepository projects,
+  required UsefulRepository useful,
 }) async {
   final languages = _FixedLanguage(language);
   final shell = ShellCubit(GetUserUseCaseImpl(users), languages);
@@ -71,6 +80,7 @@ Future<SiteContent> _load(
     languages,
   );
   final list = ProjectsCubit(GetProjectsUseCaseImpl(projects), languages);
+  final commands = UsefulCubit(GetUsefulCommandsUseCaseImpl(useful), languages);
   try {
     final projectsState = await _settle(
       list,
@@ -107,9 +117,14 @@ Future<SiteContent> _load(
       ),
       projects: projectsState,
       projectPages: projectPages,
+      useful: await _settle(
+        commands,
+        (s) => s.status == LoadStatus.success && s.groups.isNotEmpty,
+        '$language useful commands',
+      ),
     );
   } finally {
-    await Future.wait([shell.close(), contacts.close(), home.close(), list.close()]);
+    await Future.wait([shell.close(), contacts.close(), home.close(), list.close(), commands.close()]);
   }
 }
 
@@ -125,7 +140,8 @@ Future<S> _settle<S>(
     HomeState(:final status) ||
     ContactsState(:final status) ||
     ProjectsState(:final status) ||
-    ProjectState(:final status) => status == LoadStatus.failure,
+    ProjectState(:final status) ||
+    UsefulState(:final status) => status == LoadStatus.failure,
     _ => false,
   };
   S check(S state) {
